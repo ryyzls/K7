@@ -3,26 +3,35 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CariSehat</title>
+<title>CariSehat - Temukan Rumah Sakit se-Sumatera Utara</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+
+<!-- Leaflet & Clustering -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css">
+
+<!-- Open Source Leaflet Plugins: Locate (GPS) & Routing Machine -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.79.0/dist/L.Control.Locate.min.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+
+<!-- Open Source Deep Chat Widget -->
+<script type="module" src="https://unpkg.com/deep-chat@2.1.1/dist/deepChat.bundle.js"></script>
+
 <style>
 :root{--ink:#14232B;--toba:#1F6F8B;--ulos:#B3262E;--bg:#F6F8F9;--line:#DCE6EA;--mute:#5B6E77}
 *{box-sizing:border-box}
 html,body{height:100%;margin:0}
 body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--ink);background:var(--bg);display:flex;flex-direction:column}
-header{display:flex;align-items:center;gap:1rem;padding:.7rem 1rem;background:#fff}
+header{display:flex;align-items:center;gap:1rem;padding:.7rem 1rem;background:#fff;z-index:10}
 header h1{font-size:1.05rem;margin:0;font-weight:800}
 header nav{margin-left:auto;display:flex;gap:1rem;font-size:.9rem}
 a{color:var(--toba);font-weight:600;text-decoration:none}
 a:hover{text-decoration:underline}
 :focus-visible{outline:3px solid var(--toba);outline-offset:2px}
-/* pita motif ulos: satu-satunya elemen dekoratif */
 .ulos{height:6px;background:repeating-linear-gradient(90deg,#B3262E 0 14px,#14232B 14px 18px,#F6F8F9 18px 22px,#B3262E 22px 36px)}
-main{flex:1;display:grid;grid-template-columns:400px 1fr;min-height:0}
+main{flex:1;display:grid;grid-template-columns:400px 1fr;min-height:0;position:relative}
 aside{display:flex;flex-direction:column;min-height:0;background:#fff;border-right:1px solid var(--line)}
 .filters{padding:1rem;display:grid;gap:.5rem;border-bottom:1px solid var(--line)}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
@@ -37,7 +46,7 @@ input,select{font:inherit;font-size:.92rem;padding:.55rem .65rem;border:1px soli
 .badge{display:inline-block;font-size:.72rem;font-weight:800;color:#fff;border-radius:4px;padding:.05rem .4rem;margin-right:.4rem}
 .sub{font-size:.82rem;color:var(--mute)}
 .empty{padding:1.2rem 1rem;color:var(--mute);font-size:.9rem}
-#detail{display:none;padding:1rem;border-bottom:1px solid var(--line);background:#F1F7F9;max-height:55%;overflow:auto}
+#detail{display:none;padding:1rem;border-bottom:1px solid var(--line);background:#F1F7F9;max-height:60%;overflow:auto}
 #detail.show{display:block}
 #detail h2{font-size:1.05rem;margin:0 0 .4rem}
 #detail p{margin:.2rem 0;font-size:.88rem}
@@ -45,13 +54,26 @@ input,select{font:inherit;font-size:.92rem;padding:.55rem .65rem;border:1px soli
 .chip{font-size:.75rem;border:1px solid var(--line);background:#fff;border-radius:99px;padding:.1rem .55rem}
 .links{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:.6rem;font-size:.85rem}
 .x{float:right;font:inherit;border:0;background:none;color:var(--mute);cursor:pointer;font-size:1.1rem}
+.btn-route{display:inline-flex;align-items:center;gap:.3rem;background:var(--toba);color:#fff;border:none;border-radius:6px;padding:.45rem .8rem;font-weight:600;font-size:.84rem;cursor:pointer;margin-top:.4rem}
+.btn-route:hover{background:#15556b}
 #map{min-height:0}
 .legend{background:#fff;padding:.4rem .6rem;border-radius:8px;font-size:.75rem;line-height:1.5;box-shadow:0 1px 4px rgba(0,0,0,.25)}
 .legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:.4rem}
+
+/* Chatbot Floating Widget */
+#chat-bubble{position:fixed;bottom:24px;right:24px;z-index:9999}
+#chat-btn{width:56px;height:56px;border-radius:50%;background:var(--toba);color:#fff;border:none;box-shadow:0 4px 16px rgba(0,0,0,.25);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:24px;transition:transform .2s}
+#chat-btn:hover{transform:scale(1.08)}
+#chat-container{display:none;position:absolute;bottom:70px;right:0;width:370px;height:500px;background:#fff;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.25);overflow:hidden;flex-direction:column}
+#chat-container.open{display:flex}
+#chat-header{background:var(--toba);color:#fff;padding:.7rem 1rem;font-size:.9rem;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+#chat-header button{background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer}
+
 @media(max-width:800px){
   main{grid-template-columns:1fr;grid-template-rows:36vh 1fr}
   #map{order:-1} aside{border-right:0}
   header nav{display:none}
+  #chat-container{width:calc(100vw - 32px);right:-8px;height:70vh}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style>
@@ -60,8 +82,9 @@ input,select{font:inherit;font-size:.92rem;padding:.55rem .65rem;border:1px soli
 <header>
   <h1>CariSehat</h1>
   <nav>
-    <a href="/sparql">SPARQL</a>
+    <a href="/sparql">SPARQL Playground</a>
     <a href="/data/hospitals.rdf">Data RDF</a>
+    <a href="/docs" target="_blank">API Docs</a>
   </nav>
 </header>
 <div class="ulos" aria-hidden="true"></div>
@@ -72,12 +95,12 @@ input,select{font:inherit;font-size:.92rem;padding:.55rem .65rem;border:1px soli
         <input id="q" type="search" placeholder="Nama atau alamat, mis. Adam Malik">
       </label>
       <div class="row">
-        <label>Kabupaten/kota <select id="kab"><option value="">Semua</option></select></label>
-        <label>Layanan <select id="lay"><option value="">Semua</option></select></label>
+        <label>Kabupaten/kota <select id="kab"><option value="">Semua Wilayah</option></select></label>
+        <label>Layanan <select id="lay"><option value="">Semua Layanan</option></select></label>
       </div>
       <div class="row">
-        <label>Kelas <select id="kelas"><option value="">Semua</option><option>A</option><option>B</option><option>C</option><option>D</option></select></label>
-        <label>Jenis <select id="jenis"><option value="">Semua</option><option>Umum</option><option>Khusus</option></select></label>
+        <label>Kelas <select id="kelas"><option value="">Semua Kelas</option><option>A</option><option>B</option><option>C</option><option>D</option></select></label>
+        <label>Jenis <select id="jenis"><option value="">Semua Jenis</option><option>Umum</option><option>Khusus</option></select></label>
       </div>
     </form>
     <div id="status" aria-live="polite"></div>
@@ -87,107 +110,207 @@ input,select{font:inherit;font-size:.92rem;padding:.55rem .65rem;border:1px soli
   <div id="map" role="region" aria-label="Peta rumah sakit"></div>
 </main>
 
+<!-- Floating AI Chatbot Assistant -->
+<div id="chat-bubble">
+  <button id="chat-btn" title="Tanya Asisten AI CariSehat">💬</button>
+  <div id="chat-container">
+    <div id="chat-header">
+      <span>🏥 Asisten CariSehat</span>
+      <button onclick="toggleChat()">&times;</button>
+    </div>
+    <deep-chat
+      id="chat-element"
+      style="width:100%;height:100%;border:none;font-family:inherit"
+      request='{"url": "/api/chat", "method": "POST"}'
+      introMessage='{"text": "Halo! Saya asisten semantik CariSehat. Silakan tanyakan informasi rumah sakit se-Sumatera Utara!"}'
+      textInput='{"placeholder": {"text": "Tanya RS, misal: RS kelas A di Medan..."}}'>
+    </deep-chat>
+  </div>
+</div>
+
+<!-- Libraries Leaflet & Plugins -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js"></script>
-<script>
-/* ====== Konfigurasi ======
-   API_BASE '' = satu origin dengan FastAPI. Kontrak yang diharapkan:
-   GET /api/search?q=&kelas=&jenis=&kabkota=&layanan=
-   -> { items:[{id,nama,jenis,kelas,alamat,kabkota,telepon,website,lat,lon,layanan:[],fasilitas:[]}] }
-   Jika API gagal, UI memakai data contoh di bawah (HANYA UNTUK PENGEMBANGAN). */
-const API_BASE = '';
-const LAYANAN = ['IGD','Jantung','Anak','Bersalin','Bedah','Saraf','Radiologi'];
-const MOCK = [
- {id:'rs-001',nama:'RSUP H. Adam Malik',jenis:'Umum',kelas:'A',alamat:'Jl. Bunga Lau, Medan',kabkota:'Kota Medan',telepon:null,website:null,lat:3.512,lon:98.607,layanan:['IGD','Jantung','Anak','Bedah','Saraf','Radiologi'],fasilitas:['ICU','Laboratorium','Ambulans']},
- {id:'rs-002',nama:'RSUD Dr. Pirngadi',jenis:'Umum',kelas:'B',alamat:'Jl. Prof. H.M. Yamin, Medan',kabkota:'Kota Medan',telepon:null,website:null,lat:3.580,lon:98.683,layanan:['IGD','Anak','Bersalin','Bedah'],fasilitas:['ICU','Laboratorium']},
- {id:'rs-003',nama:'RSUD Dr. Djasamen Saragih',jenis:'Umum',kelas:'B',alamat:'Pematangsiantar',kabkota:'Kota Pematangsiantar',telepon:null,website:null,lat:2.961,lon:99.061,layanan:['IGD','Anak','Bedah','Radiologi'],fasilitas:['ICU','Ambulans']},
- {id:'rs-004',nama:'RSUD Tarutung',jenis:'Umum',kelas:'C',alamat:'Tarutung',kabkota:'Kab. Tapanuli Utara',telepon:null,website:null,lat:2.023,lon:98.965,layanan:['IGD','Bersalin','Anak'],fasilitas:['Laboratorium']},
- {id:'rs-005',nama:'RSUD Kabanjahe',jenis:'Umum',kelas:'C',alamat:'Kabanjahe',kabkota:'Kab. Karo',telepon:null,website:null,lat:3.100,lon:98.490,layanan:['IGD','Bedah','Bersalin'],fasilitas:['Laboratorium','Ambulans']},
- {id:'rs-006',nama:'RSUD Gunungsitoli',jenis:'Umum',kelas:'C',alamat:'Gunungsitoli',kabkota:'Kota Gunungsitoli',telepon:null,website:null,lat:1.290,lon:97.615,layanan:['IGD','Anak'],fasilitas:['Ambulans']}
-];
+<script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.79.0/dist/L.Control.Locate.min.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
 
+<script>
+const API_BASE = '';
+let items = [], markers = {}, mock = false;
+let userCoords = null, routingControl = null;
+
+const COL = {A:'#B3262E',B:'#1F6F8B',C:'#3C8D6E',D:'#8A8F94'};
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const COL = {A:'#B3262E',B:'#1F6F8B',C:'#3C8D6E',D:'#8A8F94'};
-let items = [], markers = {}, mock = false;
 
+// Inisialisasi Peta Leaflet
 const map = L.map('map').setView([2.2, 99.0], 7);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; kontributor OpenStreetMap'}).addTo(map);
 const cluster = L.markerClusterGroup().addTo(map);
+
+// Plugin 1: Tombol GPS Lokasi Saya (Leaflet Locate)
+const locateControl = L.control.locate({
+  position: 'topleft',
+  flyTo: true,
+  strings: { title: "Cari lokasi saya saat ini" },
+  locateOptions: { enableHighAccuracy: true }
+}).addTo(map);
+
+map.on('locationfound', e => {
+  userCoords = [e.latitude, e.longitude];
+});
+
+// Legenda Warna Kelas RS
 const legend = L.control({position:'bottomright'});
-legend.onAdd = () => { const d = L.DomUtil.create('div','legend'); d.innerHTML = Object.entries(COL).map(([k,c]) => `<div><i style="background:${c}"></i>Kelas ${k}</div>`).join(''); return d; };
+legend.onAdd = () => {
+  const d = L.DomUtil.create('div','legend');
+  d.innerHTML = Object.entries(COL).map(([k,c]) => `<div><i style="background:${c}"></i>Kelas ${k}</div>`).join('');
+  return d;
+};
 legend.addTo(map);
 
-$('#lay').insertAdjacentHTML('beforeend', LAYANAN.map(l => `<option>${l}</option>`).join(''));
-
-function localFilter(){
-  const q = $('#q').value.trim().toLowerCase(), k = $('#kelas').value, j = $('#jenis').value, kb = $('#kab').value, ly = $('#lay').value;
-  return MOCK.filter(h => (!q || (h.nama + ' ' + h.alamat).toLowerCase().includes(q)) && (!k || h.kelas === k) && (!j || h.jenis === j) && (!kb || h.kabkota === kb) && (!ly || h.layanan.includes(ly)));
+// Ambil Pilihan Filter Dinamis dari Database Semantik (Fuseki)
+async function loadFilterOptions(){
+  try {
+    const res = await fetch(`${API_BASE}/api/filters`);
+    if(!res.ok) return;
+    const data = await res.json();
+    if(data.kabkota && data.kabkota.length){
+      $('#kab').innerHTML = '<option value="">Semua Wilayah</option>' + 
+        data.kabkota.map(k => `<option value="${esc(k)}">${esc(k)}</option>`).join('');
+    }
+    if(data.layanan && data.layanan.length){
+      $('#lay').innerHTML = '<option value="">Semua Layanan</option>' + 
+        data.layanan.map(l => `<option value="${esc(l)}">${esc(l)}</option>`).join('');
+    }
+  } catch(e) {
+    console.warn("Gagal memuat filter dinamis, fallback default:", e);
+  }
 }
 
+// Pencarian Rumah Sakit
 async function search(){
-  const p = new URLSearchParams({q:$('#q').value.trim(),kelas:$('#kelas').value,jenis:$('#jenis').value,kabkota:$('#kab').value,layanan:$('#lay').value});
+  const p = new URLSearchParams({
+    q: $('#q').value.trim(),
+    kelas: $('#kelas').value,
+    jenis: $('#jenis').value,
+    kabkota: $('#kab').value,
+    layanan: $('#lay').value,
+    limit: 500
+  });
   [...p].forEach(([k,v]) => { if(!v) p.delete(k); });
+  
   try{
-    const r = await fetch(`${API_BASE}/api/search?${p}`, {signal:AbortSignal.timeout(4000)});
+    const r = await fetch(`${API_BASE}/api/search?${p}`, {signal:AbortSignal.timeout(5000)});
     if(!r.ok) throw new Error(r.status);
-    items = (await r.json()).items; mock = false;
-  }catch{ items = localFilter(); mock = true; }
-  fillKab(); render();
-}
-
-function fillKab(){
-  const s = $('#kab'); if(s.options.length > 1) return;
-  const names = [...new Set((mock ? MOCK : items).map(h => h.kabkota))].sort();
-  s.insertAdjacentHTML('beforeend', names.map(n => `<option>${esc(n)}</option>`).join(''));
+    items = (await r.json()).items;
+    mock = false;
+  } catch(e) {
+    console.error("API Error, pastikan Fuseki & backend aktif:", e);
+    items = [];
+    mock = true;
+  }
+  render();
 }
 
 function render(){
   const st = $('#status');
   st.className = mock ? 'mock' : '';
-  st.textContent = `${items.length} rumah sakit ditemukan` + (mock ? ' (data contoh: API belum tersambung)' : '');
+  st.textContent = `${items.length} rumah sakit ditemukan` + (mock ? ' (Koneksi ke backend/Fuseki terputus)' : '');
+  
   $('#list').innerHTML = items.length ? items.map(h => `<li><button data-id="${esc(h.id)}">
       <strong>${esc(h.nama)}</strong>
       <span><span class="badge" style="background:${COL[h.kelas]||COL.D}">${esc(h.kelas)}</span><span class="sub">${esc(h.jenis)}</span></span>
       <span class="sub">${esc(h.kabkota)}, ${esc(h.alamat)}</span></button></li>`).join('')
-    : '<li class="empty">Tidak ada hasil. Coba kata kunci lain atau hapus filter.</li>';
-  cluster.clearLayers(); markers = {};
+    : '<li class="empty">Tidak ada rumah sakit yang cocok dengan filter yang dipilih.</li>';
+  
+  cluster.clearLayers();
+  markers = {};
   items.forEach(h => {
     if(h.lat == null || h.lon == null) return;
     const m = L.circleMarker([h.lat,h.lon],{radius:9,color:'#fff',weight:2,fillColor:COL[h.kelas]||COL.D,fillOpacity:1});
-    m.bindTooltip(esc(h.nama)); m.on('click', () => select(h.id));
-    cluster.addLayer(m); markers[h.id] = m;
+    m.bindTooltip(esc(h.nama));
+    m.on('click', () => select(h.id));
+    cluster.addLayer(m);
+    markers[h.id] = m;
   });
+  
   const pts = items.filter(h => h.lat != null).map(h => [h.lat,h.lon]);
   if(pts.length) map.fitBounds(pts,{padding:[40,40],maxZoom:12});
   $('#detail').classList.remove('show');
 }
 
 function select(id){
-  const h = items.find(x => x.id === id); if(!h) return;
+  const h = items.find(x => x.id === id);
+  if(!h) return;
   document.querySelectorAll('#list button').forEach(b => b.classList.toggle('on', b.dataset.id === id));
+  
   const chips = a => (a||[]).map(x => `<span class="chip">${esc(x)}</span>`).join('');
   const d = $('#detail');
-  d.innerHTML = `<button class="x" aria-label="Tutup detail" onclick="$('#detail').classList.remove('show')">&times;</button>
+  d.innerHTML = `<button class="x" aria-label="Tutup" onclick="$('#detail').classList.remove('show')">&times;</button>
     <h2>${esc(h.nama)}</h2>
     <p><span class="badge" style="background:${COL[h.kelas]||COL.D}">${esc(h.kelas)}</span>${esc(h.jenis)}, ${esc(h.kabkota)}</p>
     <p>${esc(h.alamat)}</p>
-    ${h.telepon ? `<p>Telepon: ${esc(h.telepon)}</p>` : ''}
+    ${h.telepon ? `<p>📞 <strong>Telepon:</strong> ${esc(h.telepon)}</p>` : ''}
     <div class="chips" aria-label="Layanan">${chips(h.layanan)}</div>
     <div class="chips" aria-label="Fasilitas">${chips(h.fasilitas)}</div>
+    
+    ${h.lat != null ? `<button class="btn-route" onclick="ruteKe(${h.lat}, ${h.lon}, '${esc(h.nama)}')">🚗 Petunjuk Rute ke Sini</button>` : ''}
+    
     <div class="links">
-      <a href="${API_BASE}/rs/${encodeURIComponent(h.id)}">Halaman data semantik</a>
-      <a href="${API_BASE}/rs/${encodeURIComponent(h.id)}.rdf">Unduh RDF</a>
-      <a href="https://www.openstreetmap.org/?mlat=${h.lat}&mlon=${h.lon}#map=17/${h.lat}/${h.lon}" target="_blank" rel="noopener">Buka di OpenStreetMap</a>
-      ${h.website ? `<a href="${esc(h.website)}" target="_blank" rel="noopener">Situs web</a>` : ''}
+      <a href="${API_BASE}/rs/${encodeURIComponent(h.id)}" target="_blank">Halaman Semantik (RDFa)</a>
+      <a href="${API_BASE}/rs/${encodeURIComponent(h.id)}.rdf">Unduh RDF/XML</a>
+      <a href="${API_BASE}/rs/${encodeURIComponent(h.id)}.ttl">Unduh Turtle</a>
+      ${h.website ? `<a href="${esc(h.website)}" target="_blank" rel="noopener">Situs Web</a>` : ''}
     </div>`;
   d.classList.add('show');
   if(h.lat != null) map.setView([h.lat,h.lon],15);
 }
 
-let t; $('#q').addEventListener('input', () => { clearTimeout(t); t = setTimeout(search, 300); });
+// Plugin 2: Buat Rute Jalan ke Rumah Sakit (Leaflet Routing Machine)
+function ruteKe(latTujuan, lonTujuan, namaTujuan){
+  const hitung = (latAsal, lonAsal) => {
+    if(routingControl) map.removeControl(routingControl);
+    routingControl = L.Routing.control({
+      waypoints: [
+        L.latLng(latAsal, lonAsal),
+        L.latLng(latTujuan, lonTujuan)
+      ],
+      routeWhileDragging: false,
+      language: 'id',
+      showAlternatives: false
+    }).addTo(map);
+  };
+
+  if(userCoords) {
+    hitung(userCoords[0], userCoords[1]);
+  } else {
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        userCoords = [pos.coords.latitude, pos.coords.longitude];
+        hitung(userCoords[0], userCoords[1]);
+      },
+      err => {
+        alert("Harap izinkan akses lokasi (GPS) pada browser Anda untuk membuat rute otomatis.");
+      }
+    );
+  }
+}
+
+// Chatbot Toggle
+function toggleChat(){
+  $('#chat-container').classList.toggle('open');
+}
+$('#chat-btn').addEventListener('click', toggleChat);
+
+// Event Listeners
+let t;
+$('#q').addEventListener('input', () => { clearTimeout(t); t = setTimeout(search, 300); });
 ['kab','lay','kelas','jenis'].forEach(i => $('#'+i).addEventListener('change', search));
 $('#list').addEventListener('click', e => { const b = e.target.closest('button'); if(b) select(b.dataset.id); });
+
+// Inisialisasi awal
+loadFilterOptions();
 search();
 </script>
 </body>

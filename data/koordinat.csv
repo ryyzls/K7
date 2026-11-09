@@ -1,0 +1,207 @@
+kode,nama,lat,lon,sumber
+rs-001,OG Hospital,3.606607,98.497722,jalan
+rs-002,RS AL Dr. Komang Makes Belawan,3.589308,98.683379,jalan
+rs-003,RS Bhayangkara Tingkat II Medan,3.572399,98.659022,osm
+rs-004,RS Bhayangkara Tk. IV Batangtoru,1.603724,99.270124,jalan
+rs-005,RS Bhayangkara Tk.III Kota Tebing Tinggi,3.324992,99.161833,jalan
+rs-006,RS Chevani,3.348668,99.168556,nama
+rs-007,RS Columbia Asia Aksara,3.597199,98.717322,nama
+rs-008,RS Columbia Asia Medan,3.584671,98.676747,nama
+rs-009,RS Dhillon,3.474454,98.715897,kabkota
+rs-010,RS Dokter Takdir,2.153426,99.785079,kabkota
+rs-011,RS Efarina Etaham Pematang Siantar,2.958863,99.065365,kabkota
+rs-012,RS Gigi dan Mulut Prima,3.598426,98.662059,nama
+rs-013,RS Grand Medica,3.474454,98.715897,kabkota
+rs-014,RS Grandmed,3.551089,98.853264,nama
+rs-015,RS Ibu Dan Anak Artha Mahinrus,3.616437,98.691312,osm
+rs-016,RS Ibu dan Anak Eva,3.584363,98.697128,osm
+rs-017,RS Ibu dan Anak Grand Fatimah,3.601672,98.483820,nama
+rs-018,RS Ibu dan Anak Maharani,3.523307,98.779687,jalan
+rs-019,RS Ibu dan Anak Mina Husada,3.094769,98.485944,nama
+rs-020,RS Ibu dan Anak Murni Teguh Rosiva,3.588905,98.682454,nama
+rs-021,RS Ibu dan Anak Pramaliesa,3.474454,98.715897,kabkota
+rs-022,RS Ibu dan Anak Stella Maris,3.572687,98.680787,osm
+rs-023,RS Jiwa Bina Karsa Medan,3.589462,98.674162,kabkota
+rs-024,RS Jiwa Bina Karsa Tuntungan,3.500269,98.583627,jalan
+rs-025,RS Jiwa Prof. Dr. Muhammad Ildrem,3.522747,98.629798,nama
+rs-026,RS Khusus Bedah Accuplast,3.589462,98.674162,kabkota
+rs-027,RS Khusus Bedah Setia Budi,3.595274,98.624688,nama
+rs-028,RS Khusus Gigi dan Mulut Univ. Sumatera Utara,3.563015,98.660270,jalan
+rs-029,RS Khusus Ginjal Rasyida,3.585989,98.659746,nama
+rs-030,RS Khusus Mata Medan Baru Medical Centre,3.576816,98.660059,jalan
+rs-031,RS Khusus Mata Mencirim Tujuh-Tujuh,3.580974,98.646492,nama
+rs-032,RS Khusus Mata Prima Vision,3.598712,98.656910,jalan
+rs-033,RS Khusus Mata Provinsi Sumatera Utara,3.627045,98.664935,jalan
+rs-034,RS Khusus Mata SMEC,3.586412,98.661301,jalan
+rs-035,RS Khusus Paru Sumatera Utara,3.589462,98.674162,kabkota
+rs-036,RS Mata Siantar,2.957461,99.057095,jalan
+rs-037,RS METTA MEDIKA,1.290057,97.615077,kabkota
+rs-038,RS Metta Medika,1.384180,99.274601,jalan
+rs-039,RS Metta Medika II,1.736506,98.782477,kabkota
+rs-040,RS Murni Teguh Horas Insani,2.978450,99.079291,nama
+rs-041,RS Murni Teguh Pematang Siantar,2.978450,99.079291,nama
+rs-042,RS Pendidikan Prof. dr. Chairuddin Panusunan Lubis Universitas Sumatera Utara,3.568093,98.657523,osm
+rs-043,RS Pratama Lologolu Soguna Ba Zato,,,
+rs-044,RS Rasyida Siantar,2.958863,99.065365,kabkota
+rs-045,RS Regina Maris,3.542469,98.685990,jalan
+rs-046,RS Sapta Medika,3.224064,99.503580,kabkota
+rs-047,RS Seger Waras,2.851800,99.623301,kabkota
+rs-048,RS Sri Pamela Membang Muda,2.138475,99.778672,jalan
+rs-049,RS Sri Pamela Sei Dadap,2.851800,99.623301,kabkota
+rs-050,RS Sri Pamela Torgamba,,,
+rs-051,RS SUFINA AZIZ,3.615292,98.661557,jalan
+rs-052,RS Tiga Bersaudara,2.156475,99.784549,nama
+rs-053,RS Tk. II Putri Hijau Medan,3.604766,98.673072,nama
+rs-054,RS Tk. IV 01.07.01,2.958863,99.065365,nama
+rs-055,RS Tk. IV 01.07.02 Binjai,3.597231,98.488164,nama
+rs-056,RS TNI Tk. IV 01.07.03,1.372696,99.272717,nama
+rs-057,RS Umum Advent Medan,3.590294,98.649645,nama
+rs-058,RS Umum AL Fuadi,3.602380,98.486443,nama
+rs-059,RS Umum Amanda,2.950635,99.066850,kabkota
+rs-060,RS Umum Armina Madina Panyabungan,,,
+rs-061,RS Umum Artha Medica,3.567179,98.473695,jalan
+rs-062,RS Umum Balimbingan PTP 4,2.886931,99.164407,nama
+rs-063,RS Umum Bandung,3.591645,98.649688,nama
+rs-064,RS Umum Bethesda Gunungsitoli,1.290057,97.615077,kabkota
+rs-065,RS Umum Bidadari,3.774424,98.434118,osm
+rs-066,RS Umum Bidadari Batubara,3.175079,99.483084,osm
+rs-067,RS Umum Bina Kasih,3.578568,98.612967,osm
+rs-068,RS Umum Bunda Mulia,2.851800,99.623301,kabkota
+rs-069,RS Umum Bunda Thamrin,3.585303,98.651474,osm
+rs-070,RS Umum Catharina 1914,2.851800,99.623301,kabkota
+rs-071,RS Umum Citra Medika,3.608778,98.796529,jalan
+rs-072,RS Umum Daerah Aek Kanopan,2.156475,99.784549,nama
+rs-073,RS Umum Daerah Bangun Purba,3.721571,98.611355,jalan
+rs-074,RS Umum Daerah Batu Bara,3.224064,99.503580,kabkota
+rs-075,RS Umum Daerah Cerah Medika Kab. Nias Barat,,,
+rs-076,RS Umum Daerah Dolok Sanggul,2.262856,98.751458,osm
+rs-077,RS Umum Daerah Dr. Djasamen Saragih,2.958101,99.069776,nama
+rs-078,RS Umum Daerah Dr. FL Tobing Sibolga,1.736506,98.782477,kabkota
+rs-079,RS Umum Daerah Dr. H. Kumpulan Pane,3.327369,99.162302,kabkota
+rs-080,RS Umum Daerah Dr. Hadrianus Sinaga,2.596269,98.706937,osm
+rs-081,RS Umum Daerah dr. Husni Thamrin,,,
+rs-082,RS Umum Daerah dr. M. Thomsen Nias,1.290057,97.615077,kabkota
+rs-083,RS Umum Daerah Dr. Pirngadi,3.597904,98.688312,osm
+rs-084,RS Umum Daerah Dr. R. M. Djoelham Binjai,3.601672,98.483820,jalan
+rs-085,RS Umum Daerah Dr. Tengku Mansyur,2.970342,99.802090,kabkota
+rs-086,RS Umum Daerah Drs. H. Amri Tambunan,3.474454,98.715897,kabkota
+rs-087,RS Umum Daerah Gunung Tua,1.629230,99.692611,kabkota
+rs-088,RS Umum Daerah H. Abdul Manan Simatupang,2.979998,99.637425,jalan
+rs-089,RS Umum Daerah H. Bachtiar Djafar,3.589462,98.674162,kabkota
+rs-090,RS Umum Daerah Kabupaten Karo,3.097226,98.491603,nama
+rs-091,RS Umum Daerah Kota Pinang,1.893882,100.093708,osm
+rs-092,RS Umum Daerah Lukas Hilisimaetano,,,
+rs-093,RS Umum Daerah Nias Selatan,,,
+rs-094,RS Umum Daerah Padang Sidempuan,1.396930,99.250209,nama
+rs-095,RS Umum Daerah Pandan,1.910417,98.589085,kabkota
+rs-096,RS Umum Daerah Panyabungan,0.864181,99.564523,osm
+rs-097,RS Umum Daerah Parapat,2.668047,98.937440,osm
+rs-098,RS Umum Daerah Perdagangan,2.950708,98.784316,kabkota
+rs-099,RS Umum Daerah Pintu Padang,1.778426,99.284337,nama
+rs-100,RS Umum Daerah Porsea,2.610918,98.902260,kabkota
+rs-101,RS Umum Daerah Rantau Prapat,2.153426,99.785079,kabkota
+rs-102,RS Umum Daerah Salak,2.557512,98.330543,nama
+rs-103,RS Umum Daerah Sibuhuan,1.629230,99.692611,kabkota
+rs-104,RS Umum Daerah Sidikalang,2.828960,98.312278,kabkota
+rs-105,RS Umum Daerah Sultan Sulaiman Syariful Alamsyah,3.348553,99.000082,kabkota
+rs-106,RS Umum Daerah Tafaeri,3.672435,98.692646,kabkota
+rs-107,RS Umum Daerah Tanjung Pura,3.903281,98.425889,osm
+rs-108,RS Umum Daerah Tapanuli Selatan,1.550633,99.210385,kabkota
+rs-109,RS Umum Daerah Tarutung,2.026529,98.960634,nama
+rs-110,RS Umum Daerah Tuan Rondahaim,2.950708,98.784316,kabkota
+rs-111,RS Umum Deli,3.585913,98.688306,nama
+rs-112,RS Umum Delia,3.761725,98.176919,kabkota
+rs-113,RS Umum Delima Medan,3.696391,98.672990,osm
+rs-114,RS Umum Dr. Gerhard L. Tobing,3.535908,98.816197,jalan
+rs-115,RS Umum Efarina Etaham,3.226098,98.543057,jalan
+rs-116,RS Umum Elpi Al Azis,2.153426,99.785079,kabkota
+rs-117,RS Umum Eshmun,3.681634,98.656093,nama
+rs-118,RS Umum Estomihi,3.556826,98.695344,osm
+rs-119,RS Umum Flora,3.202757,99.563407,kabkota
+rs-120,RS Umum Full Bethesda,3.645180,98.933530,jalan
+rs-121,RS Umum Hadi Husada,2.970342,99.802090,kabkota
+rs-122,RS Umum Haji Medan,3.612719,98.715256,nama
+rs-123,RS Umum Harapan,2.938807,99.061785,jalan
+rs-124,RS Umum Hartati Medical Centre,2.153426,99.785079,kabkota
+rs-125,RS Umum Hermina Medan,3.595250,98.628135,osm
+rs-126,RS Umum Hidayah,3.474454,98.715897,kabkota
+rs-127,RS Umum HKBP Balige,2.610918,98.902260,kabkota
+rs-128,RS Umum Imelda Pekerja Indonesia,3.692721,98.684097,nama
+rs-129,RS Umum Inanta,1.384180,99.274601,jalan
+rs-130,RS Umum Islam Malahayati,3.586362,98.672494,nama
+rs-131,RS Umum Karya Bakti Ujung Bandar,2.069641,99.860383,osm
+rs-132,RS Umum Karya Husada,3.121269,99.131596,jalan
+rs-133,RS Umum Kasih Insani,3.474454,98.715897,kabkota
+rs-134,RS Umum Kasih Permata Dara,3.312406,99.315415,jalan
+rs-135,RS Umum Keliat,3.474454,98.715897,kabkota
+rs-136,RS Umum Laras Kabupaten Simalungun,2.950708,98.784316,kabkota
+rs-137,RS Umum Lasmi Kartika,3.224064,99.503580,kabkota
+rs-138,RS Umum Latersia,3.607217,98.526192,nama
+rs-139,RS Umum Madani,3.589462,98.674162,kabkota
+rs-140,RS Umum Mahawira Prima Indonesia,3.628788,98.700822,nama
+rs-141,RS Umum Mahkota Bidadari,3.761725,98.176919,kabkota
+rs-142,RS Umum Martha Friska,3.633466,98.668789,osm
+rs-143,RS Umum Martha Friska Multatuli,3.576190,98.682984,osm
+rs-144,RS Umum Materna,3.585765,98.671321,nama
+rs-145,RS Umum Melati,3.566130,98.959031,nama
+rs-146,RS Umum Melati Desa Pon,3.600652,98.678275,osm
+rs-147,RS Umum Methodist,3.583684,98.692858,nama
+rs-148,RS Umum Metta Medika,1.744988,98.778791,jalan
+rs-149,RS Umum Mitra Guray Petumbukan,3.435799,98.865901,jalan
+rs-150,RS Umum Mitra Medika,3.598292,98.754995,nama
+rs-151,RS Umum Mitra Medika,3.613192,98.800180,nama
+rs-152,RS Umum Mitra Medika Amplas,3.538163,98.711918,osm
+rs-153,RS Umum Mitra Medika Premiere,3.586246,98.666610,osm
+rs-154,RS Umum Mitra Sehat,3.509768,98.811126,jalan
+rs-155,RS Umum Mitra Sejati,3.540851,98.679587,osm
+rs-156,RS Umum Muhammadiyah Sumatera Utara,3.583040,98.710992,nama
+rs-157,RS Umum Murni Teguh Memorial Hospital,3.593259,98.638971,nama
+rs-158,RS Umum Murni Teguh Methodist Susanna Wesley,3.590631,98.681425,osm
+rs-159,RS Umum Natama,3.328982,99.165474,jalan
+rs-160,RS Umum Nuraini,,,
+rs-161,RS Umum Pabatu,3.482835,99.121301,jalan
+rs-162,RS Umum Pancur Batu,3.474454,98.715897,kabkota
+rs-163,RS Umum Patar Asih,3.605709,98.794046,jalan
+rs-164,RS Umum Permata Hati,2.851800,99.623301,kabkota
+rs-165,RS Umum Permata Madina Panyabungan,,,
+rs-166,RS Umum Permata Madina Sibuhuan,1.629230,99.692611,kabkota
+rs-167,RS Umum Pertamina Pangkalan Brandan,3.761725,98.176919,kabkota
+rs-168,RS Umum Prima Husada Cipta Medan,3.590862,98.679601,nama
+rs-169,RS Umum Prof. Dr. Boloni,3.570658,98.668759,osm
+rs-170,RS Umum PTP II Tg Selamat,3.761725,98.176919,kabkota
+rs-171,RS Umum Pusat H. Adam Malik,3.518183,98.608322,osm
+rs-172,RS Umum Putri Bidadari,3.761725,98.176919,kabkota
+rs-173,RS Umum Rahmad Hidayah,3.474454,98.715897,kabkota
+rs-174,RS Umum Ratu Mas,3.606396,98.489987,kabkota
+rs-175,RS Umum Royal Maternity,3.580567,98.656011,osm
+rs-176,RS Umum Royal Prima,3.597869,98.654417,osm
+rs-177,RS Umum Royal Prima Marelan,3.699692,98.657037,osm
+rs-178,RS Umum Santa Elisabeth Medan,3.576306,98.679382,nama
+rs-179,RS Umum Sarah,3.587260,98.663328,jalan
+rs-180,RS Umum Sari Mutiara Lubuk Pakam,3.600483,98.713635,nama
+rs-181,RS Umum Sawit Indah Perbaungan,3.574539,98.951855,osm
+rs-182,RS Umum Sembiring Deli Tua,3.501740,98.678783,nama
+rs-183,RS Umum Serenapita,2.828960,98.312278,kabkota
+rs-184,RS Umum Setio Husodo,2.851800,99.623301,kabkota
+rs-185,RS Umum Siloam Dhirga Surya,3.585764,98.673597,osm
+rs-186,RS Umum Simalem,2.950635,99.066850,kabkota
+rs-187,RS Umum Sinar Husni,3.634856,98.663601,osm
+rs-188,RS Umum Sint Lucia,2.335146,98.904283,jalan
+rs-189,RS Umum Sri Pamela,3.327369,99.162302,kabkota
+rs-190,RS Umum Sri Ratu,3.590852,98.665088,osm
+rs-191,RS Umum Stella Maris,0.571343,97.819984,osm
+rs-192,RS Umum Sundari,3.589462,98.674162,kabkota
+rs-193,RS Umum Sylvani,3.648400,98.477871,nama
+rs-194,RS Umum Tere Margareth,3.560828,98.626500,osm
+rs-195,RS Umum Tiara Kasih Sejati,2.953275,99.057549,jalan
+rs-196,RS Umum Universitas Prima Indonesia,3.329992,99.167567,jalan
+rs-197,RS Umum Utama,2.851800,99.623301,kabkota
+rs-198,RS Umum Vina Estetica,3.586938,98.661088,osm
+rs-199,RS Umum Vita Insani,2.961343,99.071537,nama
+rs-200,RS Umum Wampu Norita,3.729497,98.494831,jalan
+rs-201,RS Umum Wira Husada,2.980126,99.615702,jalan
+rs-202,RS Umum Wulan Windy,3.681634,98.656093,jalan
+rs-203,RS Umum Yoshua,3.474454,98.715897,kabkota
+rs-204,RSAU Dr. Abdul Malik,3.572179,98.677838,nama
+rs-205,RSU Herna,3.579488,98.665543,nama
+rs-206,UPTD Rumah Sakit Pratama Nias,1.042737,97.645176,kabkota

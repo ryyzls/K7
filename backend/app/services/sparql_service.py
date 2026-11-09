@@ -46,8 +46,9 @@ def build_search_query(q="", kelas="", jenis="", kabkota="", layanan="", limit=5
 WHERE {{
   {values}
   ?rs a hf:RumahSakit ; schema:name ?nama ; hf:jenis ?jenis ; hf:kelas ?kelas ; hf:alamat ?alamat ;
-      hf:beradaDiKabupatenKota ?kk ; geo:lat ?lat ; geo:long ?lon .
+      hf:beradaDiKabupatenKota ?kk .
   ?kk rdfs:label ?kabkota .
+  OPTIONAL {{ ?rs geo:lat ?lat ; geo:long ?lon }}
   OPTIONAL {{ ?rs schema:telephone ?telepon }}
   OPTIONAL {{ ?rs schema:url ?website }}
   OPTIONAL {{ ?rs hf:menyediakanLayanan/rdfs:label ?lay }}
@@ -76,7 +77,7 @@ def to_hospital(r: dict) -> dict:
         "id": r["rs"].rsplit("/", 1)[-1], "uri": r["rs"], "nama": r["nama"], "jenis": r["jenis"],
         "kelas": r["kelas"], "alamat": r["alamat"], "kabkota": r["kabkota"],
         "telepon": r.get("telepon"), "website": r.get("website"),
-        "lat": float(r["lat"]), "lon": float(r["lon"]),
+        "lat": float(r["lat"]) if r.get("lat") else None, "lon": float(r["lon"]) if r.get("lon") else None,
         "layanan": parts(r.get("layanan")), "fasilitas": parts(r.get("fasilitas")),
     }
 

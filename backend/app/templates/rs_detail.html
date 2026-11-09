@@ -25,10 +25,10 @@
     <span property="addressRegion">Sumatera Utara</span>
     <meta property="addressCountry" content="ID">
   </p>
-  <span property="geo" typeof="GeoCoordinates">
+  {% if h.lat is not none %}<span property="geo" typeof="GeoCoordinates">
     <meta property="latitude" content="{{ h.lat }}">
     <meta property="longitude" content="{{ h.lon }}">
-  </span>
+  </span>{% endif %}
   {% if h.telepon %}<p>Telepon: <span property="telephone">{{ h.telepon }}</span></p>{% endif %}
   {% if h.website %}<p>Situs web: <a property="url" href="{{ h.website }}">{{ h.website }}</a></p>{% endif %}
   <h2>Layanan</h2>
@@ -36,6 +36,6 @@
   <h2>Fasilitas</h2>
   <ul>{% for f in h.fasilitas %}<li>{{ f }}</li>{% endfor %}</ul>
   <p><a href="/rs/{{ h.id }}.rdf">RDF/XML</a> &middot; <a href="/rs/{{ h.id }}.ttl">Turtle</a>
-     &middot; <a href="https://www.openstreetmap.org/?mlat={{ h.lat }}&amp;mlon={{ h.lon }}#map=17/{{ h.lat }}/{{ h.lon }}">OpenStreetMap</a></p>
+     {% if h.lat is not none %}&middot; <a href="https://www.openstreetmap.org/?mlat={{ h.lat }}&amp;mlon={{ h.lon }}#map=17/{{ h.lat }}/{{ h.lon }}">OpenStreetMap</a>{% endif %}</p>
 </body>
 </html>

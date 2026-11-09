@@ -1,0 +1,33 @@
+# Ontologi CariSehat v0 (kelas dan properti). Dibekukan Selasa 10 Nov: P3 tinjau sebelum itu.
+@prefix hf: <http://carisehat.id/ontology/> .
+@prefix schema: <https://schema.org/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+# --- Kelas ---
+hf:RumahSakit a owl:Class ; rdfs:subClassOf schema:Hospital ; rdfs:label "Rumah Sakit" .
+hf:KabupatenKota a owl:Class ; rdfs:label "Kabupaten/Kota" .
+hf:Provinsi a owl:Class ; rdfs:label "Provinsi" .
+hf:Layanan a owl:Class ; rdfs:label "Layanan" .
+hf:Fasilitas a owl:Class ; rdfs:label "Fasilitas" .
+
+# --- Properti objek ---
+hf:beradaDiKabupatenKota a owl:ObjectProperty ; rdfs:label "berada di kabupaten/kota" ;
+  rdfs:domain hf:RumahSakit ; rdfs:range hf:KabupatenKota .
+hf:bagianDariProvinsi a owl:ObjectProperty ; rdfs:label "bagian dari provinsi" ;
+  rdfs:domain hf:KabupatenKota ; rdfs:range hf:Provinsi .
+hf:menyediakanLayanan a owl:ObjectProperty ; rdfs:label "menyediakan layanan" ;
+  rdfs:domain hf:RumahSakit ; rdfs:range hf:Layanan .
+hf:memilikiFasilitas a owl:ObjectProperty ; rdfs:label "memiliki fasilitas" ;
+  rdfs:domain hf:RumahSakit ; rdfs:range hf:Fasilitas .
+
+# --- Properti data ---
+hf:jenis a owl:DatatypeProperty ; rdfs:label "jenis (Umum/Khusus)" ; rdfs:domain hf:RumahSakit ; rdfs:range xsd:string .
+hf:spesialisasi a owl:DatatypeProperty ; rdfs:label "spesialisasi RS khusus" ; rdfs:domain hf:RumahSakit ; rdfs:range xsd:string .
+hf:kelas a owl:DatatypeProperty ; rdfs:label "kelas (A/B/C/D)" ; rdfs:domain hf:RumahSakit ; rdfs:range xsd:string .
+hf:pratama a owl:DatatypeProperty ; rdfs:label "RS pratama" ; rdfs:domain hf:RumahSakit ; rdfs:range xsd:boolean .
+hf:pemilik a owl:DatatypeProperty ; rdfs:label "pemilik/penyelenggara" ; rdfs:domain hf:RumahSakit ; rdfs:range xsd:string .
+hf:alamat a owl:DatatypeProperty ; rdfs:label "alamat" ; rdfs:domain hf:RumahSakit ; rdfs:range xsd:string .
+hf:sumberKoordinat a owl:DatatypeProperty ; rdfs:label "sumber koordinat (alamat/kabkota)" ; rdfs:domain hf:RumahSakit ; rdfs:range xsd:string .

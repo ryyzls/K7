@@ -1,0 +1,1751 @@
+# Dibuat otomatis oleh scripts/csv_ke_rdf.py dari data/rumah_sakit_sumut.csv. JANGAN diedit manual;
+# ubah CSV atau skripnya lalu jalankan ulang. Skema/kelas/properti ada di ontologi.ttl.
+@prefix hf: <http://carisehat.id/ontology/> .
+@prefix schema: <https://schema.org/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rs: <http://localhost:8000/rs/> .
+@prefix kk: <http://localhost:8000/kabkota/> .
+@prefix prov: <http://localhost:8000/provinsi/> .
+@prefix lay: <http://localhost:8000/layanan/> .
+
+prov:sumut a hf:Provinsi ; rdfs:label "Sumatera Utara" .
+
+kk:kab-asahan a hf:KabupatenKota ; rdfs:label "Kab. Asahan" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-batu-bara a hf:KabupatenKota ; rdfs:label "Kab. Batu Bara" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-dairi a hf:KabupatenKota ; rdfs:label "Kab. Dairi" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-deli-serdang a hf:KabupatenKota ; rdfs:label "Kab. Deli Serdang" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-humbang-hasundutan a hf:KabupatenKota ; rdfs:label "Kab. Humbang Hasundutan" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-karo a hf:KabupatenKota ; rdfs:label "Kab. Karo" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-labuhan-batu a hf:KabupatenKota ; rdfs:label "Kab. Labuhan Batu" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-labuhan-batu-selatan a hf:KabupatenKota ; rdfs:label "Kab. Labuhan Batu Selatan" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-labuhan-batu-utara a hf:KabupatenKota ; rdfs:label "Kab. Labuhan Batu Utara" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-langkat a hf:KabupatenKota ; rdfs:label "Kab. Langkat" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-mandailing-natal a hf:KabupatenKota ; rdfs:label "Kab. Mandailing Natal" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-nias a hf:KabupatenKota ; rdfs:label "Kab. Nias" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-nias-barat a hf:KabupatenKota ; rdfs:label "Kab. Nias Barat" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-nias-selatan a hf:KabupatenKota ; rdfs:label "Kab. Nias Selatan" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-nias-utara a hf:KabupatenKota ; rdfs:label "Kab. Nias Utara" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-padang-lawas a hf:KabupatenKota ; rdfs:label "Kab. Padang Lawas" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-padang-lawas-utara a hf:KabupatenKota ; rdfs:label "Kab. Padang Lawas Utara" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-pakpak-bharat a hf:KabupatenKota ; rdfs:label "Kab. Pakpak Bharat" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-samosir a hf:KabupatenKota ; rdfs:label "Kab. Samosir" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-serdang-bedagai a hf:KabupatenKota ; rdfs:label "Kab. Serdang Bedagai" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-simalungun a hf:KabupatenKota ; rdfs:label "Kab. Simalungun" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-tapanuli-selatan a hf:KabupatenKota ; rdfs:label "Kab. Tapanuli Selatan" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-tapanuli-tengah a hf:KabupatenKota ; rdfs:label "Kab. Tapanuli Tengah" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-tapanuli-utara a hf:KabupatenKota ; rdfs:label "Kab. Tapanuli Utara" ; hf:bagianDariProvinsi prov:sumut .
+kk:kab-toba-samosir a hf:KabupatenKota ; rdfs:label "Kab. Toba Samosir" ; hf:bagianDariProvinsi prov:sumut .
+kk:kota-binjai a hf:KabupatenKota ; rdfs:label "Kota Binjai" ; hf:bagianDariProvinsi prov:sumut .
+kk:kota-gunungsitoli a hf:KabupatenKota ; rdfs:label "Kota Gunungsitoli" ; hf:bagianDariProvinsi prov:sumut .
+kk:kota-medan a hf:KabupatenKota ; rdfs:label "Kota Medan" ; hf:bagianDariProvinsi prov:sumut .
+kk:kota-padang-sidempuan a hf:KabupatenKota ; rdfs:label "Kota Padang Sidempuan" ; hf:bagianDariProvinsi prov:sumut .
+kk:kota-pematang-siantar a hf:KabupatenKota ; rdfs:label "Kota Pematang Siantar" ; hf:bagianDariProvinsi prov:sumut .
+kk:kota-sibolga a hf:KabupatenKota ; rdfs:label "Kota Sibolga" ; hf:bagianDariProvinsi prov:sumut .
+kk:kota-tanjung-balai a hf:KabupatenKota ; rdfs:label "Kota Tanjung Balai" ; hf:bagianDariProvinsi prov:sumut .
+kk:kota-tebing-tinggi a hf:KabupatenKota ; rdfs:label "Kota Tebing Tinggi" ; hf:bagianDariProvinsi prov:sumut .
+
+lay:anak a hf:Layanan ; rdfs:label "Anak" .
+lay:bedah a hf:Layanan ; rdfs:label "Bedah" .
+lay:bersalin a hf:Layanan ; rdfs:label "Bersalin" .
+lay:gigi-dan-mulut a hf:Layanan ; rdfs:label "Gigi dan Mulut" .
+lay:ginjal a hf:Layanan ; rdfs:label "Ginjal" .
+lay:jiwa a hf:Layanan ; rdfs:label "Jiwa" .
+lay:mata a hf:Layanan ; rdfs:label "Mata" .
+lay:paru a hf:Layanan ; rdfs:label "Paru" .
+
+rs:rs-001 a hf:RumahSakit ;
+  schema:name "OG Hospital" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Olahraga No. 1" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-binjai ;
+  schema:telephone "06142365911" .
+rs:rs-002 a hf:RumahSakit ;
+  schema:name "RS AL Dr. Komang Makes Belawan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Bengkalis No.1 Belawan" ;
+  hf:pemilik "TNI AL" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061-6941741" .
+rs:rs-003 a hf:RumahSakit ;
+  schema:name "RS Bhayangkara Tingkat II Medan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "JL KH Wahid Hasyim No 1" ;
+  hf:pemilik "POLRI" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "0821-7997-604" .
+rs:rs-004 a hf:RumahSakit ;
+  schema:name "RS Bhayangkara Tk. IV Batangtoru" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Merdeka No. 17" ;
+  hf:pemilik "POLRI" ;
+  hf:beradaDiKabupatenKota kk:kab-tapanuli-selatan ;
+  schema:telephone "082161004550" .
+rs:rs-005 a hf:RumahSakit ;
+  schema:name "RS Bhayangkara Tk.III Kota Tebing Tinggi" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Pahlawan No 17" ;
+  hf:pemilik "POLRI" ;
+  hf:beradaDiKabupatenKota kk:kota-tebing-tinggi ;
+  schema:telephone "0621 - 326701" .
+rs:rs-006 a hf:RumahSakit ;
+  schema:name "RS Chevani" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Prof. H. M. Yamin No. 17" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-tebing-tinggi ;
+  schema:telephone "06213950222" .
+rs:rs-007 a hf:RumahSakit ;
+  schema:name "RS Columbia Asia Aksara" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jl. Letda Sujono, LK.X No. 90" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061-88806888" .
+rs:rs-008 a hf:RumahSakit ;
+  schema:name "RS Columbia Asia Medan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jalan Listrik No 2A" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061-4566368" .
+rs:rs-009 a hf:RumahSakit ;
+  schema:name "RS Dhillon" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Dahlan Tanjung Komplek Graha Abadi Permai" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  schema:telephone "082166409817" .
+rs:rs-010 a hf:RumahSakit ;
+  schema:name "RS Dokter Takdir" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Siringo-ringo No. 11-13 ,Kelurahan Siringo-ringo,Kecamatan Rantau Utara,Kabupaten Labuhan Batu,Provinsi Sumatera Utara" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kab-labuhan-batu ;
+  schema:telephone "0624 327969" .
+rs:rs-011 a hf:RumahSakit ;
+  schema:name "RS Efarina Etaham Pematang Siantar" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jalan Pdt J Wismar Saragih No 1" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kota-pematang-siantar ;
+  schema:telephone "085261163933" .
+rs:rs-012 a hf:RumahSakit ;
+  schema:name "RS Gigi dan Mulut Prima" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan Pabrik Tenun No. 103" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:spesialisasi "Gigi dan Mulut" ;
+  schema:telephone "082167863838" ;
+  hf:menyediakanLayanan lay:gigi-dan-mulut .
+rs:rs-013 a hf:RumahSakit ;
+  schema:name "RS Grand Medica" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jalan Snakma Nomor 09 Tanjung Anom" ;
+  hf:pemilik "Kementerian Lain" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  schema:telephone "081533846120" .
+rs:rs-014 a hf:RumahSakit ;
+  schema:name "RS Grandmed" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jl. Medan - Lubuk Pakam KM. 25 No. 66, Deli Serdang, Sumatera Utara" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  schema:telephone "08116057610" .
+rs:rs-015 a hf:RumahSakit ;
+  schema:name "RS Ibu Dan Anak Artha Mahinrus" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Pasar III No. 151 Kel. Tegal Rejo Kec. Medan Perjuangan" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:spesialisasi "Ibu dan Anak" ;
+  schema:telephone "061-80088892" ;
+  hf:menyediakanLayanan lay:anak, lay:bersalin .
+rs:rs-016 a hf:RumahSakit ;
+  schema:name "RS Ibu dan Anak Eva" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan Sabbaruddin Nomor lima puluh sembilan" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:spesialisasi "Ibu dan Anak" ;
+  schema:telephone "0617367933" ;
+  hf:menyediakanLayanan lay:anak, lay:bersalin .
+rs:rs-017 a hf:RumahSakit ;
+  schema:name "RS Ibu dan Anak Grand Fatimah" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Sultan Hasanuddin No. 67" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kota-binjai ;
+  hf:spesialisasi "Ibu dan Anak" ;
+  schema:telephone "085184233175" ;
+  hf:menyediakanLayanan lay:anak, lay:bersalin .
+rs:rs-018 a hf:RumahSakit ;
+  schema:name "RS Ibu dan Anak Maharani" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Sultan Serdang No. 100" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  hf:spesialisasi "Ibu dan Anak" ;
+  schema:telephone "061-80110907" ;
+  hf:menyediakanLayanan lay:anak, lay:bersalin .
+rs:rs-019 a hf:RumahSakit ;
+  schema:name "RS Ibu dan Anak Mina Husada" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "C" ;
+  hf:alamat "Nabung Surbakti No. 07" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kab-karo ;
+  hf:spesialisasi "Ibu dan Anak" ;
+  schema:telephone "(0628)9832858" ;
+  hf:menyediakanLayanan lay:anak, lay:bersalin .
+rs:rs-020 a hf:RumahSakit ;
+  schema:name "RS Ibu dan Anak Murni Teguh Rosiva" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan Bangka No. 15" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:spesialisasi "Ibu dan Anak" ;
+  schema:telephone "082174347885" ;
+  hf:menyediakanLayanan lay:anak, lay:bersalin .
+rs:rs-021 a hf:RumahSakit ;
+  schema:name "RS Ibu dan Anak Pramaliesa" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Rumbia Sena No. 65 Desa Baru" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  hf:spesialisasi "Ibu dan Anak" ;
+  schema:telephone "08116219090" ;
+  hf:menyediakanLayanan lay:anak, lay:bersalin .
+rs:rs-022 a hf:RumahSakit ;
+  schema:name "RS Ibu dan Anak Stella Maris" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Samanhudi No.20-22" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:spesialisasi "Ibu dan Anak" ;
+  schema:telephone "061-4158383" ;
+  hf:menyediakanLayanan lay:anak, lay:bersalin .
+rs:rs-023 a hf:RumahSakit ;
+  schema:name "RS Jiwa Bina Karsa Medan" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Pales III No.19" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:spesialisasi "Jiwa" ;
+  schema:telephone "08138827769" ;
+  hf:menyediakanLayanan lay:jiwa .
+rs:rs-024 a hf:RumahSakit ;
+  schema:name "RS Jiwa Bina Karsa Tuntungan" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Besar Tuntungan No. 142G" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  hf:spesialisasi "Jiwa" ;
+  schema:telephone "082163944599" ;
+  hf:menyediakanLayanan lay:jiwa .
+rs:rs-025 a hf:RumahSakit ;
+  schema:name "RS Jiwa Prof. Dr. Muhammad Ildrem" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "A" ;
+  hf:alamat "Jl. Tali Air No. 21" ;
+  hf:pemilik "Pemprop" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:spesialisasi "Jiwa" ;
+  schema:telephone "061-8360542" ;
+  hf:menyediakanLayanan lay:jiwa .
+rs:rs-026 a hf:RumahSakit ;
+  schema:name "RS Khusus Bedah Accuplast" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Sei Bahbolon No. 40" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:spesialisasi "Bedah" ;
+  schema:telephone "061 4153054" ;
+  hf:menyediakanLayanan lay:bedah .
+rs:rs-027 a hf:RumahSakit ;
+  schema:name "RS Khusus Bedah Setia Budi" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan Mesjid Nomor 3" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:spesialisasi "Bedah" ;
+  schema:telephone "081396256120" ;
+  hf:menyediakanLayanan lay:bedah .
+rs:rs-028 a hf:RumahSakit ;
+  schema:name "RS Khusus Gigi dan Mulut Univ. Sumatera Utara" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "B" ;
+  hf:alamat "Jl Alumni No.2 Kampus USU Medan" ;
+  hf:pemilik "Kementerian Lain" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:spesialisasi "Gigi dan Mulut" ;
+  schema:telephone "085791259191" ;
+  hf:menyediakanLayanan lay:gigi-dan-mulut .
+rs:rs-029 a hf:RumahSakit ;
+  schema:name "RS Khusus Ginjal Rasyida" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan D.I Panjaitan Nomor 144" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:spesialisasi "Ginjal" ;
+  schema:telephone "061 4148722" ;
+  hf:menyediakanLayanan lay:ginjal .
+rs:rs-030 a hf:RumahSakit ;
+  schema:name "RS Khusus Mata Medan Baru Medical Centre" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Abdullah Lubis No.67" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:spesialisasi "Mata" ;
+  schema:telephone "4530989" ;
+  hf:menyediakanLayanan lay:mata .
+rs:rs-031 a hf:RumahSakit ;
+  schema:name "RS Khusus Mata Mencirim Tujuh-Tujuh" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Sei Mencirim No 77 Medan" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:spesialisasi "Mata" ;
+  schema:telephone "08116207177" ;
+  hf:menyediakanLayanan lay:mata .
+rs:rs-032 a hf:RumahSakit ;
+  schema:name "RS Khusus Mata Prima Vision" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Pabrik Tenun No.51" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:spesialisasi "Mata" ;
+  schema:telephone "061 80514888" ;
+  hf:menyediakanLayanan lay:mata .
+rs:rs-033 a hf:RumahSakit ;
+  schema:name "RS Khusus Mata Provinsi Sumatera Utara" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "B" ;
+  hf:alamat "Jl. Kapten Sumarsono No.1" ;
+  hf:pemilik "Pemprop" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:spesialisasi "Mata" ;
+  schema:telephone "082374011686" ;
+  hf:menyediakanLayanan lay:mata .
+rs:rs-034 a hf:RumahSakit ;
+  schema:name "RS Khusus Mata SMEC" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Iskandar Muda No.278" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:spesialisasi "Mata" ;
+  schema:telephone "061-4518222" ;
+  hf:menyediakanLayanan lay:mata .
+rs:rs-035 a hf:RumahSakit ;
+  schema:name "RS Khusus Paru Sumatera Utara" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "B" ;
+  hf:alamat "Jl. Setia Budi Pasar II No 84" ;
+  hf:pemilik "Pemprop" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:spesialisasi "Paru" ;
+  schema:telephone "(061) 8214733" ;
+  hf:menyediakanLayanan lay:paru .
+rs:rs-036 a hf:RumahSakit ;
+  schema:name "RS Mata Siantar" ;
+  hf:jenis "Khusus" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Kartini Nomor 18" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kota-pematang-siantar ;
+  hf:spesialisasi "Mata" ;
+  schema:telephone "62225559" ;
+  hf:menyediakanLayanan lay:mata .
+rs:rs-037 a hf:RumahSakit ;
+  schema:name "RS Metta Medika" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan Pelud Binaka" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kota-gunungsitoli ;
+  schema:telephone "082370600802" .
+rs:rs-038 a hf:RumahSakit ;
+  schema:name "RS Metta Medika" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Sisingamangaraja No. 113" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-padang-sidempuan ;
+  schema:telephone "0634-4320777" .
+rs:rs-039 a hf:RumahSakit ;
+  schema:name "RS Metta Medika II" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Diponegoro No. 6-8" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kota-sibolga ;
+  schema:telephone "0631-24001" .
+rs:rs-040 a hf:RumahSakit ;
+  schema:name "RS Murni Teguh Horas Insani" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Medan KM 2.5" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-pematang-siantar ;
+  schema:telephone "08116829705" .
+rs:rs-041 a hf:RumahSakit ;
+  schema:name "RS Murni Teguh Pematang Siantar" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Medan - Pematang Siantar" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-pematang-siantar ;
+  schema:telephone "0812-6061-2160" .
+rs:rs-042 a hf:RumahSakit ;
+  schema:name "RS Pendidikan Prof. dr. Chairuddin Panusunan Lubis Universitas Sumatera Utara" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Dr. T. Mansur No. 66" ;
+  hf:pemilik "Kementerian Lain" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061 8218928" .
+rs:rs-043 a hf:RumahSakit ;
+  schema:name "RS Pratama Lologolu Soguna Ba Zato" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Desa Lologolu, Kec. Mandrehe" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-nias-barat ;
+  hf:pratama "true"^^xsd:boolean ;
+  schema:telephone "082267208436" .
+rs:rs-044 a hf:RumahSakit ;
+  schema:name "RS Rasyida Siantar" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jalan Seram Atas 5B" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kota-pematang-siantar ;
+  schema:telephone "081377378817" .
+rs:rs-045 a hf:RumahSakit ;
+  schema:name "RS Regina Maris" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Brigjen katamso No: 403-408" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061 - 88880808" .
+rs:rs-046 a hf:RumahSakit ;
+  schema:name "RS Sapta Medika" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Datuk Umar Palangki" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kab-batu-bara ;
+  schema:telephone "085359980800" .
+rs:rs-047 a hf:RumahSakit ;
+  schema:name "RS Seger Waras" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jalinsum Aek Ledong Dusun III" ;
+  hf:pemilik "Perorangan" ;
+  hf:beradaDiKabupatenKota kk:kab-asahan ;
+  schema:telephone "082370559958" .
+rs:rs-048 a hf:RumahSakit ;
+  schema:name "RS Sri Pamela Membang Muda" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Lintas Sumatera Utara, Km. 224,Kualuh Hulu, Labuhanbatu Utara, Sumatera Utara" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kab-labuhan-batu-utara ;
+  schema:telephone "081264345122" .
+rs:rs-049 a hf:RumahSakit ;
+  schema:name "RS Sri Pamela Sei Dadap" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "JL. Lintas Sumatera Dusun IV DESA PERK. SEI DADAP I/II" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kab-asahan ;
+  schema:telephone "082304260117" .
+rs:rs-050 a hf:RumahSakit ;
+  schema:name "RS Sri Pamela Torgamba" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Lintas Sumatera - Riau KM. 380" ;
+  hf:pemilik "BUMN" ;
+  hf:beradaDiKabupatenKota kk:kab-labuhan-batu-selatan ;
+  schema:telephone "082210865225" .
+rs:rs-051 a hf:RumahSakit ;
+  schema:name "RS Sufina Aziz" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Karya Baru No.1" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061-8441111" .
+rs:rs-052 a hf:RumahSakit ;
+  schema:name "RS Tiga Bersaudara" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Lintas Sumatera" ;
+  hf:pemilik "Perorangan" ;
+  hf:beradaDiKabupatenKota kk:kab-labuhan-batu-utara ;
+  schema:telephone "081260142618" .
+rs:rs-053 a hf:RumahSakit ;
+  schema:name "RS Tk. II Putri Hijau Medan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jl Putri Hijau No. 17, Medan" ;
+  hf:pemilik "TNI AD" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "08116122233" .
+rs:rs-054 a hf:RumahSakit ;
+  schema:name "RS Tk. IV 01.07.01" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan . Gunung Simanuk -Manuk No.6" ;
+  hf:pemilik "TNI AD" ;
+  hf:beradaDiKabupatenKota kk:kota-pematang-siantar ;
+  schema:telephone "081370816838" .
+rs:rs-055 a hf:RumahSakit ;
+  schema:name "RS Tk. IV 01.07.02 Binjai" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan Bandung No 4" ;
+  hf:pemilik "TNI AD" ;
+  hf:beradaDiKabupatenKota kk:kota-binjai ;
+  schema:telephone "082361873345" .
+rs:rs-056 a hf:RumahSakit ;
+  schema:name "RS TNI Tk. IV 01.07.03" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Sudirman No.1 Kelurahan : Losung Batu, Kecamatan : Padang Sidempuan Utara Kota Padangsidimpuan" ;
+  hf:pemilik "TNI AD" ;
+  hf:beradaDiKabupatenKota kk:kota-padang-sidempuan ;
+  schema:telephone "081260811173" .
+rs:rs-057 a hf:RumahSakit ;
+  schema:name "RS Umum Advent Medan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Jend Gatot Subroto Km 4" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "082281730947" .
+rs:rs-058 a hf:RumahSakit ;
+  schema:name "RS Umum AL Fuadi" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Ahmad Yani No 23" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-binjai ;
+  schema:telephone "08116222126" .
+rs:rs-059 a hf:RumahSakit ;
+  schema:name "RS Umum Amanda" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Jamin Ginting Simpang Korpri No. 1" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kab-karo ;
+  schema:telephone "0628-93034" .
+rs:rs-060 a hf:RumahSakit ;
+  schema:name "RS Umum Armina Madina Panyabungan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl Merdeka No. 23" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kab-mandailing-natal ;
+  schema:telephone "081540800117" .
+rs:rs-061 a hf:RumahSakit ;
+  schema:name "RS Umum Artha Medica" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Samanhudi No. 22" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-binjai ;
+  schema:telephone "085270868805" .
+rs:rs-062 a hf:RumahSakit ;
+  schema:name "RS Umum Balimbingan PTP 4" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Balimbingan" ;
+  hf:pemilik "BUMN" ;
+  hf:beradaDiKabupatenKota kk:kab-simalungun ;
+  schema:telephone "081370846809" .
+rs:rs-063 a hf:RumahSakit ;
+  schema:name "RS Umum Bandung" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Mistar No. 39-43" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "0614567993" .
+rs:rs-064 a hf:RumahSakit ;
+  schema:name "RS Umum Bethesda Gunungsitoli" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Diponegoro No.375 C" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-gunungsitoli ;
+  schema:telephone "81264480577" .
+rs:rs-065 a hf:RumahSakit ;
+  schema:name "RS Umum Bidadari" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan Perintis Kemerdekaan Nomor 174 Kelurah Kebun Lada" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-binjai ;
+  schema:telephone "0618830003" .
+rs:rs-066 a hf:RumahSakit ;
+  schema:name "RS Umum Bidadari Batubara" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "jalan Jenderal Sudirman" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kab-batu-bara ;
+  schema:telephone "081329928886" .
+rs:rs-067 a hf:RumahSakit ;
+  schema:name "RS Umum Bina Kasih" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jl Jend. TB.Simatupang No.148 Sunggal" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061 8475111" .
+rs:rs-068 a hf:RumahSakit ;
+  schema:name "RS Umum Bunda Mulia" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Abdi Setia Bakti" ;
+  hf:pemilik "Perorangan" ;
+  hf:beradaDiKabupatenKota kk:kab-asahan ;
+  schema:telephone "081264299098" .
+rs:rs-069 a hf:RumahSakit ;
+  schema:name "RS Umum Bunda Thamrin" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Sei Batang Hari No. 28 - 30 - 32 - 34 Medan" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061-4557318" .
+rs:rs-070 a hf:RumahSakit ;
+  schema:name "RS Umum Catharina 1914" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jalan Besar Syech silau" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kab-asahan ;
+  schema:telephone "081262484574" .
+rs:rs-071 a hf:RumahSakit ;
+  schema:name "RS Umum Citra Medika" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Medan Batang Kuis No. 377" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  schema:telephone "+6282175981013" .
+rs:rs-072 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Aek Kanopan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan Lintas Sumatera" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-labuhan-batu-utara ;
+  schema:telephone "0624-92525" .
+rs:rs-073 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Bangun Purba" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jalan Perintis Kemerdekaan Nomor 60" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  schema:telephone "082181427461" .
+rs:rs-074 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Batu Bara" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Datuk Kubah Batu Bara Kwala Gunung" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-batu-bara ;
+  schema:telephone "085381337169" .
+rs:rs-075 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Cerah Medika Kab. Nias Barat" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jalan Budi Utomo Onolimbu" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-nias-barat ;
+  schema:telephone "082273316731" .
+rs:rs-076 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Dolok Sanggul" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. dr. Ferdinand Lumban Tobing No. 1 Dolok Sanggul" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-humbang-hasundutan ;
+  schema:telephone "0633-31022" .
+rs:rs-077 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Dr. Djasamen Saragih" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jl. Sutomo No. 230" ;
+  hf:pemilik "Pemkot" ;
+  hf:beradaDiKabupatenKota kk:kota-pematang-siantar ;
+  schema:telephone "0622-22959" .
+rs:rs-078 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Dr. FL Tobing Sibolga" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jl Dr. F.L. Tobing No. 35" ;
+  hf:pemilik "Pemkot" ;
+  hf:beradaDiKabupatenKota kk:kota-sibolga ;
+  schema:telephone "0631-26118" .
+rs:rs-079 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Dr. H. Kumpulan Pane" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jl Dr. Kumpulan Pane No.226" ;
+  hf:pemilik "Pemkot" ;
+  hf:beradaDiKabupatenKota kk:kota-tebing-tinggi ;
+  schema:telephone "0621-21967" .
+rs:rs-080 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Dr. Hadrianus Sinaga" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl . dr. Hadrianus Sinaga No. 86" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-samosir ;
+  schema:telephone "081396875668" .
+rs:rs-081 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah dr. Husni Thamrin" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jalan Multatuli No. 72" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-mandailing-natal ;
+  schema:telephone "0636-7325118" .
+rs:rs-082 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah dr. M. Thomsen Nias" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. dr. Ciptomangunkusumo No. 15" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kota-gunungsitoli ;
+  schema:telephone "(0639)21271" .
+rs:rs-083 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Dr. Pirngadi" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jl Prof H M Yamin SH No. 47" ;
+  hf:pemilik "Pemkot" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "081264801020" .
+rs:rs-084 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Dr. R. M. Djoelham Binjai" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jl Sultan Hasanuddin No. 9 Binjai" ;
+  hf:pemilik "Pemkot" ;
+  hf:beradaDiKabupatenKota kk:kota-binjai ;
+  schema:telephone "061-80044777" .
+rs:rs-085 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Dr. Tengku Mansyur" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Mayjen Sutoyo No. 39" ;
+  hf:pemilik "Pemkot" ;
+  hf:beradaDiKabupatenKota kk:kota-tanjung-balai ;
+  schema:telephone "0623-92089" .
+rs:rs-086 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Drs. H. Amri Tambunan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jl. MH Thamrin No 126" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  schema:telephone "081369842524" .
+rs:rs-087 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Gunung Tua" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Raya gunung Tua - Binangan KM 6 Aek Haruaya" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-padang-lawas-utara ;
+  schema:telephone "0636-5110209" .
+rs:rs-088 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah H. Abdul Manan Simatupang" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Sisingamangaraja No. 315" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-asahan ;
+  schema:telephone "0623-41785" .
+rs:rs-089 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah H. Bachtiar Djafar" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "JL. K.L. Yos Sudarso KM. 18,5" ;
+  hf:pemilik "Pemkot" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "06142733825" .
+rs:rs-090 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Kabupaten Karo" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Kapten Selamat Ketaren" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-karo .
+rs:rs-091 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Kota Pinang" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Istana No. 26. Kelurahan Kotapinang Kabupaten LabuhanBatu Selatan Provinsi Sumatera Utara" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-labuhan-batu-selatan ;
+  schema:telephone "0624-496766" .
+rs:rs-092 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Lukas Hilisimaetano" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jln. RSUD Lukas no.01 Hilisimaetano" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-nias-selatan ;
+  schema:telephone "081361905252" .
+rs:rs-093 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Nias Selatan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jalan Hiliana'a" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-nias-selatan ;
+  schema:telephone "085137521271" .
+rs:rs-094 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Padang Sidempuan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Dr. F.L. Tobing No. 10" ;
+  hf:pemilik "Pemkot" ;
+  hf:beradaDiKabupatenKota kk:kota-padang-sidempuan ;
+  schema:telephone "(0634)21251" .
+rs:rs-095 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Pandan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Dr. FL. Tobing No. 05 Pandan" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-tapanuli-tengah ;
+  schema:telephone "08126469276" .
+rs:rs-096 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Panyabungan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Komplek Perkantoran Payaloting" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-mandailing-natal ;
+  schema:telephone "0636-20181" .
+rs:rs-097 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Parapat" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Kolonel TPR Sinaga" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-simalungun ;
+  schema:telephone "081360862780" .
+rs:rs-098 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Perdagangan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Radjadmin Purba, SH. Perdagangan" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-simalungun ;
+  schema:telephone "082287287212" .
+rs:rs-099 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Pintu Padang" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Mandailing Km. 18" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-tapanuli-selatan ;
+  schema:telephone "085270741078" .
+rs:rs-100 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Porsea" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan Raja Sipakko Napitulu Nomor 11" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-toba-samosir ;
+  schema:telephone "0632-41084" .
+rs:rs-101 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Rantau Prapat" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jalan KH. Dewantara Nomor 129" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-labuhan-batu ;
+  schema:telephone "81375404013" .
+rs:rs-102 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Salak" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Raja David" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-pakpak-bharat ;
+  schema:telephone "081361429525" .
+rs:rs-103 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Sibuhuan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. KH. Dewantara Sibuhuan" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-padang-lawas ;
+  schema:telephone "082381267581" .
+rs:rs-104 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Sidikalang" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Rumah Sakit No 19" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-dairi ;
+  schema:telephone "0627-21096" .
+rs:rs-105 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Sultan Sulaiman Syariful Alamsyah" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Negara Km. 58 No. 315" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-serdang-bedagai ;
+  schema:telephone "081262443228" .
+rs:rs-106 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Tafaeri" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jalan Lotu - Sawo Km. 03" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-nias-utara ;
+  schema:telephone "081262136883" .
+rs:rs-107 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Tanjung Pura" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Khairil Anwar No. 9-11" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-langkat ;
+  schema:telephone "061-66471404" .
+rs:rs-108 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Tapanuli Selatan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan Rumah Sakit Nomor 1 Banjar Toba" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-tapanuli-selatan ;
+  schema:telephone "0634-41002" .
+rs:rs-109 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Tarutung" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jl. Agus Salim No. 1 Tarutung" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-tapanuli-utara ;
+  schema:telephone "08116505091" .
+rs:rs-110 a hf:RumahSakit ;
+  schema:name "RS Umum Daerah Tuan Rondahaim" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Komplek Perkantoran SKPD Pemkab Simalungun kecamatan Raya kabupaten Simalungun" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-simalungun ;
+  schema:telephone "085355795285" .
+rs:rs-111 a hf:RumahSakit ;
+  schema:name "RS Umum Deli" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Merbabu No.18-20 A" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061-4565229" .
+rs:rs-112 a hf:RumahSakit ;
+  schema:name "RS Umum Delia" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jln. KI Hajar Dewantara, No 09 Dusun V Desa Sei Limbat" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kab-langkat ;
+  schema:telephone "061-80044800" .
+rs:rs-113 a hf:RumahSakit ;
+  schema:name "RS Umum Delima Medan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. KL. Yos Sudarso KM 13,6 No. 19 A Medan- Martubung 20251" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "082175927925" .
+rs:rs-114 a hf:RumahSakit ;
+  schema:name "RS Umum Dr. Gerhard L. Tobing" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Medan-Tanjung Morawa Km. 15,5" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  schema:telephone "082277767241" .
+rs:rs-115 a hf:RumahSakit ;
+  schema:name "RS Umum Efarina Etaham" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jl Jamin Ginting No.1" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kab-karo ;
+  schema:telephone "082277229567" .
+rs:rs-116 a hf:RumahSakit ;
+  schema:name "RS Umum Elpi Al Azis" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Wr. Supratman" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kab-labuhan-batu ;
+  schema:telephone "06242600380" .
+rs:rs-117 a hf:RumahSakit ;
+  schema:name "RS Umum Eshmun" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan Marelan Raya No. 173A" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "(061) 618881828" .
+rs:rs-118 a hf:RumahSakit ;
+  schema:name "RS Umum Estomihi" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Sisinga Mangaraja, Nomor 235" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "081374357689" .
+rs:rs-119 a hf:RumahSakit ;
+  schema:name "RS Umum Flora" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Jenderal Sudirman No. 29 Aek Kanopan" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kab-labuhan-batu-utara ;
+  schema:telephone "081376089445" .
+rs:rs-120 a hf:RumahSakit ;
+  schema:name "RS Umum Full Bethesda" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Binjai KM 10.8/Jl Sama No 71 Kec. Sunggal Kab. Deli Serdang" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  schema:telephone "082163895407" .
+rs:rs-121 a hf:RumahSakit ;
+  schema:name "RS Umum Hadi Husada" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jalan Jendral Sudirman No.26" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-tanjung-balai ;
+  schema:telephone "+6282366616662" .
+rs:rs-122 a hf:RumahSakit ;
+  schema:name "RS Umum Haji Medan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jl RS Haji Medan Estate No 47" ;
+  hf:pemilik "Pemprop" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  schema:telephone "082173669967" .
+rs:rs-123 a hf:RumahSakit ;
+  schema:name "RS Umum Harapan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan Farel Pasaribu Nomor 21" ;
+  hf:pemilik "Organisasi Katholik" ;
+  hf:beradaDiKabupatenKota kk:kota-pematang-siantar ;
+  schema:telephone "(0622) 21162" .
+rs:rs-124 a hf:RumahSakit ;
+  schema:name "RS Umum Hartati Medical Centre" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Siringo-ringo No. 150 Rantauprapat, Kel. Binaraga, Kec. Rantau Utara, Kab. Labuhan Batu, Provinsi Sumatera Utara" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kab-labuhan-batu ;
+  schema:telephone "081370142150" .
+rs:rs-125 a hf:RumahSakit ;
+  schema:name "RS Umum Hermina Medan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Asrama Kel. Sei Sikambing C II, Kec. Medan Helvetia" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "06180862525" .
+rs:rs-126 a hf:RumahSakit ;
+  schema:name "RS Umum Hidayah" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Besar Delitua Km. 8,5 No. 55" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  schema:telephone "061-80048838" .
+rs:rs-127 a hf:RumahSakit ;
+  schema:name "RS Umum HKBP Balige" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Gereja No.17, Balige" ;
+  hf:pemilik "Organisasi Protestan" ;
+  hf:beradaDiKabupatenKota kk:kab-toba-samosir ;
+  schema:telephone "085360637560" .
+rs:rs-128 a hf:RumahSakit ;
+  schema:name "RS Umum Imelda Pekerja Indonesia" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jl. Bilal No. 24" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061- 6610072" .
+rs:rs-129 a hf:RumahSakit ;
+  schema:name "RS Umum Inanta" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Sisingamangaraja No.85/87" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-padang-sidempuan ;
+  schema:telephone "0851-8443-0834" .
+rs:rs-130 a hf:RumahSakit ;
+  schema:name "RS Umum Islam Malahayati" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Pangeran Diponegoro No. 2-4" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "(061) 4518766" .
+rs:rs-131 a hf:RumahSakit ;
+  schema:name "RS Umum Karya Bakti Ujung Bandar" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan Karya Bakti No. 20 Kelurahan Ujung Bandar Kecamatan Rantau Selatan Kabupaten Labuhanbatu Sumatera Utara" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kab-labuhan-batu ;
+  schema:telephone "0624 2600413" .
+rs:rs-132 a hf:RumahSakit ;
+  schema:name "RS Umum Karya Husada" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Merdeka Nomor 12-18" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kab-simalungun ;
+  schema:telephone "0622 697025" .
+rs:rs-133 a hf:RumahSakit ;
+  schema:name "RS Umum Kasih Insani" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Besar Namorambe No. 10 -15" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  schema:telephone "081265565540" .
+rs:rs-134 a hf:RumahSakit ;
+  schema:name "RS Umum Kasih Permata Dara" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Lintas Sumatera No. 215 Dusun Seroja" ;
+  hf:pemilik "Perorangan" ;
+  hf:beradaDiKabupatenKota kk:kab-batu-bara ;
+  schema:telephone "082285637297" .
+rs:rs-135 a hf:RumahSakit ;
+  schema:name "RS Umum Keliat" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jalan Sutan Arab No 35 Dusun 2" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  schema:telephone "08126368799" .
+rs:rs-136 a hf:RumahSakit ;
+  schema:name "RS Umum Laras Kabupaten Simalungun" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Desa Naga Jaya I" ;
+  hf:pemilik "BUMN" ;
+  hf:beradaDiKabupatenKota kk:kab-simalungun ;
+  schema:telephone "085260922248" .
+rs:rs-137 a hf:RumahSakit ;
+  schema:name "RS Umum Lasmi Kartika" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl Pancasila Dusun X Desa Tanah Tinggi" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kab-batu-bara ;
+  schema:telephone "085218949205" .
+rs:rs-138 a hf:RumahSakit ;
+  schema:name "RS Umum Latersia" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan Soekarno Hatta Kilometer 18 Nomor 451" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-binjai ;
+  schema:telephone "085260000911" .
+rs:rs-139 a hf:RumahSakit ;
+  schema:name "RS Umum Madani" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Arief Rahman Hakim No. 168" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "0813-7017-1521" .
+rs:rs-140 a hf:RumahSakit ;
+  schema:name "RS Umum Mahawira Prima Indonesia" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan Cemara No 16" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  schema:telephone "0821-6357-0227" .
+rs:rs-141 a hf:RumahSakit ;
+  schema:name "RS Umum Mahkota Bidadari" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan Sisingamangaraja No. 146, Paluh Manis, Gebang, Langkat, Sumatera Utara" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kab-langkat ;
+  schema:telephone "085359267962" .
+rs:rs-142 a hf:RumahSakit ;
+  schema:name "RS Umum Martha Friska" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl K.L. Yos Sudarso Km. 6 No. 91. Medan" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061 6610910" .
+rs:rs-143 a hf:RumahSakit ;
+  schema:name "RS Umum Martha Friska Multatuli" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Multatuli Komplek Taman Multatuli Indah No.1" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061-4149666" .
+rs:rs-144 a hf:RumahSakit ;
+  schema:name "RS Umum Materna" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jalan Teuku Umar No 9-11" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061-4514222" .
+rs:rs-145 a hf:RumahSakit ;
+  schema:name "RS Umum Melati" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Deli No. 105-115" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kab-serdang-bedagai ;
+  schema:telephone "(061) 7990428" .
+rs:rs-146 a hf:RumahSakit ;
+  schema:name "RS Umum Melati Desa Pon" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jalan Besar No 218 A" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kab-serdang-bedagai ;
+  schema:telephone "085261086655" .
+rs:rs-147 a hf:RumahSakit ;
+  schema:name "RS Umum Methodist" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan Mohammad Hoesni Thamrin Nomor 105" ;
+  hf:pemilik "Organisasi Protestan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "(061) 7369000" .
+rs:rs-148 a hf:RumahSakit ;
+  schema:name "RS Umum Metta Medika" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Sutoyo Siswomiharjo No 34 Sibolga" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-sibolga ;
+  schema:telephone "082165307266" .
+rs:rs-149 a hf:RumahSakit ;
+  schema:name "RS Umum Mitra Guray Petumbukan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Besar Petumbukan No. 29" ;
+  hf:pemilik "Perorangan" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  schema:telephone "061-7980216" .
+rs:rs-150 a hf:RumahSakit ;
+  schema:name "RS Umum Mitra Medika" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. K.L. Yos Sudarso Km 7,5 Tanjung Mulia,Medan" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061-664-0999" .
+rs:rs-151 a hf:RumahSakit ;
+  schema:name "RS Umum Mitra Medika" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan Medan Batang Kuis" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  schema:telephone "081269028201" .
+rs:rs-152 a hf:RumahSakit ;
+  schema:name "RS Umum Mitra Medika Amplas" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "jalan Sisingamangaraja nomor 11" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "0617879070" .
+rs:rs-153 a hf:RumahSakit ;
+  schema:name "RS Umum Mitra Medika Premiere" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jln. Let. Jend. S.Parman No. 236" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "0811328135" .
+rs:rs-154 a hf:RumahSakit ;
+  schema:name "RS Umum Mitra Sehat" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Sei Merah No. 300/21" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  schema:telephone "085270253369" .
+rs:rs-155 a hf:RumahSakit ;
+  schema:name "RS Umum Mitra Sejati" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jl Jend. AH Nasution No.7 Pangkalan Masyhur Medan" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "7875967" .
+rs:rs-156 a hf:RumahSakit ;
+  schema:name "RS Umum Muhammadiyah Sumatera Utara" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl Mandala By Pass No.27, Desa/Kelurahan Tegal S Mandala I, Kec. Medan Denai, Kota Medan, Provinsi Sumatera Utara, Kode Pos : 20226" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "087743913910" .
+rs:rs-157 a hf:RumahSakit ;
+  schema:name "RS Umum Murni Teguh Memorial Hospital" ;
+  hf:jenis "Umum" ;
+  hf:kelas "A" ;
+  hf:alamat "Jalan Jawa Nomor 2" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061-80501888" .
+rs:rs-158 a hf:RumahSakit ;
+  schema:name "RS Umum Murni Teguh Methodist Susanna Wesley" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Harmonika Baru Pasar II" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "08116047013" .
+rs:rs-159 a hf:RumahSakit ;
+  schema:name "RS Umum Natama" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Kartini No. 30A" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-tebing-tinggi ;
+  schema:telephone "0621-24404" .
+rs:rs-160 a hf:RumahSakit ;
+  schema:name "RS Umum Nuraini" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jalan Lintas Sumatera Bloksongo Dusun Bloksongo" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kab-labuhan-batu-selatan ;
+  schema:telephone "081360654283" .
+rs:rs-161 a hf:RumahSakit ;
+  schema:name "RS Umum Pabatu" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Desa Kedai Damar Tebing Tinggi" ;
+  hf:pemilik "BUMN" ;
+  hf:beradaDiKabupatenKota kk:kab-serdang-bedagai ;
+  schema:telephone "0621 2613427" .
+rs:rs-162 a hf:RumahSakit ;
+  schema:name "RS Umum Pancur Batu" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan Jamin Ginting Kilometer. 17,5" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  schema:telephone "082268821948" .
+rs:rs-163 a hf:RumahSakit ;
+  schema:name "RS Umum Patar Asih" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "JL Bakaran Batu No. 188" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  schema:telephone "08118408355" .
+rs:rs-164 a hf:RumahSakit ;
+  schema:name "RS Umum Permata Hati" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Ir. H. Juanda No. 21 Kisaran" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kab-asahan ;
+  schema:telephone "81360101887" .
+rs:rs-165 a hf:RumahSakit ;
+  schema:name "RS Umum Permata Madina Panyabungan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Merdeka No.155 Panyabungan" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kab-mandailing-natal ;
+  schema:telephone "081260806680" .
+rs:rs-166 a hf:RumahSakit ;
+  schema:name "RS Umum Permata Madina Sibuhuan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Kihajar Dewantara" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kab-padang-lawas ;
+  schema:telephone "085360426043" .
+rs:rs-167 a hf:RumahSakit ;
+  schema:name "RS Umum Pertamina Pangkalan Brandan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Wahidin No. 1 Pangkalan Brandan" ;
+  hf:pemilik "BUMN" ;
+  hf:beradaDiKabupatenKota kk:kab-langkat ;
+  schema:telephone "150442" .
+rs:rs-168 a hf:RumahSakit ;
+  schema:name "RS Umum Prima Husada Cipta Medan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan Stasiun No.92" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061-6941927" .
+rs:rs-169 a hf:RumahSakit ;
+  schema:name "RS Umum Prof. Dr. Boloni" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Robert Wolter Monginsidi No.11" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "0812-6013-1946" .
+rs:rs-170 a hf:RumahSakit ;
+  schema:name "RS Umum PTP II Tg Selamat" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan. Besar Batang Serangan Nomor 48" ;
+  hf:pemilik "BUMN" ;
+  hf:beradaDiKabupatenKota kk:kab-langkat ;
+  schema:telephone "+6281226318462" .
+rs:rs-171 a hf:RumahSakit ;
+  schema:name "RS Umum Pusat H. Adam Malik" ;
+  hf:jenis "Umum" ;
+  hf:kelas "A" ;
+  hf:alamat "Jl Bunga Lau No. 17" ;
+  hf:pemilik "Kemkes" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061-8363000" .
+rs:rs-172 a hf:RumahSakit ;
+  schema:name "RS Umum Putri Bidadari" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jalan Stabat Tanjung Pura" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kab-langkat ;
+  schema:telephone "085361517988" .
+rs:rs-173 a hf:RumahSakit ;
+  schema:name "RS Umum Rahmad Hidayah" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Limau Manis Pasar XIII No.61" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  schema:telephone "081262565230" .
+rs:rs-174 a hf:RumahSakit ;
+  schema:name "RS Umum Ratu Mas" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl Tengku Amir Hamzah No. 281a Kelurahan Jati makmur,Kecamatan Binjai Utara,Kota Binjai" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-binjai ;
+  schema:telephone "(081370739531" .
+rs:rs-175 a hf:RumahSakit ;
+  schema:name "RS Umum Royal Maternity" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Sei Mencirim No. 55 - 57" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "+62 889-1200-22" .
+rs:rs-176 a hf:RumahSakit ;
+  schema:name "RS Umum Royal Prima" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jl Ayahanda No 68A Medan" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061-88813182" .
+rs:rs-177 a hf:RumahSakit ;
+  schema:name "RS Umum Royal Prima Marelan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Marelan Pasar 3 No. 187" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061 42731858" .
+rs:rs-178 a hf:RumahSakit ;
+  schema:name "RS Umum Santa Elisabeth Medan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jalan Haji Misbah Nomor 7" ;
+  hf:pemilik "Organisasi Katholik" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "081370397806" .
+rs:rs-179 a hf:RumahSakit ;
+  schema:name "RS Umum Sarah" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Baja Raya No 10" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061-4568383" .
+rs:rs-180 a hf:RumahSakit ;
+  schema:name "RS Umum Sari Mutiara Lubuk Pakam" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Medan No.17" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  schema:telephone "082171420661" .
+rs:rs-181 a hf:RumahSakit ;
+  schema:name "RS Umum Sawit Indah Perbaungan" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Mayjend Purn H.T Rizal Nurdin No. 10" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kab-serdang-bedagai ;
+  schema:telephone "082276976727" .
+rs:rs-182 a hf:RumahSakit ;
+  schema:name "RS Umum Sembiring Deli Tua" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jalan Besar Deli Tua No.77" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  schema:telephone "082370497169" .
+rs:rs-183 a hf:RumahSakit ;
+  schema:name "RS Umum Serenapita" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Sisingamangaraja No. 91 Sidikalang" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kab-dairi ;
+  schema:telephone "081330586491" .
+rs:rs-184 a hf:RumahSakit ;
+  schema:name "RS Umum Setio Husodo" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl SM. Raja No.67 Kisaran" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kab-asahan ;
+  schema:telephone "082360796310" .
+rs:rs-185 a hf:RumahSakit ;
+  schema:name "RS Umum Siloam Dhirga Surya" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jl. Imam Bonjol No.6" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "+6261 8888 1900" .
+rs:rs-186 a hf:RumahSakit ;
+  schema:name "RS Umum Simalem" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Desa Lau Simomo Kec. Kabanjahe Kab. Karo" ;
+  hf:pemilik "Pemprop" ;
+  hf:beradaDiKabupatenKota kk:kab-karo ;
+  schema:telephone "085185566870" .
+rs:rs-187 a hf:RumahSakit ;
+  schema:name "RS Umum Sinar Husni" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Veteran Gg. Utama Psr. V Helvetia" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang .
+rs:rs-188 a hf:RumahSakit ;
+  schema:name "RS Umum Sint Lucia" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Sisingamangaraja No. 171/173" ;
+  hf:pemilik "Organisasi Katholik" ;
+  hf:beradaDiKabupatenKota kk:kab-tapanuli-utara ;
+  schema:telephone "081262572329" .
+rs:rs-189 a hf:RumahSakit ;
+  schema:name "RS Umum Sri Pamela" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jalan Jendral Sudirman Nomor 299" ;
+  hf:pemilik "BUMN" ;
+  hf:beradaDiKabupatenKota kk:kota-tebing-tinggi ;
+  schema:telephone "0621-24748" .
+rs:rs-190 a hf:RumahSakit ;
+  schema:name "RS Umum Sri Ratu" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jln. Nibung Raya No.204-212" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "(061) - 4521074" .
+rs:rs-191 a hf:RumahSakit ;
+  schema:name "RS Umum Stella Maris" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Mgr. Albertus Soegijapranata" ;
+  hf:pemilik "Organisasi Katholik" ;
+  hf:beradaDiKabupatenKota kk:kab-nias-selatan ;
+  schema:telephone "82368196800" .
+rs:rs-192 a hf:RumahSakit ;
+  schema:name "RS Umum Sundari" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Jend. T.B.Simatupang No.31" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061-8452536" .
+rs:rs-193 a hf:RumahSakit ;
+  schema:name "RS Umum Sylvani" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Perintis Kemerdekaan No. 21" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-binjai ;
+  schema:telephone "061-80045925" .
+rs:rs-194 a hf:RumahSakit ;
+  schema:name "RS Umum Tere Margareth" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Ring Road Setia Budi Kel. Tj. Sari" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061-8226089" .
+rs:rs-195 a hf:RumahSakit ;
+  schema:name "RS Umum Tiara Kasih Sejati" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl Menambin No 04" ;
+  hf:pemilik "Perorangan" ;
+  hf:beradaDiKabupatenKota kk:kota-pematang-siantar ;
+  schema:telephone "0622- 27617" .
+rs:rs-196 a hf:RumahSakit ;
+  schema:name "RS Umum Universitas Prima Indonesia" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Simalungun No. 7A" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-tebing-tinggi ;
+  schema:telephone "(0621)-328488" .
+rs:rs-197 a hf:RumahSakit ;
+  schema:name "RS Umum Utama" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. HOS. Cokroaminoto No. 93" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kab-asahan ;
+  schema:telephone "0623 42007" .
+rs:rs-198 a hf:RumahSakit ;
+  schema:name "RS Umum Vina Estetica" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Sultan Iskandar Muda, No.119 Medan, Kel. Sei Sikambing D" ;
+  hf:pemilik "Organisasi Sosial" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061 4147646" .
+rs:rs-199 a hf:RumahSakit ;
+  schema:name "RS Umum Vita Insani" ;
+  hf:jenis "Umum" ;
+  hf:kelas "B" ;
+  hf:alamat "Jl.Merdeka No 329" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-pematang-siantar ;
+  schema:telephone "62-811601125" .
+rs:rs-200 a hf:RumahSakit ;
+  schema:name "RS Umum Wampu Norita" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Lintas Sumatera No.17, Jentera Stabat, Kec. Wampu, Kabupaten Langkat, Sumatera Utara 20854" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kab-langkat ;
+  schema:telephone "082365264946" .
+rs:rs-201 a hf:RumahSakit ;
+  schema:name "RS Umum Wira Husada" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl Kartini Nomor 209 Kisaran" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kab-asahan ;
+  schema:telephone "0623-42532" .
+rs:rs-202 a hf:RumahSakit ;
+  schema:name "RS Umum Wulan Windy" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Marelan Raya. No 17" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "061-6850200" .
+rs:rs-203 a hf:RumahSakit ;
+  schema:name "RS Umum Yoshua" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Medan - Lubuk Pakam N0. 70" ;
+  hf:pemilik "Perusahaan" ;
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  schema:telephone "061 - 7956061" .
+rs:rs-204 a hf:RumahSakit ;
+  schema:name "RSAU Dr. Abdul Malik" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jl. Imam Bonjol No.50,Medan" ;
+  hf:pemilik "TNI AU" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "082142743598" .
+rs:rs-205 a hf:RumahSakit ;
+  schema:name "RSU Herna" ;
+  hf:jenis "Umum" ;
+  hf:kelas "C" ;
+  hf:alamat "Jl. Mojopahit No. 118A" ;
+  hf:pemilik "SWASTA/LAINNYA" ;
+  hf:beradaDiKabupatenKota kk:kota-medan ;
+  schema:telephone "06144025026" .
+rs:rs-206 a hf:RumahSakit ;
+  schema:name "UPTD Rumah Sakit Pratama Nias" ;
+  hf:jenis "Umum" ;
+  hf:kelas "D" ;
+  hf:alamat "Jalan Ir. Sukarno No. 0" ;
+  hf:pemilik "Pemkab" ;
+  hf:beradaDiKabupatenKota kk:kab-nias ;
+  hf:pratama "true"^^xsd:boolean ;
+  schema:telephone "081376529298" .

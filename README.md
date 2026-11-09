@@ -24,6 +24,22 @@ Build pertama mengunduh Fuseki (butuh internet). Dataset contoh dimuat otomatis 
 Muat ulang RDF setelah mengubah file: `docker compose exec backend python -m app.services.rdf_loader --force`
 Ulang skema PostgreSQL dari nol: `docker compose down -v` lalu `docker compose up`.
 
+## Data
+Sumber: `data/rumah_sakit_sumut.csv` (206 RS Sumatera Utara: nama, alamat, telepon, pemilik, kelas, jenis).
+CSV tidak memuat koordinat, layanan, dan fasilitas. Alurnya:
+```bash
+python scripts/geocode.py                                   # cari koordinat (Nominatim/OSM), hasil: data/koordinat.csv
+python scripts/csv_ke_rdf.py --koordinat data/koordinat.csv # hasil: semantic/rdf/hospitals-sumut.ttl
+docker compose exec backend python -m app.services.rdf_loader --force
+```
+`hospitals-sumut.ttl` dibuat otomatis: jangan diedit tangan, ubah CSV/skripnya. Kelas, properti, dan ontologi ada di `semantic/rdf/ontologi.ttl`.
+Layanan hanya diturunkan dari jenis RS khusus (mis. RSIA -> Anak, Bersalin); layanan RS umum dan fasilitas belum ada datanya.
+Koordinat bersumber `kabkota` adalah perkiraan kasar (titik pusat wilayah), bukan lokasi RS.
+
+## Referensi dan atribusi
+- Koordinat: (c) kontributor OpenStreetMap, lisensi ODbL, lewat Nominatim.
+- Dataset RS: (isi sumber asli CSV: situs/instansi dan tanggal pengambilan).
+
 ## Struktur dan pemilik file
 - `backend/app/services/sparql_service.py` (P4) query SPARQL; `rdf_loader.py` (P3/P4)
 - `backend/app/routers/` (P5) API dan halaman RDFa/OGP

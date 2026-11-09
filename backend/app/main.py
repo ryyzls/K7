@@ -9,7 +9,7 @@ from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 from app.config import settings
-from app.routers import api, semantic
+from app.routers import api, chat, semantic
 from app.services.rdf_loader import load_all
 
 log = logging.getLogger("carisehat")
@@ -37,6 +37,7 @@ async def fuseki_error(request: Request, exc: httpx.HTTPError):
 
 
 app.include_router(api.router)
+app.include_router(chat.router)
 app.include_router(semantic.router)
 if Path(settings.frontend_dir).exists():  # harus terakhir: melayani "/" dan file statis
     app.mount("/", StaticFiles(directory=settings.frontend_dir, html=True), name="frontend")

@@ -26,7 +26,7 @@ async def health(db: Session = Depends(get_db)):
 
 @router.get("/search")
 async def search(q: str = "", kelas: str = "", jenis: str = "", kabkota: str = "", layanan: str = "",
-                 limit: int = Query(50, ge=1, le=200), offset: int = Query(0, ge=0)):
+                 limit: int = Query(50, ge=1, le=500), offset: int = Query(0, ge=0)):
     items = await sp.search_hospitals(q=q, kelas=kelas, jenis=jenis, kabkota=kabkota,
                                       layanan=layanan, limit=limit, offset=offset)
     return {"items": items, "count": len(items)}
