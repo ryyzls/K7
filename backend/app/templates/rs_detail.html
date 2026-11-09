@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="id" prefix="og: https://ogp.me/ns# hf: {{ onto }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ h.nama }} | CariSehat</title>
+  <!-- Open Graph Protocol -->
+  <meta property="og:title" content="{{ h.nama }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ h.uri }}">
+  <meta property="og:image" content="{{ base }}/og-default.png">
+  <meta property="og:description" content="Rumah sakit kelas {{ h.kelas }} di {{ h.kabkota }}. {{ h.alamat }}">
+  <meta property="og:locale" content="id_ID">
+  <meta property="og:site_name" content="CariSehat">
+  <style>body{font-family:system-ui,sans-serif;max-width:46rem;margin:2rem auto;padding:0 1rem;color:#14232B;line-height:1.5}a{color:#1F6F8B}li{margin:.2rem 0}</style>
+</head>
+<!-- RDFa: schema.org + vocabulary hf -->
+<body vocab="https://schema.org/" typeof="Hospital" resource="{{ h.uri }}">
+  <p><a href="/">&larr; Kembali ke pencarian</a></p>
+  <h1 property="name">{{ h.nama }}</h1>
+  <p>Kelas <span property="hf:kelas">{{ h.kelas }}</span>, rumah sakit <span property="hf:jenis">{{ h.jenis }}</span></p>
+  <p property="address" typeof="PostalAddress">
+    <span property="streetAddress">{{ h.alamat }}</span>,
+    <span property="addressLocality">{{ h.kabkota }}</span>,
+    <span property="addressRegion">Sumatera Utara</span>
+    <meta property="addressCountry" content="ID">
+  </p>
+  <span property="geo" typeof="GeoCoordinates">
+    <meta property="latitude" content="{{ h.lat }}">
+    <meta property="longitude" content="{{ h.lon }}">
+  </span>
+  {% if h.telepon %}<p>Telepon: <span property="telephone">{{ h.telepon }}</span></p>{% endif %}
+  {% if h.website %}<p>Situs web: <a property="url" href="{{ h.website }}">{{ h.website }}</a></p>{% endif %}
+  <h2>Layanan</h2>
+  <ul>{% for l in h.layanan %}<li property="availableService" typeof="MedicalProcedure"><span property="name">{{ l }}</span></li>{% endfor %}</ul>
+  <h2>Fasilitas</h2>
+  <ul>{% for f in h.fasilitas %}<li>{{ f }}</li>{% endfor %}</ul>
+  <p><a href="/rs/{{ h.id }}.rdf">RDF/XML</a> &middot; <a href="/rs/{{ h.id }}.ttl">Turtle</a>
+     &middot; <a href="https://www.openstreetmap.org/?mlat={{ h.lat }}&amp;mlon={{ h.lon }}#map=17/{{ h.lat }}/{{ h.lon }}">OpenStreetMap</a></p>
+</body>
+</html>

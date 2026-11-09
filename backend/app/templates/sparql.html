@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPARQL | CariSehat</title>
+  <!-- YASGUI dari CDN. Jika gagal dimuat, coba paket @triply/yasgui dengan path build yang sama. -->
+  <link rel="stylesheet" href="https://unpkg.com/@matdata/yasgui/build/yasgui.min.css">
+  <style>body{font-family:system-ui,sans-serif;margin:0}header{padding:.7rem 1rem;border-bottom:1px solid #DCE6EA}a{color:#1F6F8B;font-weight:600;text-decoration:none}</style>
+</head>
+<body>
+  <header><a href="/">&larr; Pencarian</a> &nbsp; Endpoint: <code>/sparql/query</code> (hanya baca)</header>
+  <div id="yasgui"></div>
+  <script src="https://unpkg.com/@matdata/yasgui/build/yasgui.min.js"></script>
+  <script>
+    new Yasgui(document.getElementById("yasgui"), {
+      requestConfig: { endpoint: location.origin + "/sparql/query" },
+      copyEndpointOnNewTab: false
+    });
+  </script>
+</body>
+</html>
