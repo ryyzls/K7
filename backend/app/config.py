@@ -12,5 +12,9 @@ class Settings(BaseSettings):
     rdf_dir: str = "/semantic/rdf"
     frontend_dir: str = "/frontend"
 
+    # --- API Keys Eksternal ---
+    google_maps_api_key: str = ""   # Google Maps JavaScript API key
+    gemini_api_key: str = ""        # Google Gemini API key (AI Studio / Vertex)
+
 
 settings = Settings()

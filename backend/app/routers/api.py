@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, Query
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 
+from app.config import settings
 from app.database.connection import get_db
 from app.services import sparql_service as sp
 
@@ -35,3 +36,12 @@ async def search(q: str = "", kelas: str = "", jenis: str = "", kabkota: str = "
 @router.get("/filters")
 async def filters():
     return await sp.filter_options()
+
+
+@router.get("/config/maps")
+async def maps_config():
+    """Mengembalikan Google Maps API key agar dapat dipakai oleh frontend.
+    Hanya mengembalikan key jika sudah dikonfigurasi (tidak bocorkan placeholder)."""
+    key = settings.google_maps_api_key
+    has_key = bool(key) and not key.startswith("ISI_")
+    return {"google_maps_api_key": key if has_key else "", "enabled": has_key}

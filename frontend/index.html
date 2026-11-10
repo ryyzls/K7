@@ -2,314 +2,856 @@
 <html lang="id">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1F6F8B">
+<meta name="description" content="CariSehat: temukan rumah sakit di seluruh Sumatera Utara lengkap dengan peta, rute, dan data semantik.">
 <title>CariSehat - Temukan Rumah Sakit se-Sumatera Utara</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231F6F8B'/%3E%3Cpath d='M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6z' fill='%23fff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <!-- Leaflet & Clustering -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css">
 
-<!-- Open Source Leaflet Plugins: Locate (GPS) & Routing Machine -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.79.0/dist/L.Control.Locate.min.css" />
-<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+<!-- Leaflet Plugins: Locate (GPS) & Routing Machine -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.79.0/dist/L.Control.Locate.min.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css">
 
-<!-- Open Source Deep Chat Widget -->
+<!-- Deep Chat widget -->
 <script type="module" src="https://unpkg.com/deep-chat@2.1.1/dist/deepChat.bundle.js"></script>
 
 <style>
-:root{--ink:#14232B;--toba:#1F6F8B;--ulos:#B3262E;--bg:#F6F8F9;--line:#DCE6EA;--mute:#5B6E77}
+/* ============ Design tokens: tema Toba x Ulos ============ */
+:root{
+  --ink:#14232B; --toba:#1F6F8B; --toba-d:#15556B; --toba-soft:#EAF3F6; --toba-mist:#F1F7F9;
+  --ulos:#B3262E; --ulos-soft:#FBEDEE; --gold:#C8922E;
+  --bg:#F6F8F9; --card:#fff; --line:#DCE6EA; --mute:#5B6E77;
+  --kA:#B3262E; --kB:#1F6F8B; --kC:#2F7A5D; --kD:#6B7479;
+  --r:12px; --shadow:0 1px 2px rgba(20,35,43,.06),0 4px 14px rgba(20,35,43,.08);
+  --shadow-lg:0 10px 40px rgba(20,35,43,.22);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
 *{box-sizing:border-box}
 html,body{height:100%;margin:0}
-body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--ink);background:var(--bg);display:flex;flex-direction:column}
-header{display:flex;align-items:center;gap:1rem;padding:.7rem 1rem;background:#fff;z-index:10}
-header h1{font-size:1.05rem;margin:0;font-weight:800}
-header nav{margin-left:auto;display:flex;gap:1rem;font-size:.9rem}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--ink);background:var(--bg);display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer}
 a{color:var(--toba);font-weight:600;text-decoration:none}
 a:hover{text-decoration:underline}
-:focus-visible{outline:3px solid var(--toba);outline-offset:2px}
-.ulos{height:6px;background:repeating-linear-gradient(90deg,#B3262E 0 14px,#14232B 14px 18px,#F6F8F9 18px 22px,#B3262E 22px 36px)}
-main{flex:1;display:grid;grid-template-columns:400px 1fr;min-height:0;position:relative}
-aside{display:flex;flex-direction:column;min-height:0;background:#fff;border-right:1px solid var(--line)}
-.filters{padding:1rem;display:grid;gap:.5rem;border-bottom:1px solid var(--line)}
+:focus-visible{outline:3px solid var(--toba);outline-offset:2px;border-radius:6px}
+svg.i{width:1em;height:1em;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ============ Header ============ */
+header{display:flex;align-items:center;gap:.9rem;padding:.65rem 1.1rem;background:#fff;z-index:1100;position:relative}
+.brand{display:flex;align-items:center;gap:.65rem;color:var(--ink)}
+.brand:hover{text-decoration:none}
+.logo{width:38px;height:38px;border-radius:11px;background:linear-gradient(145deg,var(--toba),var(--toba-d));display:grid;place-items:center;box-shadow:0 2px 8px rgba(31,111,139,.4);position:relative}
+.logo svg{width:22px;height:22px}
+.logo::after{content:"";position:absolute;right:-3px;bottom:-3px;width:11px;height:11px;background:var(--ulos);border:2px solid #fff;border-radius:3px;transform:rotate(45deg)}
+.brand h1{font-size:1.12rem;margin:0;font-weight:800;letter-spacing:-.01em;line-height:1.1}
+.brand h1 span{color:var(--toba)}
+.brand small{display:block;font-size:.7rem;font-weight:500;color:var(--mute);margin-top:2px}
+nav{margin-left:auto;display:flex;gap:.3rem;font-size:.86rem}
+nav a{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem .8rem;border-radius:99px;color:var(--ink);font-weight:600}
+nav a:hover{background:var(--toba-soft);text-decoration:none;color:var(--toba-d)}
+#menu-btn{display:none;margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:10px;width:40px;height:40px;place-items:center;font-size:1.2rem}
+.ulos{height:7px;background:repeating-linear-gradient(90deg,#B3262E 0 14px,#14232B 14px 18px,#C8922E 18px 20px,#F6F8F9 20px 24px,#B3262E 24px 38px);position:relative;z-index:1100}
+#topbar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--ulos));z-index:3000;transition:width .3s var(--ease),opacity .3s;opacity:0}
+#topbar.on{opacity:1}
+
+/* ============ Layout ============ */
+main{flex:1;display:grid;grid-template-columns:420px 1fr;min-height:0;position:relative}
+aside{display:flex;flex-direction:column;min-height:0;background:#fff;border-right:1px solid var(--line);position:relative;z-index:1000}
+#map{min-height:0;background:#dfe9ec}
+
+/* ============ Filters ============ */
+.filters{padding:1rem 1rem .85rem;display:grid;gap:.7rem;border-bottom:1px solid var(--line)}
+.search{position:relative}
+.search svg{position:absolute;left:.85rem;top:50%;transform:translateY(-50%);color:var(--mute);width:1.05rem;height:1.05rem;pointer-events:none}
+.search input{padding-left:2.5rem;height:46px;border-radius:12px;background:var(--toba-mist);border-color:transparent;font-size:.95rem}
+.search input:focus{background:#fff;border-color:var(--toba)}
+.search kbd{position:absolute;right:.8rem;top:50%;transform:translateY(-50%);font:600 .7rem 'Plus Jakarta Sans';color:var(--mute);border:1px solid var(--line);border-radius:5px;padding:.05rem .35rem;background:#fff;pointer-events:none}
+.search input:not(:placeholder-shown)~kbd{display:none}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
-label{font-size:.78rem;color:var(--mute);font-weight:600;display:grid;gap:.25rem}
-input,select{font:inherit;font-size:.92rem;padding:.55rem .65rem;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);width:100%}
-#status{padding:.6rem 1rem;font-size:.82rem;color:var(--mute);border-bottom:1px solid var(--line)}
-#status.mock{color:var(--ulos)}
-#list{list-style:none;margin:0;padding:0;overflow:auto;flex:1}
-#list li button{all:unset;box-sizing:border-box;display:grid;gap:.2rem;width:100%;padding:.8rem 1rem;border-bottom:1px solid var(--line);cursor:pointer}
-#list li button:hover,#list li button.on{background:#EAF3F6}
-#list strong{font-size:.95rem}
-.badge{display:inline-block;font-size:.72rem;font-weight:800;color:#fff;border-radius:4px;padding:.05rem .4rem;margin-right:.4rem}
-.sub{font-size:.82rem;color:var(--mute)}
-.empty{padding:1.2rem 1rem;color:var(--mute);font-size:.9rem}
-#detail{display:none;padding:1rem;border-bottom:1px solid var(--line);background:#F1F7F9;max-height:60%;overflow:auto}
-#detail.show{display:block}
-#detail h2{font-size:1.05rem;margin:0 0 .4rem}
-#detail p{margin:.2rem 0;font-size:.88rem}
-.chips{display:flex;flex-wrap:wrap;gap:.3rem;margin:.4rem 0}
-.chip{font-size:.75rem;border:1px solid var(--line);background:#fff;border-radius:99px;padding:.1rem .55rem}
-.links{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:.6rem;font-size:.85rem}
-.x{float:right;font:inherit;border:0;background:none;color:var(--mute);cursor:pointer;font-size:1.1rem}
-.btn-route{display:inline-flex;align-items:center;gap:.3rem;background:var(--toba);color:#fff;border:none;border-radius:6px;padding:.45rem .8rem;font-weight:600;font-size:.84rem;cursor:pointer;margin-top:.4rem}
-.btn-route:hover{background:#15556b}
-#map{min-height:0}
-.legend{background:#fff;padding:.4rem .6rem;border-radius:8px;font-size:.75rem;line-height:1.5;box-shadow:0 1px 4px rgba(0,0,0,.25)}
-.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:.4rem}
+label,.lbl{font-size:.72rem;color:var(--mute);font-weight:700;display:grid;gap:.3rem;text-transform:uppercase;letter-spacing:.04em}
+input,select{font:inherit;font-size:.9rem;font-weight:500;text-transform:none;letter-spacing:0;padding:.55rem .7rem;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);width:100%;transition:border-color .15s,background .15s}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%235B6E77' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .75rem center;padding-right:2rem}
+select:hover,input:hover{border-color:#b9cbd2}
+.seg{display:grid;grid-template-columns:repeat(5,1fr);gap:.3rem;background:var(--toba-mist);padding:.25rem;border-radius:12px}
+.seg button{border:0;background:none;border-radius:9px;padding:.45rem 0;font-weight:700;font-size:.82rem;color:var(--mute);display:flex;align-items:center;justify-content:center;gap:.35rem;transition:all .15s}
+.seg button i{width:9px;height:9px;border-radius:50%;background:var(--c,var(--mute))}
+.seg button:hover{color:var(--ink)}
+.seg button[aria-pressed=true]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(20,35,43,.15)}
+.seg button[data-v=""] i{display:none}
 
-/* Chatbot Floating Widget */
-#chat-bubble{position:fixed;bottom:24px;right:24px;z-index:9999}
-#chat-btn{width:56px;height:56px;border-radius:50%;background:var(--toba);color:#fff;border:none;box-shadow:0 4px 16px rgba(0,0,0,.25);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:24px;transition:transform .2s}
-#chat-btn:hover{transform:scale(1.08)}
-#chat-container{display:none;position:absolute;bottom:70px;right:0;width:370px;height:500px;background:#fff;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.25);overflow:hidden;flex-direction:column}
-#chat-container.open{display:flex}
-#chat-header{background:var(--toba);color:#fff;padding:.7rem 1rem;font-size:.9rem;font-weight:700;display:flex;justify-content:space-between;align-items:center}
-#chat-header button{background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer}
+/* ============ Status & toolbar ============ */
+.bar{display:flex;align-items:center;gap:.6rem;padding:.55rem 1rem;border-bottom:1px solid var(--line);font-size:.82rem;color:var(--mute);background:#fff}
+#status{flex:1;display:flex;align-items:center;gap:.5rem;min-width:0}
+#status b{color:var(--ink);font-weight:800}
+#status.err{color:var(--ulos)}
+.spin{width:14px;height:14px;border:2px solid var(--line);border-top-color:var(--toba);border-radius:50%;animation:spin .7s linear infinite;flex:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.bar select{width:auto;padding:.3rem 1.7rem .3rem .55rem;font-size:.78rem;font-weight:600;border-radius:8px;background-position:right .5rem center}
+.link-btn{border:0;background:none;color:var(--ulos);font-weight:700;font-size:.78rem;padding:.2rem .3rem;border-radius:6px;display:none}
+.link-btn.show{display:inline}
+.link-btn:hover{text-decoration:underline}
 
-@media(max-width:800px){
-  main{grid-template-columns:1fr;grid-template-rows:36vh 1fr}
-  #map{order:-1} aside{border-right:0}
-  header nav{display:none}
-  #chat-container{width:calc(100vw - 32px);right:-8px;height:70vh}
+/* ============ List & cards ============ */
+#list{list-style:none;margin:0;padding:.7rem;overflow:auto;flex:1;display:grid;gap:.6rem;align-content:start;background:var(--bg);scroll-behavior:smooth}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);position:relative;overflow:hidden;transition:box-shadow .2s,border-color .2s,transform .2s var(--ease);animation:rise .35s var(--ease) both}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c)}
+.card:hover{box-shadow:var(--shadow);border-color:#c5d6dc}
+.card.on{border-color:var(--c);box-shadow:0 0 0 2px color-mix(in srgb,var(--c) 25%,transparent),var(--shadow)}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card-main{all:unset;box-sizing:border-box;display:grid;gap:.4rem;width:100%;padding:.8rem .9rem .5rem 1.1rem;cursor:pointer}
+.card-main:focus-visible{outline:3px solid var(--toba);outline-offset:-3px;border-radius:var(--r)}
+.card-top{display:flex;align-items:flex-start;gap:.6rem}
+.card-top strong{font-size:.95rem;line-height:1.3;flex:1;font-weight:700}
+.badge{flex:none;display:inline-grid;place-items:center;min-width:26px;height:24px;font-size:.74rem;font-weight:800;color:#fff;border-radius:7px;padding:0 .45rem;background:var(--c)}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:.25rem .55rem;font-size:.8rem;color:var(--mute)}
+.meta span{display:inline-flex;align-items:center;gap:.3rem}
+.addr{font-size:.8rem;color:var(--mute);display:flex;gap:.35rem;line-height:1.4}
+.addr svg{margin-top:.15rem;color:var(--toba)}
+.tags{display:flex;flex-wrap:wrap;gap:.3rem}
+.tag{font-size:.7rem;font-weight:600;background:var(--toba-soft);color:var(--toba-d);border-radius:6px;padding:.12rem .45rem}
+.tag.more{background:#EEF1F2;color:var(--mute)}
+.card-actions{display:flex;gap:.45rem;padding:.2rem .9rem .8rem 1.1rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;border-radius:9px;padding:.48rem .8rem;font-weight:700;font-size:.8rem;border:1px solid transparent;text-decoration:none!important;transition:background .15s,border-color .15s,transform .1s;white-space:nowrap}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--toba);color:#fff}
+.btn-primary:hover{background:var(--toba-d)}
+.btn-ghost{background:#fff;color:var(--toba-d);border-color:var(--line)}
+.btn-ghost:hover{background:var(--toba-soft);border-color:#b7d3dd}
+.btn-ulos{background:var(--ulos);color:#fff}
+.btn-ulos:hover{background:#951f26}
+.btn.grow{flex:1}
+.empty{padding:2rem 1.2rem;text-align:center;color:var(--mute);font-size:.9rem;display:grid;gap:.6rem;justify-items:center}
+.empty svg.art{width:84px;height:84px}
+.empty h3{margin:0;color:var(--ink);font-size:1rem}
+.empty p{margin:0;max-width:30ch;line-height:1.5}
+.sk{height:104px;border-radius:var(--r);border:1px solid var(--line);background:linear-gradient(100deg,#fff 30%,#eef4f6 50%,#fff 70%) 0 0/200% 100%;animation:shimmer 1.2s linear infinite}
+@keyframes shimmer{to{background-position:-200% 0}}
+
+/* ============ Detail panel (overlay di dalam sidebar) ============ */
+#detail{position:absolute;inset:0;background:#fff;z-index:5;display:flex;flex-direction:column;transform:translateX(102%);transition:transform .32s var(--ease);visibility:hidden}
+#detail.show{transform:none;visibility:visible}
+.d-head{padding:.8rem 1rem;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:.5rem}
+.d-back{display:inline-flex;align-items:center;gap:.35rem;border:0;background:var(--toba-mist);border-radius:99px;padding:.4rem .8rem .4rem .6rem;font-weight:700;font-size:.82rem;color:var(--toba-d)}
+.d-back:hover{background:var(--toba-soft)}
+.d-body{overflow:auto;flex:1;padding:1.1rem 1.1rem 1.5rem;display:grid;gap:1rem;align-content:start}
+.d-hero{border-radius:14px;padding:1rem 1rem 1.1rem;background:linear-gradient(135deg,var(--toba-d),var(--toba));color:#fff;position:relative;overflow:hidden}
+.d-hero::after{content:"";position:absolute;right:-30px;top:-30px;width:120px;height:120px;border:14px solid rgba(255,255,255,.08);transform:rotate(45deg)}
+.d-hero::before{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:repeating-linear-gradient(90deg,#B3262E 0 14px,#14232B 14px 18px,#C8922E 18px 20px,#F6F8F9 20px 24px,#B3262E 24px 38px)}
+.d-hero h2{margin:.5rem 0 .2rem;font-size:1.2rem;line-height:1.25;font-weight:800;position:relative}
+.d-hero .badge{background:#fff;color:var(--c)}
+.d-hero p{margin:0;font-size:.84rem;opacity:.9;position:relative}
+.d-pills{display:flex;gap:.4rem;flex-wrap:wrap;position:relative}
+.d-pills .pill{font-size:.72rem;font-weight:700;background:rgba(255,255,255,.18);border-radius:99px;padding:.15rem .6rem}
+.info{display:grid;gap:.1rem}
+.info div{display:flex;gap:.7rem;padding:.6rem .1rem;border-bottom:1px dashed var(--line);font-size:.88rem;line-height:1.45}
+.info div:last-child{border-bottom:0}
+.info svg{margin-top:.2rem;color:var(--toba);font-size:1rem}
+.info small{display:block;font-size:.7rem;color:var(--mute);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.sec h3{margin:0 0 .5rem;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--mute)}
+.chips{display:flex;flex-wrap:wrap;gap:.35rem}
+.chip{font-size:.78rem;font-weight:600;border:1px solid var(--line);background:#fff;border-radius:99px;padding:.25rem .7rem}
+.chip.lay{background:var(--toba-soft);border-color:transparent;color:var(--toba-d)}
+.none{font-size:.84rem;color:var(--mute);margin:0}
+.d-actions{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.d-actions .btn{padding:.7rem .8rem;font-size:.86rem}
+.sem{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.sem a{display:flex;align-items:center;gap:.6rem;padding:.65rem .85rem;font-size:.86rem;border-bottom:1px solid var(--line);color:var(--ink)}
+.sem a:last-child{border-bottom:0}
+.sem a:hover{background:var(--toba-mist);text-decoration:none}
+.sem a svg{color:var(--toba)}
+.sem a em{margin-left:auto;font-style:normal;font-size:.7rem;font-weight:700;color:var(--mute);background:#EEF1F2;border-radius:5px;padding:.05rem .4rem}
+
+/* ============ Peta: kontrol, legenda, rute ============ */
+.legend{background:rgba(255,255,255,.96);padding:.55rem .7rem;border-radius:12px;font-size:.74rem;line-height:1.6;box-shadow:var(--shadow);font-family:inherit;max-width:210px}
+.legend h4{margin:0 0 .2rem;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--mute)}
+.legend div{display:flex;align-items:center;gap:.45rem}
+.legend i{width:11px;height:11px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.15);flex:none}
+.legend span{color:var(--mute)}
+.leaflet-bar{border:0!important;box-shadow:var(--shadow)!important;border-radius:10px!important;overflow:hidden}
+.leaflet-bar a{width:34px!important;height:34px!important;line-height:34px!important;color:var(--ink)}
+.leaflet-tooltip{font-family:inherit;font-weight:600;font-size:.78rem;border:0;border-radius:8px;box-shadow:var(--shadow);padding:.3rem .6rem;color:var(--ink)}
+.marker-cluster-small,.marker-cluster-medium,.marker-cluster-large{background:rgba(31,111,139,.25)}
+.marker-cluster-small div,.marker-cluster-medium div,.marker-cluster-large div{background:rgba(31,111,139,.95);color:#fff;font:800 .8rem 'Plus Jakarta Sans'}
+.marker-cluster-medium{background:rgba(200,146,46,.3)}
+.marker-cluster-medium div{background:#A97719}
+.marker-cluster-large{background:rgba(179,38,46,.28)}
+.marker-cluster-large div{background:var(--ulos)}
+.pin{width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--ulos);border:3px solid #fff;box-shadow:0 3px 10px rgba(0,0,0,.4);display:grid;place-items:center}
+.pin::after{content:"";width:9px;height:9px;border-radius:50%;background:#fff}
+.me{width:18px;height:18px;border-radius:50%;background:#1a73e8;border:3px solid #fff;box-shadow:0 0 0 6px rgba(26,115,232,.25),0 2px 6px rgba(0,0,0,.4)}
+
+#route-bar{position:absolute;left:50%;top:12px;transform:translate(-50%,-140%);z-index:1200;background:#fff;border-radius:14px;box-shadow:var(--shadow-lg);padding:.6rem .7rem .6rem .9rem;display:flex;align-items:center;gap:.8rem;max-width:calc(100% - 90px);transition:transform .35s var(--ease)}
+#route-bar.show{transform:translate(-50%,0)}
+#route-bar .rb-info{min-width:0}
+#route-bar small{display:block;font-size:.7rem;color:var(--mute);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+#route-bar strong{display:block;font-size:.92rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#route-bar .rb-val{font-size:1.05rem;font-weight:800;color:var(--ulos);white-space:nowrap}
+#route-bar .btn{padding:.4rem .6rem}
+#map-loading{position:absolute;inset:0;z-index:1300;background:rgba(246,248,249,.7);backdrop-filter:blur(2px);display:none;place-items:center}
+#map-loading.show{display:grid}
+#map-loading div{background:#fff;border-radius:14px;box-shadow:var(--shadow-lg);padding:1rem 1.3rem;display:flex;align-items:center;gap:.8rem;font-weight:700;font-size:.9rem}
+#map-loading .spin{width:20px;height:20px;border-width:3px}
+
+/* Panel petunjuk arah (Leaflet Routing Machine) */
+.leaflet-routing-container{background:#fff;border-radius:14px;box-shadow:var(--shadow-lg);font-family:inherit;max-height:42vh;overflow:auto;padding:.3rem .2rem;width:290px;margin-top:62px!important}
+.leaflet-routing-geocoders{display:none}
+.leaflet-routing-alt{max-height:none;border:0;padding:.4rem .6rem}
+.leaflet-routing-alt h2{font-size:.95rem;font-weight:800;margin:.2rem 0}
+.leaflet-routing-alt h3{font-size:.8rem;font-weight:600;color:var(--mute);margin:0 0 .4rem}
+.leaflet-routing-alt tr:hover{background:var(--toba-mist)}
+.leaflet-routing-alt td{font-size:.8rem;padding:.3rem .2rem}
+.leaflet-routing-icon{filter:none;opacity:.75}
+.leaflet-routing-collapse-btn{top:6px;right:8px}
+
+/* ============ Toast ============ */
+#toasts{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:5000;display:grid;gap:.5rem;justify-items:center;pointer-events:none;width:max-content;max-width:calc(100vw - 32px)}
+.toast{background:var(--ink);color:#fff;border-radius:12px;padding:.7rem 1rem;font-size:.86rem;font-weight:600;box-shadow:var(--shadow-lg);display:flex;gap:.6rem;align-items:center;animation:rise .3s var(--ease);pointer-events:auto}
+.toast.err{background:var(--ulos)}
+
+/* ============ Chatbot ============ */
+#chat-bubble{position:fixed;bottom:22px;right:22px;z-index:2500}
+#chat-btn{height:56px;min-width:56px;border-radius:99px;background:linear-gradient(145deg,var(--toba),var(--toba-d));color:#fff;border:none;box-shadow:0 6px 20px rgba(21,85,107,.5);display:flex;align-items:center;justify-content:center;gap:.55rem;padding:0 1.1rem 0 1rem;font-weight:700;font-size:.9rem;transition:transform .2s var(--ease),box-shadow .2s}
+#chat-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(21,85,107,.55)}
+#chat-btn svg{width:24px;height:24px}
+#chat-btn .dot{position:absolute;top:2px;right:2px;width:13px;height:13px;border-radius:50%;background:var(--ulos);border:2px solid #fff}
+#chat-bubble.open #chat-btn .lbl-t{display:none}
+#chat-bubble.open #chat-btn{padding:0;width:56px}
+#chat-container{position:absolute;bottom:70px;right:0;width:390px;height:min(580px,calc(100vh - 150px));background:#fff;border-radius:18px;box-shadow:var(--shadow-lg);overflow:hidden;display:flex;flex-direction:column;opacity:0;transform:translateY(14px) scale(.97);transform-origin:bottom right;pointer-events:none;visibility:hidden;transition:all .25s var(--ease)}
+#chat-bubble.open #chat-container{opacity:1;transform:none;pointer-events:auto;visibility:visible}
+#chat-header{background:linear-gradient(135deg,var(--toba-d),var(--toba));color:#fff;padding:.85rem 1rem .95rem;display:flex;align-items:center;gap:.7rem;position:relative}
+#chat-header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:repeating-linear-gradient(90deg,#B3262E 0 14px,#14232B 14px 18px,#C8922E 18px 20px,#F6F8F9 20px 24px,#B3262E 24px 38px)}
+#chat-header .av{width:36px;height:36px;border-radius:11px;background:rgba(255,255,255,.18);display:grid;place-items:center}
+#chat-header .av svg{width:20px;height:20px}
+#chat-header b{display:block;font-size:.95rem}
+#chat-header small{font-size:.72rem;opacity:.85;display:flex;align-items:center;gap:.35rem}
+#chat-header small::before{content:"";width:7px;height:7px;border-radius:50%;background:#6ee7a8}
+#chat-header button{margin-left:auto;background:rgba(255,255,255,.15);border:none;color:#fff;width:32px;height:32px;border-radius:9px;font-size:1.2rem;line-height:1}
+#chat-header button:hover{background:rgba(255,255,255,.28)}
+#ai-badge{cursor:default;user-select:none}
+/* Layer switcher styling */
+.leaflet-control-layers{font-family:inherit;font-size:.82rem;border-radius:12px!important;box-shadow:var(--shadow)!important;border:0!important;padding:.4rem .3rem}
+.leaflet-control-layers label{display:flex;align-items:center;gap:.45rem;padding:.2rem .4rem;font-weight:600;color:var(--ink)}
+.leaflet-control-layers-separator{border-color:var(--line)}
+#suggest{display:flex;gap:.4rem;overflow-x:auto;padding:.6rem .8rem;border-bottom:1px solid var(--line);scrollbar-width:none;background:#fff}
+#suggest::-webkit-scrollbar{display:none}
+#suggest button{flex:none;border:1px solid var(--line);background:#fff;border-radius:99px;padding:.3rem .7rem;font-size:.76rem;font-weight:600;color:var(--toba-d);transition:all .15s}
+#suggest button:hover{background:var(--toba-soft);border-color:#b7d3dd}
+#chat-element{flex:1;min-height:0}
+
+/* ============ Responsif ============ */
+@media(max-width:900px){
+  main{grid-template-columns:1fr;grid-template-rows:40vh 1fr}
+  #map{order:-1}
+  aside{border-right:0;border-top:1px solid var(--line)}
+  nav{display:none;position:absolute;right:.8rem;top:calc(100% + 8px);flex-direction:column;background:#fff;padding:.4rem;border-radius:14px;box-shadow:var(--shadow-lg);min-width:200px}
+  nav.open{display:flex}
+  #menu-btn{display:grid}
+  .brand small{display:none}
+  .seg button i{display:none}
+  .leaflet-routing-container{display:none}
+  #route-bar{max-width:calc(100% - 24px)}
+  #chat-bubble{bottom:14px;right:14px}
+  #chat-container{position:fixed;inset:auto 8px 80px 8px;width:auto;height:min(72vh,560px)}
+  #chat-btn .lbl-t{display:none}
+  #chat-btn{padding:0;width:56px}
 }
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
+<div id="topbar" aria-hidden="true"></div>
+
 <header>
-  <h1>CariSehat</h1>
-  <nav>
-    <a href="/sparql">SPARQL Playground</a>
-    <a href="/data/hospitals.rdf">Data RDF</a>
-    <a href="/docs" target="_blank">API Docs</a>
+  <a class="brand" href="/" aria-label="CariSehat, beranda">
+    <span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M9.5 3h5v6.5H21v5h-6.5V21h-5v-6.5H3v-5h6.5z"/></svg></span>
+    <span><h1>Cari<span>Sehat</span></h1><small>Rumah sakit se-Sumatera Utara</small></span>
+  </a>
+  <button id="menu-btn" aria-label="Buka menu" aria-expanded="false" aria-controls="nav">&#9776;</button>
+  <nav id="nav" aria-label="Menu utama">
+    <a href="/sparql"><svg class="i" viewBox="0 0 24 24"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13.5 6l-3 12"/></svg>SPARQL Playground</a>
+    <a href="/data/hospitals.rdf"><svg class="i" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="8" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8.2 7l7.6.7M7.2 8.2l3.8 7.8M16.8 10l-3.6 6"/></svg>Data RDF</a>
+    <a href="/docs" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8zM14 3v5h5M9 13h6M9 17h4"/></svg>API Docs</a>
   </nav>
 </header>
 <div class="ulos" aria-hidden="true"></div>
+
 <main>
   <aside>
     <form class="filters" onsubmit="return false" role="search">
-      <label>Cari rumah sakit
-        <input id="q" type="search" placeholder="Nama atau alamat, mis. Adam Malik">
-      </label>
+      <div class="search">
+        <svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Cari nama atau alamat, mis. Adam Malik" aria-label="Cari rumah sakit" autocomplete="off">
+        <kbd aria-hidden="true">/</kbd>
+      </div>
       <div class="row">
         <label>Kabupaten/kota <select id="kab"><option value="">Semua Wilayah</option></select></label>
         <label>Layanan <select id="lay"><option value="">Semua Layanan</option></select></label>
       </div>
-      <div class="row">
-        <label>Kelas <select id="kelas"><option value="">Semua Kelas</option><option>A</option><option>B</option><option>C</option><option>D</option></select></label>
-        <label>Jenis <select id="jenis"><option value="">Semua Jenis</option><option>Umum</option><option>Khusus</option></select></label>
+      <div class="row" style="grid-template-columns:1fr">
+        <div class="lbl" id="lbl-kelas">Kelas rumah sakit
+          <div class="seg" role="group" aria-labelledby="lbl-kelas" id="seg-kelas">
+            <button type="button" data-v="" aria-pressed="true">Semua</button>
+            <button type="button" data-v="A" aria-pressed="false" style="--c:var(--kA)" title="Kelas A: subspesialis luas"><i></i>A</button>
+            <button type="button" data-v="B" aria-pressed="false" style="--c:var(--kB)" title="Kelas B: spesialis lengkap"><i></i>B</button>
+            <button type="button" data-v="C" aria-pressed="false" style="--c:var(--kC)" title="Kelas C: spesialis dasar"><i></i>C</button>
+            <button type="button" data-v="D" aria-pressed="false" style="--c:var(--kD)" title="Kelas D: pelayanan dasar"><i></i>D</button>
+          </div>
+        </div>
       </div>
+      <label>Jenis
+        <select id="jenis"><option value="">Semua Jenis</option><option>Umum</option><option>Khusus</option></select>
+      </label>
     </form>
-    <div id="status" aria-live="polite"></div>
-    <section id="detail" aria-live="polite"></section>
-    <ul id="list"></ul>
+
+    <div class="bar">
+      <div id="status" aria-live="polite"></div>
+      <button class="link-btn" id="reset" type="button">Reset filter</button>
+      <select id="sort" aria-label="Urutkan hasil">
+        <option value="">Urutan bawaan</option>
+        <option value="nama">Nama A-Z</option>
+        <option value="kelas">Kelas A-D</option>
+      </select>
+    </div>
+    <ul id="list" aria-label="Daftar rumah sakit"></ul>
+
+    <section id="detail" aria-live="polite" aria-label="Detail rumah sakit"></section>
   </aside>
-  <div id="map" role="region" aria-label="Peta rumah sakit"></div>
+
+  <div id="map-wrap" style="position:relative;min-height:0;display:flex">
+    <div id="map" role="region" aria-label="Peta rumah sakit" style="flex:1"></div>
+    <div id="route-bar" role="status">
+      <div class="rb-info"><small>Rute ke</small><strong id="rb-name"></strong></div>
+      <div class="rb-val" id="rb-val"></div>
+      <button class="btn btn-ghost" id="rb-steps" type="button" title="Tampilkan/sembunyikan petunjuk arah">Langkah</button>
+      <button class="btn btn-ulos" id="rb-clear" type="button" aria-label="Hapus rute">&times;</button>
+    </div>
+    <div id="map-loading" role="status"><div><span class="spin"></span><span id="map-loading-t">Memuat...</span></div></div>
+  </div>
 </main>
 
-<!-- Floating AI Chatbot Assistant -->
+<div id="toasts" aria-live="polite"></div>
+
+<!-- Asisten AI -->
 <div id="chat-bubble">
-  <button id="chat-btn" title="Tanya Asisten AI CariSehat">💬</button>
-  <div id="chat-container">
+  <button id="chat-btn" aria-expanded="false" aria-controls="chat-container" title="Tanya Asisten CariSehat">
+    <svg class="i" viewBox="0 0 24 24" style="stroke-width:1.8"><path d="M21 12a8 8 0 01-11.6 7.1L4 20l1.1-4.6A8 8 0 1121 12z"/><path d="M9 11h.01M12.5 11h.01M16 11h.01" stroke-width="2.6"/></svg>
+    <span class="lbl-t">Tanya Asisten</span>
+    <span class="dot" aria-hidden="true"></span>
+  </button>
+  <div id="chat-container" role="dialog" aria-label="Asisten CariSehat">
     <div id="chat-header">
-      <span>🏥 Asisten CariSehat</span>
-      <button onclick="toggleChat()">&times;</button>
+      <span class="av" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M9.5 3h5v6.5H21v5h-6.5V21h-5v-6.5H3v-5h6.5z"/></svg></span>
+      <span>
+        <b>Asisten CariSehat</b>
+        <small id="chat-status-label">Web Semantik + AI</small>
+      </span>
+      <span id="ai-badge" title="Didukung Google Gemini AI" style="margin-left:.4rem;font-size:.62rem;font-weight:800;background:rgba(255,255,255,.18);border-radius:99px;padding:.1rem .5rem;letter-spacing:.03em;display:none">✦ AI</span>
+      <button id="chat-close" aria-label="Tutup asisten">&times;</button>
     </div>
+    <div id="suggest" aria-label="Contoh pertanyaan"></div>
     <deep-chat
       id="chat-element"
-      style="width:100%;height:100%;border:none;font-family:inherit"
+      style="width:100%;border:none;font-family:inherit"
       request='{"url": "/api/chat", "method": "POST"}'
-      introMessage='{"text": "Halo! Saya asisten semantik CariSehat. Silakan tanyakan informasi rumah sakit se-Sumatera Utara!"}'
+      introMessage='{"text": "Halo! Saya asisten CariSehat 🏥\n\nSaya bisa membantu kamu menemukan rumah sakit di Sumatera Utara berdasarkan lokasi, kelas, spesialisasi, dan fasilitas.\n\nCoba tanya sesuatu! 👇"}'
       textInput='{"placeholder": {"text": "Tanya RS, misal: RS kelas A di Medan..."}}'>
     </deep-chat>
   </div>
 </div>
 
-<!-- Libraries Leaflet & Plugins -->
+<!-- Leaflet & Plugins -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.79.0/dist/L.Control.Locate.min.js"></script>
 <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
 
 <script>
+/* ============ Util & state ============ */
 const API_BASE = '';
-let items = [], markers = {}, mock = false;
-let userCoords = null, routingControl = null;
-
-const COL = {A:'#B3262E',B:'#1F6F8B',C:'#3C8D6E',D:'#8A8F94'};
-const $ = s => document.querySelector(s);
+const COL  = {A:'#B3262E', B:'#1F6F8B', C:'#2F7A5D', D:'#6B7479'};
+const DESC = {A:'Subspesialis luas', B:'Spesialis lengkap', C:'Spesialis dasar', D:'Pelayanan dasar'};
+const $  = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const colorOf = k => COL[k] || COL.D;
 
-// Inisialisasi Peta Leaflet
-const map = L.map('map').setView([2.2, 99.0], 7);
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; kontributor OpenStreetMap'}).addTo(map);
-const cluster = L.markerClusterGroup().addTo(map);
+const IC = {
+  pin:  '<svg class="i" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 005 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
+  phone:'<svg class="i" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>',
+  web:  '<svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg>',
+  route:'<svg class="i" viewBox="0 0 24 24"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h7a3 3 0 000-6H9a3 3 0 010-6h7"/></svg>',
+  graph:'<svg class="i" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="8" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8.2 7l7.6.7M7.2 8.2l3.8 7.8M16.8 10l-3.6 6"/></svg>',
+  file: '<svg class="i" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8zM14 3v5h5"/></svg>',
+  back: '<svg class="i" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>',
+  alert:'<svg class="i" viewBox="0 0 24 24"><path d="M12 8v5M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>'
+};
 
-// Plugin 1: Tombol GPS Lokasi Saya (Leaflet Locate)
-const locateControl = L.control.locate({
-  position: 'topleft',
-  flyTo: true,
-  strings: { title: "Cari lokasi saya saat ini" },
-  locateOptions: { enableHighAccuracy: true }
-}).addTo(map);
+let items = [], markers = {}, error = false, loading = false;
+let kelas = '', sortBy = '', selectedId = null;
+let userCoords = null, routingControl = null, activeCtl = null;
 
-map.on('locationfound', e => {
-  userCoords = [e.latitude, e.longitude];
+/* ============ Toast, progress ============ */
+function toast(msg, type){
+  const t = document.createElement('div');
+  t.className = 'toast' + (type === 'err' ? ' err' : '');
+  t.innerHTML = (type === 'err' ? IC.alert : '') + '<span>' + esc(msg) + '</span>';
+  $('#toasts').appendChild(t);
+  setTimeout(() => t.remove(), 4500);
+}
+let topT;
+function progress(on){
+  const b = $('#topbar');
+  clearTimeout(topT);
+  if(on){ b.classList.add('on'); b.style.width = '35%'; topT = setTimeout(() => b.style.width = '75%', 400); }
+  else  { b.style.width = '100%'; topT = setTimeout(() => { b.classList.remove('on'); b.style.width = '0'; }, 300); }
+}
+
+/* ============ Peta ============ */
+const map = L.map('map', {zoomControl:true}).setView([2.2, 99.0], 7);
+
+// Tile Layers: OSM (default) & Google Maps (jika API key tersedia)
+const osmLayer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom:19, attribution:'&copy; kontributor <a href="https://openstreetmap.org">OpenStreetMap</a>'
+});
+const gmRoadLayer = L.tileLayer('https://mt{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+  subdomains:['0','1','2','3'], maxZoom:20, attribution:'&copy; <a href="https://maps.google.com">Google Maps</a>'
+});
+const gmSatLayer = L.tileLayer('https://mt{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
+  subdomains:['0','1','2','3'], maxZoom:20, attribution:'&copy; <a href="https://maps.google.com">Google Maps</a>'
 });
 
-// Legenda Warna Kelas RS
+// Mulai dengan OSM; akan diganti ke Google Maps jika API key tersedia
+osmLayer.addTo(map);
+
+// Ambil konfigurasi Maps dari backend & aktifkan layer switcher
+(async () => {
+  try {
+    const cfg = await fetch('/api/config/maps').then(r => r.json());
+    const baseMaps = { 'OpenStreetMap': osmLayer };
+    if (cfg.enabled) {
+      baseMaps['Google Maps'] = gmRoadLayer;
+      baseMaps['Google Satelit'] = gmSatLayer;
+      // Ganti ke Google Maps sebagai default jika key tersedia
+      map.removeLayer(osmLayer);
+      gmRoadLayer.addTo(map);
+    }
+    L.control.layers(baseMaps, {}, {position:'topright', collapsed:false}).addTo(map);
+  } catch(e) {
+    // Fallback: hanya OSM + switcher
+    L.control.layers({'OpenStreetMap': osmLayer}, {}, {position:'topright', collapsed:false}).addTo(map);
+  }
+})();
+const cluster = L.markerClusterGroup({showCoverageOnHover:false, maxClusterRadius:48}).addTo(map);
+
+L.control.locate({
+  position:'topleft', flyTo:true,
+  strings:{title:'Cari lokasi saya saat ini'},
+  locateOptions:{enableHighAccuracy:true}
+}).addTo(map);
+map.on('locationfound', e => { userCoords = [e.latitude, e.longitude]; });
+map.on('locationerror', () => toast('Lokasi tidak dapat ditemukan. Periksa izin GPS browser Anda.', 'err'));
+
 const legend = L.control({position:'bottomright'});
 legend.onAdd = () => {
-  const d = L.DomUtil.create('div','legend');
-  d.innerHTML = Object.entries(COL).map(([k,c]) => `<div><i style="background:${c}"></i>Kelas ${k}</div>`).join('');
+  const d = L.DomUtil.create('div', 'legend');
+  d.innerHTML = '<h4>Kelas RS</h4>' + Object.entries(COL).map(([k,c]) =>
+    `<div><i style="background:${c}"></i><b>${k}</b> <span>${DESC[k]}</span></div>`).join('');
+  L.DomEvent.disableClickPropagation(d);
   return d;
 };
 legend.addTo(map);
 
-// Ambil Pilihan Filter Dinamis dari Database Semantik (Fuseki)
+/* ============ Filter & pencarian ============ */
 async function loadFilterOptions(){
   try {
     const res = await fetch(`${API_BASE}/api/filters`);
     if(!res.ok) return;
     const data = await res.json();
-    if(data.kabkota && data.kabkota.length){
-      $('#kab').innerHTML = '<option value="">Semua Wilayah</option>' + 
-        data.kabkota.map(k => `<option value="${esc(k)}">${esc(k)}</option>`).join('');
-    }
-    if(data.layanan && data.layanan.length){
-      $('#lay').innerHTML = '<option value="">Semua Layanan</option>' + 
-        data.layanan.map(l => `<option value="${esc(l)}">${esc(l)}</option>`).join('');
-    }
-  } catch(e) {
-    console.warn("Gagal memuat filter dinamis, fallback default:", e);
-  }
+    if(data.kabkota && data.kabkota.length)
+      $('#kab').innerHTML = '<option value="">Semua Wilayah</option>' + data.kabkota.map(k => `<option value="${esc(k)}">${esc(k)}</option>`).join('');
+    if(data.layanan && data.layanan.length)
+      $('#lay').innerHTML = '<option value="">Semua Layanan</option>' + data.layanan.map(l => `<option value="${esc(l)}">${esc(l)}</option>`).join('');
+  } catch(e){ console.warn('Gagal memuat filter dinamis, fallback default:', e); }
 }
 
-// Pencarian Rumah Sakit
+let ctrl = null;
 async function search(){
   const p = new URLSearchParams({
-    q: $('#q').value.trim(),
-    kelas: $('#kelas').value,
-    jenis: $('#jenis').value,
-    kabkota: $('#kab').value,
-    layanan: $('#lay').value,
-    limit: 500
+    q: $('#q').value.trim(), kelas, jenis: $('#jenis').value,
+    kabkota: $('#kab').value, layanan: $('#lay').value, limit: 500
   });
   [...p].forEach(([k,v]) => { if(!v) p.delete(k); });
-  
+
+  if(ctrl) ctrl.abort();
+  ctrl = new AbortController();
+  const my = ctrl, to = setTimeout(() => my.abort(), 8000);
+  loading = true; error = false; renderStatus(); renderSkeleton(); progress(true);
   try{
-    const r = await fetch(`${API_BASE}/api/search?${p}`, {signal:AbortSignal.timeout(5000)});
+    const r = await fetch(`${API_BASE}/api/search?${p}`, {signal: my.signal});
     if(!r.ok) throw new Error(r.status);
-    items = (await r.json()).items;
-    mock = false;
-  } catch(e) {
-    console.error("API Error, pastikan Fuseki & backend aktif:", e);
-    items = [];
-    mock = true;
-  }
-  render();
+    items = (await r.json()).items || [];
+  } catch(e){
+    if(my !== ctrl) return;              // dibatalkan oleh pencarian yang lebih baru
+    console.error('API Error, pastikan Fuseki & backend aktif:', e);
+    items = []; error = true;
+  } finally { clearTimeout(to); }
+  loading = false; progress(false);
+  render(true);
 }
 
-function render(){
+function hasFilter(){ return !!($('#q').value.trim() || kelas || $('#jenis').value || $('#kab').value || $('#lay').value); }
+
+function sorted(){
+  const a = [...items];
+  if(sortBy === 'nama')  a.sort((x,y) => String(x.nama).localeCompare(String(y.nama), 'id'));
+  if(sortBy === 'kelas') a.sort((x,y) => String(x.kelas||'Z').localeCompare(String(y.kelas||'Z')) || String(x.nama).localeCompare(String(y.nama), 'id'));
+  return a;
+}
+
+/* ============ Render ============ */
+function renderStatus(){
   const st = $('#status');
-  st.className = mock ? 'mock' : '';
-  st.textContent = `${items.length} rumah sakit ditemukan` + (mock ? ' (Koneksi ke backend/Fuseki terputus)' : '');
-  
-  $('#list').innerHTML = items.length ? items.map(h => `<li><button data-id="${esc(h.id)}">
-      <strong>${esc(h.nama)}</strong>
-      <span><span class="badge" style="background:${COL[h.kelas]||COL.D}">${esc(h.kelas)}</span><span class="sub">${esc(h.jenis)}</span></span>
-      <span class="sub">${esc(h.kabkota)}, ${esc(h.alamat)}</span></button></li>`).join('')
-    : '<li class="empty">Tidak ada rumah sakit yang cocok dengan filter yang dipilih.</li>';
-  
-  cluster.clearLayers();
-  markers = {};
+  st.className = error ? 'err' : '';
+  if(loading) st.innerHTML = '<span class="spin"></span><span>Mencari rumah sakit...</span>';
+  else if(error) st.innerHTML = IC.alert + '<span>Koneksi ke backend/Fuseki terputus</span>';
+  else st.innerHTML = `<span><b>${items.length}</b> rumah sakit ditemukan</span>`;
+  $('#reset').classList.toggle('show', hasFilter());
+}
+
+function renderSkeleton(){
+  $('#list').innerHTML = Array.from({length:5}, () => '<li><div class="sk"></div></li>').join('');
+}
+
+const emptyArt = '<svg class="art" viewBox="0 0 96 96" fill="none" aria-hidden="true"><rect x="14" y="30" width="68" height="52" rx="8" fill="#EAF3F6"/><path d="M42 30V22a6 6 0 016-6 6 6 0 016 6v8" stroke="#1F6F8B" stroke-width="3"/><path d="M44 49h8M48 45v8" stroke="#B3262E" stroke-width="4" stroke-linecap="round"/><path d="M14 70h68" stroke="#C8922E" stroke-width="3" stroke-dasharray="6 4"/></svg>';
+
+function render(fit){
+  renderStatus();
+  const list = $('#list');
+  if(error){
+    list.innerHTML = `<li class="empty">${emptyArt}<h3>Server belum terhubung</h3><p>Pastikan <code>docker compose up</code> berjalan, lalu coba lagi.</p><button class="btn btn-primary" id="retry" type="button">Coba lagi</button></li>`;
+  } else if(!items.length){
+    list.innerHTML = `<li class="empty">${emptyArt}<h3>Tidak ada hasil</h3><p>Tidak ada rumah sakit yang cocok dengan filter yang dipilih. Coba ubah kata kunci atau reset filter.</p></li>`;
+  } else {
+    list.innerHTML = sorted().map((h, i) => {
+      const lay = h.layanan || [], fas = h.fasilitas || [];
+      const all = [...lay, ...fas], shown = all.slice(0, 3);
+      const tags = shown.length
+        ? `<div class="tags" aria-label="Layanan dan fasilitas">${shown.map(t => `<span class="tag">${esc(t)}</span>`).join('')}${all.length > 3 ? `<span class="tag more">+${all.length - 3}</span>` : ''}</div>` : '';
+      return `<li><article class="card${h.id === selectedId ? ' on' : ''}" data-id="${esc(h.id)}" style="--c:${colorOf(h.kelas)};animation-delay:${Math.min(i, 8) * 25}ms">
+        <button class="card-main" data-act="select" data-id="${esc(h.id)}">
+          <span class="card-top"><strong>${esc(h.nama)}</strong><span class="badge" title="${esc(DESC[h.kelas] || 'Kelas tidak diketahui')}">${esc(h.kelas || '?')}</span></span>
+          <span class="meta"><span>${esc(h.jenis)}</span><span>&bull;</span><span>${esc(h.kabkota)}</span></span>
+          <span class="addr">${IC.pin}<span>${esc(h.alamat)}</span></span>
+          ${tags}
+        </button>
+        <div class="card-actions">
+          <a class="btn btn-ghost grow" href="${API_BASE}/rs/${encodeURIComponent(h.id)}" target="_blank" rel="noopener">${IC.graph}Detail Semantik</a>
+          ${h.lat != null ? `<button class="btn btn-primary" data-act="route" data-id="${esc(h.id)}" type="button">${IC.route}Rute</button>` : ''}
+        </div>
+      </article></li>`;
+    }).join('');
+  }
+
+  cluster.clearLayers(); markers = {};
   items.forEach(h => {
     if(h.lat == null || h.lon == null) return;
-    const m = L.circleMarker([h.lat,h.lon],{radius:9,color:'#fff',weight:2,fillColor:COL[h.kelas]||COL.D,fillOpacity:1});
-    m.bindTooltip(esc(h.nama));
-    m.on('click', () => select(h.id));
-    cluster.addLayer(m);
-    markers[h.id] = m;
+    const m = L.circleMarker([h.lat, h.lon], {radius:9, color:'#fff', weight:2, fillColor:colorOf(h.kelas), fillOpacity:1});
+    m.bindTooltip(esc(h.nama), {direction:'top', offset:[0,-6]});
+    m.on('click', () => select(h.id, {fromMap:true}));
+    cluster.addLayer(m); markers[h.id] = m;
   });
-  
-  const pts = items.filter(h => h.lat != null).map(h => [h.lat,h.lon]);
-  if(pts.length) map.fitBounds(pts,{padding:[40,40],maxZoom:12});
-  $('#detail').classList.remove('show');
+  if(selectedId && markers[selectedId]) styleMarker(selectedId, true);
+
+  if(fit && !routingControl){
+    const pts = items.filter(h => h.lat != null).map(h => [h.lat, h.lon]);
+    if(pts.length) map.fitBounds(pts, {padding:[40,40], maxZoom:12});
+  }
+  if(!items.find(h => h.id === selectedId)) closeDetail();
 }
 
-function select(id){
+function styleMarker(id, on){
+  const m = markers[id]; if(!m) return;
+  const h = items.find(x => x.id === id);
+  m.setStyle(on ? {radius:13, weight:4, color:'#14232B'} : {radius:9, weight:2, color:'#fff'});
+  if(on) m.bringToFront();
+  if(!on && h) m.setStyle({fillColor:colorOf(h.kelas)});
+}
+
+/* ============ Detail ============ */
+function telHref(t){ const n = String(t).split(/[;,/]/)[0].replace(/[^\d+]/g, ''); return n ? 'tel:' + n : ''; }
+
+function select(id, opt = {}){
   const h = items.find(x => x.id === id);
   if(!h) return;
-  document.querySelectorAll('#list button').forEach(b => b.classList.toggle('on', b.dataset.id === id));
-  
-  const chips = a => (a||[]).map(x => `<span class="chip">${esc(x)}</span>`).join('');
+  if(selectedId && selectedId !== id) styleMarker(selectedId, false);
+  selectedId = id; styleMarker(id, true);
+  document.querySelectorAll('.card').forEach(c => c.classList.toggle('on', c.dataset.id === id));
+  if(opt.fromMap){
+    const c = document.querySelector(`.card[data-id="${CSS.escape(id)}"]`);
+    if(c) c.scrollIntoView({block:'nearest', behavior:'smooth'});
+  }
+
+  const tags = a => (a || []).map(x => `<span class="chip lay">${esc(x)}</span>`).join('');
+  const lay = h.layanan || [], fas = h.fasilitas || [];
+  const tel = h.telepon ? telHref(h.telepon) : '';
+  const rid = encodeURIComponent(h.id);
   const d = $('#detail');
-  d.innerHTML = `<button class="x" aria-label="Tutup" onclick="$('#detail').classList.remove('show')">&times;</button>
-    <h2>${esc(h.nama)}</h2>
-    <p><span class="badge" style="background:${COL[h.kelas]||COL.D}">${esc(h.kelas)}</span>${esc(h.jenis)}, ${esc(h.kabkota)}</p>
-    <p>${esc(h.alamat)}</p>
-    ${h.telepon ? `<p>📞 <strong>Telepon:</strong> ${esc(h.telepon)}</p>` : ''}
-    <div class="chips" aria-label="Layanan">${chips(h.layanan)}</div>
-    <div class="chips" aria-label="Fasilitas">${chips(h.fasilitas)}</div>
-    
-    ${h.lat != null ? `<button class="btn-route" onclick="ruteKe(${h.lat}, ${h.lon}, '${esc(h.nama)}')">🚗 Petunjuk Rute ke Sini</button>` : ''}
-    
-    <div class="links">
-      <a href="${API_BASE}/rs/${encodeURIComponent(h.id)}" target="_blank">Halaman Semantik (RDFa)</a>
-      <a href="${API_BASE}/rs/${encodeURIComponent(h.id)}.rdf">Unduh RDF/XML</a>
-      <a href="${API_BASE}/rs/${encodeURIComponent(h.id)}.ttl">Unduh Turtle</a>
-      ${h.website ? `<a href="${esc(h.website)}" target="_blank" rel="noopener">Situs Web</a>` : ''}
+  d.style.setProperty('--c', colorOf(h.kelas));
+  d.innerHTML = `
+    <div class="d-head"><button class="d-back" id="d-back" type="button">${IC.back}Kembali ke daftar</button></div>
+    <div class="d-body">
+      <div class="d-hero">
+        <span class="d-pills"><span class="badge">Kelas ${esc(h.kelas || '?')}</span><span class="pill">${esc(h.jenis)}</span></span>
+        <h2>${esc(h.nama)}</h2>
+        <p>${esc(h.kabkota)}, Sumatera Utara</p>
+      </div>
+      <div class="d-actions">
+        ${h.lat != null ? `<button class="btn btn-primary" data-act="route" data-id="${esc(h.id)}" type="button">${IC.route}Petunjuk Rute</button>` : '<span></span>'}
+        ${tel ? `<a class="btn btn-ghost" href="${esc(tel)}">${IC.phone}Telepon</a>` : ''}
+      </div>
+      <div class="info">
+        <div>${IC.pin}<span><small>Alamat</small>${esc(h.alamat)}</span></div>
+        ${h.telepon ? `<div>${IC.phone}<span><small>Telepon</small>${esc(h.telepon)}</span></div>` : ''}
+        ${h.website ? `<div>${IC.web}<span><small>Situs web</small><a href="${esc(h.website)}" target="_blank" rel="noopener">${esc(h.website)}</a></span></div>` : ''}
+      </div>
+      <div class="sec"><h3>Layanan</h3>${lay.length ? `<div class="chips" aria-label="Layanan">${tags(lay)}</div>` : '<p class="none">Data layanan belum tersedia.</p>'}</div>
+      <div class="sec"><h3>Fasilitas</h3>${fas.length ? `<div class="chips" aria-label="Fasilitas">${fas.map(x => `<span class="chip">${esc(x)}</span>`).join('')}</div>` : '<p class="none">Data fasilitas belum tersedia.</p>'}</div>
+      <div class="sec"><h3>Data semantik</h3>
+        <div class="sem">
+          <a href="${API_BASE}/rs/${rid}" target="_blank" rel="noopener">${IC.graph}Halaman Semantik<em>RDFa</em></a>
+          <a href="${API_BASE}/rs/${rid}.rdf">${IC.file}Unduh RDF/XML<em>.rdf</em></a>
+          <a href="${API_BASE}/rs/${rid}.ttl">${IC.file}Unduh Turtle<em>.ttl</em></a>
+        </div>
+      </div>
     </div>`;
   d.classList.add('show');
-  if(h.lat != null) map.setView([h.lat,h.lon],15);
+  if(h.lat != null && !routingControl) map.setView([h.lat, h.lon], 15);
+  else if(h.lat != null) map.panTo([h.lat, h.lon]);
 }
 
-// Plugin 2: Buat Rute Jalan ke Rumah Sakit (Leaflet Routing Machine)
+function closeDetail(){
+  $('#detail').classList.remove('show');
+  if(selectedId) styleMarker(selectedId, false);
+  selectedId = null;
+  document.querySelectorAll('.card.on').forEach(c => c.classList.remove('on'));
+}
+
+/* ============ Rute (Leaflet Routing Machine, bahasa Indonesia) ============ */
+L.Routing.Localization = L.Routing.Localization || {};
+L.Routing.Localization.id = {
+  directions:{N:'utara',NE:'timur laut',E:'timur',SE:'tenggara',S:'selatan',SW:'barat daya',W:'barat',NW:'barat laut',
+    SlightRight:'serong kanan',Right:'kanan',SharpRight:'kanan tajam',SlightLeft:'serong kiri',Left:'kiri',SharpLeft:'kiri tajam',Uturn:'putar balik'},
+  instructions:{
+    Head:['Mulai ke arah {dir}',' di {road}'], Continue:['Lurus ke arah {dir}',' di {road}'],
+    SlightRight:['Serong kanan',' ke {road}'], Right:['Belok kanan',' ke {road}'], SharpRight:['Belok kanan tajam',' ke {road}'],
+    TurnAround:['Putar balik'], SharpLeft:['Belok kiri tajam',' ke {road}'], Left:['Belok kiri',' ke {road}'], SlightLeft:['Serong kiri',' ke {road}'],
+    WaypointReached:['Titik tujuan tercapai'], Roundabout:['Ambil bundaran, keluar ke-{exit}',' menuju {road}'],
+    DestinationReached:['Anda telah tiba di tujuan'], Fork:['Di pertigaan, ambil arah {modifier}',' menuju {road}'],
+    Merge:['Bergabung ke arah {modifier}',' ke {road}'], OnRamp:['Masuk jalur ke arah {modifier}',' menuju {road}'],
+    OffRamp:['Keluar jalur ke arah {modifier}',' menuju {road}'], EndOfRoad:['Di ujung jalan, belok {modifier}',' ke {road}'], Onto:['Masuk ke {road}']
+  },
+  ui:{startPlaceholder:'Lokasi Anda', viaPlaceholder:'Via {viaNumber}', endPlaceholder:'Rumah sakit'}
+};
+const FormatterID = L.Routing.Formatter.extend({ formatOrder: n => String(n) });
+
+function fmtDur(s){
+  const m = Math.round(s / 60);
+  return m < 60 ? `${m} mnt` : `${Math.floor(m / 60)} j ${m % 60} mnt`;
+}
+function fmtDist(m){
+  return m < 1000 ? `${Math.round(m)} m` : `${(m / 1000).toLocaleString('id-ID', {maximumFractionDigits:1})} km`;
+}
+function mapBusy(on, text){
+  $('#map-loading').classList.toggle('show', on);
+  if(text) $('#map-loading-t').textContent = text;
+}
+
+function clearRoute(){
+  if(routingControl){ map.removeControl(routingControl); routingControl = null; }
+  $('#route-bar').classList.remove('show');
+}
+
 function ruteKe(latTujuan, lonTujuan, namaTujuan){
   const hitung = (latAsal, lonAsal) => {
-    if(routingControl) map.removeControl(routingControl);
+    clearRoute();
+    mapBusy(true, 'Menghitung rute...');
     routingControl = L.Routing.control({
-      waypoints: [
-        L.latLng(latAsal, lonAsal),
-        L.latLng(latTujuan, lonTujuan)
-      ],
-      routeWhileDragging: false,
-      language: 'id',
-      showAlternatives: false
+      waypoints:[L.latLng(latAsal, lonAsal), L.latLng(latTujuan, lonTujuan)],
+      routeWhileDragging:false, addWaypoints:false, draggableWaypoints:false, fitSelectedRoutes:true, showAlternatives:false,
+      language:'id',
+      formatter:new FormatterID({language:'id', units:'metric', decimalSeparator:',', roundingSensitivity:1,
+        unitNames:{meters:'m', kilometers:'km', yards:'yd', miles:'mi', hours:'j', minutes:'mnt', seconds:'dtk'}}),
+      summaryTemplate:'<h2>Rute tercepat</h2><h3>{distance} &middot; {time}</h3>',
+      lineOptions:{
+        styles:[{color:'#fff', opacity:.95, weight:11}, {color:'#B3262E', opacity:1, weight:6}, {color:'#fff', opacity:.55, weight:1.5, dashArray:'1 12'}],
+        extendToWaypoints:true, missingRouteTolerance:0
+      },
+      createMarker:(i, wp) => L.marker(wp.latLng, {
+        icon: i === 0 ? L.divIcon({className:'', html:'<div class="me"></div>', iconSize:[18,18], iconAnchor:[9,9]})
+                      : L.divIcon({className:'', html:'<div class="pin"></div>', iconSize:[30,30], iconAnchor:[6,30]}),
+        keyboard:false, interactive:false
+      })
     }).addTo(map);
+
+    routingControl.on('routesfound', e => {
+      mapBusy(false);
+      const s = e.routes[0].summary;
+      $('#rb-name').textContent = namaTujuan;
+      $('#rb-val').textContent = `${fmtDist(s.totalDistance)} · ${fmtDur(s.totalTime)}`;
+      $('#route-bar').classList.add('show');
+      if(routingControl.hide && window.matchMedia('(max-width:900px)').matches) routingControl.hide();
+    });
+    routingControl.on('routingerror', () => {
+      mapBusy(false); clearRoute();
+      toast('Rute tidak dapat dihitung saat ini. Coba lagi beberapa saat.', 'err');
+    });
   };
 
-  if(userCoords) {
-    hitung(userCoords[0], userCoords[1]);
-  } else {
-    navigator.geolocation.getCurrentPosition(
-      pos => {
-        userCoords = [pos.coords.latitude, pos.coords.longitude];
-        hitung(userCoords[0], userCoords[1]);
-      },
-      err => {
-        alert("Harap izinkan akses lokasi (GPS) pada browser Anda untuk membuat rute otomatis.");
-      }
-    );
-  }
+  if(userCoords) return hitung(userCoords[0], userCoords[1]);
+  if(!navigator.geolocation) return toast('Browser Anda tidak mendukung lokasi (GPS).', 'err');
+  mapBusy(true, 'Menentukan lokasi Anda...');
+  navigator.geolocation.getCurrentPosition(
+    pos => { userCoords = [pos.coords.latitude, pos.coords.longitude]; hitung(userCoords[0], userCoords[1]); },
+    err => {
+      mapBusy(false);
+      toast(err.code === 1 ? 'Izinkan akses lokasi (GPS) pada browser agar rute bisa dibuat.' : 'Lokasi Anda belum bisa ditentukan. Coba lagi.', 'err');
+    },
+    {enableHighAccuracy:true, timeout:12000}
+  );
 }
 
-// Chatbot Toggle
-function toggleChat(){
-  $('#chat-container').classList.toggle('open');
+function routeById(id){
+  const h = items.find(x => x.id === id);
+  if(h && h.lat != null) ruteKe(h.lat, h.lon, h.nama);
 }
-$('#chat-btn').addEventListener('click', toggleChat);
 
-// Event Listeners
+/* ============ Chatbot ============ */
+const SUGGEST = [
+  '🏥 RS kelas A di Medan',
+  '🧠 Rumah sakit jiwa Sumut',
+  '👁️ RS Mata di Medan',
+  '📍 RS di Deli Serdang',
+  '🏨 RS Khusus Ibu dan Anak',
+  '🌐 Info kota Medan (DBpedia)'
+];
+
+function toggleChat(force){
+  const b = $('#chat-bubble');
+  const open = typeof force === 'boolean' ? force : !b.classList.contains('open');
+  b.classList.toggle('open', open);
+  $('#chat-btn').setAttribute('aria-expanded', open);
+  if(open) $('#chat-btn .dot').style.display = 'none';
+}
+
+$('#suggest').innerHTML = SUGGEST.map(s => `<button type="button">${esc(s)}</button>`).join('');
+$('#suggest').addEventListener('click', e => {
+  const b = e.target.closest('button'); if(!b) return;
+  const chat = $('#chat-element');
+  // Hapus emoji prefix sebelum dikirim ke chatbot
+  const txt = b.textContent.replace(/^[\u{1F000}-\u{1FFFF}][\s]*/u, '').trim();
+  if(chat.submitUserMessage) chat.submitUserMessage({text: txt});
+});
+
+// Cek apakah Gemini AI aktif, lalu tampilkan badge
+(async () => {
+  try {
+    const r = await fetch('/api/chat', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({text:'__ping__'})
+    });
+    // Badge AI ditampilkan jika backend merespons (Gemini atau rule-based)
+    const badge = $('#ai-badge');
+    if(badge) badge.style.display = 'inline';
+    const statusLbl = $('#chat-status-label');
+    if(statusLbl) statusLbl.textContent = 'AI Helpdesk · Web Semantik';
+  } catch(e) {}
+})();
+
+customElements.whenDefined('deep-chat').then(() => {
+  const c = $('#chat-element');
+  c.chatStyle = {backgroundColor:'#fff', border:'none'};
+  c.inputAreaStyle = {backgroundColor:'#F6F8F9', borderTop:'1px solid #DCE6EA', padding:'8px'};
+  c.messageStyles = {default:{
+    shared:{bubble:{borderRadius:'14px', padding:'10px 13px', fontSize:'14px', lineHeight:'1.6', maxWidth:'88%'}},
+    user:{bubble:{backgroundColor:'#1F6F8B', color:'#fff'}},
+    ai:{bubble:{backgroundColor:'#EAF3F6', color:'#14232B'}}
+  }};
+  c.textInput = {placeholder:{text:'Tanya RS, misal: RS kelas A di Medan...', style:{color:'#5B6E77'}},
+    styles:{container:{backgroundColor:'#fff', border:'1px solid #DCE6EA', borderRadius:'12px', padding:'6px 10px'}}};
+  c.errorMessages = {overrides:{default:'Maaf, asisten tidak dapat dihubungi. Pastikan backend berjalan.'}};
+  // Animasi loading saat menunggu respons
+  c.loadingBubble = {style:{backgroundColor:'#EAF3F6'}};
+});
+
+/* ============ Event ============ */
 let t;
 $('#q').addEventListener('input', () => { clearTimeout(t); t = setTimeout(search, 300); });
-['kab','lay','kelas','jenis'].forEach(i => $('#'+i).addEventListener('change', search));
-$('#list').addEventListener('click', e => { const b = e.target.closest('button'); if(b) select(b.dataset.id); });
+['kab', 'lay', 'jenis'].forEach(i => $('#' + i).addEventListener('change', search));
+$('#sort').addEventListener('change', e => { sortBy = e.target.value; render(false); });
 
-// Inisialisasi awal
+$('#seg-kelas').addEventListener('click', e => {
+  const b = e.target.closest('button'); if(!b) return;
+  kelas = b.dataset.v;
+  document.querySelectorAll('#seg-kelas button').forEach(x => x.setAttribute('aria-pressed', x === b));
+  search();
+});
+$('#reset').addEventListener('click', () => {
+  $('#q').value = ''; ['kab', 'lay', 'jenis'].forEach(i => $('#' + i).value = '');
+  kelas = ''; document.querySelectorAll('#seg-kelas button').forEach(x => x.setAttribute('aria-pressed', x.dataset.v === ''));
+  search();
+});
+
+document.addEventListener('click', e => {
+  const a = e.target.closest('[data-act]');
+  if(a){
+    if(a.dataset.act === 'select') select(a.dataset.id);
+    if(a.dataset.act === 'route') routeById(a.dataset.id);
+    return;
+  }
+  if(e.target.closest('#d-back')) closeDetail();
+  if(e.target.closest('#retry')) search();
+});
+$('#list').addEventListener('mouseover', e => {
+  const c = e.target.closest('.card'); if(!c || c.dataset.id === selectedId) return;
+  const m = markers[c.dataset.id]; if(m) m.setStyle({radius:12});
+});
+$('#list').addEventListener('mouseout', e => {
+  const c = e.target.closest('.card'); if(!c || c.dataset.id === selectedId) return;
+  const m = markers[c.dataset.id]; if(m) m.setStyle({radius:9});
+});
+
+$('#rb-clear').addEventListener('click', clearRoute);
+$('#rb-steps').addEventListener('click', () => {
+  const el = document.querySelector('.leaflet-routing-container');
+  if(!el) return;
+  el.style.display = (getComputedStyle(el).display === 'none') ? 'block' : 'none';
+});
+
+$('#chat-btn').addEventListener('click', () => toggleChat());
+$('#chat-close').addEventListener('click', () => toggleChat(false));
+$('#menu-btn').addEventListener('click', () => {
+  const n = $('#nav'), o = n.classList.toggle('open');
+  $('#menu-btn').setAttribute('aria-expanded', o);
+});
+
+document.addEventListener('keydown', e => {
+  const typing = /INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName) || document.activeElement.tagName === 'DEEP-CHAT';
+  if(e.key === '/' && !typing){ e.preventDefault(); $('#q').focus(); }
+  if(e.key === 'Escape'){
+    if($('#chat-bubble').classList.contains('open')) toggleChat(false);
+    else if($('#detail').classList.contains('show')) closeDetail();
+    $('#nav').classList.remove('open');
+  }
+});
+
+/* ============ Inisialisasi ============ */
+renderSkeleton();
 loadFilterOptions();
 search();
 </script>
