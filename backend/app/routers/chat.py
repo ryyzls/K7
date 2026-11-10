@@ -15,14 +15,24 @@ class ChatPayload(BaseModel):
 
 
 @router.post("/chat")
-async def chat_endpoint(payload: ChatPayload):
+async def chat_endpoint(request: Request, payload: ChatPayload | None = None):
     """Menerima pesan dari Deep-Chat widget dan mengembalikan respons cerdas."""
     user_text = ""
-    if payload.messages and len(payload.messages) > 0:
+    if payload and payload.messages and len(payload.messages) > 0:
         last_msg = payload.messages[-1]
         user_text = last_msg.get("text", "")
-    elif payload.text:
+    elif payload and payload.text:
         user_text = payload.text
+    else:
+        try:
+            body = await request.json()
+            if isinstance(body, dict):
+                if "messages" in body and isinstance(body["messages"], list) and len(body["messages"]) > 0:
+                    user_text = body["messages"][-1].get("text", "")
+                elif "text" in body:
+                    user_text = body.get("text", "")
+        except Exception:
+            pass
 
     bot_reply = await process_chat_message(user_text)
     return {"text": bot_reply}

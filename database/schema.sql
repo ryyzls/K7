@@ -26,3 +26,21 @@ CREATE TABLE rumah_sakit (
   status VARCHAR(10) NOT NULL DEFAULT 'aktif'
 );
 INSERT INTO provinsi (nama) VALUES ('Sumatera Utara');
+
+-- Tabel booking kamar rawat inap (simulasi untuk Tugas Besar)
+CREATE TABLE IF NOT EXISTS booking_kamar (
+  id SERIAL PRIMARY KEY,
+  kode_booking VARCHAR(20) NOT NULL UNIQUE,
+  kode_rs VARCHAR(20) NOT NULL,
+  nama_rs VARCHAR(200) NOT NULL,
+  nama_pasien VARCHAR(100) NOT NULL,
+  no_telp VARCHAR(20) NOT NULL,
+  tanggal_masuk DATE NOT NULL,
+  tanggal_keluar DATE,
+  jenis_kamar VARCHAR(30) NOT NULL CHECK (jenis_kamar IN ('VIP','Kelas I','Kelas II','Kelas III','ICU')),
+  catatan TEXT,
+  status VARCHAR(15) NOT NULL DEFAULT 'menunggu' CHECK (status IN ('menunggu','dikonfirmasi','dibatalkan')),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+CREATE INDEX IF NOT EXISTS idx_booking_kode_rs ON booking_kamar(kode_rs);
+CREATE INDEX IF NOT EXISTS idx_booking_status ON booking_kamar(status);

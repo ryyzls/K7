@@ -9,7 +9,9 @@ from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 from app.config import settings
-from app.routers import api, chat, semantic
+from app.database.connection import engine
+from app.database import models  # noqa: F401 — trigger ORM model registration
+from app.routers import api, booking, chat, semantic
 from app.services.rdf_loader import load_all
 
 log = logging.getLogger("carisehat")
@@ -22,6 +24,8 @@ async def _boot():
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    # Auto-create tabel baru (booking_kamar) tanpa perlu rebuild volume PostgreSQL
+    models.Base.metadata.create_all(engine)
     task = asyncio.create_task(_boot()) if settings.auto_load_rdf else None
     yield
     if task:
@@ -37,6 +41,7 @@ async def fuseki_error(request: Request, exc: httpx.HTTPError):
 
 
 app.include_router(api.router)
+app.include_router(booking.router)
 app.include_router(chat.router)
 app.include_router(semantic.router)
 if Path(settings.frontend_dir).exists():  # harus terakhir: melayani "/" dan file statis

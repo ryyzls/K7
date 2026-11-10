@@ -1,5 +1,7 @@
 """Model ORM awal (SQLAlchemy 2.0). Skema sebenarnya dibuat oleh database/schema.sql; P2 melengkapi."""
-from sqlalchemy import ForeignKey, Numeric, String
+import datetime
+
+from sqlalchemy import DateTime, ForeignKey, Numeric, String, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database.connection import Base
@@ -34,3 +36,23 @@ class RumahSakit(Base):
     longitude: Mapped[float | None] = mapped_column(Numeric(10, 7))
     status: Mapped[str] = mapped_column(String(10), default="aktif")
     kabkota: Mapped[KabupatenKota] = relationship()
+
+
+class BookingKamar(Base):
+    """Model ORM untuk tabel booking_kamar (simulasi pemesanan rawat inap)."""
+    __tablename__ = "booking_kamar"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    kode_booking: Mapped[str] = mapped_column(String(20), unique=True)
+    kode_rs: Mapped[str] = mapped_column(String(20), index=True)
+    nama_rs: Mapped[str] = mapped_column(String(200))
+    nama_pasien: Mapped[str] = mapped_column(String(100))
+    no_telp: Mapped[str] = mapped_column(String(20))
+    tanggal_masuk: Mapped[datetime.date]
+    tanggal_keluar: Mapped[datetime.date | None]
+    jenis_kamar: Mapped[str] = mapped_column(String(30))
+    catatan: Mapped[str | None]
+    status: Mapped[str] = mapped_column(String(15), default="menunggu")
+    created_at: Mapped[datetime.datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )

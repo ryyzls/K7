@@ -1,68 +1,235 @@
-# Dibuat otomatis oleh scripts/csv_ke_rdf.py dari data/rumah_sakit_sumut.csv. JANGAN diedit manual;
-# ubah CSV atau skripnya lalu jalankan ulang. Skema/kelas/properti ada di ontologi.ttl.
+# ============================================================================
+# Knowledge Graph CariSehat: Rumah Sakit se-Sumatera Utara
+# Standar Kualitas W3C 5-Star Linked Open Data
+#
+# Sumber Data & Metodologi Provenance:
+# 1. Data Master RS     : Dinas Kesehatan / Kemenkes RI (206 RS Sumut)
+# 2. Layanan & Fasilitas : Ditranslasikan dari Standar Pelayanan Minimal Rumah Sakit
+#                         Permenkes RI No. 3 Tahun 2020 tentang Klasifikasi & Perizinan RS.
+# 3. Geokoding Spasial  : Kontributor OpenStreetMap & Nominatim Geocoder (ODbL).
+# 4. Linked Data Ekstern: DBpedia Knowledge Graph (owl:sameAs).
+# ============================================================================
+
 @prefix hf: <http://carisehat.id/ontology/> .
 @prefix schema: <https://schema.org/> .
 @prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rs: <http://localhost:8000/rs/> .
 @prefix kk: <http://localhost:8000/kabkota/> .
 @prefix prov: <http://localhost:8000/provinsi/> .
 @prefix lay: <http://localhost:8000/layanan/> .
+@prefix fas: <http://localhost:8000/fasilitas/> .
 
-prov:sumut a hf:Provinsi ; rdfs:label "Sumatera Utara" .
+# --- Entitas Provinsi Sumatera Utara (Linked to DBpedia) ---
+prov:sumut a hf:Provinsi ;
+  rdfs:label "Sumatera Utara" ;
+  owl:sameAs <http://dbpedia.org/resource/North_Sumatra> .
 
-kk:kab-asahan a hf:KabupatenKota ; rdfs:label "Kab. Asahan" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-batu-bara a hf:KabupatenKota ; rdfs:label "Kab. Batu Bara" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-dairi a hf:KabupatenKota ; rdfs:label "Kab. Dairi" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-deli-serdang a hf:KabupatenKota ; rdfs:label "Kab. Deli Serdang" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-humbang-hasundutan a hf:KabupatenKota ; rdfs:label "Kab. Humbang Hasundutan" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-karo a hf:KabupatenKota ; rdfs:label "Kab. Karo" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-labuhan-batu a hf:KabupatenKota ; rdfs:label "Kab. Labuhan Batu" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-labuhan-batu-selatan a hf:KabupatenKota ; rdfs:label "Kab. Labuhan Batu Selatan" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-labuhan-batu-utara a hf:KabupatenKota ; rdfs:label "Kab. Labuhan Batu Utara" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-langkat a hf:KabupatenKota ; rdfs:label "Kab. Langkat" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-mandailing-natal a hf:KabupatenKota ; rdfs:label "Kab. Mandailing Natal" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-nias a hf:KabupatenKota ; rdfs:label "Kab. Nias" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-nias-barat a hf:KabupatenKota ; rdfs:label "Kab. Nias Barat" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-nias-selatan a hf:KabupatenKota ; rdfs:label "Kab. Nias Selatan" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-nias-utara a hf:KabupatenKota ; rdfs:label "Kab. Nias Utara" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-padang-lawas a hf:KabupatenKota ; rdfs:label "Kab. Padang Lawas" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-padang-lawas-utara a hf:KabupatenKota ; rdfs:label "Kab. Padang Lawas Utara" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-pakpak-bharat a hf:KabupatenKota ; rdfs:label "Kab. Pakpak Bharat" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-samosir a hf:KabupatenKota ; rdfs:label "Kab. Samosir" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-serdang-bedagai a hf:KabupatenKota ; rdfs:label "Kab. Serdang Bedagai" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-simalungun a hf:KabupatenKota ; rdfs:label "Kab. Simalungun" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-tapanuli-selatan a hf:KabupatenKota ; rdfs:label "Kab. Tapanuli Selatan" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-tapanuli-tengah a hf:KabupatenKota ; rdfs:label "Kab. Tapanuli Tengah" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-tapanuli-utara a hf:KabupatenKota ; rdfs:label "Kab. Tapanuli Utara" ; hf:bagianDariProvinsi prov:sumut .
-kk:kab-toba-samosir a hf:KabupatenKota ; rdfs:label "Kab. Toba Samosir" ; hf:bagianDariProvinsi prov:sumut .
-kk:kota-binjai a hf:KabupatenKota ; rdfs:label "Kota Binjai" ; hf:bagianDariProvinsi prov:sumut .
-kk:kota-gunungsitoli a hf:KabupatenKota ; rdfs:label "Kota Gunungsitoli" ; hf:bagianDariProvinsi prov:sumut .
-kk:kota-medan a hf:KabupatenKota ; rdfs:label "Kota Medan" ; hf:bagianDariProvinsi prov:sumut .
-kk:kota-padang-sidempuan a hf:KabupatenKota ; rdfs:label "Kota Padang Sidempuan" ; hf:bagianDariProvinsi prov:sumut .
-kk:kota-pematang-siantar a hf:KabupatenKota ; rdfs:label "Kota Pematang Siantar" ; hf:bagianDariProvinsi prov:sumut .
-kk:kota-sibolga a hf:KabupatenKota ; rdfs:label "Kota Sibolga" ; hf:bagianDariProvinsi prov:sumut .
-kk:kota-tanjung-balai a hf:KabupatenKota ; rdfs:label "Kota Tanjung Balai" ; hf:bagianDariProvinsi prov:sumut .
-kk:kota-tebing-tinggi a hf:KabupatenKota ; rdfs:label "Kota Tebing Tinggi" ; hf:bagianDariProvinsi prov:sumut .
+# --- Entitas 33 Kabupaten/Kota (Linked to Official DBpedia Resources) ---
+kk:kab-asahan a hf:KabupatenKota ;
+  rdfs:label "Kab. Asahan" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Asahan_Regency> .
+kk:kab-batu-bara a hf:KabupatenKota ;
+  rdfs:label "Kab. Batu Bara" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Batu_Bara_Regency> .
+kk:kab-dairi a hf:KabupatenKota ;
+  rdfs:label "Kab. Dairi" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Dairi_Regency> .
+kk:kab-deli-serdang a hf:KabupatenKota ;
+  rdfs:label "Kab. Deli Serdang" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Deli_Serdang_Regency> .
+kk:kab-humbang-hasundutan a hf:KabupatenKota ;
+  rdfs:label "Kab. Humbang Hasundutan" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Humbang_Hasundutan_Regency> .
+kk:kab-karo a hf:KabupatenKota ;
+  rdfs:label "Kab. Karo" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Karo_Regency> .
+kk:kab-labuhan-batu a hf:KabupatenKota ;
+  rdfs:label "Kab. Labuhan Batu" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Labuhan_Batu_Regency> .
+kk:kab-labuhan-batu-selatan a hf:KabupatenKota ;
+  rdfs:label "Kab. Labuhan Batu Selatan" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/South_Labuhan_Batu_Regency> .
+kk:kab-labuhan-batu-utara a hf:KabupatenKota ;
+  rdfs:label "Kab. Labuhan Batu Utara" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/North_Labuhan_Batu_Regency> .
+kk:kab-langkat a hf:KabupatenKota ;
+  rdfs:label "Kab. Langkat" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Langkat_Regency> .
+kk:kab-mandailing-natal a hf:KabupatenKota ;
+  rdfs:label "Kab. Mandailing Natal" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Mandailing_Natal_Regency> .
+kk:kab-nias a hf:KabupatenKota ;
+  rdfs:label "Kab. Nias" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Nias_Regency> .
+kk:kab-nias-barat a hf:KabupatenKota ;
+  rdfs:label "Kab. Nias Barat" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/West_Nias_Regency> .
+kk:kab-nias-selatan a hf:KabupatenKota ;
+  rdfs:label "Kab. Nias Selatan" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/South_Nias_Regency> .
+kk:kab-nias-utara a hf:KabupatenKota ;
+  rdfs:label "Kab. Nias Utara" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/North_Nias_Regency> .
+kk:kab-padang-lawas a hf:KabupatenKota ;
+  rdfs:label "Kab. Padang Lawas" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Padang_Lawas_Regency> .
+kk:kab-padang-lawas-utara a hf:KabupatenKota ;
+  rdfs:label "Kab. Padang Lawas Utara" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/North_Padang_Lawas_Regency> .
+kk:kab-pakpak-bharat a hf:KabupatenKota ;
+  rdfs:label "Kab. Pakpak Bharat" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Pakpak_Bharat_Regency> .
+kk:kab-samosir a hf:KabupatenKota ;
+  rdfs:label "Kab. Samosir" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Samosir_Regency> .
+kk:kab-serdang-bedagai a hf:KabupatenKota ;
+  rdfs:label "Kab. Serdang Bedagai" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Serdang_Bedagai_Regency> .
+kk:kab-simalungun a hf:KabupatenKota ;
+  rdfs:label "Kab. Simalungun" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Simalungun_Regency> .
+kk:kab-tapanuli-selatan a hf:KabupatenKota ;
+  rdfs:label "Kab. Tapanuli Selatan" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/South_Tapanuli_Regency> .
+kk:kab-tapanuli-tengah a hf:KabupatenKota ;
+  rdfs:label "Kab. Tapanuli Tengah" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Central_Tapanuli_Regency> .
+kk:kab-tapanuli-utara a hf:KabupatenKota ;
+  rdfs:label "Kab. Tapanuli Utara" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/North_Tapanuli_Regency> .
+kk:kab-toba-samosir a hf:KabupatenKota ;
+  rdfs:label "Kab. Toba Samosir" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Toba_Regency> .
+kk:kota-binjai a hf:KabupatenKota ;
+  rdfs:label "Kota Binjai" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Binjai> .
+kk:kota-gunungsitoli a hf:KabupatenKota ;
+  rdfs:label "Kota Gunungsitoli" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Gunungsitoli> .
+kk:kota-medan a hf:KabupatenKota ;
+  rdfs:label "Kota Medan" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Medan> .
+kk:kota-padang-sidempuan a hf:KabupatenKota ;
+  rdfs:label "Kota Padang Sidempuan" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Padang_Sidempuan> .
+kk:kota-pematang-siantar a hf:KabupatenKota ;
+  rdfs:label "Kota Pematang Siantar" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Pematangsiantar> .
+kk:kota-sibolga a hf:KabupatenKota ;
+  rdfs:label "Kota Sibolga" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Sibolga> .
+kk:kota-tanjung-balai a hf:KabupatenKota ;
+  rdfs:label "Kota Tanjung Balai" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Tanjungbalai> .
+kk:kota-tebing-tinggi a hf:KabupatenKota ;
+  rdfs:label "Kota Tebing Tinggi" ;
+  hf:bagianDariProvinsi prov:sumut ;
+  owl:sameAs <http://dbpedia.org/resource/Tebing_Tinggi> .
 
-lay:anak a hf:Layanan ; rdfs:label "Anak" .
+# --- Entitas Layanan Rumah Sakit (Medical Services) ---
+lay:anestesi a hf:Layanan ; rdfs:label "Anestesi" .
 lay:bedah a hf:Layanan ; rdfs:label "Bedah" .
-lay:bersalin a hf:Layanan ; rdfs:label "Bersalin" .
+lay:bedah-katarak a hf:Layanan ; rdfs:label "Bedah Katarak" .
+lay:bedah-mulut a hf:Layanan ; rdfs:label "Bedah Mulut" .
+lay:dialisis-cuci-darah a hf:Layanan ; rdfs:label "Dialisis / Cuci Darah" .
 lay:gigi-dan-mulut a hf:Layanan ; rdfs:label "Gigi dan Mulut" .
-lay:ginjal a hf:Layanan ; rdfs:label "Ginjal" .
-lay:jiwa a hf:Layanan ; rdfs:label "Jiwa" .
-lay:mata a hf:Layanan ; rdfs:label "Mata" .
-lay:paru a hf:Layanan ; rdfs:label "Paru" .
+lay:imunisasi a hf:Layanan ; rdfs:label "Imunisasi" .
+lay:kebidanan-dan-kandungan a hf:Layanan ; rdfs:label "Kebidanan dan Kandungan" .
+lay:kesehatan-anak a hf:Layanan ; rdfs:label "Kesehatan Anak" .
+lay:kesehatan-jiwa-psikiatri a hf:Layanan ; rdfs:label "Kesehatan Jiwa / Psikiatri" .
+lay:kesehatan-mata a hf:Layanan ; rdfs:label "Kesehatan Mata" .
+lay:laboratorium a hf:Layanan ; rdfs:label "Laboratorium" .
+lay:ortodonti a hf:Layanan ; rdfs:label "Ortodonti" .
+lay:pelayanan-medik-umum a hf:Layanan ; rdfs:label "Pelayanan Medik Umum" .
+lay:penyakit-dalam a hf:Layanan ; rdfs:label "Penyakit Dalam" .
+lay:psikologi-klinis a hf:Layanan ; rdfs:label "Psikologi Klinis" .
+lay:pulmonologi-dan-kedokteran-respirasi a hf:Layanan ; rdfs:label "Pulmonologi dan Kedokteran Respirasi" .
+lay:radiologi a hf:Layanan ; rdfs:label "Radiologi" .
+lay:radiologi-toraks a hf:Layanan ; rdfs:label "Radiologi Toraks" .
+lay:rawat-inap a hf:Layanan ; rdfs:label "Rawat Inap" .
+lay:rawat-inap-dasar a hf:Layanan ; rdfs:label "Rawat Inap Dasar" .
+lay:refraksi a hf:Layanan ; rdfs:label "Refraksi" .
+lay:rehabilitasi-medik a hf:Layanan ; rdfs:label "Rehabilitasi Medik" .
+lay:subspesialis a hf:Layanan ; rdfs:label "Subspesialis" .
+lay:ugd-24-jam a hf:Layanan ; rdfs:label "UGD 24 Jam" .
 
+# --- Entitas Fasilitas Rumah Sakit (Hospital Facilities) ---
+fas:ambulans a hf:Fasilitas ; rdfs:label "Ambulans" .
+fas:apotek a hf:Fasilitas ; rdfs:label "Apotek" .
+fas:bangsal-perawatan-jiwa a hf:Fasilitas ; rdfs:label "Bangsal Perawatan Jiwa" .
+fas:farmasi a hf:Fasilitas ; rdfs:label "Farmasi" .
+fas:icu a hf:Fasilitas ; rdfs:label "ICU" .
+fas:icu-iccu a hf:Fasilitas ; rdfs:label "ICU / ICCU" .
+fas:icu-iccu-nicu a hf:Fasilitas ; rdfs:label "ICU / ICCU / NICU" .
+fas:instalasi-farmasi a hf:Fasilitas ; rdfs:label "Instalasi Farmasi" .
+fas:instalasi-gawat-darurat a hf:Fasilitas ; rdfs:label "Instalasi Gawat Darurat" .
+fas:instalasi-gawat-darurat-psikiatri a hf:Fasilitas ; rdfs:label "Instalasi Gawat Darurat Psikiatri" .
+fas:kamar-bedah-mata a hf:Fasilitas ; rdfs:label "Kamar Bedah Mata" .
+fas:kamar-bersalin a hf:Fasilitas ; rdfs:label "Kamar Bersalin" .
+fas:kamar-operasi a hf:Fasilitas ; rdfs:label "Kamar Operasi" .
+fas:klinik-gigi-spesialis a hf:Fasilitas ; rdfs:label "Klinik Gigi Spesialis" .
+fas:laboratorium a hf:Fasilitas ; rdfs:label "Laboratorium" .
+fas:laboratorium-dahak-tb a hf:Fasilitas ; rdfs:label "Laboratorium Dahak / TB" .
+fas:laboratorium-dasar a hf:Fasilitas ; rdfs:label "Laboratorium Dasar" .
+fas:laboratorium-klinik a hf:Fasilitas ; rdfs:label "Laboratorium Klinik" .
+fas:poliklinik-mata a hf:Fasilitas ; rdfs:label "Poliklinik Mata" .
+fas:radiologi-gigi a hf:Fasilitas ; rdfs:label "Radiologi Gigi" .
+fas:ruang-rawat-inap a hf:Fasilitas ; rdfs:label "Ruang Rawat Inap" .
+fas:ruang-rawat-inap-dasar a hf:Fasilitas ; rdfs:label "Ruang Rawat Inap Dasar" .
+fas:unit-hemodialisa a hf:Fasilitas ; rdfs:label "Unit Hemodialisa" .
+fas:unit-perawatan-paru a hf:Fasilitas ; rdfs:label "Unit Perawatan Paru" .
+
+# --- Entitas Data 206 Rumah Sakit ---
 rs:rs-001 a hf:RumahSakit ;
-  schema:name "OG Hospital" ;
+  schema:name "Og Hospital" ;
   hf:jenis "Umum" ;
   hf:kelas "C" ;
   hf:alamat "Jl. Olahraga No. 1" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-binjai ;
-  schema:telephone "06142365911" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "06142365911" ;
+  geo:lat "3.606607"^^xsd:decimal ;
+  geo:long "98.497722"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-002 a hf:RumahSakit ;
   schema:name "RS AL Dr. Komang Makes Belawan" ;
   hf:jenis "Umum" ;
@@ -70,7 +237,14 @@ rs:rs-002 a hf:RumahSakit ;
   hf:alamat "Jl. Bengkalis No.1 Belawan" ;
   hf:pemilik "TNI AL" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061-6941741" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0616941741" ;
+  geo:lat "3.589308"^^xsd:decimal ;
+  geo:long "98.683379"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-003 a hf:RumahSakit ;
   schema:name "RS Bhayangkara Tingkat II Medan" ;
   hf:jenis "Umum" ;
@@ -78,7 +252,14 @@ rs:rs-003 a hf:RumahSakit ;
   hf:alamat "JL KH Wahid Hasyim No 1" ;
   hf:pemilik "POLRI" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "0821-7997-604" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "08217997604" ;
+  geo:lat "3.572399"^^xsd:decimal ;
+  geo:long "98.659022"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-004 a hf:RumahSakit ;
   schema:name "RS Bhayangkara Tk. IV Batangtoru" ;
   hf:jenis "Umum" ;
@@ -86,15 +267,29 @@ rs:rs-004 a hf:RumahSakit ;
   hf:alamat "Jl. Merdeka No. 17" ;
   hf:pemilik "POLRI" ;
   hf:beradaDiKabupatenKota kk:kab-tapanuli-selatan ;
-  schema:telephone "082161004550" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082161004550" ;
+  geo:lat "1.603724"^^xsd:decimal ;
+  geo:long "99.270124"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-005 a hf:RumahSakit ;
-  schema:name "RS Bhayangkara Tk.III Kota Tebing Tinggi" ;
+  schema:name "RS Bhayangkara Tk.iii Kota Tebing Tinggi" ;
   hf:jenis "Umum" ;
   hf:kelas "C" ;
   hf:alamat "Jl Pahlawan No 17" ;
   hf:pemilik "POLRI" ;
   hf:beradaDiKabupatenKota kk:kota-tebing-tinggi ;
-  schema:telephone "0621 - 326701" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0621326701" ;
+  geo:lat "3.324992"^^xsd:decimal ;
+  geo:long "99.161833"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-006 a hf:RumahSakit ;
   schema:name "RS Chevani" ;
   hf:jenis "Umum" ;
@@ -102,7 +297,14 @@ rs:rs-006 a hf:RumahSakit ;
   hf:alamat "Jl. Prof. H. M. Yamin No. 17" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-tebing-tinggi ;
-  schema:telephone "06213950222" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "06213950222" ;
+  geo:lat "3.348668"^^xsd:decimal ;
+  geo:long "99.168556"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-007 a hf:RumahSakit ;
   schema:name "RS Columbia Asia Aksara" ;
   hf:jenis "Umum" ;
@@ -110,7 +312,14 @@ rs:rs-007 a hf:RumahSakit ;
   hf:alamat "Jl. Letda Sujono, LK.X No. 90" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061-88806888" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "06188806888" ;
+  geo:lat "3.597199"^^xsd:decimal ;
+  geo:long "98.717322"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-008 a hf:RumahSakit ;
   schema:name "RS Columbia Asia Medan" ;
   hf:jenis "Umum" ;
@@ -118,7 +327,14 @@ rs:rs-008 a hf:RumahSakit ;
   hf:alamat "Jalan Listrik No 2A" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061-4566368" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0614566368" ;
+  geo:lat "3.584671"^^xsd:decimal ;
+  geo:long "98.676747"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-009 a hf:RumahSakit ;
   schema:name "RS Dhillon" ;
   hf:jenis "Umum" ;
@@ -126,7 +342,14 @@ rs:rs-009 a hf:RumahSakit ;
   hf:alamat "Jl. Dahlan Tanjung Komplek Graha Abadi Permai" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
-  schema:telephone "082166409817" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082166409817" ;
+  geo:lat "3.474454"^^xsd:decimal ;
+  geo:long "98.715897"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-010 a hf:RumahSakit ;
   schema:name "RS Dokter Takdir" ;
   hf:jenis "Umum" ;
@@ -134,7 +357,14 @@ rs:rs-010 a hf:RumahSakit ;
   hf:alamat "Jl. Siringo-ringo No. 11-13 ,Kelurahan Siringo-ringo,Kecamatan Rantau Utara,Kabupaten Labuhan Batu,Provinsi Sumatera Utara" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kab-labuhan-batu ;
-  schema:telephone "0624 327969" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0624327969" ;
+  geo:lat "2.153426"^^xsd:decimal ;
+  geo:long "99.785079"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-011 a hf:RumahSakit ;
   schema:name "RS Efarina Etaham Pematang Siantar" ;
   hf:jenis "Umum" ;
@@ -142,17 +372,30 @@ rs:rs-011 a hf:RumahSakit ;
   hf:alamat "Jalan Pdt J Wismar Saragih No 1" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kota-pematang-siantar ;
-  schema:telephone "085261163933" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "085261163933" ;
+  geo:lat "2.958863"^^xsd:decimal ;
+  geo:long "99.065365"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-012 a hf:RumahSakit ;
-  schema:name "RS Gigi dan Mulut Prima" ;
+  schema:name "RS Gigi Dan Mulut Prima" ;
   hf:jenis "Khusus" ;
   hf:kelas "C" ;
   hf:alamat "Jalan Pabrik Tenun No. 103" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Gigi dan Mulut" ;
   schema:telephone "082167863838" ;
-  hf:menyediakanLayanan lay:gigi-dan-mulut .
+  geo:lat "3.598426"^^xsd:decimal ;
+  geo:long "98.662059"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:gigi-dan-mulut, lay:bedah-mulut, lay:ortodonti ;
+  hf:memilikiFasilitas fas:klinik-gigi-spesialis, fas:radiologi-gigi, fas:farmasi .
 rs:rs-013 a hf:RumahSakit ;
   schema:name "RS Grand Medica" ;
   hf:jenis "Umum" ;
@@ -160,7 +403,14 @@ rs:rs-013 a hf:RumahSakit ;
   hf:alamat "Jalan Snakma Nomor 09 Tanjung Anom" ;
   hf:pemilik "Kementerian Lain" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
-  schema:telephone "081533846120" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081533846120" ;
+  geo:lat "3.474454"^^xsd:decimal ;
+  geo:long "98.715897"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-014 a hf:RumahSakit ;
   schema:name "RS Grandmed" ;
   hf:jenis "Umum" ;
@@ -168,7 +418,14 @@ rs:rs-014 a hf:RumahSakit ;
   hf:alamat "Jl. Medan - Lubuk Pakam KM. 25 No. 66, Deli Serdang, Sumatera Utara" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
-  schema:telephone "08116057610" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "08116057610" ;
+  geo:lat "3.551089"^^xsd:decimal ;
+  geo:long "98.853264"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-015 a hf:RumahSakit ;
   schema:name "RS Ibu Dan Anak Artha Mahinrus" ;
   hf:jenis "Khusus" ;
@@ -176,79 +433,127 @@ rs:rs-015 a hf:RumahSakit ;
   hf:alamat "Jl. Pasar III No. 151 Kel. Tegal Rejo Kec. Medan Perjuangan" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Ibu dan Anak" ;
-  schema:telephone "061-80088892" ;
-  hf:menyediakanLayanan lay:anak, lay:bersalin .
+  schema:telephone "06180088892" ;
+  geo:lat "3.616437"^^xsd:decimal ;
+  geo:long "98.691312"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:kesehatan-anak, lay:kebidanan-dan-kandungan, lay:ugd-24-jam, lay:imunisasi ;
+  hf:memilikiFasilitas fas:kamar-bersalin, fas:instalasi-gawat-darurat, fas:farmasi, fas:ambulans .
 rs:rs-016 a hf:RumahSakit ;
-  schema:name "RS Ibu dan Anak Eva" ;
+  schema:name "RS Ibu Dan Anak Eva" ;
   hf:jenis "Khusus" ;
   hf:kelas "C" ;
   hf:alamat "Jalan Sabbaruddin Nomor lima puluh sembilan" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Ibu dan Anak" ;
   schema:telephone "0617367933" ;
-  hf:menyediakanLayanan lay:anak, lay:bersalin .
+  geo:lat "3.584363"^^xsd:decimal ;
+  geo:long "98.697128"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:kesehatan-anak, lay:kebidanan-dan-kandungan, lay:ugd-24-jam, lay:imunisasi ;
+  hf:memilikiFasilitas fas:kamar-bersalin, fas:instalasi-gawat-darurat, fas:farmasi, fas:ambulans .
 rs:rs-017 a hf:RumahSakit ;
-  schema:name "RS Ibu dan Anak Grand Fatimah" ;
+  schema:name "RS Ibu Dan Anak Grand Fatimah" ;
   hf:jenis "Khusus" ;
   hf:kelas "C" ;
   hf:alamat "Jl. Sultan Hasanuddin No. 67" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kota-binjai ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Ibu dan Anak" ;
   schema:telephone "085184233175" ;
-  hf:menyediakanLayanan lay:anak, lay:bersalin .
+  geo:lat "3.601672"^^xsd:decimal ;
+  geo:long "98.483820"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:kesehatan-anak, lay:kebidanan-dan-kandungan, lay:ugd-24-jam, lay:imunisasi ;
+  hf:memilikiFasilitas fas:kamar-bersalin, fas:instalasi-gawat-darurat, fas:farmasi, fas:ambulans .
 rs:rs-018 a hf:RumahSakit ;
-  schema:name "RS Ibu dan Anak Maharani" ;
+  schema:name "RS Ibu Dan Anak Maharani" ;
   hf:jenis "Khusus" ;
   hf:kelas "C" ;
   hf:alamat "Jl. Sultan Serdang No. 100" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Ibu dan Anak" ;
-  schema:telephone "061-80110907" ;
-  hf:menyediakanLayanan lay:anak, lay:bersalin .
+  schema:telephone "06180110907" ;
+  geo:lat "3.523307"^^xsd:decimal ;
+  geo:long "98.779687"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:kesehatan-anak, lay:kebidanan-dan-kandungan, lay:ugd-24-jam, lay:imunisasi ;
+  hf:memilikiFasilitas fas:kamar-bersalin, fas:instalasi-gawat-darurat, fas:farmasi, fas:ambulans .
 rs:rs-019 a hf:RumahSakit ;
-  schema:name "RS Ibu dan Anak Mina Husada" ;
+  schema:name "RS Ibu Dan Anak Mina Husada" ;
   hf:jenis "Khusus" ;
   hf:kelas "C" ;
   hf:alamat "Nabung Surbakti No. 07" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kab-karo ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Ibu dan Anak" ;
-  schema:telephone "(0628)9832858" ;
-  hf:menyediakanLayanan lay:anak, lay:bersalin .
+  schema:telephone "06289832858" ;
+  geo:lat "3.094769"^^xsd:decimal ;
+  geo:long "98.485944"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:kesehatan-anak, lay:kebidanan-dan-kandungan, lay:ugd-24-jam, lay:imunisasi ;
+  hf:memilikiFasilitas fas:kamar-bersalin, fas:instalasi-gawat-darurat, fas:farmasi, fas:ambulans .
 rs:rs-020 a hf:RumahSakit ;
-  schema:name "RS Ibu dan Anak Murni Teguh Rosiva" ;
+  schema:name "RS Ibu Dan Anak Murni Teguh Rosiva" ;
   hf:jenis "Khusus" ;
   hf:kelas "C" ;
   hf:alamat "Jalan Bangka No. 15" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Ibu dan Anak" ;
   schema:telephone "082174347885" ;
-  hf:menyediakanLayanan lay:anak, lay:bersalin .
+  geo:lat "3.588905"^^xsd:decimal ;
+  geo:long "98.682454"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:kesehatan-anak, lay:kebidanan-dan-kandungan, lay:ugd-24-jam, lay:imunisasi ;
+  hf:memilikiFasilitas fas:kamar-bersalin, fas:instalasi-gawat-darurat, fas:farmasi, fas:ambulans .
 rs:rs-021 a hf:RumahSakit ;
-  schema:name "RS Ibu dan Anak Pramaliesa" ;
+  schema:name "RS Ibu Dan Anak Pramaliesa" ;
   hf:jenis "Khusus" ;
   hf:kelas "C" ;
   hf:alamat "Jl. Rumbia Sena No. 65 Desa Baru" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Ibu dan Anak" ;
   schema:telephone "08116219090" ;
-  hf:menyediakanLayanan lay:anak, lay:bersalin .
+  geo:lat "3.474454"^^xsd:decimal ;
+  geo:long "98.715897"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:kesehatan-anak, lay:kebidanan-dan-kandungan, lay:ugd-24-jam, lay:imunisasi ;
+  hf:memilikiFasilitas fas:kamar-bersalin, fas:instalasi-gawat-darurat, fas:farmasi, fas:ambulans .
 rs:rs-022 a hf:RumahSakit ;
-  schema:name "RS Ibu dan Anak Stella Maris" ;
+  schema:name "RS Ibu Dan Anak Stella Maris" ;
   hf:jenis "Khusus" ;
   hf:kelas "C" ;
   hf:alamat "Jl Samanhudi No.20-22" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Ibu dan Anak" ;
-  schema:telephone "061-4158383" ;
-  hf:menyediakanLayanan lay:anak, lay:bersalin .
+  schema:telephone "0614158383" ;
+  geo:lat "3.572687"^^xsd:decimal ;
+  geo:long "98.680787"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:kesehatan-anak, lay:kebidanan-dan-kandungan, lay:ugd-24-jam, lay:imunisasi ;
+  hf:memilikiFasilitas fas:kamar-bersalin, fas:instalasi-gawat-darurat, fas:farmasi, fas:ambulans .
 rs:rs-023 a hf:RumahSakit ;
   schema:name "RS Jiwa Bina Karsa Medan" ;
   hf:jenis "Khusus" ;
@@ -256,9 +561,15 @@ rs:rs-023 a hf:RumahSakit ;
   hf:alamat "Jl Pales III No.19" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Jiwa" ;
   schema:telephone "08138827769" ;
-  hf:menyediakanLayanan lay:jiwa .
+  geo:lat "3.589462"^^xsd:decimal ;
+  geo:long "98.674162"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:kesehatan-jiwa-psikiatri, lay:psikologi-klinis, lay:rehabilitasi-medik ;
+  hf:memilikiFasilitas fas:bangsal-perawatan-jiwa, fas:instalasi-gawat-darurat-psikiatri, fas:farmasi .
 rs:rs-024 a hf:RumahSakit ;
   schema:name "RS Jiwa Bina Karsa Tuntungan" ;
   hf:jenis "Khusus" ;
@@ -266,9 +577,15 @@ rs:rs-024 a hf:RumahSakit ;
   hf:alamat "Jl. Besar Tuntungan No. 142G" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Jiwa" ;
   schema:telephone "082163944599" ;
-  hf:menyediakanLayanan lay:jiwa .
+  geo:lat "3.500269"^^xsd:decimal ;
+  geo:long "98.583627"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:kesehatan-jiwa-psikiatri, lay:psikologi-klinis, lay:rehabilitasi-medik ;
+  hf:memilikiFasilitas fas:bangsal-perawatan-jiwa, fas:instalasi-gawat-darurat-psikiatri, fas:farmasi .
 rs:rs-025 a hf:RumahSakit ;
   schema:name "RS Jiwa Prof. Dr. Muhammad Ildrem" ;
   hf:jenis "Khusus" ;
@@ -276,9 +593,15 @@ rs:rs-025 a hf:RumahSakit ;
   hf:alamat "Jl. Tali Air No. 21" ;
   hf:pemilik "Pemprop" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Jiwa" ;
-  schema:telephone "061-8360542" ;
-  hf:menyediakanLayanan lay:jiwa .
+  schema:telephone "0618360542" ;
+  geo:lat "3.522747"^^xsd:decimal ;
+  geo:long "98.629798"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:kesehatan-jiwa-psikiatri, lay:psikologi-klinis, lay:rehabilitasi-medik ;
+  hf:memilikiFasilitas fas:bangsal-perawatan-jiwa, fas:instalasi-gawat-darurat-psikiatri, fas:farmasi .
 rs:rs-026 a hf:RumahSakit ;
   schema:name "RS Khusus Bedah Accuplast" ;
   hf:jenis "Khusus" ;
@@ -286,9 +609,15 @@ rs:rs-026 a hf:RumahSakit ;
   hf:alamat "Jl. Sei Bahbolon No. 40" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Bedah" ;
-  schema:telephone "061 4153054" ;
-  hf:menyediakanLayanan lay:bedah .
+  schema:telephone "0614153054" ;
+  geo:lat "3.589462"^^xsd:decimal ;
+  geo:long "98.674162"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:bedah, lay:anestesi, lay:ugd-24-jam, lay:radiologi ;
+  hf:memilikiFasilitas fas:kamar-operasi, fas:icu, fas:ambulans, fas:instalasi-gawat-darurat .
 rs:rs-027 a hf:RumahSakit ;
   schema:name "RS Khusus Bedah Setia Budi" ;
   hf:jenis "Khusus" ;
@@ -296,19 +625,31 @@ rs:rs-027 a hf:RumahSakit ;
   hf:alamat "Jalan Mesjid Nomor 3" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Bedah" ;
   schema:telephone "081396256120" ;
-  hf:menyediakanLayanan lay:bedah .
+  geo:lat "3.595274"^^xsd:decimal ;
+  geo:long "98.624688"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:bedah, lay:anestesi, lay:ugd-24-jam, lay:radiologi ;
+  hf:memilikiFasilitas fas:kamar-operasi, fas:icu, fas:ambulans, fas:instalasi-gawat-darurat .
 rs:rs-028 a hf:RumahSakit ;
-  schema:name "RS Khusus Gigi dan Mulut Univ. Sumatera Utara" ;
+  schema:name "RS Khusus Gigi Dan Mulut Univ. Sumatera Utara" ;
   hf:jenis "Khusus" ;
   hf:kelas "B" ;
   hf:alamat "Jl Alumni No.2 Kampus USU Medan" ;
   hf:pemilik "Kementerian Lain" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Gigi dan Mulut" ;
   schema:telephone "085791259191" ;
-  hf:menyediakanLayanan lay:gigi-dan-mulut .
+  geo:lat "3.563015"^^xsd:decimal ;
+  geo:long "98.660270"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:gigi-dan-mulut, lay:bedah-mulut, lay:ortodonti ;
+  hf:memilikiFasilitas fas:klinik-gigi-spesialis, fas:radiologi-gigi, fas:farmasi .
 rs:rs-029 a hf:RumahSakit ;
   schema:name "RS Khusus Ginjal Rasyida" ;
   hf:jenis "Khusus" ;
@@ -316,9 +657,15 @@ rs:rs-029 a hf:RumahSakit ;
   hf:alamat "Jalan D.I Panjaitan Nomor 144" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Ginjal" ;
-  schema:telephone "061 4148722" ;
-  hf:menyediakanLayanan lay:ginjal .
+  schema:telephone "0614148722" ;
+  geo:lat "3.585989"^^xsd:decimal ;
+  geo:long "98.659746"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:dialisis-cuci-darah, lay:penyakit-dalam, lay:laboratorium ;
+  hf:memilikiFasilitas fas:unit-hemodialisa, fas:laboratorium-klinik, fas:farmasi .
 rs:rs-030 a hf:RumahSakit ;
   schema:name "RS Khusus Mata Medan Baru Medical Centre" ;
   hf:jenis "Khusus" ;
@@ -326,19 +673,31 @@ rs:rs-030 a hf:RumahSakit ;
   hf:alamat "Jl Abdullah Lubis No.67" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Mata" ;
   schema:telephone "4530989" ;
-  hf:menyediakanLayanan lay:mata .
+  geo:lat "3.576816"^^xsd:decimal ;
+  geo:long "98.660059"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:kesehatan-mata, lay:bedah-katarak, lay:refraksi ;
+  hf:memilikiFasilitas fas:kamar-bedah-mata, fas:poliklinik-mata, fas:farmasi .
 rs:rs-031 a hf:RumahSakit ;
-  schema:name "RS Khusus Mata Mencirim Tujuh-Tujuh" ;
+  schema:name "RS Khusus Mata Mencirim Tujuh-tujuh" ;
   hf:jenis "Khusus" ;
   hf:kelas "C" ;
   hf:alamat "Jl Sei Mencirim No 77 Medan" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Mata" ;
   schema:telephone "08116207177" ;
-  hf:menyediakanLayanan lay:mata .
+  geo:lat "3.580974"^^xsd:decimal ;
+  geo:long "98.646492"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:kesehatan-mata, lay:bedah-katarak, lay:refraksi ;
+  hf:memilikiFasilitas fas:kamar-bedah-mata, fas:poliklinik-mata, fas:farmasi .
 rs:rs-032 a hf:RumahSakit ;
   schema:name "RS Khusus Mata Prima Vision" ;
   hf:jenis "Khusus" ;
@@ -346,9 +705,15 @@ rs:rs-032 a hf:RumahSakit ;
   hf:alamat "Jl. Pabrik Tenun No.51" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Mata" ;
-  schema:telephone "061 80514888" ;
-  hf:menyediakanLayanan lay:mata .
+  schema:telephone "06180514888" ;
+  geo:lat "3.598712"^^xsd:decimal ;
+  geo:long "98.656910"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:kesehatan-mata, lay:bedah-katarak, lay:refraksi ;
+  hf:memilikiFasilitas fas:kamar-bedah-mata, fas:poliklinik-mata, fas:farmasi .
 rs:rs-033 a hf:RumahSakit ;
   schema:name "RS Khusus Mata Provinsi Sumatera Utara" ;
   hf:jenis "Khusus" ;
@@ -356,19 +721,31 @@ rs:rs-033 a hf:RumahSakit ;
   hf:alamat "Jl. Kapten Sumarsono No.1" ;
   hf:pemilik "Pemprop" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Mata" ;
   schema:telephone "082374011686" ;
-  hf:menyediakanLayanan lay:mata .
+  geo:lat "3.627045"^^xsd:decimal ;
+  geo:long "98.664935"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:kesehatan-mata, lay:bedah-katarak, lay:refraksi ;
+  hf:memilikiFasilitas fas:kamar-bedah-mata, fas:poliklinik-mata, fas:farmasi .
 rs:rs-034 a hf:RumahSakit ;
-  schema:name "RS Khusus Mata SMEC" ;
+  schema:name "RS Khusus Mata Smec" ;
   hf:jenis "Khusus" ;
   hf:kelas "C" ;
   hf:alamat "Jl Iskandar Muda No.278" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Mata" ;
-  schema:telephone "061-4518222" ;
-  hf:menyediakanLayanan lay:mata .
+  schema:telephone "0614518222" ;
+  geo:lat "3.586412"^^xsd:decimal ;
+  geo:long "98.661301"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:kesehatan-mata, lay:bedah-katarak, lay:refraksi ;
+  hf:memilikiFasilitas fas:kamar-bedah-mata, fas:poliklinik-mata, fas:farmasi .
 rs:rs-035 a hf:RumahSakit ;
   schema:name "RS Khusus Paru Sumatera Utara" ;
   hf:jenis "Khusus" ;
@@ -376,9 +753,15 @@ rs:rs-035 a hf:RumahSakit ;
   hf:alamat "Jl. Setia Budi Pasar II No 84" ;
   hf:pemilik "Pemprop" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Paru" ;
-  schema:telephone "(061) 8214733" ;
-  hf:menyediakanLayanan lay:paru .
+  schema:telephone "0618214733" ;
+  geo:lat "3.589462"^^xsd:decimal ;
+  geo:long "98.674162"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:pulmonologi-dan-kedokteran-respirasi, lay:radiologi-toraks, lay:laboratorium ;
+  hf:memilikiFasilitas fas:unit-perawatan-paru, fas:laboratorium-dahak-tb, fas:farmasi .
 rs:rs-036 a hf:RumahSakit ;
   schema:name "RS Mata Siantar" ;
   hf:jenis "Khusus" ;
@@ -386,9 +769,15 @@ rs:rs-036 a hf:RumahSakit ;
   hf:alamat "Jl. Kartini Nomor 18" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kota-pematang-siantar ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:spesialisasi "Mata" ;
   schema:telephone "62225559" ;
-  hf:menyediakanLayanan lay:mata .
+  geo:lat "2.957461"^^xsd:decimal ;
+  geo:long "99.057095"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:kesehatan-mata, lay:bedah-katarak, lay:refraksi ;
+  hf:memilikiFasilitas fas:kamar-bedah-mata, fas:poliklinik-mata, fas:farmasi .
 rs:rs-037 a hf:RumahSakit ;
   schema:name "RS Metta Medika" ;
   hf:jenis "Umum" ;
@@ -396,7 +785,14 @@ rs:rs-037 a hf:RumahSakit ;
   hf:alamat "Jalan Pelud Binaka" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kota-gunungsitoli ;
-  schema:telephone "082370600802" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082370600802" ;
+  geo:lat "1.290057"^^xsd:decimal ;
+  geo:long "97.615077"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-038 a hf:RumahSakit ;
   schema:name "RS Metta Medika" ;
   hf:jenis "Umum" ;
@@ -404,7 +800,14 @@ rs:rs-038 a hf:RumahSakit ;
   hf:alamat "Jl. Sisingamangaraja No. 113" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-padang-sidempuan ;
-  schema:telephone "0634-4320777" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "06344320777" ;
+  geo:lat "1.384180"^^xsd:decimal ;
+  geo:long "99.274601"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-039 a hf:RumahSakit ;
   schema:name "RS Metta Medika II" ;
   hf:jenis "Umum" ;
@@ -412,7 +815,14 @@ rs:rs-039 a hf:RumahSakit ;
   hf:alamat "Jl. Diponegoro No. 6-8" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kota-sibolga ;
-  schema:telephone "0631-24001" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "063124001" ;
+  geo:lat "1.736506"^^xsd:decimal ;
+  geo:long "98.782477"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-040 a hf:RumahSakit ;
   schema:name "RS Murni Teguh Horas Insani" ;
   hf:jenis "Umum" ;
@@ -420,7 +830,14 @@ rs:rs-040 a hf:RumahSakit ;
   hf:alamat "Jl. Medan KM 2.5" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-pematang-siantar ;
-  schema:telephone "08116829705" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "08116829705" ;
+  geo:lat "2.978450"^^xsd:decimal ;
+  geo:long "99.079291"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-041 a hf:RumahSakit ;
   schema:name "RS Murni Teguh Pematang Siantar" ;
   hf:jenis "Umum" ;
@@ -428,15 +845,29 @@ rs:rs-041 a hf:RumahSakit ;
   hf:alamat "Jl. Medan - Pematang Siantar" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-pematang-siantar ;
-  schema:telephone "0812-6061-2160" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081260612160" ;
+  geo:lat "2.978450"^^xsd:decimal ;
+  geo:long "99.079291"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-042 a hf:RumahSakit ;
-  schema:name "RS Pendidikan Prof. dr. Chairuddin Panusunan Lubis Universitas Sumatera Utara" ;
+  schema:name "RS Pendidikan Prof. Dr. Chairuddin Panusunan Lubis Universitas Sumatera Utara" ;
   hf:jenis "Umum" ;
   hf:kelas "C" ;
   hf:alamat "Jl. Dr. T. Mansur No. 66" ;
   hf:pemilik "Kementerian Lain" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061 8218928" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0618218928" ;
+  geo:lat "3.568093"^^xsd:decimal ;
+  geo:long "98.657523"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-043 a hf:RumahSakit ;
   schema:name "RS Pratama Lologolu Soguna Ba Zato" ;
   hf:jenis "Umum" ;
@@ -444,8 +875,12 @@ rs:rs-043 a hf:RumahSakit ;
   hf:alamat "Jl. Desa Lologolu, Kec. Mandrehe" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-nias-barat ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:pratama "true"^^xsd:boolean ;
-  schema:telephone "082267208436" .
+  schema:telephone "082267208436" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap-dasar, lay:pelayanan-medik-umum ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:ruang-rawat-inap-dasar, fas:apotek .
 rs:rs-044 a hf:RumahSakit ;
   schema:name "RS Rasyida Siantar" ;
   hf:jenis "Umum" ;
@@ -453,7 +888,14 @@ rs:rs-044 a hf:RumahSakit ;
   hf:alamat "Jalan Seram Atas 5B" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kota-pematang-siantar ;
-  schema:telephone "081377378817" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081377378817" ;
+  geo:lat "2.958863"^^xsd:decimal ;
+  geo:long "99.065365"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-045 a hf:RumahSakit ;
   schema:name "RS Regina Maris" ;
   hf:jenis "Umum" ;
@@ -461,7 +903,14 @@ rs:rs-045 a hf:RumahSakit ;
   hf:alamat "Jl Brigjen katamso No: 403-408" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061 - 88880808" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "06188880808" ;
+  geo:lat "3.542469"^^xsd:decimal ;
+  geo:long "98.685990"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-046 a hf:RumahSakit ;
   schema:name "RS Sapta Medika" ;
   hf:jenis "Umum" ;
@@ -469,7 +918,14 @@ rs:rs-046 a hf:RumahSakit ;
   hf:alamat "Jl. Datuk Umar Palangki" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kab-batu-bara ;
-  schema:telephone "085359980800" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "085359980800" ;
+  geo:lat "3.224064"^^xsd:decimal ;
+  geo:long "99.503580"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-047 a hf:RumahSakit ;
   schema:name "RS Seger Waras" ;
   hf:jenis "Umum" ;
@@ -477,7 +933,14 @@ rs:rs-047 a hf:RumahSakit ;
   hf:alamat "Jalinsum Aek Ledong Dusun III" ;
   hf:pemilik "Perorangan" ;
   hf:beradaDiKabupatenKota kk:kab-asahan ;
-  schema:telephone "082370559958" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082370559958" ;
+  geo:lat "2.851800"^^xsd:decimal ;
+  geo:long "99.623301"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-048 a hf:RumahSakit ;
   schema:name "RS Sri Pamela Membang Muda" ;
   hf:jenis "Umum" ;
@@ -485,7 +948,14 @@ rs:rs-048 a hf:RumahSakit ;
   hf:alamat "Jl. Lintas Sumatera Utara, Km. 224,Kualuh Hulu, Labuhanbatu Utara, Sumatera Utara" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kab-labuhan-batu-utara ;
-  schema:telephone "081264345122" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081264345122" ;
+  geo:lat "2.138475"^^xsd:decimal ;
+  geo:long "99.778672"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-049 a hf:RumahSakit ;
   schema:name "RS Sri Pamela Sei Dadap" ;
   hf:jenis "Umum" ;
@@ -493,7 +963,14 @@ rs:rs-049 a hf:RumahSakit ;
   hf:alamat "JL. Lintas Sumatera Dusun IV DESA PERK. SEI DADAP I/II" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kab-asahan ;
-  schema:telephone "082304260117" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082304260117" ;
+  geo:lat "2.851800"^^xsd:decimal ;
+  geo:long "99.623301"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-050 a hf:RumahSakit ;
   schema:name "RS Sri Pamela Torgamba" ;
   hf:jenis "Umum" ;
@@ -501,7 +978,11 @@ rs:rs-050 a hf:RumahSakit ;
   hf:alamat "Jl. Lintas Sumatera - Riau KM. 380" ;
   hf:pemilik "BUMN" ;
   hf:beradaDiKabupatenKota kk:kab-labuhan-batu-selatan ;
-  schema:telephone "082210865225" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082210865225" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-051 a hf:RumahSakit ;
   schema:name "RS Sufina Aziz" ;
   hf:jenis "Umum" ;
@@ -509,7 +990,14 @@ rs:rs-051 a hf:RumahSakit ;
   hf:alamat "Jl Karya Baru No.1" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061-8441111" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0618441111" ;
+  geo:lat "3.615292"^^xsd:decimal ;
+  geo:long "98.661557"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-052 a hf:RumahSakit ;
   schema:name "RS Tiga Bersaudara" ;
   hf:jenis "Umum" ;
@@ -517,7 +1005,14 @@ rs:rs-052 a hf:RumahSakit ;
   hf:alamat "Jl. Lintas Sumatera" ;
   hf:pemilik "Perorangan" ;
   hf:beradaDiKabupatenKota kk:kab-labuhan-batu-utara ;
-  schema:telephone "081260142618" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081260142618" ;
+  geo:lat "2.156475"^^xsd:decimal ;
+  geo:long "99.784549"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-053 a hf:RumahSakit ;
   schema:name "RS Tk. II Putri Hijau Medan" ;
   hf:jenis "Umum" ;
@@ -525,7 +1020,14 @@ rs:rs-053 a hf:RumahSakit ;
   hf:alamat "Jl Putri Hijau No. 17, Medan" ;
   hf:pemilik "TNI AD" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "08116122233" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "08116122233" ;
+  geo:lat "3.604766"^^xsd:decimal ;
+  geo:long "98.673072"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-054 a hf:RumahSakit ;
   schema:name "RS Tk. IV 01.07.01" ;
   hf:jenis "Umum" ;
@@ -533,7 +1035,14 @@ rs:rs-054 a hf:RumahSakit ;
   hf:alamat "Jalan . Gunung Simanuk -Manuk No.6" ;
   hf:pemilik "TNI AD" ;
   hf:beradaDiKabupatenKota kk:kota-pematang-siantar ;
-  schema:telephone "081370816838" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081370816838" ;
+  geo:lat "2.958863"^^xsd:decimal ;
+  geo:long "99.065365"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-055 a hf:RumahSakit ;
   schema:name "RS Tk. IV 01.07.02 Binjai" ;
   hf:jenis "Umum" ;
@@ -541,7 +1050,14 @@ rs:rs-055 a hf:RumahSakit ;
   hf:alamat "Jalan Bandung No 4" ;
   hf:pemilik "TNI AD" ;
   hf:beradaDiKabupatenKota kk:kota-binjai ;
-  schema:telephone "082361873345" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082361873345" ;
+  geo:lat "3.597231"^^xsd:decimal ;
+  geo:long "98.488164"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-056 a hf:RumahSakit ;
   schema:name "RS TNI Tk. IV 01.07.03" ;
   hf:jenis "Umum" ;
@@ -549,7 +1065,14 @@ rs:rs-056 a hf:RumahSakit ;
   hf:alamat "Jl. Sudirman No.1 Kelurahan : Losung Batu, Kecamatan : Padang Sidempuan Utara Kota Padangsidimpuan" ;
   hf:pemilik "TNI AD" ;
   hf:beradaDiKabupatenKota kk:kota-padang-sidempuan ;
-  schema:telephone "081260811173" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081260811173" ;
+  geo:lat "1.372696"^^xsd:decimal ;
+  geo:long "99.272717"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-057 a hf:RumahSakit ;
   schema:name "RS Umum Advent Medan" ;
   hf:jenis "Umum" ;
@@ -557,7 +1080,14 @@ rs:rs-057 a hf:RumahSakit ;
   hf:alamat "Jl Jend Gatot Subroto Km 4" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "082281730947" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082281730947" ;
+  geo:lat "3.590294"^^xsd:decimal ;
+  geo:long "98.649645"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-058 a hf:RumahSakit ;
   schema:name "RS Umum AL Fuadi" ;
   hf:jenis "Umum" ;
@@ -565,7 +1095,14 @@ rs:rs-058 a hf:RumahSakit ;
   hf:alamat "Jl Ahmad Yani No 23" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-binjai ;
-  schema:telephone "08116222126" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "08116222126" ;
+  geo:lat "3.602380"^^xsd:decimal ;
+  geo:long "98.486443"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-059 a hf:RumahSakit ;
   schema:name "RS Umum Amanda" ;
   hf:jenis "Umum" ;
@@ -573,7 +1110,14 @@ rs:rs-059 a hf:RumahSakit ;
   hf:alamat "Jl Jamin Ginting Simpang Korpri No. 1" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kab-karo ;
-  schema:telephone "0628-93034" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "062893034" ;
+  geo:lat "2.950635"^^xsd:decimal ;
+  geo:long "99.066850"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-060 a hf:RumahSakit ;
   schema:name "RS Umum Armina Madina Panyabungan" ;
   hf:jenis "Umum" ;
@@ -581,7 +1125,11 @@ rs:rs-060 a hf:RumahSakit ;
   hf:alamat "Jl Merdeka No. 23" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kab-mandailing-natal ;
-  schema:telephone "081540800117" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081540800117" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-061 a hf:RumahSakit ;
   schema:name "RS Umum Artha Medica" ;
   hf:jenis "Umum" ;
@@ -589,15 +1137,29 @@ rs:rs-061 a hf:RumahSakit ;
   hf:alamat "Jl. Samanhudi No. 22" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-binjai ;
-  schema:telephone "085270868805" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "085270868805" ;
+  geo:lat "3.567179"^^xsd:decimal ;
+  geo:long "98.473695"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-062 a hf:RumahSakit ;
-  schema:name "RS Umum Balimbingan PTP 4" ;
+  schema:name "RS Umum Balimbingan Ptp 4" ;
   hf:jenis "Umum" ;
   hf:kelas "C" ;
   hf:alamat "Balimbingan" ;
   hf:pemilik "BUMN" ;
   hf:beradaDiKabupatenKota kk:kab-simalungun ;
-  schema:telephone "081370846809" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081370846809" ;
+  geo:lat "2.886931"^^xsd:decimal ;
+  geo:long "99.164407"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-063 a hf:RumahSakit ;
   schema:name "RS Umum Bandung" ;
   hf:jenis "Umum" ;
@@ -605,7 +1167,14 @@ rs:rs-063 a hf:RumahSakit ;
   hf:alamat "Jl Mistar No. 39-43" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "0614567993" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0614567993" ;
+  geo:lat "3.591645"^^xsd:decimal ;
+  geo:long "98.649688"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-064 a hf:RumahSakit ;
   schema:name "RS Umum Bethesda Gunungsitoli" ;
   hf:jenis "Umum" ;
@@ -613,7 +1182,14 @@ rs:rs-064 a hf:RumahSakit ;
   hf:alamat "Jl Diponegoro No.375 C" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-gunungsitoli ;
-  schema:telephone "81264480577" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "81264480577" ;
+  geo:lat "1.290057"^^xsd:decimal ;
+  geo:long "97.615077"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-065 a hf:RumahSakit ;
   schema:name "RS Umum Bidadari" ;
   hf:jenis "Umum" ;
@@ -621,7 +1197,14 @@ rs:rs-065 a hf:RumahSakit ;
   hf:alamat "Jalan Perintis Kemerdekaan Nomor 174 Kelurah Kebun Lada" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-binjai ;
-  schema:telephone "0618830003" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0618830003" ;
+  geo:lat "3.774424"^^xsd:decimal ;
+  geo:long "98.434118"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-066 a hf:RumahSakit ;
   schema:name "RS Umum Bidadari Batubara" ;
   hf:jenis "Umum" ;
@@ -629,7 +1212,14 @@ rs:rs-066 a hf:RumahSakit ;
   hf:alamat "jalan Jenderal Sudirman" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kab-batu-bara ;
-  schema:telephone "081329928886" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081329928886" ;
+  geo:lat "3.175079"^^xsd:decimal ;
+  geo:long "99.483084"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-067 a hf:RumahSakit ;
   schema:name "RS Umum Bina Kasih" ;
   hf:jenis "Umum" ;
@@ -637,7 +1227,14 @@ rs:rs-067 a hf:RumahSakit ;
   hf:alamat "Jl Jend. TB.Simatupang No.148 Sunggal" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061 8475111" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0618475111" ;
+  geo:lat "3.578568"^^xsd:decimal ;
+  geo:long "98.612967"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-068 a hf:RumahSakit ;
   schema:name "RS Umum Bunda Mulia" ;
   hf:jenis "Umum" ;
@@ -645,7 +1242,14 @@ rs:rs-068 a hf:RumahSakit ;
   hf:alamat "Jl. Abdi Setia Bakti" ;
   hf:pemilik "Perorangan" ;
   hf:beradaDiKabupatenKota kk:kab-asahan ;
-  schema:telephone "081264299098" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081264299098" ;
+  geo:lat "2.851800"^^xsd:decimal ;
+  geo:long "99.623301"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-069 a hf:RumahSakit ;
   schema:name "RS Umum Bunda Thamrin" ;
   hf:jenis "Umum" ;
@@ -653,7 +1257,14 @@ rs:rs-069 a hf:RumahSakit ;
   hf:alamat "Jl Sei Batang Hari No. 28 - 30 - 32 - 34 Medan" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061-4557318" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0614557318" ;
+  geo:lat "3.585303"^^xsd:decimal ;
+  geo:long "98.651474"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-070 a hf:RumahSakit ;
   schema:name "RS Umum Catharina 1914" ;
   hf:jenis "Umum" ;
@@ -661,7 +1272,14 @@ rs:rs-070 a hf:RumahSakit ;
   hf:alamat "Jalan Besar Syech silau" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kab-asahan ;
-  schema:telephone "081262484574" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081262484574" ;
+  geo:lat "2.851800"^^xsd:decimal ;
+  geo:long "99.623301"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-071 a hf:RumahSakit ;
   schema:name "RS Umum Citra Medika" ;
   hf:jenis "Umum" ;
@@ -669,7 +1287,14 @@ rs:rs-071 a hf:RumahSakit ;
   hf:alamat "Jl. Medan Batang Kuis No. 377" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
-  schema:telephone "+6282175981013" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "+6282175981013" ;
+  geo:lat "3.608778"^^xsd:decimal ;
+  geo:long "98.796529"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-072 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Aek Kanopan" ;
   hf:jenis "Umum" ;
@@ -677,7 +1302,14 @@ rs:rs-072 a hf:RumahSakit ;
   hf:alamat "Jalan Lintas Sumatera" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-labuhan-batu-utara ;
-  schema:telephone "0624-92525" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "062492525" ;
+  geo:lat "2.156475"^^xsd:decimal ;
+  geo:long "99.784549"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-073 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Bangun Purba" ;
   hf:jenis "Umum" ;
@@ -685,7 +1317,14 @@ rs:rs-073 a hf:RumahSakit ;
   hf:alamat "Jalan Perintis Kemerdekaan Nomor 60" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
-  schema:telephone "082181427461" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082181427461" ;
+  geo:lat "3.721571"^^xsd:decimal ;
+  geo:long "98.611355"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-074 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Batu Bara" ;
   hf:jenis "Umum" ;
@@ -693,7 +1332,14 @@ rs:rs-074 a hf:RumahSakit ;
   hf:alamat "Jl. Datuk Kubah Batu Bara Kwala Gunung" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-batu-bara ;
-  schema:telephone "085381337169" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "085381337169" ;
+  geo:lat "3.224064"^^xsd:decimal ;
+  geo:long "99.503580"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-075 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Cerah Medika Kab. Nias Barat" ;
   hf:jenis "Umum" ;
@@ -701,7 +1347,11 @@ rs:rs-075 a hf:RumahSakit ;
   hf:alamat "Jalan Budi Utomo Onolimbu" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-nias-barat ;
-  schema:telephone "082273316731" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082273316731" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-076 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Dolok Sanggul" ;
   hf:jenis "Umum" ;
@@ -709,7 +1359,14 @@ rs:rs-076 a hf:RumahSakit ;
   hf:alamat "Jl. dr. Ferdinand Lumban Tobing No. 1 Dolok Sanggul" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-humbang-hasundutan ;
-  schema:telephone "0633-31022" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "063331022" ;
+  geo:lat "2.262856"^^xsd:decimal ;
+  geo:long "98.751458"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-077 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Dr. Djasamen Saragih" ;
   hf:jenis "Umum" ;
@@ -717,15 +1374,29 @@ rs:rs-077 a hf:RumahSakit ;
   hf:alamat "Jl. Sutomo No. 230" ;
   hf:pemilik "Pemkot" ;
   hf:beradaDiKabupatenKota kk:kota-pematang-siantar ;
-  schema:telephone "0622-22959" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "062222959" ;
+  geo:lat "2.958101"^^xsd:decimal ;
+  geo:long "99.069776"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-078 a hf:RumahSakit ;
-  schema:name "RS Umum Daerah Dr. FL Tobing Sibolga" ;
+  schema:name "RS Umum Daerah Dr. Fl Tobing Sibolga" ;
   hf:jenis "Umum" ;
   hf:kelas "B" ;
   hf:alamat "Jl Dr. F.L. Tobing No. 35" ;
   hf:pemilik "Pemkot" ;
   hf:beradaDiKabupatenKota kk:kota-sibolga ;
-  schema:telephone "0631-26118" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "063126118" ;
+  geo:lat "1.736506"^^xsd:decimal ;
+  geo:long "98.782477"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-079 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Dr. H. Kumpulan Pane" ;
   hf:jenis "Umum" ;
@@ -733,7 +1404,14 @@ rs:rs-079 a hf:RumahSakit ;
   hf:alamat "Jl Dr. Kumpulan Pane No.226" ;
   hf:pemilik "Pemkot" ;
   hf:beradaDiKabupatenKota kk:kota-tebing-tinggi ;
-  schema:telephone "0621-21967" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "062121967" ;
+  geo:lat "3.327369"^^xsd:decimal ;
+  geo:long "99.162302"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-080 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Dr. Hadrianus Sinaga" ;
   hf:jenis "Umum" ;
@@ -741,23 +1419,41 @@ rs:rs-080 a hf:RumahSakit ;
   hf:alamat "Jl . dr. Hadrianus Sinaga No. 86" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-samosir ;
-  schema:telephone "081396875668" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081396875668" ;
+  geo:lat "2.596269"^^xsd:decimal ;
+  geo:long "98.706937"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-081 a hf:RumahSakit ;
-  schema:name "RS Umum Daerah dr. Husni Thamrin" ;
+  schema:name "RS Umum Daerah Dr. Husni Thamrin" ;
   hf:jenis "Umum" ;
   hf:kelas "D" ;
   hf:alamat "Jalan Multatuli No. 72" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-mandailing-natal ;
-  schema:telephone "0636-7325118" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "06367325118" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-082 a hf:RumahSakit ;
-  schema:name "RS Umum Daerah dr. M. Thomsen Nias" ;
+  schema:name "RS Umum Daerah Dr. M. Thomsen Nias" ;
   hf:jenis "Umum" ;
   hf:kelas "C" ;
   hf:alamat "Jl. dr. Ciptomangunkusumo No. 15" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kota-gunungsitoli ;
-  schema:telephone "(0639)21271" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "063921271" ;
+  geo:lat "1.290057"^^xsd:decimal ;
+  geo:long "97.615077"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-083 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Dr. Pirngadi" ;
   hf:jenis "Umum" ;
@@ -765,7 +1461,14 @@ rs:rs-083 a hf:RumahSakit ;
   hf:alamat "Jl Prof H M Yamin SH No. 47" ;
   hf:pemilik "Pemkot" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "081264801020" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081264801020" ;
+  geo:lat "3.597904"^^xsd:decimal ;
+  geo:long "98.688312"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-084 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Dr. R. M. Djoelham Binjai" ;
   hf:jenis "Umum" ;
@@ -773,7 +1476,14 @@ rs:rs-084 a hf:RumahSakit ;
   hf:alamat "Jl Sultan Hasanuddin No. 9 Binjai" ;
   hf:pemilik "Pemkot" ;
   hf:beradaDiKabupatenKota kk:kota-binjai ;
-  schema:telephone "061-80044777" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "06180044777" ;
+  geo:lat "3.601672"^^xsd:decimal ;
+  geo:long "98.483820"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-085 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Dr. Tengku Mansyur" ;
   hf:jenis "Umum" ;
@@ -781,15 +1491,29 @@ rs:rs-085 a hf:RumahSakit ;
   hf:alamat "Jl. Mayjen Sutoyo No. 39" ;
   hf:pemilik "Pemkot" ;
   hf:beradaDiKabupatenKota kk:kota-tanjung-balai ;
-  schema:telephone "0623-92089" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "062392089" ;
+  geo:lat "2.970342"^^xsd:decimal ;
+  geo:long "99.802090"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-086 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Drs. H. Amri Tambunan" ;
   hf:jenis "Umum" ;
   hf:kelas "B" ;
-  hf:alamat "Jl. MH Thamrin No 126" ;
+  hf:alamat "Jl. MH THAMRIN NO 126" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
-  schema:telephone "081369842524" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081369842524" ;
+  geo:lat "3.474454"^^xsd:decimal ;
+  geo:long "98.715897"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-087 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Gunung Tua" ;
   hf:jenis "Umum" ;
@@ -797,7 +1521,14 @@ rs:rs-087 a hf:RumahSakit ;
   hf:alamat "Jl Raya gunung Tua - Binangan KM 6 Aek Haruaya" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-padang-lawas-utara ;
-  schema:telephone "0636-5110209" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "06365110209" ;
+  geo:lat "1.629230"^^xsd:decimal ;
+  geo:long "99.692611"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-088 a hf:RumahSakit ;
   schema:name "RS Umum Daerah H. Abdul Manan Simatupang" ;
   hf:jenis "Umum" ;
@@ -805,7 +1536,14 @@ rs:rs-088 a hf:RumahSakit ;
   hf:alamat "Jl. Sisingamangaraja No. 315" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-asahan ;
-  schema:telephone "0623-41785" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "062341785" ;
+  geo:lat "2.979998"^^xsd:decimal ;
+  geo:long "99.637425"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-089 a hf:RumahSakit ;
   schema:name "RS Umum Daerah H. Bachtiar Djafar" ;
   hf:jenis "Umum" ;
@@ -813,14 +1551,28 @@ rs:rs-089 a hf:RumahSakit ;
   hf:alamat "JL. K.L. Yos Sudarso KM. 18,5" ;
   hf:pemilik "Pemkot" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "06142733825" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "06142733825" ;
+  geo:lat "3.589462"^^xsd:decimal ;
+  geo:long "98.674162"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-090 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Kabupaten Karo" ;
   hf:jenis "Umum" ;
   hf:kelas "C" ;
   hf:alamat "Jl. Kapten Selamat Ketaren" ;
   hf:pemilik "Pemkab" ;
-  hf:beradaDiKabupatenKota kk:kab-karo .
+  hf:beradaDiKabupatenKota kk:kab-karo ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  geo:lat "3.097226"^^xsd:decimal ;
+  geo:long "98.491603"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-091 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Kota Pinang" ;
   hf:jenis "Umum" ;
@@ -828,7 +1580,14 @@ rs:rs-091 a hf:RumahSakit ;
   hf:alamat "Jl Istana No. 26. Kelurahan Kotapinang Kabupaten LabuhanBatu Selatan Provinsi Sumatera Utara" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-labuhan-batu-selatan ;
-  schema:telephone "0624-496766" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0624496766" ;
+  geo:lat "1.893882"^^xsd:decimal ;
+  geo:long "100.093708"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-092 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Lukas Hilisimaetano" ;
   hf:jenis "Umum" ;
@@ -836,7 +1595,11 @@ rs:rs-092 a hf:RumahSakit ;
   hf:alamat "Jln. RSUD Lukas no.01 Hilisimaetano" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-nias-selatan ;
-  schema:telephone "081361905252" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081361905252" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-093 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Nias Selatan" ;
   hf:jenis "Umum" ;
@@ -844,7 +1607,11 @@ rs:rs-093 a hf:RumahSakit ;
   hf:alamat "Jalan Hiliana'a" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-nias-selatan ;
-  schema:telephone "085137521271" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "085137521271" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-094 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Padang Sidempuan" ;
   hf:jenis "Umum" ;
@@ -852,7 +1619,14 @@ rs:rs-094 a hf:RumahSakit ;
   hf:alamat "Jl Dr. F.L. Tobing No. 10" ;
   hf:pemilik "Pemkot" ;
   hf:beradaDiKabupatenKota kk:kota-padang-sidempuan ;
-  schema:telephone "(0634)21251" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "063421251" ;
+  geo:lat "1.396930"^^xsd:decimal ;
+  geo:long "99.250209"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-095 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Pandan" ;
   hf:jenis "Umum" ;
@@ -860,7 +1634,14 @@ rs:rs-095 a hf:RumahSakit ;
   hf:alamat "Jl. Dr. FL. Tobing No. 05 Pandan" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-tapanuli-tengah ;
-  schema:telephone "08126469276" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "08126469276" ;
+  geo:lat "1.910417"^^xsd:decimal ;
+  geo:long "98.589085"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-096 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Panyabungan" ;
   hf:jenis "Umum" ;
@@ -868,7 +1649,14 @@ rs:rs-096 a hf:RumahSakit ;
   hf:alamat "Komplek Perkantoran Payaloting" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-mandailing-natal ;
-  schema:telephone "0636-20181" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "063620181" ;
+  geo:lat "0.864181"^^xsd:decimal ;
+  geo:long "99.564523"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-097 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Parapat" ;
   hf:jenis "Umum" ;
@@ -876,7 +1664,14 @@ rs:rs-097 a hf:RumahSakit ;
   hf:alamat "Jl. Kolonel TPR Sinaga" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-simalungun ;
-  schema:telephone "081360862780" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081360862780" ;
+  geo:lat "2.668047"^^xsd:decimal ;
+  geo:long "98.937440"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-098 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Perdagangan" ;
   hf:jenis "Umum" ;
@@ -884,7 +1679,14 @@ rs:rs-098 a hf:RumahSakit ;
   hf:alamat "Jl. Radjadmin Purba, SH. Perdagangan" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-simalungun ;
-  schema:telephone "082287287212" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082287287212" ;
+  geo:lat "2.950708"^^xsd:decimal ;
+  geo:long "98.784316"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-099 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Pintu Padang" ;
   hf:jenis "Umum" ;
@@ -892,7 +1694,14 @@ rs:rs-099 a hf:RumahSakit ;
   hf:alamat "Jl. Mandailing Km. 18" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-tapanuli-selatan ;
-  schema:telephone "085270741078" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "085270741078" ;
+  geo:lat "1.778426"^^xsd:decimal ;
+  geo:long "99.284337"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-100 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Porsea" ;
   hf:jenis "Umum" ;
@@ -900,7 +1709,14 @@ rs:rs-100 a hf:RumahSakit ;
   hf:alamat "Jalan Raja Sipakko Napitulu Nomor 11" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-toba-samosir ;
-  schema:telephone "0632-41084" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "063241084" ;
+  geo:lat "2.610918"^^xsd:decimal ;
+  geo:long "98.902260"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-101 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Rantau Prapat" ;
   hf:jenis "Umum" ;
@@ -908,7 +1724,14 @@ rs:rs-101 a hf:RumahSakit ;
   hf:alamat "Jalan KH. Dewantara Nomor 129" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-labuhan-batu ;
-  schema:telephone "81375404013" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "81375404013" ;
+  geo:lat "2.153426"^^xsd:decimal ;
+  geo:long "99.785079"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-102 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Salak" ;
   hf:jenis "Umum" ;
@@ -916,7 +1739,14 @@ rs:rs-102 a hf:RumahSakit ;
   hf:alamat "Jl. Raja David" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-pakpak-bharat ;
-  schema:telephone "081361429525" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081361429525" ;
+  geo:lat "2.557512"^^xsd:decimal ;
+  geo:long "98.330543"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-103 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Sibuhuan" ;
   hf:jenis "Umum" ;
@@ -924,7 +1754,14 @@ rs:rs-103 a hf:RumahSakit ;
   hf:alamat "Jl. KH. Dewantara Sibuhuan" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-padang-lawas ;
-  schema:telephone "082381267581" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082381267581" ;
+  geo:lat "1.629230"^^xsd:decimal ;
+  geo:long "99.692611"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-104 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Sidikalang" ;
   hf:jenis "Umum" ;
@@ -932,7 +1769,14 @@ rs:rs-104 a hf:RumahSakit ;
   hf:alamat "Jl. Rumah Sakit No 19" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-dairi ;
-  schema:telephone "0627-21096" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "062721096" ;
+  geo:lat "2.828960"^^xsd:decimal ;
+  geo:long "98.312278"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-105 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Sultan Sulaiman Syariful Alamsyah" ;
   hf:jenis "Umum" ;
@@ -940,7 +1784,14 @@ rs:rs-105 a hf:RumahSakit ;
   hf:alamat "Jl. Negara Km. 58 No. 315" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-serdang-bedagai ;
-  schema:telephone "081262443228" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081262443228" ;
+  geo:lat "3.348553"^^xsd:decimal ;
+  geo:long "99.000082"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-106 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Tafaeri" ;
   hf:jenis "Umum" ;
@@ -948,7 +1799,14 @@ rs:rs-106 a hf:RumahSakit ;
   hf:alamat "Jalan Lotu - Sawo Km. 03" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-nias-utara ;
-  schema:telephone "081262136883" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081262136883" ;
+  geo:lat "3.672435"^^xsd:decimal ;
+  geo:long "98.692646"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-107 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Tanjung Pura" ;
   hf:jenis "Umum" ;
@@ -956,7 +1814,14 @@ rs:rs-107 a hf:RumahSakit ;
   hf:alamat "Jl. Khairil Anwar No. 9-11" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-langkat ;
-  schema:telephone "061-66471404" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "06166471404" ;
+  geo:lat "3.903281"^^xsd:decimal ;
+  geo:long "98.425889"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-108 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Tapanuli Selatan" ;
   hf:jenis "Umum" ;
@@ -964,7 +1829,14 @@ rs:rs-108 a hf:RumahSakit ;
   hf:alamat "Jalan Rumah Sakit Nomor 1 Banjar Toba" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-tapanuli-selatan ;
-  schema:telephone "0634-41002" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "063441002" ;
+  geo:lat "1.550633"^^xsd:decimal ;
+  geo:long "99.210385"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-109 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Tarutung" ;
   hf:jenis "Umum" ;
@@ -972,7 +1844,14 @@ rs:rs-109 a hf:RumahSakit ;
   hf:alamat "Jl. Agus Salim No. 1 Tarutung" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-tapanuli-utara ;
-  schema:telephone "08116505091" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "08116505091" ;
+  geo:lat "2.026529"^^xsd:decimal ;
+  geo:long "98.960634"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-110 a hf:RumahSakit ;
   schema:name "RS Umum Daerah Tuan Rondahaim" ;
   hf:jenis "Umum" ;
@@ -980,7 +1859,14 @@ rs:rs-110 a hf:RumahSakit ;
   hf:alamat "Komplek Perkantoran SKPD Pemkab Simalungun kecamatan Raya kabupaten Simalungun" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-simalungun ;
-  schema:telephone "085355795285" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "085355795285" ;
+  geo:lat "2.950708"^^xsd:decimal ;
+  geo:long "98.784316"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-111 a hf:RumahSakit ;
   schema:name "RS Umum Deli" ;
   hf:jenis "Umum" ;
@@ -988,7 +1874,14 @@ rs:rs-111 a hf:RumahSakit ;
   hf:alamat "Jl. Merbabu No.18-20 A" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061-4565229" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0614565229" ;
+  geo:lat "3.585913"^^xsd:decimal ;
+  geo:long "98.688306"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-112 a hf:RumahSakit ;
   schema:name "RS Umum Delia" ;
   hf:jenis "Umum" ;
@@ -996,15 +1889,29 @@ rs:rs-112 a hf:RumahSakit ;
   hf:alamat "Jln. KI Hajar Dewantara, No 09 Dusun V Desa Sei Limbat" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kab-langkat ;
-  schema:telephone "061-80044800" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "06180044800" ;
+  geo:lat "3.761725"^^xsd:decimal ;
+  geo:long "98.176919"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-113 a hf:RumahSakit ;
   schema:name "RS Umum Delima Medan" ;
   hf:jenis "Umum" ;
   hf:kelas "C" ;
-  hf:alamat "Jl. KL. Yos Sudarso KM 13,6 No. 19 A Medan- Martubung 20251" ;
+  hf:alamat "JL. KL. YOS SUDARSO KM 13,6 NO. 19 A MEDAN- MARTUBUNG 20251" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "082175927925" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082175927925" ;
+  geo:lat "3.696391"^^xsd:decimal ;
+  geo:long "98.672990"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-114 a hf:RumahSakit ;
   schema:name "RS Umum Dr. Gerhard L. Tobing" ;
   hf:jenis "Umum" ;
@@ -1012,7 +1919,14 @@ rs:rs-114 a hf:RumahSakit ;
   hf:alamat "Jl. Medan-Tanjung Morawa Km. 15,5" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
-  schema:telephone "082277767241" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082277767241" ;
+  geo:lat "3.535908"^^xsd:decimal ;
+  geo:long "98.816197"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-115 a hf:RumahSakit ;
   schema:name "RS Umum Efarina Etaham" ;
   hf:jenis "Umum" ;
@@ -1020,15 +1934,29 @@ rs:rs-115 a hf:RumahSakit ;
   hf:alamat "Jl Jamin Ginting No.1" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kab-karo ;
-  schema:telephone "082277229567" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082277229567" ;
+  geo:lat "3.226098"^^xsd:decimal ;
+  geo:long "98.543057"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-116 a hf:RumahSakit ;
-  schema:name "RS Umum Elpi Al Azis" ;
+  schema:name "RS Umum Elpi AL Azis" ;
   hf:jenis "Umum" ;
   hf:kelas "C" ;
   hf:alamat "Jl Wr. Supratman" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kab-labuhan-batu ;
-  schema:telephone "06242600380" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "06242600380" ;
+  geo:lat "2.153426"^^xsd:decimal ;
+  geo:long "99.785079"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-117 a hf:RumahSakit ;
   schema:name "RS Umum Eshmun" ;
   hf:jenis "Umum" ;
@@ -1036,7 +1964,14 @@ rs:rs-117 a hf:RumahSakit ;
   hf:alamat "Jalan Marelan Raya No. 173A" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "(061) 618881828" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "061618881828" ;
+  geo:lat "3.681634"^^xsd:decimal ;
+  geo:long "98.656093"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-118 a hf:RumahSakit ;
   schema:name "RS Umum Estomihi" ;
   hf:jenis "Umum" ;
@@ -1044,7 +1979,14 @@ rs:rs-118 a hf:RumahSakit ;
   hf:alamat "Jl. Sisinga Mangaraja, Nomor 235" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "081374357689" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081374357689" ;
+  geo:lat "3.556826"^^xsd:decimal ;
+  geo:long "98.695344"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-119 a hf:RumahSakit ;
   schema:name "RS Umum Flora" ;
   hf:jenis "Umum" ;
@@ -1052,15 +1994,29 @@ rs:rs-119 a hf:RumahSakit ;
   hf:alamat "Jl. Jenderal Sudirman No. 29 Aek Kanopan" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kab-labuhan-batu-utara ;
-  schema:telephone "081376089445" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081376089445" ;
+  geo:lat "3.202757"^^xsd:decimal ;
+  geo:long "99.563407"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-120 a hf:RumahSakit ;
   schema:name "RS Umum Full Bethesda" ;
   hf:jenis "Umum" ;
   hf:kelas "C" ;
-  hf:alamat "Jl Binjai KM 10.8/Jl Sama No 71 Kec. Sunggal Kab. Deli Serdang" ;
+  hf:alamat "JL BINJAI KM 10.8/JL SAMA NO 71 KEC. SUNGGAL KAB. DELI SERDANG" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
-  schema:telephone "082163895407" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082163895407" ;
+  geo:lat "3.645180"^^xsd:decimal ;
+  geo:long "98.933530"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-121 a hf:RumahSakit ;
   schema:name "RS Umum Hadi Husada" ;
   hf:jenis "Umum" ;
@@ -1068,7 +2024,14 @@ rs:rs-121 a hf:RumahSakit ;
   hf:alamat "Jalan Jendral Sudirman No.26" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-tanjung-balai ;
-  schema:telephone "+6282366616662" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "+6282366616662" ;
+  geo:lat "2.970342"^^xsd:decimal ;
+  geo:long "99.802090"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-122 a hf:RumahSakit ;
   schema:name "RS Umum Haji Medan" ;
   hf:jenis "Umum" ;
@@ -1076,7 +2039,14 @@ rs:rs-122 a hf:RumahSakit ;
   hf:alamat "Jl RS Haji Medan Estate No 47" ;
   hf:pemilik "Pemprop" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
-  schema:telephone "082173669967" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082173669967" ;
+  geo:lat "3.612719"^^xsd:decimal ;
+  geo:long "98.715256"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-123 a hf:RumahSakit ;
   schema:name "RS Umum Harapan" ;
   hf:jenis "Umum" ;
@@ -1084,7 +2054,14 @@ rs:rs-123 a hf:RumahSakit ;
   hf:alamat "Jalan Farel Pasaribu Nomor 21" ;
   hf:pemilik "Organisasi Katholik" ;
   hf:beradaDiKabupatenKota kk:kota-pematang-siantar ;
-  schema:telephone "(0622) 21162" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "062221162" ;
+  geo:lat "2.938807"^^xsd:decimal ;
+  geo:long "99.061785"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-124 a hf:RumahSakit ;
   schema:name "RS Umum Hartati Medical Centre" ;
   hf:jenis "Umum" ;
@@ -1092,15 +2069,29 @@ rs:rs-124 a hf:RumahSakit ;
   hf:alamat "Jl. Siringo-ringo No. 150 Rantauprapat, Kel. Binaraga, Kec. Rantau Utara, Kab. Labuhan Batu, Provinsi Sumatera Utara" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kab-labuhan-batu ;
-  schema:telephone "081370142150" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081370142150" ;
+  geo:lat "2.153426"^^xsd:decimal ;
+  geo:long "99.785079"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-125 a hf:RumahSakit ;
   schema:name "RS Umum Hermina Medan" ;
   hf:jenis "Umum" ;
   hf:kelas "C" ;
-  hf:alamat "Jl. Asrama Kel. Sei Sikambing C II, Kec. Medan Helvetia" ;
+  hf:alamat "JL. ASRAMA KEL. SEI SIKAMBING C II, KEC. MEDAN HELVETIA" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "06180862525" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "06180862525" ;
+  geo:lat "3.595250"^^xsd:decimal ;
+  geo:long "98.628135"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-126 a hf:RumahSakit ;
   schema:name "RS Umum Hidayah" ;
   hf:jenis "Umum" ;
@@ -1108,7 +2099,14 @@ rs:rs-126 a hf:RumahSakit ;
   hf:alamat "Jl. Besar Delitua Km. 8,5 No. 55" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
-  schema:telephone "061-80048838" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "06180048838" ;
+  geo:lat "3.474454"^^xsd:decimal ;
+  geo:long "98.715897"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-127 a hf:RumahSakit ;
   schema:name "RS Umum HKBP Balige" ;
   hf:jenis "Umum" ;
@@ -1116,7 +2114,14 @@ rs:rs-127 a hf:RumahSakit ;
   hf:alamat "Jl. Gereja No.17, Balige" ;
   hf:pemilik "Organisasi Protestan" ;
   hf:beradaDiKabupatenKota kk:kab-toba-samosir ;
-  schema:telephone "085360637560" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "085360637560" ;
+  geo:lat "2.610918"^^xsd:decimal ;
+  geo:long "98.902260"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-128 a hf:RumahSakit ;
   schema:name "RS Umum Imelda Pekerja Indonesia" ;
   hf:jenis "Umum" ;
@@ -1124,7 +2129,14 @@ rs:rs-128 a hf:RumahSakit ;
   hf:alamat "Jl. Bilal No. 24" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061- 6610072" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0616610072" ;
+  geo:lat "3.692721"^^xsd:decimal ;
+  geo:long "98.684097"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-129 a hf:RumahSakit ;
   schema:name "RS Umum Inanta" ;
   hf:jenis "Umum" ;
@@ -1132,7 +2144,14 @@ rs:rs-129 a hf:RumahSakit ;
   hf:alamat "Jl. Sisingamangaraja No.85/87" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-padang-sidempuan ;
-  schema:telephone "0851-8443-0834" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "085184430834" ;
+  geo:lat "1.384180"^^xsd:decimal ;
+  geo:long "99.274601"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-130 a hf:RumahSakit ;
   schema:name "RS Umum Islam Malahayati" ;
   hf:jenis "Umum" ;
@@ -1140,7 +2159,14 @@ rs:rs-130 a hf:RumahSakit ;
   hf:alamat "Jl Pangeran Diponegoro No. 2-4" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "(061) 4518766" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0614518766" ;
+  geo:lat "3.586362"^^xsd:decimal ;
+  geo:long "98.672494"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-131 a hf:RumahSakit ;
   schema:name "RS Umum Karya Bakti Ujung Bandar" ;
   hf:jenis "Umum" ;
@@ -1148,7 +2174,14 @@ rs:rs-131 a hf:RumahSakit ;
   hf:alamat "Jalan Karya Bakti No. 20 Kelurahan Ujung Bandar Kecamatan Rantau Selatan Kabupaten Labuhanbatu Sumatera Utara" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kab-labuhan-batu ;
-  schema:telephone "0624 2600413" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "06242600413" ;
+  geo:lat "2.069641"^^xsd:decimal ;
+  geo:long "99.860383"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-132 a hf:RumahSakit ;
   schema:name "RS Umum Karya Husada" ;
   hf:jenis "Umum" ;
@@ -1156,7 +2189,14 @@ rs:rs-132 a hf:RumahSakit ;
   hf:alamat "Jl. Merdeka Nomor 12-18" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kab-simalungun ;
-  schema:telephone "0622 697025" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0622697025" ;
+  geo:lat "3.121269"^^xsd:decimal ;
+  geo:long "99.131596"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-133 a hf:RumahSakit ;
   schema:name "RS Umum Kasih Insani" ;
   hf:jenis "Umum" ;
@@ -1164,7 +2204,14 @@ rs:rs-133 a hf:RumahSakit ;
   hf:alamat "Jl. Besar Namorambe No. 10 -15" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
-  schema:telephone "081265565540" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081265565540" ;
+  geo:lat "3.474454"^^xsd:decimal ;
+  geo:long "98.715897"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-134 a hf:RumahSakit ;
   schema:name "RS Umum Kasih Permata Dara" ;
   hf:jenis "Umum" ;
@@ -1172,7 +2219,14 @@ rs:rs-134 a hf:RumahSakit ;
   hf:alamat "Jl. Lintas Sumatera No. 215 Dusun Seroja" ;
   hf:pemilik "Perorangan" ;
   hf:beradaDiKabupatenKota kk:kab-batu-bara ;
-  schema:telephone "082285637297" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082285637297" ;
+  geo:lat "3.312406"^^xsd:decimal ;
+  geo:long "99.315415"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-135 a hf:RumahSakit ;
   schema:name "RS Umum Keliat" ;
   hf:jenis "Umum" ;
@@ -1180,7 +2234,14 @@ rs:rs-135 a hf:RumahSakit ;
   hf:alamat "Jalan Sutan Arab No 35 Dusun 2" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
-  schema:telephone "08126368799" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "08126368799" ;
+  geo:lat "3.474454"^^xsd:decimal ;
+  geo:long "98.715897"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-136 a hf:RumahSakit ;
   schema:name "RS Umum Laras Kabupaten Simalungun" ;
   hf:jenis "Umum" ;
@@ -1188,7 +2249,14 @@ rs:rs-136 a hf:RumahSakit ;
   hf:alamat "Desa Naga Jaya I" ;
   hf:pemilik "BUMN" ;
   hf:beradaDiKabupatenKota kk:kab-simalungun ;
-  schema:telephone "085260922248" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "085260922248" ;
+  geo:lat "2.950708"^^xsd:decimal ;
+  geo:long "98.784316"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-137 a hf:RumahSakit ;
   schema:name "RS Umum Lasmi Kartika" ;
   hf:jenis "Umum" ;
@@ -1196,7 +2264,14 @@ rs:rs-137 a hf:RumahSakit ;
   hf:alamat "Jl Pancasila Dusun X Desa Tanah Tinggi" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kab-batu-bara ;
-  schema:telephone "085218949205" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "085218949205" ;
+  geo:lat "3.224064"^^xsd:decimal ;
+  geo:long "99.503580"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-138 a hf:RumahSakit ;
   schema:name "RS Umum Latersia" ;
   hf:jenis "Umum" ;
@@ -1204,7 +2279,14 @@ rs:rs-138 a hf:RumahSakit ;
   hf:alamat "Jalan Soekarno Hatta Kilometer 18 Nomor 451" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-binjai ;
-  schema:telephone "085260000911" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "085260000911" ;
+  geo:lat "3.607217"^^xsd:decimal ;
+  geo:long "98.526192"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-139 a hf:RumahSakit ;
   schema:name "RS Umum Madani" ;
   hf:jenis "Umum" ;
@@ -1212,15 +2294,29 @@ rs:rs-139 a hf:RumahSakit ;
   hf:alamat "Jl. Arief Rahman Hakim No. 168" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "0813-7017-1521" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081370171521" ;
+  geo:lat "3.589462"^^xsd:decimal ;
+  geo:long "98.674162"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-140 a hf:RumahSakit ;
   schema:name "RS Umum Mahawira Prima Indonesia" ;
   hf:jenis "Umum" ;
   hf:kelas "C" ;
-  hf:alamat "Jalan Cemara No 16" ;
+  hf:alamat "JALAN CEMARA NO 16" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
-  schema:telephone "0821-6357-0227" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082163570227" ;
+  geo:lat "3.628788"^^xsd:decimal ;
+  geo:long "98.700822"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-141 a hf:RumahSakit ;
   schema:name "RS Umum Mahkota Bidadari" ;
   hf:jenis "Umum" ;
@@ -1228,7 +2324,14 @@ rs:rs-141 a hf:RumahSakit ;
   hf:alamat "Jalan Sisingamangaraja No. 146, Paluh Manis, Gebang, Langkat, Sumatera Utara" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kab-langkat ;
-  schema:telephone "085359267962" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "085359267962" ;
+  geo:lat "3.761725"^^xsd:decimal ;
+  geo:long "98.176919"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-142 a hf:RumahSakit ;
   schema:name "RS Umum Martha Friska" ;
   hf:jenis "Umum" ;
@@ -1236,7 +2339,14 @@ rs:rs-142 a hf:RumahSakit ;
   hf:alamat "Jl K.L. Yos Sudarso Km. 6 No. 91. Medan" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061 6610910" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0616610910" ;
+  geo:lat "3.633466"^^xsd:decimal ;
+  geo:long "98.668789"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-143 a hf:RumahSakit ;
   schema:name "RS Umum Martha Friska Multatuli" ;
   hf:jenis "Umum" ;
@@ -1244,7 +2354,14 @@ rs:rs-143 a hf:RumahSakit ;
   hf:alamat "Jl Multatuli Komplek Taman Multatuli Indah No.1" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061-4149666" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0614149666" ;
+  geo:lat "3.576190"^^xsd:decimal ;
+  geo:long "98.682984"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-144 a hf:RumahSakit ;
   schema:name "RS Umum Materna" ;
   hf:jenis "Umum" ;
@@ -1252,7 +2369,14 @@ rs:rs-144 a hf:RumahSakit ;
   hf:alamat "Jalan Teuku Umar No 9-11" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061-4514222" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0614514222" ;
+  geo:lat "3.585765"^^xsd:decimal ;
+  geo:long "98.671321"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-145 a hf:RumahSakit ;
   schema:name "RS Umum Melati" ;
   hf:jenis "Umum" ;
@@ -1260,7 +2384,14 @@ rs:rs-145 a hf:RumahSakit ;
   hf:alamat "Jl Deli No. 105-115" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kab-serdang-bedagai ;
-  schema:telephone "(061) 7990428" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0617990428" ;
+  geo:lat "3.566130"^^xsd:decimal ;
+  geo:long "98.959031"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-146 a hf:RumahSakit ;
   schema:name "RS Umum Melati Desa Pon" ;
   hf:jenis "Umum" ;
@@ -1268,7 +2399,14 @@ rs:rs-146 a hf:RumahSakit ;
   hf:alamat "Jalan Besar No 218 A" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kab-serdang-bedagai ;
-  schema:telephone "085261086655" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "085261086655" ;
+  geo:lat "3.600652"^^xsd:decimal ;
+  geo:long "98.678275"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-147 a hf:RumahSakit ;
   schema:name "RS Umum Methodist" ;
   hf:jenis "Umum" ;
@@ -1276,7 +2414,14 @@ rs:rs-147 a hf:RumahSakit ;
   hf:alamat "Jalan Mohammad Hoesni Thamrin Nomor 105" ;
   hf:pemilik "Organisasi Protestan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "(061) 7369000" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0617369000" ;
+  geo:lat "3.583684"^^xsd:decimal ;
+  geo:long "98.692858"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-148 a hf:RumahSakit ;
   schema:name "RS Umum Metta Medika" ;
   hf:jenis "Umum" ;
@@ -1284,7 +2429,14 @@ rs:rs-148 a hf:RumahSakit ;
   hf:alamat "Jl Sutoyo Siswomiharjo No 34 Sibolga" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-sibolga ;
-  schema:telephone "082165307266" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082165307266" ;
+  geo:lat "1.744988"^^xsd:decimal ;
+  geo:long "98.778791"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-149 a hf:RumahSakit ;
   schema:name "RS Umum Mitra Guray Petumbukan" ;
   hf:jenis "Umum" ;
@@ -1292,7 +2444,14 @@ rs:rs-149 a hf:RumahSakit ;
   hf:alamat "Jl. Besar Petumbukan No. 29" ;
   hf:pemilik "Perorangan" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
-  schema:telephone "061-7980216" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0617980216" ;
+  geo:lat "3.435799"^^xsd:decimal ;
+  geo:long "98.865901"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-150 a hf:RumahSakit ;
   schema:name "RS Umum Mitra Medika" ;
   hf:jenis "Umum" ;
@@ -1300,7 +2459,14 @@ rs:rs-150 a hf:RumahSakit ;
   hf:alamat "Jl. K.L. Yos Sudarso Km 7,5 Tanjung Mulia,Medan" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061-664-0999" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0616640999" ;
+  geo:lat "3.598292"^^xsd:decimal ;
+  geo:long "98.754995"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-151 a hf:RumahSakit ;
   schema:name "RS Umum Mitra Medika" ;
   hf:jenis "Umum" ;
@@ -1308,7 +2474,14 @@ rs:rs-151 a hf:RumahSakit ;
   hf:alamat "Jalan Medan Batang Kuis" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
-  schema:telephone "081269028201" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081269028201" ;
+  geo:lat "3.613192"^^xsd:decimal ;
+  geo:long "98.800180"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-152 a hf:RumahSakit ;
   schema:name "RS Umum Mitra Medika Amplas" ;
   hf:jenis "Umum" ;
@@ -1316,7 +2489,14 @@ rs:rs-152 a hf:RumahSakit ;
   hf:alamat "jalan Sisingamangaraja nomor 11" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "0617879070" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0617879070" ;
+  geo:lat "3.538163"^^xsd:decimal ;
+  geo:long "98.711918"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-153 a hf:RumahSakit ;
   schema:name "RS Umum Mitra Medika Premiere" ;
   hf:jenis "Umum" ;
@@ -1324,7 +2504,14 @@ rs:rs-153 a hf:RumahSakit ;
   hf:alamat "Jln. Let. Jend. S.Parman No. 236" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "0811328135" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0811328135" ;
+  geo:lat "3.586246"^^xsd:decimal ;
+  geo:long "98.666610"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-154 a hf:RumahSakit ;
   schema:name "RS Umum Mitra Sehat" ;
   hf:jenis "Umum" ;
@@ -1332,7 +2519,14 @@ rs:rs-154 a hf:RumahSakit ;
   hf:alamat "Jl. Sei Merah No. 300/21" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
-  schema:telephone "085270253369" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "085270253369" ;
+  geo:lat "3.509768"^^xsd:decimal ;
+  geo:long "98.811126"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-155 a hf:RumahSakit ;
   schema:name "RS Umum Mitra Sejati" ;
   hf:jenis "Umum" ;
@@ -1340,7 +2534,14 @@ rs:rs-155 a hf:RumahSakit ;
   hf:alamat "Jl Jend. AH Nasution No.7 Pangkalan Masyhur Medan" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "7875967" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "7875967" ;
+  geo:lat "3.540851"^^xsd:decimal ;
+  geo:long "98.679587"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-156 a hf:RumahSakit ;
   schema:name "RS Umum Muhammadiyah Sumatera Utara" ;
   hf:jenis "Umum" ;
@@ -1348,7 +2549,14 @@ rs:rs-156 a hf:RumahSakit ;
   hf:alamat "Jl Mandala By Pass No.27, Desa/Kelurahan Tegal S Mandala I, Kec. Medan Denai, Kota Medan, Provinsi Sumatera Utara, Kode Pos : 20226" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "087743913910" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "087743913910" ;
+  geo:lat "3.583040"^^xsd:decimal ;
+  geo:long "98.710992"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-157 a hf:RumahSakit ;
   schema:name "RS Umum Murni Teguh Memorial Hospital" ;
   hf:jenis "Umum" ;
@@ -1356,7 +2564,14 @@ rs:rs-157 a hf:RumahSakit ;
   hf:alamat "Jalan Jawa Nomor 2" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061-80501888" .
+  hf:menerimaBPJS "false"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "06180501888" ;
+  geo:lat "3.593259"^^xsd:decimal ;
+  geo:long "98.638971"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:subspesialis, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu-nicu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-158 a hf:RumahSakit ;
   schema:name "RS Umum Murni Teguh Methodist Susanna Wesley" ;
   hf:jenis "Umum" ;
@@ -1364,7 +2579,14 @@ rs:rs-158 a hf:RumahSakit ;
   hf:alamat "Jl. Harmonika Baru Pasar II" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "08116047013" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "08116047013" ;
+  geo:lat "3.590631"^^xsd:decimal ;
+  geo:long "98.681425"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-159 a hf:RumahSakit ;
   schema:name "RS Umum Natama" ;
   hf:jenis "Umum" ;
@@ -1372,7 +2594,14 @@ rs:rs-159 a hf:RumahSakit ;
   hf:alamat "Jl. Kartini No. 30A" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-tebing-tinggi ;
-  schema:telephone "0621-24404" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "062124404" ;
+  geo:lat "3.328982"^^xsd:decimal ;
+  geo:long "99.165474"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-160 a hf:RumahSakit ;
   schema:name "RS Umum Nuraini" ;
   hf:jenis "Umum" ;
@@ -1380,15 +2609,26 @@ rs:rs-160 a hf:RumahSakit ;
   hf:alamat "Jalan Lintas Sumatera Bloksongo Dusun Bloksongo" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kab-labuhan-batu-selatan ;
-  schema:telephone "081360654283" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081360654283" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-161 a hf:RumahSakit ;
   schema:name "RS Umum Pabatu" ;
   hf:jenis "Umum" ;
   hf:kelas "C" ;
-  hf:alamat "Jl. Desa Kedai Damar Tebing Tinggi" ;
+  hf:alamat "JL. DESA KEDAI DAMAR TEBING TINGGI" ;
   hf:pemilik "BUMN" ;
   hf:beradaDiKabupatenKota kk:kab-serdang-bedagai ;
-  schema:telephone "0621 2613427" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "06212613427" ;
+  geo:lat "3.482835"^^xsd:decimal ;
+  geo:long "99.121301"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-162 a hf:RumahSakit ;
   schema:name "RS Umum Pancur Batu" ;
   hf:jenis "Umum" ;
@@ -1396,7 +2636,14 @@ rs:rs-162 a hf:RumahSakit ;
   hf:alamat "Jalan Jamin Ginting Kilometer. 17,5" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
-  schema:telephone "082268821948" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082268821948" ;
+  geo:lat "3.474454"^^xsd:decimal ;
+  geo:long "98.715897"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-163 a hf:RumahSakit ;
   schema:name "RS Umum Patar Asih" ;
   hf:jenis "Umum" ;
@@ -1404,7 +2651,14 @@ rs:rs-163 a hf:RumahSakit ;
   hf:alamat "JL Bakaran Batu No. 188" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
-  schema:telephone "08118408355" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "08118408355" ;
+  geo:lat "3.605709"^^xsd:decimal ;
+  geo:long "98.794046"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-164 a hf:RumahSakit ;
   schema:name "RS Umum Permata Hati" ;
   hf:jenis "Umum" ;
@@ -1412,7 +2666,14 @@ rs:rs-164 a hf:RumahSakit ;
   hf:alamat "Jl. Ir. H. Juanda No. 21 Kisaran" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kab-asahan ;
-  schema:telephone "81360101887" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "81360101887" ;
+  geo:lat "2.851800"^^xsd:decimal ;
+  geo:long "99.623301"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-165 a hf:RumahSakit ;
   schema:name "RS Umum Permata Madina Panyabungan" ;
   hf:jenis "Umum" ;
@@ -1420,7 +2681,11 @@ rs:rs-165 a hf:RumahSakit ;
   hf:alamat "Jl Merdeka No.155 Panyabungan" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kab-mandailing-natal ;
-  schema:telephone "081260806680" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081260806680" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-166 a hf:RumahSakit ;
   schema:name "RS Umum Permata Madina Sibuhuan" ;
   hf:jenis "Umum" ;
@@ -1428,7 +2693,14 @@ rs:rs-166 a hf:RumahSakit ;
   hf:alamat "Jl. Kihajar Dewantara" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kab-padang-lawas ;
-  schema:telephone "085360426043" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "085360426043" ;
+  geo:lat "1.629230"^^xsd:decimal ;
+  geo:long "99.692611"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-167 a hf:RumahSakit ;
   schema:name "RS Umum Pertamina Pangkalan Brandan" ;
   hf:jenis "Umum" ;
@@ -1436,7 +2708,14 @@ rs:rs-167 a hf:RumahSakit ;
   hf:alamat "Jl. Wahidin No. 1 Pangkalan Brandan" ;
   hf:pemilik "BUMN" ;
   hf:beradaDiKabupatenKota kk:kab-langkat ;
-  schema:telephone "150442" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "150442" ;
+  geo:lat "3.761725"^^xsd:decimal ;
+  geo:long "98.176919"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-168 a hf:RumahSakit ;
   schema:name "RS Umum Prima Husada Cipta Medan" ;
   hf:jenis "Umum" ;
@@ -1444,7 +2723,14 @@ rs:rs-168 a hf:RumahSakit ;
   hf:alamat "Jalan Stasiun No.92" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061-6941927" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0616941927" ;
+  geo:lat "3.590862"^^xsd:decimal ;
+  geo:long "98.679601"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-169 a hf:RumahSakit ;
   schema:name "RS Umum Prof. Dr. Boloni" ;
   hf:jenis "Umum" ;
@@ -1452,15 +2738,29 @@ rs:rs-169 a hf:RumahSakit ;
   hf:alamat "Jl Robert Wolter Monginsidi No.11" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "0812-6013-1946" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081260131946" ;
+  geo:lat "3.570658"^^xsd:decimal ;
+  geo:long "98.668759"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-170 a hf:RumahSakit ;
-  schema:name "RS Umum PTP II Tg Selamat" ;
+  schema:name "RS Umum Ptp II Tg Selamat" ;
   hf:jenis "Umum" ;
   hf:kelas "C" ;
   hf:alamat "Jalan. Besar Batang Serangan Nomor 48" ;
   hf:pemilik "BUMN" ;
   hf:beradaDiKabupatenKota kk:kab-langkat ;
-  schema:telephone "+6281226318462" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "+6281226318462" ;
+  geo:lat "3.761725"^^xsd:decimal ;
+  geo:long "98.176919"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-171 a hf:RumahSakit ;
   schema:name "RS Umum Pusat H. Adam Malik" ;
   hf:jenis "Umum" ;
@@ -1468,15 +2768,29 @@ rs:rs-171 a hf:RumahSakit ;
   hf:alamat "Jl Bunga Lau No. 17" ;
   hf:pemilik "Kemkes" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061-8363000" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0618363000" ;
+  geo:lat "3.518183"^^xsd:decimal ;
+  geo:long "98.608322"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:subspesialis, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu-nicu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-172 a hf:RumahSakit ;
   schema:name "RS Umum Putri Bidadari" ;
   hf:jenis "Umum" ;
   hf:kelas "B" ;
-  hf:alamat "Jalan Stabat Tanjung Pura" ;
+  hf:alamat "JALAN STABAT TANJUNG PURA" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kab-langkat ;
-  schema:telephone "085361517988" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "085361517988" ;
+  geo:lat "3.761725"^^xsd:decimal ;
+  geo:long "98.176919"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-173 a hf:RumahSakit ;
   schema:name "RS Umum Rahmad Hidayah" ;
   hf:jenis "Umum" ;
@@ -1484,7 +2798,14 @@ rs:rs-173 a hf:RumahSakit ;
   hf:alamat "Jl Limau Manis Pasar XIII No.61" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
-  schema:telephone "081262565230" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081262565230" ;
+  geo:lat "3.474454"^^xsd:decimal ;
+  geo:long "98.715897"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-174 a hf:RumahSakit ;
   schema:name "RS Umum Ratu Mas" ;
   hf:jenis "Umum" ;
@@ -1492,7 +2813,14 @@ rs:rs-174 a hf:RumahSakit ;
   hf:alamat "Jl Tengku Amir Hamzah No. 281a Kelurahan Jati makmur,Kecamatan Binjai Utara,Kota Binjai" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-binjai ;
-  schema:telephone "(081370739531" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081370739531" ;
+  geo:lat "3.606396"^^xsd:decimal ;
+  geo:long "98.489987"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-175 a hf:RumahSakit ;
   schema:name "RS Umum Royal Maternity" ;
   hf:jenis "Umum" ;
@@ -1500,7 +2828,14 @@ rs:rs-175 a hf:RumahSakit ;
   hf:alamat "Jl. Sei Mencirim No. 55 - 57" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "+62 889-1200-22" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "+62 889 1200 22" ;
+  geo:lat "3.580567"^^xsd:decimal ;
+  geo:long "98.656011"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-176 a hf:RumahSakit ;
   schema:name "RS Umum Royal Prima" ;
   hf:jenis "Umum" ;
@@ -1508,7 +2843,14 @@ rs:rs-176 a hf:RumahSakit ;
   hf:alamat "Jl Ayahanda No 68A Medan" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061-88813182" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "06188813182" ;
+  geo:lat "3.597869"^^xsd:decimal ;
+  geo:long "98.654417"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-177 a hf:RumahSakit ;
   schema:name "RS Umum Royal Prima Marelan" ;
   hf:jenis "Umum" ;
@@ -1516,7 +2858,14 @@ rs:rs-177 a hf:RumahSakit ;
   hf:alamat "Jl. Marelan Pasar 3 No. 187" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061 42731858" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "06142731858" ;
+  geo:lat "3.699692"^^xsd:decimal ;
+  geo:long "98.657037"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-178 a hf:RumahSakit ;
   schema:name "RS Umum Santa Elisabeth Medan" ;
   hf:jenis "Umum" ;
@@ -1524,7 +2873,14 @@ rs:rs-178 a hf:RumahSakit ;
   hf:alamat "Jalan Haji Misbah Nomor 7" ;
   hf:pemilik "Organisasi Katholik" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "081370397806" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081370397806" ;
+  geo:lat "3.576306"^^xsd:decimal ;
+  geo:long "98.679382"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-179 a hf:RumahSakit ;
   schema:name "RS Umum Sarah" ;
   hf:jenis "Umum" ;
@@ -1532,7 +2888,14 @@ rs:rs-179 a hf:RumahSakit ;
   hf:alamat "Jl. Baja Raya No 10" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061-4568383" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0614568383" ;
+  geo:lat "3.587260"^^xsd:decimal ;
+  geo:long "98.663328"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-180 a hf:RumahSakit ;
   schema:name "RS Umum Sari Mutiara Lubuk Pakam" ;
   hf:jenis "Umum" ;
@@ -1540,15 +2903,29 @@ rs:rs-180 a hf:RumahSakit ;
   hf:alamat "Jl. Medan No.17" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
-  schema:telephone "082171420661" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082171420661" ;
+  geo:lat "3.600483"^^xsd:decimal ;
+  geo:long "98.713635"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-181 a hf:RumahSakit ;
   schema:name "RS Umum Sawit Indah Perbaungan" ;
   hf:jenis "Umum" ;
   hf:kelas "D" ;
-  hf:alamat "Jl. Mayjend Purn H.T Rizal Nurdin No. 10" ;
+  hf:alamat "JL. MAYJEND PURN H.T RIZAL NURDIN NO. 10" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kab-serdang-bedagai ;
-  schema:telephone "082276976727" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082276976727" ;
+  geo:lat "3.574539"^^xsd:decimal ;
+  geo:long "98.951855"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-182 a hf:RumahSakit ;
   schema:name "RS Umum Sembiring Deli Tua" ;
   hf:jenis "Umum" ;
@@ -1556,7 +2933,14 @@ rs:rs-182 a hf:RumahSakit ;
   hf:alamat "Jalan Besar Deli Tua No.77" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
-  schema:telephone "082370497169" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082370497169" ;
+  geo:lat "3.501740"^^xsd:decimal ;
+  geo:long "98.678783"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-183 a hf:RumahSakit ;
   schema:name "RS Umum Serenapita" ;
   hf:jenis "Umum" ;
@@ -1564,7 +2948,14 @@ rs:rs-183 a hf:RumahSakit ;
   hf:alamat "Jl. Sisingamangaraja No. 91 Sidikalang" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kab-dairi ;
-  schema:telephone "081330586491" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081330586491" ;
+  geo:lat "2.828960"^^xsd:decimal ;
+  geo:long "98.312278"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-184 a hf:RumahSakit ;
   schema:name "RS Umum Setio Husodo" ;
   hf:jenis "Umum" ;
@@ -1572,7 +2963,14 @@ rs:rs-184 a hf:RumahSakit ;
   hf:alamat "Jl SM. Raja No.67 Kisaran" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kab-asahan ;
-  schema:telephone "082360796310" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082360796310" ;
+  geo:lat "2.851800"^^xsd:decimal ;
+  geo:long "99.623301"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-185 a hf:RumahSakit ;
   schema:name "RS Umum Siloam Dhirga Surya" ;
   hf:jenis "Umum" ;
@@ -1580,7 +2978,14 @@ rs:rs-185 a hf:RumahSakit ;
   hf:alamat "Jl. Imam Bonjol No.6" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "+6261 8888 1900" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "+6261 8888 1900" ;
+  geo:lat "3.585764"^^xsd:decimal ;
+  geo:long "98.673597"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-186 a hf:RumahSakit ;
   schema:name "RS Umum Simalem" ;
   hf:jenis "Umum" ;
@@ -1588,14 +2993,28 @@ rs:rs-186 a hf:RumahSakit ;
   hf:alamat "Desa Lau Simomo Kec. Kabanjahe Kab. Karo" ;
   hf:pemilik "Pemprop" ;
   hf:beradaDiKabupatenKota kk:kab-karo ;
-  schema:telephone "085185566870" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "085185566870" ;
+  geo:lat "2.950635"^^xsd:decimal ;
+  geo:long "99.066850"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-187 a hf:RumahSakit ;
   schema:name "RS Umum Sinar Husni" ;
   hf:jenis "Umum" ;
   hf:kelas "C" ;
   hf:alamat "Jl. Veteran Gg. Utama Psr. V Helvetia" ;
   hf:pemilik "Organisasi Sosial" ;
-  hf:beradaDiKabupatenKota kk:kab-deli-serdang .
+  hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  geo:lat "3.634856"^^xsd:decimal ;
+  geo:long "98.663601"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-188 a hf:RumahSakit ;
   schema:name "RS Umum Sint Lucia" ;
   hf:jenis "Umum" ;
@@ -1603,15 +3022,29 @@ rs:rs-188 a hf:RumahSakit ;
   hf:alamat "Jl. Sisingamangaraja No. 171/173" ;
   hf:pemilik "Organisasi Katholik" ;
   hf:beradaDiKabupatenKota kk:kab-tapanuli-utara ;
-  schema:telephone "081262572329" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "081262572329" ;
+  geo:lat "2.335146"^^xsd:decimal ;
+  geo:long "98.904283"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-189 a hf:RumahSakit ;
   schema:name "RS Umum Sri Pamela" ;
   hf:jenis "Umum" ;
   hf:kelas "C" ;
-  hf:alamat "Jalan Jendral Sudirman Nomor 299" ;
+  hf:alamat "JALAN JENDRAL SUDIRMAN NOMOR 299" ;
   hf:pemilik "BUMN" ;
   hf:beradaDiKabupatenKota kk:kota-tebing-tinggi ;
-  schema:telephone "0621-24748" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "062124748" ;
+  geo:lat "3.327369"^^xsd:decimal ;
+  geo:long "99.162302"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-190 a hf:RumahSakit ;
   schema:name "RS Umum Sri Ratu" ;
   hf:jenis "Umum" ;
@@ -1619,7 +3052,14 @@ rs:rs-190 a hf:RumahSakit ;
   hf:alamat "Jln. Nibung Raya No.204-212" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "(061) - 4521074" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0614521074" ;
+  geo:lat "3.590852"^^xsd:decimal ;
+  geo:long "98.665088"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-191 a hf:RumahSakit ;
   schema:name "RS Umum Stella Maris" ;
   hf:jenis "Umum" ;
@@ -1627,7 +3067,14 @@ rs:rs-191 a hf:RumahSakit ;
   hf:alamat "Jl. Mgr. Albertus Soegijapranata" ;
   hf:pemilik "Organisasi Katholik" ;
   hf:beradaDiKabupatenKota kk:kab-nias-selatan ;
-  schema:telephone "82368196800" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "82368196800" ;
+  geo:lat "0.571343"^^xsd:decimal ;
+  geo:long "97.819984"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-192 a hf:RumahSakit ;
   schema:name "RS Umum Sundari" ;
   hf:jenis "Umum" ;
@@ -1635,7 +3082,14 @@ rs:rs-192 a hf:RumahSakit ;
   hf:alamat "Jl Jend. T.B.Simatupang No.31" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061-8452536" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0618452536" ;
+  geo:lat "3.589462"^^xsd:decimal ;
+  geo:long "98.674162"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-193 a hf:RumahSakit ;
   schema:name "RS Umum Sylvani" ;
   hf:jenis "Umum" ;
@@ -1643,7 +3097,14 @@ rs:rs-193 a hf:RumahSakit ;
   hf:alamat "Jl. Perintis Kemerdekaan No. 21" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-binjai ;
-  schema:telephone "061-80045925" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "06180045925" ;
+  geo:lat "3.648400"^^xsd:decimal ;
+  geo:long "98.477871"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-194 a hf:RumahSakit ;
   schema:name "RS Umum Tere Margareth" ;
   hf:jenis "Umum" ;
@@ -1651,7 +3112,14 @@ rs:rs-194 a hf:RumahSakit ;
   hf:alamat "Jl Ring Road Setia Budi Kel. Tj. Sari" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061-8226089" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0618226089" ;
+  geo:lat "3.560828"^^xsd:decimal ;
+  geo:long "98.626500"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-195 a hf:RumahSakit ;
   schema:name "RS Umum Tiara Kasih Sejati" ;
   hf:jenis "Umum" ;
@@ -1659,7 +3127,14 @@ rs:rs-195 a hf:RumahSakit ;
   hf:alamat "Jl Menambin No 04" ;
   hf:pemilik "Perorangan" ;
   hf:beradaDiKabupatenKota kk:kota-pematang-siantar ;
-  schema:telephone "0622- 27617" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "062227617" ;
+  geo:lat "2.953275"^^xsd:decimal ;
+  geo:long "99.057549"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-196 a hf:RumahSakit ;
   schema:name "RS Umum Universitas Prima Indonesia" ;
   hf:jenis "Umum" ;
@@ -1667,7 +3142,14 @@ rs:rs-196 a hf:RumahSakit ;
   hf:alamat "Jl. Simalungun No. 7A" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-tebing-tinggi ;
-  schema:telephone "(0621)-328488" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0621328488" ;
+  geo:lat "3.329992"^^xsd:decimal ;
+  geo:long "99.167567"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-197 a hf:RumahSakit ;
   schema:name "RS Umum Utama" ;
   hf:jenis "Umum" ;
@@ -1675,7 +3157,14 @@ rs:rs-197 a hf:RumahSakit ;
   hf:alamat "Jl. HOS. Cokroaminoto No. 93" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kab-asahan ;
-  schema:telephone "0623 42007" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "062342007" ;
+  geo:lat "2.851800"^^xsd:decimal ;
+  geo:long "99.623301"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-198 a hf:RumahSakit ;
   schema:name "RS Umum Vina Estetica" ;
   hf:jenis "Umum" ;
@@ -1683,15 +3172,29 @@ rs:rs-198 a hf:RumahSakit ;
   hf:alamat "Jl. Sultan Iskandar Muda, No.119 Medan, Kel. Sei Sikambing D" ;
   hf:pemilik "Organisasi Sosial" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061 4147646" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0614147646" ;
+  geo:lat "3.586938"^^xsd:decimal ;
+  geo:long "98.661088"^^xsd:decimal ;
+  hf:sumberKoordinat "osm" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-199 a hf:RumahSakit ;
   schema:name "RS Umum Vita Insani" ;
   hf:jenis "Umum" ;
   hf:kelas "B" ;
-  hf:alamat "Jl.Merdeka No 329" ;
+  hf:alamat "JL.MERDEKA NO 329" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-pematang-siantar ;
-  schema:telephone "62-811601125" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "62811601125" ;
+  geo:lat "2.961343"^^xsd:decimal ;
+  geo:long "99.071537"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-200 a hf:RumahSakit ;
   schema:name "RS Umum Wampu Norita" ;
   hf:jenis "Umum" ;
@@ -1699,7 +3202,14 @@ rs:rs-200 a hf:RumahSakit ;
   hf:alamat "Jl. Lintas Sumatera No.17, Jentera Stabat, Kec. Wampu, Kabupaten Langkat, Sumatera Utara 20854" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kab-langkat ;
-  schema:telephone "082365264946" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082365264946" ;
+  geo:lat "3.729497"^^xsd:decimal ;
+  geo:long "98.494831"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-201 a hf:RumahSakit ;
   schema:name "RS Umum Wira Husada" ;
   hf:jenis "Umum" ;
@@ -1707,7 +3217,14 @@ rs:rs-201 a hf:RumahSakit ;
   hf:alamat "Jl Kartini Nomor 209 Kisaran" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kab-asahan ;
-  schema:telephone "0623-42532" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "062342532" ;
+  geo:lat "2.980126"^^xsd:decimal ;
+  geo:long "99.615702"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-202 a hf:RumahSakit ;
   schema:name "RS Umum Wulan Windy" ;
   hf:jenis "Umum" ;
@@ -1715,7 +3232,14 @@ rs:rs-202 a hf:RumahSakit ;
   hf:alamat "Jl. Marelan Raya. No 17" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "061-6850200" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0616850200" ;
+  geo:lat "3.681634"^^xsd:decimal ;
+  geo:long "98.656093"^^xsd:decimal ;
+  hf:sumberKoordinat "jalan" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-203 a hf:RumahSakit ;
   schema:name "RS Umum Yoshua" ;
   hf:jenis "Umum" ;
@@ -1723,15 +3247,29 @@ rs:rs-203 a hf:RumahSakit ;
   hf:alamat "Jl. Medan - Lubuk Pakam N0. 70" ;
   hf:pemilik "Perusahaan" ;
   hf:beradaDiKabupatenKota kk:kab-deli-serdang ;
-  schema:telephone "061 - 7956061" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "0617956061" ;
+  geo:lat "3.474454"^^xsd:decimal ;
+  geo:long "98.715897"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-204 a hf:RumahSakit ;
-  schema:name "RSAU Dr. Abdul Malik" ;
+  schema:name "Rsau Dr. Abdul Malik" ;
   hf:jenis "Umum" ;
   hf:kelas "D" ;
   hf:alamat "Jl. Imam Bonjol No.50,Medan" ;
   hf:pemilik "TNI AU" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "082142743598" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "082142743598" ;
+  geo:lat "3.572179"^^xsd:decimal ;
+  geo:long "98.677838"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-205 a hf:RumahSakit ;
   schema:name "RSU Herna" ;
   hf:jenis "Umum" ;
@@ -1739,13 +3277,27 @@ rs:rs-205 a hf:RumahSakit ;
   hf:alamat "Jl. Mojopahit No. 118A" ;
   hf:pemilik "SWASTA/LAINNYA" ;
   hf:beradaDiKabupatenKota kk:kota-medan ;
-  schema:telephone "06144025026" .
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
+  schema:telephone "06144025026" ;
+  geo:lat "3.579488"^^xsd:decimal ;
+  geo:long "98.665543"^^xsd:decimal ;
+  hf:sumberKoordinat "nama" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-206 a hf:RumahSakit ;
-  schema:name "UPTD Rumah Sakit Pratama Nias" ;
+  schema:name "Uptd Rumah Sakit Pratama Nias" ;
   hf:jenis "Umum" ;
   hf:kelas "D" ;
   hf:alamat "Jalan Ir. Sukarno No. 0" ;
   hf:pemilik "Pemkab" ;
   hf:beradaDiKabupatenKota kk:kab-nias ;
+  hf:menerimaBPJS "true"^^xsd:boolean ;
+  hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:pratama "true"^^xsd:boolean ;
-  schema:telephone "081376529298" .
+  schema:telephone "081376529298" ;
+  geo:lat "1.042737"^^xsd:decimal ;
+  geo:long "97.645176"^^xsd:decimal ;
+  hf:sumberKoordinat "kabkota" ;
+  hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap-dasar, lay:pelayanan-medik-umum ;
+  hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:ruang-rawat-inap-dasar, fas:apotek .

@@ -23,6 +23,9 @@
 <!-- Deep Chat widget -->
 <script type="module" src="https://unpkg.com/deep-chat@2.1.1/dist/deepChat.bundle.js"></script>
 
+<!-- Vis.js Network for Interactive Knowledge Graph -->
+<script src="https://unpkg.com/vis-network@9.1.9/standalone/umd/vis-network.min.js"></script>
+
 <style>
 /* ============ Design tokens: tema Toba x Ulos ============ */
 :root{
@@ -245,6 +248,27 @@ select:hover,input:hover{border-color:#b9cbd2}
 #suggest button:hover{background:var(--toba-soft);border-color:#b7d3dd}
 #chat-element{flex:1;min-height:0}
 
+/* ============ Emergency Button ============ */
+.btn-emergency{margin-left:auto;display:inline-flex;align-items:center;gap:.45rem;padding:.45rem .95rem;background:#B3262E;color:#fff;border:none;border-radius:99px;font-weight:700;font-size:.82rem;cursor:pointer;letter-spacing:.02em;box-shadow:0 2px 10px rgba(179,38,46,.35);transition:all .2s;position:relative}
+.btn-emergency:hover{background:#941d24;transform:scale(1.03)}
+.em-pulse{width:8px;height:8px;border-radius:50%;background:#fff;animation:emPulse 1.2s infinite ease-in-out}
+@keyframes emPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.4}}
+
+/* ============ Knowledge Graph Modal (Vis.js) ============ */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(20,35,43,.65);backdrop-filter:blur(4px);z-index:4000;place-items:center;padding:1rem}
+.modal-overlay.open{display:grid}
+.modal-card{background:#fff;border-radius:18px;width:100%;max-width:940px;height:85vh;max-height:720px;display:flex;flex-direction:column;overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid var(--line)}
+.modal-head{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.3rem;background:#fff;border-bottom:1px solid var(--line)}
+.modal-head h3{margin:0;font-size:1.05rem;font-weight:800;display:flex;align-items:center;gap:.55rem}
+.modal-head h3 svg{color:var(--toba)}
+.modal-head button{background:none;border:none;font-size:1.5rem;color:var(--mute);cursor:pointer;line-height:1}
+.modal-sub{padding:.5rem 1.3rem;font-size:.78rem;color:var(--mute);background:var(--toba-mist);border-bottom:1px solid var(--line)}
+#graph-canvas{flex:1;min-height:0;background:#FDFCFA}
+.modal-foot{padding:.65rem 1.2rem;background:#fff;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem;font-size:.76rem}
+.graph-legend{display:flex;flex-wrap:wrap;gap:.8rem;color:var(--mute)}
+.graph-legend span{display:flex;align-items:center;gap:.35rem}
+.graph-legend i{width:10px;height:10px;border-radius:3px;display:inline-block}
+
 /* ============ Responsif ============ */
 @media(max-width:900px){
   main{grid-template-columns:1fr;grid-template-rows:40vh 1fr}
@@ -273,6 +297,11 @@ select:hover,input:hover{border-color:#b9cbd2}
     <span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M9.5 3h5v6.5H21v5h-6.5V21h-5v-6.5H3v-5h6.5z"/></svg></span>
     <span><h1>Cari<span>Sehat</span></h1><small>Rumah sakit se-Sumatera Utara</small></span>
   </a>
+  <button id="btn-emergency" class="btn-emergency" type="button" title="Mode Darurat: Cari RS dengan IGD 24 Jam terdekat dari lokasi Anda">
+    <span class="em-pulse" aria-hidden="true"></span>
+    <svg class="i" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20" stroke-width="3.5"/></svg>
+    <span>IGD Darurat</span>
+  </button>
   <button id="menu-btn" aria-label="Buka menu" aria-expanded="false" aria-controls="nav">&#9776;</button>
   <nav id="nav" aria-label="Menu utama">
     <a href="/sparql"><svg class="i" viewBox="0 0 24 24"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13.5 6l-3 12"/></svg>SPARQL Playground</a>
@@ -335,6 +364,28 @@ select:hover,input:hover{border-color:#b9cbd2}
     <div id="map-loading" role="status"><div><span class="spin"></span><span id="map-loading-t">Memuat...</span></div></div>
   </div>
 </main>
+
+<!-- Knowledge Graph Modal (Vis.js Network) -->
+<div id="graph-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Visualisasi Graf Pengetahuan">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h3><svg class="i" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="8" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8.2 7l7.6.7M7.2 8.2l3.8 7.8M16.8 10l-3.6 6"/></svg><span id="graph-modal-title">Graf Pengetahuan Semantik</span></h3>
+      <button type="button" onclick="closeKnowledgeGraph()" aria-label="Tutup graf">&times;</button>
+    </div>
+    <div class="modal-sub">Model Graf W3C RDF/OWL &amp; schema.org. Seret, perbesar, dan eksplorasi relasi semantik antar entitas.</div>
+    <div id="graph-canvas"></div>
+    <div class="modal-foot">
+      <div class="graph-legend">
+        <span><i style="background:#1F6F8B"></i> Rumah Sakit</span>
+        <span><i style="background:#2F7A5D"></i> Layanan Medis (Permenkes 3/2020)</span>
+        <span><i style="background:#C8922E"></i> Fasilitas Fisik</span>
+        <span><i style="background:#6F42C1"></i> Kabupaten/Kota</span>
+        <span><i style="background:#B3262E"></i> DBpedia Linked Data</span>
+      </div>
+      <button class="btn btn-ghost" type="button" onclick="if(networkInstance) networkInstance.fit()">Pusatkan Graf</button>
+    </div>
+  </div>
+</div>
 
 <div id="toasts" aria-live="polite"></div>
 
@@ -546,7 +597,7 @@ function render(fit){
       return `<li><article class="card${h.id === selectedId ? ' on' : ''}" data-id="${esc(h.id)}" style="--c:${colorOf(h.kelas)};animation-delay:${Math.min(i, 8) * 25}ms">
         <button class="card-main" data-act="select" data-id="${esc(h.id)}">
           <span class="card-top"><strong>${esc(h.nama)}</strong><span class="badge" title="${esc(DESC[h.kelas] || 'Kelas tidak diketahui')}">${esc(h.kelas || '?')}</span></span>
-          <span class="meta"><span>${esc(h.jenis)}</span><span>&bull;</span><span>${esc(h.kabkota)}</span></span>
+          <span class="meta"><span>${esc(h.jenis)}</span><span>&bull;</span><span>${esc(h.kabkota)}</span>${h.bpjs ? '<span>&bull;</span><span style="color:#2F7A5D;font-weight:700">BPJS</span>' : ''}</span>
           <span class="addr">${IC.pin}<span>${esc(h.alamat)}</span></span>
           ${tags}
         </button>
@@ -607,7 +658,7 @@ function select(id, opt = {}){
     <div class="d-head"><button class="d-back" id="d-back" type="button">${IC.back}Kembali ke daftar</button></div>
     <div class="d-body">
       <div class="d-hero">
-        <span class="d-pills"><span class="badge">Kelas ${esc(h.kelas || '?')}</span><span class="pill">${esc(h.jenis)}</span></span>
+        <span class="d-pills"><span class="badge">Kelas ${esc(h.kelas || '?')}</span><span class="pill">${esc(h.jenis)}</span>${h.bpjs ? '<span class="pill" style="background:#2F7A5D;color:#fff">✓ BPJS</span>' : ''}</span>
         <h2>${esc(h.nama)}</h2>
         <p>${esc(h.kabkota)}, Sumatera Utara</p>
       </div>
@@ -622,17 +673,341 @@ function select(id, opt = {}){
       </div>
       <div class="sec"><h3>Layanan</h3>${lay.length ? `<div class="chips" aria-label="Layanan">${tags(lay)}</div>` : '<p class="none">Data layanan belum tersedia.</p>'}</div>
       <div class="sec"><h3>Fasilitas</h3>${fas.length ? `<div class="chips" aria-label="Fasilitas">${fas.map(x => `<span class="chip">${esc(x)}</span>`).join('')}</div>` : '<p class="none">Data fasilitas belum tersedia.</p>'}</div>
-      <div class="sec"><h3>Data semantik</h3>
+      <div class="sec"><h3>Data semantik &amp; eksternal</h3>
         <div class="sem">
           <a href="${API_BASE}/rs/${rid}" target="_blank" rel="noopener">${IC.graph}Halaman Semantik<em>RDFa</em></a>
+          <button class="btn btn-ghost" type="button" onclick="showKnowledgeGraph('${esc(h.id)}')">${IC.graph}Graf Pengetahuan<em>W3C Network</em></button>
           <a href="${API_BASE}/rs/${rid}.rdf">${IC.file}Unduh RDF/XML<em>.rdf</em></a>
           <a href="${API_BASE}/rs/${rid}.ttl">${IC.file}Unduh Turtle<em>.ttl</em></a>
+          <button class="btn btn-ghost" type="button" onclick="loadCityInfo('${esc(h.kabkota)}')">${IC.web}Info ${esc(h.kabkota)}<em>DBpedia</em></button>
         </div>
+        <div id="city-info-box" style="display:none;margin-top:.8rem;padding:.8rem;background:#fff;border:1px solid var(--line);border-radius:10px;font-size:.82rem;"></div>
+      </div>
+      <div class="sec">
+        <h3>🛏️ Pesan Kamar Rawat Inap</h3>
+        <p class="none" style="font-size:.8rem;margin-bottom:.7rem">⚠️ Simulasi pemesanan — bukan terhubung ke sistem RS asli. Untuk keperluan demo Tugas Besar.</p>
+        <form id="booking-form" onsubmit="submitBooking(event,'${esc(h.id)}','${esc(h.nama)}')">
+          <div style="display:grid;gap:.5rem">
+            <input name="nama_pasien" placeholder="Nama lengkap pasien" required
+              style="padding:.55rem .7rem;border:1px solid var(--line);border-radius:8px;font-size:.88rem">
+            <input name="no_telp" type="tel" placeholder="Nomor telepon" required
+              style="padding:.55rem .7rem;border:1px solid var(--line);border-radius:8px;font-size:.88rem">
+            <select name="jenis_kamar" required
+              style="padding:.55rem .7rem;border:1px solid var(--line);border-radius:8px;font-size:.88rem;background:#fff">
+              <option value="">-- Pilih Jenis Kamar --</option>
+              <option>VIP</option><option>Kelas I</option><option>Kelas II</option><option>Kelas III</option><option>ICU</option>
+            </select>
+            <input name="tanggal_masuk" type="date" required min="${new Date().toISOString().split('T')[0]}"
+              style="padding:.55rem .7rem;border:1px solid var(--line);border-radius:8px;font-size:.88rem">
+            <textarea name="catatan" placeholder="Catatan tambahan (opsional)" rows="2"
+              style="padding:.55rem .7rem;border:1px solid var(--line);border-radius:8px;font-size:.88rem;resize:vertical"></textarea>
+            <button type="submit" class="btn btn-primary" style="justify-content:center">🛏️ Konfirmasi Pemesanan</button>
+          </div>
+        </form>
+        <div id="booking-result" style="display:none;margin-top:.6rem"></div>
+      </div>
+      <div class="sec">
+        <h3>🔍 Cek Status Booking</h3>
+        <form onsubmit="cekBooking(event)" style="display:flex;gap:.4rem">
+          <input name="kode_cek" placeholder="Masukkan kode booking (BK-...)" required
+            style="flex:1;padding:.55rem .7rem;border:1px solid var(--line);border-radius:8px;font-size:.88rem">
+          <button type="submit" class="btn btn-ghost" style="white-space:nowrap">Cek</button>
+        </form>
+        <div id="cek-booking-result" style="display:none;margin-top:.6rem"></div>
       </div>
     </div>`;
   d.classList.add('show');
   if(h.lat != null && !routingControl) map.setView([h.lat, h.lon], 15);
   else if(h.lat != null) map.panTo([h.lat, h.lon]);
+}
+
+async function loadCityInfo(kabkota){
+  const box = $('#city-info-box');
+  if(!box) return;
+  box.style.display = 'block';
+  box.innerHTML = '<span class="spin"></span> Memuat data dari DBpedia...';
+  try {
+    const res = await fetch(`/api/external/city/${encodeURIComponent(kabkota)}`);
+    const data = await res.json();
+    if(data.status === 'ok' && data.abstract){
+      box.innerHTML = `<strong>🌐 Data Eksternal DBpedia:</strong><p style="margin:.4rem 0">${esc(data.abstract.slice(0, 240))}...</p><a href="${esc(data.dbpedia_resource)}" target="_blank" rel="noopener" style="font-size:.78rem;font-weight:700">Lihat Resource DBpedia &rarr;</a>`;
+    } else {
+      box.innerHTML = 'Data eksternal DBpedia untuk wilayah ini belum tersedia.';
+    }
+  } catch(e) {
+    box.innerHTML = 'Gagal menghubungi endpoint DBpedia.';
+  }
+}
+
+/* ============ Booking Kamar Rawat Inap ============ */
+
+async function submitBooking(e, kode_rs, nama_rs){
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button[type="submit"]');
+  btn.disabled = true; btn.textContent = '⏳ Memproses...';
+
+  const data = {
+    kode_rs, nama_rs,
+    nama_pasien: form.nama_pasien.value.trim(),
+    no_telp: form.no_telp.value.trim(),
+    jenis_kamar: form.jenis_kamar.value,
+    tanggal_masuk: form.tanggal_masuk.value,
+    catatan: form.catatan.value.trim() || null
+  };
+  try {
+    const res = await fetch('/api/booking', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(data)
+    });
+    if(!res.ok){
+      const err = await res.json().catch(() => ({detail:'Terjadi kesalahan'}));
+      throw new Error(err.detail || JSON.stringify(err));
+    }
+    const result = await res.json();
+    const box = $('#booking-result');
+    box.style.display = 'block';
+    box.innerHTML = `<div style="background:#E8F5E9;border:1px solid #2F7A5D;border-radius:10px;padding:1rem">
+      <strong>✅ Pemesanan Berhasil!</strong>
+      <p style="margin:.4rem 0;font-size:.88rem">Kode Booking: <strong style="font-size:1.1rem;letter-spacing:1px">${esc(result.kode_booking)}</strong></p>
+      <p style="margin:.2rem 0;font-size:.82rem">Kamar: ${esc(result.jenis_kamar)} &bull; Masuk: ${result.tanggal_masuk}</p>
+      <p style="margin:.4rem 0 0;font-size:.8rem;color:#5B6E77">Status: <em>Menunggu konfirmasi dari RS</em>. Simpan kode booking Anda.</p>
+    </div>`;
+    form.reset();
+  } catch(err) {
+    toast('Gagal membuat booking: ' + err.message, 'err');
+  } finally {
+    btn.disabled = false; btn.textContent = '🛏️ Konfirmasi Pemesanan';
+  }
+}
+
+async function cekBooking(e){
+  e.preventDefault();
+  const kode = e.target.kode_cek.value.trim().toUpperCase();
+  if(!kode) return;
+  const box = $('#cek-booking-result');
+  box.style.display = 'block';
+  box.innerHTML = '<span class="spin"></span> Mencari booking...';
+  try {
+    const res = await fetch(`/api/booking/${encodeURIComponent(kode)}`);
+    if(res.status === 404){
+      box.innerHTML = '<p style="color:#B3262E;font-size:.85rem">❌ Kode booking tidak ditemukan.</p>';
+      return;
+    }
+    if(!res.ok) throw new Error('Gagal mengambil data');
+    const b = await res.json();
+    const statusColor = b.status === 'dikonfirmasi' ? '#2F7A5D' : b.status === 'dibatalkan' ? '#B3262E' : '#E6A817';
+    const statusIcon = b.status === 'dikonfirmasi' ? '✅' : b.status === 'dibatalkan' ? '❌' : '⏳';
+    box.innerHTML = `<div style="background:#F5F9FC;border:1px solid var(--line);border-radius:10px;padding:.8rem;font-size:.85rem">
+      <strong>${statusIcon} Booking ${esc(b.kode_booking)}</strong>
+      <div style="margin-top:.4rem;display:grid;gap:.2rem">
+        <span>👤 ${esc(b.nama_pasien)} &bull; 📞 ${esc(b.no_telp)}</span>
+        <span>🏥 ${esc(b.nama_rs)}</span>
+        <span>🛏️ ${esc(b.jenis_kamar)} &bull; 📅 Masuk: ${b.tanggal_masuk}</span>
+        <span style="color:${statusColor};font-weight:600">Status: ${b.status.charAt(0).toUpperCase() + b.status.slice(1)}</span>
+      </div>
+      ${b.status === 'menunggu' ? `<button class="btn btn-ghost" style="margin-top:.5rem;color:#B3262E;border-color:#B3262E" onclick="batalBooking('${esc(b.kode_booking)}')">Batalkan Booking</button>` : ''}
+    </div>`;
+  } catch(err){
+    box.innerHTML = `<p style="color:#B3262E;font-size:.85rem">Gagal: ${esc(err.message)}</p>`;
+  }
+}
+
+async function batalBooking(kode){
+  if(!confirm(`Batalkan booking ${kode}?`)) return;
+  try {
+    const res = await fetch(`/api/booking/${encodeURIComponent(kode)}`, {method:'DELETE'});
+    if(!res.ok) throw new Error('Gagal membatalkan');
+    toast('Booking berhasil dibatalkan', 'ok');
+    // refresh tampilan
+    const box = $('#cek-booking-result');
+    if(box) { box.style.display = 'none'; }
+  } catch(err){
+    toast('Gagal membatalkan: ' + err.message, 'err');
+  }
+}
+
+/* ============ Visualisasi Graf Pengetahuan (Vis.js Network) ============ */
+let networkInstance = null;
+
+function showKnowledgeGraph(id){
+  const h = items.find(x => x.id === id);
+  if(!h) return;
+
+  $('#graph-modal-title').textContent = `Graf Pengetahuan: ${h.nama}`;
+  $('#graph-modal').classList.add('open');
+
+  const container = document.getElementById('graph-canvas');
+  container.innerHTML = '';
+
+  const nodes = [];
+  const edges = [];
+
+  // 1. Node Rumah Sakit (Pusat)
+  nodes.push({
+    id: 'rs',
+    label: `${h.nama}\n(Kelas ${h.kelas})`,
+    color: { background: '#1F6F8B', border: '#15556B' },
+    font: { color: '#ffffff', size: 14, face: 'Plus Jakarta Sans', bold: true },
+    shape: 'box',
+    margin: 12,
+    shadow: true
+  });
+
+  // 2. Node Wilayah & DBpedia
+  nodes.push({
+    id: 'kab',
+    label: h.kabkota,
+    color: { background: '#6F42C1', border: '#59359A' },
+    font: { color: '#ffffff', size: 12, face: 'Plus Jakarta Sans' },
+    shape: 'ellipse'
+  });
+  edges.push({ from: 'rs', to: 'kab', label: 'hf:beradaDiKabupatenKota', arrows: 'to', font: { size: 9, color: '#5B6E77' } });
+
+  const rawCity = h.kabkota.replace(/Kota |Kab\. /g, '').trim().replace(/\s+/g, '_');
+  nodes.push({
+    id: 'dbpedia',
+    label: `dbpedia:${rawCity}`,
+    color: { background: '#B3262E', border: '#8B1C23' },
+    font: { color: '#ffffff', size: 11, face: 'monospace' },
+    shape: 'box',
+    margin: 8
+  });
+  edges.push({ from: 'kab', to: 'dbpedia', label: 'owl:sameAs', arrows: 'to', dashes: true, font: { size: 9, color: '#B3262E' } });
+
+  // 3. Node BPJS & Regulasi
+  nodes.push({
+    id: 'reg',
+    label: 'Permenkes No. 3/2020',
+    color: { background: '#EEF1F2', border: '#DCE6EA' },
+    font: { color: '#14232B', size: 10, face: 'Plus Jakarta Sans' },
+    shape: 'box'
+  });
+  edges.push({ from: 'rs', to: 'reg', label: 'hf:standarRegulasi', arrows: 'to', font: { size: 9, color: '#5B6E77' } });
+
+  if(h.bpjs){
+    nodes.push({
+      id: 'bpjs',
+      label: 'Menerima BPJS Kesehatan',
+      color: { background: '#E8F5E9', border: '#2F7A5D' },
+      font: { color: '#2F7A5D', size: 11, bold: true, face: 'Plus Jakarta Sans' },
+      shape: 'box',
+      margin: 8
+    });
+    edges.push({ from: 'rs', to: 'bpjs', label: 'hf:menerimaBPJS', arrows: 'to', font: { size: 9, color: '#2F7A5D' } });
+  }
+
+  // 4. Node Layanan Medis (Permenkes)
+  (h.layanan || []).slice(0, 7).forEach((lay, idx) => {
+    const layId = `lay_${idx}`;
+    nodes.push({
+      id: layId,
+      label: lay,
+      color: { background: '#EAF3F6', border: '#2F7A5D' },
+      font: { color: '#14232B', size: 11, face: 'Plus Jakarta Sans' },
+      shape: 'box',
+      borderRadius: 6
+    });
+    edges.push({ from: 'rs', to: layId, label: 'schema:availableService', arrows: 'to', font: { size: 8, color: '#2F7A5D' } });
+  });
+
+  // 5. Node Fasilitas Fisik
+  (h.fasilitas || []).slice(0, 5).forEach((fas, idx) => {
+    const fasId = `fas_${idx}`;
+    nodes.push({
+      id: fasId,
+      label: fas,
+      color: { background: '#FFF8E1', border: '#C8922E' },
+      font: { color: '#14232B', size: 11, face: 'Plus Jakarta Sans' },
+      shape: 'box',
+      borderRadius: 6
+    });
+    edges.push({ from: 'rs', to: fasId, label: 'hf:memilikiFasilitas', arrows: 'to', font: { size: 8, color: '#C8922E' } });
+  });
+
+  const data = {
+    nodes: new vis.DataSet(nodes),
+    edges: new vis.DataSet(edges)
+  };
+
+  const options = {
+    physics: {
+      solver: 'forceAtlas2Based',
+      forceAtlas2Based: {
+        gravitationalConstant: -38,
+        centralGravity: 0.01,
+        springLength: 95,
+        springConstant: 0.08
+      },
+      stabilization: { iterations: 150 }
+    },
+    interaction: {
+      hover: true,
+      tooltipDelay: 200,
+      navigationButtons: true,
+      zoomView: true
+    }
+  };
+
+  networkInstance = new vis.Network(container, data, options);
+}
+
+function closeKnowledgeGraph(){
+  $('#graph-modal').classList.remove('open');
+  if(networkInstance){
+    networkInstance.destroy();
+    networkInstance = null;
+  }
+}
+
+// Perhitungan Jarak Haversine (km)
+function haversine(lat1, lon1, lat2, lon2){
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+            Math.sin(dLon/2) * Math.sin(dLon/2);
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+// Mode Darurat (Emergency Mode)
+function activateEmergencyMode(){
+  toast('🚨 Mode Darurat diaktifkan: Mencari RS terdekat dengan IGD 24 Jam...', 'warn');
+  const doSearch = (userLat, userLon) => {
+    const candidates = items.filter(h => h.lat != null && h.lon != null && (
+      (h.layanan && h.layanan.some(l => /igd|gawat darurat|ugd/i.test(l))) ||
+      (h.fasilitas && h.fasilitas.some(f => /gawat darurat|ambulans/i.test(f)))
+    ));
+    if(!candidates.length) return toast('Tidak ada RS ber-IGD yang ditemukan di dataset.', 'err');
+
+    const withDist = candidates.map(h => ({
+      ...h,
+      distKm: haversine(userLat, userLon, h.lat, h.lon)
+    })).sort((a,b) => a.distKm - b.distKm);
+
+    const terdekat = withDist[0];
+    toast(`🚨 RS Terdekat: ${terdekat.nama} (${terdekat.distKm.toFixed(1)} km). Membuka navigasi rute...`);
+    select(terdekat.id);
+    ruteKe(terdekat.lat, terdekat.lon, terdekat.nama);
+  };
+
+  if(userCoords) {
+    doSearch(userCoords[0], userCoords[1]);
+  } else {
+    if(!navigator.geolocation) return toast('Browser Anda tidak mendukung deteksi lokasi.', 'err');
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        userCoords = [pos.coords.latitude, pos.coords.longitude];
+        doSearch(userCoords[0], userCoords[1]);
+      },
+      err => {
+        toast('Gagal mendeteksi lokasi GPS. Harap izinkan akses lokasi di browser Anda.', 'err');
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
+  }
 }
 
 function closeDetail(){
@@ -775,6 +1150,25 @@ $('#suggest').addEventListener('click', e => {
 
 customElements.whenDefined('deep-chat').then(() => {
   const c = $('#chat-element');
+  if(!c) return;
+  c.demo = false;
+  c.request = {
+    handler: async (body, signals) => {
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+        if(!res.ok) throw new Error(`HTTP error ${res.status}`);
+        const data = await res.json();
+        signals.onResponse({ text: data.text || 'Tidak ada balasan.' });
+      } catch (err) {
+        console.error('Chat error:', err);
+        signals.onResponse({ error: 'Maaf, terjadi kendala saat menghubungkan ke asisten semantik.' });
+      }
+    }
+  };
   c.chatStyle = {backgroundColor:'#fff', border:'none'};
   c.inputAreaStyle = {backgroundColor:'#F6F8F9', borderTop:'1px solid #DCE6EA', padding:'8px'};
   c.messageStyles = {default:{
@@ -833,6 +1227,7 @@ $('#rb-steps').addEventListener('click', () => {
   el.style.display = (getComputedStyle(el).display === 'none') ? 'block' : 'none';
 });
 
+$('#btn-emergency').addEventListener('click', activateEmergencyMode);
 $('#chat-btn').addEventListener('click', () => toggleChat());
 $('#chat-close').addEventListener('click', () => toggleChat(false));
 $('#menu-btn').addEventListener('click', () => {
@@ -844,6 +1239,7 @@ document.addEventListener('keydown', e => {
   const typing = /INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName) || document.activeElement.tagName === 'DEEP-CHAT';
   if(e.key === '/' && !typing){ e.preventDefault(); $('#q').focus(); }
   if(e.key === 'Escape'){
+    closeKnowledgeGraph();
     if($('#chat-bubble').classList.contains('open')) toggleChat(false);
     else if($('#detail').classList.contains('show')) closeDetail();
     $('#nav').classList.remove('open');

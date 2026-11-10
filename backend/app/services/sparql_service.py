@@ -40,7 +40,7 @@ def build_search_query(q="", kelas="", jenis="", kabkota="", layanan="", limit=5
         f.append(f"FILTER EXISTS {{ ?rs hf:menyediakanLayanan ?l . ?l rdfs:label ?ll . FILTER(STR(?ll) = {lit(layanan)}) }}")
     values = f"VALUES ?rs {{ <{uri}> }}" if uri else ""
     filters = "\n  ".join(f)
-    return f"""SELECT ?rs ?nama ?jenis ?kelas ?alamat ?kabkota ?telepon ?website ?lat ?lon
+    return f"""SELECT ?rs ?nama ?jenis ?kelas ?alamat ?kabkota ?telepon ?website ?lat ?lon ?bpjs
        (GROUP_CONCAT(DISTINCT ?lay; separator="|") AS ?layanan)
        (GROUP_CONCAT(DISTINCT ?fas; separator="|") AS ?fasilitas)
 WHERE {{
@@ -51,11 +51,12 @@ WHERE {{
   OPTIONAL {{ ?rs geo:lat ?lat ; geo:long ?lon }}
   OPTIONAL {{ ?rs schema:telephone ?telepon }}
   OPTIONAL {{ ?rs schema:url ?website }}
+  OPTIONAL {{ ?rs hf:menerimaBPJS ?bpjs }}
   OPTIONAL {{ ?rs hf:menyediakanLayanan/rdfs:label ?lay }}
   OPTIONAL {{ ?rs hf:memilikiFasilitas/rdfs:label ?fas }}
   {filters}
 }}
-GROUP BY ?rs ?nama ?jenis ?kelas ?alamat ?kabkota ?telepon ?website ?lat ?lon
+GROUP BY ?rs ?nama ?jenis ?kelas ?alamat ?kabkota ?telepon ?website ?lat ?lon ?bpjs
 ORDER BY ?nama
 LIMIT {int(limit)} OFFSET {int(offset)}"""
 
@@ -77,6 +78,7 @@ def to_hospital(r: dict) -> dict:
         "id": r["rs"].rsplit("/", 1)[-1], "uri": r["rs"], "nama": r["nama"], "jenis": r["jenis"],
         "kelas": r["kelas"], "alamat": r["alamat"], "kabkota": r["kabkota"],
         "telepon": r.get("telepon"), "website": r.get("website"),
+        "bpjs": r.get("bpjs") == "true",
         "lat": float(r["lat"]) if r.get("lat") else None, "lon": float(r["lon"]) if r.get("lon") else None,
         "layanan": parts(r.get("layanan")), "fasilitas": parts(r.get("fasilitas")),
     }

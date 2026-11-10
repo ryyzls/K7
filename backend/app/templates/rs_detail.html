@@ -68,7 +68,7 @@
 
   <main class="wrap">
     <section class="hero">
-      <div class="pills"><span class="pill k">Kelas {{ h.kelas }}</span><span class="pill">{{ h.jenis }}</span></div>
+      <div class="pills"><span class="pill k">Kelas {{ h.kelas }}</span><span class="pill">{{ h.jenis }}</span>{% if h.bpjs %}<span class="pill" style="background:#2F7A5D;color:#fff">✓ Menerima BPJS</span>{% endif %}</div>
       <h1 property="name">{{ h.nama }}</h1>
       <p>{{ h.kabkota }}, Sumatera Utara</p>
     </section>
