@@ -7,6 +7,7 @@ import httpx
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
+from sqlalchemy.exc import SQLAlchemyError
 
 from app.config import settings
 from app.database.connection import engine
@@ -38,6 +39,11 @@ app = FastAPI(title="CariSehat", lifespan=lifespan)
 @app.exception_handler(httpx.HTTPError)
 async def fuseki_error(request: Request, exc: httpx.HTTPError):
     return JSONResponse({"detail": "Fuseki tidak dapat dihubungi atau query gagal"}, status_code=502)
+
+
+@app.exception_handler(SQLAlchemyError)
+async def database_error(request: Request, exc: SQLAlchemyError):
+    return JSONResponse({"detail": "Database tidak tersedia; coba lagi nanti"}, status_code=503)
 
 
 app.include_router(api.router)

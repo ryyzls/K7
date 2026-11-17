@@ -16,7 +16,7 @@ log = logging.getLogger("carisehat.chatbot")
 
 GEMINI_API_URL = (
     "https://generativelanguage.googleapis.com/v1beta/models/"
-    "gemini-2.0-flash:generateContent"
+    f"{settings.gemini_model}:generateContent"
 )
 
 # Konteks sistem untuk Gemini — memahami domain CariSehat
@@ -108,17 +108,17 @@ def _extract_entities(text: str) -> dict:
     daftar_kota = {
         "medan": "Kota Medan",
         "binjai": "Kota Binjai",
-        "pematangsiantar": "Kota Pematangsiantar",
-        "siantar": "Kota Pematangsiantar",
+        "pematangsiantar": "Kota Pematang Siantar",
+        "siantar": "Kota Pematang Siantar",
         "tebing tinggi": "Kota Tebing Tinggi",
-        "tanjungbalai": "Kota Tanjungbalai",
+        "tanjungbalai": "Kota Tanjung Balai",
         "sibolga": "Kota Sibolga",
-        "padangsidimpuan": "Kota Padangsidimpuan",
+        "padangsidimpuan": "Kota Padang Sidempuan",
         "gunungsitoli": "Kota Gunungsitoli",
         "deli serdang": "Kab. Deli Serdang",
         "karo": "Kab. Karo",
         "kabanjahe": "Kab. Karo",
-        "toba": "Kab. Toba",
+        "toba": "Kab. Toba Samosir",
         "samosir": "Kab. Samosir",
         "simalungun": "Kab. Simalungun",
         "asahan": "Kab. Asahan",
@@ -128,7 +128,7 @@ def _extract_entities(text: str) -> dict:
         "nias": "Kab. Nias",
         "batubara": "Kab. Batu Bara",
         "mandailing natal": "Kab. Mandailing Natal",
-        "labuhanbatu": "Kab. Labuhanbatu",
+        "labuhanbatu": "Kab. Labuhan Batu",
     }
     for k, v in daftar_kota.items():
         if k in text:
@@ -138,7 +138,7 @@ def _extract_entities(text: str) -> dict:
     # Layanan spesifik
     for layanan in ["Anak", "Bersalin", "Bedah", "Ginjal", "Gigi dan Mulut", "Jiwa", "Mata", "Paru"]:
         if layanan.lower() in text:
-            result["layanan"] = layanan
+            result["layanan"] = {"Anak": "Kesehatan Anak", "Bersalin": "Kebidanan dan Kandungan", "Ginjal": "Dialisis / Cuci Darah", "Jiwa": "Kesehatan Jiwa / Psikiatri", "Mata": "Kesehatan Mata", "Paru": "Pulmonologi dan Kedokteran Respirasi"}.get(layanan, layanan)
             break
 
     # Nama RS jika disebutkan eksplisit
@@ -208,7 +208,9 @@ def _format_fallback(results: list[dict], kriteria: dict) -> str:
 
 async def process_chat_message(user_text: str) -> str:
     """Proses teks masukan pengguna dan menghasilkan jawaban berbasis AI + data semantik."""
-    text = (user_text or "").strip().lower()
+    if not isinstance(user_text, str):
+        return "Pesan harus berupa teks."
+    text = user_text.strip().lower()
     if not text:
         return "Halo! Ada yang bisa saya bantu terkait informasi rumah sakit di Sumatera Utara?"
 
@@ -261,20 +263,19 @@ async def process_chat_message(user_text: str) -> str:
     kw: dict = {"limit": 5, "offset": 0}
     kw.update(entities)
     # Jangan gunakan 'q' dan filter spesifik bersamaan
-    if "q" in entities and (entities.get("kelas") or entities.get("kabkota")):
+    if "q" in entities and any(entities.get(k) for k in ("kelas", "kabkota", "jenis", "layanan")):
         kw.pop("q", None)
 
     try:
         results = await sp.search_hospitals(**kw)
     except Exception as e:
         log.error("SPARQL error: %s", e)
-        # Jika Fuseki tidak tersedia, coba Gemini saja
-        ai_reply = await _call_gemini(user_text)
-        if ai_reply:
-            return ai_reply
+        # Do not generate hospital information without the semantic source.
         return f"Maaf, terjadi kendala saat menghubungkan ke database semantik (Fuseki): {type(e).__name__}"
 
     # 5. Siapkan konteks dari database lalu kirim ke Gemini
+    if not results:
+        return _format_fallback(results, entities)
     db_context = _format_db_results(results, entities)
 
     ai_reply = await _call_gemini(user_text, db_context)

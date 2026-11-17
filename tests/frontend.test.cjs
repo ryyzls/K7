@@ -1,0 +1,10 @@
+const {test}=require('node:test');
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const s=fs.readFileSync('frontend/index.html','utf8').replace(/\r\n/g,'\n');
+const fn=(name,end)=>s.slice(s.indexOf('function '+name+'('),s.indexOf(end,s.indexOf('function '+name+'(')));
+test('inline JavaScript syntax',()=>{for(const m of s.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g))if(m[1].trim())new vm.Script(m[1]);});
+for(const word of ["RS O'Connor",'','Adam Malik'])test('hero submits exactly once: '+word,()=>{let calls=0;const fields={'#hero-q':{value:word},'#q':{value:'old'}};const ctx={$:x=>fields[x],t:1,clearTimeout(){},search(){calls++},document:{getElementById(){return null}}};vm.createContext(ctx);vm.runInContext(fn('goToExplorer','/* ============ Toast'),ctx);ctx.goToExplorer();assert.equal(calls,1);assert.equal(fields['#q'].value,word);});
+test('dynamic data never embedded in inline handlers',()=>{assert.equal(/on(?:click|submit)="[^"\n]*\$\{esc\(/.test(s),false);assert.ok(s.includes("e.target.dataset.rsName"));});
+test('mobile wrapper visible and grid item ordered',()=>{assert.ok(s.includes('.nav-pill-wrapper{display:contents}'));assert.ok(s.includes('#map-wrap{order:-1'));});
+test('stale search responses guarded after JSON',()=>{assert.ok(s.includes('const data = await r.json();\n    if(my !== ctrl) return;'));});
+test('hero Enter/button share submit path',()=>{assert.ok(s.includes('onsubmit="event.preventDefault(); goToExplorer();"'));assert.ok(s.includes('clearTimeout(t);\n    search();'));});

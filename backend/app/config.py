@@ -14,6 +14,8 @@ class Settings(BaseSettings):
 
     # --- API Keys Eksternal ---
     google_maps_api_key: str = ""   # Google Maps JavaScript API key
+    booking_access_key: str = ""  # Server-side operator key; never expose in frontend
+    gemini_model: str = "gemini-2.5-flash"
     gemini_api_key: str = ""        # Google Gemini API key (AI Studio / Vertex)
 
 

@@ -1,0 +1,557 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://carisehat.id/ontology/"
+     xml:base="http://carisehat.id/ontology/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:hf="http://carisehat.id/ontology/">
+    <owl:Ontology rdf:about="http://carisehat.id/ontology/">
+        <rdfs:label>CariSehat Ontology</rdfs:label>
+        <rdfs:comment>Ontologi CariSehat - Sistem informasi rumah sakit di Indonesia oleh Kelompok 7 Kom B</rdfs:comment>
+    </owl:Ontology>
+
+    <!-- 
+    ///////////////////////////////////////////////
+    // Object Properties (12)
+    ///////////////////////////////////////////////
+ -->
+
+    <owl:ObjectProperty rdf:about="http://carisehat.id/ontology/bagianDariProvinsi">
+        <owl:inverseOf rdf:resource="http://carisehat.id/ontology/memilikiKabupatenKota"/>
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/KabupatenKota"/>
+        <rdfs:range rdf:resource="http://carisehat.id/ontology/Provinsi"/>
+        <rdfs:comment>Menunjukkan kabupaten/kota merupakan bagian dari provinsi tertentu</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://carisehat.id/ontology/beradaDiKabupatenKota">
+        <owl:inverseOf rdf:resource="http://carisehat.id/ontology/memilikiRumahSakit"/>
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/RumahSakit"/>
+        <rdfs:range rdf:resource="http://carisehat.id/ontology/KabupatenKota"/>
+        <rdfs:comment>Menunjukkan rumah sakit berada di kabupaten/kota tertentu</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://carisehat.id/ontology/beradaDiProvinsi">
+        <owl:inverseOf rdf:resource="http://carisehat.id/ontology/memilikiRumahSakitProvinsi"/>
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/RumahSakit"/>
+        <rdfs:range rdf:resource="http://carisehat.id/ontology/Provinsi"/>
+        <rdfs:comment>Menunjukkan rumah sakit berada di provinsi tertentu. Dapat di-infer melalui beradaDiKabupatenKota + bagianDariProvinsi.</rdfs:comment>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://carisehat.id/ontology/beradaDiKabupatenKota"/>
+            <rdf:Description rdf:about="http://carisehat.id/ontology/bagianDariProvinsi"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://carisehat.id/ontology/memilikiRumahSakitProvinsi">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/Provinsi"/>
+        <rdfs:range rdf:resource="http://carisehat.id/ontology/RumahSakit"/>
+        <rdfs:comment>Menunjukkan provinsi memiliki rumah sakit tertentu (inverse dari beradaDiProvinsi)</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://carisehat.id/ontology/dimilikiOleh">
+        <owl:inverseOf rdf:resource="http://carisehat.id/ontology/memilikiFasilitas"/>
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/Fasilitas"/>
+        <rdfs:range rdf:resource="http://carisehat.id/ontology/RumahSakit"/>
+        <rdfs:comment>Menunjukkan fasilitas dimiliki oleh rumah sakit tertentu</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://carisehat.id/ontology/disediakanOleh">
+        <owl:inverseOf rdf:resource="http://carisehat.id/ontology/menyediakanLayanan"/>
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/Layanan"/>
+        <rdfs:range rdf:resource="http://carisehat.id/ontology/RumahSakit"/>
+        <rdfs:comment>Menunjukkan layanan disediakan oleh rumah sakit tertentu</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://carisehat.id/ontology/memilikiFasilitas">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/RumahSakit"/>
+        <rdfs:range rdf:resource="http://carisehat.id/ontology/Fasilitas"/>
+        <rdfs:comment>Menunjukkan rumah sakit memiliki fasilitas tertentu</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://carisehat.id/ontology/memilikiKabupatenKota">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/Provinsi"/>
+        <rdfs:range rdf:resource="http://carisehat.id/ontology/KabupatenKota"/>
+        <rdfs:comment>Menunjukkan provinsi memiliki kabupaten/kota tertentu</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://carisehat.id/ontology/memilikiRumahSakit">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/KabupatenKota"/>
+        <rdfs:range rdf:resource="http://carisehat.id/ontology/RumahSakit"/>
+        <rdfs:comment>Menunjukkan kabupaten/kota memiliki rumah sakit tertentu</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://carisehat.id/ontology/mendukungLayanan">
+        <owl:inverseOf rdf:resource="http://carisehat.id/ontology/didukungOlehFasilitas"/>
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/Fasilitas"/>
+        <rdfs:range rdf:resource="http://carisehat.id/ontology/Layanan"/>
+        <rdfs:comment>Menunjukkan fasilitas mendukung layanan tertentu</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://carisehat.id/ontology/didukungOlehFasilitas">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/Layanan"/>
+        <rdfs:range rdf:resource="http://carisehat.id/ontology/Fasilitas"/>
+        <rdfs:comment>Menunjukkan layanan didukung oleh fasilitas tertentu (inverse dari mendukungLayanan)</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://carisehat.id/ontology/menyediakanLayanan">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/RumahSakit"/>
+        <rdfs:range rdf:resource="http://carisehat.id/ontology/Layanan"/>
+        <rdfs:comment>Menunjukkan rumah sakit menyediakan layanan tertentu</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- 
+    ///////////////////////////////////////////////
+    // Data Properties (18)
+    ///////////////////////////////////////////////
+ -->
+
+    <!-- Data Properties untuk Class RumahSakit (10) -->
+
+    <owl:DatatypeProperty rdf:about="http://carisehat.id/ontology/alamat">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/RumahSakit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Alamat lengkap rumah sakit</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://carisehat.id/ontology/jenis">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/RumahSakit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Jenis rumah sakit (Umum atau Khusus)</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://carisehat.id/ontology/kelas">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/RumahSakit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Kelas rumah sakit (A, B, C, atau D)</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://carisehat.id/ontology/latitude">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/RumahSakit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Koordinat lintang (latitude) lokasi rumah sakit</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://carisehat.id/ontology/longitude">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/RumahSakit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <rdfs:comment>Koordinat bujur (longitude) lokasi rumah sakit</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://carisehat.id/ontology/menerimaBPJS">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/RumahSakit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>Menunjukkan apakah rumah sakit menerima pasien BPJS</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://carisehat.id/ontology/nama">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/RumahSakit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Nama resmi rumah sakit</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://carisehat.id/ontology/pemilik">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/RumahSakit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Pemilik atau pengelola rumah sakit</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://carisehat.id/ontology/spesialisasi">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/RumahSakit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Bidang spesialisasi rumah sakit (untuk RS Khusus)</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://carisehat.id/ontology/telepon">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/RumahSakit"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Nomor telepon rumah sakit</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <!-- Data Properties untuk Class KabupatenKota (2) -->
+
+    <owl:DatatypeProperty rdf:about="http://carisehat.id/ontology/namaKabupatenKota">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/KabupatenKota"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Nama kabupaten atau kota</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://carisehat.id/ontology/kodeWilayah">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/KabupatenKota"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Kode wilayah administratif kabupaten/kota (BPS)</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <!-- Data Properties untuk Class Provinsi (2) -->
+
+    <owl:DatatypeProperty rdf:about="http://carisehat.id/ontology/namaProvinsi">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/Provinsi"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Nama provinsi</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://carisehat.id/ontology/kodeProvinsi">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/Provinsi"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Kode wilayah provinsi (BPS)</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <!-- Data Properties untuk Class Layanan (2) -->
+
+    <owl:DatatypeProperty rdf:about="http://carisehat.id/ontology/namaLayanan">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/Layanan"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Nama layanan kesehatan</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://carisehat.id/ontology/deskripsiLayanan">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/Layanan"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Deskripsi singkat tentang layanan kesehatan</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <!-- Data Properties untuk Class Fasilitas (2) -->
+
+    <owl:DatatypeProperty rdf:about="http://carisehat.id/ontology/namaFasilitas">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/Fasilitas"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>Nama fasilitas rumah sakit</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://carisehat.id/ontology/statusOperasional">
+        <rdfs:domain rdf:resource="http://carisehat.id/ontology/Fasilitas"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment>Status apakah fasilitas sedang beroperasi atau tidak</rdfs:comment>
+    </owl:DatatypeProperty>
+
+    <!-- 
+    ///////////////////////////////////////////////
+    // Classes (5)
+    ///////////////////////////////////////////////
+ -->
+
+    <owl:Class rdf:about="http://carisehat.id/ontology/RumahSakit">
+        <rdfs:comment>Institusi pelayanan kesehatan yang menyediakan pelayanan rawat inap, rawat jalan, dan gawat darurat</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://carisehat.id/ontology/KabupatenKota">
+        <rdfs:comment>Wilayah administratif tingkat kabupaten atau kota di Indonesia</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://carisehat.id/ontology/Provinsi">
+        <rdfs:comment>Wilayah administratif tingkat provinsi di Indonesia</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://carisehat.id/ontology/Layanan">
+        <rdfs:comment>Jenis layanan kesehatan yang disediakan oleh rumah sakit</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://carisehat.id/ontology/Fasilitas">
+        <rdfs:comment>Fasilitas fisik atau peralatan yang dimiliki oleh rumah sakit</rdfs:comment>
+    </owl:Class>
+
+    <!-- Disjoint Classes: Semua class saling eksklusif -->
+    <owl:AllDisjointClasses>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://carisehat.id/ontology/RumahSakit"/>
+            <rdf:Description rdf:about="http://carisehat.id/ontology/KabupatenKota"/>
+            <rdf:Description rdf:about="http://carisehat.id/ontology/Provinsi"/>
+            <rdf:Description rdf:about="http://carisehat.id/ontology/Layanan"/>
+            <rdf:Description rdf:about="http://carisehat.id/ontology/Fasilitas"/>
+        </owl:members>
+    </owl:AllDisjointClasses>
+
+    <!-- 
+    ///////////////////////////////////////////////
+    // Individuals
+    ///////////////////////////////////////////////
+ -->
+
+    <!-- ========== Individu RumahSakit ========== -->
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/rs/rs-004">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/RumahSakit"/>
+        <hf:nama>RS Bhayangkara Tk. IV Batangtoru</hf:nama>
+        <hf:alamat>Jl. Merdeka No. 17</hf:alamat>
+        <hf:jenis>Umum</hf:jenis>
+        <hf:kelas>D</hf:kelas>
+        <hf:pemilik>POLRI</hf:pemilik>
+        <hf:telepon>082161004550</hf:telepon>
+        <hf:spesialisasi>Umum</hf:spesialisasi>
+        <hf:latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.603724</hf:latitude>
+        <hf:longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">99.270124</hf:longitude>
+        <hf:menerimaBPJS rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hf:menerimaBPJS>
+        <hf:beradaDiKabupatenKota rdf:resource="http://carisehat.id/ontology/kabkota/kab-tapanuli-selatan"/>
+        <hf:beradaDiProvinsi rdf:resource="http://carisehat.id/ontology/provinsi/sumut"/>
+        <hf:memilikiFasilitas rdf:resource="http://carisehat.id/ontology/fasilitas/ambulans"/>
+        <hf:memilikiFasilitas rdf:resource="http://carisehat.id/ontology/fasilitas/instalasi-farmasi"/>
+        <hf:memilikiFasilitas rdf:resource="http://carisehat.id/ontology/fasilitas/instalasi-gawat-darurat"/>
+        <hf:memilikiFasilitas rdf:resource="http://carisehat.id/ontology/fasilitas/laboratorium-dasar"/>
+        <hf:memilikiFasilitas rdf:resource="http://carisehat.id/ontology/fasilitas/ruang-rawat-inap"/>
+        <hf:menyediakanLayanan rdf:resource="http://carisehat.id/ontology/layanan/kebidanan-dan-kandungan"/>
+        <hf:menyediakanLayanan rdf:resource="http://carisehat.id/ontology/layanan/kesehatan-anak"/>
+        <hf:menyediakanLayanan rdf:resource="http://carisehat.id/ontology/layanan/pelayanan-medik-umum"/>
+        <hf:menyediakanLayanan rdf:resource="http://carisehat.id/ontology/layanan/rawat-inap"/>
+        <hf:menyediakanLayanan rdf:resource="http://carisehat.id/ontology/layanan/ugd-24-jam"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/rs/rs-012">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/RumahSakit"/>
+        <hf:nama>RS Gigi Dan Mulut Prima</hf:nama>
+        <hf:alamat>Jalan Pabrik Tenun No. 103</hf:alamat>
+        <hf:jenis>Khusus</hf:jenis>
+        <hf:kelas>C</hf:kelas>
+        <hf:pemilik>SWASTA/LAINNYA</hf:pemilik>
+        <hf:telepon>082167863838</hf:telepon>
+        <hf:spesialisasi>Gigi dan Mulut</hf:spesialisasi>
+        <hf:latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.598426</hf:latitude>
+        <hf:longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">98.662059</hf:longitude>
+        <hf:menerimaBPJS rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hf:menerimaBPJS>
+        <hf:beradaDiKabupatenKota rdf:resource="http://carisehat.id/ontology/kabkota/kota-medan"/>
+        <hf:beradaDiProvinsi rdf:resource="http://carisehat.id/ontology/provinsi/sumut"/>
+        <hf:memilikiFasilitas rdf:resource="http://carisehat.id/ontology/fasilitas/farmasi"/>
+        <hf:memilikiFasilitas rdf:resource="http://carisehat.id/ontology/fasilitas/klinik-gigi-spesialis"/>
+        <hf:memilikiFasilitas rdf:resource="http://carisehat.id/ontology/fasilitas/radiologi-gigi"/>
+        <hf:menyediakanLayanan rdf:resource="http://carisehat.id/ontology/layanan/bedah-mulut"/>
+        <hf:menyediakanLayanan rdf:resource="http://carisehat.id/ontology/layanan/gigi-dan-mulut"/>
+        <hf:menyediakanLayanan rdf:resource="http://carisehat.id/ontology/layanan/ortodonti"/>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/rs/rs-206">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/RumahSakit"/>
+        <hf:nama>Uptd Rumah Sakit Pratama Nias</hf:nama>
+        <hf:alamat>Jalan Ir. Sukarno No. 0</hf:alamat>
+        <hf:jenis>Umum</hf:jenis>
+        <hf:kelas>D</hf:kelas>
+        <hf:pemilik>Pemkab</hf:pemilik>
+        <hf:telepon>081376529298</hf:telepon>
+        <hf:spesialisasi>Umum</hf:spesialisasi>
+        <hf:latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.042737</hf:latitude>
+        <hf:longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">97.645176</hf:longitude>
+        <hf:menerimaBPJS rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hf:menerimaBPJS>
+        <hf:beradaDiKabupatenKota rdf:resource="http://carisehat.id/ontology/kabkota/kab-nias"/>
+        <hf:beradaDiProvinsi rdf:resource="http://carisehat.id/ontology/provinsi/sumut"/>
+        <hf:memilikiFasilitas rdf:resource="http://carisehat.id/ontology/fasilitas/ambulans"/>
+        <hf:memilikiFasilitas rdf:resource="http://carisehat.id/ontology/fasilitas/apotek"/>
+        <hf:memilikiFasilitas rdf:resource="http://carisehat.id/ontology/fasilitas/instalasi-gawat-darurat"/>
+        <hf:memilikiFasilitas rdf:resource="http://carisehat.id/ontology/fasilitas/ruang-rawat-inap-dasar"/>
+        <hf:menyediakanLayanan rdf:resource="http://carisehat.id/ontology/layanan/pelayanan-medik-umum"/>
+        <hf:menyediakanLayanan rdf:resource="http://carisehat.id/ontology/layanan/rawat-inap-dasar"/>
+        <hf:menyediakanLayanan rdf:resource="http://carisehat.id/ontology/layanan/ugd-24-jam"/>
+    </owl:NamedIndividual>
+
+    <!-- ========== Individu KabupatenKota ========== -->
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/kabkota/kab-tapanuli-selatan">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/KabupatenKota"/>
+        <hf:namaKabupatenKota>Kab. Tapanuli Selatan</hf:namaKabupatenKota>
+        <hf:kodeWilayah>1203</hf:kodeWilayah>
+        <hf:bagianDariProvinsi rdf:resource="http://carisehat.id/ontology/provinsi/sumut"/>
+        <hf:memilikiRumahSakit rdf:resource="http://carisehat.id/ontology/rs/rs-004"/>
+        <rdfs:label>Kab. Tapanuli Selatan</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/kabkota/kota-medan">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/KabupatenKota"/>
+        <hf:namaKabupatenKota>Kota Medan</hf:namaKabupatenKota>
+        <hf:kodeWilayah>1275</hf:kodeWilayah>
+        <hf:bagianDariProvinsi rdf:resource="http://carisehat.id/ontology/provinsi/sumut"/>
+        <hf:memilikiRumahSakit rdf:resource="http://carisehat.id/ontology/rs/rs-012"/>
+        <rdfs:label>Kota Medan</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/kabkota/kab-nias">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/KabupatenKota"/>
+        <hf:namaKabupatenKota>Kab. Nias</hf:namaKabupatenKota>
+        <hf:kodeWilayah>1204</hf:kodeWilayah>
+        <hf:bagianDariProvinsi rdf:resource="http://carisehat.id/ontology/provinsi/sumut"/>
+        <hf:memilikiRumahSakit rdf:resource="http://carisehat.id/ontology/rs/rs-206"/>
+        <rdfs:label>Kab. Nias</rdfs:label>
+    </owl:NamedIndividual>
+
+    <!-- ========== Individu Provinsi ========== -->
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/provinsi/sumut">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/Provinsi"/>
+        <hf:namaProvinsi>Sumatera Utara</hf:namaProvinsi>
+        <hf:kodeProvinsi>12</hf:kodeProvinsi>
+        <hf:memilikiKabupatenKota rdf:resource="http://carisehat.id/ontology/kabkota/kab-nias"/>
+        <hf:memilikiKabupatenKota rdf:resource="http://carisehat.id/ontology/kabkota/kab-tapanuli-selatan"/>
+        <hf:memilikiKabupatenKota rdf:resource="http://carisehat.id/ontology/kabkota/kota-medan"/>
+        <hf:memilikiRumahSakitProvinsi rdf:resource="http://carisehat.id/ontology/rs/rs-004"/>
+        <hf:memilikiRumahSakitProvinsi rdf:resource="http://carisehat.id/ontology/rs/rs-012"/>
+        <hf:memilikiRumahSakitProvinsi rdf:resource="http://carisehat.id/ontology/rs/rs-206"/>
+        <rdfs:label>Sumatera Utara</rdfs:label>
+    </owl:NamedIndividual>
+
+    <!-- ========== Individu Layanan ========== -->
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/layanan/bedah-mulut">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/Layanan"/>
+        <hf:namaLayanan>Bedah Mulut</hf:namaLayanan>
+        <hf:deskripsiLayanan>Pelayanan bedah pada rongga mulut dan rahang</hf:deskripsiLayanan>
+        <hf:disediakanOleh rdf:resource="http://carisehat.id/ontology/rs/rs-012"/>
+        <rdfs:label>Bedah Mulut</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/layanan/gigi-dan-mulut">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/Layanan"/>
+        <hf:namaLayanan>Gigi dan Mulut</hf:namaLayanan>
+        <hf:deskripsiLayanan>Pelayanan kesehatan gigi dan mulut secara umum</hf:deskripsiLayanan>
+        <hf:disediakanOleh rdf:resource="http://carisehat.id/ontology/rs/rs-012"/>
+        <hf:didukungOlehFasilitas rdf:resource="http://carisehat.id/ontology/fasilitas/klinik-gigi-spesialis"/>
+        <rdfs:label>Gigi dan Mulut</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/layanan/kebidanan-dan-kandungan">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/Layanan"/>
+        <hf:namaLayanan>Kebidanan dan Kandungan</hf:namaLayanan>
+        <hf:deskripsiLayanan>Pelayanan kesehatan ibu hamil, persalinan, dan kandungan</hf:deskripsiLayanan>
+        <hf:disediakanOleh rdf:resource="http://carisehat.id/ontology/rs/rs-004"/>
+        <rdfs:label>Kebidanan dan Kandungan</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/layanan/kesehatan-anak">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/Layanan"/>
+        <hf:namaLayanan>Kesehatan Anak</hf:namaLayanan>
+        <hf:deskripsiLayanan>Pelayanan kesehatan untuk pasien anak-anak</hf:deskripsiLayanan>
+        <hf:disediakanOleh rdf:resource="http://carisehat.id/ontology/rs/rs-004"/>
+        <rdfs:label>Kesehatan Anak</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/layanan/ortodonti">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/Layanan"/>
+        <hf:namaLayanan>Ortodonti</hf:namaLayanan>
+        <hf:deskripsiLayanan>Pelayanan perawatan susunan gigi dan rahang</hf:deskripsiLayanan>
+        <hf:disediakanOleh rdf:resource="http://carisehat.id/ontology/rs/rs-012"/>
+        <rdfs:label>Ortodonti</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/layanan/pelayanan-medik-umum">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/Layanan"/>
+        <hf:namaLayanan>Pelayanan Medik Umum</hf:namaLayanan>
+        <hf:deskripsiLayanan>Pelayanan pemeriksaan dan pengobatan medis umum</hf:deskripsiLayanan>
+        <hf:disediakanOleh rdf:resource="http://carisehat.id/ontology/rs/rs-004"/>
+        <hf:disediakanOleh rdf:resource="http://carisehat.id/ontology/rs/rs-206"/>
+        <rdfs:label>Pelayanan Medik Umum</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/layanan/rawat-inap">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/Layanan"/>
+        <hf:namaLayanan>Rawat Inap</hf:namaLayanan>
+        <hf:deskripsiLayanan>Pelayanan perawatan pasien yang menginap di rumah sakit</hf:deskripsiLayanan>
+        <hf:disediakanOleh rdf:resource="http://carisehat.id/ontology/rs/rs-004"/>
+        <hf:didukungOlehFasilitas rdf:resource="http://carisehat.id/ontology/fasilitas/ruang-rawat-inap"/>
+        <rdfs:label>Rawat Inap</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/layanan/rawat-inap-dasar">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/Layanan"/>
+        <hf:namaLayanan>Rawat Inap Dasar</hf:namaLayanan>
+        <hf:deskripsiLayanan>Pelayanan rawat inap dengan fasilitas dasar</hf:deskripsiLayanan>
+        <hf:disediakanOleh rdf:resource="http://carisehat.id/ontology/rs/rs-206"/>
+        <hf:didukungOlehFasilitas rdf:resource="http://carisehat.id/ontology/fasilitas/ruang-rawat-inap-dasar"/>
+        <rdfs:label>Rawat Inap Dasar</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/layanan/ugd-24-jam">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/Layanan"/>
+        <hf:namaLayanan>UGD 24 Jam</hf:namaLayanan>
+        <hf:deskripsiLayanan>Pelayanan unit gawat darurat yang beroperasi 24 jam</hf:deskripsiLayanan>
+        <hf:disediakanOleh rdf:resource="http://carisehat.id/ontology/rs/rs-004"/>
+        <hf:disediakanOleh rdf:resource="http://carisehat.id/ontology/rs/rs-206"/>
+        <hf:didukungOlehFasilitas rdf:resource="http://carisehat.id/ontology/fasilitas/ambulans"/>
+        <hf:didukungOlehFasilitas rdf:resource="http://carisehat.id/ontology/fasilitas/instalasi-gawat-darurat"/>
+        <rdfs:label>UGD 24 Jam</rdfs:label>
+    </owl:NamedIndividual>
+
+    <!-- ========== Individu Fasilitas ========== -->
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/fasilitas/ambulans">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/Fasilitas"/>
+        <hf:namaFasilitas>Ambulans</hf:namaFasilitas>
+        <hf:statusOperasional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hf:statusOperasional>
+        <hf:dimilikiOleh rdf:resource="http://carisehat.id/ontology/rs/rs-004"/>
+        <hf:dimilikiOleh rdf:resource="http://carisehat.id/ontology/rs/rs-206"/>
+        <hf:mendukungLayanan rdf:resource="http://carisehat.id/ontology/layanan/ugd-24-jam"/>
+        <rdfs:label>Ambulans</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/fasilitas/apotek">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/Fasilitas"/>
+        <hf:namaFasilitas>Apotek</hf:namaFasilitas>
+        <hf:statusOperasional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hf:statusOperasional>
+        <hf:dimilikiOleh rdf:resource="http://carisehat.id/ontology/rs/rs-206"/>
+        <rdfs:label>Apotek</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/fasilitas/farmasi">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/Fasilitas"/>
+        <hf:namaFasilitas>Farmasi</hf:namaFasilitas>
+        <hf:statusOperasional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hf:statusOperasional>
+        <hf:dimilikiOleh rdf:resource="http://carisehat.id/ontology/rs/rs-012"/>
+        <rdfs:label>Farmasi</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/fasilitas/instalasi-farmasi">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/Fasilitas"/>
+        <hf:namaFasilitas>Instalasi Farmasi</hf:namaFasilitas>
+        <hf:statusOperasional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hf:statusOperasional>
+        <hf:dimilikiOleh rdf:resource="http://carisehat.id/ontology/rs/rs-004"/>
+        <rdfs:label>Instalasi Farmasi</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/fasilitas/instalasi-gawat-darurat">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/Fasilitas"/>
+        <hf:namaFasilitas>Instalasi Gawat Darurat</hf:namaFasilitas>
+        <hf:statusOperasional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hf:statusOperasional>
+        <hf:dimilikiOleh rdf:resource="http://carisehat.id/ontology/rs/rs-004"/>
+        <hf:dimilikiOleh rdf:resource="http://carisehat.id/ontology/rs/rs-206"/>
+        <hf:mendukungLayanan rdf:resource="http://carisehat.id/ontology/layanan/ugd-24-jam"/>
+        <rdfs:label>Instalasi Gawat Darurat</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/fasilitas/klinik-gigi-spesialis">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/Fasilitas"/>
+        <hf:namaFasilitas>Klinik Gigi Spesialis</hf:namaFasilitas>
+        <hf:statusOperasional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hf:statusOperasional>
+        <hf:dimilikiOleh rdf:resource="http://carisehat.id/ontology/rs/rs-012"/>
+        <hf:mendukungLayanan rdf:resource="http://carisehat.id/ontology/layanan/gigi-dan-mulut"/>
+        <rdfs:label>Klinik Gigi Spesialis</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/fasilitas/laboratorium-dasar">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/Fasilitas"/>
+        <hf:namaFasilitas>Laboratorium Dasar</hf:namaFasilitas>
+        <hf:statusOperasional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hf:statusOperasional>
+        <hf:dimilikiOleh rdf:resource="http://carisehat.id/ontology/rs/rs-004"/>
+        <rdfs:label>Laboratorium Dasar</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/fasilitas/radiologi-gigi">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/Fasilitas"/>
+        <hf:namaFasilitas>Radiologi Gigi</hf:namaFasilitas>
+        <hf:statusOperasional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hf:statusOperasional>
+        <hf:dimilikiOleh rdf:resource="http://carisehat.id/ontology/rs/rs-012"/>
+        <rdfs:label>Radiologi Gigi</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/fasilitas/ruang-rawat-inap">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/Fasilitas"/>
+        <hf:namaFasilitas>Ruang Rawat Inap</hf:namaFasilitas>
+        <hf:statusOperasional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hf:statusOperasional>
+        <hf:dimilikiOleh rdf:resource="http://carisehat.id/ontology/rs/rs-004"/>
+        <hf:mendukungLayanan rdf:resource="http://carisehat.id/ontology/layanan/rawat-inap"/>
+        <rdfs:label>Ruang Rawat Inap</rdfs:label>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://carisehat.id/ontology/fasilitas/ruang-rawat-inap-dasar">
+        <rdf:type rdf:resource="http://carisehat.id/ontology/Fasilitas"/>
+        <hf:namaFasilitas>Ruang Rawat Inap Dasar</hf:namaFasilitas>
+        <hf:statusOperasional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</hf:statusOperasional>
+        <hf:dimilikiOleh rdf:resource="http://carisehat.id/ontology/rs/rs-206"/>
+        <hf:mendukungLayanan rdf:resource="http://carisehat.id/ontology/layanan/rawat-inap-dasar"/>
+        <rdfs:label>Ruang Rawat Inap Dasar</rdfs:label>
+    </owl:NamedIndividual>
+
+</rdf:RDF>

@@ -2,6 +2,7 @@
 Memenuhi syarat Tugas Besar Web Semantik: integrasi dataset lokal dengan dataset eksternal.
 """
 import logging
+import re
 import httpx
 
 log = logging.getLogger("carisehat.dbpedia")
@@ -12,6 +13,10 @@ DBPEDIA_SPARQL_ENDPOINT = "https://dbpedia.org/sparql"
 DBPEDIA_CITY_MAPPING = {
     "kota medan": "Medan",
     "medan": "Medan",
+    "kota pematang siantar": "Pematangsiantar",
+    "kota padang sidempuan": "Padang_Sidempuan",
+    "kota tanjung balai": "Tanjungbalai",
+    "kab. toba samosir": "Toba_Regency",
     "kota binjai": "Binjai",
     "binjai": "Binjai",
     "kota pematangsiantar": "Pematangsiantar",
@@ -51,6 +56,9 @@ async def get_dbpedia_info(nama_wilayah: str) -> dict:
         formatted = nama_wilayah.replace("Kota ", "").replace("Kab. ", "").strip().replace(" ", "_")
         resource_name = f"{formatted}_Regency"
 
+    if not re.fullmatch(r"[A-Za-z][A-Za-z0-9_]*", resource_name):
+        return {"status": "unavailable", "dbpedia_resource": None}
+
     query = f"""
     PREFIX dbo: <http://dbpedia.org/ontology/>
     PREFIX dbr: <http://dbpedia.org/resource/>
@@ -71,7 +79,7 @@ async def get_dbpedia_info(nama_wilayah: str) -> dict:
             )
             if resp.status_code == 200:
                 bindings = resp.json().get("results", {}).get("bindings", [])
-                if bindings:
+                if bindings and any(bindings[0].get(k) for k in ("abstract", "thumb", "population")):
                     b = bindings[0]
                     return {
                         "status": "ok",

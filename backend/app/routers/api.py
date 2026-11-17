@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, Query
+from fastapi.responses import JSONResponse
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 
@@ -22,7 +23,7 @@ async def health(db: Session = Depends(get_db)):
         out["fuseki"], out["jumlah_rs"] = "ok", int(rows[0]["n"])
     except Exception as e:
         out["fuseki"] = f"error: {type(e).__name__}"
-    return out
+    return JSONResponse(out, status_code=200 if out.get("postgres") == "ok" and out.get("fuseki") == "ok" else 503)
 
 
 @router.get("/search")
