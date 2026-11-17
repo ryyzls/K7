@@ -346,6 +346,18 @@ select:focus,input:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,1
   position:relative;display:flex;align-items:center;justify-content:center;
   overflow:hidden;
 }
+.card-thumb-img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;z-index:1;
+}
+.d-gallery{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:.6rem;margin-top:.85rem;
+}
+.d-gallery img{
+  width:100%;height:130px;object-fit:cover;border-radius:12px;
+  border:1px solid rgba(255,255,255,0.25);background:#0f172a;
+}
 .thumb-pattern{
   position:absolute;inset:0;
   background-image:radial-gradient(color-mix(in srgb, var(--c) 25%, transparent) 1px, transparent 1px);
@@ -376,7 +388,7 @@ select:focus,input:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,1
 .card-name{
   font-size:.98rem;line-height:1.35;font-weight:800;
   color:var(--ink);letter-spacing:-.01em;margin:0;
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  display:-webkit-box;line-clamp: 2;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
 }
 .badge{
   flex:none;display:inline-grid;place-items:center;min-width:28px;height:24px;
@@ -387,7 +399,7 @@ select:focus,input:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,1
 .pill-bpjs-mini{margin-left:auto;background:#CCFBF1;color:#0F766E;font-size:.72rem;font-weight:800;padding:.15rem .5rem;border-radius:99px}
 .addr{font-size:.8rem;color:var(--mute);display:flex;align-items:flex-start;gap:.4rem;line-height:1.45}
 .addr svg{margin-top:.15rem;color:var(--toba);flex:none}
-.addr span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.addr span{display:-webkit-box;line-clamp: 2; -webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:auto}
 .tag{font-size:.72rem;font-weight:600;background:var(--toba-mist);color:var(--toba-d);border-radius:6px;padding:.18rem .5rem}
 .tag.more{background:#F1F5F9;color:var(--mute)}
@@ -996,6 +1008,13 @@ footer{
 <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
 
 <script>
+
+document.addEventListener('error', e => {
+  const t = e.target;
+  if(t && t.classList && (t.classList.contains('card-thumb-img') || t.classList.contains('card-thumb-img-detail'))){
+    t.remove();
+  }
+}, true);
 /* ============ Util & state ============ */
 const API_BASE = '';
 const COL  = {A:'#BE123C', B:'#0284C7', C:'#059669', D:'#64748B'};
@@ -1177,14 +1196,16 @@ function renderSkeleton(){
 
 const emptyArt = '<svg class="art" viewBox="0 0 96 96" fill="none" aria-hidden="true"><rect x="14" y="30" width="68" height="52" rx="8" fill="#EAF3F6"/><path d="M42 30V22a6 6 0 016-6 6 6 0 016 6v8" stroke="#0F766E" stroke-width="3"/><path d="M44 49h8M48 45v8" stroke="#BE123C" stroke-width="4" stroke-linecap="round"/><path d="M14 70h68" stroke="#D97706" stroke-width="3" stroke-dasharray="6 4"/></svg>';
 
-function hospitalPlaceholderSvg(nama, kelas, jenis){
+function hospitalPlaceholderSvg(nama, kelas, jenis, foto){
   const c = colorOf(kelas);
   const cleanName = String(nama || 'RS');
   const stripped = cleanName.replace(/^(RS\s*Umum\s*Daerah|RS\s*Umum\s*Pusat|RSUD|RSUP|RSU|RSK\s*\w+|RSIA|RSAU|RS\s*Umum|RS\s*Khusus|RS\s*Ibu\s*Dan\s*Anak|RS)\s+/i, '').trim();
   const words = stripped.replace(/[^a-zA-Z\s]/g, '').trim().split(/\s+/).filter(Boolean);
   const initials = (words.length >= 2 ? words[0][0] + words[1][0] : (words[0] || 'RS').slice(0, 2)).toUpperCase();
+  const imgTag = foto ? `<img class="card-thumb-img" src="${esc(foto)}" alt="${esc(cleanName)}" loading="lazy">` : '';
   return `<div class="card-thumb" style="--c:${c}">
     <div class="thumb-pattern" aria-hidden="true"></div>
+    ${imgTag}
     <div class="thumb-badge-wrap">
       <span class="badge" title="${esc(DESC[kelas] || 'Kelas RS')}">Kelas ${esc(kelas || '?')}</span>
     </div>
@@ -1214,7 +1235,7 @@ function render(fit){
       const tags = shown.length
         ? `<div class="tags" aria-label="Layanan dan fasilitas">${shown.map(t => `<span class="tag">${esc(t)}</span>`).join('')}${all.length > 3 ? `<span class="tag more">+${all.length - 3}</span>` : ''}</div>` : '';
       return `<li><article class="card${h.id === selectedId ? ' on' : ''}" data-id="${esc(h.id)}" style="--c:${colorOf(h.kelas)};animation-delay:${Math.min(i, 8) * 25}ms">
-        ${hospitalPlaceholderSvg(h.nama, h.kelas, h.jenis)}
+        ${hospitalPlaceholderSvg(h.nama, h.kelas, h.jenis, h.foto)}
         <button class="card-main" data-act="select" data-id="${esc(h.id)}">
           <h3 class="card-name">${esc(h.nama)}</h3>
           <div class="card-meta">
@@ -1305,6 +1326,7 @@ function select(id, opt = {}){
             <h2 id="d-title">${esc(h.nama)}</h2>
             <p class="d-hero-sub">📍 ${esc(h.kabkota)}, Provinsi Sumatera Utara</p>
           </div>
+          ${(h.galeri && h.galeri.length) ? `<div class="d-gallery">${h.galeri.map((src, idx) => `<img class="card-thumb-img-detail" src="${esc(src)}" alt="Foto ${idx + 1} ${esc(h.nama)}" loading="lazy">`).join('')}</div>` : ''}
           <div class="d-hero-actions">
             ${h.lat != null ? `<button class="btn btn-primary" data-act="route" data-id="${esc(h.id)}" type="button">${IC.route}Petunjuk Rute Cepat</button>` : ''}
             ${tel ? `<a class="btn btn-ghost" href="${esc(tel)}">${IC.phone}Hubungi Hotline</a>` : ''}
@@ -2026,6 +2048,7 @@ document.body.append($('#detail'));
 renderSkeleton();
 loadFilterOptions();
 search();
+
 </script>
 </body>
 </html>

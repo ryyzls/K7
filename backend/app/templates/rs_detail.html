@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="id" prefix="og: https://ogp.me/ns# hf: {{ onto }}">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,71 +10,375 @@
   <meta property="og:title" content="{{ h.nama }}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ h.uri }}">
-  <meta property="og:image" content="{{ base }}/og-default.png">
+  <meta property="og:image" content="{{ base }}{{ h.foto or '/og-default.png' }}">
   <meta property="og:description" content="Rumah sakit kelas {{ h.kelas }} di {{ h.kabkota }}. {{ h.alamat }}">
   <meta property="og:locale" content="id_ID">
   <meta property="og:site_name" content="CariSehat">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <style>
-    :root{--ink:#0F172A;--ink-soft:#334155;--toba:#0F766E;--toba-d:#115E59;--toba-soft:#CCFBF1;--toba-mist:#F0FDFA;--bg:#F8FAFC;--line:#E2E8F0;--mute:#64748B;
-      --accent:#0284C7;--emergency:#E11D48;--gold:#D97706;
-      --k:{% if h.kelas == 'A' %}#BE123C{% elif h.kelas == 'B' %}#0284C7{% elif h.kelas == 'C' %}#059669{% else %}#64748B{% endif %};
-      --r:16px;--shadow-sm:0 1px 3px 0 rgba(15,23,42,0.06),0 1px 2px -1px rgba(15,23,42,0.04);--shadow:0 4px 16px -2px rgba(15,23,42,0.07),0 2px 6px -1px rgba(15,23,42,0.04)}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
-    a{color:var(--toba);font-weight:600;text-decoration:none}a:hover{color:var(--toba-d);text-decoration:none}
-    :focus-visible{outline:2px solid var(--toba);outline-offset:2px;border-radius:6px}
-    .top{display:flex;align-items:center;gap:.8rem;padding:.75rem 1.5rem;background:#fff;border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm)}
-    .brand{display:flex;align-items:center;gap:.7rem;color:var(--ink);font-weight:800;font-size:1.1rem}
-    .brand:hover{text-decoration:none}
-    .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--toba),var(--accent));display:grid;place-items:center;box-shadow:0 3px 10px rgba(15,118,110,0.25)}
-    .brand span span{color:var(--toba)}
-    .top .back{margin-left:auto;font-size:.84rem;padding:.42rem .9rem;border-radius:999px;background:var(--toba-mist);color:var(--toba-d);font-weight:700;border:1px solid #CCFBF1;transition:all .15s}
-    .top .back:hover{background:#CCFBF1;border-color:#99F6E4}
-    .ulos{height:4px;background:linear-gradient(90deg,var(--toba) 0%,var(--accent) 35%,var(--emergency) 70%,var(--gold) 100%)}
-    .wrap{max-width:52rem;margin:1.5rem auto 3rem;padding:0 1rem;display:grid;gap:1.1rem}
-    .disclaimer{margin:0;font-size:.82rem;color:var(--mute);background:#FFFBEB;border:1px solid #FDE68A;border-radius:12px;padding:.8rem 1rem;line-height:1.6}
-    .hero{background:linear-gradient(135deg,var(--toba),#0369A1);color:#fff;border-radius:18px;padding:1.6rem;position:relative;overflow:hidden;box-shadow:0 8px 24px -4px rgba(15,118,110,0.3)}
-    .hero::after{content:"";position:absolute;right:-25px;top:-25px;width:150px;height:150px;background:radial-gradient(circle,rgba(255,255,255,0.18) 0%,transparent 70%);border-radius:50%}
-    .hero h1{margin:.8rem 0 .3rem;font-size:1.5rem;line-height:1.25;font-weight:800;position:relative;letter-spacing:-.02em}
-    .hero p{margin:0;opacity:.92;position:relative;font-size:.9rem}
-    .pills{display:flex;gap:.5rem;flex-wrap:wrap;position:relative}
-    .pill{font-size:.76rem;font-weight:700;background:rgba(255,255,255,.22);backdrop-filter:blur(4px);border-radius:99px;padding:.22rem .75rem}
-    .pill.k{background:#fff;color:var(--k);font-weight:800}
-    .pill.bpjs{background:#10B981;color:#fff}
-    .card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;box-shadow:var(--shadow-sm)}
-    .card h2{margin:0 0 .8rem;font-size:.76rem;text-transform:uppercase;letter-spacing:.05em;color:var(--mute);font-weight:800}
-    .info{display:grid;gap:.15rem}
-    .info p{margin:0;padding:.6rem 0;border-bottom:1px solid var(--line)}
-    .info p:last-child{border-bottom:0}
-    .info small{display:block;font-size:.7rem;font-weight:700;color:var(--mute);text-transform:uppercase;letter-spacing:.04em;margin-bottom:.2rem}
-    ul.tags{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.45rem}
-    ul.tags li{font-size:.82rem;font-weight:600;background:var(--toba-mist);color:var(--toba-d);border-radius:999px;padding:.25rem .8rem;margin:0;border:1px solid #CCFBF1}
-    ul.tags.fas li{background:#F8FAFC;color:var(--ink-soft);border:1px solid var(--line)}
-    .none{margin:0;color:var(--mute);font-size:.9rem}
-    .dl{display:flex;flex-wrap:wrap;gap:.5rem}
-    .dl a{display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--line);border-radius:10px;padding:.5rem .9rem;font-size:.86rem;background:#fff;color:var(--ink);transition:all .15s}
-    .dl a:hover{background:var(--toba-mist);border-color:#99F6E4}
-    .dl a.p{background:linear-gradient(135deg,var(--toba),var(--toba-d));color:#fff;border-color:var(--toba);box-shadow:0 2px 6px rgba(15,118,110,0.25)}
-    .dl a.p:hover{background:var(--toba-d)}
-    footer{text-align:center;color:var(--mute);font-size:.78rem;padding-bottom:2rem}
-    @media(max-width:520px){.hero h1{font-size:1.3rem}.wrap{margin:1rem auto 2rem}}
+    :root {
+      --ink: #0F172A;
+      --ink-soft: #334155;
+      --toba: #0F766E;
+      --toba-d: #115E59;
+      --toba-soft: #CCFBF1;
+      --toba-mist: #F0FDFA;
+      --bg: #F8FAFC;
+      --line: #E2E8F0;
+      --mute: #64748B;
+      --accent: #0284C7;
+      --emergency: #E11D48;
+      --gold: #D97706;
+      --r: 16px;
+      --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
+      --shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.07), 0 2px 6px -1px rgba(15, 23, 42, 0.04)
+    }
+
+    .kelas-a {
+      --k: #BE123C;
+    }
+
+    .kelas-b {
+      --k: #0284C7;
+    }
+
+    .kelas-c {
+      --k: #059669;
+    }
+
+    .kelas-lain {
+      --k: #64748B;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased
+    }
+
+    a {
+      color: var(--toba);
+      font-weight: 600;
+      text-decoration: none
+    }
+
+    a:hover {
+      color: var(--toba-d);
+      text-decoration: none
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--toba);
+      outline-offset: 2px;
+      border-radius: 6px
+    }
+
+    .top {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      padding: .75rem 1.5rem;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      box-shadow: var(--shadow-sm)
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      color: var(--ink);
+      font-weight: 800;
+      font-size: 1.1rem
+    }
+
+    .brand:hover {
+      text-decoration: none
+    }
+
+    .logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--toba), var(--accent));
+      display: grid;
+      place-items: center;
+      box-shadow: 0 3px 10px rgba(15, 118, 110, 0.25)
+    }
+
+    .brand span span {
+      color: var(--toba)
+    }
+
+    .top .back {
+      margin-left: auto;
+      font-size: .84rem;
+      padding: .42rem .9rem;
+      border-radius: 999px;
+      background: var(--toba-mist);
+      color: var(--toba-d);
+      font-weight: 700;
+      border: 1px solid #CCFBF1;
+      transition: all .15s
+    }
+
+    .top .back:hover {
+      background: #CCFBF1;
+      border-color: #99F6E4
+    }
+
+    .ulos {
+      height: 4px;
+      background: linear-gradient(90deg, var(--toba) 0%, var(--accent) 35%, var(--emergency) 70%, var(--gold) 100%)
+    }
+
+    .wrap {
+      max-width: 52rem;
+      margin: 1.5rem auto 3rem;
+      padding: 0 1rem;
+      display: grid;
+      gap: 1.1rem
+    }
+
+    .disclaimer {
+      margin: 0;
+      font-size: .82rem;
+      color: var(--mute);
+      background: #FFFBEB;
+      border: 1px solid #FDE68A;
+      border-radius: 12px;
+      padding: .8rem 1rem;
+      line-height: 1.6
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--toba), #0369A1);
+      color: #fff;
+      border-radius: 18px;
+      padding: 1.6rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 24px -4px rgba(15, 118, 110, 0.3)
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -25px;
+      top: -25px;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.18) 0%, transparent 70%);
+      border-radius: 50%
+    }
+
+    .hero h1 {
+      margin: .8rem 0 .3rem;
+      font-size: 1.5rem;
+      line-height: 1.25;
+      font-weight: 800;
+      position: relative;
+      letter-spacing: -.02em
+    }
+
+    .hero p {
+      margin: 0;
+      opacity: .92;
+      position: relative;
+      font-size: .9rem
+    }
+
+    .pills {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      position: relative
+    }
+
+    .pill {
+      font-size: .76rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, .22);
+      backdrop-filter: blur(4px);
+      border-radius: 99px;
+      padding: .22rem .75rem
+    }
+
+    .pill.k {
+      background: #fff;
+      color: var(--k);
+      font-weight: 800
+    }
+
+    .pill.bpjs {
+      background: #10B981;
+      color: #fff
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      padding: 1.3rem;
+      box-shadow: var(--shadow-sm)
+    }
+
+    .card h2 {
+      margin: 0 0 .8rem;
+      font-size: .76rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--mute);
+      font-weight: 800
+    }
+
+    .info {
+      display: grid;
+      gap: .15rem
+    }
+
+    .info p {
+      margin: 0;
+      padding: .6rem 0;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .info p:last-child {
+      border-bottom: 0
+    }
+
+    .info small {
+      display: block;
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--mute);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-bottom: .2rem
+    }
+
+    ul.tags {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem
+    }
+
+    ul.tags li {
+      font-size: .82rem;
+      font-weight: 600;
+      background: var(--toba-mist);
+      color: var(--toba-d);
+      border-radius: 999px;
+      padding: .25rem .8rem;
+      margin: 0;
+      border: 1px solid #CCFBF1
+    }
+
+    ul.tags.fas li {
+      background: #F8FAFC;
+      color: var(--ink-soft);
+      border: 1px solid var(--line)
+    }
+
+    .none {
+      margin: 0;
+      color: var(--mute);
+      font-size: .9rem
+    }
+
+    .dl {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem
+    }
+
+    .dl a {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: .5rem .9rem;
+      font-size: .86rem;
+      background: #fff;
+      color: var(--ink);
+      transition: all .15s
+    }
+
+    .dl a:hover {
+      background: var(--toba-mist);
+      border-color: #99F6E4
+    }
+
+    .dl a.p {
+      background: linear-gradient(135deg, var(--toba), var(--toba-d));
+      color: #fff;
+      border-color: var(--toba);
+      box-shadow: 0 2px 6px rgba(15, 118, 110, 0.25)
+    }
+
+    .dl a.p:hover {
+      background: var(--toba-d)
+    }
+
+    footer {
+      text-align: center;
+      color: var(--mute);
+      font-size: .78rem;
+      padding-bottom: 2rem
+    }
+
+    @media(max-width:520px) {
+      .hero h1 {
+        font-size: 1.3rem
+      }
+
+      .wrap {
+        margin: 1rem auto 2rem
+      }
+    }
   </style>
 </head>
 <!-- RDFa: schema.org + vocabulary hf -->
-<body vocab="https://schema.org/" typeof="Hospital" resource="{{ h.uri }}">
+
+<body
+    vocab="https://schema.org/"
+    typeof="Hospital"
+    resource="{{ h.uri }}"
+    class="{% if h.kelas == 'A' %}kelas-a{% elif h.kelas == 'B' %}kelas-b{% elif h.kelas == 'C' %}kelas-c{% else %}kelas-lain{% endif %}">
   <header class="top">
-    <a class="brand" href="/"><span class="logo" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M9.5 3h5v6.5H21v5h-6.5V21h-5v-6.5H3v-5h6.5z"/></svg></span><span>Cari<span>Sehat</span></span></a>
+    <a class="brand" href="/"><span class="logo" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24"
+          fill="#fff">
+          <path d="M9.5 3h5v6.5H21v5h-6.5V21h-5v-6.5H3v-5h6.5z" />
+        </svg></span><span>Cari<span>Sehat</span></span></a>
     <a class="back" href="/">&larr; Kembali ke pencarian</a>
   </header>
   <div class="ulos" aria-hidden="true"></div>
 
   <main class="wrap">
-    <p class="disclaimer" role="note">⚠️ Layanan, fasilitas, dan BPJS merupakan inferensi dari dataset standar Permenkes, belum diverifikasi pada RS. Koordinat dapat berupa perkiraan. Hubungi RS untuk memastikan informasi operasional.</p>
+    <p class="disclaimer" role="note">⚠️ Layanan, fasilitas, dan BPJS merupakan inferensi dari dataset standar
+      Permenkes, belum diverifikasi pada RS. Koordinat dapat berupa perkiraan. Hubungi RS untuk memastikan informasi
+      operasional.</p>
     <section class="hero">
-      <div class="pills"><span class="pill k">Kelas {{ h.kelas }}</span><span class="pill">{{ h.jenis }}</span>{% if h.bpjs %}<span class="pill bpjs">✓ Menerima BPJS</span>{% endif %}</div>
+      {% if h.foto %}
+      <img property="image" src="{{ h.foto }}" alt="{{ h.nama }}"
+        style="width:100%;max-height:260px;object-fit:cover;border-radius:12px;margin-top:1rem;position:relative;border:1px solid rgba(255,255,255,.25)">
+      {% endif %}
+      <div class="pills"><span class="pill k">Kelas {{ h.kelas }}</span><span class="pill">{{ h.jenis }}</span>{% if
+        h.bpjs %}<span class="pill bpjs">✓ Menerima BPJS</span>{% endif %}</div>
       <h1 property="name">{{ h.nama }}</h1>
       <p>{{ h.kabkota }}, Sumatera Utara</p>
     </section>
@@ -81,7 +386,8 @@
     <section class="card">
       <h2>Informasi umum</h2>
       <div class="info">
-        <p><small>Klasifikasi</small>Kelas <span property="hf:kelas">{{ h.kelas }}</span>, rumah sakit <span property="hf:jenis">{{ h.jenis }}</span></p>
+        <p><small>Klasifikasi</small>Kelas <span property="hf:kelas">{{ h.kelas }}</span>, rumah sakit <span
+            property="hf:jenis">{{ h.jenis }}</span></p>
         <p property="address" typeof="PostalAddress"><small>Alamat</small>
           <span property="streetAddress">{{ h.alamat }}</span>,
           <span property="addressLocality">{{ h.kabkota }}</span>,
@@ -93,13 +399,15 @@
           <meta property="longitude" content="{{ h.lon }}">
         </span>{% endif %}
         {% if h.telepon %}<p><small>Telepon</small><span property="telephone">{{ h.telepon }}</span></p>{% endif %}
-        {% if h.website %}<p><small>Situs web</small><a property="url" href="{{ h.website }}">{{ h.website }}</a></p>{% endif %}
+        {% if h.website %}<p><small>Situs web</small><a property="url" href="{{ h.website }}">{{ h.website }}</a></p>{%
+        endif %}
       </div>
     </section>
 
     <section class="card">
       <h2>Layanan</h2>
-      {% if h.layanan %}<ul class="tags">{% for l in h.layanan %}<li property="availableService" typeof="MedicalProcedure"><span property="name">{{ l }}</span></li>{% endfor %}</ul>
+      {% if h.layanan %}<ul class="tags">{% for l in h.layanan %}<li property="availableService"
+          typeof="MedicalProcedure"><span property="name">{{ l }}</span></li>{% endfor %}</ul>
       {% else %}<p class="none">Data layanan belum tersedia.</p>{% endif %}
     </section>
 
@@ -114,10 +422,13 @@
       <p class="dl">
         <a href="/rs/{{ h.id }}.rdf">RDF/XML</a>
         <a href="/rs/{{ h.id }}.ttl">Turtle</a>
-        {% if h.lat is not none %}<a class="p" href="https://www.openstreetmap.org/?mlat={{ h.lat }}&amp;mlon={{ h.lon }}#map=17/{{ h.lat }}/{{ h.lon }}">Lihat di OpenStreetMap</a>{% endif %}
+        {% if h.lat is not none %}<a class="p"
+          href="https://www.openstreetmap.org/?mlat={{ h.lat }}&amp;mlon={{ h.lon }}#map=17/{{ h.lat }}/{{ h.lon }}">Lihat
+          di OpenStreetMap</a>{% endif %}
       </p>
     </section>
   </main>
   <footer>Data terstruktur RDFa &middot; schema.org &middot; &copy; kontributor OpenStreetMap</footer>
 </body>
+
 </html>

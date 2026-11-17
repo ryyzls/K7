@@ -142,6 +142,19 @@ def baca_koordinat(path):
                 out[r["kode"]] = (r["lat"], r["lon"], r.get("sumber", ""))
     return out
 
+def baca_foto(path):
+    out = {}
+    if not path or not pathlib.Path(path).exists():
+        return out
+    with open(path, encoding="utf-8-sig", newline="") as f:
+        for r in csv.DictReader(f):
+            galeri = [x.strip() for x in (r.get("galeri") or "").split("|") if x.strip()]
+            if not galeri and r.get("foto_utama"):
+                galeri = [r["foto_utama"].strip()]
+            if galeri:
+                out[r["kode"]] = galeri
+    return out
+
 
 def main():
     ap = argparse.ArgumentParser(description="Enrichment dataset RS Sumut ke format RDF berbasis Permenkes No.3/2020 & DBpedia")
@@ -149,7 +162,9 @@ def main():
     ap.add_argument("--koordinat", default=str(ROOT / "data/koordinat.csv"))
     ap.add_argument("--out", default=str(ROOT / "semantic/rdf/hospitals-sumut.ttl"))
     ap.add_argument("--base", default="http://localhost:8000")
+    ap.add_argument("--foto", default=str(ROOT / "data/foto_rs.csv"))
     args = ap.parse_args()
+    foto_map = baca_foto(args.foto)
 
     koord = baca_koordinat(args.koordinat)
     
@@ -222,6 +237,10 @@ def main():
             p.append(f'geo:long "{lon}"^^xsd:decimal')
             if sumber:
                 p.append(f"hf:sumberKoordinat {lit(sumber)}")
+        
+        # Foto Rumah Sakit (Hasil Scraping Google Maps)
+        if kode in foto_map:
+            p.append("schema:image " + ", ".join(lit(url) for url in foto_map[kode]))
 
         # Layanan Terstruktur
         if layanan_list:

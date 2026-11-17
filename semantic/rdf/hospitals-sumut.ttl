@@ -228,6 +228,7 @@ rs:rs-001 a hf:RumahSakit ;
   geo:lat "3.606607"^^xsd:decimal ;
   geo:long "98.497722"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-001/foto_1.jpg", "/images/rs/rs-001/foto_2.jpg", "/images/rs/rs-001/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-002 a hf:RumahSakit ;
@@ -243,6 +244,7 @@ rs:rs-002 a hf:RumahSakit ;
   geo:lat "3.589308"^^xsd:decimal ;
   geo:long "98.683379"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-002/foto_1.jpg", "/images/rs/rs-002/foto_2.jpg", "/images/rs/rs-002/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-003 a hf:RumahSakit ;
@@ -258,6 +260,7 @@ rs:rs-003 a hf:RumahSakit ;
   geo:lat "3.572399"^^xsd:decimal ;
   geo:long "98.659022"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-003/foto_1.jpg", "/images/rs/rs-003/foto_2.jpg", "/images/rs/rs-003/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-004 a hf:RumahSakit ;
@@ -273,6 +276,7 @@ rs:rs-004 a hf:RumahSakit ;
   geo:lat "1.603724"^^xsd:decimal ;
   geo:long "99.270124"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-004/foto_1.jpg", "/images/rs/rs-004/foto_2.jpg", "/images/rs/rs-004/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-005 a hf:RumahSakit ;
@@ -288,6 +292,7 @@ rs:rs-005 a hf:RumahSakit ;
   geo:lat "3.324992"^^xsd:decimal ;
   geo:long "99.161833"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-005/foto_1.jpg", "/images/rs/rs-005/foto_2.jpg", "/images/rs/rs-005/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-006 a hf:RumahSakit ;
@@ -303,6 +308,7 @@ rs:rs-006 a hf:RumahSakit ;
   geo:lat "3.348668"^^xsd:decimal ;
   geo:long "99.168556"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-006/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-007 a hf:RumahSakit ;
@@ -318,6 +324,7 @@ rs:rs-007 a hf:RumahSakit ;
   geo:lat "3.597199"^^xsd:decimal ;
   geo:long "98.717322"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-007/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-008 a hf:RumahSakit ;
@@ -333,6 +340,7 @@ rs:rs-008 a hf:RumahSakit ;
   geo:lat "3.584671"^^xsd:decimal ;
   geo:long "98.676747"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-008/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-009 a hf:RumahSakit ;
@@ -348,6 +356,7 @@ rs:rs-009 a hf:RumahSakit ;
   geo:lat "3.474454"^^xsd:decimal ;
   geo:long "98.715897"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-009/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-010 a hf:RumahSakit ;
@@ -363,6 +372,7 @@ rs:rs-010 a hf:RumahSakit ;
   geo:lat "2.153426"^^xsd:decimal ;
   geo:long "99.785079"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-010/foto_1.jpg", "/images/rs/rs-010/foto_2.jpg", "/images/rs/rs-010/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-011 a hf:RumahSakit ;
@@ -378,6 +388,7 @@ rs:rs-011 a hf:RumahSakit ;
   geo:lat "2.958863"^^xsd:decimal ;
   geo:long "99.065365"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-011/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-012 a hf:RumahSakit ;
@@ -394,6 +405,7 @@ rs:rs-012 a hf:RumahSakit ;
   geo:lat "3.598426"^^xsd:decimal ;
   geo:long "98.662059"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-012/foto_1.jpg" ;
   hf:menyediakanLayanan lay:gigi-dan-mulut, lay:bedah-mulut, lay:ortodonti ;
   hf:memilikiFasilitas fas:klinik-gigi-spesialis, fas:radiologi-gigi, fas:farmasi .
 rs:rs-013 a hf:RumahSakit ;
@@ -409,6 +421,7 @@ rs:rs-013 a hf:RumahSakit ;
   geo:lat "3.474454"^^xsd:decimal ;
   geo:long "98.715897"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-013/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-014 a hf:RumahSakit ;
@@ -424,6 +437,7 @@ rs:rs-014 a hf:RumahSakit ;
   geo:lat "3.551089"^^xsd:decimal ;
   geo:long "98.853264"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-014/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-015 a hf:RumahSakit ;
@@ -440,6 +454,7 @@ rs:rs-015 a hf:RumahSakit ;
   geo:lat "3.616437"^^xsd:decimal ;
   geo:long "98.691312"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-015/foto_1.jpg" ;
   hf:menyediakanLayanan lay:kesehatan-anak, lay:kebidanan-dan-kandungan, lay:ugd-24-jam, lay:imunisasi ;
   hf:memilikiFasilitas fas:kamar-bersalin, fas:instalasi-gawat-darurat, fas:farmasi, fas:ambulans .
 rs:rs-016 a hf:RumahSakit ;
@@ -456,6 +471,7 @@ rs:rs-016 a hf:RumahSakit ;
   geo:lat "3.584363"^^xsd:decimal ;
   geo:long "98.697128"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-016/foto_1.jpg" ;
   hf:menyediakanLayanan lay:kesehatan-anak, lay:kebidanan-dan-kandungan, lay:ugd-24-jam, lay:imunisasi ;
   hf:memilikiFasilitas fas:kamar-bersalin, fas:instalasi-gawat-darurat, fas:farmasi, fas:ambulans .
 rs:rs-017 a hf:RumahSakit ;
@@ -472,6 +488,7 @@ rs:rs-017 a hf:RumahSakit ;
   geo:lat "3.601672"^^xsd:decimal ;
   geo:long "98.483820"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-017/foto_1.jpg" ;
   hf:menyediakanLayanan lay:kesehatan-anak, lay:kebidanan-dan-kandungan, lay:ugd-24-jam, lay:imunisasi ;
   hf:memilikiFasilitas fas:kamar-bersalin, fas:instalasi-gawat-darurat, fas:farmasi, fas:ambulans .
 rs:rs-018 a hf:RumahSakit ;
@@ -488,6 +505,7 @@ rs:rs-018 a hf:RumahSakit ;
   geo:lat "3.523307"^^xsd:decimal ;
   geo:long "98.779687"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-018/foto_1.jpg" ;
   hf:menyediakanLayanan lay:kesehatan-anak, lay:kebidanan-dan-kandungan, lay:ugd-24-jam, lay:imunisasi ;
   hf:memilikiFasilitas fas:kamar-bersalin, fas:instalasi-gawat-darurat, fas:farmasi, fas:ambulans .
 rs:rs-019 a hf:RumahSakit ;
@@ -504,6 +522,7 @@ rs:rs-019 a hf:RumahSakit ;
   geo:lat "3.094769"^^xsd:decimal ;
   geo:long "98.485944"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-019/foto_1.jpg" ;
   hf:menyediakanLayanan lay:kesehatan-anak, lay:kebidanan-dan-kandungan, lay:ugd-24-jam, lay:imunisasi ;
   hf:memilikiFasilitas fas:kamar-bersalin, fas:instalasi-gawat-darurat, fas:farmasi, fas:ambulans .
 rs:rs-020 a hf:RumahSakit ;
@@ -520,6 +539,7 @@ rs:rs-020 a hf:RumahSakit ;
   geo:lat "3.588905"^^xsd:decimal ;
   geo:long "98.682454"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-020/foto_1.jpg" ;
   hf:menyediakanLayanan lay:kesehatan-anak, lay:kebidanan-dan-kandungan, lay:ugd-24-jam, lay:imunisasi ;
   hf:memilikiFasilitas fas:kamar-bersalin, fas:instalasi-gawat-darurat, fas:farmasi, fas:ambulans .
 rs:rs-021 a hf:RumahSakit ;
@@ -536,6 +556,7 @@ rs:rs-021 a hf:RumahSakit ;
   geo:lat "3.474454"^^xsd:decimal ;
   geo:long "98.715897"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-021/foto_1.jpg" ;
   hf:menyediakanLayanan lay:kesehatan-anak, lay:kebidanan-dan-kandungan, lay:ugd-24-jam, lay:imunisasi ;
   hf:memilikiFasilitas fas:kamar-bersalin, fas:instalasi-gawat-darurat, fas:farmasi, fas:ambulans .
 rs:rs-022 a hf:RumahSakit ;
@@ -552,6 +573,7 @@ rs:rs-022 a hf:RumahSakit ;
   geo:lat "3.572687"^^xsd:decimal ;
   geo:long "98.680787"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-022/foto_1.jpg" ;
   hf:menyediakanLayanan lay:kesehatan-anak, lay:kebidanan-dan-kandungan, lay:ugd-24-jam, lay:imunisasi ;
   hf:memilikiFasilitas fas:kamar-bersalin, fas:instalasi-gawat-darurat, fas:farmasi, fas:ambulans .
 rs:rs-023 a hf:RumahSakit ;
@@ -568,6 +590,7 @@ rs:rs-023 a hf:RumahSakit ;
   geo:lat "3.589462"^^xsd:decimal ;
   geo:long "98.674162"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-023/foto_1.jpg" ;
   hf:menyediakanLayanan lay:kesehatan-jiwa-psikiatri, lay:psikologi-klinis, lay:rehabilitasi-medik ;
   hf:memilikiFasilitas fas:bangsal-perawatan-jiwa, fas:instalasi-gawat-darurat-psikiatri, fas:farmasi .
 rs:rs-024 a hf:RumahSakit ;
@@ -584,6 +607,7 @@ rs:rs-024 a hf:RumahSakit ;
   geo:lat "3.500269"^^xsd:decimal ;
   geo:long "98.583627"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-024/foto_1.jpg", "/images/rs/rs-024/foto_2.jpg", "/images/rs/rs-024/foto_3.jpg" ;
   hf:menyediakanLayanan lay:kesehatan-jiwa-psikiatri, lay:psikologi-klinis, lay:rehabilitasi-medik ;
   hf:memilikiFasilitas fas:bangsal-perawatan-jiwa, fas:instalasi-gawat-darurat-psikiatri, fas:farmasi .
 rs:rs-025 a hf:RumahSakit ;
@@ -600,6 +624,7 @@ rs:rs-025 a hf:RumahSakit ;
   geo:lat "3.522747"^^xsd:decimal ;
   geo:long "98.629798"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-025/foto_1.jpg" ;
   hf:menyediakanLayanan lay:kesehatan-jiwa-psikiatri, lay:psikologi-klinis, lay:rehabilitasi-medik ;
   hf:memilikiFasilitas fas:bangsal-perawatan-jiwa, fas:instalasi-gawat-darurat-psikiatri, fas:farmasi .
 rs:rs-026 a hf:RumahSakit ;
@@ -616,6 +641,7 @@ rs:rs-026 a hf:RumahSakit ;
   geo:lat "3.589462"^^xsd:decimal ;
   geo:long "98.674162"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-026/foto_1.jpg" ;
   hf:menyediakanLayanan lay:bedah, lay:anestesi, lay:ugd-24-jam, lay:radiologi ;
   hf:memilikiFasilitas fas:kamar-operasi, fas:icu, fas:ambulans, fas:instalasi-gawat-darurat .
 rs:rs-027 a hf:RumahSakit ;
@@ -632,6 +658,7 @@ rs:rs-027 a hf:RumahSakit ;
   geo:lat "3.595274"^^xsd:decimal ;
   geo:long "98.624688"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-027/foto_1.jpg" ;
   hf:menyediakanLayanan lay:bedah, lay:anestesi, lay:ugd-24-jam, lay:radiologi ;
   hf:memilikiFasilitas fas:kamar-operasi, fas:icu, fas:ambulans, fas:instalasi-gawat-darurat .
 rs:rs-028 a hf:RumahSakit ;
@@ -648,6 +675,7 @@ rs:rs-028 a hf:RumahSakit ;
   geo:lat "3.563015"^^xsd:decimal ;
   geo:long "98.660270"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-028/foto_1.jpg" ;
   hf:menyediakanLayanan lay:gigi-dan-mulut, lay:bedah-mulut, lay:ortodonti ;
   hf:memilikiFasilitas fas:klinik-gigi-spesialis, fas:radiologi-gigi, fas:farmasi .
 rs:rs-029 a hf:RumahSakit ;
@@ -664,6 +692,7 @@ rs:rs-029 a hf:RumahSakit ;
   geo:lat "3.585989"^^xsd:decimal ;
   geo:long "98.659746"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-029/foto_1.jpg" ;
   hf:menyediakanLayanan lay:dialisis-cuci-darah, lay:penyakit-dalam, lay:laboratorium ;
   hf:memilikiFasilitas fas:unit-hemodialisa, fas:laboratorium-klinik, fas:farmasi .
 rs:rs-030 a hf:RumahSakit ;
@@ -680,6 +709,7 @@ rs:rs-030 a hf:RumahSakit ;
   geo:lat "3.576816"^^xsd:decimal ;
   geo:long "98.660059"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-030/foto_1.jpg" ;
   hf:menyediakanLayanan lay:kesehatan-mata, lay:bedah-katarak, lay:refraksi ;
   hf:memilikiFasilitas fas:kamar-bedah-mata, fas:poliklinik-mata, fas:farmasi .
 rs:rs-031 a hf:RumahSakit ;
@@ -696,6 +726,7 @@ rs:rs-031 a hf:RumahSakit ;
   geo:lat "3.580974"^^xsd:decimal ;
   geo:long "98.646492"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-031/foto_1.jpg" ;
   hf:menyediakanLayanan lay:kesehatan-mata, lay:bedah-katarak, lay:refraksi ;
   hf:memilikiFasilitas fas:kamar-bedah-mata, fas:poliklinik-mata, fas:farmasi .
 rs:rs-032 a hf:RumahSakit ;
@@ -712,6 +743,7 @@ rs:rs-032 a hf:RumahSakit ;
   geo:lat "3.598712"^^xsd:decimal ;
   geo:long "98.656910"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-032/foto_1.jpg" ;
   hf:menyediakanLayanan lay:kesehatan-mata, lay:bedah-katarak, lay:refraksi ;
   hf:memilikiFasilitas fas:kamar-bedah-mata, fas:poliklinik-mata, fas:farmasi .
 rs:rs-033 a hf:RumahSakit ;
@@ -728,6 +760,7 @@ rs:rs-033 a hf:RumahSakit ;
   geo:lat "3.627045"^^xsd:decimal ;
   geo:long "98.664935"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-033/foto_1.jpg" ;
   hf:menyediakanLayanan lay:kesehatan-mata, lay:bedah-katarak, lay:refraksi ;
   hf:memilikiFasilitas fas:kamar-bedah-mata, fas:poliklinik-mata, fas:farmasi .
 rs:rs-034 a hf:RumahSakit ;
@@ -744,6 +777,7 @@ rs:rs-034 a hf:RumahSakit ;
   geo:lat "3.586412"^^xsd:decimal ;
   geo:long "98.661301"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-034/foto_1.jpg" ;
   hf:menyediakanLayanan lay:kesehatan-mata, lay:bedah-katarak, lay:refraksi ;
   hf:memilikiFasilitas fas:kamar-bedah-mata, fas:poliklinik-mata, fas:farmasi .
 rs:rs-035 a hf:RumahSakit ;
@@ -760,6 +794,7 @@ rs:rs-035 a hf:RumahSakit ;
   geo:lat "3.589462"^^xsd:decimal ;
   geo:long "98.674162"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-035/foto_1.jpg" ;
   hf:menyediakanLayanan lay:pulmonologi-dan-kedokteran-respirasi, lay:radiologi-toraks, lay:laboratorium ;
   hf:memilikiFasilitas fas:unit-perawatan-paru, fas:laboratorium-dahak-tb, fas:farmasi .
 rs:rs-036 a hf:RumahSakit ;
@@ -776,6 +811,7 @@ rs:rs-036 a hf:RumahSakit ;
   geo:lat "2.957461"^^xsd:decimal ;
   geo:long "99.057095"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-036/foto_1.jpg" ;
   hf:menyediakanLayanan lay:kesehatan-mata, lay:bedah-katarak, lay:refraksi ;
   hf:memilikiFasilitas fas:kamar-bedah-mata, fas:poliklinik-mata, fas:farmasi .
 rs:rs-037 a hf:RumahSakit ;
@@ -791,6 +827,7 @@ rs:rs-037 a hf:RumahSakit ;
   geo:lat "1.290057"^^xsd:decimal ;
   geo:long "97.615077"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-037/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-038 a hf:RumahSakit ;
@@ -806,6 +843,7 @@ rs:rs-038 a hf:RumahSakit ;
   geo:lat "1.384180"^^xsd:decimal ;
   geo:long "99.274601"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-038/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-039 a hf:RumahSakit ;
@@ -821,6 +859,7 @@ rs:rs-039 a hf:RumahSakit ;
   geo:lat "1.736506"^^xsd:decimal ;
   geo:long "98.782477"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-039/foto_1.jpg", "/images/rs/rs-039/foto_2.jpg", "/images/rs/rs-039/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-040 a hf:RumahSakit ;
@@ -836,6 +875,7 @@ rs:rs-040 a hf:RumahSakit ;
   geo:lat "2.978450"^^xsd:decimal ;
   geo:long "99.079291"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-040/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-041 a hf:RumahSakit ;
@@ -851,6 +891,7 @@ rs:rs-041 a hf:RumahSakit ;
   geo:lat "2.978450"^^xsd:decimal ;
   geo:long "99.079291"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-041/foto_1.jpg", "/images/rs/rs-041/foto_2.jpg", "/images/rs/rs-041/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-042 a hf:RumahSakit ;
@@ -866,6 +907,7 @@ rs:rs-042 a hf:RumahSakit ;
   geo:lat "3.568093"^^xsd:decimal ;
   geo:long "98.657523"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-042/foto_1.jpg", "/images/rs/rs-042/foto_2.jpg", "/images/rs/rs-042/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-043 a hf:RumahSakit ;
@@ -879,6 +921,7 @@ rs:rs-043 a hf:RumahSakit ;
   hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   hf:pratama "true"^^xsd:boolean ;
   schema:telephone "082267208436" ;
+  schema:image "/images/rs/rs-043/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap-dasar, lay:pelayanan-medik-umum ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:ruang-rawat-inap-dasar, fas:apotek .
 rs:rs-044 a hf:RumahSakit ;
@@ -894,6 +937,7 @@ rs:rs-044 a hf:RumahSakit ;
   geo:lat "2.958863"^^xsd:decimal ;
   geo:long "99.065365"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-044/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-045 a hf:RumahSakit ;
@@ -909,6 +953,7 @@ rs:rs-045 a hf:RumahSakit ;
   geo:lat "3.542469"^^xsd:decimal ;
   geo:long "98.685990"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-045/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-046 a hf:RumahSakit ;
@@ -924,6 +969,7 @@ rs:rs-046 a hf:RumahSakit ;
   geo:lat "3.224064"^^xsd:decimal ;
   geo:long "99.503580"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-046/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-047 a hf:RumahSakit ;
@@ -939,6 +985,7 @@ rs:rs-047 a hf:RumahSakit ;
   geo:lat "2.851800"^^xsd:decimal ;
   geo:long "99.623301"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-047/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-048 a hf:RumahSakit ;
@@ -954,6 +1001,7 @@ rs:rs-048 a hf:RumahSakit ;
   geo:lat "2.138475"^^xsd:decimal ;
   geo:long "99.778672"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-048/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-049 a hf:RumahSakit ;
@@ -969,6 +1017,7 @@ rs:rs-049 a hf:RumahSakit ;
   geo:lat "2.851800"^^xsd:decimal ;
   geo:long "99.623301"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-049/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-050 a hf:RumahSakit ;
@@ -981,6 +1030,7 @@ rs:rs-050 a hf:RumahSakit ;
   hf:menerimaBPJS "true"^^xsd:boolean ;
   hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   schema:telephone "082210865225" ;
+  schema:image "/images/rs/rs-050/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-051 a hf:RumahSakit ;
@@ -996,6 +1046,7 @@ rs:rs-051 a hf:RumahSakit ;
   geo:lat "3.615292"^^xsd:decimal ;
   geo:long "98.661557"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-051/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-052 a hf:RumahSakit ;
@@ -1011,6 +1062,7 @@ rs:rs-052 a hf:RumahSakit ;
   geo:lat "2.156475"^^xsd:decimal ;
   geo:long "99.784549"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-052/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-053 a hf:RumahSakit ;
@@ -1026,6 +1078,7 @@ rs:rs-053 a hf:RumahSakit ;
   geo:lat "3.604766"^^xsd:decimal ;
   geo:long "98.673072"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-053/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-054 a hf:RumahSakit ;
@@ -1041,6 +1094,7 @@ rs:rs-054 a hf:RumahSakit ;
   geo:lat "2.958863"^^xsd:decimal ;
   geo:long "99.065365"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-054/foto_1.jpg", "/images/rs/rs-054/foto_2.jpg", "/images/rs/rs-054/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-055 a hf:RumahSakit ;
@@ -1056,6 +1110,7 @@ rs:rs-055 a hf:RumahSakit ;
   geo:lat "3.597231"^^xsd:decimal ;
   geo:long "98.488164"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-055/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-056 a hf:RumahSakit ;
@@ -1071,6 +1126,7 @@ rs:rs-056 a hf:RumahSakit ;
   geo:lat "1.372696"^^xsd:decimal ;
   geo:long "99.272717"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-056/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-057 a hf:RumahSakit ;
@@ -1086,6 +1142,7 @@ rs:rs-057 a hf:RumahSakit ;
   geo:lat "3.590294"^^xsd:decimal ;
   geo:long "98.649645"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-057/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-058 a hf:RumahSakit ;
@@ -1101,6 +1158,7 @@ rs:rs-058 a hf:RumahSakit ;
   geo:lat "3.602380"^^xsd:decimal ;
   geo:long "98.486443"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-058/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-059 a hf:RumahSakit ;
@@ -1116,6 +1174,7 @@ rs:rs-059 a hf:RumahSakit ;
   geo:lat "2.950635"^^xsd:decimal ;
   geo:long "99.066850"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-059/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-060 a hf:RumahSakit ;
@@ -1143,6 +1202,7 @@ rs:rs-061 a hf:RumahSakit ;
   geo:lat "3.567179"^^xsd:decimal ;
   geo:long "98.473695"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-061/foto_1.jpg", "/images/rs/rs-061/foto_2.jpg", "/images/rs/rs-061/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-062 a hf:RumahSakit ;
@@ -1158,6 +1218,7 @@ rs:rs-062 a hf:RumahSakit ;
   geo:lat "2.886931"^^xsd:decimal ;
   geo:long "99.164407"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-062/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-063 a hf:RumahSakit ;
@@ -1173,6 +1234,7 @@ rs:rs-063 a hf:RumahSakit ;
   geo:lat "3.591645"^^xsd:decimal ;
   geo:long "98.649688"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-063/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-064 a hf:RumahSakit ;
@@ -1188,6 +1250,7 @@ rs:rs-064 a hf:RumahSakit ;
   geo:lat "1.290057"^^xsd:decimal ;
   geo:long "97.615077"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-064/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-065 a hf:RumahSakit ;
@@ -1203,6 +1266,7 @@ rs:rs-065 a hf:RumahSakit ;
   geo:lat "3.774424"^^xsd:decimal ;
   geo:long "98.434118"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-065/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-066 a hf:RumahSakit ;
@@ -1218,6 +1282,7 @@ rs:rs-066 a hf:RumahSakit ;
   geo:lat "3.175079"^^xsd:decimal ;
   geo:long "99.483084"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-066/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-067 a hf:RumahSakit ;
@@ -1233,6 +1298,7 @@ rs:rs-067 a hf:RumahSakit ;
   geo:lat "3.578568"^^xsd:decimal ;
   geo:long "98.612967"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-067/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-068 a hf:RumahSakit ;
@@ -1248,6 +1314,7 @@ rs:rs-068 a hf:RumahSakit ;
   geo:lat "2.851800"^^xsd:decimal ;
   geo:long "99.623301"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-068/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-069 a hf:RumahSakit ;
@@ -1263,6 +1330,7 @@ rs:rs-069 a hf:RumahSakit ;
   geo:lat "3.585303"^^xsd:decimal ;
   geo:long "98.651474"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-069/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-070 a hf:RumahSakit ;
@@ -1278,6 +1346,7 @@ rs:rs-070 a hf:RumahSakit ;
   geo:lat "2.851800"^^xsd:decimal ;
   geo:long "99.623301"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-070/foto_1.jpg", "/images/rs/rs-070/foto_2.jpg", "/images/rs/rs-070/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-071 a hf:RumahSakit ;
@@ -1293,6 +1362,7 @@ rs:rs-071 a hf:RumahSakit ;
   geo:lat "3.608778"^^xsd:decimal ;
   geo:long "98.796529"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-071/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-072 a hf:RumahSakit ;
@@ -1308,6 +1378,7 @@ rs:rs-072 a hf:RumahSakit ;
   geo:lat "2.156475"^^xsd:decimal ;
   geo:long "99.784549"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-072/foto_1.jpg", "/images/rs/rs-072/foto_2.jpg", "/images/rs/rs-072/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-073 a hf:RumahSakit ;
@@ -1323,6 +1394,7 @@ rs:rs-073 a hf:RumahSakit ;
   geo:lat "3.721571"^^xsd:decimal ;
   geo:long "98.611355"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-073/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-074 a hf:RumahSakit ;
@@ -1338,6 +1410,7 @@ rs:rs-074 a hf:RumahSakit ;
   geo:lat "3.224064"^^xsd:decimal ;
   geo:long "99.503580"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-074/foto_1.jpg", "/images/rs/rs-074/foto_2.jpg", "/images/rs/rs-074/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-075 a hf:RumahSakit ;
@@ -1350,6 +1423,7 @@ rs:rs-075 a hf:RumahSakit ;
   hf:menerimaBPJS "true"^^xsd:boolean ;
   hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   schema:telephone "082273316731" ;
+  schema:image "/images/rs/rs-075/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-076 a hf:RumahSakit ;
@@ -1365,6 +1439,7 @@ rs:rs-076 a hf:RumahSakit ;
   geo:lat "2.262856"^^xsd:decimal ;
   geo:long "98.751458"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-076/foto_1.jpg", "/images/rs/rs-076/foto_2.jpg", "/images/rs/rs-076/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-077 a hf:RumahSakit ;
@@ -1380,6 +1455,7 @@ rs:rs-077 a hf:RumahSakit ;
   geo:lat "2.958101"^^xsd:decimal ;
   geo:long "99.069776"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-077/foto_1.jpg", "/images/rs/rs-077/foto_2.jpg", "/images/rs/rs-077/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-078 a hf:RumahSakit ;
@@ -1395,6 +1471,7 @@ rs:rs-078 a hf:RumahSakit ;
   geo:lat "1.736506"^^xsd:decimal ;
   geo:long "98.782477"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-078/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-079 a hf:RumahSakit ;
@@ -1410,6 +1487,7 @@ rs:rs-079 a hf:RumahSakit ;
   geo:lat "3.327369"^^xsd:decimal ;
   geo:long "99.162302"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-079/foto_1.jpg", "/images/rs/rs-079/foto_2.jpg", "/images/rs/rs-079/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-080 a hf:RumahSakit ;
@@ -1437,6 +1515,7 @@ rs:rs-081 a hf:RumahSakit ;
   hf:menerimaBPJS "true"^^xsd:boolean ;
   hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   schema:telephone "06367325118" ;
+  schema:image "/images/rs/rs-081/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-082 a hf:RumahSakit ;
@@ -1452,6 +1531,7 @@ rs:rs-082 a hf:RumahSakit ;
   geo:lat "1.290057"^^xsd:decimal ;
   geo:long "97.615077"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-082/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-083 a hf:RumahSakit ;
@@ -1467,6 +1547,7 @@ rs:rs-083 a hf:RumahSakit ;
   geo:lat "3.597904"^^xsd:decimal ;
   geo:long "98.688312"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-083/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-084 a hf:RumahSakit ;
@@ -1482,6 +1563,7 @@ rs:rs-084 a hf:RumahSakit ;
   geo:lat "3.601672"^^xsd:decimal ;
   geo:long "98.483820"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-084/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-085 a hf:RumahSakit ;
@@ -1497,6 +1579,7 @@ rs:rs-085 a hf:RumahSakit ;
   geo:lat "2.970342"^^xsd:decimal ;
   geo:long "99.802090"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-085/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-086 a hf:RumahSakit ;
@@ -1512,6 +1595,7 @@ rs:rs-086 a hf:RumahSakit ;
   geo:lat "3.474454"^^xsd:decimal ;
   geo:long "98.715897"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-086/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-087 a hf:RumahSakit ;
@@ -1527,6 +1611,7 @@ rs:rs-087 a hf:RumahSakit ;
   geo:lat "1.629230"^^xsd:decimal ;
   geo:long "99.692611"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-087/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-088 a hf:RumahSakit ;
@@ -1542,6 +1627,7 @@ rs:rs-088 a hf:RumahSakit ;
   geo:lat "2.979998"^^xsd:decimal ;
   geo:long "99.637425"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-088/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-089 a hf:RumahSakit ;
@@ -1557,6 +1643,7 @@ rs:rs-089 a hf:RumahSakit ;
   geo:lat "3.589462"^^xsd:decimal ;
   geo:long "98.674162"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-089/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-090 a hf:RumahSakit ;
@@ -1571,6 +1658,7 @@ rs:rs-090 a hf:RumahSakit ;
   geo:lat "3.097226"^^xsd:decimal ;
   geo:long "98.491603"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-090/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-091 a hf:RumahSakit ;
@@ -1586,6 +1674,7 @@ rs:rs-091 a hf:RumahSakit ;
   geo:lat "1.893882"^^xsd:decimal ;
   geo:long "100.093708"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-091/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-092 a hf:RumahSakit ;
@@ -1598,6 +1687,7 @@ rs:rs-092 a hf:RumahSakit ;
   hf:menerimaBPJS "true"^^xsd:boolean ;
   hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   schema:telephone "081361905252" ;
+  schema:image "/images/rs/rs-092/foto_1.jpg", "/images/rs/rs-092/foto_2.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-093 a hf:RumahSakit ;
@@ -1610,6 +1700,7 @@ rs:rs-093 a hf:RumahSakit ;
   hf:menerimaBPJS "true"^^xsd:boolean ;
   hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   schema:telephone "085137521271" ;
+  schema:image "/images/rs/rs-093/foto_1.jpg", "/images/rs/rs-093/foto_2.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-094 a hf:RumahSakit ;
@@ -1625,6 +1716,7 @@ rs:rs-094 a hf:RumahSakit ;
   geo:lat "1.396930"^^xsd:decimal ;
   geo:long "99.250209"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-094/foto_1.jpg", "/images/rs/rs-094/foto_2.jpg", "/images/rs/rs-094/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-095 a hf:RumahSakit ;
@@ -1640,6 +1732,7 @@ rs:rs-095 a hf:RumahSakit ;
   geo:lat "1.910417"^^xsd:decimal ;
   geo:long "98.589085"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-095/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-096 a hf:RumahSakit ;
@@ -1655,6 +1748,7 @@ rs:rs-096 a hf:RumahSakit ;
   geo:lat "0.864181"^^xsd:decimal ;
   geo:long "99.564523"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-096/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-097 a hf:RumahSakit ;
@@ -1670,6 +1764,7 @@ rs:rs-097 a hf:RumahSakit ;
   geo:lat "2.668047"^^xsd:decimal ;
   geo:long "98.937440"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-097/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-098 a hf:RumahSakit ;
@@ -1685,6 +1780,7 @@ rs:rs-098 a hf:RumahSakit ;
   geo:lat "2.950708"^^xsd:decimal ;
   geo:long "98.784316"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-098/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-099 a hf:RumahSakit ;
@@ -1700,6 +1796,7 @@ rs:rs-099 a hf:RumahSakit ;
   geo:lat "1.778426"^^xsd:decimal ;
   geo:long "99.284337"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-099/foto_1.jpg", "/images/rs/rs-099/foto_2.jpg", "/images/rs/rs-099/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-100 a hf:RumahSakit ;
@@ -1715,6 +1812,7 @@ rs:rs-100 a hf:RumahSakit ;
   geo:lat "2.610918"^^xsd:decimal ;
   geo:long "98.902260"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-100/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-101 a hf:RumahSakit ;
@@ -1730,6 +1828,7 @@ rs:rs-101 a hf:RumahSakit ;
   geo:lat "2.153426"^^xsd:decimal ;
   geo:long "99.785079"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-101/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-102 a hf:RumahSakit ;
@@ -1745,6 +1844,7 @@ rs:rs-102 a hf:RumahSakit ;
   geo:lat "2.557512"^^xsd:decimal ;
   geo:long "98.330543"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-102/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-103 a hf:RumahSakit ;
@@ -1760,6 +1860,7 @@ rs:rs-103 a hf:RumahSakit ;
   geo:lat "1.629230"^^xsd:decimal ;
   geo:long "99.692611"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-103/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-104 a hf:RumahSakit ;
@@ -1790,6 +1891,7 @@ rs:rs-105 a hf:RumahSakit ;
   geo:lat "3.348553"^^xsd:decimal ;
   geo:long "99.000082"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-105/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-106 a hf:RumahSakit ;
@@ -1805,6 +1907,7 @@ rs:rs-106 a hf:RumahSakit ;
   geo:lat "3.672435"^^xsd:decimal ;
   geo:long "98.692646"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-106/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-107 a hf:RumahSakit ;
@@ -1820,6 +1923,7 @@ rs:rs-107 a hf:RumahSakit ;
   geo:lat "3.903281"^^xsd:decimal ;
   geo:long "98.425889"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-107/foto_1.jpg", "/images/rs/rs-107/foto_2.jpg", "/images/rs/rs-107/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-108 a hf:RumahSakit ;
@@ -1850,6 +1954,7 @@ rs:rs-109 a hf:RumahSakit ;
   geo:lat "2.026529"^^xsd:decimal ;
   geo:long "98.960634"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-109/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-110 a hf:RumahSakit ;
@@ -1865,6 +1970,7 @@ rs:rs-110 a hf:RumahSakit ;
   geo:lat "2.950708"^^xsd:decimal ;
   geo:long "98.784316"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-110/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-111 a hf:RumahSakit ;
@@ -1880,6 +1986,7 @@ rs:rs-111 a hf:RumahSakit ;
   geo:lat "3.585913"^^xsd:decimal ;
   geo:long "98.688306"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-111/foto_1.jpg", "/images/rs/rs-111/foto_2.jpg", "/images/rs/rs-111/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-112 a hf:RumahSakit ;
@@ -1895,6 +2002,7 @@ rs:rs-112 a hf:RumahSakit ;
   geo:lat "3.761725"^^xsd:decimal ;
   geo:long "98.176919"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-112/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-113 a hf:RumahSakit ;
@@ -1910,6 +2018,7 @@ rs:rs-113 a hf:RumahSakit ;
   geo:lat "3.696391"^^xsd:decimal ;
   geo:long "98.672990"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-113/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-114 a hf:RumahSakit ;
@@ -1925,6 +2034,7 @@ rs:rs-114 a hf:RumahSakit ;
   geo:lat "3.535908"^^xsd:decimal ;
   geo:long "98.816197"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-114/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-115 a hf:RumahSakit ;
@@ -1940,6 +2050,7 @@ rs:rs-115 a hf:RumahSakit ;
   geo:lat "3.226098"^^xsd:decimal ;
   geo:long "98.543057"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-115/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-116 a hf:RumahSakit ;
@@ -1955,6 +2066,7 @@ rs:rs-116 a hf:RumahSakit ;
   geo:lat "2.153426"^^xsd:decimal ;
   geo:long "99.785079"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-116/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-117 a hf:RumahSakit ;
@@ -1970,6 +2082,7 @@ rs:rs-117 a hf:RumahSakit ;
   geo:lat "3.681634"^^xsd:decimal ;
   geo:long "98.656093"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-117/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-118 a hf:RumahSakit ;
@@ -1985,6 +2098,7 @@ rs:rs-118 a hf:RumahSakit ;
   geo:lat "3.556826"^^xsd:decimal ;
   geo:long "98.695344"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-118/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-119 a hf:RumahSakit ;
@@ -2000,6 +2114,7 @@ rs:rs-119 a hf:RumahSakit ;
   geo:lat "3.202757"^^xsd:decimal ;
   geo:long "99.563407"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-119/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-120 a hf:RumahSakit ;
@@ -2015,6 +2130,7 @@ rs:rs-120 a hf:RumahSakit ;
   geo:lat "3.645180"^^xsd:decimal ;
   geo:long "98.933530"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-120/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-121 a hf:RumahSakit ;
@@ -2045,6 +2161,7 @@ rs:rs-122 a hf:RumahSakit ;
   geo:lat "3.612719"^^xsd:decimal ;
   geo:long "98.715256"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-122/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-123 a hf:RumahSakit ;
@@ -2060,6 +2177,7 @@ rs:rs-123 a hf:RumahSakit ;
   geo:lat "2.938807"^^xsd:decimal ;
   geo:long "99.061785"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-123/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-124 a hf:RumahSakit ;
@@ -2075,6 +2193,7 @@ rs:rs-124 a hf:RumahSakit ;
   geo:lat "2.153426"^^xsd:decimal ;
   geo:long "99.785079"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-124/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-125 a hf:RumahSakit ;
@@ -2090,6 +2209,7 @@ rs:rs-125 a hf:RumahSakit ;
   geo:lat "3.595250"^^xsd:decimal ;
   geo:long "98.628135"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-125/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-126 a hf:RumahSakit ;
@@ -2105,6 +2225,7 @@ rs:rs-126 a hf:RumahSakit ;
   geo:lat "3.474454"^^xsd:decimal ;
   geo:long "98.715897"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-126/foto_1.jpg", "/images/rs/rs-126/foto_2.jpg", "/images/rs/rs-126/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-127 a hf:RumahSakit ;
@@ -2120,6 +2241,7 @@ rs:rs-127 a hf:RumahSakit ;
   geo:lat "2.610918"^^xsd:decimal ;
   geo:long "98.902260"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-127/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-128 a hf:RumahSakit ;
@@ -2135,6 +2257,7 @@ rs:rs-128 a hf:RumahSakit ;
   geo:lat "3.692721"^^xsd:decimal ;
   geo:long "98.684097"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-128/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-129 a hf:RumahSakit ;
@@ -2150,6 +2273,7 @@ rs:rs-129 a hf:RumahSakit ;
   geo:lat "1.384180"^^xsd:decimal ;
   geo:long "99.274601"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-129/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-130 a hf:RumahSakit ;
@@ -2165,6 +2289,7 @@ rs:rs-130 a hf:RumahSakit ;
   geo:lat "3.586362"^^xsd:decimal ;
   geo:long "98.672494"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-130/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-131 a hf:RumahSakit ;
@@ -2180,6 +2305,7 @@ rs:rs-131 a hf:RumahSakit ;
   geo:lat "2.069641"^^xsd:decimal ;
   geo:long "99.860383"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-131/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-132 a hf:RumahSakit ;
@@ -2195,6 +2321,7 @@ rs:rs-132 a hf:RumahSakit ;
   geo:lat "3.121269"^^xsd:decimal ;
   geo:long "99.131596"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-132/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-133 a hf:RumahSakit ;
@@ -2210,6 +2337,7 @@ rs:rs-133 a hf:RumahSakit ;
   geo:lat "3.474454"^^xsd:decimal ;
   geo:long "98.715897"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-133/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-134 a hf:RumahSakit ;
@@ -2225,6 +2353,7 @@ rs:rs-134 a hf:RumahSakit ;
   geo:lat "3.312406"^^xsd:decimal ;
   geo:long "99.315415"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-134/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-135 a hf:RumahSakit ;
@@ -2240,6 +2369,7 @@ rs:rs-135 a hf:RumahSakit ;
   geo:lat "3.474454"^^xsd:decimal ;
   geo:long "98.715897"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-135/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-136 a hf:RumahSakit ;
@@ -2255,6 +2385,7 @@ rs:rs-136 a hf:RumahSakit ;
   geo:lat "2.950708"^^xsd:decimal ;
   geo:long "98.784316"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-136/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-137 a hf:RumahSakit ;
@@ -2270,6 +2401,7 @@ rs:rs-137 a hf:RumahSakit ;
   geo:lat "3.224064"^^xsd:decimal ;
   geo:long "99.503580"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-137/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-138 a hf:RumahSakit ;
@@ -2285,6 +2417,7 @@ rs:rs-138 a hf:RumahSakit ;
   geo:lat "3.607217"^^xsd:decimal ;
   geo:long "98.526192"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-138/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-139 a hf:RumahSakit ;
@@ -2300,6 +2433,7 @@ rs:rs-139 a hf:RumahSakit ;
   geo:lat "3.589462"^^xsd:decimal ;
   geo:long "98.674162"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-139/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-140 a hf:RumahSakit ;
@@ -2315,6 +2449,7 @@ rs:rs-140 a hf:RumahSakit ;
   geo:lat "3.628788"^^xsd:decimal ;
   geo:long "98.700822"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-140/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-141 a hf:RumahSakit ;
@@ -2330,6 +2465,7 @@ rs:rs-141 a hf:RumahSakit ;
   geo:lat "3.761725"^^xsd:decimal ;
   geo:long "98.176919"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-141/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-142 a hf:RumahSakit ;
@@ -2345,6 +2481,7 @@ rs:rs-142 a hf:RumahSakit ;
   geo:lat "3.633466"^^xsd:decimal ;
   geo:long "98.668789"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-142/foto_1.jpg", "/images/rs/rs-142/foto_2.jpg", "/images/rs/rs-142/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-143 a hf:RumahSakit ;
@@ -2360,6 +2497,7 @@ rs:rs-143 a hf:RumahSakit ;
   geo:lat "3.576190"^^xsd:decimal ;
   geo:long "98.682984"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-143/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-144 a hf:RumahSakit ;
@@ -2375,6 +2513,7 @@ rs:rs-144 a hf:RumahSakit ;
   geo:lat "3.585765"^^xsd:decimal ;
   geo:long "98.671321"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-144/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-145 a hf:RumahSakit ;
@@ -2390,6 +2529,7 @@ rs:rs-145 a hf:RumahSakit ;
   geo:lat "3.566130"^^xsd:decimal ;
   geo:long "98.959031"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-145/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-146 a hf:RumahSakit ;
@@ -2405,6 +2545,7 @@ rs:rs-146 a hf:RumahSakit ;
   geo:lat "3.600652"^^xsd:decimal ;
   geo:long "98.678275"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-146/foto_1.jpg", "/images/rs/rs-146/foto_2.jpg", "/images/rs/rs-146/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-147 a hf:RumahSakit ;
@@ -2420,6 +2561,7 @@ rs:rs-147 a hf:RumahSakit ;
   geo:lat "3.583684"^^xsd:decimal ;
   geo:long "98.692858"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-147/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-148 a hf:RumahSakit ;
@@ -2435,6 +2577,7 @@ rs:rs-148 a hf:RumahSakit ;
   geo:lat "1.744988"^^xsd:decimal ;
   geo:long "98.778791"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-148/foto_1.jpg", "/images/rs/rs-148/foto_2.jpg", "/images/rs/rs-148/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-149 a hf:RumahSakit ;
@@ -2450,6 +2593,7 @@ rs:rs-149 a hf:RumahSakit ;
   geo:lat "3.435799"^^xsd:decimal ;
   geo:long "98.865901"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-149/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-150 a hf:RumahSakit ;
@@ -2465,6 +2609,7 @@ rs:rs-150 a hf:RumahSakit ;
   geo:lat "3.598292"^^xsd:decimal ;
   geo:long "98.754995"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-150/foto_1.jpg", "/images/rs/rs-150/foto_2.jpg", "/images/rs/rs-150/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-151 a hf:RumahSakit ;
@@ -2480,6 +2625,7 @@ rs:rs-151 a hf:RumahSakit ;
   geo:lat "3.613192"^^xsd:decimal ;
   geo:long "98.800180"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-151/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-152 a hf:RumahSakit ;
@@ -2495,6 +2641,7 @@ rs:rs-152 a hf:RumahSakit ;
   geo:lat "3.538163"^^xsd:decimal ;
   geo:long "98.711918"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-152/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-153 a hf:RumahSakit ;
@@ -2510,6 +2657,7 @@ rs:rs-153 a hf:RumahSakit ;
   geo:lat "3.586246"^^xsd:decimal ;
   geo:long "98.666610"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-153/foto_1.jpg", "/images/rs/rs-153/foto_2.jpg", "/images/rs/rs-153/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-154 a hf:RumahSakit ;
@@ -2525,6 +2673,7 @@ rs:rs-154 a hf:RumahSakit ;
   geo:lat "3.509768"^^xsd:decimal ;
   geo:long "98.811126"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-154/foto_1.jpg", "/images/rs/rs-154/foto_2.jpg", "/images/rs/rs-154/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-155 a hf:RumahSakit ;
@@ -2540,6 +2689,7 @@ rs:rs-155 a hf:RumahSakit ;
   geo:lat "3.540851"^^xsd:decimal ;
   geo:long "98.679587"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-155/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-156 a hf:RumahSakit ;
@@ -2555,6 +2705,7 @@ rs:rs-156 a hf:RumahSakit ;
   geo:lat "3.583040"^^xsd:decimal ;
   geo:long "98.710992"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-156/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-157 a hf:RumahSakit ;
@@ -2570,6 +2721,7 @@ rs:rs-157 a hf:RumahSakit ;
   geo:lat "3.593259"^^xsd:decimal ;
   geo:long "98.638971"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-157/foto_1.jpg", "/images/rs/rs-157/foto_2.jpg", "/images/rs/rs-157/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:subspesialis, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu-nicu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-158 a hf:RumahSakit ;
@@ -2585,6 +2737,7 @@ rs:rs-158 a hf:RumahSakit ;
   geo:lat "3.590631"^^xsd:decimal ;
   geo:long "98.681425"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-158/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-159 a hf:RumahSakit ;
@@ -2600,6 +2753,7 @@ rs:rs-159 a hf:RumahSakit ;
   geo:lat "3.328982"^^xsd:decimal ;
   geo:long "99.165474"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-159/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-160 a hf:RumahSakit ;
@@ -2612,6 +2766,7 @@ rs:rs-160 a hf:RumahSakit ;
   hf:menerimaBPJS "true"^^xsd:boolean ;
   hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   schema:telephone "081360654283" ;
+  schema:image "/images/rs/rs-160/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-161 a hf:RumahSakit ;
@@ -2627,6 +2782,7 @@ rs:rs-161 a hf:RumahSakit ;
   geo:lat "3.482835"^^xsd:decimal ;
   geo:long "99.121301"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-161/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-162 a hf:RumahSakit ;
@@ -2642,6 +2798,7 @@ rs:rs-162 a hf:RumahSakit ;
   geo:lat "3.474454"^^xsd:decimal ;
   geo:long "98.715897"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-162/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-163 a hf:RumahSakit ;
@@ -2657,6 +2814,7 @@ rs:rs-163 a hf:RumahSakit ;
   geo:lat "3.605709"^^xsd:decimal ;
   geo:long "98.794046"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-163/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-164 a hf:RumahSakit ;
@@ -2672,6 +2830,7 @@ rs:rs-164 a hf:RumahSakit ;
   geo:lat "2.851800"^^xsd:decimal ;
   geo:long "99.623301"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-164/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-165 a hf:RumahSakit ;
@@ -2684,6 +2843,7 @@ rs:rs-165 a hf:RumahSakit ;
   hf:menerimaBPJS "true"^^xsd:boolean ;
   hf:standarRegulasi "Permenkes No. 3 Tahun 2020" ;
   schema:telephone "081260806680" ;
+  schema:image "/images/rs/rs-165/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-166 a hf:RumahSakit ;
@@ -2699,6 +2859,7 @@ rs:rs-166 a hf:RumahSakit ;
   geo:lat "1.629230"^^xsd:decimal ;
   geo:long "99.692611"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-166/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-167 a hf:RumahSakit ;
@@ -2714,6 +2875,7 @@ rs:rs-167 a hf:RumahSakit ;
   geo:lat "3.761725"^^xsd:decimal ;
   geo:long "98.176919"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-167/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-168 a hf:RumahSakit ;
@@ -2729,6 +2891,7 @@ rs:rs-168 a hf:RumahSakit ;
   geo:lat "3.590862"^^xsd:decimal ;
   geo:long "98.679601"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-168/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-169 a hf:RumahSakit ;
@@ -2744,6 +2907,7 @@ rs:rs-169 a hf:RumahSakit ;
   geo:lat "3.570658"^^xsd:decimal ;
   geo:long "98.668759"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-169/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-170 a hf:RumahSakit ;
@@ -2759,6 +2923,7 @@ rs:rs-170 a hf:RumahSakit ;
   geo:lat "3.761725"^^xsd:decimal ;
   geo:long "98.176919"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-170/foto_1.jpg", "/images/rs/rs-170/foto_2.jpg", "/images/rs/rs-170/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-171 a hf:RumahSakit ;
@@ -2774,6 +2939,7 @@ rs:rs-171 a hf:RumahSakit ;
   geo:lat "3.518183"^^xsd:decimal ;
   geo:long "98.608322"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-171/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:subspesialis, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu-nicu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-172 a hf:RumahSakit ;
@@ -2789,6 +2955,7 @@ rs:rs-172 a hf:RumahSakit ;
   geo:lat "3.761725"^^xsd:decimal ;
   geo:long "98.176919"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-172/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-173 a hf:RumahSakit ;
@@ -2804,6 +2971,7 @@ rs:rs-173 a hf:RumahSakit ;
   geo:lat "3.474454"^^xsd:decimal ;
   geo:long "98.715897"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-173/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-174 a hf:RumahSakit ;
@@ -2819,6 +2987,7 @@ rs:rs-174 a hf:RumahSakit ;
   geo:lat "3.606396"^^xsd:decimal ;
   geo:long "98.489987"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-174/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-175 a hf:RumahSakit ;
@@ -2834,6 +3003,7 @@ rs:rs-175 a hf:RumahSakit ;
   geo:lat "3.580567"^^xsd:decimal ;
   geo:long "98.656011"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-175/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-176 a hf:RumahSakit ;
@@ -2849,6 +3019,7 @@ rs:rs-176 a hf:RumahSakit ;
   geo:lat "3.597869"^^xsd:decimal ;
   geo:long "98.654417"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-176/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-177 a hf:RumahSakit ;
@@ -2864,6 +3035,7 @@ rs:rs-177 a hf:RumahSakit ;
   geo:lat "3.699692"^^xsd:decimal ;
   geo:long "98.657037"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-177/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-178 a hf:RumahSakit ;
@@ -2879,6 +3051,7 @@ rs:rs-178 a hf:RumahSakit ;
   geo:lat "3.576306"^^xsd:decimal ;
   geo:long "98.679382"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-178/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-179 a hf:RumahSakit ;
@@ -2894,6 +3067,7 @@ rs:rs-179 a hf:RumahSakit ;
   geo:lat "3.587260"^^xsd:decimal ;
   geo:long "98.663328"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-179/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-180 a hf:RumahSakit ;
@@ -2909,6 +3083,7 @@ rs:rs-180 a hf:RumahSakit ;
   geo:lat "3.600483"^^xsd:decimal ;
   geo:long "98.713635"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-180/foto_1.jpg", "/images/rs/rs-180/foto_2.jpg", "/images/rs/rs-180/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-181 a hf:RumahSakit ;
@@ -2924,6 +3099,7 @@ rs:rs-181 a hf:RumahSakit ;
   geo:lat "3.574539"^^xsd:decimal ;
   geo:long "98.951855"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-181/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-182 a hf:RumahSakit ;
@@ -2939,6 +3115,7 @@ rs:rs-182 a hf:RumahSakit ;
   geo:lat "3.501740"^^xsd:decimal ;
   geo:long "98.678783"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-182/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-183 a hf:RumahSakit ;
@@ -2954,6 +3131,7 @@ rs:rs-183 a hf:RumahSakit ;
   geo:lat "2.828960"^^xsd:decimal ;
   geo:long "98.312278"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-183/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-184 a hf:RumahSakit ;
@@ -2969,6 +3147,7 @@ rs:rs-184 a hf:RumahSakit ;
   geo:lat "2.851800"^^xsd:decimal ;
   geo:long "99.623301"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-184/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-185 a hf:RumahSakit ;
@@ -2984,6 +3163,7 @@ rs:rs-185 a hf:RumahSakit ;
   geo:lat "3.585764"^^xsd:decimal ;
   geo:long "98.673597"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-185/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-186 a hf:RumahSakit ;
@@ -2999,6 +3179,7 @@ rs:rs-186 a hf:RumahSakit ;
   geo:lat "2.950635"^^xsd:decimal ;
   geo:long "99.066850"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-186/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-187 a hf:RumahSakit ;
@@ -3013,6 +3194,7 @@ rs:rs-187 a hf:RumahSakit ;
   geo:lat "3.634856"^^xsd:decimal ;
   geo:long "98.663601"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-187/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-188 a hf:RumahSakit ;
@@ -3028,6 +3210,7 @@ rs:rs-188 a hf:RumahSakit ;
   geo:lat "2.335146"^^xsd:decimal ;
   geo:long "98.904283"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-188/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-189 a hf:RumahSakit ;
@@ -3043,6 +3226,7 @@ rs:rs-189 a hf:RumahSakit ;
   geo:lat "3.327369"^^xsd:decimal ;
   geo:long "99.162302"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-189/foto_1.jpg", "/images/rs/rs-189/foto_2.jpg", "/images/rs/rs-189/foto_3.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-190 a hf:RumahSakit ;
@@ -3058,6 +3242,7 @@ rs:rs-190 a hf:RumahSakit ;
   geo:lat "3.590852"^^xsd:decimal ;
   geo:long "98.665088"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-190/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-191 a hf:RumahSakit ;
@@ -3073,6 +3258,7 @@ rs:rs-191 a hf:RumahSakit ;
   geo:lat "0.571343"^^xsd:decimal ;
   geo:long "97.819984"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-191/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-192 a hf:RumahSakit ;
@@ -3088,6 +3274,7 @@ rs:rs-192 a hf:RumahSakit ;
   geo:lat "3.589462"^^xsd:decimal ;
   geo:long "98.674162"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-192/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-193 a hf:RumahSakit ;
@@ -3103,6 +3290,7 @@ rs:rs-193 a hf:RumahSakit ;
   geo:lat "3.648400"^^xsd:decimal ;
   geo:long "98.477871"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-193/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-194 a hf:RumahSakit ;
@@ -3118,6 +3306,7 @@ rs:rs-194 a hf:RumahSakit ;
   geo:lat "3.560828"^^xsd:decimal ;
   geo:long "98.626500"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-194/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-195 a hf:RumahSakit ;
@@ -3133,6 +3322,7 @@ rs:rs-195 a hf:RumahSakit ;
   geo:lat "2.953275"^^xsd:decimal ;
   geo:long "99.057549"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-195/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-196 a hf:RumahSakit ;
@@ -3148,6 +3338,7 @@ rs:rs-196 a hf:RumahSakit ;
   geo:lat "3.329992"^^xsd:decimal ;
   geo:long "99.167567"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-196/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-197 a hf:RumahSakit ;
@@ -3163,6 +3354,7 @@ rs:rs-197 a hf:RumahSakit ;
   geo:lat "2.851800"^^xsd:decimal ;
   geo:long "99.623301"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-197/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-198 a hf:RumahSakit ;
@@ -3178,6 +3370,7 @@ rs:rs-198 a hf:RumahSakit ;
   geo:lat "3.586938"^^xsd:decimal ;
   geo:long "98.661088"^^xsd:decimal ;
   hf:sumberKoordinat "osm" ;
+  schema:image "/images/rs/rs-198/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-199 a hf:RumahSakit ;
@@ -3193,6 +3386,7 @@ rs:rs-199 a hf:RumahSakit ;
   geo:lat "2.961343"^^xsd:decimal ;
   geo:long "99.071537"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-199/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium, lay:anestesi ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu-iccu, fas:laboratorium-klinik, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-200 a hf:RumahSakit ;
@@ -3208,6 +3402,7 @@ rs:rs-200 a hf:RumahSakit ;
   geo:lat "3.729497"^^xsd:decimal ;
   geo:long "98.494831"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-200/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-201 a hf:RumahSakit ;
@@ -3223,6 +3418,7 @@ rs:rs-201 a hf:RumahSakit ;
   geo:lat "2.980126"^^xsd:decimal ;
   geo:long "99.615702"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-201/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-202 a hf:RumahSakit ;
@@ -3238,6 +3434,7 @@ rs:rs-202 a hf:RumahSakit ;
   geo:lat "3.681634"^^xsd:decimal ;
   geo:long "98.656093"^^xsd:decimal ;
   hf:sumberKoordinat "jalan" ;
+  schema:image "/images/rs/rs-202/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-203 a hf:RumahSakit ;
@@ -3253,6 +3450,7 @@ rs:rs-203 a hf:RumahSakit ;
   geo:lat "3.474454"^^xsd:decimal ;
   geo:long "98.715897"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-203/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-204 a hf:RumahSakit ;
@@ -3268,6 +3466,7 @@ rs:rs-204 a hf:RumahSakit ;
   geo:lat "3.572179"^^xsd:decimal ;
   geo:long "98.677838"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-204/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:pelayanan-medik-umum, lay:kesehatan-anak, lay:kebidanan-dan-kandungan ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:laboratorium-dasar, fas:instalasi-farmasi, fas:ruang-rawat-inap .
 rs:rs-205 a hf:RumahSakit ;
@@ -3283,6 +3482,7 @@ rs:rs-205 a hf:RumahSakit ;
   geo:lat "3.579488"^^xsd:decimal ;
   geo:long "98.665543"^^xsd:decimal ;
   hf:sumberKoordinat "nama" ;
+  schema:image "/images/rs/rs-205/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap, lay:penyakit-dalam, lay:kesehatan-anak, lay:bedah, lay:kebidanan-dan-kandungan, lay:radiologi, lay:laboratorium ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:icu, fas:laboratorium, fas:instalasi-farmasi, fas:kamar-operasi, fas:ruang-rawat-inap .
 rs:rs-206 a hf:RumahSakit ;
@@ -3299,5 +3499,6 @@ rs:rs-206 a hf:RumahSakit ;
   geo:lat "1.042737"^^xsd:decimal ;
   geo:long "97.645176"^^xsd:decimal ;
   hf:sumberKoordinat "kabkota" ;
+  schema:image "/images/rs/rs-206/foto_1.jpg" ;
   hf:menyediakanLayanan lay:ugd-24-jam, lay:rawat-inap-dasar, lay:pelayanan-medik-umum ;
   hf:memilikiFasilitas fas:ambulans, fas:instalasi-gawat-darurat, fas:ruang-rawat-inap-dasar, fas:apotek .

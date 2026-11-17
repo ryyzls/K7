@@ -43,6 +43,7 @@ def build_search_query(q="", kelas="", jenis="", kabkota="", layanan="", limit=5
     return f"""SELECT ?rs ?nama ?jenis ?kelas ?alamat ?kabkota ?telepon ?website ?lat ?lon ?bpjs
        (GROUP_CONCAT(DISTINCT ?lay; separator="|") AS ?layanan)
        (GROUP_CONCAT(DISTINCT ?fas; separator="|") AS ?fasilitas)
+       (GROUP_CONCAT(DISTINCT ?img; separator="|") AS ?galeri)
 WHERE {{
   {values}
   ?rs a hf:RumahSakit ; schema:name ?nama ; hf:jenis ?jenis ; hf:kelas ?kelas ; hf:alamat ?alamat ;
@@ -52,6 +53,7 @@ WHERE {{
   OPTIONAL {{ ?rs schema:telephone ?telepon }}
   OPTIONAL {{ ?rs schema:url ?website }}
   OPTIONAL {{ ?rs hf:menerimaBPJS ?bpjs }}
+  OPTIONAL {{ ?rs schema:image ?img }}
   OPTIONAL {{ ?rs hf:menyediakanLayanan/rdfs:label ?lay }}
   OPTIONAL {{ ?rs hf:memilikiFasilitas/rdfs:label ?fas }}
   {filters}
@@ -74,12 +76,15 @@ async def select(query: str) -> list[dict]:
 
 def to_hospital(r: dict) -> dict:
     parts = lambda s: sorted(x for x in (s or "").split("|") if x)
+    galeri = parts(r.get("galeri"))
     return {
         "id": r["rs"].rsplit("/", 1)[-1], "uri": r["rs"], "nama": r["nama"], "jenis": r["jenis"],
         "kelas": r["kelas"], "alamat": r["alamat"], "kabkota": r["kabkota"],
         "telepon": r.get("telepon"), "website": r.get("website"),
         "bpjs": r.get("bpjs") == "true",
         "lat": float(r["lat"]) if r.get("lat") else None, "lon": float(r["lon"]) if r.get("lon") else None,
+        "foto": galeri[0] if galeri else None,
+        "galeri": galeri,
         "layanan": parts(r.get("layanan")), "fasilitas": parts(r.get("fasilitas")),
     }
 
