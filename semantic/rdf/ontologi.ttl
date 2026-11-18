@@ -103,3 +103,8 @@ hf:standarRegulasi a owl:DatatypeProperty ;
   rdfs:label "dasar regulasi penentuan layanan minimal" ;
   rdfs:domain hf:RumahSakit ;
   rdfs:range xsd:string .
+
+# --- Properti Foto (Photo Property) ---
+# Menggunakan schema:image (standar schema.org) untuk URL foto RS.
+# schema:image sudah terdefinisi oleh schema.org, tidak perlu deklarasi ulang.
+# Foto bersumber dari Google Maps Places API, hak cipta pengambil foto asli.

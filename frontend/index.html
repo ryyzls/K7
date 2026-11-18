@@ -286,6 +286,37 @@ select:hover,input:hover{border-color:var(--mute-light)}
 select:focus,input:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,118,110,0.1)}
 
 .filter-bottom-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;padding-top:.2rem}
+
+/* ============ Pagination Bar ============ */
+.pagination-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:.75rem;
+  padding:.85rem 1.2rem;
+  border-top:1px solid var(--line);
+  background:#fff;
+  font-size:.84rem;
+}
+.pagination-bar.hidden{display:none}
+.pagination-info{color:var(--mute);font-weight:500;white-space:nowrap}
+.pagination-info b{color:var(--ink)}
+.pagination-controls{display:flex;align-items:center;gap:.35rem;flex-wrap:wrap}
+.pg-btn{
+  min-width:34px;height:34px;border:1px solid var(--line);
+  background:#fff;border-radius:8px;padding:0 .6rem;
+  font-size:.82rem;font-weight:600;color:var(--ink-soft);
+  display:inline-flex;align-items:center;justify-content:center;
+  gap:.3rem;transition:all .15s;cursor:pointer;
+}
+.pg-btn:hover:not(:disabled){background:var(--toba-mist);border-color:var(--toba);color:var(--toba)}
+.pg-btn:disabled{opacity:.38;cursor:default}
+.pg-btn.active{background:var(--toba);border-color:var(--toba);color:#fff}
+.pg-btn.pg-ellipsis{cursor:default;border:none;background:none;color:var(--mute)}
+.per-page-wrap{display:flex;align-items:center;gap:.5rem;color:var(--mute);font-weight:500}
+.per-page-wrap select{
+  border:1px solid var(--line);border-radius:8px;padding:.35rem .6rem;
+  font:inherit;font-size:.82rem;color:var(--ink);background:#fff;cursor:pointer;
+}
+.per-page-wrap select:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,118,110,0.1);outline:none}
 .seg-wrap{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
 .seg{
   display:inline-grid;grid-template-columns:repeat(5,auto);gap:.25rem;
@@ -888,6 +919,22 @@ footer{
     <!-- Multi-Column Hospital Card Grid -->
     <ul id="list" aria-label="Daftar katalog rumah sakit"></ul>
 
+    <!-- Pagination Bar -->
+    <div class="pagination-bar hidden" id="pagination">
+      <div class="per-page-wrap">
+        <span>Tampilkan</span>
+        <select id="per-page" aria-label="Jumlah RS per halaman">
+          <option value="10">10</option>
+          <option value="20" selected>20</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+        <span>RS per halaman</span>
+      </div>
+      <div class="pagination-info" id="pg-info"></div>
+      <div class="pagination-controls" id="pg-controls"></div>
+    </div>
+
     <!-- Expansive Hospital Detail Sheet -->
     <section id="detail" aria-live="polite" aria-label="Detail rumah sakit"></section>
   </aside>
@@ -1038,6 +1085,7 @@ const IC = {
 
 let items = [], markers = {}, error = false, loading = false;
 let kelas = '', sortBy = '', selectedId = null;
+let currentPage = 1, perPage = 20;
 let userCoords = null, routingControl = null, activeCtl = null, detailMarker = null;
 
 function goToExplorer(){
@@ -1162,6 +1210,7 @@ async function search(){
     const data = await r.json();
     if(my !== ctrl) return;
     items = data.items || [];
+    currentPage = 1; // reset ke halaman 1 setiap kali search baru
   } catch(e){
     if(my !== ctrl) return;
     console.error('API Error, pastikan Fuseki & backend aktif:', e);
@@ -1186,7 +1235,14 @@ function renderStatus(){
   st.className = error ? 'err' : '';
   if(loading) st.innerHTML = '<span class="spin"></span><span>Mencari rumah sakit...</span>';
   else if(error) st.innerHTML = IC.alert + '<span>Koneksi ke backend/Fuseki terputus</span>';
-  else st.innerHTML = `<span><b>${items.length}</b> rumah sakit ditemukan</span>`;
+  else {
+    const total = items.length;
+    const totalPages = Math.ceil(total / perPage);
+    const info = total > perPage
+      ? `<b>${total}</b> rumah sakit ditemukan — halaman <b>${currentPage}</b>/<b>${totalPages}</b>`
+      : `<b>${total}</b> rumah sakit ditemukan`;
+    st.innerHTML = `<span>${info}</span>`;
+  }
   $('#reset').classList.toggle('show', hasFilter());
 }
 
@@ -1224,16 +1280,27 @@ function hospitalPlaceholderSvg(nama, kelas, jenis, foto){
 function render(fit){
   renderStatus();
   const list = $('#list');
+  const pgBar = $('#pagination');
   if(error){
     list.innerHTML = `<li class="empty">${emptyArt}<h3>Server belum terhubung</h3><p>Pastikan <code>docker compose up</code> berjalan, lalu coba lagi.</p><button class="btn btn-primary" id="retry" type="button">Coba lagi</button></li>`;
+    pgBar.classList.add('hidden');
   } else if(!items.length){
     list.innerHTML = `<li class="empty">${emptyArt}<h3>Tidak ada hasil</h3><p>Tidak ada rumah sakit yang cocok dengan filter yang dipilih. Coba ubah kata kunci atau reset filter.</p></li>`;
+    pgBar.classList.add('hidden');
   } else {
-    list.innerHTML = sorted().map((h, i) => {
+    const all = sorted();
+    const totalPages = Math.ceil(all.length / perPage);
+    // Clamp currentPage
+    if(currentPage < 1) currentPage = 1;
+    if(currentPage > totalPages) currentPage = totalPages;
+    const start = (currentPage - 1) * perPage;
+    const pageItems = all.slice(start, start + perPage);
+
+    list.innerHTML = pageItems.map((h, i) => {
       const lay = h.layanan || [], fas = h.fasilitas || [];
-      const all = [...lay, ...fas], shown = all.slice(0, 3);
+      const allTags = [...lay, ...fas], shown = allTags.slice(0, 3);
       const tags = shown.length
-        ? `<div class="tags" aria-label="Layanan dan fasilitas">${shown.map(t => `<span class="tag">${esc(t)}</span>`).join('')}${all.length > 3 ? `<span class="tag more">+${all.length - 3}</span>` : ''}</div>` : '';
+        ? `<div class="tags" aria-label="Layanan dan fasilitas">${shown.map(t => `<span class="tag">${esc(t)}</span>`).join('')}${allTags.length > 3 ? `<span class="tag more">+${allTags.length - 3}</span>` : ''}</div>` : '';
       return `<li><article class="card${h.id === selectedId ? ' on' : ''}" data-id="${esc(h.id)}" style="--c:${colorOf(h.kelas)};animation-delay:${Math.min(i, 8) * 25}ms">
         ${hospitalPlaceholderSvg(h.nama, h.kelas, h.jenis, h.foto)}
         <button class="card-main" data-act="select" data-id="${esc(h.id)}">
@@ -1253,6 +1320,9 @@ function render(fit){
         </div>
       </article></li>`;
     }).join('');
+
+    renderPagination(all.length, totalPages);
+    pgBar.classList.toggle('hidden', all.length <= perPage);
   }
 
   cluster.clearLayers(); markers = {};
@@ -1270,6 +1340,49 @@ function render(fit){
     if(pts.length) map.fitBounds(pts, {padding:[40,40], maxZoom:12});
   }
   if(!items.find(h => h.id === selectedId)) closeDetail();
+}
+
+function renderPagination(total, totalPages){
+  const info = $('#pg-info');
+  const controls = $('#pg-controls');
+  const start = (currentPage - 1) * perPage + 1;
+  const end = Math.min(currentPage * perPage, total);
+  info.innerHTML = `Menampilkan <b>${start}–${end}</b> dari <b>${total}</b> RS`;
+
+  // Bangun tombol halaman
+  const btns = [];
+  const addBtn = (label, page, isActive = false, disabled = false, ellipsis = false) => {
+    if(ellipsis){
+      btns.push(`<span class="pg-btn pg-ellipsis">…</span>`);
+      return;
+    }
+    btns.push(`<button class="pg-btn${isActive?' active':''}" data-page="${page}" ${disabled?'disabled':''} aria-label="Halaman ${page}" ${isActive?'aria-current="page"':''}>${label}</button>`);
+  };
+
+  // Prev
+  btns.push(`<button class="pg-btn" data-page="${currentPage-1}" ${currentPage===1?'disabled':''} aria-label="Halaman sebelumnya">
+    <svg class="i" style="width:.9em;height:.9em" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Prev
+  </button>`);
+
+  // Page numbers dengan ellipsis
+  if(totalPages <= 7){
+    for(let p = 1; p <= totalPages; p++) addBtn(p, p, p===currentPage);
+  } else {
+    addBtn(1, 1, currentPage===1);
+    if(currentPage > 3) addBtn('', 0, false, false, true);
+    for(let p = Math.max(2, currentPage-1); p <= Math.min(totalPages-1, currentPage+1); p++){
+      addBtn(p, p, p===currentPage);
+    }
+    if(currentPage < totalPages - 2) addBtn('', 0, false, false, true);
+    addBtn(totalPages, totalPages, currentPage===totalPages);
+  }
+
+  // Next
+  btns.push(`<button class="pg-btn" data-page="${currentPage+1}" ${currentPage===totalPages?'disabled':''} aria-label="Halaman berikutnya">
+    Next<svg class="i" style="width:.9em;height:.9em" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>`);
+
+  controls.innerHTML = btns.join('');
 }
 
 function styleMarker(id, on){
@@ -1977,7 +2090,28 @@ $('#nav').addEventListener('click', e => {
 let t;
 $('#q').addEventListener('input', () => { clearTimeout(t); t = setTimeout(search, 300); });
 ['kab', 'lay', 'jenis'].forEach(i => $('#' + i).addEventListener('change', search));
-$('#sort').addEventListener('change', e => { sortBy = e.target.value; render(false); });
+$('#sort').addEventListener('change', e => { sortBy = e.target.value; currentPage = 1; render(false); });
+
+// Pagination: per-page selector
+$('#per-page').addEventListener('change', e => {
+  perPage = parseInt(e.target.value, 10);
+  currentPage = 1;
+  render(false);
+  $('#list').scrollIntoView({behavior:'smooth', block:'start'});
+});
+
+// Pagination: prev/next/page buttons (delegasi event)
+$('#pg-controls').addEventListener('click', e => {
+  const btn = e.target.closest('[data-page]');
+  if(!btn || btn.disabled) return;
+  const p = parseInt(btn.dataset.page, 10);
+  if(!p || p < 1) return;
+  const totalPages = Math.ceil(items.length / perPage);
+  if(p > totalPages) return;
+  currentPage = p;
+  render(false);
+  $('#list').scrollIntoView({behavior:'smooth', block:'start'});
+});
 
 $('#seg-kelas').addEventListener('click', e => {
   const b = e.target.closest('button'); if(!b) return;
