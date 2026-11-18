@@ -5,6 +5,7 @@ from sqlalchemy.orm import Session
 
 from app.config import settings
 from app.database.connection import get_db
+from app.services import fuzzy_search as fz
 from app.services import sparql_service as sp
 
 router = APIRouter(prefix="/api")
@@ -29,8 +30,18 @@ async def health(db: Session = Depends(get_db)):
 @router.get("/search")
 async def search(q: str = "", kelas: str = "", jenis: str = "", kabkota: str = "", layanan: str = "",
                  limit: int = Query(50, ge=1, le=500), offset: int = Query(0, ge=0)):
-    items = await sp.search_hospitals(q=q, kelas=kelas, jenis=jenis, kabkota=kabkota,
-                                      layanan=layanan, limit=limit, offset=offset)
+    q = q.strip()
+    if not q:  # tanpa kata kunci: perilaku lama
+        items = await sp.search_hospitals(q="", kelas=kelas, jenis=jenis, kabkota=kabkota,
+                                          layanan=layanan, limit=limit, offset=offset)
+        return {"items": items, "count": len(items)}
+
+    # Dengan kata kunci: ambil semua RS yang lolos filter lain, lalu fuzzy ranking
+    # (toleran typo, singkatan umum, akronim otomatis, dan alias manual).
+    semua = await sp.search_hospitals(q="", kelas=kelas, jenis=jenis, kabkota=kabkota,
+                                      layanan=layanan, limit=500, offset=0)
+    hasil = fz.rank(q, semua)
+    items = hasil[offset:offset + limit]
     return {"items": items, "count": len(items)}
 
 
