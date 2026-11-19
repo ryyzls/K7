@@ -1,14 +1,19 @@
 """Pencarian toleran typo & singkatan untuk nama rumah sakit.
 
-Letakkan di: backend/app/services/fuzzy_search.py
+Modul ini mendukung pencocokan nama berbasis regex, kamus singkatan,
+alias manual tervalidasi, alias otomatis yang digenerasi dari nama RDF,
+serta toleransi typo 1-2 karakter melalui SequenceMatcher.
 """
+from __future__ import annotations
+
 import difflib
 import re
+from typing import Any
 
 # ---------------------------------------------------------------------------
-# 1. Kamus singkatan umum -> bentuk panjang. Tambah sendiri sesuai kebutuhan.
+# 1. Kamus singkatan umum -> bentuk panjang
 # ---------------------------------------------------------------------------
-SINGKATAN = {
+SINGKATAN: dict[str, str] = {
     "rs": "rumah sakit",
     "rsu": "rumah sakit umum",
     "rsud": "rumah sakit umum daerah",
@@ -16,19 +21,21 @@ SINGKATAN = {
     "rsia": "rumah sakit ibu dan anak",
     "rsj": "rumah sakit jiwa",
     "rskb": "rumah sakit khusus bedah",
+    "rsau": "rumah sakit angkatan udara",
     "ham": "haji adam malik",
     "tk": "tingkat",
     "st": "santa",
     "dr": "dokter",
+    "prof": "profesor",
+    "h": "haji",
+    "al": "angkatan laut",
+    "og": "original",
 }
 
 # ---------------------------------------------------------------------------
-# 2. Alias manual per RS. Kunci = id RS (rs-001, rs-002, ... sesuai urutan
-#    baris di data/rumah_sakit_sumut.csv). Alias bisa berupa singkatan,
-#    julukan, atau nama lain. Typo tetap ditoleransi karena alias dicocokkan
-#    lewat skor() juga, jadi cukup tulis ejaan yang benar.
+# 2. Alias manual per RS (48 entri tervalidasi terhadap RDF)
 # ---------------------------------------------------------------------------
-ALIAS_RS = {
+ALIAS_RS: dict[str, list[str]] = {
     # --- Medan & sekitarnya ---
     "rs-001": ["original hospital", "og", "og hospital", "orijinal hospital"],
     "rs-008": ["columbia asia", "columbia asia medan", "cam"],
@@ -37,8 +44,8 @@ ALIAS_RS = {
     "rs-171": ["adam malik", "ham", "rsup ham", "rs haji adam malik", "rs adam malik"],
     "rs-176": ["royal prima", "rs royal", "royal"],
     "rs-177": ["royal prima marelan", "royal marelan"],
-    "rs-125": ["hermina", "hermina medan"],
-    "rs-185": ["siloam", "siloam medan", "siloam dhirga surya"],
+    "rs-125": ["hermina", "hermina medan", "rs hermina"],
+    "rs-185": ["siloam", "siloam medan", "siloam dhirga surya", "rs siloam"],
     "rs-178": ["elisabeth", "santa elisabeth", "st elisabeth", "rs elisabeth"],
     "rs-130": ["malahayati", "islam malahayati", "rs islam"],
     "rs-147": ["methodist", "rs methodist", "methodist medan"],
@@ -81,15 +88,24 @@ ALIAS_RS = {
     "rs-114": ["gerhard tobing", "rs gerhard", "rs gl tobing"],
 }
 
-# Kata yang diabaikan saat membentuk akronim otomatis.
-GENERIK = {"rs", "rumah", "sakit"}
+GENERIK = {"rs", "rumah", "sakit", "umum", "daerah", "pusat", "khusus"}
 
-# Skor minimum agar sebuah RS dianggap cocok (0..1).
-AMBANG = 0.6
+PREFIX_WORDS = {
+    "rs", "rsu", "rsud", "rsup", "rsia", "rsk", "rskb", "rsau", "uptd",
+    "rumah", "sakit", "umum", "daerah", "pusat", "khusus", "pendidikan",
+    "tingkat", "tk", "ii", "iii", "iv",
+}
+TITLE_WORDS = {"dr", "prof", "h", "hj", "rm", "kolonel", "letkol", "al"}
+CITY_WORDS = {
+    "medan", "binjai", "tebing", "tinggi", "pematang", "siantar",
+    "sibolga", "tanjung", "balai", "gunungsitoli", "sumut", "sumatera", "utara",
+}
+
+AMBANG = 0.65
 
 
 # ---------------------------------------------------------------------------
-# Normalisasi
+# Normalisasi & Ekspansi
 # ---------------------------------------------------------------------------
 def normalize(teks: str) -> str:
     """Huruf kecil, hapus tanda baca, rapikan spasi."""
@@ -104,29 +120,106 @@ def expand(teks: str) -> str:
     return " ".join(SINGKATAN.get(k, k) for k in kata)
 
 
+def tanpa_generik(query: str) -> str:
+    """Buang kata generik (rs, rumah, sakit, umum, daerah) dari query."""
+    kata = [k for k in normalize(query).split() if k not in GENERIK]
+    return " ".join(kata) if kata else query
+
+
 # ---------------------------------------------------------------------------
-# Skor kemiripan
+# Auto-generate Alias dari token nama RDF
+# ---------------------------------------------------------------------------
+def generate_auto_aliases(nama: str) -> list[str]:
+    """Generasi alias otomatis dari nama RS untuk semua 206 rumah sakit.
+    
+    Membuang awalan rumah sakit, umum, daerah, gelar, serta nama kota di ujung.
+    Contoh: 'RS Umum Hermina Medan' -> ['hermina', 'hermina medan', 'rs hermina']
+    """
+    clean = normalize(nama)
+    tokens = clean.split()
+    if not tokens:
+        return []
+
+    aliases: set[str] = set()
+    full_str = " ".join(tokens)
+    aliases.add(full_str)
+
+    i = 0
+    while i < len(tokens) and tokens[i] in PREFIX_WORDS:
+        i += 1
+    while i < len(tokens) and tokens[i] in TITLE_WORDS:
+        i += 1
+
+    core = tokens[i:]
+    if core:
+        core_str = " ".join(core)
+        aliases.add(core_str)
+        aliases.add("rs " + core_str)
+
+        # Buang nama kota di ujung jika ada
+        if len(core) > 1 and core[-1] in CITY_WORDS:
+            no_city = core[:-1]
+            if len(no_city) > 1 and no_city[-1] in CITY_WORDS:
+                no_city = no_city[:-1]
+            if no_city:
+                nc_str = " ".join(no_city)
+                aliases.add(nc_str)
+                aliases.add("rs " + nc_str)
+
+        # Kata pertama dari core (mis. 'siloam' dari 'siloam dhirga surya')
+        if len(core) > 1 and len(core[0]) >= 4 and core[0] not in CITY_WORDS:
+            aliases.add(core[0])
+            aliases.add("rs " + core[0])
+
+    # Versi tanpa spasi (mis. 'adammalik', 'herminamedan')
+    for a in list(aliases):
+        aliases.add(a.replace(" ", ""))
+
+    return sorted(aliases, key=lambda x: (len(x), x))
+
+
+# ---------------------------------------------------------------------------
+# Skor Kemiripan
 # ---------------------------------------------------------------------------
 def skor(query: str, nama: str) -> float:
-    """Skor kemiripan 0..1: tiap kata query dicocokkan ke kata terdekat di nama."""
-    q = expand(query).split()
-    n = expand(nama).split()
-    if not q or not n:
+    """Skor kemiripan 0..1 antara query dan nama."""
+    q_norm = normalize(query)
+    n_norm = normalize(nama)
+    if not q_norm or not n_norm:
         return 0.0
-    # potongan persis di awal kata -> skor penuh ("rsau" tidak lagi cocok ke "bersaudara")
-    if (" " + " ".join(n)).find(" " + " ".join(q)) != -1:
+
+    # Cocok persis
+    if q_norm == n_norm:
         return 1.0
+
+    # Cocok tanpa spasi persis (misal 'adammalik' == 'adam malik')
+    if q_norm.replace(" ", "") == n_norm.replace(" ", ""):
+        return 1.0
+
+    # Substring whole words
+    padded_n = f" {n_norm} "
+    padded_q = f" {q_norm} "
+    if padded_q in padded_n:
+        return 1.0
+
+    q_words = expand(q_norm).split()
+    n_words = expand(n_norm).split()
+    if not q_words or not n_words:
+        return 0.0
+
     total = 0.0
-    for kata_q in q:
-        total += max(difflib.SequenceMatcher(None, kata_q, kata_n).ratio() for kata_n in n)
-    return total / len(q)
+    for qw in q_words:
+        best_ratio = max(difflib.SequenceMatcher(None, qw, nw).ratio() for nw in n_words)
+        total += best_ratio
+
+    ratio_avg = total / len(q_words)
+    # Full sequence ratio as backup
+    full_ratio = difflib.SequenceMatcher(None, q_norm, n_norm).ratio()
+    return max(ratio_avg, full_ratio)
 
 
 def akronim(nama: str) -> set[str]:
-    """Akronim otomatis dari inisial kata di nama RS.
-
-    Contoh: "RS Columbia Asia Medan" -> {"rcam", "cam", "rscam"}
-    """
+    """Akronim otomatis dari inisial kata di nama RS."""
     kata = normalize(nama).split()
     if len(kata) < 2:
         return set()
@@ -138,31 +231,51 @@ def akronim(nama: str) -> set[str]:
     return hasil
 
 
-def tanpa_generik(query: str) -> str:
-    """Buang kata generik (rs, rumah, sakit) dari query; kalau habis, pakai query asli."""
-    kata = [k for k in expand(query).split() if k not in GENERIK]
-    return " ".join(kata) if kata else query
+# Cache auto-aliases per rs_id
+_AUTO_ALIAS_CACHE: dict[str, list[str]] = {}
+
+
+def get_all_aliases(rs_id: str, nama: str) -> list[str]:
+    """Ambil semua alias untuk RS (manual + auto-generated)."""
+    if rs_id not in _AUTO_ALIAS_CACHE:
+        manual = ALIAS_RS.get(rs_id, [])
+        auto = generate_auto_aliases(nama)
+        merged = list(dict.fromkeys(manual + auto))
+        _AUTO_ALIAS_CACHE[rs_id] = merged
+    return _AUTO_ALIAS_CACHE[rs_id]
 
 
 def skor_rs(query: str, h: dict) -> float:
-    """Skor gabungan satu RS: nama, alias manual, dan akronim otomatis."""
+    """Skor kemiripan satu RS: nama asli, alias manual & otomatis, dan akronim."""
+    qn = normalize(query)
+    q_inti = tanpa_generik(query)
+
     s = skor(query, h["nama"])
-    inti = tanpa_generik(query)
-    for alias in ALIAS_RS.get(h["id"], []):
-        s = max(s, skor(query, alias), skor(inti, alias))
-    kunci = normalize(query).replace(" ", "")
+    if q_inti and q_inti != query:
+        s = max(s, skor(q_inti, h["nama"]))
+
+    # Periksa seluruh alias (manual & otomatis)
+    aliases = get_all_aliases(h.get("id", ""), h.get("nama", ""))
+    for alias in aliases:
+        s = max(s, skor(query, alias))
+        if q_inti:
+            s = max(s, skor(q_inti, alias))
+
+    # Cocokkan akronim
+    kunci = qn.replace(" ", "")
     if kunci and kunci in akronim(h["nama"]):
-        s = max(s, 0.95)  # di bawah alias manual (1.0) supaya alias menang kalau akronim bentrok
+        s = max(s, 0.95)
+
     return s
 
 
 def rank(query: str, items: list[dict], ambang: float = AMBANG) -> list[dict]:
-    """Urutkan RS berdasarkan kemiripan (alamat yang memuat query juga ikut lolos)."""
+    """Urutkan RS berdasarkan kemiripan nama/alias."""
     nq = normalize(query)
-    hasil = []
+    hasil: list[tuple[float, dict]] = []
     for h in items:
         s = skor_rs(query, h)
-        if nq and nq in normalize(h["alamat"]):
+        if nq and nq in normalize(h.get("alamat", "")):
             s = max(s, 0.8)
         if s >= ambang:
             hasil.append((s, h))

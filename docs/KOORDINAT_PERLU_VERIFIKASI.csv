@@ -1,0 +1,75 @@
+id,nama,kabkota,sumber_koordinat
+rs-009,RS Dhillon,Kab. Deli Serdang,kabkota
+rs-010,RS Dokter Takdir,Kab. Labuhan Batu,kabkota
+rs-011,RS Efarina Etaham Pematang Siantar,Kota Pematang Siantar,kabkota
+rs-013,RS Grand Medica,Kab. Deli Serdang,kabkota
+rs-021,RS Ibu Dan Anak Pramaliesa,Kab. Deli Serdang,kabkota
+rs-023,RS Jiwa Bina Karsa Medan,Kota Medan,kabkota
+rs-026,RS Khusus Bedah Accuplast,Kota Medan,kabkota
+rs-035,RS Khusus Paru Sumatera Utara,Kota Medan,kabkota
+rs-037,RS Metta Medika,Kota Gunungsitoli,kabkota
+rs-039,RS Metta Medika II,Kota Sibolga,kabkota
+rs-043,RS Pratama Lologolu Soguna Ba Zato,Kab. Nias Barat,tidak ada
+rs-044,RS Rasyida Siantar,Kota Pematang Siantar,kabkota
+rs-046,RS Sapta Medika,Kab. Batu Bara,kabkota
+rs-047,RS Seger Waras,Kab. Asahan,kabkota
+rs-049,RS Sri Pamela Sei Dadap,Kab. Asahan,kabkota
+rs-050,RS Sri Pamela Torgamba,Kab. Labuhan Batu Selatan,tidak ada
+rs-059,RS Umum Amanda,Kab. Karo,kabkota
+rs-060,RS Umum Armina Madina Panyabungan,Kab. Mandailing Natal,tidak ada
+rs-064,RS Umum Bethesda Gunungsitoli,Kota Gunungsitoli,kabkota
+rs-068,RS Umum Bunda Mulia,Kab. Asahan,kabkota
+rs-070,RS Umum Catharina 1914,Kab. Asahan,kabkota
+rs-074,RS Umum Daerah Batu Bara,Kab. Batu Bara,kabkota
+rs-075,RS Umum Daerah Cerah Medika Kab. Nias Barat,Kab. Nias Barat,tidak ada
+rs-078,RS Umum Daerah Dr. Fl Tobing Sibolga,Kota Sibolga,kabkota
+rs-079,RS Umum Daerah Dr. H. Kumpulan Pane,Kota Tebing Tinggi,kabkota
+rs-081,RS Umum Daerah Dr. Husni Thamrin,Kab. Mandailing Natal,tidak ada
+rs-082,RS Umum Daerah Dr. M. Thomsen Nias,Kota Gunungsitoli,kabkota
+rs-085,RS Umum Daerah Dr. Tengku Mansyur,Kota Tanjung Balai,kabkota
+rs-086,RS Umum Daerah Drs. H. Amri Tambunan,Kab. Deli Serdang,kabkota
+rs-087,RS Umum Daerah Gunung Tua,Kab. Padang Lawas Utara,kabkota
+rs-089,RS Umum Daerah H. Bachtiar Djafar,Kota Medan,kabkota
+rs-092,RS Umum Daerah Lukas Hilisimaetano,Kab. Nias Selatan,tidak ada
+rs-093,RS Umum Daerah Nias Selatan,Kab. Nias Selatan,tidak ada
+rs-095,RS Umum Daerah Pandan,Kab. Tapanuli Tengah,kabkota
+rs-098,RS Umum Daerah Perdagangan,Kab. Simalungun,kabkota
+rs-100,RS Umum Daerah Porsea,Kab. Toba Samosir,kabkota
+rs-101,RS Umum Daerah Rantau Prapat,Kab. Labuhan Batu,kabkota
+rs-103,RS Umum Daerah Sibuhuan,Kab. Padang Lawas,kabkota
+rs-104,RS Umum Daerah Sidikalang,Kab. Dairi,kabkota
+rs-105,RS Umum Daerah Sultan Sulaiman Syariful Alamsyah,Kab. Serdang Bedagai,kabkota
+rs-106,RS Umum Daerah Tafaeri,Kab. Nias Utara,kabkota
+rs-108,RS Umum Daerah Tapanuli Selatan,Kab. Tapanuli Selatan,kabkota
+rs-110,RS Umum Daerah Tuan Rondahaim,Kab. Simalungun,kabkota
+rs-112,RS Umum Delia,Kab. Langkat,kabkota
+rs-116,RS Umum Elpi AL Azis,Kab. Labuhan Batu,kabkota
+rs-119,RS Umum Flora,Kab. Labuhan Batu Utara,kabkota
+rs-121,RS Umum Hadi Husada,Kota Tanjung Balai,kabkota
+rs-124,RS Umum Hartati Medical Centre,Kab. Labuhan Batu,kabkota
+rs-126,RS Umum Hidayah,Kab. Deli Serdang,kabkota
+rs-127,RS Umum HKBP Balige,Kab. Toba Samosir,kabkota
+rs-133,RS Umum Kasih Insani,Kab. Deli Serdang,kabkota
+rs-135,RS Umum Keliat,Kab. Deli Serdang,kabkota
+rs-136,RS Umum Laras Kabupaten Simalungun,Kab. Simalungun,kabkota
+rs-137,RS Umum Lasmi Kartika,Kab. Batu Bara,kabkota
+rs-139,RS Umum Madani,Kota Medan,kabkota
+rs-141,RS Umum Mahkota Bidadari,Kab. Langkat,kabkota
+rs-160,RS Umum Nuraini,Kab. Labuhan Batu Selatan,tidak ada
+rs-162,RS Umum Pancur Batu,Kab. Deli Serdang,kabkota
+rs-164,RS Umum Permata Hati,Kab. Asahan,kabkota
+rs-165,RS Umum Permata Madina Panyabungan,Kab. Mandailing Natal,tidak ada
+rs-166,RS Umum Permata Madina Sibuhuan,Kab. Padang Lawas,kabkota
+rs-167,RS Umum Pertamina Pangkalan Brandan,Kab. Langkat,kabkota
+rs-170,RS Umum Ptp II Tg Selamat,Kab. Langkat,kabkota
+rs-172,RS Umum Putri Bidadari,Kab. Langkat,kabkota
+rs-173,RS Umum Rahmad Hidayah,Kab. Deli Serdang,kabkota
+rs-174,RS Umum Ratu Mas,Kota Binjai,kabkota
+rs-183,RS Umum Serenapita,Kab. Dairi,kabkota
+rs-184,RS Umum Setio Husodo,Kab. Asahan,kabkota
+rs-186,RS Umum Simalem,Kab. Karo,kabkota
+rs-189,RS Umum Sri Pamela,Kota Tebing Tinggi,kabkota
+rs-192,RS Umum Sundari,Kota Medan,kabkota
+rs-197,RS Umum Utama,Kab. Asahan,kabkota
+rs-203,RS Umum Yoshua,Kab. Deli Serdang,kabkota
+rs-206,Uptd Rumah Sakit Pratama Nias,Kab. Nias,kabkota

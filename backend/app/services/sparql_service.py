@@ -26,7 +26,7 @@ def rs_uri(rs_id: str) -> str:
     return f"{settings.base_uri}/rs/{rs_id}"
 
 
-def build_search_query(q="", kelas="", jenis="", kabkota="", layanan="", limit=50, offset=0, uri=None) -> str:
+def build_search_query(q="", kelas="", jenis="", kabkota="", layanan="", bpjs=False, fasilitas="", limit=50, offset=0, uri=None) -> str:
     f = []
     if q:
         f.append(f"FILTER(CONTAINS(LCASE(?nama), {lit(q.lower())}) || CONTAINS(LCASE(?alamat), {lit(q.lower())}))")
@@ -38,9 +38,13 @@ def build_search_query(q="", kelas="", jenis="", kabkota="", layanan="", limit=5
         f.append(f"FILTER(STR(?kabkota) = {lit(kabkota)})")
     if layanan:
         f.append(f"FILTER EXISTS {{ ?rs hf:menyediakanLayanan ?l . ?l rdfs:label ?ll . FILTER(STR(?ll) = {lit(layanan)}) }}")
+    if bpjs:
+        f.append('FILTER(STR(?bpjs) = "true")')
+    if fasilitas:
+        f.append(f"FILTER EXISTS {{ ?rs hf:memilikiFasilitas ?fac . ?fac rdfs:label ?flbl . FILTER(STR(?flbl) = {lit(fasilitas)}) }}")
     values = f"VALUES ?rs {{ <{uri}> }}" if uri else ""
     filters = "\n  ".join(f)
-    return f"""SELECT ?rs ?nama ?jenis ?kelas ?alamat ?kabkota ?telepon ?website ?lat ?lon ?bpjs
+    return f"""SELECT ?rs ?nama ?jenis ?kelas ?alamat ?kabkota ?telepon ?website ?lat ?lon ?bpjs ?pemilik ?sumberKoordinat
        (GROUP_CONCAT(DISTINCT ?lay; separator="|") AS ?layanan)
        (GROUP_CONCAT(DISTINCT ?fas; separator="|") AS ?fasilitas)
        (GROUP_CONCAT(DISTINCT ?img; separator="|") AS ?galeri)
@@ -53,12 +57,14 @@ WHERE {{
   OPTIONAL {{ ?rs schema:telephone ?telepon }}
   OPTIONAL {{ ?rs schema:url ?website }}
   OPTIONAL {{ ?rs hf:menerimaBPJS ?bpjs }}
+  OPTIONAL {{ ?rs hf:pemilik ?pemilik }}
+  OPTIONAL {{ ?rs hf:sumberKoordinat ?sumberKoordinat }}
   OPTIONAL {{ ?rs schema:image ?img }}
   OPTIONAL {{ ?rs hf:menyediakanLayanan/rdfs:label ?lay }}
   OPTIONAL {{ ?rs hf:memilikiFasilitas/rdfs:label ?fas }}
   {filters}
 }}
-GROUP BY ?rs ?nama ?jenis ?kelas ?alamat ?kabkota ?telepon ?website ?lat ?lon ?bpjs
+GROUP BY ?rs ?nama ?jenis ?kelas ?alamat ?kabkota ?telepon ?website ?lat ?lon ?bpjs ?pemilik ?sumberKoordinat
 ORDER BY ?nama
 LIMIT {int(limit)} OFFSET {int(offset)}"""
 
@@ -86,6 +92,8 @@ def to_hospital(r: dict) -> dict:
         "foto": galeri[0] if galeri else None,
         "galeri": galeri,
         "layanan": parts(r.get("layanan")), "fasilitas": parts(r.get("fasilitas")),
+        "pemilik": r.get("pemilik"),
+        "sumber_koordinat": r.get("sumberKoordinat"),
     }
 
 
@@ -114,3 +122,127 @@ async def construct(uri: str | None, accept: str) -> str:
         r = await c.post(f"{settings.fuseki_url}/query", data={"query": PREFIXES + q}, headers={"Accept": accept})
         r.raise_for_status()
     return r.text
+
+
+# ── New query templates ────────────────────────────────────────────────────────
+
+def build_emergency_query(limit: int = 5) -> str:
+    """Hospitals with UGD 24 Jam AND (Ambulans OR Instalasi Gawat Darurat), ordered by kelas."""
+    return f"""SELECT ?rs ?nama ?jenis ?kelas ?alamat ?kabkota ?telepon ?website ?lat ?lon ?bpjs ?pemilik ?sumberKoordinat
+   (GROUP_CONCAT(DISTINCT ?lay; separator="|") AS ?layanan)
+   (GROUP_CONCAT(DISTINCT ?fas; separator="|") AS ?fasilitas)
+   (GROUP_CONCAT(DISTINCT ?img; separator="|") AS ?galeri)
+WHERE {{
+  ?rs a hf:RumahSakit ; schema:name ?nama ; hf:jenis ?jenis ; hf:kelas ?kelas ; hf:alamat ?alamat ;
+      hf:beradaDiKabupatenKota ?kk .
+  ?kk rdfs:label ?kabkota .
+  OPTIONAL {{ ?rs geo:lat ?lat ; geo:long ?lon }}
+  OPTIONAL {{ ?rs schema:telephone ?telepon }}
+  OPTIONAL {{ ?rs schema:url ?website }}
+  OPTIONAL {{ ?rs hf:menerimaBPJS ?bpjs }}
+  OPTIONAL {{ ?rs hf:pemilik ?pemilik }}
+  OPTIONAL {{ ?rs hf:sumberKoordinat ?sumberKoordinat }}
+  OPTIONAL {{ ?rs schema:image ?img }}
+  OPTIONAL {{ ?rs hf:menyediakanLayanan/rdfs:label ?lay }}
+  OPTIONAL {{ ?rs hf:memilikiFasilitas/rdfs:label ?fas }}
+  FILTER EXISTS {{
+    ?rs hf:menyediakanLayanan ?lsvc .
+    ?lsvc rdfs:label ?lbl .
+    FILTER(STR(?lbl) = {lit("UGD 24 Jam")})
+  }}
+  FILTER EXISTS {{
+    ?rs hf:memilikiFasilitas ?fac .
+    ?fac rdfs:label ?flbl .
+    FILTER(STR(?flbl) = {lit("Ambulans")} || STR(?flbl) = {lit("Instalasi Gawat Darurat")})
+  }}
+  BIND(IF(?kelas = {lit("A")}, 1,
+       IF(?kelas = {lit("B")}, 2,
+       IF(?kelas = {lit("C")}, 3,
+       IF(?kelas = {lit("D")}, 4, 5)))) AS ?kelasSort)
+}}
+GROUP BY ?rs ?nama ?jenis ?kelas ?alamat ?kabkota ?telepon ?website ?lat ?lon ?bpjs ?pemilik ?sumberKoordinat ?kelasSort
+ORDER BY ?kelasSort ?nama
+LIMIT {int(limit)}"""
+
+
+def build_bpjs_query(kabkota: str = "", kelas: str = "", limit: int = 10) -> str:
+    """Hospitals accepting BPJS, optionally filtered by kabkota and kelas."""
+    f = ['FILTER(STR(?bpjs) = "true")']
+    if kabkota:
+        f.append(f"FILTER(STR(?kabkota) = {lit(kabkota)})")
+    if kelas:
+        f.append(f"FILTER(?kelas = {lit(kelas)})")
+    filters = "\n  ".join(f)
+    return f"""SELECT ?rs ?nama ?jenis ?kelas ?alamat ?kabkota ?telepon ?website ?lat ?lon ?bpjs ?pemilik ?sumberKoordinat
+   (GROUP_CONCAT(DISTINCT ?lay; separator="|") AS ?layanan)
+   (GROUP_CONCAT(DISTINCT ?fas; separator="|") AS ?fasilitas)
+   (GROUP_CONCAT(DISTINCT ?img; separator="|") AS ?galeri)
+WHERE {{
+  ?rs a hf:RumahSakit ; schema:name ?nama ; hf:jenis ?jenis ; hf:kelas ?kelas ; hf:alamat ?alamat ;
+      hf:beradaDiKabupatenKota ?kk ; hf:menerimaBPJS ?bpjs .
+  ?kk rdfs:label ?kabkota .
+  OPTIONAL {{ ?rs geo:lat ?lat ; geo:long ?lon }}
+  OPTIONAL {{ ?rs schema:telephone ?telepon }}
+  OPTIONAL {{ ?rs schema:url ?website }}
+  OPTIONAL {{ ?rs hf:pemilik ?pemilik }}
+  OPTIONAL {{ ?rs hf:sumberKoordinat ?sumberKoordinat }}
+  OPTIONAL {{ ?rs schema:image ?img }}
+  OPTIONAL {{ ?rs hf:menyediakanLayanan/rdfs:label ?lay }}
+  OPTIONAL {{ ?rs hf:memilikiFasilitas/rdfs:label ?fas }}
+  {filters}
+}}
+GROUP BY ?rs ?nama ?jenis ?kelas ?alamat ?kabkota ?telepon ?website ?lat ?lon ?bpjs ?pemilik ?sumberKoordinat
+ORDER BY ?nama
+LIMIT {int(limit)}"""
+
+
+def build_facility_query(fasilitas_label: str, kabkota: str = "", limit: int = 10) -> str:
+    """Hospitals that have a specific fasilitas, optionally filtered by kabkota."""
+    f = [f"""FILTER EXISTS {{
+    ?rs hf:memilikiFasilitas ?fac .
+    ?fac rdfs:label ?flbl .
+    FILTER(STR(?flbl) = {lit(fasilitas_label)})
+  }}"""]
+    if kabkota:
+        f.append(f"FILTER(STR(?kabkota) = {lit(kabkota)})")
+    filters = "\n  ".join(f)
+    return f"""SELECT ?rs ?nama ?jenis ?kelas ?alamat ?kabkota ?telepon ?website ?lat ?lon ?bpjs ?pemilik ?sumberKoordinat
+   (GROUP_CONCAT(DISTINCT ?lay; separator="|") AS ?layanan)
+   (GROUP_CONCAT(DISTINCT ?fas; separator="|") AS ?fasilitas)
+   (GROUP_CONCAT(DISTINCT ?img; separator="|") AS ?galeri)
+WHERE {{
+  ?rs a hf:RumahSakit ; schema:name ?nama ; hf:jenis ?jenis ; hf:kelas ?kelas ; hf:alamat ?alamat ;
+      hf:beradaDiKabupatenKota ?kk .
+  ?kk rdfs:label ?kabkota .
+  OPTIONAL {{ ?rs geo:lat ?lat ; geo:long ?lon }}
+  OPTIONAL {{ ?rs schema:telephone ?telepon }}
+  OPTIONAL {{ ?rs schema:url ?website }}
+  OPTIONAL {{ ?rs hf:menerimaBPJS ?bpjs }}
+  OPTIONAL {{ ?rs hf:pemilik ?pemilik }}
+  OPTIONAL {{ ?rs hf:sumberKoordinat ?sumberKoordinat }}
+  OPTIONAL {{ ?rs schema:image ?img }}
+  OPTIONAL {{ ?rs hf:menyediakanLayanan/rdfs:label ?lay }}
+  OPTIONAL {{ ?rs hf:memilikiFasilitas/rdfs:label ?fas }}
+  {filters}
+}}
+GROUP BY ?rs ?nama ?jenis ?kelas ?alamat ?kabkota ?telepon ?website ?lat ?lon ?bpjs ?pemilik ?sumberKoordinat
+ORDER BY ?nama
+LIMIT {int(limit)}"""
+
+
+# ── New async helpers ──────────────────────────────────────────────────────────
+
+async def search_emergency_hospitals(limit: int = 5) -> list[dict]:
+    return [to_hospital(r) for r in await select(build_emergency_query(limit))]
+
+
+async def search_bpjs_hospitals(kabkota: str = "", kelas: str = "", limit: int = 10) -> list[dict]:
+    return [to_hospital(r) for r in await select(build_bpjs_query(kabkota, kelas, limit))]
+
+
+async def search_by_facility(fasilitas_label: str, kabkota: str = "", limit: int = 10) -> list[dict]:
+    return [to_hospital(r) for r in await select(build_facility_query(fasilitas_label, kabkota, limit))]
+
+
+async def search_hospitals_by_name(name_fragment: str, limit: int = 5) -> list[dict]:
+    return [to_hospital(r) for r in await select(build_search_query(q=name_fragment, limit=limit))]

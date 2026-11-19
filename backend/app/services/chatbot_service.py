@@ -1,286 +1,656 @@
 """Layanan Chatbot Asisten Semantik CariSehat.
-Menerjemahkan bahasa alami pengguna ke query SPARQL pada Apache Jena Fuseki.
-Jika GEMINI_API_KEY tersedia, menggunakan Google Gemini sebagai AI backend.
+
+100% lokal rule-based menggunakan ontologi RDF & SPARQL tanpa dependensi API eksternal.
+Mendukung:
+- Resolusi nama toleran typo, singkatan, dan alias
+- Whitelist scope classifier
+- Format jawaban per intent (DETAIL, ATRIBUT, LIST_FILTER, NEARBY, COMPARE, DISAMBIGUASI, NOT_FOUND, EMERGENCY)
+- Penggunaan lokasi GPS browser HANYA untuk pertanyaan kedekatan/jarak
+- State percakapan eksplisit multi-turn & paginasi
+- Kompatibilitas mundur penuh
 """
-import re
-import json
+from __future__ import annotations
+
 import logging
+import re
+from typing import Any
 
-import httpx
-
-from app.config import settings
+from app.services import hospital_repo
 from app.services import sparql_service as sp
-from app.services import dbpedia_service as dbp
+from app.services.chatbot.formatters import (
+    format_attribute_rs,
+    format_clinic_explain,
+    format_compare_table,
+    format_detail_rs,
+    format_disambiguation,
+    format_emergency,
+    format_list_filter,
+    format_nearby_results,
+    format_not_found_hospital,
+    format_out_of_scope,
+    haversine_distance,
+    pick_template,
+)
+from app.services.chatbot.intents import (
+    classify_message_intent,
+    extract_search_entities,
+)
+from app.services.chatbot.models import (
+    DATA_NOTE,
+    DISCLAIMER,
+    DISCLAIMER_EMERGENCY,
+    EMERGENCY_KEYWORDS,
+    EMPATHY_TRIGGERS,
+    FAQ_KEYWORDS,
+    FASILITAS_SYNONYMS,
+    GREETING_KEYWORDS,
+    HOSPITAL_EXPLICIT_ROOTS,
+    KABKOTA_MAP,
+    LAYANAN_SYNONYMS,
+    NEARBY_KEYWORDS,
+    OUT_OF_SCOPE_TEXT,
+    QR_AFTER_EMPTY,
+    QR_AFTER_EMERGENCY,
+    QR_AFTER_GREETING,
+    QR_AFTER_RESULTS,
+    QR_CLARIFICATION,
+    QR_OUT_OF_SCOPE,
+)
+from app.services.chatbot.resolver import (
+    clean_hospital_query,
+    extract_attribute,
+    extract_compare_pair,
+    resolve_hospital_name,
+)
+from app.services.chatbot.scope import (
+    _matches_any_word_bounded,
+    is_in_scope_whitelist,
+    match_city,
+)
+from app.services.fuzzy_search import normalize
 
 log = logging.getLogger("carisehat.chatbot")
 
-GEMINI_API_URL = (
-    "https://generativelanguage.googleapis.com/v1beta/models/"
-    f"{settings.gemini_model}:generateContent"
-)
 
-# Konteks sistem untuk Gemini — memahami domain CariSehat
-SYSTEM_INSTRUCTION = """Kamu adalah Asisten CariSehat, helpdesk virtual yang membantu pengguna \
-menemukan informasi rumah sakit di Sumatera Utara. Kamu berbicara dalam Bahasa Indonesia \
-yang ramah, ringkas, dan informatif.
-
-Kamu memiliki akses ke database semantik (RDF/SPARQL) berisi ratusan rumah sakit di \
-Sumatera Utara, mencakup: nama, kelas (A/B/C/D), jenis (Umum/Khusus), alamat, \
-kabupaten/kota, nomor telepon, website, layanan, dan fasilitas.
-
-Ketika pengguna menanyakan rumah sakit, ekstrak informasi kunci dari pertanyaannya \
-(kelas, kota, jenis, layanan) dan sampaikan hasilnya dengan format yang mudah dibaca. \
-Gunakan emoji secukupnya untuk mempercantik tampilan (📍 🏥 📞 🩺 ⭐).
-
-Jika konteks hasil database disertakan, rangkum dan presentasikan dengan baik.
-Jika tidak ada hasil database, berikan saran pencarian alternatif.
-Selalu akhiri respons dengan ajakan untuk berinteraksi lebih lanjut.
-"""
+# ---------------------------------------------------------------------------
+# Fungsi Pembantu Ekstraksi & Konteks (Kompatibilitas Mundur & Pengujian)
+# ---------------------------------------------------------------------------
+def _extract_entities(text: str, history: list[dict] | None = None) -> dict:
+    """Ekstraksi entitas dari input teks (kompatibel mundur)."""
+    return extract_search_entities(text)
 
 
-async def _call_gemini(user_text: str, db_context: str = "") -> str | None:
-    """Panggil Google Gemini API untuk menghasilkan respons AI."""
-    if not settings.gemini_api_key or settings.gemini_api_key.startswith("ISI_"):
-        return None
-
-    # Susun prompt lengkap dengan konteks database
-    prompt_parts = [user_text]
-    if db_context:
-        prompt_parts = [
-            f"Pertanyaan pengguna: {user_text}\n\n"
-            f"Data dari database semantik CariSehat:\n{db_context}\n\n"
-            "Berdasarkan data di atas, berikan jawaban yang informatif dan ramah."
-        ]
-
-    payload = {
-        "system_instruction": {"parts": [{"text": SYSTEM_INSTRUCTION}]},
-        "contents": [{"parts": [{"text": "\n".join(prompt_parts)}], "role": "user"}],
-        "generationConfig": {
-            "temperature": 0.7,
-            "maxOutputTokens": 1024,
-            "topP": 0.9,
-        },
-    }
-
-    try:
-        async with httpx.AsyncClient(timeout=20) as client:
-            resp = await client.post(
-                GEMINI_API_URL,
-                params={"key": settings.gemini_api_key},
-                json=payload,
-                headers={"Content-Type": "application/json"},
-            )
-            resp.raise_for_status()
-            data = resp.json()
-            candidates = data.get("candidates", [])
-            if candidates:
-                parts = candidates[0].get("content", {}).get("parts", [])
-                if parts:
-                    return parts[0].get("text", "")
-    except httpx.HTTPStatusError as e:
-        log.error("Gemini API HTTP error: %s – %s", e.response.status_code, e.response.text[:200])
-    except Exception as e:
-        log.error("Gemini API error: %s", e)
-    return None
+def _classify_intent(tl: str, entities: dict, history: list[dict] | None = None) -> str:
+    """Klasifikasi intent (kompatibel mundur untuk tests yang menguji modul langsung)."""
+    hospitals = hospital_repo.get_all_hospitals()
+    classified = classify_message_intent(tl, hospitals, history=history)
+    intent = classified["intent"]
+    if intent == "ATRIBUT":
+        return "DETAIL"
+    return intent
 
 
-def _extract_entities(text: str) -> dict:
-    """Ekstrak entitas (kelas, jenis, kabkota, layanan) dari teks bebas."""
-    result: dict = {}
+def _build_context_filters(history: list[dict] | None, current_entities: dict) -> dict:
+    """Gabungkan filter percakapan: nilai TERBARU menimpa nilai lama (perbaiki B9)."""
+    ctx_filters: dict = {}
+    if history:
+        for msg in history:
+            if msg.get("role") == "user":
+                prev_ent = extract_search_entities(msg.get("text", ""))
+                for key in ("kabkota", "kelas", "jenis", "layanan", "bpjs", "fasilitas"):
+                    if key in prev_ent:
+                        ctx_filters[key] = prev_ent[key]
 
-    # Kelas RS
-    if re.search(r"\bkelas\s*a\b", text):
-        result["kelas"] = "A"
-    elif re.search(r"\bkelas\s*b\b", text):
-        result["kelas"] = "B"
-    elif re.search(r"\bkelas\s*c\b", text):
-        result["kelas"] = "C"
-    elif re.search(r"\bkelas\s*d\b", text):
-        result["kelas"] = "D"
+    for key in ("kabkota", "kelas", "jenis", "layanan", "bpjs", "fasilitas"):
+        if key in current_entities:
+            ctx_filters[key] = current_entities[key]
 
-    # Jenis RS
-    if "umum" in text or " rsu " in text:
-        result["jenis"] = "Umum"
-    elif any(k in text for k in ["khusus", "rsk", "jiwa", "mata", "bedah", "ibu dan anak", "rsia"]):
-        result["jenis"] = "Khusus"
+    for key in ("is_near", "is_emergency", "compare_pair", "rs_detail_name"):
+        if key in current_entities:
+            ctx_filters[key] = current_entities[key]
 
-    # Kabupaten/Kota Sumut
-    daftar_kota = {
-        "medan": "Kota Medan",
-        "binjai": "Kota Binjai",
-        "pematangsiantar": "Kota Pematang Siantar",
-        "siantar": "Kota Pematang Siantar",
-        "tebing tinggi": "Kota Tebing Tinggi",
-        "tanjungbalai": "Kota Tanjung Balai",
-        "sibolga": "Kota Sibolga",
-        "padangsidimpuan": "Kota Padang Sidempuan",
-        "gunungsitoli": "Kota Gunungsitoli",
-        "deli serdang": "Kab. Deli Serdang",
-        "karo": "Kab. Karo",
-        "kabanjahe": "Kab. Karo",
-        "toba": "Kab. Toba Samosir",
-        "samosir": "Kab. Samosir",
-        "simalungun": "Kab. Simalungun",
-        "asahan": "Kab. Asahan",
-        "tapanuli utara": "Kab. Tapanuli Utara",
-        "tarutung": "Kab. Tapanuli Utara",
-        "langkat": "Kab. Langkat",
-        "nias": "Kab. Nias",
-        "batubara": "Kab. Batu Bara",
-        "mandailing natal": "Kab. Mandailing Natal",
-        "labuhanbatu": "Kab. Labuhan Batu",
-    }
-    for k, v in daftar_kota.items():
-        if k in text:
-            result["kabkota"] = v
-            break
-
-    # Layanan spesifik
-    for layanan in ["Anak", "Bersalin", "Bedah", "Ginjal", "Gigi dan Mulut", "Jiwa", "Mata", "Paru"]:
-        if layanan.lower() in text:
-            result["layanan"] = {"Anak": "Kesehatan Anak", "Bersalin": "Kebidanan dan Kandungan", "Ginjal": "Dialisis / Cuci Darah", "Jiwa": "Kesehatan Jiwa / Psikiatri", "Mata": "Kesehatan Mata", "Paru": "Pulmonologi dan Kedokteran Respirasi"}.get(layanan, layanan)
-            break
-
-    # Nama RS jika disebutkan eksplisit
-    name_match = re.search(r"(?:rs|rumah sakit)\s+([a-zA-Z\s]+)", text)
-    if name_match:
-        extracted = name_match.group(1).strip()
-        skip_words = {
-            "kelas a", "kelas b", "kelas c", "kelas d",
-            "umum", "khusus", "jiwa", "mata", "di medan",
-            "di binjai", "terdekat", "bagus", "terbaik",
-        }
-        if extracted not in skip_words:
-            result["q"] = extracted[:30]
-
-    return result
+    return ctx_filters
 
 
-def _format_db_results(results: list[dict], kriteria: dict) -> str:
-    """Format hasil database menjadi teks konteks untuk Gemini."""
-    if not results:
-        return ""
-    lines = [f"Ditemukan {len(results)} rumah sakit:\n"]
-    for i, rs in enumerate(results, 1):
-        line = f"{i}. {rs['nama']} (Kelas {rs['kelas']} – {rs['jenis']})\n"
-        line += f"   Lokasi: {rs['kabkota']}, {rs['alamat']}\n"
+def _is_in_scope(tl: str, entities: dict | None = None, history: list[dict] | None = None) -> bool:
+    """Pemeriksaan whitelist cakupan (kompatibel mundur)."""
+    hospitals = hospital_repo.get_all_hospitals()
+    res = resolve_hospital_name(tl, hospitals)
+    has_rs = res["status"] == "dominant"
+    is_disam = res["status"] == "disambiguate"
+    is_not_found = res["status"] == "not_found"
+    return is_in_scope_whitelist(
+        tl,
+        has_resolved_rs=has_rs,
+        is_disambiguate=is_disam,
+        is_not_found_rs=is_not_found,
+        history=history,
+    )
+
+
+def _enrich_hospitals(
+    hospitals: list[dict],
+    filters: dict,
+    user_loc: tuple[float, float] | None = None,
+) -> list[dict]:
+    """Menambahkan distance_km jika lokasi pengguna tersedia."""
+    enriched = []
+    for rs in hospitals:
+        rsc = dict(rs)
+        if user_loc and rs.get("lat") and rs.get("lon") and "distance_km" not in rsc:
+            rsc["distance_km"] = haversine_distance(user_loc[0], user_loc[1], rs["lat"], rs["lon"])
+        enriched.append(rsc)
+    return enriched
+
+
+def _format_search_results(hospitals: list[dict], filters: dict, is_near: bool = False) -> str:
+    """Format hasil pencarian (kompatibel mundur).
+    
+    Header 'terdekat' HANYA keluar jika is_near bernilai True (perbaiki bug utama).
+    """
+    if not hospitals:
+        return pick_template("EMPTY")
+
+    if is_near:
+        header = "📍 **Berikut rumah sakit terdekat yang siap melayani Anda:**\n"
+    else:
+        header = f"Berikut {len(hospitals)} rumah sakit yang sesuai dengan kebutuhan Anda:\n"
+
+    lines = [header]
+    for i, rs in enumerate(hospitals, 1):
+        dist = f" (~{rs['distance_km']} km)" if rs.get("distance_km") is not None else ""
+        bpjs_badge = " • ✅ BPJS" if rs.get("bpjs") else ""
+        lines.append(f"{i}. **{rs['nama']}**{dist}{bpjs_badge}")
+        lines.append(f"   📍 {rs.get('kabkota', '-')} – Kelas {rs.get('kelas', '-')} ({rs.get('jenis', 'Umum')})")
+        if rs.get("alamat"):
+            lines.append(f"   🏠 {rs['alamat']}")
         if rs.get("telepon"):
-            line += f"   Telepon: {rs['telepon']}\n"
+            lines.append(f"   📞 {rs['telepon']}")
         if rs.get("layanan"):
-            line += f"   Layanan: {', '.join(rs['layanan'][:5])}\n"
-        lines.append(line)
+            lines.append(f"   🩺 Layanan: {', '.join(rs['layanan'][:3])}")
+        lines.append(f"   🔗 [Lihat Detail](/rs/{rs['id']})\n")
+
     return "\n".join(lines)
 
-
-def _format_fallback(results: list[dict], kriteria: dict) -> str:
-    """Format jawaban rule-based (fallback tanpa Gemini)."""
-    if not results:
-        return (
-            "Maaf, saya tidak menemukan rumah sakit yang sesuai kriteria tersebut di database kami.\n"
-            "Coba tanyakan dengan kriteria lain, misalnya: *'Rumah sakit kelas B di Medan'* atau *'RS Khusus di Sumut'*."
-        )
-
-    desc_parts = []
-    if kriteria.get("kelas"):
-        desc_parts.append(f"Kelas {kriteria['kelas']}")
-    if kriteria.get("jenis"):
-        desc_parts.append(f"Jenis {kriteria['jenis']}")
-    if kriteria.get("kabkota"):
-        desc_parts.append(f"di {kriteria['kabkota']}")
-    if kriteria.get("layanan"):
-        desc_parts.append(f"layanan {kriteria['layanan']}")
-
-    label = " (" + ", ".join(desc_parts) + ")" if desc_parts else ""
-    jawaban = [f"Ditemukan beberapa rumah sakit yang sesuai{label}:\n"]
-
-    for i, rs in enumerate(results, 1):
-        info_line = f"{i}. **{rs['nama']}** (Kelas {rs['kelas']} - {rs['jenis']})\n"
-        info_line += f"   📍 *{rs['kabkota']}*, {rs['alamat']}\n"
-        if rs.get("telepon"):
-            info_line += f"   📞 Telp: {rs['telepon']}\n"
-        if rs.get("layanan"):
-            info_line += f"   🩺 Layanan: {', '.join(rs['layanan'])}\n"
-        jawaban.append(info_line)
-
-    jawaban.append("💡 *Klik pada daftar atau penanda peta untuk melihat rute dan data RDF lengkapnya.*")
-    return "\n".join(jawaban)
+def _build_alasan(rs: dict, filters: dict) -> str:
+    """Buat penjelasan singkat mengapa RS ini cocok dengan filter pencarian."""
+    parts = []
+    if filters.get("kelas"):
+        parts.append(f"Kelas {filters['kelas']}")
+    if filters.get("jenis"):
+        parts.append(f"Jenis {filters['jenis']}")
+    if filters.get("kabkota"):
+        parts.append(f"di {filters['kabkota']}")
+    if filters.get("bpjs"):
+        parts.append("Menerima BPJS")
+    if filters.get("layanan"):
+        parts.append(f"Layanan {filters['layanan']}")
+    if filters.get("fasilitas"):
+        parts.append(f"Fasilitas {filters['fasilitas']}")
+    return ", ".join(parts) if parts else f"Kelas {rs.get('kelas', '-')} di {rs.get('kabkota', '-')}"
 
 
-async def process_chat_message(user_text: str) -> str:
-    """Proses teks masukan pengguna dan menghasilkan jawaban berbasis AI + data semantik."""
+
+async def process_chat_message(
+    user_text: str,
+    lat: float | None = None,
+    lon: float | None = None,
+    history: list[dict] | None = None,
+    state: dict | None = None,
+    location_status: str | None = None,
+    seed: int | None = None,
+) -> dict:
+    """Proses input pesan pengguna secara 100% lokal berbasis rule-based & RDF.
+    
+    Mengembalikan dict:
+    - text: str
+    - is_emergency: bool
+    - quick_replies: list[str]
+    - hospitals: list[dict]
+    - data_note: str
+    - state: dict
+    """
+    # 1. Validasi input awal
     if not isinstance(user_text, str):
-        return "Pesan harus berupa teks."
-    text = user_text.strip().lower()
+        return {
+            "text": "Pesan harus berupa teks.",
+            "is_emergency": False,
+            "quick_replies": QR_AFTER_GREETING,
+            "hospitals": [],
+            "data_note": DATA_NOTE,
+            "state": state or {},
+        }
+
+    text = user_text.strip()
+    history = history or []
+
+    # Validasi koordinat GPS
+    if lat is not None and not (-90.0 <= lat <= 90.0):
+        lat = None
+    if lon is not None and not (-180.0 <= lon <= 180.0):
+        lon = None
+    user_loc: tuple[float, float] | None = (lat, lon) if lat is not None and lon is not None else None
+
+    # Pesan kosong -> Sambutan
     if not text:
-        return "Halo! Ada yang bisa saya bantu terkait informasi rumah sakit di Sumatera Utara?"
+        greet_text = pick_template("GREETING", seed=seed)
+        return {
+            "text": greet_text + DISCLAIMER,
+            "is_emergency": False,
+            "quick_replies": QR_AFTER_GREETING,
+            "hospitals": [],
+            "data_note": DATA_NOTE,
+            "state": state or {},
+        }
 
-    # 1. Sapaan / Greeting
-    if any(greet in text for greet in ["halo", "hai", "selamat", "pagi", "siang", "sore", "malam", "assalamualaikum"]):
-        greeting_reply = (
-            "Halo! Saya asisten virtual **CariSehat** berbasis Web Semantik + AI.\n\n"
-            "Anda bisa menanyakan informasi seperti:\n"
-            "- *\"RS kelas A di Medan\"*\n"
-            "- *\"Cari rumah sakit jiwa atau rumah sakit mata\"*\n"
-            "- *\"Daftar rumah sakit di Deli Serdang\"*\n"
-            "- *\"Informasi kota Medan dari DBpedia\"*\n\n"
-            "Ada yang bisa saya bantu?"
-        )
-        # Coba lewatkan ke Gemini untuk sapaan lebih natural
-        ai_reply = await _call_gemini(user_text)
-        return ai_reply if ai_reply else greeting_reply
+    tl = normalize(text)
 
-    # 2. Pertanyaan khusus DBpedia (External Linked Data)
-    if "dbpedia" in text or "tentang kota" in text or "profil kota" in text:
-        m = re.search(
-            r"(medan|binjai|pematangsiantar|tebing tinggi|karo|deli serdang|simalungun|sibolga|nias)", text
+    # Muat seluruh data rumah sakit dari repositori
+    all_hospitals = hospital_repo.get_all_hospitals()
+    if not all_hospitals:
+        # Fuseki dan rdflib fallback sama-sama gagal
+        return {
+            "text": "Mohon maaf, server pangkalan data rumah sakit kami sedang mengalami kendala koneksi saat ini. Silakan coba kembali beberapa saat lagi ya 🙏" + DISCLAIMER,
+            "is_emergency": False,
+            "quick_replies": QR_AFTER_EMPTY,
+            "hospitals": [],
+            "data_note": DATA_NOTE,
+            "state": state or {},
+        }
+
+    # Inisialisasi state percakapan
+    curr_state = {
+        "pending": state.get("pending") if state else None,
+        "filters": dict(state.get("filters", {})) if state else {},
+        "last_hospital_ids": list(state.get("last_hospital_ids", [])) if state else [],
+        "offset": state.get("offset", 0) if state else 0,
+        "last_intent": state.get("last_intent") if state else None,
+    }
+
+    # Cek apakah query saat ini adalah paginasi
+    is_pagination = tl in ("lihat lainnya", "lainnya", "selanjutnya", "berikutnya", "rs lainnya")
+
+    # Klasifikasi intent
+    classified = classify_message_intent(text, all_hospitals, state=curr_state, history=history)
+    intent = classified["intent"]
+    search_ent = classified["entities"]
+    res_hospital = classified["res_hospital"]
+
+    # Deteksi empati (hanya jika pengguna mengeluhkan kondisi sakit)
+    empathy = ""
+    if any(re.search(rf"\b{kw}\b", tl) for kw in EMPATHY_TRIGGERS) and intent != "EMERGENCY":
+        empathy = "Semoga lekas pulih dan sehat kembali. "
+
+    previous_bot_text = ""
+    if history:
+        for m in reversed(history):
+            if m.get("role") == "assistant":
+                previous_bot_text = m.get("text", "")
+                break
+
+    # =======================================================================
+    # INTENT: OUT_OF_SCOPE (T2)
+    # =======================================================================
+    if intent == "OUT_OF_SCOPE":
+        res = format_out_of_scope()
+        curr_state["last_intent"] = "OUT_OF_SCOPE"
+        res["state"] = curr_state
+        return res
+
+    # =======================================================================
+    # INTENT: EMERGENCY
+    # =======================================================================
+    if intent == "EMERGENCY":
+        # Ambil RS dengan UGD 24 Jam
+        emergency_rs = hospital_repo.filter_in_memory(is_emergency=True)
+        if user_loc:
+            # Urutkan jarak hanya untuk RS dengan koordinat andal
+            with_dist = []
+            for rs in emergency_rs:
+                rsc = dict(rs)
+                if rs.get("lat") and rs.get("lon") and rs.get("sumber_koordinat") in ("osm", "jalan", "nama"):
+                    rsc["distance_km"] = haversine_distance(user_loc[0], user_loc[1], rs["lat"], rs["lon"])
+                    with_dist.append(rsc)
+            with_dist.sort(key=lambda x: x["distance_km"])
+            if with_dist:
+                emergency_rs = with_dist
+
+        res = format_emergency(emergency_rs)
+        curr_state["last_intent"] = "EMERGENCY"
+        res["state"] = curr_state
+        return res
+
+    # =======================================================================
+    # INTENT: CLINIC_EXPLAIN (Kasus tepi)
+    # =======================================================================
+    if intent == "CLINIC_EXPLAIN":
+        res = format_clinic_explain()
+        curr_state["last_intent"] = "CLINIC_EXPLAIN"
+        res["state"] = curr_state
+        return res
+
+    # =======================================================================
+    # INTENT: GREETING
+    # =======================================================================
+    if intent == "GREETING":
+        greet_body = pick_template("GREETING", previous_bot_text, seed=seed) + DISCLAIMER
+        curr_state["last_intent"] = "GREETING"
+        return {
+            "text": greet_body,
+            "is_emergency": False,
+            "quick_replies": QR_AFTER_GREETING,
+            "hospitals": [],
+            "data_note": DATA_NOTE,
+            "state": curr_state,
+        }
+
+    # =======================================================================
+    # INTENT: FAQ
+    # =======================================================================
+    if intent == "FAQ":
+        faq_text = (
+            "**CariSehat** adalah direktori rumah sakit se-Sumatera Utara berbasis Web Semantik (RDF & SPARQL).\n\n"
+            "✨ **Fitur yang dapat Anda gunakan:**\n"
+            "- 🔍 **Pencarian Cerdas**: Cari RS berdasarkan kota, kelas (A/B/C/D), jenis (Umum/Khusus), dan BPJS.\n"
+            "- 🩺 **Spesialisasi Medis**: Cari RS berdasarkan layanan poli (Bedah, Anak, Mata, Gigi, Jiwa, dll).\n"
+            "- 📍 **Deteksi RS Terdekat**: Temukan rumah sakit terdekat langsung dari koordinat GPS Anda.\n"
+            "- ⚖️ **Bandingkan RS**: Bandingkan fasilitas dan kelas dua rumah sakit sekaligus.\n"
+            "- 🆘 **Mode Darurat**: Akses cepat ke UGD 24 Jam dan hotline gawat darurat nasional (119/112).\n\n"
+            "Data bersumber resmi dari Permenkes No. 3/2020 dan OpenStreetMap."
         )
-        city = m.group(1) if m else "medan"
-        info = await dbp.get_dbpedia_info(city)
-        if info.get("abstract"):
-            abs_text = info["abstract"][:400] + "..." if len(info["abstract"]) > 400 else info["abstract"]
-            db_ctx = f"Data DBpedia untuk {city}:\n{abs_text}"
-            if info.get("population"):
-                db_ctx += f"\nPopulasi: {int(float(info['population'])):,} jiwa"
-            ai_reply = await _call_gemini(user_text, db_ctx)
-            if ai_reply:
-                return ai_reply
-            # Fallback
-            res = f"🌐 **Data Eksternal DBpedia ({info.get('dbpedia_resource')}):**\n\n{abs_text}"
-            if info.get("population"):
-                res += f"\n\n👥 Populasi tercatat: {int(float(info['population'])):,} jiwa"
+        curr_state["last_intent"] = "FAQ"
+        return {
+            "text": faq_text + DISCLAIMER,
+            "is_emergency": False,
+            "quick_replies": QR_AFTER_GREETING,
+            "hospitals": [],
+            "data_note": DATA_NOTE,
+            "state": curr_state,
+        }
+
+    # =======================================================================
+    # INTENT: DISAMBIGUASI (Nama RS kembar / sama kuat)
+    # =======================================================================
+    if intent == "DISAMBIGUASI":
+        candidates = res_hospital.get("candidates", [])
+        cleaned_name = res_hospital.get("cleaned_name", text)
+        res = format_disambiguation(candidates, cleaned_name)
+        curr_state["pending"] = "disambiguate"
+        curr_state["last_intent"] = "DISAMBIGUASI"
+        res["state"] = curr_state
+        return res
+
+    # =======================================================================
+    # INTENT: RATING_INQUIRY (Keterbatasan data: tidak ada rating/ulasan)
+    # =======================================================================
+    if intent == "RATING_INQUIRY":
+        rating_text = (
+            "Saat ini, database CariSehat belum memuat data penilaian/rating bintang "
+            "atau ulasan pengguna untuk rumah sakit.\n\n"
+            "Sebagai gantinya, Anda dapat mempertimbangkan:\n"
+            "- **Kelas A & B** sebagai indikator kualitas pelayanan terstandarisasi\n"
+            "- **Kelengkapan Fasilitas** seperti ICU, Ambulans, dan Kamar Operasi\n"
+            "- **Status BPJS** dan kelengkapan layanan medis\n\n"
+            "Data kami bersumber dari Permenkes No. 3/2020 dan tidak memuat rating subjektif."
+        )
+        curr_state["last_intent"] = "RATING_INQUIRY"
+        return {
+            "text": rating_text + DISCLAIMER,
+            "is_emergency": False,
+            "quick_replies": QR_AFTER_RESULTS,
+            "hospitals": [],
+            "data_note": DATA_NOTE,
+            "state": curr_state,
+        }
+
+    # =======================================================================
+    # INTENT: JAM_BUKA_INQUIRY (Keterbatasan data: jam operasional tidak ada di RDF)
+    # =======================================================================
+    if intent == "JAM_BUKA_INQUIRY":
+        jam_text = (
+            "Database CariSehat belum memuat informasi jam operasional spesifik setiap rumah sakit.\n\n"
+            "Secara umum, rumah sakit di Indonesia memiliki:\n"
+            "- **UGD/IGD (Instalasi Gawat Darurat):** Buka 24 Jam, 7 hari seminggu\n"
+            "- **Poliklinik Rawat Jalan:** Umumnya 08.00–16.00 WIB (Senin–Sabtu)\n"
+            "- **Rawat Inap:** 24 Jam\n\n"
+            "Untuk jam operasional yang akurat, silakan hubungi langsung nomor telepon "
+            "rumah sakit yang bersangkutan."
+        )
+        curr_state["last_intent"] = "JAM_BUKA_INQUIRY"
+        return {
+            "text": jam_text + DISCLAIMER,
+            "is_emergency": False,
+            "quick_replies": QR_AFTER_RESULTS,
+            "hospitals": [],
+            "data_note": DATA_NOTE,
+            "state": curr_state,
+        }
+
+    # =======================================================================
+    # INTENT: NOT_FOUND (Topik RS tidak ditemukan di data)
+    # =======================================================================
+    if intent == "NOT_FOUND":
+        cleaned_name = res_hospital.get("cleaned_name", text)
+        suggestions = res_hospital.get("suggestions", [])
+        res = format_not_found_hospital(cleaned_name, suggestions)
+        curr_state["last_intent"] = "NOT_FOUND"
+        res["state"] = curr_state
+        return res
+
+    # =======================================================================
+    # INTENT: DETAIL (Profil lengkap 1 RS)
+    # =======================================================================
+    if intent == "DETAIL":
+        target_rs = res_hospital["target_rs"]
+        res = format_detail_rs(target_rs, user_loc, empathy)
+        curr_state["last_hospital_ids"] = [target_rs["id"]]
+        curr_state["last_intent"] = "DETAIL"
+        curr_state["pending"] = None
+        res["state"] = curr_state
+        return res
+
+    # =======================================================================
+    # INTENT: ATRIBUT (Jawaban ringkas atribut spesifik 1 RS)
+    # =======================================================================
+    if intent == "ATRIBUT":
+        target_rs = res_hospital["target_rs"]
+        attr = search_ent.get("attribute") or res_hospital.get("attribute") or "info"
+        res = format_attribute_rs(target_rs, attr, empathy)
+        curr_state["last_hospital_ids"] = [target_rs["id"]]
+        curr_state["last_intent"] = "ATRIBUT"
+        curr_state["pending"] = None
+        res["state"] = curr_state
+        return res
+
+    # =======================================================================
+    # INTENT: COMPARE (Perbandingan dua RS)
+    # =======================================================================
+    if intent == "COMPARE":
+        pair = search_ent.get("compare_pair", [])
+        use_last = search_ent.get("use_last_rs", False)
+
+        rs_a = None
+        rs_b = None
+
+        if use_last and curr_state.get("last_hospital_ids"):
+            rs_a = hospital_repo.get_hospital_by_id(curr_state["last_hospital_ids"][0])
+            cand_b = resolve_hospital_name(pair[0], all_hospitals)
+            rs_b = cand_b.get("target_rs")
+        elif len(pair) >= 2:
+            cand_a = resolve_hospital_name(pair[0], all_hospitals)
+            cand_b = resolve_hospital_name(pair[1], all_hospitals)
+            rs_a = cand_a.get("target_rs")
+            rs_b = cand_b.get("target_rs")
+
+        if rs_a and rs_b:
+            res = format_compare_table(rs_a, rs_b)
+            curr_state["last_hospital_ids"] = [rs_a["id"], rs_b["id"]]
+            curr_state["last_intent"] = "COMPARE"
+            res["state"] = curr_state
             return res
-        return f"Belum berhasil memuat data eksternal DBpedia untuk wilayah {city}."
+        else:
+            missing = []
+            if not rs_a:
+                missing.append(pair[0] if pair else "RS pertama")
+            if not rs_b:
+                missing.append(pair[1] if len(pair) > 1 else "RS kedua")
+            miss_text = " dan ".join(missing)
+            body = f"Mohon maaf, data untuk **{miss_text}** belum dapat ditemukan di database kami untuk dibandingkan." + DISCLAIMER
+            return {
+                "text": body,
+                "is_emergency": False,
+                "quick_replies": QR_AFTER_EMPTY,
+                "hospitals": [],
+                "data_note": DATA_NOTE,
+                "state": curr_state,
+            }
 
-    # 3. Pertanyaan umum yang tidak perlu database (FAQ)
-    faq_keywords = ["apa itu", "bagaimana cara", "cara pakai", "fitur apa", "bisa apa", "tentang aplikasi"]
-    if any(kw in text for kw in faq_keywords):
-        ai_reply = await _call_gemini(user_text)
-        if ai_reply:
-            return ai_reply
+    # =======================================================================
+    # INTENT: SEARCH_NEARBY (Pencarian berjarak)
+    # =======================================================================
+    if intent == "SEARCH_NEARBY":
+        # Saring filter pendamping jika ada (misal: "ICU terdekat", "RS kelas B terdekat")
+        kw_filter = {}
+        for k in ("kelas", "jenis", "kabkota", "layanan", "bpjs", "fasilitas"):
+            if k in search_ent:
+                kw_filter[k] = search_ent[k]
 
-    # 4. Ekstraksi entitas dan query ke database semantik (Fuseki)
-    entities = _extract_entities(text)
-    kw: dict = {"limit": 5, "offset": 0}
-    kw.update(entities)
-    # Jangan gunakan 'q' dan filter spesifik bersamaan
-    if "q" in entities and any(entities.get(k) for k in ("kelas", "kabkota", "jenis", "layanan")):
-        kw.pop("q", None)
+        filtered = hospital_repo.filter_in_memory(**kw_filter)
 
+        # Hitung jarak HANYA untuk RS dengan koordinat andal
+        with_distance = []
+        if user_loc:
+            for rs in filtered:
+                sumber = rs.get("sumber_koordinat")
+                if rs.get("lat") and rs.get("lon") and sumber in ("osm", "jalan", "nama"):
+                    rsc = dict(rs)
+                    rsc["distance_km"] = haversine_distance(user_loc[0], user_loc[1], rs["lat"], rs["lon"])
+                    with_distance.append(rsc)
+
+            with_distance.sort(key=lambda x: x["distance_km"])
+
+        top_nearby = with_distance[:5]
+        res = format_nearby_results(
+            top_nearby,
+            len(with_distance),
+            user_loc,
+            location_status=location_status,
+            previous_text=previous_bot_text,
+            empathy=empathy,
+            seed=seed,
+        )
+        curr_state["last_intent"] = "SEARCH_NEARBY"
+        res["state"] = curr_state
+        return res
+
+    # =======================================================================
+    # INTENT: CLARIFICATION_ANSWER / SEARCH_FILTER
+    # =======================================================================
+    # Update filters in state (Pewarisan konteks multi-turn, nilai terbaru menimpa nilai lama)
+    if is_pagination:
+        filters = dict(curr_state.get("filters", {}))
+        offset = curr_state.get("offset", 0) + 5
+    elif intent == "CLARIFICATION_ANSWER":
+        filters = dict(curr_state.get("filters", {}))
+        if "kabkota" in search_ent:
+            filters["kabkota"] = search_ent["kabkota"]
+        offset = 0
+        curr_state["pending"] = None
+    elif any(tl.startswith(c) for c in ["yang ", "kalau ", "ada ", "apakah ", "bisa ", "kelas "]):
+        # Follow-up bertahap: gabungkan konteks dari history + current
+        # (nilai terbaru menimpa nilai lama — B9 fix)
+        filters = _build_context_filters(history, search_ent)
+        # Hanya ambil field filter sah
+        filters = {k: v for k, v in filters.items() if k in ("kelas", "jenis", "kabkota", "layanan", "bpjs", "fasilitas")}
+        offset = 0
+    else:
+        # Pencarian filter baru mandiri (reset filter lama)
+        filters = {}
+        for k in ("kelas", "jenis", "kabkota", "layanan", "bpjs", "fasilitas"):
+            if k in search_ent:
+                filters[k] = search_ent[k]
+        offset = 0
+
+    # KLARIFIKASI: Jika sama sekali tidak ada filter, tanyakan ke pengguna
+    if not any(filters.values()) and not is_pagination:
+        klarifikasi_text = (
+            "Tentu, saya siap membantu menemukan rumah sakit yang sesuai! 🏥\n\n"
+            "Agar pencarian lebih akurat, bisakah Anda menyebutkan:\n"
+            "- **Wilayah/kota** yang diinginkan? (mis: Kota Medan, Kab. Deli Serdang)\n"
+            "- **Kelas RS** (A/B/C/D) atau jenis layanan tertentu?\n"
+            "- Atau gunakan opsi cepat di bawah ini:"
+        )
+        curr_state["pending"] = "ask_city"
+        curr_state["last_intent"] = "KLARIFIKASI"
+        return {
+            "text": klarifikasi_text + DISCLAIMER,
+            "is_emergency": False,
+            "quick_replies": QR_CLARIFICATION,
+            "hospitals": [],
+            "data_note": DATA_NOTE,
+            "state": curr_state,
+        }
+
+    # Eksekusi search melalui sp.search_hospitals (agar testable via mock)
     try:
-        results = await sp.search_hospitals(**kw)
+        raw_results = await sp.search_hospitals(
+            kelas=filters.get("kelas", ""),
+            jenis=filters.get("jenis", ""),
+            kabkota=filters.get("kabkota", ""),
+            layanan=filters.get("layanan", ""),
+            bpjs=filters.get("bpjs") if filters.get("bpjs") is not None else False,
+            fasilitas=filters.get("fasilitas", ""),
+            limit=500,
+            offset=0,
+        )
+        if raw_results is None:
+            raise ValueError("sp.search_hospitals returned None")
+        matched_hospitals = raw_results
     except Exception as e:
-        log.error("SPARQL error: %s", e)
-        # Do not generate hospital information without the semantic source.
-        return f"Maaf, terjadi kendala saat menghubungkan ke database semantik (Fuseki): {type(e).__name__}"
+        log.error("SEARCH_FILTER sp.search_hospitals gagal: %s", e)
+        return {
+            "text": (
+                "Mohon maaf, server pangkalan data rumah sakit kami sedang mengalami "
+                "kendala koneksi saat ini. Silakan coba kembali beberapa saat lagi."
+                + DISCLAIMER
+            ),
+            "is_emergency": False,
+            "quick_replies": QR_AFTER_EMPTY,
+            "hospitals": [],
+            "data_note": DATA_NOTE,
+            "state": curr_state,
+        }
 
-    # 5. Siapkan konteks dari database lalu kirim ke Gemini
-    if not results:
-        return _format_fallback(results, entities)
-    db_context = _format_db_results(results, entities)
+    total_found = len(matched_hospitals)
+    sliced_hospitals = matched_hospitals[offset: offset + 5]
 
-    ai_reply = await _call_gemini(user_text, db_context)
-    if ai_reply:
-        return ai_reply
+    # Tambahkan field 'alasan' ke setiap RS dalam hasil
+    for rs in sliced_hospitals:
+        if "alasan" not in rs:
+            rs["alasan"] = _build_alasan(rs, filters)
 
-    # 6. Fallback rule-based jika Gemini tidak tersedia
-    return _format_fallback(results, entities)
+    res = format_list_filter(
+        sliced_hospitals,
+        total_found,
+        filters,
+        offset=offset,
+        previous_text=previous_bot_text,
+        empathy=empathy,
+        seed=seed,
+    )
+
+    # Catatan keterbatasan data jika mencari jantung/kardiologi (B12)
+    if search_ent.get("is_cardio_inquiry") and sliced_hospitals:
+        cardio_note = (
+            "\n\n💡 *Catatan:* Direktori data perizinan Permenkes No. 3/2020 belum memuat layanan spesialis Jantung/Kardiologi "
+            "secara terpisah. Ditampilkan rumah sakit dengan layanan **Penyakit Dalam** yang relevan."
+        )
+        res["text"] = res["text"].replace(DISCLAIMER, cardio_note + DISCLAIMER)
+
+    curr_state["filters"] = filters
+    curr_state["offset"] = offset
+    curr_state["last_hospital_ids"] = [h["id"] for h in sliced_hospitals]
+    curr_state["last_intent"] = "SEARCH_FILTER"
+    res["state"] = curr_state
+
+    return res

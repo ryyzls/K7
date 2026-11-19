@@ -41,8 +41,6 @@ services:
       FUSEKI_URL: http://fuseki:3030/hospital
       BASE_URI: ${BASE_URI:-http://localhost:8000}
       BOOKING_ACCESS_KEY: ${BOOKING_ACCESS_KEY:-}
-      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
-      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-2.5-flash}
       GOOGLE_MAPS_API_KEY: ${GOOGLE_MAPS_API_KEY:-}
     ports:
       - "127.0.0.1:8000:8000"
@@ -50,7 +48,7 @@ services:
       - ./backend/app:/code/app
       - ./frontend:/frontend:ro
       - ./semantic:/semantic:ro
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
 volumes:
   pgdata:
