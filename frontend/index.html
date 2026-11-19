@@ -6,12 +6,14 @@
 <meta name="theme-color" content="#0F766E">
 <meta name="description" content="CariSehat: Direktori lengkap 206 rumah sakit di 33 kabupaten/kota Sumatera Utara dengan navigasi rute dan data semantik terverifikasi.">
 <title>CariSehat - Direktori Rumah Sakit se-Sumatera Utara</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230F766E'/%3E%3Cpath d='M13 7h6v6h6v6h-6v6h-6v-6H7v-6h6z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="/images/cari-sehat-icon.png?v=3">
+<link rel="apple-touch-icon" href="/images/cari-sehat-icon.png?v=3">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <!-- Leaflet & Clustering -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css">
@@ -30,7 +32,7 @@
 /* ============ Design Tokens (CariSehat Medical System) ============ */
 :root{
   --ink:#0F172A; --ink-soft:#334155; --mute:#64748B; --mute-light:#94A3B8;
-  --bg:#F8FAFC; --card:#FFFFFF; --card-hover:#F1F5F9;
+/*  */  --bg:#FFFFFF; --card:#FFFFFF; --card-hover:#F8FAFC;
   --line:#E2E8F0; --line-subtle:rgba(226,232,240,0.8);
   --toba:#0F766E; --toba-d:#115E59; --toba-soft:#CCFBF1; --toba-mist:#F0FDFA;
   --accent:#0284C7; --accent-soft:#E0F2FE;
@@ -43,7 +45,7 @@
   --ease:cubic-bezier(0.16, 1, 0.3, 1);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
 body{font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink);background:var(--bg);margin:0;padding:0;min-height:100vh;-webkit-font-smoothing:antialiased}
 button{font:inherit;color:inherit;cursor:pointer}
 a{color:var(--toba);font-weight:600;text-decoration:none;transition:color .15s}
@@ -54,44 +56,55 @@ svg.i{width:1.15em;height:1.15em;flex:none;stroke:currentColor;fill:none;stroke-
 /* ============ Professional Clean Header ============ */
 header{
   position:sticky;top:0;z-index:1100;
-  display:flex;align-items:center;gap:1rem;
-  padding:0.75rem 1.5rem;
-  background:#ffffff;
-  border-bottom:1px solid var(--line);
-  box-shadow:var(--shadow-sm);
+  display:flex;align-items:center;gap:1.5rem;
+  padding:.65rem max(1.5rem,calc((100vw - 1280px)/2));
+  min-height:64px;background:#fff;border-bottom:1px solid var(--line);
 }
 .brand{display:flex;align-items:center;gap:.75rem;color:var(--ink)}
 .brand:hover{text-decoration:none}
+.map-explore-entry{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;max-width:1280px;margin:auto;width:calc(100% - 3rem)}
+.hospital-map-page{position:fixed;inset:0;z-index:9000;background:#f4f7f7;padding:24px;display:grid;grid-template-columns:350px minmax(0,1fr);gap:20px}
+.hospital-map-sidebar{background:white;border-radius:22px;padding:20px;overflow:auto;min-height:0}
+.hospital-map-sidebar h2{font-size:1.3rem;margin:22px 0 8px}
+.hospital-map-sidebar input{width:100%;box-sizing:border-box;margin:14px 0}
+#hospital-map-canvas{border-radius:22px;min-height:0}
+.map-hospital-card{border:1px solid var(--line);border-radius:16px;padding:12px;margin-bottom:12px;background:#fff}
+.map-hospital-card img{width:100%;height:125px;object-fit:cover;border-radius:10px;margin-bottom:10px}
+.map-hospital-card h3{font-size:.94rem;margin:0 0 7px}
+.map-hospital-card p{font-size:.8rem;color:var(--mute);margin:5px 0 12px}
+.map-hospital-card .btn{font-size:.78rem;padding:8px 10px}
+.map-hospital-actions{display:flex;gap:8px;flex-wrap:wrap}
+.leaflet-popup-content .map-hospital-card{border:0;margin:0;padding:0}
+@media(max-width:760px){.hospital-map-page{padding:10px;gap:10px;grid-template-columns:1fr;grid-template-rows:45dvh minmax(0,1fr)}#hospital-map-canvas{grid-row:1}.hospital-map-sidebar{grid-row:2;padding:16px}.map-explore-entry{align-items:flex-start;flex-direction:column}}
+.brand-image{display:block;width:190px;height:64px;object-fit:contain}
+.footer-logo .brand-image{background:#fff;border-radius:12px;padding:4px 10px;box-sizing:content-box}
+@media(max-width:600px){.brand-image{width:145px;height:49px}}
 .logo{
-  width:40px;height:40px;border-radius:12px;
-  background:linear-gradient(135deg,var(--toba),var(--accent));
+  width:38px;height:38px;border-radius:11px;
+  background:var(--toba);
   display:grid;place-items:center;
-  box-shadow:0 3px 10px rgba(15,118,110,0.25);
+  box-shadow:none;
   flex:none;
 }
 .logo svg{width:22px;height:22px}
-.brand h1{font-size:1.18rem;margin:0;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.brand h1{font-size:1.3rem;margin:0;font-weight:800;letter-spacing:-.03em;line-height:1.1}
 .brand h1 span{color:var(--toba)}
 .brand small{display:block;font-size:.72rem;font-weight:600;color:var(--mute);margin-top:2px}
 
-/* Navigation Pills */
-.nav-pill-wrapper{
-  display:flex;align-items:center;
-  background:#F1F5F9;
-  padding:3px;border-radius:var(--r-pill);
-  border:1px solid var(--line);
-  margin-left:auto;
-}
-nav{display:flex;align-items:center;gap:2px;font-size:.84rem}
+/* Navigation */
+.nav-pill-wrapper{display:flex;align-items:center;margin:0 auto}
+nav{display:flex;align-items:center;gap:1.1rem;font-size:.84rem}
 nav a{
-  display:inline-flex;align-items:center;gap:.45rem;
-  padding:.42rem .9rem;border-radius:var(--r-pill);
-  color:var(--ink-soft);font-weight:600;
-  transition:all .18s var(--ease);
+  display:inline-flex;align-items:center;min-height:42px;padding:.45rem .8rem;
+  color:var(--ink-soft);font-weight:600;position:relative;
 }
-nav a:hover{background:#ffffff;color:var(--toba);box-shadow:var(--shadow-sm)}
-#menu-btn{display:none;margin-left:auto;border:1px solid var(--line);background:#fff;border-radius:10px;width:40px;height:40px;place-items:center;font-size:1.2rem}
-.ulos{height:4px;background:linear-gradient(90deg,var(--toba) 0%,var(--accent) 35%,var(--emergency) 70%,var(--gold) 100%);position:relative;z-index:1100}
+nav a:hover,nav a[aria-current=page]{color:var(--toba)}
+nav a[aria-current=page]{background:#E4F3F2;border-radius:12px}
+nav a[aria-current=page]::after{display:none}
+.btn-ask{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:.55rem 1.1rem;border:1px solid var(--toba);border-radius:var(--r-pill);color:var(--toba-d);background:#fff;font-weight:700;font-size:.84rem;white-space:nowrap}
+.btn-ask:hover{background:var(--toba-mist);color:var(--toba-d)}
+#menu-btn{display:none;margin-left:0;border:1px solid var(--line);background:#fff;border-radius:10px;width:40px;height:40px;place-items:center;font-size:1.2rem}
+.ulos{display:none}
 #topbar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--toba),var(--emergency));z-index:3000;transition:width .3s var(--ease),opacity .3s;opacity:0}
 #topbar.on{opacity:1}
 
@@ -110,34 +123,35 @@ nav a:hover{background:#ffffff;color:var(--toba);box-shadow:var(--shadow-sm)}
 /* ============ Hero Section ============ */
 .hero-section{
   position:relative;
-  padding:3.5rem 1.5rem 3rem;
-  background:linear-gradient(180deg,#F0FDFA 0%,#FFFFFF 100%);
-  border-bottom:1px solid var(--line);
-  display:flex;flex-direction:column;align-items:center;text-align:center;
+  padding:.75rem max(1.5rem,calc((100vw - 1280px)/2)) 0;
+  background:#F6FBFE;border-bottom:1px solid var(--line);
 }
-.hero-badge{
-  display:inline-flex;align-items:center;gap:.5rem;
-  padding:.35rem .95rem;background:#CCFBF1;color:#0F766E;
-  border-radius:var(--r-pill);font-size:.78rem;font-weight:800;
-  letter-spacing:.02em;margin-bottom:1.1rem;
-}
+.hero-main{min-height:160px;display:grid;grid-template-columns:1fr 1.05fr;align-items:center;gap:1.5rem;position:relative}
+.hero-copy{position:relative;z-index:1;max-width:560px}
 .hero-title{
-  font-size:clamp(1.9rem, 4vw, 2.8rem);
-  font-weight:800;line-height:1.2;letter-spacing:-.03em;
-  color:var(--ink);max-width:28ch;margin:0 0 .9rem;
+  font-size:clamp(2rem, 3.2vw, 2.8rem);
+  font-weight:800;line-height:1.17;letter-spacing:-.035em;
+  color:var(--ink);max-width:17ch;margin:0 0 .7rem;
 }
 .hero-title span{color:var(--toba)}
 .hero-subtitle{
-  font-size:clamp(.95rem, 1.8vw, 1.08rem);
-  color:var(--mute);line-height:1.6;max-width:58ch;margin:0 0 2rem;
+  font-size:clamp(.92rem, 1.4vw, 1.02rem);
+  color:var(--ink-soft);line-height:1.55;max-width:48ch;margin:0;
 }
+.hero-visual{
+  align-self:stretch;min-height:160px;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;border-radius:18px 18px 0 0;
+  background:linear-gradient(90deg,#F6FBFE 0%,rgba(246,251,254,.18) 30%),#DCEFFC;
+}
+.hero-visual svg{display:block;width:100%;height:100%;min-height:160px;max-height:190px}
+.hero-search-wrap{position:relative;z-index:2;margin:0 auto -.75rem;max-width:1280px}
 .hero-search-box{
   position:relative;z-index:2;
   display:flex;align-items:center;gap:.4rem;
-  width:100%;max-width:760px;
-  background:#fff;padding:.4rem .5rem .4rem 1.1rem;
-  border-radius:var(--r-pill);border:1px solid var(--line);
-  box-shadow:var(--shadow-lg);
+  width:100%;max-width:none;
+  background:#fff;padding:.42rem .55rem .42rem 1rem;
+  border-radius:18px;border:1px solid var(--line);
+  box-shadow:var(--shadow);
   transition:border-color .2s, box-shadow .2s;
 }
 .hero-search-box:focus-within{
@@ -161,22 +175,13 @@ nav a:hover{background:#ffffff;color:var(--toba);box-shadow:var(--shadow-sm)}
   background-repeat:no-repeat;background-position:right .4rem center;
 }
 .hero-search-box button{
-  flex:none;background:linear-gradient(135deg,var(--toba),var(--toba-d));
-  color:#fff;border:none;border-radius:var(--r-pill);
-  padding:.7rem 1.4rem;font-weight:700;font-size:.9rem;
+  flex:none;background:var(--toba);
+  color:#fff;border:none;border-radius:12px;
+  padding:.78rem 1.4rem;font-weight:700;font-size:.9rem;min-width:220px;
   transition:all .2s var(--ease);
+  display:none;
 }
-.hero-search-box button:hover{box-shadow:0 4px 12px rgba(15,118,110,0.35);transform:scale(1.02)}
-.hero-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;margin-top:1.2rem}
-.hero-btn{
-  display:inline-flex;align-items:center;gap:.45rem;
-  padding:.55rem 1.1rem;border-radius:var(--r-pill);
-  font-size:.84rem;font-weight:700;transition:all .18s var(--ease);
-}
-.hero-btn-primary{background:#fff;color:var(--ink-soft);border:1px solid var(--line);box-shadow:var(--shadow-sm)}
-.hero-btn-primary:hover{background:var(--toba-mist);border-color:#99F6E4;color:var(--toba-d)}
-.hero-btn-emergency{background:var(--emergency);color:#fff;box-shadow:0 4px 12px rgba(225,29,72,0.25)}
-.hero-btn-emergency:hover{background:#BE123C;color:#fff}
+.hero-search-box button:hover{background:var(--toba-d)}
 
 /* Bento Value Grid */
 .bento-section{padding:2.5rem 1.5rem 2.8rem;max-width:1200px;margin:0 auto;width:100%}
@@ -197,10 +202,15 @@ nav a:hover{background:#ffffff;color:var(--toba);box-shadow:var(--shadow-sm)}
 /* Explorer Anchor Header */
 .explorer-header{
   display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem;
-  padding:1.1rem 1.5rem;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:1rem 1.5rem .65rem;background:#fff;
 }
 .explorer-header h2{margin:0;font-size:1.2rem;font-weight:800;display:flex;align-items:center;gap:.6rem;color:var(--ink)}
 .explorer-header span{font-size:.82rem;color:var(--mute);font-weight:600}
+.catalog-title h2{margin:0 0 .2rem;font-size:1.3rem}
+.catalog-title #status{font-size:.82rem;color:var(--mute)}
+.catalog-title #status.err{color:var(--emergency)}
+.sort-control{display:flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:600;color:var(--ink)}
+.sort-control select{width:auto;min-width:125px}
 
 /* ============ Main Catalog Layout ============ */
 main{
@@ -211,17 +221,16 @@ main{
   min-height:100vh;
 }
 #map-wrap{
-  order:-1;
+  order:0;
   position:relative;
-  width:100%;
-  height:330px;
-  min-height:300px;
-  border-radius:14px;
+  width:calc(100% - 3rem);max-width:1280px;
+  height:380px;min-height:300px;
+  border-radius:16px;
   overflow:hidden;
   border:1px solid var(--line);
-  margin-top:1rem;
+  margin:1.5rem auto 2.5rem;
   background:#E2E8F0;
-  display:none;
+  display:block;
 }
 #map{
   width:100%;
@@ -231,7 +240,7 @@ main{
 }
 aside{
   width:100%;
-  max-width:1440px;
+  max-width:1280px;
   margin:0 auto;
   display:flex;
   flex-direction:column;
@@ -250,10 +259,7 @@ aside{
 .metric-strip .pulse-dot{width:7px;height:7px;border-radius:50%;background:#10B981;animation:emPulse 1.5s infinite}
 
 /* ============ Catalog Filter Bar ============ */
-.filters{
-  padding:1.1rem 1.2rem;display:grid;gap:.9rem;
-  background:#ffffff;border-bottom:1px solid var(--line);box-shadow:var(--shadow-sm);
-}
+.filters{padding:.2rem 1.5rem 1rem;display:grid;gap:.8rem;background:#fff}
 .search{position:relative}
 .search svg{position:absolute;left:.9rem;top:50%;transform:translateY(-50%);color:var(--mute);width:1.15rem;height:1.15rem;pointer-events:none}
 .search input{
@@ -270,7 +276,9 @@ aside{
 }
 .search input:not(:placeholder-shown)~kbd{display:none}
 
-.filter-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));gap:.75rem}
+.filter-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.75rem;align-items:end}
+.filter-grid label{font-size:0;gap:0}
+.filter-grid select{height:40px;padding-top:.45rem;padding-bottom:.45rem}
 label,.lbl{font-size:.72rem;color:var(--mute);font-weight:700;display:grid;gap:.35rem;text-transform:uppercase;letter-spacing:.04em}
 input,select{
   font:inherit;font-size:.88rem;font-weight:500;text-transform:none;letter-spacing:0;
@@ -289,9 +297,9 @@ select:focus,input:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,1
 
 /* ============ Pagination Bar ============ */
 .pagination-bar{
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:.75rem;
-  padding:.85rem 1.2rem;
+  display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;gap:.75rem 1.5rem;
+  padding:.85rem .5rem;
   border-top:1px solid var(--line);
   background:#fff;
   font-size:.84rem;
@@ -311,12 +319,18 @@ select:focus,input:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,1
 .pg-btn:disabled{opacity:.38;cursor:default}
 .pg-btn.active{background:var(--toba);border-color:var(--toba);color:#fff}
 .pg-btn.pg-ellipsis{cursor:default;border:none;background:none;color:var(--mute)}
-.per-page-wrap{display:flex;align-items:center;gap:.5rem;color:var(--mute);font-weight:500}
+.per-page-wrap{display:flex;align-items:center;gap:.5rem;color:var(--mute);font-weight:500;white-space:nowrap;flex-shrink:0}
 .per-page-wrap select{
+  width:64px;min-width:64px;flex:none;
   border:1px solid var(--line);border-radius:8px;padding:.35rem .6rem;
   font:inherit;font-size:.82rem;color:var(--ink);background:#fff;cursor:pointer;
 }
 .per-page-wrap select:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,118,110,0.1);outline:none}
+@media(max-width:600px){
+  .pagination-bar{gap:.75rem 1rem;font-size:.78rem}
+  .pagination-controls{flex-basis:100%;justify-content:center}
+  .per-page-wrap{gap:.35rem}
+}
 .seg-wrap{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
 .seg{
   display:inline-grid;grid-template-columns:repeat(5,auto);gap:.25rem;
@@ -345,13 +359,12 @@ select:focus,input:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,1
 @keyframes spin{to{transform:rotate(360deg)}}
 .toolbar-actions{display:flex;align-items:center;gap:.6rem}
 .bar select{width:auto;padding:.3rem 1.7rem .3rem .6rem;font-size:.78rem;font-weight:600;border-radius:8px;background-position:right .55rem center}
-.link-btn{border:0;background:none;color:var(--emergency);font-weight:700;font-size:.78rem;padding:.2rem .4rem;border-radius:6px;display:none}
-.link-btn.show{display:inline}
-.link-btn:hover{text-decoration:underline}
+.link-btn{border:1px solid var(--toba);background:#fff;color:var(--toba-d);font-weight:700;font-size:.8rem;padding:.55rem 1rem;border-radius:10px;display:inline-flex;height:44px;align-items:center;justify-content:center;text-transform:none}
+.link-btn:hover{background:var(--toba-mist)}
 
 /* ============ Multi-Column Hospital Card Grid ============ */
 #list{
-  list-style:none;margin:0;padding:1.2rem;
+  list-style:none;margin:0 auto;padding:.45rem 1.5rem 2rem;width:100%;max-width:1280px;
   overflow-y:visible;flex:1;
   display:grid;grid-template-columns:1fr;gap:1.1rem;
   align-content:start;background:var(--bg);
@@ -361,18 +374,17 @@ select:focus,input:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,1
 .card{
   background:var(--card);border:1px solid var(--line);
   border-radius:var(--r);position:relative;overflow:hidden;
-  display:flex;flex-direction:column;
-  transition:all .22s var(--ease);animation:rise .35s var(--ease) both;
+  display:flex;flex-direction:column;min-height:355px;
+  transition:box-shadow .22s var(--ease),border-color .22s var(--ease);
   box-shadow:var(--shadow-sm);
 }
-.card:hover{box-shadow:var(--shadow);border-color:#CBD5E1;transform:translateY(-3px)}
+.card:hover{box-shadow:var(--shadow);border-color:#CBD5E1}
 .card.on{border-color:var(--c);box-shadow:0 0 0 2px color-mix(in srgb,var(--c) 30%,transparent), var(--shadow)}
 @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
 /* Card Top Visual / Photo Placeholder */
 .card-thumb{
-  height:120px;
-  background:linear-gradient(135deg, color-mix(in srgb, var(--c) 14%, #F8FAFC) 0%, #FFFFFF 100%);
+  aspect-ratio:16/9;width:100%;background:#DDEFFA;
   border-bottom:1px solid var(--line);
   position:relative;display:flex;align-items:center;justify-content:center;
   overflow:hidden;
@@ -408,11 +420,14 @@ select:focus,input:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,1
   text-transform:uppercase;letter-spacing:.04em;
   background:rgba(255,255,255,0.9);padding:2px 8px;border-radius:99px;border:1px solid var(--line);
 }
+.card-thumb svg{display:block;width:100%;height:100%;object-fit:cover}
+.thumb-note{position:absolute;left:10px;bottom:9px;padding:.18rem .45rem;border-radius:6px;background:rgba(255,255,255,.92);color:var(--ink-soft);font-size:.64rem;font-weight:600}
+#explorer,#map-wrap,#about{scroll-margin-top:72px}
 
 .card-main{
   all:unset;box-sizing:border-box;
   display:flex;flex-direction:column;gap:.55rem;
-  width:100%;padding:1rem 1.1rem .8rem;
+  width:100%;padding:.9rem 1.1rem .4rem;
   cursor:pointer;flex:1;
 }
 .card-main:focus-visible{outline:3px solid var(--toba);outline-offset:-3px;border-radius:var(--r)}
@@ -427,18 +442,20 @@ select:focus,input:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,1
   padding:0 .5rem;background:var(--c);box-shadow:0 2px 4px rgba(0,0,0,0.1);
 }
 .card-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.35rem .5rem;font-size:.82rem;color:var(--mute);font-weight:600}
-.pill-bpjs-mini{margin-left:auto;background:#CCFBF1;color:#0F766E;font-size:.72rem;font-weight:800;padding:.15rem .5rem;border-radius:99px}
 .addr{font-size:.8rem;color:var(--mute);display:flex;align-items:flex-start;gap:.4rem;line-height:1.45}
-.addr svg{margin-top:.15rem;color:var(--toba);flex:none}
-.addr span{display:-webkit-box;line-clamp: 2; -webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.addr svg{display:none}
+.addr span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:auto}
 .tag{font-size:.72rem;font-weight:600;background:var(--toba-mist);color:var(--toba-d);border-radius:6px;padding:.18rem .5rem}
 .tag.more{background:#F1F5F9;color:var(--mute)}
 
 .card-actions{
-  display:flex;align-items:center;gap:.5rem;
-  padding:.75rem 1.1rem 1rem;border-top:1px solid #F1F5F9;background:#FAFAFA;
+  display:flex;align-items:center;justify-content:space-between;gap:.5rem;
+  padding:.7rem 1.1rem 1rem;border-top:1px solid #F1F5F9;background:#fff;
 }
+.card-facts{display:flex;gap:.8rem;min-width:0;color:var(--ink-soft);font-size:.76rem;font-weight:700}
+.card-facts span{display:grid;gap:.1rem}
+.card-facts small{color:var(--mute);font-size:.65rem;font-weight:500}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:.45rem;
   border-radius:10px;padding:.5rem .85rem;font-weight:700;font-size:.82rem;
@@ -446,7 +463,7 @@ select:focus,input:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,1
   transition:all .18s var(--ease);white-space:nowrap;
 }
 .btn:active{transform:scale(.97)}
-.btn-primary{background:linear-gradient(135deg,var(--toba),var(--toba-d));color:#fff;box-shadow:0 2px 6px rgba(15,118,110,0.25)}
+.btn-primary{background:var(--toba);color:#fff;box-shadow:none}
 .btn-primary:hover{box-shadow:0 4px 12px rgba(15,118,110,0.35);color:#fff}
 .btn-ghost{background:#fff;color:var(--toba-d);border-color:var(--line)}
 .btn-ghost:hover{background:var(--toba-mist);border-color:#99F6E4}
@@ -467,7 +484,7 @@ select:focus,input:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,1
   background:#F8FAFC;
   z-index:2500;
   display:none;
-  width:100vw;height:100vh;
+  width:auto;height:auto;
   overflow:hidden;
 }
 #detail.show{
@@ -483,16 +500,21 @@ select:focus,input:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,1
   box-shadow:var(--shadow-sm);flex:none;position:sticky;top:0;z-index:100;
 }
 .d-head-inner{
-  max-width:1160px;margin:0 auto;width:100%;
-  padding:.85rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  max-width:1280px;margin:0 auto;width:100%;
+  padding:.55rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;
 }
+.d-site-nav{display:flex;align-items:center;gap:1rem;font-size:.82rem}
+.d-site-nav a{color:var(--ink-soft);font-weight:600;white-space:nowrap}
+.d-site-nav a:hover,.d-site-nav a[aria-current=page]{color:var(--toba)}
+.d-site-nav a[aria-current=page]{background:#E4F3F2;border-radius:10px;padding:.5rem .75rem}
 .d-back{
   display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--line);
-  background:#fff;border-radius:var(--r-pill);padding:.48rem 1.15rem;
-  font-weight:700;font-size:.86rem;color:var(--ink-soft);
-  box-shadow:var(--shadow-sm);transition:all .18s var(--ease);flex:none;
+  background:#fff;border-radius:var(--r-pill);padding:.45rem .85rem;
+  font-weight:700;font-size:.78rem;color:var(--ink-soft);
+  transition:all .18s var(--ease);flex:none;cursor:pointer;
 }
 .d-back:hover{background:var(--toba-mist);color:var(--toba-d);border-color:#99F6E4}
+.d-back:active{transform:scale(0.97)}
 .d-crumb{
   font-size:.82rem;color:var(--mute);display:flex;align-items:center;gap:.45rem;
   overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
@@ -502,11 +524,10 @@ select:focus,input:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,1
 .d-crumb .active{color:var(--ink);font-weight:700;overflow:hidden;text-overflow:ellipsis}
 
 .d-body{
-  overflow-y:auto;flex:1;padding:1.6rem 1.4rem 3.5rem;background:#F8FAFC;
+  overflow-y:auto;flex:1;padding:0 0 2rem;background:#F8FAFC;
 }
 .d-body-inner{
-  max-width:1160px;margin:0 auto;width:100%;
-  display:grid;gap:1.4rem;align-content:start;
+  width:100%;margin:0 auto;display:grid;gap:0;align-content:start;
 }
 
 /* Hero Detail Banner */
@@ -531,21 +552,47 @@ select:focus,input:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,1
 .d-hero-actions .btn-ghost{background:rgba(255,255,255,0.15);color:#fff;border-color:rgba(255,255,255,0.35);backdrop-filter:blur(4px)}
 .d-hero-actions .btn-ghost:hover{background:#fff;color:var(--toba-d)}
 
+.d-hero{background:#fff;color:var(--ink);padding:0 0 1.5rem;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.d-hero::after{display:none}
+.d-hero-top,.d-hero-actions{padding:0 1.4rem}
+.d-hero-top{padding-top:1.4rem}
+.d-hero h2{color:var(--ink)}
+.d-hero-sub{color:var(--mute)}
+.d-pills .pill{background:var(--toba-mist);color:var(--toba-d)}
+.d-hero-actions .btn-ghost{color:var(--toba-d);background:var(--toba-mist);border-color:var(--line)}
+.hospital-carousel{position:relative;background:#e2e8f0}
+.hospital-slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;touch-action:pan-x pan-y}
+.hospital-slides::-webkit-scrollbar{display:none}
+.hospital-slides img{display:block;flex:0 0 100%;width:100%;height:clamp(220px,34vw,440px);object-fit:cover;scroll-snap-align:start;scroll-snap-stop:always}
+.carousel-controls{position:absolute;inset:0 14px;display:flex;align-items:center;justify-content:space-between;pointer-events:none}
+.carousel-controls output{position:absolute;bottom:14px;left:50%;transform:translateX(-50%)}
+.carousel-controls button,.carousel-controls output{pointer-events:auto;border:0;border-radius:999px;padding:.55rem .85rem;background:rgba(15,23,42,.8);color:white;font-weight:700}
+.carousel-controls button{cursor:pointer;min-width:44px;min-height:44px}
+
 /* Detail Quick Nav Anchors */
 .d-quicknav{
-  display:flex;gap:.4rem;overflow-x:auto;padding:.4rem 0;
-  border-bottom:1px solid var(--line);scrollbar-width:none;
+  display:flex;gap:.4rem;overflow-x:auto;padding:.45rem .8rem;
+  border:1px solid #DCECF5;border-radius:14px;background:#fff;box-shadow:var(--shadow-sm);
+  scrollbar-width:none;position:sticky;top:0;z-index:80;max-width:1280px;width:calc(100% - 3rem);margin:.8rem auto 1rem;
 }
 .d-quicknav::-webkit-scrollbar{display:none}
 .d-navpill{
   flex:none;font-size:.78rem;font-weight:700;color:var(--mute);
-  padding:.35rem .85rem;border-radius:var(--r-pill);border:1px solid var(--line);
+  padding:.45rem .85rem;border-radius:var(--r-pill);border:1px solid transparent;
   background:#fff;transition:all .15s;
 }
-.d-navpill:hover,.d-navpill.active{background:var(--toba-mist);color:var(--toba-d);border-color:#99F6E4}
+.d-navpill:hover{background:#F8FAFC;color:var(--ink)}
+.d-navpill.active{background:var(--toba-mist);color:var(--toba-d);border-color:#99F6E4}
 
 /* Detail Content Cards */
-.d-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.3rem;box-shadow:var(--shadow-sm)}
+.d-detail-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:1rem;align-items:start;max-width:1280px;width:calc(100% - 3rem);margin:0 auto}
+.d-main-column,.d-side-column{display:grid;gap:1rem;align-content:start;min-width:0}
+.d-side-column{width:auto;max-width:none;margin:0;background:transparent;position:static;z-index:auto}
+.d-card{background:#fff;border:1px solid #E1EDF3;border-radius:14px;padding:1.1rem;box-shadow:var(--shadow-sm)}
+#sec-lokasi{grid-column:1/-1}
+#detail #map-wrap{width:100%;max-width:none;height:380px;margin:1rem 0 0}
+.side-action{width:100%;justify-content:center;margin-top:.85rem}
+.side-promo p{font-size:.82rem;color:var(--mute);line-height:1.5;margin:0}
 .d-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;gap:.5rem}
 .d-card-head h3{margin:0;font-size:.98rem;font-weight:800;color:var(--ink)}
 .d-card-badge{font-size:.72rem;font-weight:700;color:var(--toba-d);background:var(--toba-mist);padding:.2rem .6rem;border-radius:6px;border:1px solid #CCFBF1}
@@ -600,6 +647,34 @@ select:focus,input:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,1
 .legend div{display:flex;align-items:center;gap:.45rem}
 .legend i{width:11px;height:11px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.15);flex:none}
 .legend span{color:var(--mute);font-weight:600}
+#detail-map-host .legend{display:none}
+.fa-solid{font-size:1em;line-height:1;width:1.2em;text-align:center;flex-shrink:0}
+.text-gap{display:inline-block;width:.8rem}
+.d-card-head h3,.d-navpill,.d-hero-sub{align-items:center;gap:.5rem}
+.d-card-head h3 .fa-solid,.d-navpill .fa-solid{color:var(--toba);margin-right:.35rem}
+#detail-map-host .leaflet-control-layers{display:none}
+#map-wrap .leaflet-control-layers{display:none}
+.route-page{position:fixed;inset:0;z-index:10000;background:#f3f6f6;padding:24px;display:grid;grid-template-columns:350px minmax(0,1fr);gap:20px}
+.route-sidebar{background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;overflow:auto;min-height:0}
+.route-sidebar h1{font-size:1.45rem;margin:24px 0 20px}
+.route-place{position:relative;padding:14px 0 14px 32px}
+.route-place::before{content:"";position:absolute;left:2px;top:36px;width:14px;height:14px;border:2px solid var(--ink-soft);border-radius:50%;box-sizing:border-box}
+.route-place + .route-place::before{left:0;top:32px;width:20px;height:24px;border:0;border-radius:0;background:center/contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 28' fill='none' stroke='%23dc2626' stroke-width='2'%3E%3Cpath d='M12 26S3 17 3 10a9 9 0 0 1 18 0c0 7-9 16-9 16Z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E")}
+.route-place strong{display:block;overflow-wrap:anywhere;line-height:1.5}
+.route-place small{display:block;color:var(--mute);margin-bottom:6px}
+.route-modes{display:flex;gap:8px;margin:24px 0}
+.route-modes button{flex:1;border:1px solid var(--line);border-radius:12px;background:white;padding:12px 4px;font:inherit;cursor:pointer;font-size:.8rem}
+.route-modes button[aria-pressed="true"]{background:#e6f5f2;border-color:var(--toba);color:var(--toba)}
+.route-modes svg{display:block;margin:0 auto 8px}
+.route-summary{display:flex;justify-content:space-between;padding:18px 0;font-size:1.2rem;font-weight:800;color:var(--toba)}
+.route-disclaimer{font-size:.78rem;color:var(--mute);line-height:1.6}
+.route-map-host{min-width:0;min-height:0;border-radius:24px;overflow:hidden;position:relative}
+.route-map-host #map-wrap{height:100%!important;width:100%!important;position:relative!important;display:block!important;border-radius:24px}
+.route-map-host #map{height:100%!important}
+.route-map-host .legend,.route-map-host .leaflet-control-layers,.route-map-host #route-bar{display:none!important}
+.route-sidebar .leaflet-routing-container{width:auto;max-height:none;margin:20px 0 0!important;box-shadow:none;border:0;padding:0;float:none}
+.route-sidebar .leaflet-routing-collapse-btn{display:none}
+@media(max-width:760px){.route-page{padding:10px;gap:10px;grid-template-columns:1fr;grid-template-rows:minmax(240px,48dvh) minmax(0,1fr)}.route-map-host{grid-row:1}.route-sidebar{grid-row:2;padding:18px;border-radius:18px}.route-sidebar h1{margin:14px 0}.route-modes{margin:16px 0}}
 .leaflet-bar{border:0!important;box-shadow:var(--shadow)!important;border-radius:12px!important;overflow:hidden}
 .leaflet-bar a{width:36px!important;height:36px!important;line-height:36px!important;color:var(--ink)}
 .leaflet-tooltip{font-family:inherit;font-weight:700;font-size:.8rem;border:0;border-radius:8px;box-shadow:var(--shadow);padding:.35rem .7rem;color:var(--ink)}
@@ -626,6 +701,11 @@ select:focus,input:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,1
 #route-bar strong{display:block;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:800}
 #route-bar .rb-val{font-size:1.1rem;font-weight:800;color:var(--emergency);white-space:nowrap}
 #route-bar .btn{padding:.45rem .7rem}
+.route-mode-picker{display:flex;gap:.45rem;flex-wrap:wrap;margin-top:1rem;align-items:center}
+.route-mode-picker .route-mode{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:.52rem .8rem;font:700 .82rem 'Plus Jakarta Sans',sans-serif;cursor:pointer;transition:.2s ease}
+.route-mode-picker .route-mode:hover,.route-mode-picker .route-mode:focus-visible{border-color:var(--toba);color:var(--toba);outline:none}
+.route-mode-picker .route-mode[data-route-mode="motorcycle"]{color:#075985;border-color:#bae6fd;background:#f0f9ff}
+.route-mode-note{font-size:.75rem;color:var(--mute);flex-basis:100%}
 #map-loading{position:absolute;inset:0;z-index:1300;background:rgba(248,250,252,0.7);backdrop-filter:blur(3px);display:none;place-items:center}
 #map-loading.show{display:grid}
 #map-loading div{background:#fff;border-radius:16px;box-shadow:var(--shadow-lg);padding:1.1rem 1.4rem;display:flex;align-items:center;gap:.85rem;font-weight:700;font-size:.92rem;border:1px solid var(--line)}
@@ -641,7 +721,12 @@ select:focus,input:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,1
 .leaflet-routing-alt h2{font-size:.95rem;font-weight:800;margin:.2rem 0}
 .leaflet-routing-alt h3{font-size:.8rem;font-weight:600;color:var(--mute);margin:0 0 .4rem}
 .leaflet-routing-alt tr:hover{background:var(--toba-mist)}
-.leaflet-routing-alt td{font-size:.8rem;padding:.3rem .2rem}
+.leaflet-routing-alt table{width:100%;border-collapse:collapse}
+.leaflet-routing-alt td{font-size:.8rem;padding:.8rem .35rem;line-height:1.5;vertical-align:top;border-bottom:1px solid var(--line)}
+.leaflet-routing-alt tr:last-child td{border-bottom:0}
+.leaflet-routing-alt td:first-child{width:26px;padding-top:.9rem}
+.leaflet-routing-alt td:last-child{width:64px;text-align:right;white-space:nowrap;font-size:.75rem;font-weight:600;color:var(--mute);padding-left:.75rem}
+.leaflet-routing-alt h3{padding-bottom:.75rem;border-bottom:1px solid var(--line);margin-bottom:0}
 .leaflet-routing-icon{filter:none;opacity:.75}
 
 /* ============ Toast Center ============ */
@@ -651,6 +736,7 @@ select:focus,input:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,1
 
 /* ============ Floating Chatbot Button & Widget ============ */
 #chat-bubble{position:fixed;bottom:24px;right:24px;z-index:2400}
+#chat-bubble.open{z-index:2600}
 #chat-btn{
   height:52px;min-width:52px;border-radius:var(--r-pill);
   background:linear-gradient(135deg,var(--toba),var(--accent));
@@ -659,13 +745,14 @@ select:focus,input:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,1
   padding:0 1.2rem 0 1rem;font-weight:700;font-size:.92rem;
   transition:all .2s var(--ease);
 }
+#chat-btn{display:none}
 #chat-btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(15,118,110,0.45)}
 #chat-btn svg{width:22px;height:22px}
 #chat-btn .dot{position:absolute;top:2px;right:2px;width:12px;height:12px;border-radius:50%;background:var(--emergency);border:2px solid #fff}
 #chat-bubble.open #chat-btn .lbl-t{display:none}
 #chat-bubble.open #chat-btn{padding:0;width:52px}
 #chat-container{
-  position:absolute;bottom:66px;right:0;width:400px;
+  position:fixed;bottom:24px;right:24px;width:400px;
   height:min(590px,calc(100vh - 140px));background:#fff;border-radius:20px;
   box-shadow:var(--shadow-lg);border:1px solid var(--line);
   overflow:hidden;display:flex;flex-direction:column;opacity:0;
@@ -735,28 +822,73 @@ footer{
 /* ============ Responsive Breakpoints ============ */
 @media(max-width:900px){
   main{display:flex;flex-direction:column;height:auto;min-height:100vh}
-  #map-wrap{order:-1;min-height:260px;height:260px}
+  #map-wrap{order:0;min-height:260px;height:300px}
   aside{border-right:0;border-top:1px solid var(--line);overflow:visible}
   #list{padding:1rem}
-  .nav-pill-wrapper{display:contents}
-  nav{
-    display:none;position:absolute;right:1rem;top:calc(100% + 10px);
-    flex-direction:column;background:#fff;padding:.6rem;border-radius:16px;
-    box-shadow:var(--shadow-lg);min-width:220px;border:1px solid var(--line);
-  }
+  .nav-pill-wrapper{position:static;margin-left:auto}
+  nav{display:none;position:absolute;right:1rem;top:calc(100% + 6px);flex-direction:column;align-items:stretch;gap:.2rem;background:#fff;padding:.55rem;border-radius:14px;box-shadow:var(--shadow-lg);min-width:220px;border:1px solid var(--line)}
   nav.open{display:flex}
+  nav a{min-height:40px}
   #menu-btn{display:grid}
-  .brand small{display:none}
-  .seg button i{display:none}
+  .filter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .leaflet-routing-container{display:none}
   #route-bar{max-width:calc(100% - 24px)}
   #chat-bubble{bottom:16px;right:16px}
-  #chat-container{position:fixed;inset:auto 8px 84px 8px;width:auto;height:min(72vh,560px)}
-  .hero-search-box{flex-direction:column;align-items:stretch;border-radius:20px;padding:.85rem;gap:.6rem}
-  .hero-input-wrap,.hero-select-wrap{width:100%}
-  .hero-divider{width:100%;height:1px;margin:.2rem 0}
-  .hero-search-box button{width:100%;padding:.75rem}
+  #chat-container{position:fixed;inset:auto 8px 16px 8px;width:auto;height:min(72vh,560px)}
+  .hero-main{min-height:185px;grid-template-columns:1fr 1fr}
+  .hero-search-box{gap:.3rem}
+  .hero-search-box button{min-width:175px;padding:.75rem .9rem}
+  .d-head-inner{padding:.55rem 1rem}
+  .d-site-nav{display:none}
+  .d-detail-grid{grid-template-columns:minmax(0,1fr)}
+  #sec-lokasi{grid-column:auto}
+  .d-side-column{order:2}
   .form-row{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  header{gap:.55rem;padding:.55rem 1rem;min-height:60px}
+  .logo{width:34px;height:34px}
+  .brand{gap:.5rem}
+  .brand h1{font-size:1.12rem}
+  .brand small{display:none}
+  .btn-ask{min-height:38px;padding:.45rem .7rem;font-size:.74rem}
+  #menu-btn{width:38px;height:38px}
+  .hero-section{padding:1.4rem 1rem .8rem}
+  .hero-main{display:block;min-height:0}
+  .hero-copy{padding:.2rem 0 1.2rem}
+  .hero-title{font-size:2rem;max-width:16ch}
+  .hero-visual{min-height:140px;border-radius:14px 14px 0 0}
+  .hero-visual svg{min-height:140px}
+  .hero-search-box{flex-direction:column;align-items:stretch;border-radius:16px;padding:.75rem;gap:.55rem}
+  .hero-input-wrap,.hero-select-wrap{width:100%;min-height:40px}
+  .hero-divider{width:100%;height:1px;margin:0}
+  .hero-search-box button{width:100%;min-height:44px}
+  .explorer-header{padding:1.25rem 1rem .8rem}
+  .filters{padding:.2rem 1rem 1rem}
+  .filter-grid{grid-template-columns:1fr 1fr;gap:.6rem}
+  #list{grid-template-columns:1fr;padding:.4rem 1rem 1.5rem;gap:.85rem}
+  .card{min-height:0}
+  .card-actions{gap:.4rem}
+  .card-facts{gap:.55rem}
+  .card-actions .btn{font-size:.74rem;padding:.5rem .65rem}
+  #map-wrap{width:calc(100% - 2rem);height:260px;margin:1rem auto 2rem}
+  .d-head-inner{gap:.4rem;padding:.5rem .7rem}
+  .d-head .brand{gap:.4rem}
+  .d-head .brand h1{font-size:1.05rem}
+  .d-head .brand small{display:none}
+  .d-head .logo{width:32px;height:32px}
+  .d-head .btn-ask{padding:.4rem .55rem;font-size:.68rem}
+  .d-back{min-height:36px;padding:.35rem .75rem;font-size:.76rem;gap:.35rem;justify-content:center}
+  .d-back span{display:inline}
+  .d-hero{min-height:250px;padding:1rem}
+  .d-hero-art{width:100%;opacity:.48}
+  .d-hero::before{background:linear-gradient(90deg,rgba(241,250,254,.98),rgba(241,250,254,.72))}
+  .d-hero-content{max-width:none}
+  .d-crumb{font-size:.68rem;gap:.3rem}
+  .d-hero h2{font-size:1.8rem}
+  .d-quicknav,.d-detail-grid{width:calc(100% - 2rem)}
+  .d-detail-grid{gap:.8rem}
+  .d-card{padding:.9rem}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -766,122 +898,104 @@ footer{
 
 <!-- ============ Navbar ============ -->
 <header>
-  <a class="brand" href="/" aria-label="CariSehat, Beranda">
-    <span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M9.5 3h5v6.5H21v5h-6.5V21h-5v-6.5H3v-5h6.5z"/></svg></span>
-    <span><h1>Cari<span>Sehat</span></h1><small>Direktori RS Sumatera Utara</small></span>
+  <a class="brand" href="#home" aria-label="CariSehat, Beranda">
+    <img class="brand-image" src="/images/cari-sehat-logo.png" alt="Cari Sehat" width="190" height="64">
   </a>
 
   <div class="nav-pill-wrapper">
     <nav id="nav" aria-label="Menu utama">
-      <a href="#explorer"><svg class="i" viewBox="0 0 24 24"><path d="M3 21h18M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16M9 9h6M12 6v6"/></svg>Katalog Faskes</a>
-      <a href="/sparql"><svg class="i" viewBox="0 0 24 24"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13.5 6l-3 12"/></svg>SPARQL Studio</a>
-      <a href="/data/hospitals.rdf"><svg class="i" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="8" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8.2 7l7.6.7M7.2 8.2l3.8 7.8M16.8 10l-3.6 6"/></svg>Triples RDF</a>
-      <a href="/docs" target="_blank" rel="noopener"><svg class="i" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8zM14 3v5h5M9 13h6M9 17h4"/></svg>API Docs</a>
+      <a href="#home" aria-current="page">Beranda</a>
+      <a href="#explorer">Cari Rumah Sakit</a>
+      <a href="#map-wrap">Peta</a>
+      <a href="#about">Tentang</a>
     </nav>
   </div>
 
-  <button id="btn-emergency" class="btn-emergency" type="button" title="Mode Darurat: Cari RS dengan IGD 24 Jam terdekat dari lokasi Anda">
-    <span class="em-pulse" aria-hidden="true"></span>
-    <span>IGD Darurat</span>
-  </button>
+  <button id="ask-chat-btn" class="btn-ask" type="button" aria-expanded="false" aria-controls="chat-container">Tanya CariSehat</button>
   <button id="menu-btn" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="nav">&#9776;</button>
 </header>
 <div class="ulos" aria-hidden="true"></div>
 
 <!-- ============ Hero Section ============ -->
-<section class="hero-section">
-  <h1 class="hero-title">
-    Temukan Rumah Sakit di <span>Sumatera Utara</span>
-  </h1>
-  <p class="hero-subtitle">
-    Akses direktori 206 rumah sakit dalam dataset di 33 kabupaten/kota lengkap dengan rute navigasi cepat, simulasi rawat inap, dan integrasi Linked Data W3C &amp; DBpedia.
-  </p>
-
-  <form class="hero-search-box" onsubmit="event.preventDefault(); goToExplorer();" role="search" aria-label="Pencarian utama faskes">
-    <div class="hero-input-wrap">
-      <svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-      <input id="hero-q" type="search" placeholder="Cari nama rumah sakit, misal: Adam Malik..." aria-label="Cari rumah sakit">
+<section class="hero-section" id="home">
+  <div class="hero-main">
+    <div class="hero-copy">
+      <h1 class="hero-title">Temukan Rumah Sakit<br>di <span>Sumatera Utara</span></h1>
+      <p class="hero-subtitle">Jelajahi 206 rumah sakit di 33 kabupaten/kota dengan pencarian semantik berbasis data.</p>
     </div>
-    <div class="hero-divider" aria-hidden="true"></div>
-    <div class="hero-select-wrap">
-      <svg class="i" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 005 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-      <select id="hero-kab" aria-label="Pilih kabupaten atau kota">
-        <option value="">Semua Wilayah</option>
-      </select>
-    </div>
-    <button type="submit">Cari Rumah Sakit</button>
-  </form>
-
-  <div class="hero-ctas">
-    <a href="#explorer" class="hero-btn hero-btn-primary">
-      Lihat Katalog Rumah Sakit
-    </a>
-    <button type="button" class="hero-btn hero-btn-emergency" onclick="$('#btn-emergency').click();">
-      Cari IGD Terdekat
-    </button>
-    <button type="button" class="hero-btn hero-btn-primary" onclick="$('#chat-btn').click();">
-      Tanya Asisten AI
-    </button>
-  </div>
-</section>
-
-<!-- ============ Bento Value Grid Section ============ -->
-<section class="bento-section">
-  <div class="bento-heading">
-    <h2>Keunggulan Ekosistem CariSehat</h2>
-    <p>Dibangun dengan arsitektur standar Web Semantik (RDF, OWL, SPARQL) dan integrasi data geospasial OSRM.</p>
-  </div>
-  <div class="bento-grid">
-    <div class="bento-card">
-      <div class="bento-icon" style="background:#CCFBF1;color:#0F766E">
-        <svg class="i" viewBox="0 0 24 24" style="width:24px;height:24px"><path d="M3 21h18M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16M9 9h6M12 6v6"/></svg>
-      </div>
-      <h3>206 Rumah Sakit Terdata</h3>
-      <p>Data klasifikasi Kelas A, B, C, D sesuai regulasi Permenkes No. 3 Tahun 2020 di seluruh 33 kabupaten/kota Sumatera Utara.</p>
-    </div>
-    <div class="bento-card">
-      <div class="bento-icon" style="background:#E0F2FE;color:#0284C7">
-        <svg class="i" viewBox="0 0 24 24" style="width:24px;height:24px"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8M11.5 3a17 17 0 000 18M12.5 3a17 17 0 010 18"/></svg>
-      </div>
-      <h3>Linked Open Data (DBpedia)</h3>
-      <p>Ontologi W3C terhubung dengan <code>owl:sameAs</code> ke DBpedia global untuk data geospasial dan profil wilayah yang kaya.</p>
-    </div>
-    <div class="bento-card">
-      <div class="bento-icon" style="background:#FFE4E6;color:#E11D48">
-        <svg class="i" viewBox="0 0 24 24" style="width:24px;height:24px"><circle cx="12" cy="12" r="9"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
-      </div>
-      <h3>Navigasi Rute Cepat OSRM</h3>
-      <p>Perhitungan rute berkendara dan jarak tempuh otomatis dari lokasi GPS pengguna secara real-time via OpenStreetMap.</p>
-    </div>
-    <div class="bento-card">
-      <div class="bento-icon" style="background:#FEF3C7;color:#D97706">
-        <svg class="i" viewBox="0 0 24 24" style="width:24px;height:24px"><path d="M2 4v16M2 8h18a2 2 0 012 2v10M2 17h20M6 8v9"/></svg>
-      </div>
-      <h3>Reservasi Kamar Simulasi</h3>
-      <p>Simulasi pemesanan kamar rawat inap (VIP, Kelas 1-3, ICU) terhubung ke basis data relasional PostgreSQL untuk riset MSBD.</p>
+    <div class="hero-visual" role="img" aria-label="Ilustrasi generik rumah sakit, bukan foto rumah sakit tertentu">
+      <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path fill="#E8F5FC" d="M0 0h760v300H0z"/>
+        <path fill="#D6EAF7" d="M0 223c117-27 192 16 302-7 130-27 225 8 458-21v105H0z"/>
+        <path fill="#fff" d="M235 106h458v151H235z"/>
+        <path fill="#F4FAFD" d="M193 145h96v112h-96z"/>
+        <path fill="#C5E4F3" d="M225 91h28v166h-28z"/>
+        <path fill="#E5F3FA" d="M289 80h388v26H289z"/>
+        <path fill="#fff" d="M292 106h15v151h-15zM381 106h15v151h-15zM470 106h15v151h-15zM559 106h15v151h-15z"/>
+        <path fill="#C8E7F5" d="M321 123h38v25h-38zM412 123h38v25h-38zM500 123h38v25h-38zM590 123h38v25h-38zM321 164h38v25h-38zM412 164h38v25h-38zM500 164h38v25h-38zM590 164h38v25h-38z"/>
+        <path fill="#0F766E" d="M469 59h132v30H469z"/>
+        <path fill="#fff" d="M532 64h7v10h10v7h-10v10h-7V81h-10v-7h10z"/>
+        <path fill="#fff" d="M548 67h45v4h-45zM548 76h45v4h-45z"/>
+        <path fill="#0F766E" d="M184 255h526v9H184z"/>
+        <path fill="#91C9A6" d="M75 254h20v-61h-20z"/>
+        <circle cx="85" cy="178" r="40" fill="#A8D8B8"/>
+        <circle cx="117" cy="202" r="31" fill="#92CCA6"/>
+        <path fill="#91C9A6" d="M692 255h18v-57h-18z"/>
+        <circle cx="700" cy="185" r="38" fill="#A8D8B8"/>
+        <path fill="#fff" d="M70 52c0-15 12-27 27-27 9 0 17 4 22 12 3-2 7-3 11-3 13 0 23 10 23 23H70z" opacity=".8"/>
+      </svg>
     </div>
   </div>
-</section>
-
-<!-- Explorer Section Anchor -->
-<div id="explorer"></div>
-
-<main>
-  <aside>
-    <!-- Catalog Filter Bar -->
-    <form class="filters" onsubmit="return false" role="search" aria-label="Filter katalog rumah sakit">
-      <div class="search">
+  <div class="hero-search-wrap">
+    <form class="hero-search-box" onsubmit="event.preventDefault(); goToExplorer();" role="search" aria-label="Pencarian utama rumah sakit">
+      <div class="hero-input-wrap">
         <svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-        <input id="q" type="search" placeholder="Cari nama rumah sakit atau alamat, misal: Adam Malik..." aria-label="Cari rumah sakit" autocomplete="off">
-        <kbd aria-hidden="true">/</kbd>
+        <input id="hero-q" type="search" placeholder="Nama rumah sakit, layanan, atau kata kunci" aria-label="Nama rumah sakit, layanan, atau kata kunci">
       </div>
+      <input id="q" type="hidden" value="">
+      <div class="hero-divider" aria-hidden="true"></div>
+      <div class="hero-select-wrap">
+        <select id="hero-kab" aria-label="Pilih kabupaten atau kota">
+          <option value="">Pilih Kabupaten/Kota</option>
+        </select>
+      </div>
+      <button type="submit">Cari Rumah Sakit</button>
+    </form>
+  </div>
+</section>
+
+<main id="explorer">
+  <aside>
+    <div class="explorer-header">
+      <div class="catalog-title">
+        <h2>Daftar Rumah Sakit</h2>
+        <div id="status" aria-live="polite"></div>
+      </div>
+      <label class="sort-control" for="sort">Urutkan:
+        <select id="sort" aria-label="Urutkan hasil katalog">
+          <option value="">Relevansi</option>
+          <option value="nama">Nama Rumah Sakit (A-Z)</option>
+          <option value="kelas">Kelas (A &rarr; D)</option>
+        </select>
+      </label>
+    </div>
+    <form class="filters" onsubmit="return false" role="search" aria-label="Filter katalog rumah sakit">
       <div class="filter-grid">
         <label>Kabupaten/kota
           <select id="kab"><option value="">Semua Wilayah (33 Kab/Kota)</option></select>
         </label>
+        <label>Kelas Rumah Sakit
+          <select id="kelas">
+            <option value="">Semua Kelas</option>
+            <option value="A">Kelas A</option>
+            <option value="B">Kelas B</option>
+            <option value="C">Kelas C</option>
+            <option value="D">Kelas D</option>
+          </select>
+        </label>
         <label>Jenis Rumah Sakit
           <select id="jenis">
-            <option value="">Semua Jenis RS</option>
+            <option value="">Semua Jenis Rumah Sakit</option>
             <option value="Umum">Rumah Sakit Umum (RSU)</option>
             <option value="Khusus">Rumah Sakit Khusus (RSK)</option>
           </select>
@@ -889,32 +1003,9 @@ footer{
         <label>Layanan Medis
           <select id="lay"><option value="">Semua Layanan Spesialisasi</option></select>
         </label>
-      </div>
-      <div class="filter-bottom-bar">
-        <div class="seg-wrap" id="lbl-kelas">
-          <span class="lbl" style="display:inline">Kelas:</span>
-          <div class="seg" role="group" aria-labelledby="lbl-kelas" id="seg-kelas">
-            <button type="button" data-v="" aria-pressed="true">Semua</button>
-            <button type="button" data-v="A" aria-pressed="false" style="--c:var(--kA)" title="Kelas A: subspesialis luas"><i></i>Kelas A</button>
-            <button type="button" data-v="B" aria-pressed="false" style="--c:var(--kB)" title="Kelas B: spesialis lengkap"><i></i>Kelas B</button>
-            <button type="button" data-v="C" aria-pressed="false" style="--c:var(--kC)" title="Kelas C: spesialis dasar"><i></i>Kelas C</button>
-            <button type="button" data-v="D" aria-pressed="false" style="--c:var(--kD)" title="Kelas D: pelayanan dasar"><i></i>Kelas D</button>
-          </div>
-        </div>
-        <div class="toolbar-actions">
-          <button class="link-btn" id="reset" type="button" title="Bersihkan semua filter">Reset filter</button>
-          <select id="sort" aria-label="Urutkan hasil katalog">
-            <option value="">Urutan Bawaan</option>
-            <option value="nama">Nama RS (A-Z)</option>
-            <option value="kelas">Kelas (A &rarr; D)</option>
-          </select>
-        </div>
+        <button class="link-btn" id="reset" type="button" title="Bersihkan semua filter">Reset Filter</button>
       </div>
     </form>
-
-    <div class="bar">
-      <div id="status" aria-live="polite"></div>
-    </div>
 
     <!-- Multi-Column Hospital Card Grid -->
     <ul id="list" aria-label="Daftar katalog rumah sakit"></ul>
@@ -923,13 +1014,13 @@ footer{
     <div class="pagination-bar hidden" id="pagination">
       <div class="per-page-wrap">
         <span>Tampilkan</span>
-        <select id="per-page" aria-label="Jumlah RS per halaman">
+        <select id="per-page" aria-label="Jumlah Rumah Sakit per halaman">
           <option value="10">10</option>
           <option value="20" selected>20</option>
           <option value="50">50</option>
           <option value="100">100</option>
         </select>
-        <span>RS per halaman</span>
+        <span>Rumah Sakit per halaman</span>
       </div>
       <div class="pagination-info" id="pg-info"></div>
       <div class="pagination-controls" id="pg-controls"></div>
@@ -940,7 +1031,8 @@ footer{
   </aside>
 
   <!-- Interactive Leaflet Map Companion -->
-  <div id="map-wrap">
+  <div class="map-explore-entry"><span>Temukan rumah sakit melalui peta</span><button class="btn btn-primary" id="open-hospital-map" type="button"><i class="fa-solid fa-map" aria-hidden="true"></i>Jelajahi Peta</button></div>
+  <section id="map-wrap" aria-label="Peta interaktif rumah sakit">
     <div id="map" role="region" aria-label="Peta rumah sakit"></div>
     <div id="route-bar" role="status">
       <div class="rb-info"><small>Rute ke</small><strong id="rb-name"></strong></div>
@@ -949,16 +1041,15 @@ footer{
       <button class="btn btn-ulos" id="rb-clear" type="button" aria-label="Hapus rute">&times;</button>
     </div>
     <div id="map-loading" role="status"><div><span class="spin"></span><span id="map-loading-t">Memuat...</span></div></div>
-  </div>
+  </section>
 </main>
 
 <!-- ============ Footer ============ -->
-<footer>
+<footer id="about">
   <div class="footer-wrap">
     <div class="footer-brand">
       <div class="footer-logo">
-        <span class="logo" style="width:34px;height:34px" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M9.5 3h5v6.5H21v5h-6.5V21h-5v-6.5H3v-5h6.5z"/></svg></span>
-        <span>CariSehat Sumut</span>
+        <img class="brand-image" src="/images/cari-sehat-logo.png?v=2" alt="Cari Sehat" width="190" height="64">
       </div>
       <p class="footer-desc">
         Sistem Informasi Direktori Rumah Sakit Sumatera Utara berbasis arsitektur Web Semantik W3C (RDF/OWL/SPARQL), data geospasial OpenStreetMap, dan basis data PostgreSQL.
@@ -967,10 +1058,10 @@ footer{
     <div class="footer-col">
       <h4>Navigasi Faskes</h4>
       <div class="footer-links">
-        <a href="#explorer">Katalog &amp; Peta RS</a>
-        <a href="#explorer" onclick="$('#seg-kelas button[data-v=\'A\']').click();">RS Kelas A Rujukan</a>
-        <a href="#explorer" onclick="$('#btn-emergency').click();">IGD 24 Jam Terdekat</a>
-        <a href="#explorer" onclick="$('#jenis').value='Khusus';search();">RS Khusus Spesialis</a>
+        <a href="#explorer">Katalog &amp; Peta Rumah Sakit</a>
+        <a href="#explorer" onclick="setClassFilter('A');">Rumah Sakit Kelas A Rujukan</a>
+        <a href="#explorer" onclick="activateEmergencyMode();">IGD 24 Jam Terdekat</a>
+        <a href="#explorer" onclick="$('#jenis').value='Khusus';searchFromControls();">Rumah Sakit Khusus Spesialis</a>
       </div>
     </div>
     <div class="footer-col">
@@ -986,13 +1077,13 @@ footer{
       <h4>Transparansi Data</h4>
       <div class="footer-disclaimer-card">
         <strong>Pemberitahuan Akademik:</strong>
-        Layanan, fasilitas, dan BPJS merupakan inferensi standar Permenkes RI No. 3/2020, bukan verifikasi operasional real-time RS. Reservasi kamar rawat inap murni simulasi basis data PostgreSQL.
+        Layanan, fasilitas, dan BPJS merupakan inferensi standar Permenkes RI No. 3/2020, bukan verifikasi operasional real-time Rumah Sakit. Reservasi kamar rawat inap murni simulasi basis data PostgreSQL.
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>Tugas Besar Web Semantik &amp; MSBD &bull; Kelompok K7 Universitas Sumatera Utara &bull; 2026</span>
-    <span>Peta &copy; Kontributor OpenStreetMap &bull; Linked Data DBpedia.org</span>
+    <span>Tugas Besar Web Semantik &amp; MSBD <span class="text-gap" aria-hidden="true"></span> Kelompok K7 Universitas Sumatera Utara <span class="text-gap" aria-hidden="true"></span> 2026</span>
+    <span>Peta &copy; Kontributor OpenStreetMap <span class="text-gap" aria-hidden="true"></span> Linked Data DBpedia.org</span>
   </div>
 </footer>
 
@@ -1029,7 +1120,7 @@ footer{
   </button>
   <div id="chat-container" role="dialog" aria-label="Asisten CariSehat">
     <div id="chat-header">
-      <span class="av" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#fff"><path d="M9.5 3h5v6.5H21v5h-6.5V21h-5v-6.5H3v-5h6.5z"/></svg></span>
+      <span aria-hidden="true" style="background:white;border-radius:8px;padding:4px;display:flex"><img src="/images/cari-sehat-logo.png?v=2" alt="" width="96" height="33" style="object-fit:contain"></span>
       <span>
         <b>Asisten CariSehat</b>
         <small id="chat-status-label">Web Semantik + AI</small>
@@ -1042,8 +1133,8 @@ footer{
       id="chat-element"
       style="width:100%;border:none;font-family:inherit"
       request='{"url": "/api/chat", "method": "POST"}'
-      introMessage='{"text": "Halo! Saya asisten CariSehat 🏥\n\nSaya bisa membantu kamu menemukan rumah sakit di Sumatera Utara berdasarkan lokasi, kelas, spesialisasi, dan fasilitas.\n\nCoba tanya sesuatu! 👇"}'
-      textInput='{"placeholder": {"text": "Tanya RS, misal: RS kelas A di Medan..."}}'>
+      introMessage='{"text":"Halo! Saya asisten CariSehat\n\nSaya bisa membantu kamu menemukan rumah sakit di Sumatera Utara berdasarkan lokasi, kelas, spesialisasi, dan fasilitas.\n\nCoba tanya sesuatu!"}'
+      textInput='{"placeholder": {"text": "Tanya Rumah Sakit, misal: Rumah Sakit kelas A di Medan..."}}'>
     </deep-chat>
   </div>
 </div>
@@ -1093,7 +1184,7 @@ function goToExplorer(){
   const q = $('#q');
   const hk = typeof $ === 'function' ? $('#hero-kab') : null;
   const k = typeof $ === 'function' ? $('#kab') : null;
-  if(hk && k && hk.value){
+  if(hk && k){
     k.value = hk.value;
   }
   if(hq && q){
@@ -1164,12 +1255,12 @@ L.control.locate({
   locateOptions:{enableHighAccuracy:true}
 }).addTo(map);
 map.on('locationfound', e => { userCoords = [e.latitude, e.longitude]; });
-map.on('locationerror', () => toast('Lokasi tidak dapat ditemukan. Periksa izin GPS browser Anda.', 'err'));
+map.on('locationerror', () => toast('Lokasi tidak dapat ditemukan. Periksa izin GPS browser Anda.','err'));
 
 const legend = L.control({position:'bottomright'});
 legend.onAdd = () => {
   const d = L.DomUtil.create('div', 'legend');
-  d.innerHTML = '<h4>Kelas RS</h4>' + Object.entries(COL).map(([k,c]) =>
+  d.innerHTML = '<h4>Kelas Rumah Sakit</h4>' + Object.entries(COL).map(([k,c]) =>
     `<div><i style="background:${c}"></i><b>${k}</b> <span>${DESC[k]}</span></div>`).join('');
   L.DomEvent.disableClickPropagation(d);
   return d;
@@ -1189,7 +1280,7 @@ async function loadFilterOptions(){
     }
     if(data.layanan && data.layanan.length)
       $('#lay').innerHTML = '<option value="">Semua Layanan Spesialisasi</option>' + data.layanan.map(l => `<option value="${esc(l)}">${esc(l)}</option>`).join('');
-  } catch(e){ toast('Filter wilayah/layanan gagal dimuat. Muat ulang halaman untuk mencoba kembali.', 'err'); }
+  } catch(e){ toast('Filter wilayah/layanan gagal dimuat. Muat ulang halaman untuk mencoba kembali.','err'); }
 }
 
 let ctrl = null;
@@ -1218,9 +1309,22 @@ async function search(){
   } finally { clearTimeout(to); }
   loading = false; progress(false);
   render(true);
+  saveFilterState();
+  checkUrlNavigation();
 }
 
 function hasFilter(){ return !!($('#q').value.trim() || kelas || $('#jenis').value || $('#kab').value || $('#lay').value); }
+
+function setClassFilter(value){
+  kelas = value;
+  $('#kelas').value = value;
+  searchFromControls();
+}
+
+function searchFromControls(){
+  $('#q').value = $('#hero-q').value.trim();
+  search();
+}
 
 function sorted(){
   const a = [...items];
@@ -1239,7 +1343,7 @@ function renderStatus(){
     const total = items.length;
     const totalPages = Math.ceil(total / perPage);
     const info = total > perPage
-      ? `<b>${total}</b> rumah sakit ditemukan — halaman <b>${currentPage}</b>/<b>${totalPages}</b>`
+      ? `<b>${total}</b> rumah sakit ditemukan halaman <b>${currentPage}</b>/<b>${totalPages}</b>`
       : `<b>${total}</b> rumah sakit ditemukan`;
     st.innerHTML = `<span>${info}</span>`;
   }
@@ -1254,26 +1358,11 @@ const emptyArt = '<svg class="art" viewBox="0 0 96 96" fill="none" aria-hidden="
 
 function hospitalPlaceholderSvg(nama, kelas, jenis, foto){
   const c = colorOf(kelas);
-  const cleanName = String(nama || 'RS');
-  const stripped = cleanName.replace(/^(RS\s*Umum\s*Daerah|RS\s*Umum\s*Pusat|RSUD|RSUP|RSU|RSK\s*\w+|RSIA|RSAU|RS\s*Umum|RS\s*Khusus|RS\s*Ibu\s*Dan\s*Anak|RS)\s+/i, '').trim();
-  const words = stripped.replace(/[^a-zA-Z\s]/g, '').trim().split(/\s+/).filter(Boolean);
-  const initials = (words.length >= 2 ? words[0][0] + words[1][0] : (words[0] || 'RS').slice(0, 2)).toUpperCase();
+  const cleanName = String(nama || 'Rumah Sakit');
   const imgTag = foto ? `<img class="card-thumb-img" src="${esc(foto)}" alt="${esc(cleanName)}" loading="lazy">` : '';
   return `<div class="card-thumb" style="--c:${c}">
     <div class="thumb-pattern" aria-hidden="true"></div>
     ${imgTag}
-    <div class="thumb-badge-wrap">
-      <span class="badge" title="${esc(DESC[kelas] || 'Kelas RS')}">Kelas ${esc(kelas || '?')}</span>
-    </div>
-    <div class="thumb-center">
-      <div class="thumb-avatar">
-        <svg viewBox="0 0 24 24" class="thumb-icon" fill="currentColor">
-          <path d="M9.5 3h5v6.5H21v5h-6.5V21h-5v-6.5H3v-5h6.5z"/>
-        </svg>
-        <span class="thumb-init">${esc(initials)}</span>
-      </div>
-      <span class="thumb-label">${esc(jenis || 'Rumah Sakit')}</span>
-    </div>
   </div>`;
 }
 
@@ -1305,18 +1394,15 @@ function render(fit){
         ${hospitalPlaceholderSvg(h.nama, h.kelas, h.jenis, h.foto)}
         <button class="card-main" data-act="select" data-id="${esc(h.id)}">
           <h3 class="card-name">${esc(h.nama)}</h3>
-          <div class="card-meta">
-            <span>${esc(h.jenis)}</span>
-            <span>&bull;</span>
-            <span>📍 ${esc(h.kabkota)}</span>
-            ${h.bpjs ? '<span class="pill-bpjs-mini">✓ BPJS</span>' : ''}
-          </div>
-          <div class="card-addr">${IC.pin}<span>${esc(h.alamat)}</span></div>
-          ${tags}
+          <div class="card-meta">${esc(h.kabkota || 'Wilayah tidak tersedia')}</div>
+          <div class="addr"><span>${esc(h.alamat || 'Alamat belum tersedia')}</span></div>
         </button>
         <div class="card-actions">
-          <button class="btn btn-ghost grow" data-act="select" data-id="${esc(h.id)}" type="button">${IC.info}Lihat Detail</button>
-          ${h.lat != null ? `<button class="btn btn-primary" data-act="route" data-id="${esc(h.id)}" type="button">${IC.route}Rute</button>` : ''}
+          <div class="card-facts">
+            <span>${h.kelas ? `Kelas ${esc(h.kelas)}` : 'Kelas —'}<small>Kelas Rumah Sakit</small></span>
+            <span>${esc(h.jenis || '—')}<small>Jenis Rumah Sakit</small></span>
+          </div>
+          <button class="btn btn-primary" data-act="select" data-id="${esc(h.id)}" type="button">Lihat Detail</button>
         </div>
       </article></li>`;
     }).join('');
@@ -1325,15 +1411,7 @@ function render(fit){
     pgBar.classList.toggle('hidden', all.length <= perPage);
   }
 
-  cluster.clearLayers(); markers = {};
-  items.forEach(h => {
-    if(h.lat == null || h.lon == null) return;
-    const m = L.circleMarker([h.lat, h.lon], {radius:9, color:'#fff', weight:2, fillColor:colorOf(h.kelas), fillOpacity:1});
-    m.bindTooltip(esc(h.nama), {direction:'top', offset:[0,-6]});
-    m.on('click', () => select(h.id, {fromMap:true}));
-    cluster.addLayer(m); markers[h.id] = m;
-  });
-  if(selectedId && markers[selectedId]) styleMarker(selectedId, true);
+  refreshHospitalMarkers();
 
   if(fit && !routingControl){
     const pts = items.filter(h => h.lat != null).map(h => [h.lat, h.lon]);
@@ -1342,12 +1420,65 @@ function render(fit){
   if(!items.find(h => h.id === selectedId)) closeDetail();
 }
 
+function refreshHospitalMarkers(){
+  cluster.clearLayers(); markers = {};
+  items.filter(h => !selectedId || h.id === selectedId).forEach(h => {
+    if(h.lat == null || h.lon == null) return;
+    const m = L.circleMarker([h.lat, h.lon], {radius:9, color:'#fff', weight:2, fillColor:colorOf(h.kelas), fillOpacity:1});
+    m.bindTooltip(esc(h.nama), {direction:'top', offset:[0,-6]});
+    m.on('click', () => select(h.id, {fromMap:true}));
+    cluster.addLayer(m); markers[h.id] = m;
+  });
+  if(selectedId && markers[selectedId]) styleMarker(selectedId, true);
+
+}
+
+function openHospitalMap(){
+  if(document.getElementById('hospital-map-page')) return;
+  const page = document.createElement('section');
+  page.id = 'hospital-map-page'; page.className = 'hospital-map-page';
+  page.setAttribute('aria-label', 'Jelajahi rumah sakit melalui peta');
+  page.innerHTML = `<aside class="hospital-map-sidebar"><button type="button" class="btn btn-ghost" id="hospital-map-back">${IC.back}Kembali</button><h2>Peta Rumah Sakit</h2><p id="hospital-map-count" role="status"></p><input id="hospital-map-search" type="search" placeholder="Cari nama atau wilayah" aria-label="Cari rumah sakit di peta"><div id="hospital-map-list"></div></aside><div id="hospital-map-canvas" aria-label="Peta persebaran rumah sakit"></div>`;
+  document.body.appendChild(page);
+  const browseMap = L.map('hospital-map-canvas').setView([3.5,98.6],8);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(browseMap);
+  const group = L.markerClusterGroup().addTo(browseMap);
+  let pins = {};
+  const card = (h, popup=false) => `<article class="map-hospital-card">${h.foto ? `<img src="${esc(h.foto)}" alt="${esc(h.nama)}" loading="lazy">` : ''}<h3>${esc(h.nama)}</h3><p>${esc(h.kabkota || 'Wilayah belum tersedia')}</p><p>Kelas ${esc(h.kelas || 'belum tersedia')}</p><div class="map-hospital-actions">${!popup && h.lat != null && h.lon != null ? `<button class="btn btn-ghost" type="button" data-map-focus="${esc(h.id)}">Lihat di peta</button>` : ''}<button class="btn btn-primary" type="button" data-map-detail="${esc(h.id)}">Lihat Detail</button></div></article>`;
+  function renderMapList(){
+    const query = document.getElementById('hospital-map-search').value.trim().toLocaleLowerCase('id');
+    const hospitals = items.filter(h => `${h.nama} ${h.kabkota || ''}`.toLocaleLowerCase('id').includes(query));
+    group.clearLayers(); pins = {};
+    document.getElementById('hospital-map-count').textContent = `${hospitals.length} rumah sakit dalam hasil pencarian`;
+    document.getElementById('hospital-map-list').innerHTML = hospitals.length ? hospitals.map(h=>card(h)).join('') : '<p>Tidak ada rumah sakit yang sesuai.</p>';
+    hospitals.forEach(h => {
+      if(h.lat == null || h.lon == null) return;
+      const pin = L.marker([h.lat,h.lon]);
+      pin.bindPopup(card(h,true),{maxWidth:280,minWidth:230});
+      group.addLayer(pin); pins[h.id] = pin;
+    });
+    if(group.getLayers().length) browseMap.fitBounds(group.getBounds(),{padding:[35,35],maxZoom:13});
+  }
+  const close = () => { browseMap.remove(); page.remove(); document.getElementById('open-hospital-map').focus(); };
+  page.querySelector('#hospital-map-back').onclick = close;
+  page.querySelector('#hospital-map-search').addEventListener('input',renderMapList);
+  page.addEventListener('click', event => {
+    const focus = event.target.closest('[data-map-focus]');
+    if(focus){const pin=pins[focus.dataset.mapFocus];if(pin) group.zoomToShowLayer(pin,()=>pin.openPopup());}
+    const detail = event.target.closest('[data-map-detail]');
+    if(detail){const id=detail.dataset.mapDetail;close();select(id);}
+  });
+  page.addEventListener('keydown',event=>{if(event.key==='Escape')close();});
+  renderMapList();
+  page.querySelector('#hospital-map-back').focus();
+}
+
 function renderPagination(total, totalPages){
   const info = $('#pg-info');
   const controls = $('#pg-controls');
   const start = (currentPage - 1) * perPage + 1;
   const end = Math.min(currentPage * perPage, total);
-  info.innerHTML = `Menampilkan <b>${start}–${end}</b> dari <b>${total}</b> RS`;
+  info.innerHTML = `Menampilkan <b>${start}–${end}</b> dari <b>${total}</b> Rumah Sakit`;
 
   // Bangun tombol halaman
   const btns = [];
@@ -1400,11 +1531,24 @@ function select(id, opt = {}){
   const h = items.find(x => x.id === id);
   if(!h) return;
   if(selectedId && selectedId !== id) styleMarker(selectedId, false);
-  selectedId = id; styleMarker(id, true);
+  if(selectedId !== id) clearRoute();
+  selectedId = id;
+  refreshHospitalMarkers();
   document.querySelectorAll('.card').forEach(c => c.classList.toggle('on', c.dataset.id === id));
   if(opt.fromMap){
     const c = document.querySelector(`.card[data-id="${CSS.escape(id)}"]`);
     if(c) c.scrollIntoView({block:'nearest', behavior:'smooth'});
+  }
+
+  if(!opt.fromHistory && !opt.skipHistory){
+    const targetHash = `#/rs/${encodeURIComponent(id)}`;
+    if(window.location.hash !== targetHash){
+      try{
+        history.pushState({ view: 'detail', id: id }, '', targetHash);
+      }catch(_){
+        window.location.hash = targetHash;
+      }
+    }
   }
 
   const tags = a => (a || []).map(x => `<span class="chip lay">${esc(x)}</span>`).join('');
@@ -1414,32 +1558,42 @@ function select(id, opt = {}){
   const d = $('#detail');
   d.style.setProperty('--c', colorOf(h.kelas));
 
+  // Preserve the Leaflet container before replacing the detail content.
+  const existingMapWrap = document.getElementById('map-wrap');
+  if(existingMapWrap && d.contains(existingMapWrap)) existingMapWrap.remove();
   d.innerHTML = `
     <div class="d-sheet" role="dialog" aria-modal="true" aria-labelledby="d-title">
       <div class="d-head">
-        <button class="d-back" id="d-back" type="button" aria-label="Tutup panel detail">${IC.back}<span>Kembali ke katalog</span></button>
-        <nav class="d-crumb" aria-label="Breadcrumb">
-          <a href="#" onclick="closeDetail();return false;">Beranda</a>
-          <span class="sep">/</span>
-          <span>${esc(h.kabkota)}</span>
-          <span class="sep">/</span>
-          <span class="active">${esc(h.nama)}</span>
-        </nav>
+        <div class="d-head-inner">
+          <a class="brand" href="#home" onclick="navigateBackFromDetail();" aria-label="CariSehat, Beranda">
+            <img class="brand-image" src="/images/cari-sehat-logo.png" alt="Cari Sehat" width="190" height="64">
+          </a>
+          <nav class="d-site-nav" aria-label="Navigasi utama">
+            <a href="#home" onclick="navigateBackFromDetail();">Beranda</a>
+            <a href="#explorer" aria-current="page" onclick="navigateBackFromDetail();">Cari Rumah Sakit</a>
+            <a href="#map-wrap" onclick="navigateBackFromDetail();">Peta</a>
+            <a href="#about" onclick="navigateBackFromDetail();">Tentang</a>
+          </nav>
+          <button class="btn-ask" id="d-ask-chat" type="button" aria-expanded="false" aria-controls="chat-container">Tanya CariSehat</button>
+          <button class="d-back" id="d-back" type="button" aria-label="Kembali ke katalog rumah sakit">${IC.back}<span>Kembali</span></button>
+        </div>
       </div>
 
       <div class="d-body">
+        <div class="d-body-inner">
         <!-- Hero Header -->
         <div class="d-hero">
+          ${renderHospitalGallery(h)}
           <div class="d-hero-top">
             <div class="d-pills">
-              <span class="badge" title="${esc(DESC[h.kelas] || 'Kelas RS')}">Kelas ${esc(h.kelas || '?')}</span>
-              <span class="pill">🏥 ${esc(h.jenis)}</span>
-              ${h.bpjs ? '<span class="pill pill-bpjs">✓ Menerima BPJS Kesehatan</span>' : '<span class="pill pill-warn">⚠️ Konfirmasi BPJS ke RS</span>'}
+              <span class="badge" title="${esc(DESC[h.kelas] || 'Kelas Rumah Sakit')}">Kelas ${esc(h.kelas || '?')}</span>
+              <span class="pill"><i class="fa-solid fa-hospital" aria-hidden="true"></i> ${esc(h.jenis)}</span>
+              ${h.bpjs ? '<span class="pill pill-bpjs">Menerima BPJS Kesehatan</span>' : '<span class="pill pill-warn"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Konfirmasi BPJS ke Rumah Sakit</span>'}
             </div>
             <h2 id="d-title">${esc(h.nama)}</h2>
-            <p class="d-hero-sub">📍 ${esc(h.kabkota)}, Provinsi Sumatera Utara</p>
+            <p class="d-hero-sub"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> ${esc(h.kabkota)}, Provinsi Sumatera Utara</p>
           </div>
-          ${(h.galeri && h.galeri.length) ? `<div class="d-gallery">${h.galeri.map((src, idx) => `<img class="card-thumb-img-detail" src="${esc(src)}" alt="Foto ${idx + 1} ${esc(h.nama)}" loading="lazy">`).join('')}</div>` : ''}
+
           <div class="d-hero-actions">
             ${h.lat != null ? `<button class="btn btn-primary" data-act="route" data-id="${esc(h.id)}" type="button">${IC.route}Petunjuk Rute Cepat</button>` : ''}
             ${tel ? `<a class="btn btn-ghost" href="${esc(tel)}">${IC.phone}Hubungi Hotline</a>` : ''}
@@ -1449,17 +1603,19 @@ function select(id, opt = {}){
 
         <!-- Sticky Quick Navigation -->
         <div class="d-quicknav">
-          <a href="#sec-profil" class="d-navpill active">📋 Profil</a>
-          <a href="#sec-layanan" class="d-navpill">🩺 Layanan &amp; Fasilitas</a>
-          <a href="#sec-booking" class="d-navpill">🛏️ Reservasi Kamar</a>
-          <a href="#sec-semantik" class="d-navpill">🌐 Web Semantik</a>
-          <a href="#sec-lokasi" class="d-navpill">📍 Lokasi Peta</a>
+          <a href="#sec-profil" class="d-navpill active" aria-current="location"><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i> Profil</a>
+          <a href="#sec-layanan" class="d-navpill"><i class="fa-solid fa-stethoscope" aria-hidden="true"></i> Layanan &amp; Fasilitas</a>
+          <a href="#sec-booking" class="d-navpill">Booking Simulasi</a>
+          <a href="#sec-semantik" class="d-navpill">Web Semantik</a>
+          <a href="#sec-lokasi" class="d-navpill">Lokasi Peta</a>
         </div>
 
+        <div class="d-detail-grid">
+          <div class="d-main-column">
         <!-- Section 1: Profil & Informasi Umum -->
         <section id="sec-profil" class="d-card">
           <div class="d-card-head">
-            <h3>📋 Profil &amp; Informasi Rumah Sakit</h3>
+            <h3><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i> Profil &amp; Informasi Rumah Sakit</h3>
             <span class="d-card-badge">Data Master Faskes</span>
           </div>
           <div class="info-grid">
@@ -1467,29 +1623,20 @@ function select(id, opt = {}){
               ${IC.building}
               <div>
                 <small>Klasifikasi &amp; Tipe</small>
-                <strong>Kelas ${esc(h.kelas || 'Belum terklasifikasi')} &bull; RS ${esc(h.jenis)}</strong>
+                <strong>Kelas ${esc(h.kelas || 'Belum terklasifikasi')} <span class="text-gap" aria-hidden="true"></span> Rumah Sakit ${esc(h.jenis)}</strong>
               </div>
             </div>
-            <div class="info-item">
-              ${IC.pin}
-              <div>
-                <small>Alamat Lengkap</small>
-                <span>${esc(h.alamat)}</span>
-              </div>
-            </div>
-            ${h.telepon ? `<div class="info-item">${IC.phone}<div><small>Nomor Telepon</small><a href="${esc(tel)}">${esc(h.telepon)}</a></div></div>` : ''}
-            ${h.website ? `<div class="info-item">${IC.web}<div><small>Website Resmi</small><a href="${esc(h.website)}" target="_blank" rel="noopener">${esc(h.website)}</a></div></div>` : ''}
           </div>
           <div class="d-note-box" style="margin-top:1rem">
             <svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>
-            <p>Data profil bersumber dari master data Kemenkes RI dan Dinas Kesehatan Sumatera Utara. Untuk jadwal poli dan dokter spesialis, silakan hubungi kontak resmi rumah sakit.</p>
+            <p>Informasi ditampilkan sesuai data katalog yang tersedia. Untuk jadwal poli, dokter, dan informasi terkini, silakan konfirmasi langsung kepada rumah sakit.</p>
           </div>
         </section>
 
         <!-- Section 2: Layanan & Fasilitas -->
         <section id="sec-layanan" class="d-card">
           <div class="d-card-head">
-            <h3>🩺 Layanan Spesialisasi &amp; Fasilitas Medis</h3>
+            <h3><i class="fa-solid fa-stethoscope" aria-hidden="true"></i> Layanan Spesialisasi &amp; Fasilitas Medis</h3>
             <span class="d-card-badge">Permenkes 3/2020</span>
           </div>
           <div class="sec-group">
@@ -1502,14 +1649,14 @@ function select(id, opt = {}){
           </div>
           <div class="d-note-box" style="margin-top:1rem">
             <svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>
-            <p><strong>Catatan Verifikasi:</strong> Daftar layanan dan fasilitas di atas ditranslasikan secara inferensial dari Standar Pelayanan Minimal Rumah Sakit (Permenkes RI No. 3 Tahun 2020) berdasarkan klasifikasi kelas faskes.</p>
+            <p>Data layanan dan fasilitas dapat terbatas atau diturunkan dari jenis rumah sakit. Konfirmasikan ketersediaan layanan secara langsung kepada rumah sakit.</p>
           </div>
         </section>
 
         <!-- Section 3: Reservasi Kamar Rawat Inap (Simulasi) -->
         <section id="sec-booking" class="d-card">
           <div class="d-card-head">
-            <h3>🛏️ Reservasi Kamar Rawat Inap</h3>
+            <h3><i class="fa-solid fa-bed" aria-hidden="true"></i> Reservasi Kamar Rawat Inap</h3>
             <span class="d-card-badge sim-badge">Simulasi PostgreSQL</span>
           </div>
           <div class="sim-banner">
@@ -1540,14 +1687,14 @@ function select(id, opt = {}){
             <label>Catatan Medis Khusus / Kebutuhan (Opsional)
               <textarea name="catatan" placeholder="Contoh: Memerlukan kursi roda, riwayat alergi..." rows="2"></textarea>
             </label>
-            <button type="submit" class="btn btn-primary btn-submit-booking">🛏️ Konfirmasi Reservasi Kamar (Simulasi)</button>
+            <button type="submit" class="btn btn-primary btn-submit-booking"><i class="fa-solid fa-bed" aria-hidden="true"></i> Konfirmasi Reservasi Kamar (Simulasi)</button>
           </form>
           <div id="booking-result" style="display:none;margin-top:.9rem"></div>
 
           <hr class="d-sep">
 
           <div class="check-booking-box">
-            <h4>🔍 Cek Status Kode Pemesanan</h4>
+            <h4><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Cek Status Kode Pemesanan</h4>
             <p class="none" style="font-size:.82rem;margin-bottom:.6rem">Sudah pernah membuat reservasi simulasi? Masukkan kode booking untuk mengecek data.</p>
             <form onsubmit="cekBooking(event)" class="check-booking-form">
               <input name="kode_cek" placeholder="Masukkan kode (contoh: BK-20261117-XXXXXXXX)" required>
@@ -1557,10 +1704,28 @@ function select(id, opt = {}){
           </div>
         </section>
 
+          </div>
+          <aside class="d-side-column">
+            <section id="sec-contact" class="d-card">
+              <div class="d-card-head"><h3>Informasi Kontak</h3></div>
+              <div class="info-grid">
+                <div class="info-item">${IC.pin}<div><small>Alamat</small><span>${esc(h.alamat || 'Alamat belum tersedia')}</span></div></div>
+                ${h.telepon ? `<div class="info-item">${IC.phone}<div><small>Telepon</small><a href="${esc(tel)}">${esc(h.telepon)}</a></div></div>` : ''}
+                ${h.website ? `<div class="info-item">${IC.web}<div><small>Website</small><a href="${esc(h.website)}" target="_blank" rel="noopener">Kunjungi situs resmi</a></div></div>` : ''}
+              </div>
+              ${h.lat != null ? `<button class="btn btn-primary side-action" data-act="route" data-id="${esc(h.id)}" type="button">${IC.route}Lihat Rute di Peta</button>` : ''}
+            </section>
+
+            <section class="d-card side-promo">
+              <div class="d-card-head"><h3>Booking Simulasi</h3></div>
+              <p>Simulasi pemesanan kamar rawat inap untuk keperluan akademik.</p>
+              <a class="btn btn-ghost side-action" href="#sec-booking">Booking Sekarang</a>
+            </section>
+
         <!-- Section 4: Web Semantik & Linked Data -->
         <section id="sec-semantik" class="d-card">
           <div class="d-card-head">
-            <h3>🌐 Integrasi Web Semantik &amp; Linked Data</h3>
+            <h3><i class="fa-solid fa-globe" aria-hidden="true"></i> Integrasi Web Semantik &amp; Linked Data</h3>
             <span class="d-card-badge">W3C 5-Star LOD</span>
           </div>
           <p class="none" style="font-size:.86rem;margin-bottom:.9rem">Data rumah sakit ini dimodelkan dalam ontologi RDF/OWL dan terhubung ke ekosistem Linked Open Data global (DBpedia, W3C, Schema.org).</p>
@@ -1573,11 +1738,12 @@ function select(id, opt = {}){
           </div>
           <div id="city-info-box" style="display:none;margin-top:.9rem;padding:1rem;background:#F0FDFA;border:1px solid #99F6E4;border-radius:12px;font-size:.86rem;color:#0F766E"></div>
         </section>
+          </aside>
 
         <!-- Section 5: Lokasi & Akses -->
         <section id="sec-lokasi" class="d-card">
           <div class="d-card-head">
-            <h3>📍 Lokasi Spasial &amp; Rute</h3>
+            <h3><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Lokasi Spasial &amp; Rute</h3>
             <span class="d-card-badge">OpenStreetMap / OSRM</span>
           </div>
           <div class="info-grid">
@@ -1599,16 +1765,37 @@ function select(id, opt = {}){
           <div id="detail-map-host"></div>
           ${h.lat != null ? `
           <div style="display:flex;gap:.6rem;margin-top:1rem;flex-wrap:wrap">
-            <button class="btn btn-primary" data-act="route" data-id="${esc(h.id)}" type="button">${IC.route}Panduan Rute ke RS Ini</button>
+            <button class="btn btn-primary" data-act="route" data-id="${esc(h.id)}" type="button">${IC.route}Panduan Rute ke Rumah Sakit Ini</button>
             <a class="btn btn-ghost" href="https://www.openstreetmap.org/?mlat=${h.lat}&mlon=${h.lon}#map=17/${h.lat}/${h.lon}" target="_blank" rel="noopener">${IC.web}Buka di OpenStreetMap</a>
           </div>` : ''}
+          ${h.lat != null ? `<div class="route-mode-picker" role="group" aria-label="Pilih moda perjalanan">
+            <button class="route-mode" data-route-mode="driving" data-id="${esc(h.id)}" type="button"><i class="fa-solid fa-car" aria-hidden="true"></i> Mobil</button>
+            <button class="route-mode" data-route-mode="foot" data-id="${esc(h.id)}" type="button"><i class="fa-solid fa-person-walking" aria-hidden="true"></i> Jalan kaki</button>
+            <button class="route-mode" data-route-mode="motorcycle" data-id="${esc(h.id)}" type="button"><i class="fa-solid fa-motorcycle" aria-hidden="true"></i> Motor Google Maps</button>
+            <span class="route-mode-note">Mobil dan jalan kaki dihitung di sini; jarak, waktu, dan langkah tampil setelah GPS diizinkan.</span>
+          </div>` : ''}
         </section>
+        </div>
+        </div>
       </div>
     </div>`;
 
   d.classList.add('show');
+  d.querySelectorAll('.d-navpill').forEach(tab => {
+    tab.onclick = event => {
+      event.preventDefault();
+      d.querySelectorAll('.d-navpill').forEach(item => {
+        item.classList.toggle('active', item === tab);
+        if(item === tab) item.setAttribute('aria-current', 'location');
+        else item.removeAttribute('aria-current');
+      });
+      const target = d.querySelector(tab.getAttribute('href'));
+      if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+    };
+  });
+  initHospitalGallery(d);
   const mapHost = document.getElementById('detail-map-host');
-  const mapWrap = document.getElementById('map-wrap');
+  const mapWrap = existingMapWrap || document.getElementById('map-wrap');
   if(mapHost && mapWrap){
     if(h.lat != null && h.lon != null){
       mapWrap.style.display = 'block';
@@ -1619,7 +1806,8 @@ function select(id, opt = {}){
       }, 250);
     } else {
       mapWrap.style.display = 'none';
-      mapHost.innerHTML = '<p class="none" style="margin-top:.8rem">📍 Koordinat peta belum tersedia untuk faskes ini.</p>';
+      document.querySelector('main').appendChild(mapWrap);
+      mapHost.innerHTML = '<p class="none" style="margin-top:.8rem"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Koordinat peta belum tersedia untuk faskes ini.</p>';
     }
   }
 }
@@ -1633,7 +1821,7 @@ async function loadCityInfo(kabkota){
     const res = await fetch(`/api/external/city/${encodeURIComponent(kabkota)}`);
     const data = await res.json();
     if(data.status === 'ok' && data.abstract){
-      box.innerHTML = `<strong>🌐 Data Eksternal DBpedia:</strong><p style="margin:.4rem 0">${esc(data.abstract.slice(0, 240))}...</p><a href="${esc(data.dbpedia_resource)}" target="_blank" rel="noopener" style="font-size:.78rem;font-weight:700">Lihat Resource DBpedia &rarr;</a>`;
+      box.innerHTML = `<strong><i class="fa-solid fa-globe" aria-hidden="true"></i> Data Eksternal DBpedia:</strong><p style="margin:.4rem 0">${esc(data.abstract.slice(0, 240))}...</p><a href="${esc(data.dbpedia_resource)}" target="_blank" rel="noopener" style="font-size:.78rem;font-weight:700">Lihat Resource DBpedia &rarr;</a>`;
     } else {
       box.innerHTML = 'Data eksternal DBpedia untuk wilayah ini belum tersedia.';
     }
@@ -1649,7 +1837,7 @@ async function submitBooking(e, kode_rs, nama_rs){
   const form = e.target;
   const btn = form.querySelector('button[type="submit"]');
   if(btn.disabled) return;
-  btn.disabled = true; btn.textContent = '⏳ Memproses...';
+  btn.disabled = true; btn.textContent =' Memproses...';
 
   const data = {
     kode_rs, nama_rs,
@@ -1679,17 +1867,17 @@ async function submitBooking(e, kode_rs, nama_rs){
     const box = $('#booking-result');
     box.style.display = 'block';
     box.innerHTML = `<div style="background:#E8F5E9;border:1px solid #059669;border-radius:10px;padding:1rem">
-      <strong style="color:#059669">✅ Pemesanan Berhasil!</strong>
+      <strong style="color:#059669">Pemesanan Berhasil!</strong>
       <p style="margin:.4rem 0;font-size:.88rem">Kode Booking: <strong style="font-size:1.1rem;letter-spacing:1px">${esc(result.kode_booking)}</strong></p>
-      <p style="margin:.2rem 0;font-size:.82rem">Kamar: ${esc(result.jenis_kamar)} &bull; Masuk: ${result.tanggal_masuk}</p>
-      <p style="margin:.4rem 0 0;font-size:.8rem;color:#64748B">Status: <em>Tercatat untuk simulasi; tidak dikirim ke RS</em>. Simpan kode booking Anda.</p>
+      <p style="margin:.2rem 0;font-size:.82rem">Kamar: ${esc(result.jenis_kamar)} <span class="text-gap" aria-hidden="true"></span> Masuk: ${result.tanggal_masuk}</p>
+      <p style="margin:.4rem 0 0;font-size:.8rem;color:#64748B">Status: <em>Tercatat untuk simulasi; tidak dikirim ke Rumah Sakit</em>. Simpan kode booking Anda.</p>
     </div>`;
     form.reset();
     bookingOperations.delete(form);
   } catch(err) {
-    toast('Gagal membuat booking: ' + err.message, 'err');
+    toast('Gagal membuat booking:' + err.message,'err');
   } finally {
-    btn.disabled = false; btn.textContent = '🛏️ Konfirmasi Reservasi Kamar (Simulasi)';
+    btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-bed" aria-hidden="true"></i> Konfirmasi Reservasi Kamar (Simulasi)';
   }
 }
 
@@ -1703,19 +1891,19 @@ async function cekBooking(e){
   try {
     const res = await fetch(`/api/booking/${encodeURIComponent(kode)}`);
     if(res.status === 404){
-      box.innerHTML = '<p style="color:#BE123C;font-size:.85rem">❌ Kode booking tidak ditemukan.</p>';
+      box.innerHTML = '<p style="color:#BE123C;font-size:.85rem"><i class="fa-solid fa-circle-xmark" aria-hidden="true"></i> Kode booking tidak ditemukan.</p>';
       return;
     }
     if(!res.ok) { const err = await res.json(); throw new Error(err.detail || 'Gagal mengambil data'); }
     const b = await res.json();
     const statusColor = b.status === 'dikonfirmasi' ? '#059669' : b.status === 'dibatalkan' ? '#BE123C' : '#D97706';
-    const statusIcon = b.status === 'dikonfirmasi' ? '✅' : b.status === 'dibatalkan' ? '❌' : '⏳';
+    const statusIcon = b.status === 'dikonfirmasi' ? '' : b.status === 'dibatalkan' ? '<i class="fa-solid fa-circle-xmark" aria-hidden="true"></i>' : '<i class="fa-solid fa-clock" aria-hidden="true"></i>';
     box.innerHTML = `<div style="background:#F8FAFC;border:1px solid var(--line);border-radius:10px;padding:.8rem;font-size:.85rem">
       <strong>${statusIcon} Booking ${esc(b.kode_booking)}</strong>
       <div style="margin-top:.4rem;display:grid;gap:.2rem">
-        <span>👤 ${esc(b.nama_pasien)} &bull; 📞 ${esc(b.no_telp)}</span>
-        <span>🏥 ${esc(b.nama_rs)}</span>
-        <span>🛏️ ${esc(b.jenis_kamar)} &bull; 📅 Masuk: ${b.tanggal_masuk}</span>
+        <span><i class="fa-solid fa-user" aria-hidden="true"></i> ${esc(b.nama_pasien)} <span class="text-gap" aria-hidden="true"></span> <i class="fa-solid fa-phone" aria-hidden="true"></i> ${esc(b.no_telp)}</span>
+        <span><i class="fa-solid fa-hospital" aria-hidden="true"></i> ${esc(b.nama_rs)}</span>
+        <span><i class="fa-solid fa-bed" aria-hidden="true"></i> ${esc(b.jenis_kamar)} <span class="text-gap" aria-hidden="true"></span> <i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Masuk: ${b.tanggal_masuk}</span>
         <span style="color:${statusColor};font-weight:600">Status: ${b.status.charAt(0).toUpperCase() + b.status.slice(1)}</span>
       </div>
       ${b.status === 'menunggu' ? `<button class="btn btn-ghost" style="margin-top:.5rem;color:#BE123C;border-color:#BE123C" data-act="cancel-booking" data-code="${esc(b.kode_booking)}">Batalkan Booking</button>` : ''}
@@ -1730,11 +1918,11 @@ async function batalBooking(kode){
   try {
     const res = await fetch(`/api/booking/${encodeURIComponent(kode)}`, {method:'DELETE'});
     if(!res.ok) { const err = await res.json(); throw new Error(err.detail || 'Gagal membatalkan'); }
-    toast('Booking berhasil dibatalkan', 'ok');
+    toast('Booking berhasil dibatalkan','ok');
     const box = $('#cek-booking-result');
     if(box) { box.style.display = 'none'; }
   } catch(err){
-    toast('Gagal membatalkan: ' + err.message, 'err');
+    toast('Gagal membatalkan:' + err.message,'err');
   }
 }
 
@@ -1871,13 +2059,13 @@ function haversine(lat1, lon1, lat2, lon2){
 }
 
 function activateEmergencyMode(){
-  toast('🚨 Mode Darurat diaktifkan: Mencari RS terdekat dengan IGD 24 Jam...', 'warn');
+  toast(' Mode Darurat diaktifkan: Mencari Rumah Sakit terdekat dengan IGD 24 Jam...','warn');
   const doSearch = (userLat, userLon) => {
     const candidates = items.filter(h => h.lat != null && h.lon != null && (
       (h.layanan && h.layanan.some(l => /igd|gawat darurat|ugd/i.test(l))) ||
       (h.fasilitas && h.fasilitas.some(f => /gawat darurat|ambulans/i.test(f)))
     ));
-    if(!candidates.length) return toast('Tidak ada RS ber-IGD yang ditemukan di dataset.', 'err');
+    if(!candidates.length) return toast('Tidak ada Rumah Sakit ber-IGD yang ditemukan di dataset.','err');
 
     const withDist = candidates.map(h => ({
       ...h,
@@ -1885,7 +2073,7 @@ function activateEmergencyMode(){
     })).sort((a,b) => a.distKm - b.distKm);
 
     const terdekat = withDist[0];
-    toast(`🚨 RS Terdekat: ${terdekat.nama} (${terdekat.distKm.toFixed(1)} km). Membuka navigasi rute...`);
+    toast(` Rumah Sakit Terdekat: ${terdekat.nama} (${terdekat.distKm.toFixed(1)} km). Membuka navigasi rute...`);
     select(terdekat.id);
     setTimeout(() => {
       const sec = document.getElementById('sec-lokasi');
@@ -1897,32 +2085,153 @@ function activateEmergencyMode(){
   if(userCoords) {
     doSearch(userCoords[0], userCoords[1]);
   } else {
-    if(!navigator.geolocation) return toast('Browser Anda tidak mendukung deteksi lokasi.', 'err');
+    if(!navigator.geolocation) return toast('Browser Anda tidak mendukung deteksi lokasi.','err');
     navigator.geolocation.getCurrentPosition(
       pos => {
         userCoords = [pos.coords.latitude, pos.coords.longitude];
         doSearch(userCoords[0], userCoords[1]);
       },
       err => {
-        toast('Gagal mendeteksi lokasi GPS. Harap izinkan akses lokasi di browser Anda.', 'err');
+        toast('Gagal mendeteksi lokasi GPS. Harap izinkan akses lokasi di browser Anda.','err');
       },
       { enableHighAccuracy: true, timeout: 10000 }
     );
   }
 }
 
-function closeDetail(){
+let stopHospitalGallery = () => {};
+function renderHospitalGallery(h){
+  const photos = [...new Set([...(h.galeri || []), h.foto].filter(Boolean))];
+  if(!photos.length) return '';
+  return `<div class="hospital-carousel" aria-label="Galeri foto rumah sakit"><div class="hospital-slides" tabindex="0" aria-label="Geser foto atau gunakan tombol panah">${photos.map((src,i)=>`<img src="${esc(src)}" alt="Foto ${i+1} ${esc(h.nama)}" loading="${i ? 'lazy' : 'eager'}">`).join('')}</div>${photos.length>1 ? `<div class="carousel-controls"><button type="button" data-slide="-1" aria-label="Foto sebelumnya">&#10094;</button><output>1 / ${photos.length}</output><button type="button" data-slide="1" aria-label="Foto berikutnya">&#10095;</button></div>` : ''}</div>`;
+}
+function initHospitalGallery(root){
+  stopHospitalGallery();
+  const track = root.querySelector('.hospital-slides');
+  if(!track || track.children.length < 2) return;
+  const gallery = track.parentElement, count = track.children.length;
+  let timer, index=0;
+  const advance = delta => {index=(index+delta+count)%count;track.scrollTo({left:track.clientWidth*index,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});};
+  const restart = () => {clearInterval(timer);timer=setInterval(()=>{if(!document.hidden && root.classList.contains('show')) advance(1)},4000)};
+  gallery.querySelectorAll('[data-slide]').forEach(b=>b.onclick=()=>{advance(Number(b.dataset.slide));restart()});
+  track.addEventListener('scroll',()=>{index=Math.round(track.scrollLeft/track.clientWidth);gallery.querySelector('output').textContent=`${index+1} / ${count}`},{passive:true});
+  track.addEventListener('pointerdown',()=>clearInterval(timer));
+  track.addEventListener('pointerup',restart);
+  track.addEventListener('pointercancel',restart);
+  track.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();advance(e.key==='ArrowRight'?1:-1);restart()}});
+  restart();stopHospitalGallery=()=>clearInterval(timer);
+}
+
+let isPopstateNavigating = false;
+
+function closeDetail(opt = {}){
+  stopHospitalGallery();
   $('#detail').classList.remove('show');
   if(selectedId) styleMarker(selectedId, false);
   selectedId = null;
+  refreshHospitalMarkers();
   document.querySelectorAll('.card.on').forEach(c => c.classList.remove('on'));
   clearRoute();
   const mw = document.getElementById('map-wrap');
   if(mw){
-    document.body.appendChild(mw);
-    mw.style.display = 'none';
+    document.querySelector('main').appendChild(mw);
+    mw.style.display = 'block';
+  }
+  if(!opt.skipHistory && !isPopstateNavigating && window.location.hash && /rs/i.test(window.location.hash)){
+    try{
+      const cleanUrl = window.location.pathname + (window.location.search || '');
+      history.replaceState(null, '', cleanUrl);
+    }catch(_){}
   }
 }
+
+function navigateBackFromDetail(){
+  const hadDetailState = Boolean(window.history.state && window.history.state.view === 'detail');
+  closeDetail({ skipHistory: hadDetailState });
+  if(hadDetailState && window.history.length > 1){
+    window.history.back();
+  } else {
+    try{
+      const cleanUrl = window.location.pathname + (window.location.search || '');
+      history.replaceState(null, '', cleanUrl);
+    }catch(_){}
+  }
+}
+
+function saveFilterState(){
+  try{
+    const state = {
+      q: $('#q')?.value || '',
+      kab: $('#kab')?.value || '',
+      kelas: kelas || '',
+      lay: $('#lay')?.value || '',
+      jenis: $('#jenis')?.value || '',
+      sort: sortBy || '',
+      page: currentPage || 1,
+      perPage: perPage || 20
+    };
+    sessionStorage.setItem('carisehat_filter_ctx', JSON.stringify(state));
+  }catch(_){}
+}
+
+function restoreFilterState(){
+  try{
+    const raw = sessionStorage.getItem('carisehat_filter_ctx');
+    if(!raw) return false;
+    const s = JSON.parse(raw);
+    let changed = false;
+    if(s.q && $('#q')) { $('#q').value = s.q; if($('#hero-q')) $('#hero-q').value = s.q; changed = true; }
+    if(s.kab && $('#kab')) { $('#kab').value = s.kab; changed = true; }
+    if(s.kelas) { kelas = s.kelas; if($('#kelas')) $('#kelas').value = s.kelas; changed = true; }
+    if(s.lay && $('#lay')) { $('#lay').value = s.lay; changed = true; }
+    if(s.jenis && $('#jenis')) { $('#jenis').value = s.jenis; changed = true; }
+    if(s.sort && $('#sort')) { sortBy = s.sort; $('#sort').value = s.sort; changed = true; }
+    if(s.page) currentPage = s.page;
+    if(s.perPage && $('#per-page')) { perPage = s.perPage; $('#per-page').value = String(s.perPage); }
+    return changed;
+  }catch(_){ return false; }
+}
+
+let initialNavChecked = false;
+function checkUrlNavigation(){
+  if(initialNavChecked) return;
+  const hash = window.location.hash || '';
+  const searchParams = new URLSearchParams(window.location.search);
+  const qRs = searchParams.get('rs') || searchParams.get('detail') || searchParams.get('id');
+  const hashMatch = hash.match(/^#\/?rs[\/-]([a-zA-Z0-9-]+)/) || hash.match(/^#detail[\/-]([a-zA-Z0-9-]+)/) || hash.match(/^#(rs-[a-zA-Z0-9-]+)/);
+  const targetId = qRs || (hashMatch ? hashMatch[1] : null);
+  if(targetId && items && items.length){
+    const found = items.find(x => x.id === targetId);
+    if(found){
+      initialNavChecked = true;
+      try{
+        history.replaceState({ view: 'catalog' }, '', window.location.pathname + (window.location.search || ''));
+        history.pushState({ view: 'detail', id: targetId }, '', `#/rs/${targetId}`);
+      }catch(_){}
+      select(targetId, { skipHistory: true });
+    }
+  }
+}
+
+window.addEventListener('popstate', () => {
+  isPopstateNavigating = true;
+  try{
+    const hash = window.location.hash || '';
+    const match = hash.match(/^#\/?rs[\/-]([a-zA-Z0-9-]+)/) || hash.match(/^#detail[\/-]([a-zA-Z0-9-]+)/) || hash.match(/^#(rs-[a-zA-Z0-9-]+)/);
+    if(match){
+      const id = match[1];
+      if(id !== selectedId){
+        select(id, { fromHistory: true });
+      }
+    } else {
+      if($('#detail') && $('#detail').classList.contains('show')){
+        closeDetail({ skipHistory: true });
+      }
+    }
+  }finally{
+    isPopstateNavigating = false;
+  }
+});
 
 /* ============ Rute (Leaflet Routing Machine, Bahasa Indonesia) ============ */
 L.Routing.Localization = L.Routing.Localization || {};
@@ -1959,11 +2268,86 @@ function clearRoute(){
   $('#route-bar').classList.remove('show');
 }
 
-function ruteKe(latTujuan, lonTujuan, namaTujuan){
+const originAddressCache = new Map();
+async function showOriginAddress(lat, lon, requestVersion){
+  const label = document.querySelector('#route-page .route-place strong');
+  if(!label) return;
+  label.textContent = `${lat.toFixed(5)}, ${lon.toFixed(5)}`;
+  label.previousElementSibling.textContent = 'Titik berangkat';
+  const key = `${lat.toFixed(5)},${lon.toFixed(5)}`;
+  if(!originAddressCache.has(key)){
+    const lookup = (async () => {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 8000);
+      try{
+        const params = new URLSearchParams({lat:lat.toFixed(5),lon:lon.toFixed(5),limit:'1'});
+        const response = await fetch(`https://photon.komoot.io/reverse?${params}`,{signal:controller.signal,credentials:'omit'});
+        if(!response.ok) return '';
+        const data = await response.json();
+        const place = data.features?.[0]?.properties;
+        if(!place) return '';
+        const street = place.street ? [place.street,place.housenumber].filter(Boolean).join(' ') : place.name;
+        return [...new Set([street,place.district,place.city || place.county,place.state].filter(Boolean))].join(', ');
+      }catch{return '';}finally{clearTimeout(timer);}
+    })();
+    if(originAddressCache.size >= 20) originAddressCache.delete(originAddressCache.keys().next().value);
+    originAddressCache.set(key,lookup);
+  }
+  const address = await originAddressCache.get(key);
+  if(requestVersion !== routeRequestVersion || !label.isConnected) return;
+  if(address){
+    label.textContent = address;
+    label.previousElementSibling.textContent = 'Titik berangkat';
+    label.title = `Koordinat GPS: ${lat.toFixed(5)}, ${lon.toFixed(5)}. Alamat dari OpenStreetMap melalui Photon.`;
+  }
+}
+let routeRequestVersion = 0;
+function closeRoutePage(){
+  routeRequestVersion++;
+  const page = document.getElementById('route-page');
+  if(!page) return;
+  clearRoute();
+  mapBusy(false);
+  const host = document.getElementById('detail-map-host') || document.querySelector('main');
+  host.appendChild(document.getElementById('map-wrap'));
+  page.remove();
+  map.invalidateSize();
+  const h = items.find(x => x.id === selectedId);
+  if(h) map.setView([h.lat,h.lon],16);
+}
+
+function openRoutePage(h, mode){
+  let page = document.getElementById('route-page');
+  if(!page){
+    page = document.createElement('section');
+    page.id = 'route-page'; page.className = 'route-page';
+    page.setAttribute('aria-label','Panduan perjalanan');
+    const car = '<svg class="i" viewBox="0 0 24 24"><path d="M5 10l2-6h10l2 6M4 10h16v8H4zM6 18v3M18 18v3M7 14h2M15 14h2"/></svg>';
+    const walk = '<svg class="i" viewBox="0 0 24 24"><circle cx="13" cy="4" r="2"/><path d="M9 21l3-7-2-4-4 4M12 8l3 5h4M12 14l5 7M10 10l2-2"/></svg>';
+    page.innerHTML = `<aside class="route-sidebar"><button class="btn btn-ghost" id="route-return" type="button">${IC.back}Kembali ke rumah sakit</button><h1>Panduan perjalanan</h1><div class="route-place"><small>Titik berangkat</small><strong>Lokasi Anda</strong></div><div class="route-place"><small>Tujuan</small><strong>${esc(h.nama)}</strong></div><div class="route-modes" aria-label="Moda perjalanan"><button type="button" data-route-mode="driving" data-id="${esc(h.id)}">${car}Mobil</button><button type="button" data-route-mode="foot" data-id="${esc(h.id)}">${walk}Jalan kaki</button><button type="button" data-route-mode="motorcycle" data-id="${esc(h.id)}">${IC.route}Motor</button></div><p id="route-state" role="status">Menyiapkan perjalanan</p><div class="route-summary"><span id="route-time"></span><span id="route-distance"></span></div><p class="route-disclaimer">Estimasi waktu tanpa kondisi lalu lintas langsung. Pilihan motor membuka Google Maps.</p><div id="route-instructions"></div></aside><div class="route-map-host" id="route-page-map"></div>`;
+    document.body.appendChild(page);
+    document.getElementById('route-page-map').appendChild(document.getElementById('map-wrap'));
+    document.getElementById('route-return').onclick = closeRoutePage;
+  }
+  page.querySelectorAll('[data-route-mode]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.routeMode === mode)));
+  document.getElementById('route-state').textContent ='Menghitung perjalanan dari lokasi Anda';
+  document.getElementById('route-time').textContent ='';
+  document.getElementById('route-distance').textContent ='';
+  map.invalidateSize();
+}
+
+function ruteKe(latTujuan, lonTujuan, namaTujuan, mode='driving'){
+  const requestVersion = ++routeRequestVersion;
   const hitung = (latAsal, lonAsal) => {
+    if(requestVersion !== routeRequestVersion) return;
+    showOriginAddress(latAsal, lonAsal, requestVersion);
     clearRoute();
     mapBusy(true, 'Menghitung rute...');
+    const router = mode === 'foot' && L.Routing.osrmv1
+      ? L.Routing.osrmv1({serviceUrl:'https://routing.openstreetmap.de/routed-foot/route/v1', profile:'foot', timeout:15000})
+      : (L.Routing.osrmv1 ? L.Routing.osrmv1({serviceUrl:'https://router.project-osrm.org/route/v1', profile:'driving', timeout:15000}) : undefined);
     routingControl = L.Routing.control({
+      ...(router ? {router} : {}),
       waypoints:[L.latLng(latAsal, lonAsal), L.latLng(latTujuan, lonTujuan)],
       routeWhileDragging:false, addWaypoints:false, draggableWaypoints:false, fitSelectedRoutes:true, showAlternatives:false,
       language:'id',
@@ -1982,51 +2366,74 @@ function ruteKe(latTujuan, lonTujuan, namaTujuan){
     }).addTo(map);
 
     routingControl.on('routesfound', e => {
+      if(requestVersion !== routeRequestVersion) return;
       mapBusy(false);
       const s = e.routes[0].summary;
-      $('#rb-name').textContent = namaTujuan;
-      $('#rb-val').textContent = `${fmtDist(s.totalDistance)} · ${fmtDur(s.totalTime)}`;
+      if(document.getElementById('route-page')){
+        document.getElementById('route-state').textContent ='Rute perjalanan';
+        document.getElementById('route-time').textContent = fmtDur(s.totalTime);
+        document.getElementById('route-distance').textContent = fmtDist(s.totalDistance);
+        const container = routingControl.getContainer();
+        document.getElementById('route-instructions').appendChild(container);
+        container.style.display = 'block';
+      }
+      $('#rb-name').textContent = `${mode ==='foot' ?'Jalan kaki' :'Mobil'} ${namaTujuan}`;
+      $('#rb-val').textContent = `${fmtDist(s.totalDistance)} ${fmtDur(s.totalTime)}`;
       $('#route-bar').classList.add('show');
-      if(routingControl.hide && window.matchMedia('(max-width:900px)').matches) routingControl.hide();
+      if(!document.getElementById('route-page') && routingControl.hide && window.matchMedia('(max-width:900px)').matches) routingControl.hide();
     });
     routingControl.on('routingerror', () => {
+      if(requestVersion !== routeRequestVersion) return;
+      const state = document.getElementById('route-state');
+      if(state) state.textContent ='Rute belum tersedia. Pilih moda untuk mencoba lagi.';
       mapBusy(false); clearRoute();
-      toast('Rute tidak dapat dihitung saat ini. Coba lagi beberapa saat.', 'err');
+      toast('Rute tidak dapat dihitung saat ini. Coba lagi beberapa saat.','err');
     });
   };
 
   if(userCoords) return hitung(userCoords[0], userCoords[1]);
-  if(!navigator.geolocation) return toast('Browser Anda tidak mendukung lokasi (GPS).', 'err');
+  if(!navigator.geolocation) return toast('Browser Anda tidak mendukung lokasi (GPS).','err');
   mapBusy(true, 'Menentukan lokasi Anda...');
   navigator.geolocation.getCurrentPosition(
     pos => { userCoords = [pos.coords.latitude, pos.coords.longitude]; hitung(userCoords[0], userCoords[1]); },
     err => {
+      if(requestVersion !== routeRequestVersion) return;
+      const state = document.getElementById('route-state');
+      if(state) state.textContent ='Lokasi belum tersedia. Izinkan akses lokasi lalu pilih moda perjalanan.';
       mapBusy(false);
-      toast(err.code === 1 ? 'Izinkan akses lokasi (GPS) pada browser agar rute bisa dibuat.' : 'Lokasi Anda belum bisa ditentukan. Coba lagi.', 'err');
+      toast(err.code === 1 ?'Izinkan akses lokasi (GPS) pada browser agar rute bisa dibuat.' :'Lokasi Anda belum bisa ditentukan. Coba lagi.','err');
     },
     {enableHighAccuracy:true, timeout:12000}
   );
 }
 
-function routeById(id){
+function openMotorcycleRoute(h){
+  const params = new URLSearchParams({api:'1', destination:`${h.lat},${h.lon}`, travelmode:'two-wheeler'});
+  if(userCoords) params.set('origin', `${userCoords[0]},${userCoords[1]}`);
+  window.open(`https://www.google.com/maps/dir/?${params.toString()}`, '_blank', 'noopener,noreferrer');
+}
+
+function startRouteMode(id, mode='driving'){
   const h = items.find(x => x.id === id);
   if(h && h.lat != null){
-    select(id);
+    if(mode === 'motorcycle') return openMotorcycleRoute(h);
+    if(selectedId !== id || !$('#detail').classList.contains('show')) select(id);
     setTimeout(() => {
-      const sec = document.getElementById('sec-lokasi');
-      if(sec) sec.scrollIntoView({behavior:'smooth'});
-      ruteKe(h.lat, h.lon, h.nama);
+      openRoutePage(h, mode);
+      ruteKe(h.lat, h.lon, h.nama, mode);
     }, 350);
   }
 }
 
+function routeById(id){ startRouteMode(id, 'driving'); }
+
 /* ============ Chatbot ============ */
 const SUGGEST = [
-  'RS kelas A di Medan',
+  'Rumah Sakit kelas A di Medan',
   'Rumah sakit jiwa Sumut',
-  'RS Mata di Medan',
-  'RS di Deli Serdang',
-  'RS Khusus Ibu dan Anak',
+  'Rumah Sakit Mata di Medan',
+  'Rumah Sakit di Deli Serdang',
+  'Rumah Sakit Khusus Ibu dan Anak',
   'Info kota Medan (DBpedia)'
 ];
 
@@ -2035,6 +2442,9 @@ function toggleChat(force){
   const open = typeof force === 'boolean' ? force : !b.classList.contains('open');
   b.classList.toggle('open', open);
   $('#chat-btn').setAttribute('aria-expanded', open);
+  $('#ask-chat-btn').setAttribute('aria-expanded', open);
+  const detailAsk = $('#d-ask-chat');
+  if(detailAsk) detailAsk.setAttribute('aria-expanded', open);
   if(open) $('#chat-btn .dot').style.display = 'none';
 }
 
@@ -2074,7 +2484,7 @@ customElements.whenDefined('deep-chat').then(() => {
     user:{bubble:{backgroundColor:'#0F766E', color:'#fff'}},
     ai:{bubble:{backgroundColor:'#F0FDFA', color:'#0F172A'}}
   }};
-  c.textInput = {placeholder:{text:'Tanya RS, misal: RS kelas A di Medan...', style:{color:'#64748B'}},
+  c.textInput = {placeholder:{text:'Tanya Rumah Sakit, misal: Rumah Sakit kelas A di Medan...', style:{color:'#64748B'}},
     styles:{container:{backgroundColor:'#fff', border:'1px solid #E2E8F0', borderRadius:'12px', padding:'6px 10px'}}};
   c.errorMessages = {overrides:{default:'Maaf, asisten tidak dapat dihubungi. Pastikan backend berjalan.'}};
   c.loadingBubble = {style:{backgroundColor:'#F0FDFA'}};
@@ -2085,18 +2495,25 @@ document.addEventListener('submit', e => {
   if(e.target.id === 'booking-form') submitBooking(e, e.target.dataset.rsId, e.target.dataset.rsName);
 });
 $('#nav').addEventListener('click', e => {
-  if(e.target.closest('a')) { $('#nav').classList.remove('open'); $('#menu-btn').setAttribute('aria-expanded', 'false'); }
+  const link = e.target.closest('a');
+  if(link) {
+    $('#nav').querySelectorAll('a').forEach(item => item.removeAttribute('aria-current'));
+    link.setAttribute('aria-current', 'page');
+    $('#nav').classList.remove('open');
+    $('#menu-btn').setAttribute('aria-expanded', 'false');
+  }
 });
 let t;
 $('#q').addEventListener('input', () => { clearTimeout(t); t = setTimeout(search, 300); });
 ['kab', 'lay', 'jenis'].forEach(i => $('#' + i).addEventListener('change', search));
-$('#sort').addEventListener('change', e => { sortBy = e.target.value; currentPage = 1; render(false); });
+$('#sort').addEventListener('change', e => { sortBy = e.target.value; currentPage = 1; render(false); saveFilterState(); });
 
 // Pagination: per-page selector
 $('#per-page').addEventListener('change', e => {
   perPage = parseInt(e.target.value, 10);
   currentPage = 1;
   render(false);
+  saveFilterState();
   $('#list').scrollIntoView({behavior:'smooth', block:'start'});
 });
 
@@ -2110,24 +2527,32 @@ $('#pg-controls').addEventListener('click', e => {
   if(p > totalPages) return;
   currentPage = p;
   render(false);
+  saveFilterState();
   $('#list').scrollIntoView({behavior:'smooth', block:'start'});
 });
 
-$('#seg-kelas').addEventListener('click', e => {
-  const b = e.target.closest('button'); if(!b) return;
-  kelas = b.dataset.v;
-  document.querySelectorAll('#seg-kelas button').forEach(x => x.setAttribute('aria-pressed', x === b));
-  search();
-});
+$('#kelas').addEventListener('change', () => { kelas = $('#kelas').value; search(); });
 $('#reset').addEventListener('click', () => {
-  $('#q').value = ''; ['kab', 'lay', 'jenis'].forEach(i => $('#' + i).value = '');
+  $('#q').value = ''; $('#hero-q').value = ''; ['kab', 'kelas', 'lay', 'jenis'].forEach(i => $('#' + i).value = '');
   const hk = $('#hero-kab'); if(hk) hk.value = '';
-  const hq = $('#hero-q'); if(hq) hq.value = '';
-  kelas = ''; document.querySelectorAll('#seg-kelas button').forEach(x => x.setAttribute('aria-pressed', x.dataset.v === ''));
+  kelas = '';
+  try{ sessionStorage.removeItem('carisehat_filter_ctx'); }catch(_){}
   search();
 });
 
 document.addEventListener('click', e => {
+  if(e.target.closest('#open-hospital-map')){openHospitalMap();return;}
+  const detailTab = e.target.closest('.d-navpill');
+  if(detailTab){
+    const nav = detailTab.closest('.d-quicknav');
+    nav.querySelectorAll('.d-navpill').forEach(tab => {
+      const active = tab === detailTab;
+      tab.classList.toggle('active', active);
+      if(active) tab.setAttribute('aria-current', 'location');
+      else tab.removeAttribute('aria-current');
+    });
+    return;
+  }
   const a = e.target.closest('[data-act]');
   if(a){
     if(a.dataset.act === 'select') select(a.dataset.id);
@@ -2137,7 +2562,10 @@ document.addEventListener('click', e => {
     if(a.dataset.act === 'cancel-booking') batalBooking(a.dataset.code);
     return;
   }
-  if(e.target.id === 'detail' || e.target.closest('#d-back')) closeDetail();
+  const routeMode = e.target.closest('[data-route-mode]');
+  if(routeMode){ startRouteMode(routeMode.dataset.id, routeMode.dataset.routeMode); return; }
+  if(e.target.closest('#d-ask-chat')) { toggleChat(true); return; }
+  if(e.target.id === 'detail' || e.target.closest('#d-back')) navigateBackFromDetail();
   if(e.target.closest('#retry')) search();
 });
 $('#list').addEventListener('mouseover', e => {
@@ -2156,8 +2584,8 @@ $('#rb-steps').addEventListener('click', () => {
   el.style.display = (getComputedStyle(el).display === 'none') ? 'block' : 'none';
 });
 
-$('#btn-emergency').addEventListener('click', activateEmergencyMode);
 $('#chat-btn').addEventListener('click', () => toggleChat());
+$('#ask-chat-btn').addEventListener('click', () => toggleChat(true));
 $('#chat-close').addEventListener('click', () => toggleChat(false));
 $('#menu-btn').addEventListener('click', () => {
   const n = $('#nav'), o = n.classList.toggle('open');
@@ -2166,12 +2594,12 @@ $('#menu-btn').addEventListener('click', () => {
 
 document.addEventListener('keydown', e => {
   const typing = /INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName) || document.activeElement.tagName === 'DEEP-CHAT';
-  if(e.key === '/' && !typing){ e.preventDefault(); $('#q').focus(); }
+  if(e.key === '/' && !typing){ e.preventDefault(); $('#hero-q').focus(); }
   if(e.key === 'Escape'){
     $('#menu-btn').setAttribute('aria-expanded', 'false');
     closeKnowledgeGraph();
     if($('#chat-bubble').classList.contains('open')) toggleChat(false);
-    else if($('#detail').classList.contains('show')) closeDetail();
+    else if($('#detail').classList.contains('show')) navigateBackFromDetail();
     $('#nav').classList.remove('open');
   }
 });
@@ -2181,6 +2609,7 @@ document.addEventListener('keydown', e => {
 document.body.append($('#detail'));
 renderSkeleton();
 loadFilterOptions();
+restoreFilterState();
 search();
 
 </script>
