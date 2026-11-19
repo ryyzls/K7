@@ -509,11 +509,12 @@ select:focus,input:focus{border-color:var(--toba);box-shadow:0 0 0 3px rgba(15,1
 .d-site-nav a[aria-current=page]{background:#E4F3F2;border-radius:10px;padding:.5rem .75rem}
 .d-back{
   display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--line);
-  background:#fff;border-radius:var(--r-pill);padding:.45rem .8rem;
+  background:#fff;border-radius:var(--r-pill);padding:.45rem .85rem;
   font-weight:700;font-size:.78rem;color:var(--ink-soft);
-  transition:all .18s var(--ease);flex:none;
+  transition:all .18s var(--ease);flex:none;cursor:pointer;
 }
 .d-back:hover{background:var(--toba-mist);color:var(--toba-d);border-color:#99F6E4}
+.d-back:active{transform:scale(0.97)}
 .d-crumb{
   font-size:.82rem;color:var(--mute);display:flex;align-items:center;gap:.45rem;
   overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
@@ -877,8 +878,8 @@ footer{
   .d-head .brand small{display:none}
   .d-head .logo{width:32px;height:32px}
   .d-head .btn-ask{padding:.4rem .55rem;font-size:.68rem}
-  .d-back{width:36px;height:36px;justify-content:center;padding:.3rem}
-  .d-back span{display:none}
+  .d-back{min-height:36px;padding:.35rem .75rem;font-size:.76rem;gap:.35rem;justify-content:center}
+  .d-back span{display:inline}
   .d-hero{min-height:250px;padding:1rem}
   .d-hero-art{width:100%;opacity:.48}
   .d-hero::before{background:linear-gradient(90deg,rgba(241,250,254,.98),rgba(241,250,254,.72))}
@@ -1308,6 +1309,8 @@ async function search(){
   } finally { clearTimeout(to); }
   loading = false; progress(false);
   render(true);
+  saveFilterState();
+  checkUrlNavigation();
 }
 
 function hasFilter(){ return !!($('#q').value.trim() || kelas || $('#jenis').value || $('#kab').value || $('#lay').value); }
@@ -1537,6 +1540,17 @@ function select(id, opt = {}){
     if(c) c.scrollIntoView({block:'nearest', behavior:'smooth'});
   }
 
+  if(!opt.fromHistory && !opt.skipHistory){
+    const targetHash = `#/rs/${encodeURIComponent(id)}`;
+    if(window.location.hash !== targetHash){
+      try{
+        history.pushState({ view: 'detail', id: id }, '', targetHash);
+      }catch(_){
+        window.location.hash = targetHash;
+      }
+    }
+  }
+
   const tags = a => (a || []).map(x => `<span class="chip lay">${esc(x)}</span>`).join('');
   const lay = h.layanan || [], fas = h.fasilitas || [];
   const tel = h.telepon ? telHref(h.telepon) : '';
@@ -1551,17 +1565,17 @@ function select(id, opt = {}){
     <div class="d-sheet" role="dialog" aria-modal="true" aria-labelledby="d-title">
       <div class="d-head">
         <div class="d-head-inner">
-          <a class="brand" href="#home" onclick="closeDetail();" aria-label="CariSehat, Beranda">
+          <a class="brand" href="#home" onclick="navigateBackFromDetail();" aria-label="CariSehat, Beranda">
             <img class="brand-image" src="/images/cari-sehat-logo.png" alt="Cari Sehat" width="190" height="64">
           </a>
           <nav class="d-site-nav" aria-label="Navigasi utama">
-            <a href="#home" onclick="closeDetail();">Beranda</a>
-            <a href="#explorer" aria-current="page" onclick="closeDetail();">Cari Rumah Sakit</a>
-            <a href="#map-wrap" onclick="closeDetail();">Peta</a>
-            <a href="#about" onclick="closeDetail();">Tentang</a>
+            <a href="#home" onclick="navigateBackFromDetail();">Beranda</a>
+            <a href="#explorer" aria-current="page" onclick="navigateBackFromDetail();">Cari Rumah Sakit</a>
+            <a href="#map-wrap" onclick="navigateBackFromDetail();">Peta</a>
+            <a href="#about" onclick="navigateBackFromDetail();">Tentang</a>
           </nav>
           <button class="btn-ask" id="d-ask-chat" type="button" aria-expanded="false" aria-controls="chat-container">Tanya CariSehat</button>
-          <button class="d-back" id="d-back" type="button" aria-label="Tutup panel detail">${IC.back}<span>Kembali</span></button>
+          <button class="d-back" id="d-back" type="button" aria-label="Kembali ke katalog rumah sakit">${IC.back}<span>Kembali</span></button>
         </div>
       </div>
 
@@ -2108,7 +2122,9 @@ function initHospitalGallery(root){
   restart();stopHospitalGallery=()=>clearInterval(timer);
 }
 
-function closeDetail(){
+let isPopstateNavigating = false;
+
+function closeDetail(opt = {}){
   stopHospitalGallery();
   $('#detail').classList.remove('show');
   if(selectedId) styleMarker(selectedId, false);
@@ -2121,7 +2137,101 @@ function closeDetail(){
     document.querySelector('main').appendChild(mw);
     mw.style.display = 'block';
   }
+  if(!opt.skipHistory && !isPopstateNavigating && window.location.hash && /rs/i.test(window.location.hash)){
+    try{
+      const cleanUrl = window.location.pathname + (window.location.search || '');
+      history.replaceState(null, '', cleanUrl);
+    }catch(_){}
+  }
 }
+
+function navigateBackFromDetail(){
+  const hadDetailState = Boolean(window.history.state && window.history.state.view === 'detail');
+  closeDetail({ skipHistory: hadDetailState });
+  if(hadDetailState && window.history.length > 1){
+    window.history.back();
+  } else {
+    try{
+      const cleanUrl = window.location.pathname + (window.location.search || '');
+      history.replaceState(null, '', cleanUrl);
+    }catch(_){}
+  }
+}
+
+function saveFilterState(){
+  try{
+    const state = {
+      q: $('#q')?.value || '',
+      kab: $('#kab')?.value || '',
+      kelas: kelas || '',
+      lay: $('#lay')?.value || '',
+      jenis: $('#jenis')?.value || '',
+      sort: sortBy || '',
+      page: currentPage || 1,
+      perPage: perPage || 20
+    };
+    sessionStorage.setItem('carisehat_filter_ctx', JSON.stringify(state));
+  }catch(_){}
+}
+
+function restoreFilterState(){
+  try{
+    const raw = sessionStorage.getItem('carisehat_filter_ctx');
+    if(!raw) return false;
+    const s = JSON.parse(raw);
+    let changed = false;
+    if(s.q && $('#q')) { $('#q').value = s.q; if($('#hero-q')) $('#hero-q').value = s.q; changed = true; }
+    if(s.kab && $('#kab')) { $('#kab').value = s.kab; changed = true; }
+    if(s.kelas) { kelas = s.kelas; if($('#kelas')) $('#kelas').value = s.kelas; changed = true; }
+    if(s.lay && $('#lay')) { $('#lay').value = s.lay; changed = true; }
+    if(s.jenis && $('#jenis')) { $('#jenis').value = s.jenis; changed = true; }
+    if(s.sort && $('#sort')) { sortBy = s.sort; $('#sort').value = s.sort; changed = true; }
+    if(s.page) currentPage = s.page;
+    if(s.perPage && $('#per-page')) { perPage = s.perPage; $('#per-page').value = String(s.perPage); }
+    return changed;
+  }catch(_){ return false; }
+}
+
+let initialNavChecked = false;
+function checkUrlNavigation(){
+  if(initialNavChecked) return;
+  const hash = window.location.hash || '';
+  const searchParams = new URLSearchParams(window.location.search);
+  const qRs = searchParams.get('rs') || searchParams.get('detail') || searchParams.get('id');
+  const hashMatch = hash.match(/^#\/?rs[\/-]([a-zA-Z0-9-]+)/) || hash.match(/^#detail[\/-]([a-zA-Z0-9-]+)/) || hash.match(/^#(rs-[a-zA-Z0-9-]+)/);
+  const targetId = qRs || (hashMatch ? hashMatch[1] : null);
+  if(targetId && items && items.length){
+    const found = items.find(x => x.id === targetId);
+    if(found){
+      initialNavChecked = true;
+      try{
+        history.replaceState({ view: 'catalog' }, '', window.location.pathname + (window.location.search || ''));
+        history.pushState({ view: 'detail', id: targetId }, '', `#/rs/${targetId}`);
+      }catch(_){}
+      select(targetId, { skipHistory: true });
+    }
+  }
+}
+
+window.addEventListener('popstate', () => {
+  isPopstateNavigating = true;
+  try{
+    const hash = window.location.hash || '';
+    const match = hash.match(/^#\/?rs[\/-]([a-zA-Z0-9-]+)/) || hash.match(/^#detail[\/-]([a-zA-Z0-9-]+)/) || hash.match(/^#(rs-[a-zA-Z0-9-]+)/);
+    if(match){
+      const id = match[1];
+      if(id !== selectedId){
+        select(id, { fromHistory: true });
+      }
+    } else {
+      if($('#detail') && $('#detail').classList.contains('show')){
+        closeDetail({ skipHistory: true });
+      }
+    }
+  }finally{
+    isPopstateNavigating = false;
+  }
+});
 
 /* ============ Rute (Leaflet Routing Machine, Bahasa Indonesia) ============ */
 L.Routing.Localization = L.Routing.Localization || {};
@@ -2396,13 +2506,14 @@ $('#nav').addEventListener('click', e => {
 let t;
 $('#q').addEventListener('input', () => { clearTimeout(t); t = setTimeout(search, 300); });
 ['kab', 'lay', 'jenis'].forEach(i => $('#' + i).addEventListener('change', search));
-$('#sort').addEventListener('change', e => { sortBy = e.target.value; currentPage = 1; render(false); });
+$('#sort').addEventListener('change', e => { sortBy = e.target.value; currentPage = 1; render(false); saveFilterState(); });
 
 // Pagination: per-page selector
 $('#per-page').addEventListener('change', e => {
   perPage = parseInt(e.target.value, 10);
   currentPage = 1;
   render(false);
+  saveFilterState();
   $('#list').scrollIntoView({behavior:'smooth', block:'start'});
 });
 
@@ -2416,6 +2527,7 @@ $('#pg-controls').addEventListener('click', e => {
   if(p > totalPages) return;
   currentPage = p;
   render(false);
+  saveFilterState();
   $('#list').scrollIntoView({behavior:'smooth', block:'start'});
 });
 
@@ -2424,6 +2536,7 @@ $('#reset').addEventListener('click', () => {
   $('#q').value = ''; $('#hero-q').value = ''; ['kab', 'kelas', 'lay', 'jenis'].forEach(i => $('#' + i).value = '');
   const hk = $('#hero-kab'); if(hk) hk.value = '';
   kelas = '';
+  try{ sessionStorage.removeItem('carisehat_filter_ctx'); }catch(_){}
   search();
 });
 
@@ -2452,7 +2565,7 @@ document.addEventListener('click', e => {
   const routeMode = e.target.closest('[data-route-mode]');
   if(routeMode){ startRouteMode(routeMode.dataset.id, routeMode.dataset.routeMode); return; }
   if(e.target.closest('#d-ask-chat')) { toggleChat(true); return; }
-  if(e.target.id === 'detail' || e.target.closest('#d-back')) closeDetail();
+  if(e.target.id === 'detail' || e.target.closest('#d-back')) navigateBackFromDetail();
   if(e.target.closest('#retry')) search();
 });
 $('#list').addEventListener('mouseover', e => {
@@ -2486,7 +2599,7 @@ document.addEventListener('keydown', e => {
     $('#menu-btn').setAttribute('aria-expanded', 'false');
     closeKnowledgeGraph();
     if($('#chat-bubble').classList.contains('open')) toggleChat(false);
-    else if($('#detail').classList.contains('show')) closeDetail();
+    else if($('#detail').classList.contains('show')) navigateBackFromDetail();
     $('#nav').classList.remove('open');
   }
 });
@@ -2496,6 +2609,7 @@ document.addEventListener('keydown', e => {
 document.body.append($('#detail'));
 renderSkeleton();
 loadFilterOptions();
+restoreFilterState();
 search();
 
 </script>

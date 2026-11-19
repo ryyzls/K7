@@ -343,6 +343,17 @@
     }
 
     @media(max-width:520px) {
+      .top {
+        padding: .6rem 1rem;
+        gap: .5rem;
+      }
+
+      .top .back {
+        font-size: .78rem;
+        padding: .35rem .75rem;
+        white-space: nowrap;
+      }
+
       .hero h1 {
         font-size: 1.3rem
       }
@@ -362,7 +373,7 @@
     class="{% if h.kelas == 'A' %}kelas-a{% elif h.kelas == 'B' %}kelas-b{% elif h.kelas == 'C' %}kelas-c{% else %}kelas-lain{% endif %}">
   <header class="top">
     <a class="brand" href="/"><img src="/images/cari-sehat-logo.png?v=2" alt="Cari Sehat" width="174" height="59" style="object-fit:contain;max-width:38vw"></a>
-    <a class="back" href="/">&larr; Kembali ke pencarian</a>
+    <a class="back" id="rs-back" href="/">&larr; Kembali ke pencarian</a>
   </header>
   <div class="ulos" aria-hidden="true"></div>
 
@@ -427,6 +438,29 @@
     </section>
   </main>
   <footer>Data terstruktur RDFa &middot; schema.org &middot; &copy; kontributor OpenStreetMap</footer>
+  <script>
+    (function(){
+      var backBtn = document.getElementById('rs-back');
+      if(!document.referrer || document.referrer.indexOf(window.location.origin) !== 0){
+        if(window.history.replaceState && window.history.pushState){
+          try{
+            history.replaceState({page:'home'}, '', '/');
+            history.pushState({page:'rs-detail'}, '', window.location.href);
+            window.addEventListener('popstate', function(){
+              window.location.href = '/';
+            });
+          }catch(_){}
+        }
+      } else if(backBtn) {
+        backBtn.addEventListener('click', function(e){
+          if(window.history.length > 1){
+            e.preventDefault();
+            window.history.back();
+          }
+        });
+      }
+    })();
+  </script>
 </body>
 
 </html>
