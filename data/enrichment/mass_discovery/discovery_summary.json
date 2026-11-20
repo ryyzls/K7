@@ -1,0 +1,20 @@
+{
+  "total_rs_processed": 204,
+  "websites": {
+    "total": 204,
+    "VERIFIED_OFFICIAL": 114,
+    "CORROBORATED": 12,
+    "REVIEW_REQUIRED": 5,
+    "NOT_FOUND": 73
+  },
+  "emails": {
+    "total": 152,
+    "VERIFIED_OFFICIAL": 103,
+    "CORROBORATED": 49,
+    "REVIEW_REQUIRED": 0,
+    "NOT_FOUND": 33
+  },
+  "rs_with_hours": 140,
+  "total_hours_entries": 158,
+  "review_queue_count": 5
+}

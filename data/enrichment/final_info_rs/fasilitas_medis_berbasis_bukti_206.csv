@@ -1,0 +1,207 @@
+﻿id_carisehat,kode_kemenkes,nama,icu_dengan_ventilator,icu_tanpa_ventilator,nicu_dengan_ventilator,nicu_tanpa_ventilator,picu_dengan_ventilator,picu_tanpa_ventilator,isolasi,total_tt_rawat_inap,fasilitas_diagnostik,sumber_bukti
+rs-001,1276079,OG Hospital,6,0,3,0,1,0,20,170,Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079
+rs-002,1275141,RS AL Dr. Komang Makes Belawan,6,0,4,0,3,0,7,98,CT Scan|Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141
+rs-003,1275046,RS Bhayangkara Tingkat II Medan,9,1,1,3,0,2,0,127,CT Scan|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046
+rs-004,1203067,RS Bhayangkara Tk. IV Batangtoru,0,3,0,0,0,0,4,60,Radiologi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1203067
+rs-005,1274058,RS Bhayangkara Tk.III Kota Tebing Tinggi,9,0,2,0,2,0,0,130,CT Scan|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1274058
+rs-006,1274063,RS Chevani,8,0,4,4,0,4,14,169,CT Scan|Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1274063
+rs-007,1275074,RS Columbia Asia Aksara,0,13,0,5,0,2,19,211,Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275074
+rs-008,1275852,RS Columbia Asia Medan,0,8,4,0,0,0,0,201,CT Scan|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275852
+rs-009,1212201,RS Dhillon,2,2,0,2,0,2,0,53,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1212201
+rs-010,1207069,RS Dokter Takdir,0,0,0,0,0,0,0,32,Kamar Bedah / Operasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1207069
+rs-011,1273119,RS Efarina Etaham Pematang Siantar,14,5,5,0,4,0,12,270,CT Scan|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1273119
+rs-012,1275932,RS Gigi dan Mulut Prima,2,0,0,0,0,0,0,11,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275932
+rs-013,1212202,RS Grand Medica,2,1,1,1,0,0,6,57,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1212202
+rs-014,1218158,RS Grandmed,17,7,5,10,0,0,41,444,CT Scan|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1218158
+rs-015,1275929,RS Ibu Dan Anak Artha Mahinrus,3,1,0,2,0,0,2,40,Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275929
+rs-016,1275910,RS Ibu dan Anak Eva,0,0,0,0,0,0,0,11,Kamar Bedah / Operasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275910
+rs-017,1276092,RS Ibu dan Anak Grand Fatimah,2,0,0,4,0,0,3,39,,https://sirs.kemkes.go.id/fo/home/profile_rs/1276092
+rs-018,1212186,RS Ibu dan Anak Maharani,0,1,0,1,1,0,0,37,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1212186
+rs-019,1211127,RS Ibu dan Anak Mina Husada,2,0,2,0,0,0,3,33,Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1211127
+rs-020,1275783,RS Ibu dan Anak Murni Teguh Rosiva,2,0,5,0,2,0,0,51,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275783
+rs-021,1212197,RS Ibu dan Anak Pramaliesa,0,3,0,2,0,1,0,50,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1212197
+rs-022,1275998,RS Ibu dan Anak Stella Maris,0,5,0,12,0,0,0,78,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275998
+rs-023,1275999,RS Jiwa Bina Karsa Medan,0,0,0,0,0,0,0,34,,https://sirs.kemkes.go.id/fo/home/profile_rs/1275999
+rs-024,1212184,RS Jiwa Bina Karsa Tuntungan,0,0,0,0,0,0,7,65,,https://sirs.kemkes.go.id/fo/home/profile_rs/1212184
+rs-025,1275221,RS Jiwa Prof. Dr. Muhammad Ildrem,0,26,0,0,0,0,0,450,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275221
+rs-026,1275232,RS Khusus Bedah Accuplast,2,0,0,0,1,0,4,28,Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275232
+rs-027,1275921,RS Khusus Bedah Setia Budi,3,1,0,0,0,0,0,27,CT Scan|Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275921
+rs-028,1275874,RS Khusus Gigi dan Mulut Univ. Sumatera Utara,0,0,0,0,0,0,0,14,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275874
+rs-029,1275918,RS Khusus Ginjal Rasyida,4,0,0,0,0,0,3,57,Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275918
+rs-030,1275309,RS Khusus Mata Medan Baru Medical Centre,0,0,0,0,0,0,1,14,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275309
+rs-031,1275914,RS Khusus Mata Mencirim Tujuh-Tujuh,0,0,0,0,0,0,1,15,Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275914
+rs-032,1275928,RS Khusus Mata Prima Vision,0,0,0,0,0,0,0,16,Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275928
+rs-033,1275922,RS Khusus Mata Provinsi Sumatera Utara,3,0,0,0,0,0,2,30,Kamar Bedah / Operasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275922
+rs-034,1275898,RS Khusus Mata SMEC,0,0,0,0,0,0,0,16,Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275898
+rs-035,1275933,RS Khusus Paru Sumatera Utara,4,1,0,0,0,1,8,75,Radiologi|Laboratorium Klinik|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275933
+rs-036,1273107,RS Mata Siantar,0,0,0,0,0,0,3,16,Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1273107
+rs-037,1278013,RUMAH SAKIT METTA MEDIKA,9,3,1,5,1,0,7,180,Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1278013
+rs-038,1277027,RS Metta Medika,5,2,1,4,0,0,0,100,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1277027
+rs-039,1271033,RS Metta Medika II,5,2,1,4,0,0,4,113,CT Scan|Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1271033
+rs-040,1273102,RS Murni Teguh Horas Insani,7,1,2,2,2,1,0,137,CT Scan|USG|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1273102
+rs-041,1273120,RS Murni Teguh Pematang Siantar,2,0,2,0,1,0,4,51,USG|Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1273120
+rs-042,1275913,RS Pendidikan Prof. dr. Chairuddin Panusunan Lubis Universitas Sumatera Utara,7,0,5,0,2,0,12,120,CT Scan|Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275913
+rs-043,1225013,RS Pratama Lologolu Soguna Ba Zato,0,0,0,4,0,4,2,84,Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1225013
+rs-044,1273108,RS Rasyida Siantar,0,22,0,0,0,0,0,65,Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1273108
+rs-045,1275073,RS Regina Maris,9,7,0,7,1,1,0,218,Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275073
+rs-046,1219015,RS Sapta Medika,6,0,4,0,0,0,8,96,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1219015
+rs-047,1208068,RS Seger Waras,3,1,0,3,0,0,0,64,Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1208068
+rs-048,1223018,RS Sri Pamela Membang Muda,3,0,0,1,0,1,5,50,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1223018
+rs-049,1208053,RS Sri Pamela Sei Dadap,2,1,0,1,1,0,1,50,Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1208053
+rs-050,1207052,RS Sri Pamela Torgamba,2,1,0,1,0,1,4,49,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1207052
+rs-051,1275996,RS SUFINA AZIZ,0,5,0,4,0,2,5,110,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275996
+rs-052,1223005,RS Tiga Bersaudara,4,0,4,0,0,0,2,67,Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1223005
+rs-053,1275035,RS Tk. II Putri Hijau Medan,10,0,2,0,4,0,10,198,CT Scan|Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275035
+rs-054,1273022,RS Tk. IV 01.07.01,8,3,5,0,2,0,0,176,Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1273022
+rs-055,1276040,RS Tk. IV 01.07.02 Binjai,5,0,0,4,0,0,11,100,CT Scan|Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1276040
+rs-056,1277015,RS TNI Tk. IV 01.07.03,3,1,0,0,0,0,5,55,Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1277015
+rs-057,1275094,RS Umum Advent Medan,11,0,2,0,1,0,17,229,Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275094
+rs-058,1276078,RS Umum AL Fuadi,7,2,1,13,0,0,0,128,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1276078
+rs-059,1211126,RS Umum Amanda,0,10,0,6,0,0,7,150,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1211126
+rs-060,1202029,RS Umum Armina Madina Panyabungan,4,2,1,1,1,2,9,60,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1202029
+rs-061,1276036,RS Umum Artha Medica,6,2,0,7,0,0,16,162,CT Scan|Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1276036
+rs-062,1209010,RS Umum Balimbingan PTP 4,5,1,1,0,1,0,6,100,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1209010
+rs-063,1275772,RS Umum Bandung,6,0,2,0,2,0,13,100,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275772
+rs-064,1278002,RS Umum Bethesda Gunungsitoli,7,0,2,0,2,0,6,110,Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1278002
+rs-065,1276075,RS Umum Bidadari,9,12,8,7,0,0,8,209,CT Scan|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1276075
+rs-066,1219017,RS Umum Bidadari Batubara,36,6,14,4,0,0,21,497,Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1219017
+rs-067,1275997,RS Umum Bina Kasih,13,0,0,11,0,4,19,208,CT Scan|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275997
+rs-068,1208059,RS Umum Bunda Mulia,0,0,0,0,0,0,0,46,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1208059
+rs-069,1275890,RSU BUNDA THAMRIN,17,0,0,6,0,2,0,312,CT Scan|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275890
+rs-070,1208020,RS Umum Catharina 1914,6,0,3,0,1,0,11,100,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1208020
+rs-071,1212179,RS Umum Citra Medika,5,1,0,4,0,0,10,100,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1212179
+rs-072,1223002,RS Umum Daerah Aek Kanopan,6,1,0,0,0,0,16,106,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1223002
+rs-073,1212198,RS Umum Daerah Bangun Purba,3,0,0,5,0,1,4,56,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1212198
+rs-074,1219003,RS Umum Daerah Batu Bara,7,0,2,0,2,0,7,101,Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1219003
+rs-075,1225002,RS Umum Daerah Cerah Medika Kab. Nias Barat,0,0,0,0,0,0,2,32,Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1225002
+rs-076,1205035,RS Umum Daerah Dolok Sanggul,6,2,2,4,1,2,8,155,Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1205035
+rs-077,1273011,RS Umum Daerah Dr. Djasamen Saragih,9,1,2,3,2,3,25,190,CT Scan|Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1273011
+rs-078,1271016,RS Umum Daerah Dr. FL Tobing Sibolga,11,3,1,5,1,2,0,211,CT Scan|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1271016
+rs-079,1274012,RS Umum Daerah Dr. H. Kumpulan Pane,9,3,1,1,1,1,8,200,CT Scan|USG|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1274012
+rs-080,1205024,RS Umum Daerah Dr. Hadrianus Sinaga,6,0,5,0,0,0,0,110,CT Scan|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1205024
+rs-081,1202017,RS Umum Daerah dr. Husni Thamrin,0,2,0,0,0,0,0,50,Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1202017
+rs-082,1201016,RS Umum Daerah dr. M. Thomsen Nias,10,4,6,3,0,0,15,230,CT Scan|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1201016
+rs-083,1275013,RS Umum Daerah Dr. Pirngadi,13,0,3,2,0,0,0,236,CT Scan|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275013
+rs-084,1276014,RS Umum Daerah Dr. R. M. Djoelham Binjai,6,1,4,4,1,5,4,165,CT Scan|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1276014
+rs-085,1272010,RS Umum Daerah Dr. Tengku Mansyur,5,2,3,0,1,1,11,108,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1272010
+rs-086,1212012,RS Umum Daerah Drs. H. Amri Tambunan,11,2,2,10,2,2,7,238,CT Scan|USG|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1212012
+rs-087,1203044,RS Umum Daerah Gunung Tua,3,3,0,0,0,0,15,100,CT Scan|Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1203044
+rs-088,1208016,RS Umum Daerah H. Abdul Manan Simatupang,7,0,4,0,1,0,6,117,Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1208016
+rs-089,1275012,RS Umum Daerah H. Bachtiar Djafar,5,1,0,1,0,0,10,100,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275012
+rs-090,1211011,RS Umum Daerah Kabupaten Karo,2,2,0,2,0,3,2,99,Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1211011
+rs-091,1222002,RS Umum Daerah Kota Pinang,5,2,1,0,0,4,19,113,Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1222002
+rs-092,1214010,RS Umum Daerah Lukas Hilisimaetano,0,0,0,0,0,0,0,50,Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1214010
+rs-093,1214022,RS Umum Daerah Nias Selatan,0,2,0,0,0,0,3,40,Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1214022
+rs-094,1277011,RS Umum Daerah Padang Sidempuan,4,0,0,0,0,0,0,101,CT Scan|Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1277011
+rs-095,1204056,RS Umum Daerah Pandan,6,2,0,4,1,2,1,130,CT Scan|Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1204056
+rs-096,1203022,RS Umum Daerah Panyabungan,12,0,0,6,0,3,2,165,Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1203022
+rs-097,1209065,RS Umum Daerah Parapat,4,0,1,0,1,0,0,50,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1209065
+rs-098,1209076,RS Umum Daerah Perdagangan,10,0,0,0,2,0,0,105,CT Scan|Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1209076
+rs-099,1203066,RS Umum Daerah Pintu Padang,3,0,0,0,0,0,6,52,Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1203066
+rs-100,1205046,RS Umum Daerah Porsea,0,7,0,6,0,0,1,107,CT Scan|Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1205046
+rs-101,1207015,RS Umum Daerah Rantau Prapat,10,9,0,6,1,4,16,263,CT Scan|Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1207015
+rs-102,1216011,RS Umum Daerah Salak,6,0,4,3,0,8,8,100,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1216011
+rs-103,1203055,RS Umum Daerah Sibuhuan,6,0,7,0,0,0,8,100,Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1203055
+rs-104,1210010,RS Umum Daerah Sidikalang,6,0,5,2,2,0,8,146,Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1210010
+rs-105,1218125,RS Umum Daerah Sultan Sulaiman Syariful Alamsyah,4,0,6,0,0,0,8,132,Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1218125
+rs-106,1224002,RS Umum Daerah Tafaeri,0,3,0,0,0,2,2,44,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1224002
+rs-107,1213013,RS Umum Daerah Tanjung Pura,0,6,0,4,0,0,9,100,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1213013
+rs-108,1203033,RS Umum Daerah Tapanuli Selatan,2,4,1,2,1,3,10,109,CT Scan|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1203033
+rs-109,1205013,RS Umum Daerah Tarutung,6,4,0,0,0,0,3,212,Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1205013
+rs-110,1209077,RS Umum Daerah Tuan Rondahaim,6,1,1,1,1,1,0,102,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1209077
+rs-111,1275050,RS Umum Deli,3,3,0,0,0,0,0,61,CT Scan|Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275050
+rs-112,1213057,RS Umum Delia,4,3,0,3,0,0,11,124,Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1213057
+rs-113,1275061,RS Umum Delima Medan,5,1,1,4,0,2,11,99,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275061
+rs-114,1212023,RSU dr. G. L. TOBING,6,0,1,0,1,0,0,100,Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1212023
+rs-115,1211124,RS Umum Efarina Etaham,10,3,3,0,2,0,10,207,CT Scan|Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1211124
+rs-116,1207066,RS Umum Elpi Al Azis,5,2,0,5,0,0,12,117,Radiologi|Kamar Bedah / Operasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1207066
+rs-117,1275931,RS Umum Eshmun,9,0,0,6,0,1,16,166,CT Scan|Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275931
+rs-118,1275841,RS Umum Estomihi,5,1,1,0,1,0,11,101,CT Scan|Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275841
+rs-119,1223006,RS Umum Flora,0,0,0,0,0,0,0,52,Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1223006
+rs-120,1275147,RS Umum Full Bethesda,5,1,1,3,0,2,10,100,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275147
+rs-121,1272033,RS Umum Hadi Husada,0,0,0,0,0,0,6,49,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1272033
+rs-122,1275794,RS Umum Haji Medan,10,0,2,12,6,0,0,342,CT Scan|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275794
+rs-123,1273033,RS Umum Harapan,8,2,3,0,2,0,5,149,USG|Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1273033
+rs-124,1207068,RS Umum Hartati Medical Centre,4,0,1,0,0,1,7,72,Radiologi|Kamar Bedah / Operasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1207068
+rs-125,1275930,RS Umum Hermina Medan,9,3,2,0,2,0,22,186,CT Scan|Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275930
+rs-126,1212067,RS Umum Hidayah,5,0,3,0,0,0,6,57,Radiologi|Kamar Bedah / Operasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1212067
+rs-127,1205061,RS Umum HKBP Balige,3,6,1,5,1,1,0,165,Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1205061
+rs-128,1275622,RS Umum Imelda Pekerja Indonesia,12,3,3,7,2,2,20,225,CT Scan|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275622
+rs-129,1277026,RS Umum Inanta,5,1,0,4,0,2,2,100,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1277026
+rs-130,1275163,RS Umum Islam Malahayati,6,0,0,2,0,2,10,102,Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275163
+rs-131,1207067,RS Umum Karya Bakti Ujung Bandar,5,1,0,2,0,0,13,96,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1207067
+rs-132,1209081,RS Umum Karya Husada,0,3,0,0,0,1,0,51,Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1209081
+rs-133,1212183,RS Umum Kasih Insani,6,0,4,0,2,0,0,100,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1212183
+rs-134,1219016,RS Umum Kasih Permata Dara,3,0,2,0,0,0,2,56,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1219016
+rs-135,1212174,RS Umum Keliat,3,0,1,0,1,0,6,50,Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1212174
+rs-136,1209021,RS Umum Laras Kabupaten Simalungun,5,1,1,0,1,0,4,100,Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1209021
+rs-137,1219002,RS Umum Lasmi Kartika,2,0,0,4,0,3,4,50,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1219002
+rs-138,1276074,RS Umum Latersia,6,0,1,3,0,0,10,100,CT Scan|USG|Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1276074
+rs-139,1275909,RS Umum Madani,8,2,3,0,1,1,17,162,Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275909
+rs-140,1212199,RS Umum Mahawira Prima Indonesia,2,4,0,4,0,0,0,101,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1212199
+rs-141,1213062,RS Umum Mahkota Bidadari,9,3,5,0,0,0,22,211,CT Scan|Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1213062
+rs-142,1275633,RS Umum Martha Friska,8,2,1,1,2,0,16,152,CT Scan|Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275633
+rs-143,1275888,RS Umum Martha Friska Multatuli,0,8,0,4,0,1,28,153,CT Scan|Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275888
+rs-144,1275130,RS Umum Materna,0,6,0,0,0,0,0,60,USG|Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275130
+rs-145,1218024,RS Umum Melati,2,2,0,6,0,0,0,140,CT Scan|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1218024
+rs-146,1218029,RS Umum Melati Desa Pon,0,0,0,0,0,0,0,33,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1218029
+rs-147,1275126,RS Umum Methodist,4,1,0,1,1,0,10,109,CT Scan|Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275126
+rs-148,1271032,RS Umum Metta Medika,5,2,1,4,0,0,0,102,Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1271032
+rs-149,1212200,RS Umum Mitra Guray Petumbukan,5,2,0,3,0,2,10,105,Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1212200
+rs-150,1275516,RS Umum Mitra Medika,0,9,0,6,0,0,9,143,CT Scan|Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275516
+rs-151,1212181,RS Umum Mitra Medika,10,4,0,9,0,0,0,223,Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1212181
+rs-152,1275923,RS Umum Mitra Medika Amplas,9,3,1,6,0,1,5,197,CT Scan|Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275923
+rs-153,1275011,RS Umum Mitra Medika Premiere,10,0,3,0,2,0,11,153,CT Scan|Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275011
+rs-154,1212175,RS Umum Mitra Sehat,5,1,2,2,0,2,10,100,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1212175
+rs-155,1275298,RS Umum Mitra Sejati,14,6,2,2,3,2,0,260,CT Scan|Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275298
+rs-156,1275885,RS Umum Muhammadiyah Sumatera Utara,3,1,2,1,0,0,4,81,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275885
+rs-157,1275889,RS Umum Murni Teguh Memorial Hospital,18,0,4,0,6,0,0,356,CT Scan|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275889
+rs-158,1275100,RS Umum Murni Teguh Methodist Susanna Wesley,12,0,4,8,4,0,8,203,Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275100
+rs-159,1274061,RS Umum Natama,3,1,1,1,1,1,3,65,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1274061
+rs-160,1206063,RS Umum Nuraini,4,1,1,1,0,1,0,70,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1206063
+rs-161,1218026,RS Umum Pabatu,6,0,1,0,2,0,3,94,Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1218026
+rs-162,1212185,RS Umum Pancur Batu,6,0,0,2,0,2,0,100,Radiologi|Kamar Bedah / Operasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1212185
+rs-163,1212172,RS Umum Patar Asih,6,0,0,2,1,1,3,100,Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1212172
+rs-164,1208064,RS Umum Permata Hati,0,0,0,0,0,0,0,105,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1208064
+rs-165,1202028,RS Umum Permata Madina Panyabungan,6,1,0,3,0,1,10,108,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1202028
+rs-166,1221002,RS Umum Permata Madina Sibuhuan,5,0,0,0,0,0,6,76,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1221002
+rs-167,1213035,RS Umum Pertamina Pangkalan Brandan,6,0,0,2,1,1,12,100,CT Scan|Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1213035
+rs-168,1275600,RS Umum Prima Husada Cipta Medan,6,0,4,0,2,0,0,115,CT Scan|Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275600
+rs-169,1275750,RS Umum Prof. Dr. Boloni,6,0,3,0,1,0,7,100,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275750
+rs-170,1213024,RS Umum PTP II Tg Selamat,5,1,2,2,1,1,8,100,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1213024
+rs-171,1275655,RS Umum Pusat H. Adam Malik,15,68,0,8,0,0,6,777,CT Scan|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275655
+rs-172,1213059,RS Umum Putri Bidadari,14,5,1,8,0,0,35,344,CT Scan|Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1213059
+rs-173,1212171,RS Umum Rahmad Hidayah,5,1,0,2,0,2,4,100,Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1212171
+rs-174,1276076,RS Umum Ratu Mas,3,0,1,3,0,0,6,51,Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1276076
+rs-175,1275935,RS Umum Royal Maternity,3,0,0,2,0,0,4,51,Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275935
+rs-176,1275907,RS Umum Royal Prima,19,9,2,8,1,3,0,429,CT Scan|Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275907
+rs-177,1275936,RS Umum Royal Prima Marelan,0,6,0,4,0,0,7,122,Radiologi|Kamar Bedah / Operasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275936
+rs-178,1275072,RS Umum Santa Elisabeth Medan,13,0,4,0,4,0,0,208,CT Scan|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275072
+rs-179,1275724,RS Umum Sarah,2,0,2,0,0,0,3,50,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275724
+rs-180,1212093,RS Umum Sari Mutiara Lubuk Pakam,5,2,0,5,0,0,0,104,CT Scan|Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1212093
+rs-181,1218025,RS Umum Sawit Indah Perbaungan,2,1,1,1,1,0,3,50,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1218025
+rs-182,1212045,RS Umum Sembiring Deli Tua,25,9,42,16,0,0,0,709,CT Scan|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1212045
+rs-183,1210021,RS Umum Serenapita,0,1,0,1,0,2,4,41,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1210021
+rs-184,1208056,RS Umum Setio Husodo,6,0,4,0,0,0,6,114,Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1208056
+rs-185,1275911,RS Umum Siloam Dhirga Surya,9,0,1,2,0,0,8,208,CT Scan|USG|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275911
+rs-186,1211033,RS Umum Simalem,2,4,0,0,1,1,2,87,Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1211033
+rs-187,1212136,RS Umum Sinar Husni,2,4,3,0,1,1,0,100,Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1212136
+rs-188,1205142,RS Umum Sint Lucia,2,1,1,1,0,0,4,50,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1205142
+rs-189,1274034,RS Umum Sri Pamela,10,0,2,0,3,0,12,169,Radiologi|Hemodialisis|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1274034
+rs-190,1275702,RS Umum Sri Ratu,3,3,1,0,0,0,3,78,Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275702
+rs-191,1214011,RS Umum Stella Maris,3,0,0,1,1,0,6,50,Radiologi|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1214011
+rs-192,1275265,RS Umum Sundari,7,2,2,7,0,0,0,145,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275265
+rs-193,1276077,RS Umum Sylvani,3,4,3,4,0,0,8,181,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1276077
+rs-194,1275899,RS Umum Tere Margareth,6,0,3,4,0,3,4,104,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275899
+rs-195,1273106,RS Umum Tiara Kasih Sejati,4,1,3,0,1,0,10,99,CT Scan|Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1273106
+rs-196,1274062,RS Umum Universitas Prima Indonesia,3,0,1,0,1,0,5,52,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1274062
+rs-197,1208066,RS Umum Utama,0,2,1,0,2,0,0,66,Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1208066
+rs-198,1275276,RS Umum Vina Estetica,5,1,1,4,0,0,0,100,CT Scan|Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275276
+rs-199,1273055,RS Umum Vita Insani,22,4,8,0,10,0,0,254,CT Scan|USG|Radiologi|Hemodialisis|Laboratorium Klinik|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1273055
+rs-200,1213058,RS Umum Wampu Norita,3,0,1,0,0,0,6,50,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1213058
+rs-201,1208057,RS Umum Wira Husada,5,7,0,3,1,0,8,117,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1208057
+rs-202,1275830,RS Umum Wulan Windy,15,6,1,1,9,9,25,297,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275830
+rs-203,1212177,RS Umum Yoshua,5,1,3,4,0,0,4,102,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1212177
+rs-204,1275152,RSAU Dr. Abdul Malik,0,3,0,0,0,0,0,52,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275152
+rs-205,1271075,RSU Herna,0,7,0,2,0,1,2,104,Radiologi|Kamar Bedah / Operasi|Instalasi Farmasi,https://sirs.kemkes.go.id/fo/home/profile_rs/1271075
+rs-206,1201027,UPTD Rumah Sakit Pratama Nias,0,0,0,0,0,0,0,16,,https://sirs.kemkes.go.id/fo/home/profile_rs/1201027

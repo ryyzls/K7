@@ -1,0 +1,159 @@
+id_carisehat,kode_kemenkes,nama,kabkota,unit_type,hari,jam_buka,jam_tutup,session,status,source_url,checked_at,notes
+rs-003,1275046,RS Bhayangkara Tingkat II Medan,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rumkitbhayangkaramedan.com/,2026-11-20,Instalasi Gawat Darurat (IGD) Buka 24 Jam setiap hari
+rs-003,1275046,RS Bhayangkara Tingkat II Medan,Kota Medan,Poli,Senin-Jumat,07:00,14:00,Pagi,VERIFIED_OFFICIAL,https://rumkitbhayangkaramedan.com/,2026-11-20,"Poliklinik / Rawat Jalan (Poli Umum, Gigi, Spesialis)"
+rs-023,1275999,RS Jiwa Bina Karsa Medan,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rsjbinakarsamedan.co.id,2026-11-20,UGD / Layanan Darurat 24 Jam
+rs-025,1275221,RS Jiwa Prof. Dr. Muhammad Ildrem,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rsj.sumutprov.go.id/,2026-11-20,IGD 24 Jam UPTD RSJ Prof Dr Muhammad Ildrem
+rs-032,1275928,RS Khusus Mata Prima Vision,Kota Medan,Umum,Senin-Sabtu,08:00,20:00,Pagi-Malam,VERIFIED_OFFICIAL,https://www.primavisionhospital.com,2026-11-20,Jam Operasional Pelayanan Senin – Sabtu 08.00 – 20.00 WIB
+rs-033,1275922,RS Khusus Mata Provinsi Sumatera Utara,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rskmata.sumutprov.go.id/,2026-11-20,Nomor Darurat / UGD 24 Jam
+rs-051,1275996,RS SUFINA AZIZ,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://sufinaaziz.com,2026-11-20,IGD / Gawat Darurat 24 Jam
+rs-067,1275997,RS Umum Bina Kasih,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rsubinakasihmdn.com/,2026-11-20,IGD & Apotek 24 Jam
+rs-067,1275997,RS Umum Bina Kasih,Kota Medan,Pendaftaran,Senin-Minggu,07:00,21:00,Pagi-Malam,VERIFIED_OFFICIAL,https://rsubinakasihmdn.com/,2026-11-20,Jam Operasional Administrasi 07.00 – 21.00 WIB
+rs-111,1275050,RS Umum Deli,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://www.rsudeli.com/,2026-11-20,IGD / Layanan Gawat Darurat 24 Jam
+rs-113,1275061,RS Umum Delima Medan,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://www.rsudelima.com,2026-11-20,UGD / Layanan 24 Jam
+rs-117,1275931,RS Umum Eshmun,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://eshmunhospital.com,2026-11-20,Layanan IGD 24 Jam
+rs-118,1275841,RS Umum Estomihi,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,CORROBORATED,https://dokterpintar.id,2026-11-20,Layanan IGD 24 Jam
+rs-125,1275930,RS Umum Hermina Medan,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://herminahospitals.com,2026-11-20,Layanan Darurat & IGD 24 Jam
+rs-128,1275622,RS Umum Imelda Pekerja Indonesia,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rsuimelda.com,2026-11-20,Layanan IGD 24 Jam
+rs-130,1275163,RS Umum Islam Malahayati,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rsimalahayati.com,2026-11-20,Layanan Gawat Darurat 24 Jam
+rs-139,1275909,RS Umum Madani,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rsu-madani-medan.com,2026-11-20,Layanan IGD 24 Jam
+rs-142,1275633,RS Umum Martha Friska,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rsmarthafriska.com,2026-11-20,Layanan IGD 24 Jam
+rs-143,1275888,RS Umum Martha Friska Multatuli,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://marthafriska.com,2026-11-20,Layanan IGD 24 Jam
+rs-144,1275130,RS Umum Materna,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://www.rsmaterna.com,2026-11-20,Layanan IGD dan Darurat 24 Jam
+rs-147,1275126,RS Umum Methodist,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rsmethodist.com,2026-11-20,Layanan Gawat Darurat 24 Jam
+rs-150,1275516,RS Umum Mitra Medika,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://mitramedika.co.id,2026-11-20,Layanan IGD 24 Jam
+rs-152,1275923,RS Umum Mitra Medika Amplas,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://amplas.mitramedika.com,2026-11-20,Layanan Darurat 24 Jam
+rs-153,1275011,RS Umum Mitra Medika Premiere,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://mitramedika.com,2026-11-20,Layanan IGD & Darurat 24 Jam
+rs-155,1275298,RS Umum Mitra Sejati,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,CORROBORATED,https://rsmitrasejati.com,2026-11-20,Layanan IGD 24 Jam
+rs-156,1275885,RS Umum Muhammadiyah Sumatera Utara,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rsumuhammadiyahsumut.id,2026-11-20,Layanan Gawat Darurat 24 Jam
+rs-157,1275889,RS Umum Murni Teguh Memorial Hospital,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://www.rsmurniteguh.com,2026-11-20,Layanan Emergency/IGD 24 Jam
+rs-158,1275100,RS Umum Murni Teguh Methodist Susanna Wesley,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://www.rsmurniteguh.com,2026-11-20,Layanan IGD 24 Jam
+rs-168,1275600,RS Umum Prima Husada Cipta Medan,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://phcm.co.id,2026-11-20,Call center dan IGD siaga 24 Jam
+rs-169,1275750,RS Umum Prof. Dr. Boloni,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rsuboloni.com,2026-11-20,Layanan IGD 24 Jam
+rs-171,1275655,RS Umum Pusat H. Adam Malik,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rsham.go.id,2026-11-20,Layanan Gawat Darurat 24 Jam
+rs-175,1275935,RS Umum Royal Maternity,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rsroyalmaternity.com,2026-11-20,Layanan IGD 24 Jam
+rs-176,1275907,RS Umum Royal Prima,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://royalprima.com,2026-11-20,Layanan IGD 24 Jam
+rs-177,1275936,RS Umum Royal Prima Marelan,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rsroyalprimarelan.com,2026-11-20,Layanan IGD Siaga 24 Jam
+rs-178,1275072,RS Umum Santa Elisabeth Medan,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rumahsakitsantaelisabethmedan.id,2026-11-20,Layanan IGD 24 Jam
+rs-179,1275724,RS Umum Sarah,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://www.sarahhospital.com,2026-11-20,Layanan IGD 24 Jam
+rs-185,1275911,RS Umum Siloam Dhirga Surya,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://www.siloamhospitals.com,2026-11-20,Layanan IGD Gawat Darurat 24 Jam
+rs-190,1275702,RS Umum Sri Ratu,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,CORROBORATED,https://rsusriratu.com,2026-11-20,Layanan IGD 24 Jam
+rs-192,1275265,RS Umum Sundari,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,CORROBORATED,https://dokterpintar.id,2026-11-20,Layanan IGD 24 Jam
+rs-194,1275899,RS Umum Tere Margareth,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rsteremargareth.com,2026-11-20,Layanan IGD 24 Jam
+rs-198,1275276,RS Umum Vina Estetica,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://www.rsuvinaestetica.co.id,2026-11-20,Layanan IGD 24 Jam
+rs-202,1275830,RS Umum Wulan Windy,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://wulanwindy.mitramedika.com,2026-11-20,Layanan IGD Siaga 24 Jam
+rs-204,1275152,RSAU Dr. Abdul Malik,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rsauabdulmaliklanudswo.com,2026-11-20,Layanan IGD 24 Jam
+rs-205,1271075,RSU Herna,Kota Medan,IGD,Senin-Minggu,00:00,23:59,24 Jam,CORROBORATED,https://avitaliahealth.com,2026-11-20,Layanan IGD 24 Jam
+rs-001,1276079,OG Hospital,Kota Binjai,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional tidak ditemukan
+rs-009,1212201,RS Dhillon,Deli Serdang,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional spesifik tidak tercantum di snippet
+rs-013,1212202,RS Grand Medica,Deli Serdang,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional tidak ditemukan
+rs-014,1218158,RS Grandmed,Deli Serdang,IGD,Senin-Minggu,00:00,24:00,24 Jam,VERIFIED_OFFICIAL,https://www.rsgrandmed.com,2026-11-20,Layanan IGD 24 Jam
+rs-017,1276092,RS Ibu dan Anak Grand Fatimah,Kota Binjai,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional tidak ditemukan
+rs-018,1212186,RS Ibu dan Anak Maharani,Deli Serdang,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional spesifik tidak tercantum di snippet
+rs-021,1212197,RS Ibu dan Anak Pramaliesa,Deli Serdang,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional spesifik tidak tercantum di snippet
+rs-024,1212184,RS Jiwa Bina Karsa Tuntungan,Deli Serdang,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional spesifik tidak tercantum di snippet
+rs-055,1276040,RS Tk. IV 01.07.02 Binjai,Kota Binjai,IGD,Senin-Minggu,00:00,24:00,24 Jam,VERIFIED_OFFICIAL,https://rstentarabinjai.com/,2026-11-20,Layanan IGD / Darurat 24 Jam
+rs-058,1276078,RS Umum AL Fuadi,Kota Binjai,IGD,Senin-Minggu,00:00,24:00,24 Jam,VERIFIED_OFFICIAL,https://www.rsualfuadi.com,2026-11-20,Layanan Bantuan Darurat 24/7
+rs-061,1276036,RS Umum Artha Medica,Kota Binjai,IGD,Senin-Minggu,00:00,24:00,24 Jam,VERIFIED_OFFICIAL,https://rsuarthamedica.com,2026-11-20,Layanan IGD dan pendaftaran online tersedia 24 Jam setiap hari
+rs-065,1276075,RS Umum Bidadari,Kota Binjai,IGD,Senin-Minggu,00:00,24:00,24 Jam,VERIFIED_OFFICIAL,https://rsu.bidadari.co.id/,2026-11-20,Layanan IGD 24 Jam
+rs-071,1212179,RS Umum Citra Medika,Deli Serdang,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional spesifik tidak tercantum di snippet
+rs-073,1212198,RS Umum Daerah Bangun Purba,Deli Serdang,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional spesifik tidak tercantum di snippet
+rs-084,1276014,RS Umum Daerah Dr. R. M. Djoelham Binjai,Kota Binjai,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional spesifik tidak tercantum di snippet
+rs-086,1212012,RS Umum Daerah Drs. H. Amri Tambunan,Deli Serdang,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional spesifik tidak tercantum di snippet
+rs-107,1213013,RS Umum Daerah Tanjung Pura,Langkat,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional spesifik tidak tercantum di snippet
+rs-112,1213057,RS Umum Delia,Langkat,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional tidak ditemukan
+rs-114,1212023,RSU dr. G. L. TOBING,Deli Serdang,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional spesifik tidak tercantum di snippet
+rs-120,1275147,RS Umum Full Bethesda,Deli Serdang,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional tidak ditemukan
+rs-122,1275794,RS Umum Haji Medan,Deli Serdang,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional spesifik tidak tercantum di snippet
+rs-126,1212067,RS Umum Hidayah,Deli Serdang,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional tidak ditemukan
+rs-133,1212183,RS Umum Kasih Insani,Deli Serdang,IGD,Senin-Minggu,00:00,24:00,24 Jam,VERIFIED_OFFICIAL,https://rskasihinsani.com,2026-11-20,IGD & Apotek siaga 24 Jam
+rs-133,1212183,RS Umum Kasih Insani,Deli Serdang,Pendaftaran,Senin-Minggu,07:00,21:00,Pagi-Malam,VERIFIED_OFFICIAL,https://rskasihinsani.com,2026-11-20,Administrasi / Pendaftaran Loket 07.00 - 21.00 WIB
+rs-135,1212174,RS Umum Keliat,Deli Serdang,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional tidak ditemukan
+rs-138,1276074,RS Umum Latersia,Kota Binjai,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional tidak ditemukan
+rs-140,1212199,RS Umum Mahawira Prima Indonesia,Deli Serdang,IGD,Senin-Minggu,00:00,24:00,24 Jam,CORROBORATED,https://rsmahawiraprimaindonesia.wordpress.com/,2026-11-20,Layanan IGD / Emergency 24 Jam
+rs-141,1213062,RS Umum Mahkota Bidadari,Langkat,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional spesifik tidak tercantum di snippet
+rs-149,1212200,RS Umum Mitra Guray Petumbukan,Deli Serdang,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional spesifik tidak tercantum di snippet
+rs-151,1212181,RS Umum Mitra Medika,Deli Serdang,IGD,Senin-Minggu,00:00,24:00,24 Jam,VERIFIED_OFFICIAL,https://bandarklippa.mitramedika.com/,2026-11-20,Layanan IGD / Panggilan Darurat 24 Jam
+rs-154,1212175,RS Umum Mitra Sehat,Deli Serdang,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional tidak ditemukan
+rs-162,1212185,RS Umum Pancur Batu,Deli Serdang,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional spesifik tidak tercantum di snippet
+rs-163,1212172,RS Umum Patar Asih,Deli Serdang,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional spesifik tidak tercantum di snippet
+rs-167,1213035,RS Umum Pertamina Pangkalan Brandan,Langkat,IGD,Senin-Minggu,00:00,24:00,24 Jam,CORROBORATED,https://pertamedika-rsppb.blogspot.co.id,2026-11-20,Layanan Emergency 24 Jam
+rs-170,1213024,RS Umum PTP II Tg Selamat,Langkat,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional tidak ditemukan
+rs-172,1213059,RS Umum Putri Bidadari,Langkat,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional spesifik tidak tercantum di snippet
+rs-173,1212171,RS Umum Rahmad Hidayah,Deli Serdang,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional tidak ditemukan
+rs-174,1276076,RS Umum Ratu Mas,Kota Binjai,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional tidak ditemukan
+rs-180,1212093,RS Umum Sari Mutiara Lubuk Pakam,Deli Serdang,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional tidak ditemukan
+rs-182,1212045,RS Umum Sembiring Deli Tua,Deli Serdang,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional spesifik tidak tercantum di snippet
+rs-187,1212136,RS Umum Sinar Husni,Deli Serdang,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional tidak ditemukan
+rs-193,1276077,RS Umum Sylvani,Kota Binjai,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional spesifik tidak tercantum di snippet
+rs-200,1213058,RS Umum Wampu Norita,Langkat,IGD,Senin-Minggu,00:00,24:00,24 Jam,VERIFIED_OFFICIAL,https://rsuwampunorita.co.id/,2026-11-20,Jam Layanan IGD 24 Jam setiap hari
+rs-203,1212177,RS Umum Yoshua,Deli Serdang,Umum,,,,,NOT_FOUND,,2026-11-20,Jam operasional tidak ditemukan
+rs-005,1274058,RS Bhayangkara Tk.III Kota Tebing Tinggi,Kota Tebing Tinggi,,,,,,NOT_FOUND,,2026-11-20,Informasi jam operasional tidak ditemukan secara eksplisit
+rs-006,1274063,RS Chevani,Kota Tebing Tinggi,,,,,,NOT_FOUND,,2026-11-20,Informasi jam operasional tidak ditemukan secara eksplisit
+rs-011,1273119,RS Efarina Etaham Pematang Siantar,Kota Pematang Siantar,,,,,,NOT_FOUND,,2026-11-20,Informasi jam operasional tidak ditemukan secara eksplisit
+rs-019,1211127,RS Ibu dan Anak Mina Husada,Karo,,,,,,NOT_FOUND,,2026-11-20,Informasi jam operasional tidak ditemukan secara eksplisit
+rs-036,1273107,RS Mata Siantar,Kota Pematang Siantar,,,,,,NOT_FOUND,,2026-11-20,Informasi jam operasional tidak ditemukan secara eksplisit
+rs-040,1273102,RS Murni Teguh Horas Insani,Kota Pematang Siantar,IGD,Senin-Minggu,00:00,24:00,24 Jam,VERIFIED_OFFICIAL,https://www.rsmurniteguh.com,2026-11-20,IGD Unit Gawat Darurat 24 Jam
+rs-040,1273102,RS Murni Teguh Horas Insani,Kota Pematang Siantar,Pendaftaran,Senin-Minggu,08:00,17:00,Pagi-Sore,VERIFIED_OFFICIAL,https://www.rsmurniteguh.com,2026-11-20,Layanan customer service pendaftaran
+rs-041,1273120,RS Murni Teguh Pematang Siantar,Kota Pematang Siantar,,,,,,NOT_FOUND,,2026-11-20,Informasi jam operasional spesifik tidak tercantum pada snippet
+rs-044,1273108,RS Rasyida Siantar,Kota Pematang Siantar,,,,,,NOT_FOUND,,2026-11-20,Informasi jam operasional tidak ditemukan secara eksplisit
+rs-054,1273022,RS Tk. IV 01.07.01,Kota Pematang Siantar,IGD,Senin-Minggu,00:00,24:00,24 Jam,VERIFIED_OFFICIAL,https://rumkitsiantar.tni-ad.mil.id,2026-11-20,IGD 24 Jam
+rs-059,1211126,RS Umum Amanda,Karo,,,,,,NOT_FOUND,,2026-11-20,Informasi jam operasional tidak ditemukan secara eksplisit
+rs-062,1209010,RS Umum Balimbingan PTP 4,Simalungun,,,,,,NOT_FOUND,,2026-11-20,Informasi jam operasional tidak ditemukan secara eksplisit
+rs-077,1273011,RS Umum Daerah Dr. Djasamen Saragih,Kota Pematang Siantar,,,,,,NOT_FOUND,,2026-11-20,Informasi jam operasional tidak ditemukan secara eksplisit
+rs-079,1274012,RS Umum Daerah Dr. H. Kumpulan Pane,Kota Tebing Tinggi,,,,,,NOT_FOUND,,2026-11-20,Informasi jam operasional tidak ditemukan secara eksplisit
+rs-090,1211011,RS Umum Daerah Kabupaten Karo,Karo,,,,,,NOT_FOUND,,2026-11-20,Informasi jam operasional tidak ditemukan secara eksplisit
+rs-097,1209065,RS Umum Daerah Parapat,Simalungun,,,,,,NOT_FOUND,,2026-11-20,Informasi jam operasional tidak ditemukan secara eksplisit
+rs-098,1209076,RS Umum Daerah Perdagangan,Simalungun,,,,,,NOT_FOUND,,2026-11-20,Informasi jam operasional tidak ditemukan secara eksplisit
+rs-104,1210010,RS Umum Daerah Sidikalang,Dairi,IGD,Senin-Minggu,00:00,24:00,24 Jam,VERIFIED_OFFICIAL,https://rsud.dairikab.go.id,2026-11-20,IGD Buka 24 Jam
+rs-104,1210010,RS Umum Daerah Sidikalang,Dairi,Umum,Senin-Sabtu,06:00,22:00,Pagi-Malam,VERIFIED_OFFICIAL,https://rsud.dairikab.go.id,2026-11-20,Jam buka operasional rumah sakit Senin-Sabtu
+rs-110,1209077,RS Umum Daerah Tuan Rondahaim,Simalungun,,,,,,NOT_FOUND,,2026-11-20,Informasi jam operasional tidak ditemukan secara eksplisit
+rs-115,1211124,RS Umum Efarina Etaham,Karo,IGD,Senin-Minggu,00:00,24:00,24 Jam,VERIFIED_OFFICIAL,https://rsefarinaberastagi.com,2026-11-20,IGD / UGD Buka 24 Jam setiap hari
+rs-123,1273033,RS Umum Harapan,Kota Pematang Siantar,IGD,Senin-Minggu,00:00,24:00,24 Jam,VERIFIED_OFFICIAL,https://rsharapansiantar.com,2026-11-20,Instalasi Gawat Darurat IGD Buka 24 Jam
+rs-132,1209081,RS Umum Karya Husada,Simalungun,IGD,Senin-Minggu,00:00,24:00,24 Jam,CORROBORATED,https://kemkes.go.id,2026-11-20,Instalasi Gawat Darurat IGD Buka 24 jam setiap hari
+rs-136,1209021,RS Umum Laras Kabupaten Simalungun,Simalungun,,,,,,NOT_FOUND,,2026-11-20,Informasi jam operasional tidak ditemukan secara eksplisit
+rs-159,1274061,RS Umum Natama,Kota Tebing Tinggi,,,,,,NOT_FOUND,,2026-11-20,Informasi jam operasional tidak ditemukan secara eksplisit
+rs-183,1210021,RS Umum Serenapita,Dairi,IGD,Senin-Minggu,00:00,24:00,24 Jam,VERIFIED_OFFICIAL,https://rsuserenapita.id,2026-11-20,Layanan IGD 24 Jam
+rs-186,1211033,RS Umum Simalem,Karo,,,,,,NOT_FOUND,,2026-11-20,Informasi jam operasional tidak ditemukan secara eksplisit
+rs-189,1274034,RS Umum Sri Pamela,Kota Tebing Tinggi,IGD,Senin-Minggu,00:00,24:00,24 Jam,VERIFIED_OFFICIAL,https://sripamela.spmedika.co.id,2026-11-20,Pelayanan Gawat Darurat IGD 24 Jam
+rs-189,1274034,RS Umum Sri Pamela,Kota Tebing Tinggi,Umum,Senin-Jumat,08:00,17:00,Pagi-Sore,VERIFIED_OFFICIAL,https://sripamela.spmedika.co.id,2026-11-20,Waktu Kerja Administrasi Kantor Senin-Jumat
+rs-195,1273106,RS Umum Tiara Kasih Sejati,Kota Pematang Siantar,,,,,,NOT_FOUND,,2026-11-20,Informasi jam operasional tidak ditemukan secara eksplisit
+rs-196,1274062,RS Umum Universitas Prima Indonesia,Kota Tebing Tinggi,,,,,,NOT_FOUND,,2026-11-20,Informasi jam operasional tidak ditemukan secara eksplisit
+rs-199,1273055,RS Umum Vita Insani,Kota Pematang Siantar,IGD,Senin-Minggu,00:00,24:00,24 Jam,VERIFIED_OFFICIAL,https://www.vitainsani.com,2026-11-20,IGD Gawat Darurat Setiap hari 24 Jam
+rs-199,1273055,RS Umum Vita Insani,Kota Pematang Siantar,Poli,Senin-Sabtu,08:00,19:00,Pagi-Malam,VERIFIED_OFFICIAL,https://www.vitainsani.com,2026-11-20,Jam Rawat Jalan Poliklinik Senin-Sabtu 08:00-19:00 WIB
+rs-046,1219015,RS Sapta Medika,Batu Bara,IGD,Senin-Minggu,00:00,24:00,24_jam,VERIFIED_OFFICIAL,https://saptamedika.com,2026-11-20,Layanan IGD Siaga 24 Jam
+rs-048,1223018,RS Sri Pamela Membang Muda,Labuhan Batu Utara,IGD,Senin-Minggu,00:00,24:00,24_jam,VERIFIED_OFFICIAL,https://membangmuda.spmedika.co.id,2026-11-20,Layanan UGD Siaga 24 Jam
+rs-066,1219017,RS Umum Bidadari Batubara,Batu Bara,IGD,Senin-Minggu,00:00,24:00,24_jam,VERIFIED_OFFICIAL,https://rsubatubara.bidadari.co.id,2026-11-20,Instalasi Gawat Darurat (IGD) Buka 24 Jam setiap hari
+rs-070,1208020,RS Umum Catharina 1914,Asahan,IGD,Senin-Minggu,00:00,24:00,24_jam,VERIFIED_OFFICIAL,https://rsucatharina1914.com,2026-11-20,Layanan IGD dan Panggilan Darurat 24 Jam
+rs-201,1208057,RS Umum Wira Husada,Asahan,IGD,Senin-Minggu,00:00,24:00,24_jam,VERIFIED_OFFICIAL,https://rsuwirahusadakisaran.com,2026-11-20,Layanan Instalasi Gawat Darurat (IGD) 24 Jam
+rs-056,1277015,RS TNI Tk. IV 01.07.03,Kota Padang Sidempuan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rumkittnipsp.com,2026-11-20,Buka 24 jam setiap hari untuk penanganan gawat darurat
+rs-056,1277015,RS TNI Tk. IV 01.07.03,Kota Padang Sidempuan,MCU,Senin-Jumat,09:00,12:00,Pagi,VERIFIED_OFFICIAL,https://rumkittnipsp.com,2026-11-20,Layanan Medical Check Up
+rs-080,1205024,RS Umum Daerah Dr. Hadrianus Sinaga,Samosir,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rsud.samosirkab.go.id,2026-11-20,Pelayanan gawat darurat 24 jam
+rs-080,1205024,RS Umum Daerah Dr. Hadrianus Sinaga,Samosir,Pendaftaran,Senin-Kamis,08:00,13:00,Pagi,VERIFIED_OFFICIAL,https://rsud.samosirkab.go.id,2026-11-20,Pendaftaran Poliklinik Rawat Jalan
+rs-080,1205024,RS Umum Daerah Dr. Hadrianus Sinaga,Samosir,Pendaftaran,Jumat-Sabtu,08:00,12:00,Pagi,VERIFIED_OFFICIAL,https://rsud.samosirkab.go.id,2026-11-20,Pendaftaran Poliklinik Rawat Jalan
+rs-087,1203044,RS Umum Daerah Gunung Tua,Padang Lawas Utara,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rsud.padanglawasutarakab.go.id,2026-11-20,Pelayanan IGD 24 jam
+rs-094,1277011,RS Umum Daerah Padang Sidempuan,Kota Padang Sidempuan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rsud.padangsidimpuankota.go.id,2026-11-20,Pelayanan IGD siaga 24 jam
+rs-095,1204056,RS Umum Daerah Pandan,Tapanuli Tengah,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rsudpandan.tapteng.go.id,2026-11-20,Layanan IGD 24 jam
+rs-095,1204056,RS Umum Daerah Pandan,Tapanuli Tengah,Umum,Senin-Kamis,07:00,18:00,Pagi-Sore,VERIFIED_OFFICIAL,https://rsudpandan.tapteng.go.id,2026-11-20,Jam buka pelayanan rawat jalan
+rs-095,1204056,RS Umum Daerah Pandan,Tapanuli Tengah,Umum,Jumat-Sabtu,08:00,18:00,Pagi-Sore,VERIFIED_OFFICIAL,https://rsudpandan.tapteng.go.id,2026-11-20,Jam buka pelayanan rawat jalan
+rs-095,1204056,RS Umum Daerah Pandan,Tapanuli Tengah,Umum,Minggu,08:00,12:00,Pagi,VERIFIED_OFFICIAL,https://rsudpandan.tapteng.go.id,2026-11-20,Jam buka pelayanan rawat jalan hari Minggu
+rs-100,1205046,RS Umum Daerah Porsea,Toba Samosir,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://rsudporsea.com,2026-11-20,Pelayanan IGD buka 24 jam setiap hari
+rs-108,1203033,RS Umum Daerah Tapanuli Selatan,Tapanuli Selatan,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://www.rsud.tapselkab.go.id,2026-11-20,Pelayanan IGD buka 24 jam
+rs-127,1205061,RS Umum HKBP Balige,Toba Samosir,IGD,Senin-Minggu,00:00,23:59,24 Jam,VERIFIED_OFFICIAL,https://www.rshkbpbalige.or.id,2026-11-20,Layanan IGD beroperasi 24 jam
+rs-037,1278013,RUMAH SAKIT METTA MEDIKA,Kota Gunungsitoli,IGD,Senin-Minggu,00:00,23:59,24_jam,CORROBORATED,https://rri.co.id,2026-11-20,Layanan IGD 24 jam faskes baru beroperasi
+rs-039,1271033,RS Metta Medika II,Kota Sibolga,IGD,Senin-Minggu,00:00,23:59,24_jam,VERIFIED_OFFICIAL,https://kemkes.go.id,2026-11-20,IGD beroperasi 24 jam setiap hari
+rs-039,1271033,RS Metta Medika II,Kota Sibolga,Poli,Senin-Sabtu,08:00,20:00,pagi-malam,CORROBORATED,https://linktr.ee/rsmettamedika2,2026-11-20,Pelayanan poliklinik spesialis dan rawat jalan Senin sampai Sabtu
+rs-043,1225013,RS Pratama Lologolu Soguna Ba Zato,Nias Barat,IGD,Senin-Minggu,00:00,23:59,24_jam,CORROBORATED,https://kemkes.go.id,2026-11-20,Pelayanan gawat darurat RS Pratama 24 jam
+rs-064,1278002,RS Umum Bethesda Gunungsitoli,Kota Gunungsitoli,IGD,Senin-Minggu,00:00,23:59,24_jam,VERIFIED_OFFICIAL,https://kemkes.go.id,2026-11-20,IGD 24 jam setiap hari termasuk libur nasional
+rs-064,1278002,RS Umum Bethesda Gunungsitoli,Kota Gunungsitoli,Poli,Senin-Sabtu,08:00,14:00,pagi,CORROBORATED,https://kemkes.go.id,2026-11-20,Poliklinik rawat jalan Senin-Sabtu jadwal dokter spesialis
+rs-075,1225002,RS Umum Daerah Cerah Medika Kab. Nias Barat,Nias Barat,IGD,Senin-Minggu,00:00,23:59,24_jam,CORROBORATED,https://kemkes.go.id,2026-11-20,Pelayanan gawat darurat RSUD Kelas D 24 jam
+rs-078,1271016,RS Umum Daerah Dr. FL Tobing Sibolga,Kota Sibolga,IGD,Senin-Minggu,00:00,23:59,24_jam,VERIFIED_OFFICIAL,https://kemkes.go.id,2026-11-20,IGD buka 24 jam 7 hari seminggu
+rs-078,1271016,RS Umum Daerah Dr. FL Tobing Sibolga,Kota Sibolga,Poli,Senin-Sabtu,08:00,14:00,pagi,CORROBORATED,http://www.rsufltobing.sibolgakota.go.id,2026-11-20,Poliklinik rawat jalan beroperasi jam kerja instansi pagi hari
+rs-082,1201016,RS Umum Daerah dr. M. Thomsen Nias,Kota Gunungsitoli,IGD,Senin-Minggu,00:00,23:59,24_jam,VERIFIED_OFFICIAL,http://rsud.niaskab.go.id,2026-11-20,Pelayanan IGD 24 jam setiap hari dengan sistem triase
+rs-082,1201016,RS Umum Daerah dr. M. Thomsen Nias,Kota Gunungsitoli,Poli,Senin-Jumat,08:00,14:00,pagi,VERIFIED_OFFICIAL,http://rsud.niaskab.go.id,2026-11-20,Pelayanan Poliklinik rawat jalan hari kerja instansi pemerintah
+rs-092,1214010,RS Umum Daerah Lukas Hilisimaetano,Nias Selatan,IGD,Senin-Minggu,00:00,23:59,24_jam,CORROBORATED,https://kemkes.go.id,2026-11-20,Layanan kegawatdaruratan IGD 24 jam
+rs-093,1214022,RS Umum Daerah Nias Selatan,Nias Selatan,IGD,Senin-Minggu,00:00,23:59,24_jam,CORROBORATED,https://kemkes.go.id,2026-11-20,Layanan IGD 24 jam rumah sakit umum
+rs-106,1224002,RS Umum Daerah Tafaeri,Nias Utara,IGD,Senin-Minggu,00:00,23:59,24_jam,CORROBORATED,https://kemkes.go.id,2026-11-20,Layanan gawat darurat IGD 24 jam
+rs-148,1271032,RS Umum Metta Medika,Kota Sibolga,IGD,Senin-Minggu,00:00,23:59,24_jam,VERIFIED_OFFICIAL,https://kemkes.go.id,2026-11-20,IGD beroperasi 24 jam setiap hari (24/7)
+rs-148,1271032,RS Umum Metta Medika,Kota Sibolga,Poli,Senin-Sabtu,08:00,20:00,pagi-malam,CORROBORATED,https://linktr.ee/rsmettamedikasibolgaa,2026-11-20,Pelayanan poliklinik spesialis dan umum buka Senin sampai Sabtu
+rs-191,1214011,RS Umum Stella Maris,Nias Selatan,IGD,Senin-Minggu,00:00,23:59,24_jam,CORROBORATED,https://kemkes.go.id,2026-11-20,Layanan gawat darurat IGD 24 jam
+rs-206,1201027,UPTD Rumah Sakit Pratama Nias,Nias,IGD,Senin-Minggu,00:00,23:59,24_jam,CORROBORATED,https://kemkes.go.id,2026-11-20,Pelayanan gawat darurat RS Pratama 24 jam

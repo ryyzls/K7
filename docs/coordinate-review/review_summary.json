@@ -1,0 +1,23 @@
+{
+  "hospitals": 206,
+  "source_sha256": "65dedafabbee3678f7ba6292c15576f58bc3a1b97ae26e961c407ebb59dc7ace",
+  "priority_counts": {
+    "P1": 106,
+    "P2": 91,
+    "P0": 9
+  },
+  "source_counts": {
+    "jalan": 41,
+    "osm": 39,
+    "nama": 52,
+    "kabkota": 65,
+    "unknown": 9
+  },
+  "repeated_coordinate_rows": 69,
+  "queue": "/workspace/docs/coordinate-review/review_queue.csv",
+  "notes": [
+    "P0 = missing/invalid; P1 = approximate street/city; P2 = name/OSM (still not verified)",
+    "OSM and Google Maps links are search shortcuts, NOT evidence or a source of verified coordinates.",
+    "Neither the RDF graph nor the live DB/website is modified."
+  ]
+}

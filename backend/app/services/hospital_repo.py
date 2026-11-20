@@ -16,7 +16,9 @@ import rdflib
 from rdflib import RDF, RDFS, Namespace
 
 from app.config import settings
+from app.services.website import public_website
 from app.services import sparql_service as sp
+from app.services import sirs
 
 log = logging.getLogger("carisehat.hospital_repo")
 
@@ -81,6 +83,9 @@ def _load_rdf_graph_to_cache() -> None:
             log.warning("Gagal memuat ontologi.ttl: %s", e)
 
     g.parse(str(ttl_path), format="turtle")
+    websites_path = rdf_dir / "hospital-websites.ttl"
+    if websites_path.exists():
+        g.parse(str(websites_path), format="turtle")
     log.info("RDF in-memory graph berhasil dimuat: %d triples", len(g))
 
     hospitals: list[dict] = []
@@ -96,6 +101,10 @@ def _load_rdf_graph_to_cache() -> None:
         kabkota = str(g.value(kk_node, RDFS.label) or "") if kk_node else ""
         telepon = str(g.value(s, SCHEMA.telephone)) if g.value(s, SCHEMA.telephone) else None
         website = str(g.value(s, SCHEMA.url)) if g.value(s, SCHEMA.url) else None
+        website_status = str(g.value(s, HF.websiteStatus) or "unreviewed")
+        website_evidence = str(g.value(s, HF.websiteEvidence) or "")
+        website_checked_at = str(g.value(s, HF.websiteCheckedAt) or "")
+        website = public_website(website, website_status, website_evidence, website_checked_at)
         bpjs_val = g.value(s, HF.menerimaBPJS)
         bpjs = str(bpjs_val).lower() == "true" if bpjs_val is not None else False
         lat_val = g.value(s, GEO.lat)
@@ -105,11 +114,7 @@ def _load_rdf_graph_to_cache() -> None:
         pemilik = str(g.value(s, HF.pemilik)) if g.value(s, HF.pemilik) else None
         sumber = str(g.value(s, HF.sumberKoordinat)) if g.value(s, HF.sumberKoordinat) else None
 
-        layanan = sorted({
-            str(g.value(l, RDFS.label))
-            for l in g.objects(s, HF.menyediakanLayanan)
-            if g.value(l, RDFS.label)
-        })
+        layanan = sorted({r['label'] for r in sirs.records().get(rs_id, [])})
         fasilitas = sorted({
             str(g.value(f, RDFS.label))
             for f in g.objects(s, HF.memilikiFasilitas)
@@ -128,6 +133,10 @@ def _load_rdf_graph_to_cache() -> None:
             "kabkota": kabkota,
             "telepon": telepon,
             "website": website,
+            "website_status": website_status,
+            "website_evidence": website_evidence,
+            "website_checked_at": website_checked_at,
+            "website_scope": str(g.value(s, HF.websiteScope) or ""),
             "bpjs": bpjs,
             "lat": lat,
             "lon": lon,
@@ -138,6 +147,7 @@ def _load_rdf_graph_to_cache() -> None:
             "pemilik": pemilik,
             "sumber_koordinat": sumber,
         }
+        sirs.annotate(item)
         hospitals.append(item)
         hmap[rs_id] = item
         hmap[str(s)] = item
@@ -239,9 +249,7 @@ def filter_in_memory(
             if not _matches_facility(fasilitas, h["fasilitas"]):
                 continue
         if is_emergency:
-            has_ugd = "UGD 24 Jam" in h["layanan"]
-            has_amb_igd = any(f in ("Ambulans", "Instalasi Gawat Darurat") for f in h["fasilitas"])
-            if not (has_ugd and has_amb_igd):
+            if sirs.EMERGENCY not in h['layanan']:
                 continue
 
         results.append(dict(h))
@@ -277,7 +285,7 @@ async def search_hospitals(
                 jenis=jenis,
                 kabkota=kabkota,
                 layanan=layanan,
-                bpjs=bpjs if bpjs is not None else False,
+                bpjs=bpjs,
                 fasilitas=fasilitas,
                 limit=limit,
                 offset=offset,

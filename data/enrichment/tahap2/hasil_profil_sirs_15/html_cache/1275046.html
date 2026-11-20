@@ -1,0 +1,2256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>RS Online</title>
+  <link rel="icon" type="image/png" href="https://sirs.kemkes.go.id/fo/assets/images/kemkes-1.png">
+  <link rel="apple-touch-icon" href="https://sirs.kemkes.go.id/fo/assets/images/kemkes-1.png">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://sirs.kemkes.go.id/fo/plugins/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="https://sirs.kemkes.go.id/fo/dist/css/adminlte.min.css">
+
+  <!-- Morris chart -->
+  <link rel="stylesheet" href="https://sirs.kemkes.go.id/fo/plugins/morris/morris.css">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="https://sirs.kemkes.go.id/fo/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="https://sirs.kemkes.go.id/fo/plugins/datepicker/datepicker3.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="https://sirs.kemkes.go.id/fo/plugins/daterangepicker/daterangepicker-bs3.css">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="https://sirs.kemkes.go.id/fo/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="https://sirs.kemkes.go.id/fo/plugins/datatables/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="https://sirs.kemkes.go.id/fo/assets/css/tokenfield-typeahead.min.css">
+  <link rel="stylesheet" href="https://sirs.kemkes.go.id/fo/assets/css/icheck.css">
+  <link rel="stylesheet" href="https://sirs.kemkes.go.id/fo/assets/css/select2.min.css">
+  <link rel="stylesheet" href="https://sirs.kemkes.go.id/fo/assets/css/select2-boosraps.css">
+  <!-- Theme style -->
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://sirs.kemkes.go.id/fo/assets/css/fontcss.css">
+  <script>
+    (function () {
+      var p = window.location.pathname || '';
+      var pl = p.toLowerCase();
+      if (p.indexOf('/fo/kris') !== -1) {
+        document.documentElement.classList.add('page-kris');
+      }
+      if (p.indexOf('/fo/kris/input') !== -1) {
+        document.documentElement.classList.add('page-kris-input');
+      }
+      if (pl.indexOf('/fo/disabilitas/rekap_data') !== -1 || pl.indexOf('/fo/rekap-disabilitas') !== -1) {
+        document.documentElement.classList.add('page-disabilitas-rekap');
+      }
+      if (pl.indexOf('report_dinkesv3') !== -1 || pl.indexOf('report_adminv3') !== -1) {
+        document.documentElement.classList.add('page-dinkes-cov3');
+      }
+    })();
+  </script>
+
+  <style>
+    :root {
+      --sb-bg: #0b2545;
+      --sb-bg-soft: #13315c;
+      --sb-border: rgba(255, 255, 255, 0.08);
+      --sb-text: #dbe6ff;
+      --sb-text-muted: #b7c7e8;
+      --sb-hover: rgba(103, 161, 255, 0.18);
+      --sb-active-start: #1e5bbf;
+      --sb-active-end: #2f80ed;
+      --sb-shadow: 0 14px 28px rgba(2, 8, 23, 0.35);
+      --sb-width: 290px;
+      --sb-font: 0.84rem;
+      --sb-font-sub: 0.8rem;
+    }
+
+    /* Widen sidebar so long menu labels fit better */
+    .main-sidebar,
+    .main-sidebar:before {
+      width: var(--sb-width) !important;
+    }
+
+    /* Watermark logo Kemkes: ~1/2 tinggi layar, miring kiri-bawah → kanan-atas, opacity 40% */
+    .main-sidebar::after {
+      content: "";
+      position: absolute;
+      left: -18%;
+      bottom: -8%;
+      width: 50vh;
+      height: 50vh;
+      max-width: 140%;
+      transform: rotate(-28deg);
+      transform-origin: center center;
+      background: url('https://sirs.kemkes.go.id/fo/assets/images/kemkes-1.png') center / contain no-repeat;
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .main-sidebar {
+      overflow: hidden;
+    }
+    .main-sidebar > .brand-link,
+    .main-sidebar > .sidebar {
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (min-width: 768px) {
+      .content-wrapper,
+      .main-footer,
+      .main-header {
+        margin-left: var(--sb-width) !important;
+      }
+
+      .sidebar-collapse .content-wrapper,
+      .sidebar-collapse .main-footer,
+      .sidebar-collapse .main-header {
+        margin-left: 0 !important;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .sidebar-mini.sidebar-collapse .content-wrapper,
+      .sidebar-mini.sidebar-collapse .main-footer,
+      .sidebar-mini.sidebar-collapse .main-header {
+        margin-left: 4.6rem !important;
+      }
+    }
+
+    .sidebar-collapse .main-sidebar,
+    .sidebar-collapse .main-sidebar:before {
+      margin-left: calc(var(--sb-width) * -1) !important;
+    }
+
+    @media (min-width: 992px) {
+      .sidebar-mini.sidebar-collapse .main-sidebar,
+      .sidebar-mini.sidebar-collapse .main-sidebar:before {
+        margin-left: 0 !important;
+        width: 4.6rem !important;
+      }
+
+      .sidebar-mini.sidebar-collapse .main-sidebar:hover,
+      .sidebar-mini.sidebar-collapse .main-sidebar:hover:before {
+        width: var(--sb-width) !important;
+      }
+    }
+
+    @media (max-width: 991.98px) {
+      .main-sidebar,
+      .main-sidebar:before {
+        margin-left: calc(var(--sb-width) * -1) !important;
+      }
+
+      .sidebar-open .main-sidebar,
+      .sidebar-open .main-sidebar:before {
+        margin-left: 0 !important;
+      }
+    }
+
+    .main-sidebar.sidebar-dark-primary {
+      background: linear-gradient(180deg, var(--sb-bg) 0%, var(--sb-bg-soft) 100%) !important;
+      border-right: 1px solid var(--sb-border);
+      box-shadow: var(--sb-shadow);
+    }
+
+    .main-sidebar .brand-link {
+      border-bottom: 1px solid var(--sb-border) !important;
+      padding: 0.85rem 0.9rem;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+      backdrop-filter: blur(2px);
+    }
+
+    .main-sidebar .brand-text {
+      color: #eef4ff !important;
+      letter-spacing: 0.2px;
+      font-weight: 600 !important;
+      font-size: 0.95rem !important;
+    }
+
+    .main-sidebar .brand-image {
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
+    }
+
+    .main-sidebar .sidebar,
+    .main-sidebar section.sidebar {
+      padding: 8px 6px 12px 8px;
+      overflow-y: auto !important;
+      overflow-x: hidden !important;
+      max-height: calc(100vh - 58px);
+      scroll-behavior: smooth;
+      scrollbar-width: thin; /* Firefox */
+      scrollbar-color: rgba(96, 165, 250, 0.55) rgba(255, 255, 255, 0.06);
+    }
+
+    .main-sidebar .nav-sidebar .nav-item {
+      margin-bottom: 4px;
+    }
+
+    .main-sidebar .nav-sidebar .nav-link {
+      border-radius: 10px;
+      color: var(--sb-text) !important;
+      padding: 0.5rem 0.65rem;
+      font-weight: 500;
+      font-size: var(--sb-font) !important;
+      line-height: 1.3;
+      transition: all 0.18s ease;
+      border: 1px solid transparent;
+      align-items: flex-start;
+    }
+
+    .main-sidebar .nav-sidebar .nav-link p {
+      display: inline;
+      white-space: normal !important;
+      word-break: break-word;
+      margin: 0;
+      line-height: 1.3;
+      font-size: inherit;
+    }
+
+    .main-sidebar .nav-sidebar .nav-link .nav-icon {
+      margin-right: 0.35rem;
+      margin-top: 0.12rem;
+      color: var(--sb-text-muted) !important;
+      width: 1.15rem;
+      text-align: center;
+      font-size: 0.88rem !important;
+    }
+
+    /* Normalize legacy mixed icon classes in old sidebar templates */
+    .main-sidebar .nav-sidebar .nav-link i:not(.right) {
+      width: 1.3rem;
+      min-width: 1.3rem;
+      margin-right: 0.42rem;
+      text-align: center;
+      font-size: 0.95rem;
+      line-height: 1.2;
+      color: var(--sb-text-muted) !important;
+      vertical-align: middle;
+    }
+
+    .main-sidebar .nav-sidebar .nav-link i.right {
+      margin-left: auto;
+      margin-right: 0;
+      width: auto;
+      min-width: auto;
+      font-size: 0.82rem;
+      opacity: 0.85;
+      color: #c7d7f6 !important;
+      transition: transform 0.2s ease;
+    }
+
+    .main-sidebar .nav-item.menu-open > .nav-link i.right {
+      transform: rotate(-90deg);
+    }
+
+    .main-sidebar .nav-sidebar .nav-link:hover {
+      background: var(--sb-hover) !important;
+      border-color: rgba(59, 130, 246, 0.22);
+      color: #ffffff !important;
+      transform: translateX(2px);
+    }
+
+    .main-sidebar .nav-sidebar .nav-link:hover .nav-icon {
+      color: #cfe2ff !important;
+    }
+
+    .main-sidebar .nav-sidebar .nav-link:hover i:not(.right) {
+      color: #dbeafe !important;
+    }
+
+    .main-sidebar .nav-sidebar .nav-link.active {
+      background: linear-gradient(135deg, var(--sb-active-start), var(--sb-active-end)) !important;
+      color: #ffffff !important;
+      box-shadow: 0 7px 18px rgba(37, 99, 235, 0.34);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .main-sidebar .nav-sidebar .nav-link.active .nav-icon {
+      color: #ffffff !important;
+    }
+
+    .main-sidebar .nav-sidebar .nav-link.active i:not(.right) {
+      color: #ffffff !important;
+    }
+
+    .main-sidebar .nav-treeview {
+      padding-left: 0.35rem;
+      margin-top: 4px;
+      border-left: 1px dashed rgba(255, 255, 255, 0.15);
+    }
+
+    .main-sidebar .nav-treeview .nav-link {
+      padding: 0.42rem 0.55rem;
+      font-size: var(--sb-font-sub) !important;
+      border-radius: 8px;
+    }
+
+    /* Sidebar scroll slider */
+    .main-sidebar .sidebar::-webkit-scrollbar,
+    .main-sidebar section.sidebar::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .main-sidebar .sidebar::-webkit-scrollbar-track,
+    .main-sidebar section.sidebar::-webkit-scrollbar-track {
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.04) 0%,
+        rgba(255, 255, 255, 0.08) 50%,
+        rgba(255, 255, 255, 0.04) 100%
+      );
+      border-radius: 999px;
+      margin: 10px 0;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .main-sidebar .sidebar::-webkit-scrollbar-thumb,
+    .main-sidebar section.sidebar::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #60a5fa 0%, #2563eb 55%, #1e40af 100%);
+      border-radius: 999px;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+      min-height: 48px;
+    }
+
+    .main-sidebar .sidebar::-webkit-scrollbar-thumb:hover,
+    .main-sidebar section.sidebar::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #93c5fd 0%, #3b82f6 50%, #1d4ed8 100%);
+      background-clip: padding-box;
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.28),
+        0 0 10px rgba(59, 130, 246, 0.45);
+    }
+
+    .main-sidebar .sidebar::-webkit-scrollbar-thumb:active,
+    .main-sidebar section.sidebar::-webkit-scrollbar-thumb:active {
+      background: linear-gradient(180deg, #bfdbfe 0%, #2563eb 100%);
+      background-clip: padding-box;
+    }
+
+    .main-sidebar .sidebar::-webkit-scrollbar-corner,
+    .main-sidebar section.sidebar::-webkit-scrollbar-corner {
+      background: transparent;
+    }
+
+    /* Footer: keep default layout but cleaner look */
+    .main-footer {
+      padding: 0.78rem 1rem;
+      border-top: 1px solid #e2e8f0;
+      background: #ffffff;
+      color: #334155;
+      font-size: 0.86rem;
+    }
+
+    .main-footer strong,
+    .main-footer .pull-right b {
+      color: #1f2a44;
+      font-weight: 700;
+    }
+
+    /* KRIS page modern skin (scoped by URL class) */
+    .page-kris .content-wrapper {
+      background: #f4f7fb;
+    }
+
+    .page-kris .content-wrapper .card {
+      border: 1px solid #e6edf5;
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      overflow: hidden;
+    }
+
+    .page-kris .content-wrapper .card-header {
+      border-bottom: 1px solid #e7eef6;
+      background: linear-gradient(90deg, #f8fbff, #f1f6ff);
+    }
+
+    .page-kris .content-wrapper .card-title,
+    .page-kris .content-wrapper h2,
+    .page-kris .content-wrapper h5,
+    .page-kris .content-wrapper h6 {
+      color: #1f2a44;
+      font-weight: 700;
+    }
+
+    .page-kris .content-wrapper .form-control,
+    .page-kris .content-wrapper .custom-select {
+      border-radius: 10px;
+      border-color: #d5e1ef;
+    }
+
+    .page-kris .content-wrapper .form-control-plaintext {
+      color: #1f2a44;
+      font-weight: 600;
+    }
+
+    .page-kris .content-wrapper .btn {
+      border-radius: 9px;
+      font-weight: 600;
+    }
+
+    .page-kris .content-wrapper .btn-primary {
+      background: linear-gradient(135deg, #1e5bbf, #2f80ed);
+      border: 0;
+    }
+
+    .page-kris .content-wrapper .btn-warning {
+      background: linear-gradient(135deg, #f59e0b, #f97316);
+      border: 0;
+      color: #fff;
+    }
+
+    .page-kris .content-wrapper .btn-danger {
+      background: linear-gradient(135deg, #dc2626, #ef4444);
+      border: 0;
+    }
+
+    .page-kris .content-wrapper .table thead th {
+      background: #eef4fb;
+      color: #334155;
+      border-bottom: 1px solid #dbe5f1;
+      font-weight: 700;
+    }
+
+    .page-kris .content-wrapper .table tbody tr:nth-child(even) {
+      background: #fbfdff;
+    }
+
+    .page-kris .content-wrapper .table tbody tr:hover {
+      background: #f3f8ff;
+    }
+
+    .page-kris .content-wrapper .custom-alert {
+      background: linear-gradient(135deg, #1e5bbf, #2f80ed) !important;
+      color: #fff !important;
+      border-radius: 10px;
+      box-shadow: 0 6px 14px rgba(47, 128, 237, 0.25);
+    }
+
+    .page-kris .content-wrapper .custom-alert a {
+      color: #ffe082 !important;
+      font-weight: 700;
+    }
+
+    /* KRIS input detail page */
+    .page-kris-input .content-wrapper .alert.alert-info {
+      border-radius: 10px;
+      border: 1px solid #bfdbfe;
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      color: #1f2a44 !important;
+    }
+
+    .page-kris-input .content-wrapper .alert.alert-info a {
+      color: #1d4ed8 !important;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    .page-kris-input .content-wrapper .alert.alert-info a:hover {
+      color: #1e40af !important;
+      text-decoration: none;
+    }
+
+    .page-kris-input .content-wrapper .card .card {
+      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.05);
+    }
+
+    .page-kris-input .content-wrapper .card-header.text-center {
+      background: linear-gradient(135deg, #1e5bbf, #2f80ed);
+    }
+
+    .page-kris-input .content-wrapper .card-header.text-center h2 {
+      color: #fff !important;
+      letter-spacing: 0.3px;
+    }
+
+    /* Disabilitas rekap pages */
+    .page-disabilitas-rekap .content-wrapper {
+      background: #f4f7fb;
+    }
+
+    .page-disabilitas-rekap .content-wrapper .container.mt-4,
+    .page-disabilitas-rekap .content-wrapper .container-fluid > .container.mt-4 {
+      background: #fff;
+      border: 1px solid #e6edf5;
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      padding: 1rem 1rem 1.1rem;
+    }
+
+    .page-disabilitas-rekap .content-wrapper h4 {
+      color: #1f2a44 !important;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .page-disabilitas-rekap .content-wrapper .form-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 0.75rem;
+      align-items: flex-end;
+      margin-bottom: 0.85rem !important;
+      padding: 0.75rem;
+      border-radius: 11px;
+      border: 1px solid #e7eef6;
+      background: linear-gradient(90deg, #f8fbff, #f1f6ff);
+    }
+
+    .page-disabilitas-rekap .content-wrapper .form-inline .form-group {
+      margin-right: 0 !important;
+      margin-bottom: 0 !important;
+    }
+
+    .page-disabilitas-rekap .content-wrapper .form-inline label {
+      margin-bottom: 0.3rem;
+      color: #334155;
+      font-weight: 600;
+      font-size: 0.86rem;
+    }
+
+    .page-disabilitas-rekap .content-wrapper .form-control,
+    .page-disabilitas-rekap .content-wrapper .custom-select {
+      border-radius: 10px;
+      border-color: #d5e1ef;
+      min-height: 38px;
+    }
+
+    .page-disabilitas-rekap .content-wrapper .btn {
+      border-radius: 9px;
+      font-weight: 600;
+      border: 0;
+    }
+
+    .page-disabilitas-rekap .content-wrapper .btn-primary {
+      background: linear-gradient(135deg, #1e5bbf, #2f80ed);
+      color: #fff;
+    }
+
+    .page-disabilitas-rekap .content-wrapper .btn-danger {
+      background: linear-gradient(135deg, #dc2626, #ef4444);
+      color: #fff;
+    }
+
+    .page-disabilitas-rekap .content-wrapper .table-responsive {
+      border: 1px solid #e6edf5;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    .page-disabilitas-rekap .content-wrapper .table {
+      margin-bottom: 0;
+    }
+
+    .page-disabilitas-rekap .content-wrapper .table thead th {
+      color: #243b53 !important;
+      border-color: #dbe5f1 !important;
+      font-weight: 700;
+      box-shadow: inset 0 -1px 0 rgba(148, 163, 184, 0.28);
+    }
+
+    /* Keep original grouped colors, then elevate with richer gradients */
+    .page-disabilitas-rekap .content-wrapper .table thead th[style*="#bbdefb"] {
+      background: linear-gradient(180deg, #d7ebff 0%, #c4defe 100%) !important;
+    }
+
+    .page-disabilitas-rekap .content-wrapper .table thead th[style*="#b2dfdb"] {
+      background: linear-gradient(180deg, #cbf0ea 0%, #bae6df 100%) !important;
+    }
+
+    .page-disabilitas-rekap .content-wrapper .table thead th[style*="#ffe0b2"] {
+      background: linear-gradient(180deg, #ffeccf 0%, #ffdfad 100%) !important;
+    }
+
+    .page-disabilitas-rekap .content-wrapper .table thead th[style*="#ffcdd2"] {
+      background: linear-gradient(180deg, #ffe0e3 0%, #ffd2d8 100%) !important;
+    }
+
+    .page-disabilitas-rekap .content-wrapper .table thead th[style*="#b3e5fc"] {
+      background: linear-gradient(180deg, #d8efff 0%, #c6e7fb 100%) !important;
+    }
+
+    .page-disabilitas-rekap .content-wrapper .table thead th[style*="#ffe082"] {
+      background: linear-gradient(180deg, #ffefb5 0%, #ffe38d 100%) !important;
+    }
+
+    .page-disabilitas-rekap .content-wrapper .table tbody td {
+      border-color: #e8eef6 !important;
+      color: #1f2a44;
+      font-size: 0.82rem;
+    }
+
+    .page-disabilitas-rekap .content-wrapper .table tbody tr:nth-child(even) {
+      background: #f8fbff;
+    }
+
+    .page-disabilitas-rekap .content-wrapper .table tbody tr:hover {
+      background: #eaf3ff;
+    }
+
+    .page-disabilitas-rekap .content-wrapper .table tbody td span[style*="color:green"] {
+      color: #15803d !important;
+      font-weight: 700 !important;
+    }
+
+    .page-disabilitas-rekap .content-wrapper .table tbody td span[style*="color:red"] {
+      color: #dc2626 !important;
+      font-weight: 700 !important;
+    }
+
+    /* Unified table action buttons/chips for modernized pages */
+    .dashboard-modern .table .btn,
+    .cov3-modern .table .btn,
+    .acute-modern .table .btn,
+    .pemilu-modern .table .btn,
+    .events-modern .table .btn,
+    .shk-modern .table .btn,
+    .simrs-modern .table .btn,
+    .audit-modern .table .btn,
+    .profile-modern .table .btn,
+    .page-kris .content-wrapper .table .btn,
+    .page-kris-input .content-wrapper .table .btn,
+    .page-disabilitas-rekap .content-wrapper .table .btn {
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 0.3rem 0.6rem;
+      box-shadow: none;
+    }
+
+    .dashboard-modern .table .input-group-text,
+    .cov3-modern .table .input-group-text,
+    .acute-modern .table .input-group-text,
+    .pemilu-modern .table .input-group-text,
+    .events-modern .table .input-group-text,
+    .shk-modern .table .input-group-text,
+    .simrs-modern .table .input-group-text,
+    .audit-modern .table .input-group-text,
+    .profile-modern .table .input-group-text,
+    .page-kris .content-wrapper .table .input-group-text,
+    .page-kris-input .content-wrapper .table .input-group-text,
+    .page-disabilitas-rekap .content-wrapper .table .input-group-text {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      border-radius: 8px;
+      border: 0;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.82rem;
+      line-height: 1.2;
+      font-weight: 600;
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    .dashboard-modern .table .input-group-text.bg-warning,
+    .cov3-modern .table .input-group-text.bg-warning,
+    .acute-modern .table .input-group-text.bg-warning,
+    .pemilu-modern .table .input-group-text.bg-warning,
+    .events-modern .table .input-group-text.bg-warning,
+    .shk-modern .table .input-group-text.bg-warning,
+    .simrs-modern .table .input-group-text.bg-warning,
+    .audit-modern .table .input-group-text.bg-warning,
+    .profile-modern .table .input-group-text.bg-warning,
+    .page-kris .content-wrapper .table .input-group-text.bg-warning,
+    .page-kris-input .content-wrapper .table .input-group-text.bg-warning,
+    .page-disabilitas-rekap .content-wrapper .table .input-group-text.bg-warning {
+      color: #1f2a44;
+    }
+
+    .dashboard-modern .table td a,
+    .cov3-modern .table td a,
+    .acute-modern .table td a,
+    .pemilu-modern .table td a,
+    .events-modern .table td a,
+    .shk-modern .table td a,
+    .simrs-modern .table td a,
+    .audit-modern .table td a,
+    .profile-modern .table td a,
+    .page-kris .content-wrapper .table td a,
+    .page-kris-input .content-wrapper .table td a,
+    .page-disabilitas-rekap .content-wrapper .table td a {
+      text-decoration: none;
+    }
+
+    /* Colorful table headers across modernized pages */
+    .dashboard-modern .table thead th,
+    .cov3-modern .table thead th,
+    .acute-modern .table thead th,
+    .pemilu-modern .table thead th,
+    .events-modern .table thead th,
+    .shk-modern .table thead th,
+    .simrs-modern .table thead th,
+    .audit-modern .table thead th,
+    .profile-modern .table thead th,
+    .page-kris .content-wrapper .table thead th,
+    .page-kris-input .content-wrapper .table thead th {
+      color: #1f2a44 !important;
+      font-weight: 700;
+      border-color: #d9e4f2 !important;
+      box-shadow: inset 0 -1px 0 rgba(148, 163, 184, 0.25);
+    }
+
+    .dashboard-modern .table thead th {
+      background: linear-gradient(180deg, #e8f1ff 0%, #dbeafe 100%) !important;
+    }
+
+    .cov3-modern .table thead th {
+      background: linear-gradient(180deg, #e8fff8 0%, #d1fae5 100%) !important;
+    }
+
+    .acute-modern .table thead th {
+      background: linear-gradient(180deg, #fff2e8 0%, #ffe5d0 100%) !important;
+    }
+
+    .pemilu-modern .table thead th {
+      background: linear-gradient(180deg, #fff5e8 0%, #ffedd5 100%) !important;
+    }
+
+    .events-modern .table thead th {
+      background: linear-gradient(180deg, #f2eeff 0%, #e9d5ff 100%) !important;
+    }
+
+    .shk-modern .table thead th {
+      background: linear-gradient(180deg, #eafdf6 0%, #ccfbf1 100%) !important;
+    }
+
+    .simrs-modern .table thead th {
+      background: linear-gradient(180deg, #e9fbff 0%, #cffafe 100%) !important;
+    }
+
+    .audit-modern .table thead th {
+      background: linear-gradient(180deg, #f1f5ff 0%, #e0e7ff 100%) !important;
+    }
+
+    .profile-modern .table thead th {
+      background: linear-gradient(180deg, #fff0f7 0%, #fce7f3 100%) !important;
+    }
+
+    .page-kris .content-wrapper .table thead th,
+    .page-kris-input .content-wrapper .table thead th {
+      background: linear-gradient(180deg, #eaf2ff 0%, #dbeafe 100%) !important;
+    }
+
+    /* Preserve KRIS green marker columns */
+    .page-kris .content-wrapper .table thead th[style*="#9FBB73"],
+    .page-kris .content-wrapper .table thead th[style*="#9fbb73"],
+    .page-kris-input .content-wrapper .table thead th[style*="#9FBB73"],
+    .page-kris-input .content-wrapper .table thead th[style*="#9fbb73"] {
+      background: linear-gradient(180deg, #cfe7a9 0%, #b7d884 100%) !important;
+      color: #1f2a44 !important;
+      border-color: #b8d28f !important;
+    }
+
+    .dashboard-modern .table tbody tr:nth-child(even),
+    .cov3-modern .table tbody tr:nth-child(even),
+    .acute-modern .table tbody tr:nth-child(even),
+    .pemilu-modern .table tbody tr:nth-child(even),
+    .events-modern .table tbody tr:nth-child(even),
+    .shk-modern .table tbody tr:nth-child(even),
+    .simrs-modern .table tbody tr:nth-child(even),
+    .audit-modern .table tbody tr:nth-child(even),
+    .profile-modern .table tbody tr:nth-child(even),
+    .page-kris .content-wrapper .table tbody tr:nth-child(even),
+    .page-kris-input .content-wrapper .table tbody tr:nth-child(even) {
+      background: #fbfdff;
+    }
+
+    .dashboard-modern .table tbody tr:hover,
+    .cov3-modern .table tbody tr:hover,
+    .acute-modern .table tbody tr:hover,
+    .pemilu-modern .table tbody tr:hover,
+    .events-modern .table tbody tr:hover,
+    .shk-modern .table tbody tr:hover,
+    .simrs-modern .table tbody tr:hover,
+    .audit-modern .table tbody tr:hover,
+    .profile-modern .table tbody tr:hover,
+    .page-kris .content-wrapper .table tbody tr:hover,
+    .page-kris-input .content-wrapper .table tbody tr:hover {
+      background: #f3f8ff;
+    }
+
+    /* Laporan COVID v3 Dinkes / Dinkes kab — ukuran tebal dari marquee + heading invalid */
+    .page-dinkes-cov3 .content-wrapper {
+      font-size: 0.875rem;
+      line-height: 1.45;
+    }
+
+    .page-dinkes-cov3 .content-wrapper .content {
+      font-size: inherit;
+    }
+
+    .page-dinkes-cov3 .content-wrapper marquee {
+      font-size: 0.95rem !important;
+      font-weight: 600 !important;
+      height: auto !important;
+      min-height: 2.1rem;
+      padding: 0.4rem 0.5rem;
+      line-height: 1.35;
+    }
+
+    .page-dinkes-cov3 .content-wrapper h3.mb-2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.45rem !important;
+    }
+
+    .page-dinkes-cov3 .content-wrapper .dinkes-cov3-region {
+      color: #210c99;
+      margin: 0 0 0.65rem;
+    }
+
+    .page-dinkes-cov3 .content-wrapper .dinkes-cov3-region-name {
+      display: block;
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .page-dinkes-cov3 .content-wrapper .nav-pills .nav-link {
+      font-size: 0.88rem;
+      padding: 0.38rem 0.7rem;
+    }
+
+    .page-dinkes-cov3 .content-wrapper .card-header .card-title,
+    .page-dinkes-cov3 .content-wrapper .card-title {
+      font-size: 1rem;
+    }
+
+    .page-dinkes-cov3 .content-wrapper h5.mb-3 {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .page-dinkes-cov3 .content-wrapper label {
+      font-size: 0.82rem;
+      margin-bottom: 0.22rem;
+      font-weight: 600;
+    }
+
+    .page-dinkes-cov3 .content-wrapper .form-control {
+      font-size: 0.875rem;
+    }
+
+    .page-dinkes-cov3 .content-wrapper .table {
+      font-size: 0.8rem;
+    }
+
+    .page-dinkes-cov3 .content-wrapper .table th,
+    .page-dinkes-cov3 .content-wrapper .table td {
+      padding: 0.35rem 0.45rem;
+      vertical-align: middle;
+    }
+
+    .page-dinkes-cov3 .content-wrapper .btn {
+      font-size: 0.875rem;
+    }
+
+    .page-dinkes-cov3 .content-wrapper .dinkes-cov3-filter .form-group {
+      margin-bottom: 0.65rem;
+    }
+
+    .page-dinkes-cov3 .content-wrapper .dinkes-cov3-legend {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 0.65rem 0.9rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .page-dinkes-cov3 .content-wrapper .dinkes-cov3-legend-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #475569;
+      margin-bottom: 0.45rem;
+    }
+
+    .page-dinkes-cov3 .content-wrapper .dinkes-cov3-legend-list {
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      color: #334155;
+    }
+
+    .page-dinkes-cov3 .content-wrapper .dinkes-cov3-legend-list li {
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.45rem;
+    }
+
+    .page-dinkes-cov3 .content-wrapper .dinkes-cov3-swatch {
+      flex-shrink: 0;
+      width: 16px !important;
+      height: 16px !important;
+      min-width: 16px;
+      padding: 0 !important;
+      margin: 0.15rem 0 0 0 !important;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+    }
+
+    .page-dinkes-cov3 .dataTables_wrapper .dt-buttons {
+      float: none !important;
+      margin: 0 0 0.6rem 0 !important;
+    }
+
+    .page-dinkes-cov3 .dataTables_wrapper .dt-button {
+      padding: 0.3rem 0.7rem !important;
+      font-size: 0.8125rem !important;
+      font-weight: 600 !important;
+      border-radius: 6px !important;
+      margin: 0 0.35rem 0.35rem 0 !important;
+      border: 1px solid #17a2b8 !important;
+      background: #17a2b8 !important;
+      color: #fff !important;
+    }
+
+    .page-dinkes-cov3 .dataTables_wrapper .dt-button:hover {
+      background: #138496 !important;
+      border-color: #117a8b !important;
+      color: #fff !important;
+    }
+
+    .page-dinkes-cov3 .dataTables_wrapper .dataTables_filter {
+      float: none !important;
+      text-align: right !important;
+      margin-bottom: 0.45rem !important;
+    }
+
+    .page-dinkes-cov3 .dataTables_wrapper .dataTables_filter label {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 0;
+    }
+
+    .page-dinkes-cov3 .dataTables_wrapper .dataTables_filter input {
+      margin-left: 0.35rem !important;
+      font-size: 0.875rem !important;
+      padding: 0.3rem 0.55rem !important;
+      border-radius: 6px !important;
+      border: 1px solid #ced4da !important;
+      min-width: 10.5rem;
+    }
+
+    .page-dinkes-cov3 .dataTables_wrapper .dataTables_info {
+      font-size: 0.8125rem;
+      color: #64748b;
+      padding-top: 0.5rem;
+    }
+
+    .page-dinkes-cov3 .content-wrapper .dinkes-cov3-table-wrap {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .page-dinkes-cov3 .content-wrapper .dinkes-cov3-table-wrap .table {
+      margin-bottom: 0;
+    }
+
+    .page-dinkes-cov3 .content-wrapper .dinkes-cov3-table-wrap .table thead th {
+      font-size: 0.78rem;
+      line-height: 1.2;
+      font-weight: 600;
+      vertical-align: middle;
+    }
+  </style>
+
+<!--tambahkan custom css disini-->
+</head>
+<body  class="hold-transition sidebar-mini">
+<div class="loader"></div>
+    <!-- Site wrapper -->
+    <div class="wrapper">
+
+<nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="https://sirs.kemkes.go.id/fo/" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Contact</a>
+      </li>
+    </ul>
+
+    <!-- SEARCH FORM -->
+    
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Messages Dropdown Menu -->
+
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item">
+        <a href="https://sirs.kemkes.go.id/fo/login/logout" class="nav-link">
+          <i class="fa fa-gear"></i>
+			Log in
+        </a>
+
+      </li>
+    </ul>
+  </nav><!-- Left side column. contains the sidebar -->
+
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- sidebar: style can be found in sidebar.less -->
+	 <a href="index3.html" class="brand-link">
+      <img src="https://sirs.kemkes.go.id/fo/dist/img/kemkes.png" alt="Kemkes Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">Ditjen Keslan</span>
+    </a>
+
+<div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+          <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+                    <li class="nav-item has-treeview menu-open">
+            <a href="https://sirs.kemkes.go.id/fo/home/dashboard_rs?id=0" class="nav-link active">
+              <i class="nav-icon fa fa-dashboard"></i>
+              <p>
+                Home
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+            
+          </li>
+          <li class="nav-item">
+            <a href="https://sirs.kemkes.go.id/fo/login" class="nav-link">
+              <i class="nav-icon fa fa-dashboard"></i>
+               <p>
+                Executive Dashboard
+               
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="https://sirs.kemkes.go.id/fo/home/def" class="nav-link">
+              <i class="nav-icon fa fa-dashboard"></i>
+              <p>
+                Kebutuhan TT
+
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://sirs.kemkes.go.id/fo/home/intensif" class="nav-link">
+              <i class="nav-icon fa fa-dashboard"></i>
+              <p>
+                Kebutuhan TT Intensif
+
+              </p>
+            </a>
+          </li>
+ <li class="nav-item">
+            <a href="https://sirs.kemkes.go.id/fo/home/rujukan" class="nav-link">
+              <i class="nav-icon fa fa-dashboard"></i>
+              <p>
+               RS RUJUKAN
+
+              </p>
+            </a>
+          </li>
+ <li class="nav-item">
+            <a href="https://sirs.kemkes.go.id/fo/home/akreditasi" class="nav-link">
+              <i class="nav-icon fa fa-dashboard"></i>
+              <p>
+               RS TERAKREDITASI
+
+              </p>
+            </a>
+          </li>
+  <li class="nav-item has-treeview menu-open">
+            <a href="https://sisrute.kemkes.go.id" class="nav-link">
+              <i class="nav-icon fa fa-dashboard"></i>
+              <p>
+                SISRUTE
+                <i class="right fa fa-angle-left"></i>
+              </p>
+            </a>
+
+          </li>
+	          </ul>
+      </nav>
+    </section>
+    <!-- /.sidebar -->
+</aside>
+
+<!-- =============================================== -->
+
+
+<style>
+  .dashboard-modern {
+    background: #f4f7fb;
+  }
+  .dashboard-modern .card {
+    border: 1px solid #e6edf5;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    overflow: hidden;
+  }
+  .dashboard-modern .card-header {
+    border-bottom: 1px solid #e7eef6;
+    background: linear-gradient(90deg, #f8fbff, #f1f6ff);
+  }
+  .dashboard-modern .card.card-info > .card-header,
+  .dashboard-modern .card.card-success > .card-header,
+  .dashboard-modern .card.card-warning > .card-header,
+  .dashboard-modern .card.card-danger > .card-header,
+  .dashboard-modern .card.card-primary > .card-header,
+  .dashboard-modern .card-info:not(.card-outline) > .card-header,
+  .dashboard-modern .card-success:not(.card-outline) > .card-header,
+  .dashboard-modern .card-warning:not(.card-outline) > .card-header,
+  .dashboard-modern .card-danger:not(.card-outline) > .card-header,
+  .dashboard-modern .card-primary:not(.card-outline) > .card-header {
+    color: #1f2a44 !important;
+    background: linear-gradient(90deg, #f8fbff, #f1f6ff) !important;
+    border-bottom: 1px solid #e7eef6 !important;
+  }
+  .dashboard-modern .card-header a,
+  .dashboard-modern .card-header .card-tools label,
+  .dashboard-modern .card-header .btn.btn-tool {
+    color: #2f4a6d !important;
+    font-weight: 600;
+  }
+  .dashboard-modern .card-header .btn.btn-tool:hover,
+  .dashboard-modern .card-header a:hover {
+    color: #1e5bbf !important;
+  }
+  .dashboard-modern .card-title {
+    font-weight: 600;
+    color: #1f2a44;
+  }
+  .dashboard-modern .profile-username {
+    font-weight: 700;
+    color: #1e3a5f;
+    margin-bottom: 14px;
+  }
+  .dashboard-modern .list-group-item {
+    border: 0;
+    border-bottom: 1px dashed #dbe4ef;
+    padding: 0.65rem 0.15rem;
+    background: transparent;
+  }
+  .dashboard-modern .list-group-item:last-child {
+    border-bottom: 0;
+  }
+  .dashboard-modern .list-group-item b,
+  .dashboard-modern .list-group-item strong {
+    color: #334155;
+  }
+  .dashboard-modern .list-group-item .float-right {
+    color: #0f3e75;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .dashboard-modern .nav-pills {
+    gap: 8px;
+  }
+  .dashboard-modern .nav-pills .nav-link {
+    border-radius: 9px;
+    color: #355070;
+    background: #eef4fb;
+    border: 1px solid #dde7f3;
+    font-weight: 600;
+    padding: 0.48rem 0.9rem;
+    transition: all 0.2s ease;
+  }
+  .dashboard-modern .nav-pills .nav-link.active,
+  .dashboard-modern .nav-pills .show > .nav-link {
+    color: #ffffff !important;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+  }
+
+  .dashboard-modern .nav-pills .nav-item:nth-child(1) .nav-link {
+    background: #fff5e8;
+    border-color: #ffe2bc;
+    color: #8a4b00;
+  }
+  .dashboard-modern .nav-pills .nav-item:nth-child(2) .nav-link {
+    background: #eaf2ff;
+    border-color: #cfe0ff;
+    color: #1d4f9d;
+  }
+  .dashboard-modern .nav-pills .nav-item:nth-child(3) .nav-link {
+    background: #ecfdf3;
+    border-color: #c8f1d8;
+    color: #1f6a40;
+  }
+  .dashboard-modern .nav-pills .nav-item:nth-child(4) .nav-link {
+    background: #f5f0ff;
+    border-color: #e2d6ff;
+    color: #5a3e99;
+  }
+  .dashboard-modern .nav-pills .nav-item:nth-child(5) .nav-link {
+    background: #eafcff;
+    border-color: #c9eef6;
+    color: #0f5f74;
+  }
+
+  .dashboard-modern .nav-pills .nav-item:nth-child(1) .nav-link.active {
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+    border-color: #f97316;
+    color: #fff;
+    box-shadow: 0 8px 16px rgba(245, 158, 11, 0.28);
+  }
+  .dashboard-modern .nav-pills .nav-item:nth-child(2) .nav-link.active {
+    background: linear-gradient(135deg, #1e5bbf, #2f80ed);
+    border-color: #2f80ed;
+    color: #fff;
+    box-shadow: 0 8px 16px rgba(47, 128, 237, 0.28);
+  }
+  .dashboard-modern .nav-pills .nav-item:nth-child(3) .nav-link.active {
+    background: linear-gradient(135deg, #16a34a, #22c55e);
+    border-color: #22c55e;
+    color: #fff;
+    box-shadow: 0 8px 16px rgba(34, 197, 94, 0.28);
+  }
+  .dashboard-modern .nav-pills .nav-item:nth-child(4) .nav-link.active {
+    background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+    border-color: #8b5cf6;
+    color: #fff;
+    box-shadow: 0 8px 16px rgba(139, 92, 246, 0.28);
+  }
+  .dashboard-modern .nav-pills .nav-item:nth-child(5) .nav-link.active {
+    background: linear-gradient(135deg, #0f766e, #14b8a6);
+    border-color: #14b8a6;
+    color: #fff;
+    box-shadow: 0 8px 16px rgba(20, 184, 166, 0.28);
+  }
+  .dashboard-modern .btn-primary {
+    background: linear-gradient(135deg, #1e5bbf, #2f80ed);
+    border: 0;
+    border-radius: 9px;
+    font-weight: 600;
+  }
+  .dashboard-modern .table thead th {
+    background: #f3f7fc;
+    color: #334155;
+    border-bottom: 1px solid #dbe5f1;
+  }
+  .dashboard-modern .table td,
+  .dashboard-modern .table th {
+    vertical-align: middle;
+  }
+</style>
+
+<!-- Content Wrapper. Contains page content -->
+ <div class="content-wrapper dashboard-modern">
+
+<section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12 text-center">
+          <p><h2>Profile Rumah Sakit </h2></p></div>
+          <div class="col-md-4">
+
+            <!-- Profile Image -->
+            <div class="card card-primary">
+                            <div class="card-header">
+                <h3 class="card-title">Profile Fasyankes</h3>
+
+              </div>
+			  <div class="card-body box-profile">
+                
+<div class="card card-widget widget-user">
+              <!-- Add the bg color to the header using any of the bg-* classes -->
+              <div class="widget-user-header text-white" style="background: url('https://sirs.kemkes.go.id/fo/uploads/1275046/https://drive.google.com/file/d/1j19kLGwPYpW5nVeiiI9zbriTvNGyQJyL/view?usp=sharing') center center; background-size: cover; height: 300px;">
+                <h3 class="widget-user-username text-right" style="color: black"><b>RS Bhayangkara Tingkat II Medan</b></h3>
+                
+              </div>
+            </div>
+                <h3 class="profile-username text-center"></h3>
+
+
+
+                <ul class="list-group list-group-unbordered mb-3">
+                  <li class="list-group-item">
+                     <strong><i class="fa fa-book mr-1"></i> Alamat</strong>
+					 <p>JL KH Wahid Hasyim No 1</p>
+					 <strong><i class="fa fa-phone mr-1"></i> Telepon</strong>
+					 <p>0821-7997-604</p>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Jenis RS:</b> <a class="float-right">Rumah Sakit Umum</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Kelas RS:</b> <a class="float-right">B</a>
+                  </li>
+		 <li class="list-group-item">
+                    <b>Status BLU:</b> <a class="float-right">BLU</a>
+                  </li>
+
+				                    <li class="list-group-item">
+                    <b>Kepemilikan:</b> <a class="float-right">POLRI</a>
+                  </li>
+                                  <li class="list-group-item">
+                    <b>Direktur:</b> <a class="float-right">Dr. dr. SYARIF HIDAYATULLAH, Sp.OT., M.KES.</a>
+                  </li>
+				                    <li class="list-group-item">
+                    <b>Luas Tanah:</b> <a class="float-right">40000</a>
+                  </li>
+				                    <li class="list-group-item">
+                    <b>Luas Bangunan:</b> <a class="float-right">4676.5</a>
+                  </li>
+
+					 				  <li class="list-group-item">
+                     <strong><i class="fa fa-calendar mr-1"></i> Last Update</strong>
+					 <p></p>
+					 </li>
+
+				</ul>
+
+
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+            <!-- About Me Box -->
+            
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-header p-2">
+                <ul class="nav nav-pills">
+                  <li class="nav-item"><a class="nav-link active" href="#bed" data-toggle="tab">Tempat Tidur</a></li>
+				                  <li class="nav-item"><a class="nav-link" href="#service" data-toggle="tab">Layanan</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#tenaga" data-toggle="tab">Tenaga</a></li>
+                 
+                </ul>
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="active tab-pane" id="bed">
+                    <!-- Post -->
+<div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">Data Tempat Tidur</h3>
+			  </div>
+			  
+              <!-- /.card-header -->
+              <!-- form start -->
+				</div>
+			<div class="card-body">	
+			  <div class="post">
+                      <div class="user-block">
+			
+						<table  class="table table-bordered table-hover">
+						<thead>
+						<tr><th>No.</th><th>Kelas</th><th>Jumlah</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr><td class="text-right">1</td><td>VIP</td>
+							<td class="text-right">2</td>
+							</tr><tr><td class="text-right">2</td><td>Kelas I</td>
+							<td class="text-right">47</td>
+							</tr><tr><td class="text-right">3</td><td>Kelas II</td>
+							<td class="text-right">15</td>
+							</tr><tr><td class="text-right">4</td><td>Kelas III</td>
+							<td class="text-right">46</td>
+							</tr><tr><td class="text-right">5</td><td>ICU Tanpa Ventilator</td>
+							<td class="text-right">1</td>
+							</tr><tr><td class="text-right">6</td><td>NICU Tanpa Ventilator</td>
+							<td class="text-right">3</td>
+							</tr><tr><td class="text-right">7</td><td>PICU Tanpa Ventilator</td>
+							<td class="text-right">2</td>
+							</tr><tr><td class="text-right">8</td><td>Perinatologi</td>
+							<td class="text-right">1</td>
+							</tr><tr><td class="text-right">9</td><td>ICU Tekanan Negatif dengan Ventilator</td>
+							<td class="text-right">0</td>
+							</tr><tr><td class="text-right">10</td><td>ICU Tekanan Negatif tanpa Ventilator</td>
+							<td class="text-right">0</td>
+							</tr><tr><td class="text-right">11</td><td>ICU Tanpa Tekanan Negatif Dengan Ventilator</td>
+							<td class="text-right">0</td>
+							</tr><tr><td class="text-right">12</td><td>ICU Tanpa Tekanan Negatif Tanpa Ventilator</td>
+							<td class="text-right">0</td>
+							</tr><tr><td class="text-right">13</td><td>Isolasi Tekanan Negatif</td>
+							<td class="text-right">0</td>
+							</tr><tr><td class="text-right">14</td><td>Isolasi Tanpa Tekanan Negatif</td>
+							<td class="text-right">0</td>
+							</tr><tr><td class="text-right">15</td><td>NICU Khusus Covid</td>
+							<td class="text-right">0</td>
+							</tr><tr><td class="text-right">16</td><td>PICU Khusus Covid</td>
+							<td class="text-right">0</td>
+							</tr><tr><td class="text-right">17</td><td>IGD Khusus Covid</td>
+							<td class="text-right">0</td>
+							</tr><tr><td class="text-right">18</td><td>VK (TT Observasi di R Bersalin) Khusus Covid</td>
+							<td class="text-right">0</td>
+							</tr><tr><td class="text-right">19</td><td>Isolasi Perinatologi Khusus Covid</td>
+							<td class="text-right">0</td>
+							</tr><tr><td class="text-right">20</td><td>ICU Dengan Ventilator</td>
+							<td class="text-right">9</td>
+							</tr><tr><td class="text-right">21</td><td>NICU Dengan Ventilator</td>
+							<td class="text-right">1</td>
+							</tr>						
+						</tbody>
+						</table>
+                      </div>
+                      <!-- /.user-block -->
+                      
+                    </div>
+                    <!-- /.post -->
+
+                    <!-- Post -->
+                    
+                    <!-- /.post -->
+                  </div>
+				  </div>
+                  <!-- /.tab-pane -->
+                  <div class="tab-pane" id="service">
+                    <!-- The timeline -->
+                    <div class="card card-success">
+              <div class="card-header">
+                <h3 class="card-title">Data Pelayanan</h3>
+            
+			  </div>
+			  
+              <!-- /.card-header -->
+              <!-- form start -->
+				</div>
+		 
+					<table  class="table table-bordered table-hover" id="example6">
+						<thead>
+						<tr><th>No.</th><th>Pelayanan</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr><td class="text-right">1</td><td>Pelayanan medik dasar / umum</td>
+							</tr><tr><td class="text-right">2</td><td>Pelayanan medik gigi mulut </td>
+							</tr><tr><td class="text-right">3</td><td>Pelayanan KIA/KB</td>
+							</tr><tr><td class="text-right">4</td><td>Infeksi Paru</td>
+							</tr><tr><td class="text-right">5</td><td>Pelayanan Gawat Darurat Umum 24 jam & 7 hari seminggu</td>
+							</tr><tr><td class="text-right">6</td><td>Penyakit dalam</td>
+							</tr><tr><td class="text-right">7</td><td>Kesehatan anak</td>
+							</tr><tr><td class="text-right">8</td><td>Bedah</td>
+							</tr><tr><td class="text-right">9</td><td>Obstetri dan ginekologi</td>
+							</tr><tr><td class="text-right">10</td><td>Anestesi</td>
+							</tr><tr><td class="text-right">11</td><td>Radiologi</td>
+							</tr><tr><td class="text-right">12</td><td>Patologi Klinik</td>
+							</tr><tr><td class="text-right">13</td><td>Patologi Anatomi</td>
+							</tr><tr><td class="text-right">14</td><td>Rehabilitasi Medik</td>
+							</tr><tr><td class="text-right">15</td><td>Mata</td>
+							</tr><tr><td class="text-right">16</td><td>Paru</td>
+							</tr><tr><td class="text-right">17</td><td>Kulit dan Kelamin</td>
+							</tr><tr><td class="text-right">18</td><td>Kedokteran Jiwa / Psikiatri/  Psikogeriatri/ NAPZA</td>
+							</tr><tr><td class="text-right">19</td><td>Orthopedi</td>
+							</tr><tr><td class="text-right">20</td><td>Telinga Hidung Tenggorok Kepala Leher</td>
+							</tr><tr><td class="text-right">21</td><td>Saraf</td>
+							</tr><tr><td class="text-right">22</td><td>Jantung dan Pembuluh Darah</td>
+							</tr><tr><td class="text-right">23</td><td>Kedokteran Forensik</td>
+							</tr><tr><td class="text-right">24</td><td>Urologi</td>
+							</tr><tr><td class="text-right">25</td><td>Dialisis/ CAPD</td>
+							</tr><tr><td class="text-right">26</td><td>Bedah Katarak</td>
+							</tr><tr><td class="text-right">27</td><td>Pelayanan kesehatan jiwa masyarakat</td>
+							</tr><tr><td class="text-right">28</td><td>Pelayanan konseling dan psikoterapi</td>
+							</tr><tr><td class="text-right">29</td><td>Paru Asma dan PPOK </td>
+							</tr><tr><td class="text-right">30</td><td>Bedah Mulut</td>
+							</tr><tr><td class="text-right">31</td><td>Bedah vaskular</td>
+							</tr><tr><td class="text-right">32</td><td>Bedah Plastik Rekonstruksi dan Estetika</td>
+							</tr><tr><td class="text-right">33</td><td>Bedah Saraf</td>
+							</tr><tr><td class="text-right">34</td><td>Perinatologi</td>
+							</tr><tr><td class="text-right">35</td><td>Neurologi</td>
+							</tr><tr><td class="text-right">36</td><td>Nefrologi </td>
+							</tr><tr><td class="text-right">37</td><td>Gastroenterologi Hepatologi</td>
+							</tr><tr><td class="text-right">38</td><td>Endokrin</td>
+							</tr><tr><td class="text-right">39</td><td>Infeksi dan Penyakit Tropis</td>
+							</tr><tr><td class="text-right">40</td><td>Fertilitas Endokrinologi Reproduksi</td>
+							</tr><tr><td class="text-right">41</td><td>CT Scan</td>
+							</tr><tr><td class="text-right">42</td><td>Laboratorium mikrobiologi</td>
+							</tr><tr><td class="text-right">43</td><td>Elektromedik diagnostik (EKG/EEG/EEG Brain Mapping)</td>
+							</tr><tr><td class="text-right">44</td><td>Pelayanan farmasi</td>
+							</tr><tr><td class="text-right">45</td><td>Bank darah</td>
+							</tr><tr><td class="text-right">46</td><td>Sterilisasi / CSSD</td>
+							</tr><tr><td class="text-right">47</td><td>Rekam medis dan informasi kesehatan</td>
+							</tr><tr><td class="text-right">48</td><td>Pemeliharaan Sarana, Prasarana dan fasilitas</td>
+							</tr><tr><td class="text-right">49</td><td>Pengelolaan limbah / kesehatan lingkungan</td>
+							</tr><tr><td class="text-right">50</td><td>Sistem informasi dan komunikasi / SIRS / IT</td>
+							</tr><tr><td class="text-right">51</td><td>Pemulasaran jenazah</td>
+							</tr><tr><td class="text-right">52</td><td>Bedah digestif</td>
+							</tr><tr><td class="text-right">53</td><td>Ginjal dan Hipertensi</td>
+							</tr><tr><td class="text-right">54</td><td>Bedah thorax kardiak dan vaskuler</td>
+							</tr><tr><td class="text-right">55</td><td>Bedah Anak</td>
+							</tr><tr><td class="text-right">56</td><td>Resep Elektronik</td>
+							</tr><tr><td class="text-right">57</td><td>Laundry</td>
+							</tr><tr><td class="text-right">58</td><td>Intensive care</td>
+							</tr><tr><td class="text-right">59</td><td>Bedah Orthopedi</td>
+							</tr><tr><td class="text-right">60</td><td>Ekokardiografi</td>
+							</tr><tr><td class="text-right">61</td><td>Radiologi abdomen</td>
+							</tr><tr><td class="text-right">62</td><td>Radiologi toraks</td>
+							</tr><tr><td class="text-right">63</td><td>Hemodialisa</td>
+							</tr><tr><td class="text-right">64</td><td>Medical Check Up</td>
+							</tr><tr><td class="text-right">65</td><td>Emergensi</td>
+							</tr><tr><td class="text-right">66</td><td>Covid-19</td>
+							</tr>						
+						</tbody>
+						</table>
+                  </div>
+                  <!-- /.tab-pane -->
+<div class="tab-pane" id="tenaga">
+                    <!-- The timeline -->
+                    <div class="card card-warning">
+              <div class="card-header">
+                <h3 class="card-title">Data Sumber Daya Manusia</h3>
+             
+			  </div>
+			  
+              <!-- /.card-header -->
+              <!-- form start -->
+				</div>
+		
+					<table  class="table table-bordered table-hover"  id="example7">
+						<thead>
+						<tr><th>No.</th><th>Grup</th>
+						<th>SDM</th>
+						<th>Jumlah</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr><td class="text-right">1</td><td></td>
+							<td>Pengelola Program Kesehatan Lainnya (yang belum tercantum)</td>
+							<td>3</td>
+							</tr><tr><td class="text-right">2</td><td>Asisten Tenaga Kesehatan</td>
+							<td>Perawat (Asisten)</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">3</td><td>Pelayanan Medik Umum</td>
+							<td>Dokter</td>
+							<td>26</td>
+							</tr><tr><td class="text-right">4</td><td>Pelayanan Medik Umum</td>
+							<td>Dokter Gigi</td>
+							<td>17</td>
+							</tr><tr><td class="text-right">5</td><td>Pelayanan Medik Spesialis Dasar</td>
+							<td>Dokter Spesialis Penyakit Dalam (Sp.PD)</td>
+							<td>5</td>
+							</tr><tr><td class="text-right">6</td><td>Pelayanan Medik Spesialis Dasar</td>
+							<td>Dokter Spesialis Obstetri & Ginekologi (Sp.OG)</td>
+							<td>2</td>
+							</tr><tr><td class="text-right">7</td><td>Pelayanan Medik Spesialis Dasar</td>
+							<td>Dokter Spesialis Anak (Sp.A)</td>
+							<td>3</td>
+							</tr><tr><td class="text-right">8</td><td>Pelayanan Medik Spesialis Dasar</td>
+							<td>Dokter Spesialis Bedah (Sp.B)</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">9</td><td>Pelayanan Medik Spesialis Lain</td>
+							<td>Dokter Spesialis Radiologi (Sp.Rad)</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">10</td><td>Pelayanan Medik Spesialis Lain</td>
+							<td>Dokter Spesialis Anastesiologi (Sp.An)</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">11</td><td>Pelayanan Medik Spesialis Lain</td>
+							<td>Dokter Spesialis Patologi Klinik (SP.PK)</td>
+							<td>2</td>
+							</tr><tr><td class="text-right">12</td><td>Pelayanan Medik Spesialis Lain</td>
+							<td>Dokter Spesialis Patologi Anatomi (Sp.PA)</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">13</td><td>Pelayanan Medik Spesialis Lain</td>
+							<td>Dokter Spesialis Urologi (Sp.U)</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">14</td><td>Pelayanan Medik Spesialis Lain</td>
+							<td>Dokter Spesialis Ilmu Kesehatan Kulit Dan Kelamin (Sp.KK)</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">15</td><td>Pelayanan Medik Spesialis Lain</td>
+							<td>Dokter Spesialis Neorologi/Saraf (Sp.S)</td>
+							<td>2</td>
+							</tr><tr><td class="text-right">16</td><td>Pelayanan Medik Spesialis Lain</td>
+							<td>Dokter Spesialis Orthopedi & Traumatologi (Sp.OT)</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">17</td><td>Pelayanan Medik Spesialis Lain</td>
+							<td>Dokter Spesialis Paru  - Pulmonologi (Sp.P)</td>
+							<td>3</td>
+							</tr><tr><td class="text-right">18</td><td>Pelayanan Medik Spesialis Lain</td>
+							<td>Dokter Spesialis Forensik (Sp.F)</td>
+							<td>3</td>
+							</tr><tr><td class="text-right">19</td><td>Pelayanan Medik Spesialis Lain</td>
+							<td>Dokter Spesialis Psikiatri - Kedokteran Jiwa (Sp.KJ)</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">20</td><td>Pelayanan Medik Spesialis Lain</td>
+							<td>Dokter Spesialis Kedokteran Fisik Dan Rehabilitasi (Sp.KFR)</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">21</td><td>Pelayanan Medik Spesialis Lain</td>
+							<td>Dokter Spesialis Ilmu Kesehatan THT Kl  (Sp.THT-KL)</td>
+							<td>2</td>
+							</tr><tr><td class="text-right">22</td><td>Pelayanan Medik Spesialis Lain</td>
+							<td>Dokter Spesialis Mata (Sp.M)</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">23</td><td>Pelayanan Medik Spesialis Lain</td>
+							<td>Dokter Spesialis Jantung dan Pembuluh Darah (Sp.JP)</td>
+							<td>2</td>
+							</tr><tr><td class="text-right">24</td><td>Subspesialis penyakit dalam dan/atau Dokter spesialis dengan kualifikasi tambahan</td>
+							<td>Subspesialis Gastroenterologi-hepatologi</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">25</td><td>Subspesialis Anestesi dan terapi intensif dan/atau Dokter spesialis dengan kualifikasi tambahan</td>
+							<td>Subspesialis Terapi Intensif/Intensive Care</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">26</td><td></td>
+							<td>Dokter Gigi Spesialis Bedah Mulut dan Maksilofasial Subspesialis Bedah Trauma Maksilofasial dan Kelainan Temporo Mandibular Joint</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">27</td><td>Tenaga keperawatan dan kebidanan</td>
+							<td>Perawat (Non Ners)</td>
+							<td>33</td>
+							</tr><tr><td class="text-right">28</td><td>Tenaga keperawatan dan kebidanan</td>
+							<td>Ners</td>
+							<td>26</td>
+							</tr><tr><td class="text-right">29</td><td>Tenaga keperawatan dan kebidanan</td>
+							<td>Perawat Kesehatan Anak</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">30</td><td>Tenaga keperawatan dan kebidanan</td>
+							<td>Perawat Maternitas</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">31</td><td>Tenaga keperawatan dan kebidanan</td>
+							<td>Perawat Medikal Bedah</td>
+							<td>2</td>
+							</tr><tr><td class="text-right">32</td><td>Tenaga keperawatan dan kebidanan</td>
+							<td>Bidan Klinis</td>
+							<td>10</td>
+							</tr><tr><td class="text-right">33</td><td>Tenaga keperawatan dan kebidanan</td>
+							<td>Jenis Bidan Lainnya yang belum tercantum</td>
+							<td>4</td>
+							</tr><tr><td class="text-right">34</td><td>Tenaga Kefarmasian - Apoteker</td>
+							<td>Apoteker</td>
+							<td>2</td>
+							</tr><tr><td class="text-right">35</td><td>Tenaga Kefarmasian - TTK</td>
+							<td>Ahli Madya Farmasi (Asisten Apoteker)</td>
+							<td>8</td>
+							</tr><tr><td class="text-right">36</td><td>Tenaga Kesehatan Lingkungan</td>
+							<td>Sanitasi Lingkungan</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">37</td><td>Tenaga Gizi</td>
+							<td>Nutrisionis</td>
+							<td>2</td>
+							</tr><tr><td class="text-right">38</td><td>Tenaga Keterapian Fisik</td>
+							<td>Fisioterapis</td>
+							<td>4</td>
+							</tr><tr><td class="text-right">39</td><td>Tenaga Keteknisian Medis</td>
+							<td>Perekam Medis dan Informasi Kesehatan</td>
+							<td>3</td>
+							</tr><tr><td class="text-right">40</td><td>Tenaga Teknik Biomedika</td>
+							<td>Radiografer</td>
+							<td>6</td>
+							</tr><tr><td class="text-right">41</td><td>Tenaga Teknik Biomedika</td>
+							<td>Elektromedis</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">42</td><td>Tenaga Teknik Biomedika</td>
+							<td>Ahli Teknologi Laboratorium Medik (Analis Kesehatan)</td>
+							<td>7</td>
+							</tr><tr><td class="text-right">43</td><td>Tenaga Teknik Biomedika</td>
+							<td>Fisikawan Medik</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">44</td><td>Asisten Tenaga Kesehatan</td>
+							<td>Perawat (Asisten)</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">45</td><td>Asisten Tenaga Kesehatan</td>
+							<td>Bidan (Asisten)</td>
+							<td>4</td>
+							</tr><tr><td class="text-right">46</td><td>Asisten Tenaga Kesehatan</td>
+							<td>Farmasi (Asisten)</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">47</td><td>Asisten Tenaga Kesehatan</td>
+							<td>Analis Kesehatan (Asisten)</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">48</td><td>Asisten Tenaga Kesehatan</td>
+							<td>Terapis Gigi dan Mulut (asisten)</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">49</td><td>Tenaga Penunjang - Dukungan Manajemen</td>
+							<td>Perencanaan</td>
+							<td>2</td>
+							</tr><tr><td class="text-right">50</td><td>Tenaga Penunjang - Dukungan Manajemen</td>
+							<td>Program</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">51</td><td>Tenaga Penunjang - Dukungan Manajemen</td>
+							<td>Keuangan</td>
+							<td>2</td>
+							</tr><tr><td class="text-right">52</td><td>Tenaga Penunjang - Dukungan Manajemen</td>
+							<td>Pelaporan</td>
+							<td>2</td>
+							</tr><tr><td class="text-right">53</td><td>Tenaga Penunjang - Dukungan Manajemen</td>
+							<td>Pengembangan Pegawai</td>
+							<td>2</td>
+							</tr><tr><td class="text-right">54</td><td>Tenaga Penunjang - Dukungan Manajemen</td>
+							<td>Publikasi dan Informasi Publik</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">55</td><td>Tenaga Penunjang - Dukungan TI</td>
+							<td>Pengelola Jaringan Komputer</td>
+							<td>1</td>
+							</tr><tr><td class="text-right">56</td><td>Tenaga Penunjang - Dukungan TI</td>
+							<td>Pengelola Data</td>
+							<td>3</td>
+							</tr><tr><td class="text-right">57</td><td>Tenaga Penunjang - Dukungan TI</td>
+							<td>Pengelola Sistem Informasi dan Basis Data (Database)</td>
+							<td>2</td>
+							</tr><tr><td class="text-right">58</td><td></td>
+							<td>Keamanan</td>
+							<td>3</td>
+							</tr><tr><td class="text-right">59</td><td></td>
+							<td>Tenaga Umum Lainnya yang belum tercantum</td>
+							<td>49</td>
+							</tr><tr><td class="text-right">60</td><td>Tenaga Penunjang - Dukungan Manajemen</td>
+							<td> Petugas IPSRS / Teknisi pemeliharaan fasilitas</td>
+							<td>3</td>
+							</tr>						
+						</tbody>
+						</table>
+                  </div>
+                  <!-- /.tab-pane -->
+                </div>
+                <!-- /.tab-content -->
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+</div><!-- /.content-wrapper -->
+<script src="https://sirs.kemkes.go.id/fo/assets/js/jquery-2.0.3.min.js"></script>
+<script>
+$(document).ready(function(){
+ $("#btnsdm").click(function(){
+ var kode = 1275046;
+                $.ajax({
+                        type    : 'GET',
+                        url     : "https://sirs.kemkes.go.id/fo//dashboard/rekapsdm",
+                        data    : "kode="+kode,
+                        cache   : false,
+                        success : function(data){  
+			JSONToCSVConvertor(data,"", true);
+                        }
+                });
+        });
+$("#btnlayanan").click(function(){
+ var kode = 1275046;
+                $.ajax({
+                        type    : 'GET',
+                        url     : "https://sirs.kemkes.go.id/fo//dashboard/rekaplayanan",
+                        data    : "kode="+kode,
+                        cache   : false,
+                        success : function(data){  
+                        JSONToCSVConvertor(data,"", true);
+                        }
+                });
+        });
+$("#btnaspak").click(function(){
+ var kode = 1275046;
+                $.ajax({
+                        type    : 'GET',
+                        url     : "https://sirs.kemkes.go.id/fo//dashboard/rekapaspak",
+                        data    : "kode="+kode,
+                        cache   : false,
+                        success : function(data){  
+                        JSONToCSVConvertor(data,"", true);
+                        }
+                });
+        });  	
+
+});
+function JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
+    //If JSONData is not an object then JSON.parse will parse the JSON string in an Object
+    var arrData = typeof JSONData != 'object' ? JSON.parse(JSONData) : JSONData;
+    
+    var CSV = '';    
+    //Set Report title in first row or line
+    
+    CSV += ReportTitle + '\r\n\n';
+
+    //This condition will generate the Label/Header
+    if (ShowLabel) {
+        var row = "";
+        
+        //This loop will extract the label from 1st index of on array
+        for (var index in arrData[0]) {
+            
+            //Now convert each value to string and comma-seprated
+            row += index + ';';
+        }
+
+        row = row.slice(0, -1);
+        
+        //append Label row with line break
+        CSV += row + '\r\n';
+    }
+    
+    //1st loop is to extract each row
+    for (var i = 0; i < arrData.length; i++) {
+        var row = "";
+        
+        //2nd loop will extract each column and convert it in string comma-seprated
+        for (var index in arrData[i]) {
+            row += '"' + arrData[i][index] + '";';
+        }
+
+        row.slice(0, row.length - 1);
+        
+        //add a line break after each row
+        CSV += row + '\r\n';
+    }
+
+    if (CSV == '') {        
+        alert("Invalid data");
+        return;
+    }   
+    
+    //Generate a file name
+    var fileName = "DataRekap";
+    //this will remove the blank-spaces from the title and replace it with an underscore
+    fileName += ReportTitle.replace(/ /g,"_");   
+    
+    //Initialize file format you want csv or xls
+    var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
+    
+    // Now the little tricky part.
+    // you can use either>> window.open(uri);
+    // but this will not work in some browsers
+    // or you will not get the correct file extension    
+    
+    //this trick will generate a temp <a /> tag
+    var link = document.createElement("a");    
+    link.href = uri;
+    
+    //set the visibility hidden so it will not effect on your web-layout
+    link.style = "visibility:hidden";
+    link.download = fileName + ".csv";
+    
+    //this part will append the anchor tag and remove it after automatic click
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+</script>
+
+
+
+</div><!-- /.content-wrapper -->
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Version</b> 3.0.0
+    </div>
+    <strong>Copyright &copy; 2026 SETDIJEN-KESLAN-PUSDATIN.</strong> All rights reserved.
+</footer>
+</div><!-- ./wrapper -->
+
+
+<!-- jQuery -->
+
+<script src="https://sirs.kemkes.go.id/fo/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="https://sirs.kemkes.go.id/fo/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables -->
+<script src="https://sirs.kemkes.go.id/fo/plugins/datatables/jquery.dataTables.js"></script>
+<script src="https://sirs.kemkes.go.id/fo/plugins/datatables/dataTables.bootstrap4.js"></script>
+<!-- SlimScroll -->
+<script src="https://sirs.kemkes.go.id/fo/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="https://sirs.kemkes.go.id/fo/plugins/iCheck/icheck.min.js"></script>
+<!-- FastClick -->
+<script src="https://sirs.kemkes.go.id/fo/plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="https://sirs.kemkes.go.id/fo/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="https://sirs.kemkes.go.id/fo/dist/js/demo.js"></script>
+<script src="https://sirs.kemkes.go.id/fo/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="https://sirs.kemkes.go.id/fo/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+
+<script src="https://sirs.kemkes.go.id/fo/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script src="https://sirs.kemkes.go.id/fo/assets/moment.min.js"></script>
+<script src="https://sirs.kemkes.go.id/fo/assets/daterangepicker.js"></script>
+<script src="https://sirs.kemkes.go.id/fo/assets/tempusdominus-bootstrap-4.min.js"></script>
+<script src="https://sirs.kemkes.go.id/fo/plugins/datepicker/bootstrap-datepicker.js"></script>
+
+<!-- <script src="https://sirs.kemkes.go.id/fo/plugins/sweetalert2/sweetalert2.min.js"></script>-->
+<!-- Toastr -->
+<!-- <script src="https://sirs.kemkes.go.id/fo/plugins/toastr/toastr.min.js"></script> -->
+
+
+
+<script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js" charset="utf-8"></script>
+<script src="https://sirs.kemkes.go.id/fo/assets/js/bootbox.all.min.js"></script>
+
+
+<!-- page script -->
+
+
+<!-- Menu Toggle Script -->
+<script>
+  $(function () {
+     $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel', 'pdf', 'csv'
+    ]
+    });
+     // Skip auto-init untuk tabel lazy-load (tenaga/sarpras); diisi via AJAX.
+     if ($('#example4').length && !$('#example4').attr('data-lazy-load')) {
+     $('#example4').DataTable({
+    "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "bDestroy": true,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel', 'pdf'
+    ]
+    });
+     }
+     if ($('#example5').length && !$('#example5').attr('data-lazy-load')) {
+     $('#example5').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+	  buttons: [
+        'copy', 'excel', 'pdf'
+    ]
+    });
+     }
+     $('#example3').DataTable({
+      "paging": false,	
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel', 'pdf'
+	]
+    });	
+
+      $('#example6').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    }); 
+
+    $('#example7').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+    $('#example8').DataTable({
+     "paging": false,
+     "lengthChange": false,
+     "searching": false,
+     "ordering": false,
+     "info": false,
+     "autoWidth": false
+   });
+
+    $('#example9').DataTable({
+     "paging": false,
+     "lengthChange": false,
+     "searching": true,
+     "ordering": false,
+     "info": false,
+     "autoWidth": false,
+      dom: 'Bfrtip',
+       buttons: [
+           'copy', 'excel', 'pdf'
+       ]
+   });
+    
+    $('#rawatkomplikasi').DataTable({
+      "paging": true,	
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel', 'pdf'
+	]
+    });	
+
+    $('#rawattanpakomplikasi').DataTable({
+      "paging": true,	
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel', 'pdf'
+	]
+    });	
+    
+    $('#pasienkeluar').DataTable({
+      "paging": true,	
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel', 'pdf'
+	]
+    });	
+     
+     $('#borprop').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel', 'pdf', 'csv'
+    ]
+    });
+
+   $('#borkabkota').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel', 'pdf', 'csv'
+    ]
+    });
+
+    $('#pasiendirawatprop').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel', 'pdf', 'csv'
+    ]
+    });
+
+    $('#pasiendirawatkab').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel', 'pdf', 'csv'
+    ]
+    });
+
+   $('#pasienmeninggalprop').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel', 'pdf', 'csv'
+    ]
+    });
+
+    $('#pasienmeninggalkab').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel', 'pdf', 'csv'
+    ]
+    });
+
+    $('#logobat').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel', 'pdf', 'csv'
+    ]
+    });
+
+    $('#logapd').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel', 'pdf', 'csv'
+    ]
+    });
+
+    $('#borrs').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel', 'pdf', 'csv'
+    ]
+    });
+
+     $('#dataalkes').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel'
+    ]
+    });
+
+    $('#dataoksigenasi').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel'
+    ]
+    });
+	
+    $('#datasdm').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel'
+    ]
+    });
+
+    $('#dataigdtriase').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel'
+    ]
+    });
+
+   $('#dataplasma').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel'
+    ]
+    });
+
+    $('#datanakes').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel'
+    ]
+    });
+
+   $('#datapcr').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel'
+    ]
+    });
+
+    $('#datasuplier').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+    buttons: [
+        'copy', 'excel'
+    ]
+    });
+
+
+
+  });
+</script>

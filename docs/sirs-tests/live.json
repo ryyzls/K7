@@ -1,0 +1,32 @@
+[
+  {
+    "name": "206_hospitals_exact_services_provenance",
+    "status": "PASS",
+    "detail": "HTTP 200; 206 identities; every service matches curated SIRS; complete provenance"
+  },
+  {
+    "name": "35_service_filters",
+    "status": "PASS",
+    "detail": "HTTP 200; all 35 filters return exact hospital sets"
+  },
+  {
+    "name": "clinical_and_injection_excluded",
+    "status": "PASS",
+    "detail": "HTTP 200; withheld clinical label and injected literal return no matches"
+  },
+  {
+    "name": "export_curated_observations",
+    "status": "PASS",
+    "detail": "HTTP 200; exported observations have provenance; no inferred service predicate"
+  },
+  {
+    "name": "security_unchanged",
+    "status": "PASS",
+    "detail": "SPARQL UPDATE blocked HTTP 400; operator read gate denied"
+  },
+  {
+    "name": "default_graph_unchanged",
+    "status": "PASS",
+    "detail": "HTTP 200; default graph unchanged (6132 triples)"
+  }
+]

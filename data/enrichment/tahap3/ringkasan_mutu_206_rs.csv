@@ -1,0 +1,207 @@
+﻿id_carisehat,kode_rs_kemenkes,nama_master,url_sumber,waktu_ambil_utc,jumlah_pelayanan_mentah,jumlah_pelayanan_unik_per_rs,baris_tt,baris_sdm,perlu_review_kategori,prioritas_review
+rs-001,1276079,OG Hospital,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079,2026-11-19T19:17:23.235106+00:00,23,23,20,27,0,NORMAL
+rs-002,1275141,RS AL Dr. Komang Makes Belawan,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141,2026-11-19T19:17:24.776163+00:00,28,28,20,39,1,SEDANG
+rs-003,1275046,RS Bhayangkara Tingkat II Medan,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:17:26.396916+00:00,66,66,21,60,2,SEDANG
+rs-004,1203067,RS Bhayangkara Tk. IV  Batangtoru,https://sirs.kemkes.go.id/fo/home/profile_rs/1203067,2026-11-19T19:17:27.815656+00:00,15,15,18,19,0,NORMAL
+rs-005,1274058,RS Bhayangkara Tk.III Kota Tebing Tinggi,https://sirs.kemkes.go.id/fo/home/profile_rs/1274058,2026-11-19T19:17:30.137773+00:00,36,36,20,65,0,NORMAL
+rs-006,1274063,RS Chevani,https://sirs.kemkes.go.id/fo/home/profile_rs/1274063,2026-11-19T19:17:31.980508+00:00,44,44,11,47,1,SEDANG
+rs-007,1275074,RS Columbia Asia Aksara,https://sirs.kemkes.go.id/fo/home/profile_rs/1275074,2026-11-19T19:17:33.633325+00:00,182,181,9,78,5,SEDANG
+rs-008,1275852,RS Columbia Asia Medan,https://sirs.kemkes.go.id/fo/home/profile_rs/1275852,2026-11-19T19:17:35.223925+00:00,136,133,20,117,4,SEDANG
+rs-009,1212201,RS Dhillon,https://sirs.kemkes.go.id/fo/home/profile_rs/1212201,2026-11-19T19:17:36.742628+00:00,36,36,10,30,1,SEDANG
+rs-010,1207069,RS Dokter Takdir,https://sirs.kemkes.go.id/fo/home/profile_rs/1207069,2026-11-19T19:17:38.172690+00:00,12,12,3,3,0,TINGGI
+rs-011,1273119,RS Efarina Etaham Pematang Siantar,https://sirs.kemkes.go.id/fo/home/profile_rs/1273119,2026-11-19T19:17:39.761869+00:00,157,156,23,87,3,SEDANG
+rs-012,1275932,RS Gigi dan Mulut Prima,https://sirs.kemkes.go.id/fo/home/profile_rs/1275932,2026-11-19T19:17:41.331689+00:00,24,24,15,20,1,SEDANG
+rs-013,1212202,RS Grand Medica,https://sirs.kemkes.go.id/fo/home/profile_rs/1212202,2026-11-19T19:17:42.821591+00:00,20,20,10,13,0,NORMAL
+rs-014,1218158,RS Grandmed ,https://sirs.kemkes.go.id/fo/home/profile_rs/1218158,2026-11-19T19:17:44.245994+00:00,91,90,22,77,2,SEDANG
+rs-015,1275929,RS Ibu Dan Anak Artha Mahinrus,https://sirs.kemkes.go.id/fo/home/profile_rs/1275929,2026-11-19T19:17:45.708679+00:00,19,19,20,25,0,NORMAL
+rs-016,1275910,RS Ibu dan Anak Eva,https://sirs.kemkes.go.id/fo/home/profile_rs/1275910,2026-11-19T19:17:47.141066+00:00,3,3,4,4,0,TINGGI
+rs-017,1276092,RS Ibu dan Anak Grand Fatimah,https://sirs.kemkes.go.id/fo/home/profile_rs/1276092,2026-11-19T19:17:48.594299+00:00,16,16,11,21,0,NORMAL
+rs-018,1212186,RS Ibu dan Anak Maharani,https://sirs.kemkes.go.id/fo/home/profile_rs/1212186,2026-11-19T19:17:50.035749+00:00,37,37,21,30,1,SEDANG
+rs-019,1211127,RS Ibu dan Anak Mina Husada,https://sirs.kemkes.go.id/fo/home/profile_rs/1211127,2026-11-19T19:17:51.512785+00:00,31,31,18,29,2,SEDANG
+rs-020,1275783,RS Ibu dan Anak Murni Teguh Rosiva,https://sirs.kemkes.go.id/fo/home/profile_rs/1275783,2026-11-19T19:17:53.043289+00:00,67,67,20,39,2,SEDANG
+rs-021,1212197,RS Ibu dan Anak Pramaliesa,https://sirs.kemkes.go.id/fo/home/profile_rs/1212197,2026-11-19T19:17:54.450144+00:00,25,25,7,26,0,NORMAL
+rs-022,1275998,RS Ibu dan Anak Stella Maris,https://sirs.kemkes.go.id/fo/home/profile_rs/1275998,2026-11-19T19:17:55.970886+00:00,32,32,18,64,0,NORMAL
+rs-023,1275999,RS Jiwa Bina Karsa Medan,https://sirs.kemkes.go.id/fo/home/profile_rs/1275999,2026-11-19T19:17:57.423550+00:00,18,18,14,20,1,SEDANG
+rs-024,1212184,RS Jiwa Bina Karsa Tuntungan,https://sirs.kemkes.go.id/fo/home/profile_rs/1212184,2026-11-19T19:17:58.996705+00:00,15,15,15,15,1,SEDANG
+rs-025,1275221,RS Jiwa Prof. Dr. Muhammad Ildrem,https://sirs.kemkes.go.id/fo/home/profile_rs/1275221,2026-11-19T19:18:00.470850+00:00,53,53,17,50,4,SEDANG
+rs-026,1275232,RS Khusus Bedah Accuplast,https://sirs.kemkes.go.id/fo/home/profile_rs/1275232,2026-11-19T19:18:01.959192+00:00,13,13,18,19,0,TINGGI
+rs-027,1275921,RS Khusus Bedah Setia Budi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275921,2026-11-19T19:18:04.175032+00:00,53,53,17,38,0,NORMAL
+rs-028,1275874,RS Khusus Gigi dan Mulut Univ. Sumatera Utara,https://sirs.kemkes.go.id/fo/home/profile_rs/1275874,2026-11-19T19:18:06.067218+00:00,16,16,26,47,0,NORMAL
+rs-029,1275918,RS Khusus Ginjal Rasyida,https://sirs.kemkes.go.id/fo/home/profile_rs/1275918,2026-11-19T19:18:07.535002+00:00,22,22,19,32,0,NORMAL
+rs-030,1275309,RS Khusus Mata Medan Baru Medical Centre,https://sirs.kemkes.go.id/fo/home/profile_rs/1275309,2026-11-19T19:18:09.001629+00:00,18,18,17,14,1,SEDANG
+rs-031,1275914,RS Khusus Mata Mencirim Tujuh-Tujuh,https://sirs.kemkes.go.id/fo/home/profile_rs/1275914,2026-11-19T19:18:10.396091+00:00,21,21,4,28,0,NORMAL
+rs-032,1275928,RS Khusus Mata Prima Vision,https://sirs.kemkes.go.id/fo/home/profile_rs/1275928,2026-11-19T19:18:11.842027+00:00,20,20,17,17,0,NORMAL
+rs-033,1275922,RS Khusus Mata Provinsi Sumatera Utara,https://sirs.kemkes.go.id/fo/home/profile_rs/1275922,2026-11-19T19:18:13.218656+00:00,11,11,16,44,0,TINGGI
+rs-034,1275898,RS Khusus Mata SMEC,https://sirs.kemkes.go.id/fo/home/profile_rs/1275898,2026-11-19T19:18:14.701951+00:00,19,19,15,31,0,NORMAL
+rs-035,1275933,RS Khusus Paru Sumatera Utara,https://sirs.kemkes.go.id/fo/home/profile_rs/1275933,2026-11-19T19:18:16.212189+00:00,20,20,19,48,0,NORMAL
+rs-036,1273107,RS Mata Siantar,https://sirs.kemkes.go.id/fo/home/profile_rs/1273107,2026-11-19T19:18:17.669583+00:00,4,4,17,20,0,TINGGI
+rs-037,1278013,RUMAH SAKIT METTA MEDIKA,https://sirs.kemkes.go.id/fo/home/profile_rs/1278013,2026-11-19T19:18:19.092963+00:00,59,59,12,24,1,SEDANG
+rs-038,1277027,RS Metta Medika,https://sirs.kemkes.go.id/fo/home/profile_rs/1277027,2026-11-19T19:18:20.523442+00:00,57,55,22,45,1,SEDANG
+rs-039,1271033,RS Metta Medika II,https://sirs.kemkes.go.id/fo/home/profile_rs/1271033,2026-11-19T19:18:21.903657+00:00,74,71,16,38,1,SEDANG
+rs-040,1273102,RS Murni Teguh Horas Insani,https://sirs.kemkes.go.id/fo/home/profile_rs/1273102,2026-11-19T19:18:23.391504+00:00,135,135,23,49,6,SEDANG
+rs-041,1273120,RS Murni Teguh Pematang Siantar,https://sirs.kemkes.go.id/fo/home/profile_rs/1273120,2026-11-19T19:18:24.822114+00:00,66,66,21,22,2,SEDANG
+rs-042,1275913,RS Pendidikan Prof. dr. Chairuddin Panusunan Lubis Universitas Sumatera Utara,https://sirs.kemkes.go.id/fo/home/profile_rs/1275913,2026-11-19T19:18:26.519373+00:00,55,55,23,105,0,NORMAL
+rs-043,1225013,RS Pratama Lologolu Soguna Ba Zato,https://sirs.kemkes.go.id/fo/home/profile_rs/1225013,2026-11-19T19:18:27.908578+00:00,9,9,12,8,0,TINGGI
+rs-044,1273108,RS Rasyida Siantar,https://sirs.kemkes.go.id/fo/home/profile_rs/1273108,2026-11-19T19:18:29.401295+00:00,17,17,4,30,0,NORMAL
+rs-045,1275073,RS Regina Maris,https://sirs.kemkes.go.id/fo/home/profile_rs/1275073,2026-11-19T19:18:30.879365+00:00,115,115,22,92,3,SEDANG
+rs-046,1219015,RS Sapta Medika ,https://sirs.kemkes.go.id/fo/home/profile_rs/1219015,2026-11-19T19:18:32.333567+00:00,26,26,20,30,1,SEDANG
+rs-047,1208068,RS Seger Waras,https://sirs.kemkes.go.id/fo/home/profile_rs/1208068,2026-11-19T19:18:33.735538+00:00,18,18,18,23,1,SEDANG
+rs-048,1223018,RS Sri Pamela Membang Muda,https://sirs.kemkes.go.id/fo/home/profile_rs/1223018,2026-11-19T19:18:35.133081+00:00,30,30,10,37,1,SEDANG
+rs-049,1208053,RS Sri Pamela Sei Dadap,https://sirs.kemkes.go.id/fo/home/profile_rs/1208053,2026-11-19T19:18:36.578511+00:00,85,85,21,23,1,SEDANG
+rs-050,1207052,RS Sri Pamela Torgamba,https://sirs.kemkes.go.id/fo/home/profile_rs/1207052,2026-11-19T19:18:38.674094+00:00,35,35,23,31,2,SEDANG
+rs-051,1275996,RS SUFINA AZIZ,https://sirs.kemkes.go.id/fo/home/profile_rs/1275996,2026-11-19T19:18:40.474945+00:00,34,34,19,43,1,SEDANG
+rs-052,1223005,RS Tiga Bersaudara,https://sirs.kemkes.go.id/fo/home/profile_rs/1223005,2026-11-19T19:18:41.920501+00:00,20,20,18,24,1,SEDANG
+rs-053,1275035,RS Tk. II Putri Hijau Medan,https://sirs.kemkes.go.id/fo/home/profile_rs/1275035,2026-11-19T19:18:43.369924+00:00,61,61,31,58,1,SEDANG
+rs-054,1273022,RS Tk. IV 01.07.01,https://sirs.kemkes.go.id/fo/home/profile_rs/1273022,2026-11-19T19:18:44.876651+00:00,31,31,22,58,1,SEDANG
+rs-055,1276040,RS Tk. IV 01.07.02 Binjai,https://sirs.kemkes.go.id/fo/home/profile_rs/1276040,2026-11-19T19:18:46.250210+00:00,30,30,20,51,0,NORMAL
+rs-056,1277015,RS TNI Tk. IV 01.07.03,https://sirs.kemkes.go.id/fo/home/profile_rs/1277015,2026-11-19T19:18:47.689884+00:00,22,22,8,31,0,NORMAL
+rs-057,1275094,RS Umum Advent Medan,https://sirs.kemkes.go.id/fo/home/profile_rs/1275094,2026-11-19T19:18:49.162756+00:00,44,44,21,63,0,NORMAL
+rs-058,1276078,RS Umum AL Fuadi,https://sirs.kemkes.go.id/fo/home/profile_rs/1276078,2026-11-19T19:18:50.571098+00:00,33,33,19,38,0,NORMAL
+rs-059,1211126,RS Umum Amanda,https://sirs.kemkes.go.id/fo/home/profile_rs/1211126,2026-11-19T19:18:52.004892+00:00,33,33,20,36,1,SEDANG
+rs-060,1202029,RS Umum Armina Madina Panyabungan,https://sirs.kemkes.go.id/fo/home/profile_rs/1202029,2026-11-19T19:18:53.453102+00:00,49,49,12,21,0,NORMAL
+rs-061,1276036,RS Umum Artha Medica,https://sirs.kemkes.go.id/fo/home/profile_rs/1276036,2026-11-19T19:18:54.905131+00:00,97,97,22,47,2,SEDANG
+rs-062,1209010,RS Umum Balimbingan PTP 4,https://sirs.kemkes.go.id/fo/home/profile_rs/1209010,2026-11-19T19:18:56.423762+00:00,22,22,21,53,0,NORMAL
+rs-063,1275772,RS Umum Bandung,https://sirs.kemkes.go.id/fo/home/profile_rs/1275772,2026-11-19T19:18:57.873630+00:00,50,50,20,31,0,NORMAL
+rs-064,1278002,RS Umum Bethesda Gunungsitoli,https://sirs.kemkes.go.id/fo/home/profile_rs/1278002,2026-11-19T19:18:59.400030+00:00,33,33,21,47,0,NORMAL
+rs-065,1276075,RS Umum Bidadari,https://sirs.kemkes.go.id/fo/home/profile_rs/1276075,2026-11-19T19:19:00.885049+00:00,58,58,20,55,1,SEDANG
+rs-066,1219017,RS Umum Bidadari Batubara,https://sirs.kemkes.go.id/fo/home/profile_rs/1219017,2026-11-19T19:19:02.264550+00:00,75,75,10,41,1,SEDANG
+rs-067,1275997,RS Umum Bina Kasih,https://sirs.kemkes.go.id/fo/home/profile_rs/1275997,2026-11-19T19:19:03.777736+00:00,84,84,21,62,2,SEDANG
+rs-068,1208059,RS Umum Bunda Mulia,https://sirs.kemkes.go.id/fo/home/profile_rs/1208059,2026-11-19T19:19:05.132901+00:00,63,63,4,38,1,SEDANG
+rs-069,1275890,RSU BUNDA THAMRIN,https://sirs.kemkes.go.id/fo/home/profile_rs/1275890,2026-11-19T19:19:06.653889+00:00,91,91,22,97,1,SEDANG
+rs-070,1208020,RS Umum Catharina 1914,https://sirs.kemkes.go.id/fo/home/profile_rs/1208020,2026-11-19T19:19:08.052093+00:00,18,18,20,24,0,NORMAL
+rs-071,1212179,RS Umum Citra Medika,https://sirs.kemkes.go.id/fo/home/profile_rs/1212179,2026-11-19T19:19:09.430300+00:00,28,28,10,35,0,NORMAL
+rs-072,1223002,RS Umum Daerah  Aek Kanopan,https://sirs.kemkes.go.id/fo/home/profile_rs/1223002,2026-11-19T19:19:10.933156+00:00,30,30,19,59,0,NORMAL
+rs-073,1212198,RS Umum Daerah Bangun Purba,https://sirs.kemkes.go.id/fo/home/profile_rs/1212198,2026-11-19T19:19:12.443899+00:00,23,23,18,35,0,NORMAL
+rs-074,1219003,RS Umum Daerah Batu Bara,https://sirs.kemkes.go.id/fo/home/profile_rs/1219003,2026-11-19T19:19:14.481546+00:00,24,24,19,57,1,SEDANG
+rs-075,1225002,RS Umum Daerah Cerah Medika Kab. Nias Barat,https://sirs.kemkes.go.id/fo/home/profile_rs/1225002,2026-11-19T19:19:16.632018+00:00,20,20,15,35,0,NORMAL
+rs-076,1205035,RS Umum Daerah Dolok Sanggul,https://sirs.kemkes.go.id/fo/home/profile_rs/1205035,2026-11-19T19:19:18.123216+00:00,61,61,11,62,1,SEDANG
+rs-077,1273011,RS Umum Daerah Dr. Djasamen Saragih,https://sirs.kemkes.go.id/fo/home/profile_rs/1273011,2026-11-19T19:19:19.715209+00:00,41,41,25,77,0,NORMAL
+rs-078,1271016,RS Umum Daerah Dr. FL Tobing Sibolga,https://sirs.kemkes.go.id/fo/home/profile_rs/1271016,2026-11-19T19:19:21.129174+00:00,101,100,20,64,1,SEDANG
+rs-079,1274012,RS Umum Daerah Dr. H. Kumpulan Pane,https://sirs.kemkes.go.id/fo/home/profile_rs/1274012,2026-11-19T19:19:22.652221+00:00,132,132,26,67,2,SEDANG
+rs-080,1205024,RS Umum Daerah Dr. Hadrianus Sinaga,https://sirs.kemkes.go.id/fo/home/profile_rs/1205024,2026-11-19T19:19:24.179193+00:00,42,42,20,53,2,SEDANG
+rs-081,1202017,RS Umum Daerah dr. Husni Thamrin,https://sirs.kemkes.go.id/fo/home/profile_rs/1202017,2026-11-19T19:19:25.759392+00:00,11,11,15,36,0,TINGGI
+rs-082,1201016,RS Umum Daerah dr. M. Thomsen Nias,https://sirs.kemkes.go.id/fo/home/profile_rs/1201016,2026-11-19T19:19:27.452566+00:00,42,42,21,62,1,SEDANG
+rs-083,1275013,RS Umum Daerah Dr. Pirngadi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275013,2026-11-19T19:19:29.220983+00:00,164,163,12,92,2,SEDANG
+rs-084,1276014,RS Umum Daerah Dr. R. M. Djoelham Binjai,https://sirs.kemkes.go.id/fo/home/profile_rs/1276014,2026-11-19T19:19:30.636128+00:00,40,40,23,60,0,NORMAL
+rs-085,1272010,RS Umum Daerah Dr. Tengku Mansyur,https://sirs.kemkes.go.id/fo/home/profile_rs/1272010,2026-11-19T19:19:32.226520+00:00,39,39,22,59,1,SEDANG
+rs-086,1212012,RS Umum Daerah Drs. H. Amri Tambunan,https://sirs.kemkes.go.id/fo/home/profile_rs/1212012,2026-11-19T19:19:33.817595+00:00,234,232,25,91,6,SEDANG
+rs-087,1203044,RS Umum Daerah Gunung Tua,https://sirs.kemkes.go.id/fo/home/profile_rs/1203044,2026-11-19T19:19:35.295494+00:00,64,64,19,53,1,SEDANG
+rs-088,1208016,RS Umum Daerah H. Abdul Manan Simatupang,https://sirs.kemkes.go.id/fo/home/profile_rs/1208016,2026-11-19T19:19:36.832626+00:00,46,46,19,67,0,NORMAL
+rs-089,1275012,RS Umum Daerah H. Bachtiar Djafar,https://sirs.kemkes.go.id/fo/home/profile_rs/1275012,2026-11-19T19:19:38.330747+00:00,27,27,20,50,0,NORMAL
+rs-090,1211011,RS Umum Daerah Kabupaten Karo,https://sirs.kemkes.go.id/fo/home/profile_rs/1211011,2026-11-19T19:19:39.839822+00:00,39,39,19,53,1,SEDANG
+rs-091,1222002,RS Umum Daerah Kota Pinang,https://sirs.kemkes.go.id/fo/home/profile_rs/1222002,2026-11-19T19:19:41.306211+00:00,32,32,21,58,0,NORMAL
+rs-092,1214010,RS Umum Daerah Lukas Hilisimaetano,https://sirs.kemkes.go.id/fo/home/profile_rs/1214010,2026-11-19T19:19:42.712614+00:00,4,4,4,18,0,TINGGI
+rs-093,1214022,RS Umum Daerah Nias Selatan,https://sirs.kemkes.go.id/fo/home/profile_rs/1214022,2026-11-19T19:19:44.169861+00:00,14,14,7,31,0,TINGGI
+rs-094,1277011,RS Umum Daerah Padang Sidempuan,https://sirs.kemkes.go.id/fo/home/profile_rs/1277011,2026-11-19T19:19:45.608439+00:00,29,29,17,66,0,NORMAL
+rs-095,1204056,RS Umum Daerah Pandan,https://sirs.kemkes.go.id/fo/home/profile_rs/1204056,2026-11-19T19:19:47.120288+00:00,39,39,21,57,1,SEDANG
+rs-096,1203022,RS Umum Daerah Panyabungan,https://sirs.kemkes.go.id/fo/home/profile_rs/1203022,2026-11-19T19:19:48.587972+00:00,53,53,7,70,0,NORMAL
+rs-097,1209065,RS Umum Daerah Parapat,https://sirs.kemkes.go.id/fo/home/profile_rs/1209065,2026-11-19T19:19:50.103035+00:00,25,25,18,45,0,NORMAL
+rs-098,1209076,RS Umum Daerah Perdagangan,https://sirs.kemkes.go.id/fo/home/profile_rs/1209076,2026-11-19T19:19:51.654218+00:00,32,32,18,47,0,NORMAL
+rs-099,1203066,RS Umum Daerah Pintu Padang,https://sirs.kemkes.go.id/fo/home/profile_rs/1203066,2026-11-19T19:19:53.105480+00:00,11,11,7,30,0,TINGGI
+rs-100,1205046,RS Umum Daerah Porsea,https://sirs.kemkes.go.id/fo/home/profile_rs/1205046,2026-11-19T19:19:55.627829+00:00,90,88,8,59,2,SEDANG
+rs-101,1207015,RS Umum Daerah Rantau Prapat,https://sirs.kemkes.go.id/fo/home/profile_rs/1207015,2026-11-19T19:19:57.182524+00:00,59,59,24,72,2,SEDANG
+rs-102,1216011,RS Umum Daerah Salak,https://sirs.kemkes.go.id/fo/home/profile_rs/1216011,2026-11-19T19:20:02.359103+00:00,59,59,19,54,1,SEDANG
+rs-103,1203055,RS Umum Daerah Sibuhuan,https://sirs.kemkes.go.id/fo/home/profile_rs/1203055,2026-11-19T19:20:03.856736+00:00,59,59,10,47,1,SEDANG
+rs-104,1210010,RS Umum Daerah Sidikalang,https://sirs.kemkes.go.id/fo/home/profile_rs/1210010,2026-11-19T19:20:05.504767+00:00,26,26,21,62,1,SEDANG
+rs-105,1218125,RS Umum Daerah Sultan Sulaiman Syariful Alamsyah,https://sirs.kemkes.go.id/fo/home/profile_rs/1218125,2026-11-19T19:20:06.959478+00:00,41,41,8,74,0,NORMAL
+rs-106,1224002,RS Umum Daerah Tafaeri,https://sirs.kemkes.go.id/fo/home/profile_rs/1224002,2026-11-19T19:20:08.351976+00:00,27,27,6,35,1,SEDANG
+rs-107,1213013,RS Umum Daerah Tanjung Pura,https://sirs.kemkes.go.id/fo/home/profile_rs/1213013,2026-11-19T19:20:09.919301+00:00,33,33,7,63,0,NORMAL
+rs-108,1203033,RS Umum Daerah Tapanuli Selatan,https://sirs.kemkes.go.id/fo/home/profile_rs/1203033,2026-11-19T19:20:11.326718+00:00,85,85,23,51,1,SEDANG
+rs-109,1205013,RS Umum Daerah Tarutung,https://sirs.kemkes.go.id/fo/home/profile_rs/1205013,2026-11-19T19:20:12.888525+00:00,109,107,19,70,5,SEDANG
+rs-110,1209077,RS Umum Daerah Tuan Rondahaim,https://sirs.kemkes.go.id/fo/home/profile_rs/1209077,2026-11-19T19:20:14.427595+00:00,49,49,21,52,1,SEDANG
+rs-111,1275050,RS Umum Deli,https://sirs.kemkes.go.id/fo/home/profile_rs/1275050,2026-11-19T19:20:15.841440+00:00,34,34,18,48,0,NORMAL
+rs-112,1213057,RS Umum Delia,https://sirs.kemkes.go.id/fo/home/profile_rs/1213057,2026-11-19T19:20:17.274543+00:00,32,32,20,31,1,SEDANG
+rs-113,1275061,RS Umum Delima Medan,https://sirs.kemkes.go.id/fo/home/profile_rs/1275061,2026-11-19T19:20:18.744971+00:00,42,42,24,37,1,SEDANG
+rs-114,1212023,RSU dr. G. L. TOBING,https://sirs.kemkes.go.id/fo/home/profile_rs/1212023,2026-11-19T19:20:20.181984+00:00,40,40,19,18,1,SEDANG
+rs-115,1211124,RS Umum Efarina Etaham,https://sirs.kemkes.go.id/fo/home/profile_rs/1211124,2026-11-19T19:20:21.684454+00:00,37,37,23,52,1,SEDANG
+rs-116,1207066,RS Umum Elpi Al Azis,https://sirs.kemkes.go.id/fo/home/profile_rs/1207066,2026-11-19T19:20:23.121119+00:00,23,23,21,33,0,NORMAL
+rs-117,1275931,RS Umum Eshmun,https://sirs.kemkes.go.id/fo/home/profile_rs/1275931,2026-11-19T19:20:24.567640+00:00,75,74,10,49,1,SEDANG
+rs-118,1275841,RS Umum Estomihi,https://sirs.kemkes.go.id/fo/home/profile_rs/1275841,2026-11-19T19:20:26.042917+00:00,32,32,11,31,0,NORMAL
+rs-119,1223006,RS Umum Flora,https://sirs.kemkes.go.id/fo/home/profile_rs/1223006,2026-11-19T19:20:27.562681+00:00,56,56,5,10,2,SEDANG
+rs-120,1275147,RS Umum Full Bethesda,https://sirs.kemkes.go.id/fo/home/profile_rs/1275147,2026-11-19T19:20:29.079937+00:00,44,44,23,41,1,SEDANG
+rs-121,1272033,RS Umum Hadi Husada,https://sirs.kemkes.go.id/fo/home/profile_rs/1272033,2026-11-19T19:20:30.499717+00:00,30,30,16,18,1,SEDANG
+rs-122,1275794,RS Umum Haji Medan,https://sirs.kemkes.go.id/fo/home/profile_rs/1275794,2026-11-19T19:20:32.141758+00:00,155,154,11,127,6,SEDANG
+rs-123,1273033,RS Umum Harapan,https://sirs.kemkes.go.id/fo/home/profile_rs/1273033,2026-11-19T19:20:34.276707+00:00,143,143,20,56,6,SEDANG
+rs-124,1207068,RS Umum Hartati Medical Centre,https://sirs.kemkes.go.id/fo/home/profile_rs/1207068,2026-11-19T19:20:35.792873+00:00,18,18,10,26,0,NORMAL
+rs-125,1275930,RS Umum Hermina Medan,https://sirs.kemkes.go.id/fo/home/profile_rs/1275930,2026-11-19T19:20:37.222135+00:00,72,72,25,75,0,NORMAL
+rs-126,1212067,RS Umum Hidayah,https://sirs.kemkes.go.id/fo/home/profile_rs/1212067,2026-11-19T19:20:38.604439+00:00,17,17,18,22,0,NORMAL
+rs-127,1205061,RS Umum HKBP Balige,https://sirs.kemkes.go.id/fo/home/profile_rs/1205061,2026-11-19T19:20:40.060485+00:00,26,26,13,49,0,NORMAL
+rs-128,1275622,RS Umum Imelda Pekerja Indonesia,https://sirs.kemkes.go.id/fo/home/profile_rs/1275622,2026-11-19T19:20:41.497706+00:00,105,103,13,63,5,SEDANG
+rs-129,1277026,RS Umum Inanta,https://sirs.kemkes.go.id/fo/home/profile_rs/1277026,2026-11-19T19:20:42.902500+00:00,34,34,10,42,0,NORMAL
+rs-130,1275163,RS Umum Islam Malahayati,https://sirs.kemkes.go.id/fo/home/profile_rs/1275163,2026-11-19T19:20:44.362588+00:00,73,73,11,59,2,SEDANG
+rs-131,1207067,RS Umum Karya Bakti Ujung Bandar,https://sirs.kemkes.go.id/fo/home/profile_rs/1207067,2026-11-19T19:20:45.833837+00:00,23,23,8,35,0,NORMAL
+rs-132,1209081,RS Umum Karya Husada,https://sirs.kemkes.go.id/fo/home/profile_rs/1209081,2026-11-19T19:20:47.317090+00:00,33,33,6,41,1,SEDANG
+rs-133,1212183,RS Umum Kasih Insani,https://sirs.kemkes.go.id/fo/home/profile_rs/1212183,2026-11-19T19:20:48.721115+00:00,30,30,18,34,0,NORMAL
+rs-134,1219016,RS Umum Kasih Permata Dara,https://sirs.kemkes.go.id/fo/home/profile_rs/1219016,2026-11-19T19:20:50.182385+00:00,31,31,8,19,0,NORMAL
+rs-135,1212174,RS Umum Keliat,https://sirs.kemkes.go.id/fo/home/profile_rs/1212174,2026-11-19T19:20:51.653727+00:00,15,15,9,4,0,NORMAL
+rs-136,1209021,RS Umum Laras Kabupaten Simalungun,https://sirs.kemkes.go.id/fo/home/profile_rs/1209021,2026-11-19T19:20:53.142793+00:00,50,50,22,52,1,SEDANG
+rs-137,1219002,RS Umum Lasmi Kartika,https://sirs.kemkes.go.id/fo/home/profile_rs/1219002,2026-11-19T19:20:54.564237+00:00,27,27,8,23,1,SEDANG
+rs-138,1276074,RS Umum Latersia,https://sirs.kemkes.go.id/fo/home/profile_rs/1276074,2026-11-19T19:20:55.972032+00:00,84,84,20,51,1,SEDANG
+rs-139,1275909,RS Umum Madani,https://sirs.kemkes.go.id/fo/home/profile_rs/1275909,2026-11-19T19:20:57.513730+00:00,30,30,12,54,0,NORMAL
+rs-140,1212199,RS Umum Mahawira Prima Indonesia,https://sirs.kemkes.go.id/fo/home/profile_rs/1212199,2026-11-19T19:20:58.941272+00:00,55,55,19,34,1,SEDANG
+rs-141,1213062,RS Umum Mahkota Bidadari,https://sirs.kemkes.go.id/fo/home/profile_rs/1213062,2026-11-19T19:21:00.373599+00:00,36,36,9,39,1,SEDANG
+rs-142,1275633,RS Umum Martha Friska,https://sirs.kemkes.go.id/fo/home/profile_rs/1275633,2026-11-19T19:21:01.872237+00:00,57,56,25,56,0,NORMAL
+rs-143,1275888,RS Umum Martha Friska Multatuli,https://sirs.kemkes.go.id/fo/home/profile_rs/1275888,2026-11-19T19:21:03.332827+00:00,60,60,8,42,0,NORMAL
+rs-144,1275130,RS Umum Materna,https://sirs.kemkes.go.id/fo/home/profile_rs/1275130,2026-11-19T19:21:04.690589+00:00,136,134,17,39,4,SEDANG
+rs-145,1218024,RS Umum Melati ,https://sirs.kemkes.go.id/fo/home/profile_rs/1218024,2026-11-19T19:21:06.052329+00:00,28,28,7,44,0,NORMAL
+rs-146,1218029,RS Umum Melati Desa Pon,https://sirs.kemkes.go.id/fo/home/profile_rs/1218029,2026-11-19T19:21:07.482193+00:00,16,16,5,7,0,NORMAL
+rs-147,1275126,RS Umum Methodist,https://sirs.kemkes.go.id/fo/home/profile_rs/1275126,2026-11-19T19:21:08.955335+00:00,103,103,22,44,6,SEDANG
+rs-148,1271032,RS Umum Metta Medika,https://sirs.kemkes.go.id/fo/home/profile_rs/1271032,2026-11-19T19:21:10.409260+00:00,66,65,21,53,0,NORMAL
+rs-149,1212200,RS Umum Mitra Guray Petumbukan,https://sirs.kemkes.go.id/fo/home/profile_rs/1212200,2026-11-19T19:21:11.862123+00:00,79,79,9,36,1,SEDANG
+rs-150,1275516,RS Umum Mitra Medika,https://sirs.kemkes.go.id/fo/home/profile_rs/1275516,2026-11-19T19:21:13.271552+00:00,81,81,20,57,1,SEDANG
+rs-151,1212181,RS Umum Mitra Medika,https://sirs.kemkes.go.id/fo/home/profile_rs/1212181,2026-11-19T19:21:14.661918+00:00,32,32,20,49,0,NORMAL
+rs-152,1275923,RS Umum Mitra Medika Amplas,https://sirs.kemkes.go.id/fo/home/profile_rs/1275923,2026-11-19T19:21:16.114572+00:00,28,28,23,58,0,NORMAL
+rs-153,1275011,RS Umum Mitra Medika Premiere,https://sirs.kemkes.go.id/fo/home/profile_rs/1275011,2026-11-19T19:21:17.608348+00:00,60,60,23,97,0,NORMAL
+rs-154,1212175,RS Umum Mitra Sehat,https://sirs.kemkes.go.id/fo/home/profile_rs/1212175,2026-11-19T19:21:19.186443+00:00,24,24,11,35,0,NORMAL
+rs-155,1275298,RS Umum Mitra Sejati,https://sirs.kemkes.go.id/fo/home/profile_rs/1275298,2026-11-19T19:21:20.963239+00:00,78,78,29,77,1,SEDANG
+rs-156,1275885,RS Umum Muhammadiyah Sumatera Utara,https://sirs.kemkes.go.id/fo/home/profile_rs/1275885,2026-11-19T19:21:23.513981+00:00,63,63,12,51,1,SEDANG
+rs-157,1275889,RS Umum Murni Teguh Memorial Hospital,https://sirs.kemkes.go.id/fo/home/profile_rs/1275889,2026-11-19T19:21:25.111913+00:00,188,186,21,130,7,SEDANG
+rs-158,1275100,RS Umum Murni Teguh Methodist Susanna Wesley,https://sirs.kemkes.go.id/fo/home/profile_rs/1275100,2026-11-19T19:21:26.646460+00:00,121,121,22,64,3,SEDANG
+rs-159,1274061,RS Umum Natama,https://sirs.kemkes.go.id/fo/home/profile_rs/1274061,2026-11-19T19:21:28.161064+00:00,15,15,12,32,0,NORMAL
+rs-160,1206063,RS Umum Nuraini,https://sirs.kemkes.go.id/fo/home/profile_rs/1206063,2026-11-19T19:21:29.572458+00:00,25,25,21,42,0,NORMAL
+rs-161,1218026,RS Umum Pabatu,https://sirs.kemkes.go.id/fo/home/profile_rs/1218026,2026-11-19T19:21:31.081577+00:00,42,42,20,43,2,SEDANG
+rs-162,1212185,RS Umum Pancur Batu,https://sirs.kemkes.go.id/fo/home/profile_rs/1212185,2026-11-19T19:21:32.513597+00:00,24,24,17,59,0,NORMAL
+rs-163,1212172,RS Umum Patar Asih,https://sirs.kemkes.go.id/fo/home/profile_rs/1212172,2026-11-19T19:21:33.967454+00:00,47,47,21,39,0,NORMAL
+rs-164,1208064,RS Umum Permata Hati,https://sirs.kemkes.go.id/fo/home/profile_rs/1208064,2026-11-19T19:21:35.410322+00:00,24,24,4,33,0,NORMAL
+rs-165,1202028,RS Umum Permata Madina Panyabungan,https://sirs.kemkes.go.id/fo/home/profile_rs/1202028,2026-11-19T19:21:36.841297+00:00,37,37,22,33,0,NORMAL
+rs-166,1221002,RS Umum Permata Madina Sibuhuan,https://sirs.kemkes.go.id/fo/home/profile_rs/1221002,2026-11-19T19:21:38.289988+00:00,22,22,8,37,0,NORMAL
+rs-167,1213035,RS Umum Pertamina Pangkalan Brandan,https://sirs.kemkes.go.id/fo/home/profile_rs/1213035,2026-11-19T19:21:39.759554+00:00,76,76,22,50,1,SEDANG
+rs-168,1275600,RS Umum Prima Husada Cipta Medan,https://sirs.kemkes.go.id/fo/home/profile_rs/1275600,2026-11-19T19:21:41.138940+00:00,32,32,20,38,0,NORMAL
+rs-169,1275750,RS Umum Prof. Dr. Boloni,https://sirs.kemkes.go.id/fo/home/profile_rs/1275750,2026-11-19T19:21:42.527531+00:00,27,27,18,31,0,NORMAL
+rs-170,1213024,RS Umum PTP II Tg Selamat,https://sirs.kemkes.go.id/fo/home/profile_rs/1213024,2026-11-19T19:21:43.901347+00:00,30,30,13,34,1,SEDANG
+rs-171,1275655,RS Umum Pusat H. Adam Malik,https://sirs.kemkes.go.id/fo/home/profile_rs/1275655,2026-11-19T19:21:47.367805+00:00,165,162,15,194,1,SEDANG
+rs-172,1213059,RS Umum Putri Bidadari,https://sirs.kemkes.go.id/fo/home/profile_rs/1213059,2026-11-19T19:21:48.804991+00:00,50,49,23,61,0,NORMAL
+rs-173,1212171,RS Umum Rahmad Hidayah,https://sirs.kemkes.go.id/fo/home/profile_rs/1212171,2026-11-19T19:21:50.332548+00:00,22,22,20,36,0,NORMAL
+rs-174,1276076,RS Umum Ratu Mas,https://sirs.kemkes.go.id/fo/home/profile_rs/1276076,2026-11-19T19:21:51.758580+00:00,44,44,20,27,1,SEDANG
+rs-175,1275935,RS Umum Royal Maternity,https://sirs.kemkes.go.id/fo/home/profile_rs/1275935,2026-11-19T19:21:53.315496+00:00,29,29,9,30,0,NORMAL
+rs-176,1275907,RS Umum Royal Prima,https://sirs.kemkes.go.id/fo/home/profile_rs/1275907,2026-11-19T19:21:54.913312+00:00,98,97,25,80,3,SEDANG
+rs-177,1275936,RS Umum Royal Prima Marelan,https://sirs.kemkes.go.id/fo/home/profile_rs/1275936,2026-11-19T19:21:56.363890+00:00,26,26,21,37,1,SEDANG
+rs-178,1275072,RS Umum Santa Elisabeth Medan,https://sirs.kemkes.go.id/fo/home/profile_rs/1275072,2026-11-19T19:21:58.034656+00:00,80,80,20,72,2,SEDANG
+rs-179,1275724,RS Umum Sarah,https://sirs.kemkes.go.id/fo/home/profile_rs/1275724,2026-11-19T19:21:59.558175+00:00,33,33,20,42,1,SEDANG
+rs-180,1212093,RS Umum Sari Mutiara Lubuk Pakam,https://sirs.kemkes.go.id/fo/home/profile_rs/1212093,2026-11-19T19:22:01.043116+00:00,56,56,18,48,3,SEDANG
+rs-181,1218025,RS Umum Sawit Indah Perbaungan,https://sirs.kemkes.go.id/fo/home/profile_rs/1218025,2026-11-19T19:22:02.482534+00:00,30,30,12,22,1,SEDANG
+rs-182,1212045,RS Umum Sembiring Deli Tua,https://sirs.kemkes.go.id/fo/home/profile_rs/1212045,2026-11-19T19:22:05.550815+00:00,82,81,23,63,1,SEDANG
+rs-183,1210021,RS Umum Serenapita,https://sirs.kemkes.go.id/fo/home/profile_rs/1210021,2026-11-19T19:22:06.945374+00:00,24,24,8,30,0,NORMAL
+rs-184,1208056,RS Umum Setio Husodo,https://sirs.kemkes.go.id/fo/home/profile_rs/1208056,2026-11-19T19:22:08.409794+00:00,23,23,20,37,0,NORMAL
+rs-185,1275911,RS Umum Siloam Dhirga Surya,https://sirs.kemkes.go.id/fo/home/profile_rs/1275911,2026-11-19T19:22:10.056658+00:00,263,260,16,110,7,SEDANG
+rs-186,1211033,RS Umum Simalem,https://sirs.kemkes.go.id/fo/home/profile_rs/1211033,2026-11-19T19:22:11.483399+00:00,17,17,19,39,0,NORMAL
+rs-187,1212136,RS Umum Sinar Husni,https://sirs.kemkes.go.id/fo/home/profile_rs/1212136,2026-11-19T19:22:12.872541+00:00,33,33,19,44,1,SEDANG
+rs-188,1205142,RS Umum Sint Lucia,https://sirs.kemkes.go.id/fo/home/profile_rs/1205142,2026-11-19T19:22:14.310484+00:00,22,22,20,42,0,NORMAL
+rs-189,1274034,RS Umum Sri Pamela,https://sirs.kemkes.go.id/fo/home/profile_rs/1274034,2026-11-19T19:22:15.807467+00:00,55,55,23,50,1,SEDANG
+rs-190,1275702,RS Umum Sri Ratu,https://sirs.kemkes.go.id/fo/home/profile_rs/1275702,2026-11-19T19:22:17.188822+00:00,15,15,31,15,0,NORMAL
+rs-191,1214011,RS Umum Stella Maris,https://sirs.kemkes.go.id/fo/home/profile_rs/1214011,2026-11-19T19:22:18.609877+00:00,34,34,10,37,1,SEDANG
+rs-192,1275265,RS Umum Sundari,https://sirs.kemkes.go.id/fo/home/profile_rs/1275265,2026-11-19T19:22:20.098182+00:00,39,39,8,32,0,NORMAL
+rs-193,1276077,RS Umum Sylvani,https://sirs.kemkes.go.id/fo/home/profile_rs/1276077,2026-11-19T19:22:21.625527+00:00,49,49,22,47,2,SEDANG
+rs-194,1275899,RS Umum Tere Margareth,https://sirs.kemkes.go.id/fo/home/profile_rs/1275899,2026-11-19T19:22:23.040721+00:00,27,27,19,31,1,SEDANG
+rs-195,1273106,RS Umum Tiara Kasih Sejati,https://sirs.kemkes.go.id/fo/home/profile_rs/1273106,2026-11-19T19:22:24.566796+00:00,20,20,22,38,0,NORMAL
+rs-196,1274062,RS Umum Universitas Prima Indonesia,https://sirs.kemkes.go.id/fo/home/profile_rs/1274062,2026-11-19T19:22:26.059786+00:00,40,40,30,28,1,SEDANG
+rs-197,1208066,RS Umum Utama,https://sirs.kemkes.go.id/fo/home/profile_rs/1208066,2026-11-19T19:22:27.485495+00:00,19,19,21,25,0,NORMAL
+rs-198,1275276,RS Umum Vina Estetica,https://sirs.kemkes.go.id/fo/home/profile_rs/1275276,2026-11-19T19:22:28.926011+00:00,56,56,20,42,1,SEDANG
+rs-199,1273055,RS Umum Vita Insani,https://sirs.kemkes.go.id/fo/home/profile_rs/1273055,2026-11-19T19:22:30.584327+00:00,153,153,11,62,6,SEDANG
+rs-200,1213058,RS Umum Wampu Norita,https://sirs.kemkes.go.id/fo/home/profile_rs/1213058,2026-11-19T19:22:32.048488+00:00,16,16,18,21,0,NORMAL
+rs-201,1208057,RS Umum Wira Husada,https://sirs.kemkes.go.id/fo/home/profile_rs/1208057,2026-11-19T19:22:33.466324+00:00,41,41,23,44,1,SEDANG
+rs-202,1275830,RS Umum Wulan Windy,https://sirs.kemkes.go.id/fo/home/profile_rs/1275830,2026-11-19T19:22:34.990580+00:00,131,131,24,59,1,SEDANG
+rs-203,1212177,RS Umum Yoshua,https://sirs.kemkes.go.id/fo/home/profile_rs/1212177,2026-11-19T19:22:36.480809+00:00,59,59,20,28,2,SEDANG
+rs-204,1275152,RSAU Dr. Abdul Malik,https://sirs.kemkes.go.id/fo/home/profile_rs/1275152,2026-11-19T19:22:38.653764+00:00,15,15,17,33,1,SEDANG
+rs-205,1271075,RSU Herna,https://sirs.kemkes.go.id/fo/home/profile_rs/1271075,2026-11-19T19:22:40.337182+00:00,51,51,10,21,1,SEDANG
+rs-206,1201027,UPTD Rumah Sakit Pratama Nias,https://sirs.kemkes.go.id/fo/home/profile_rs/1201027,2026-11-19T19:22:41.778513+00:00,1,1,2,6,0,TINGGI

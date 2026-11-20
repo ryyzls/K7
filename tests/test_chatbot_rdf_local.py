@@ -20,6 +20,7 @@ Jalankan: py C:\\K7\\tests\\test_chatbot_rdf_local.py
 from __future__ import annotations
 
 import re
+import ast
 import sys
 import socket
 import unittest
@@ -486,7 +487,12 @@ class TestZeroExternalNetwork(unittest.TestCase):
         """Sub-modul chatbot (scope, intents, formatters, resolver) bebas dari AI SDK."""
         base = Path(__file__).resolve().parents[1] / "backend" / "app" / "services" / "chatbot"
         for pyfile in base.glob("*.py"):
-            src = pyfile.read_text(encoding="utf-8").lower()
+            tree = ast.parse(pyfile.read_text(encoding="utf-8"))
+            # Inspect imports: the Indonesian word 'mengenai' contains 'genai'.
+            src = " ".join(
+                node.module or "" if isinstance(node, ast.ImportFrom) else " ".join(a.name for a in node.names)
+                for node in ast.walk(tree) if isinstance(node, (ast.Import, ast.ImportFrom))
+            ).lower()
             for forbidden in ["openai", "genai", "google.generativeai"]:
                 self.assertNotIn(
                     forbidden, src,
@@ -512,21 +518,11 @@ class TestZeroExternalNetwork(unittest.TestCase):
         """Semua alias manual di fuzzy_search harus merujuk nama RS yang benar-benar ada di RDF."""
         from app.services.fuzzy_search import ALIAS_RS
         all_rs = hospital_repo.get_all_hospitals()
-        all_names_norm = {
-            re.sub(r"\s+", " ", n["nama"].lower().strip())
-            for n in all_rs
-        }
-
-        for alias, canonical in ALIAS_RS.items():
-            # Canonical harus ada di RDF (nama RS yang benar)
-            canon_norm = re.sub(r"\s+", " ", canonical.lower().strip())
-            # Cek dengan substring matching (nama bisa punya prefix "RS Umum Daerah ...")
-            found = any(canon_norm in rn or rn in canon_norm for rn in all_names_norm)
-            self.assertTrue(
-                found,
-                f"Alias '{alias}' → '{canonical}' tidak ditemukan di RDF. "
-                f"Pastikan nama kanonik akurat."
-            )
+        for rs_id, aliases in ALIAS_RS.items():
+            self.assertIn(rs_id, {h['id'] for h in all_rs})
+            self.assertIsInstance(aliases, list)
+            self.assertTrue(aliases)
+            self.assertTrue(all(isinstance(alias, str) and alias.strip() for alias in aliases))
 
     def test_fuseki_url_in_sparql_service_is_local(self):
         """URL Fuseki harus mengarah ke localhost, bukan server eksternal."""

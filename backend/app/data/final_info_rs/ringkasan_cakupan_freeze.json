@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "title": "CariSehat Final Mass Discovery Integration & Semantic Freeze Summary",
+    "tanggal_rilis": "2026-11-20T11:45:35.893062+07:00",
+    "total_rumah_sakit": 206,
+    "wilayah_kabupaten_kota": 33
+  },
+  "coverage_6_fitur": {
+    "fitur_1_profil_lengkap": {
+      "kode_kemenkes_terverifikasi": 206,
+      "direktur_tercatat": 206,
+      "kepemilikan_tercatat": 206,
+      "luas_tanah_tercatat": 204,
+      "luas_bangunan_tercatat": 204
+    },
+    "fitur_2_website_resmi": {
+      "tersedia": 133,
+      "belum_tersedia": 73
+    },
+    "fitur_3_email_dan_kontak": {
+      "telepon_tersedia": 204,
+      "email_tersedia": 152,
+      "email_belum_tersedia": 54
+    },
+    "fitur_4_fasilitas_medis_berbukti": {
+      "rs_memiliki_icu": 187,
+      "rs_memiliki_nicu": 163,
+      "rs_memiliki_picu": 112,
+      "rs_memiliki_ct_scan": 62,
+      "rs_memiliki_radiologi": 177,
+      "rs_memiliki_hemodialisis": 61,
+      "rs_memiliki_laboratorium": 60,
+      "rs_memiliki_kamar_operasi": 196
+    },
+    "fitur_5_igd_24jam_terlapor": {
+      "terlapor_24jam": 198,
+      "tidak_terlapor_24jam": 8
+    },
+    "fitur_6_jam_operasional": {
+      "jadwal_poliklinik_tersedia": 44,
+      "jadwal_poliklinik_belum_tersedia": 162,
+      "igd_buka_24jam": 198
+    }
+  }
+}

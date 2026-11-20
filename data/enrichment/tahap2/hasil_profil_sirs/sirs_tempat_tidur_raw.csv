@@ -1,0 +1,62 @@
+﻿id_carisehat,kode_rs_kemenkes,jenis_tempat_tidur,jumlah_terlapor,status_identitas,url_sumber,waktu_ambil_utc,interpretasi
+rs-001,1276079,VVIP/ Super VIP,2,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079,2026-11-19T19:09:41.245818+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-001,1276079,VIP,12,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079,2026-11-19T19:09:41.245818+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-001,1276079,Kelas I,56,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079,2026-11-19T19:09:41.245818+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-001,1276079,Kelas II,29,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079,2026-11-19T19:09:41.245818+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-001,1276079,Kelas III,41,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079,2026-11-19T19:09:41.245818+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-001,1276079,Isolasi,20,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079,2026-11-19T19:09:41.245818+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-001,1276079,ICU Tekanan Negatif dengan Ventilator,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079,2026-11-19T19:09:41.245818+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-001,1276079,ICU Tekanan Negatif tanpa Ventilator,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079,2026-11-19T19:09:41.245818+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-001,1276079,ICU Tanpa Tekanan Negatif Dengan Ventilator,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079,2026-11-19T19:09:41.245818+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-001,1276079,ICU Tanpa Tekanan Negatif Tanpa Ventilator,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079,2026-11-19T19:09:41.245818+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-001,1276079,Isolasi Tekanan Negatif,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079,2026-11-19T19:09:41.245818+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-001,1276079,Isolasi Tanpa Tekanan Negatif,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079,2026-11-19T19:09:41.245818+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-001,1276079,NICU Khusus Covid,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079,2026-11-19T19:09:41.245818+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-001,1276079,PICU Khusus Covid,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079,2026-11-19T19:09:41.245818+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-001,1276079,IGD Khusus Covid,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079,2026-11-19T19:09:41.245818+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-001,1276079,VK (TT Observasi di R Bersalin) Khusus Covid,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079,2026-11-19T19:09:41.245818+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-001,1276079,Isolasi Perinatologi Khusus Covid,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079,2026-11-19T19:09:41.245818+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-001,1276079,ICU Dengan Ventilator,6,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079,2026-11-19T19:09:41.245818+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-001,1276079,NICU Dengan Ventilator,3,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079,2026-11-19T19:09:41.245818+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-001,1276079,PICU Dengan Ventilator,1,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079,2026-11-19T19:09:41.245818+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-002,1275141,VIP,5,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141,2026-11-19T19:09:42.635068+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-002,1275141,Kelas I,13,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141,2026-11-19T19:09:42.635068+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-002,1275141,Kelas II,24,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141,2026-11-19T19:09:42.635068+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-002,1275141,Kelas III,28,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141,2026-11-19T19:09:42.635068+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-002,1275141,Isolasi,7,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141,2026-11-19T19:09:42.635068+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-002,1275141,ICU Tekanan Negatif dengan Ventilator,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141,2026-11-19T19:09:42.635068+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-002,1275141,ICU Tekanan Negatif tanpa Ventilator,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141,2026-11-19T19:09:42.635068+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-002,1275141,ICU Tanpa Tekanan Negatif Dengan Ventilator,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141,2026-11-19T19:09:42.635068+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-002,1275141,ICU Tanpa Tekanan Negatif Tanpa Ventilator,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141,2026-11-19T19:09:42.635068+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-002,1275141,Isolasi Tekanan Negatif,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141,2026-11-19T19:09:42.635068+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-002,1275141,Isolasi Tanpa Tekanan Negatif,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141,2026-11-19T19:09:42.635068+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-002,1275141,NICU Khusus Covid,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141,2026-11-19T19:09:42.635068+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-002,1275141,PICU Khusus Covid,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141,2026-11-19T19:09:42.635068+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-002,1275141,IGD Khusus Covid,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141,2026-11-19T19:09:42.635068+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-002,1275141,VK (TT Observasi di R Bersalin) Khusus Covid,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141,2026-11-19T19:09:42.635068+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-002,1275141,Isolasi Perinatologi Khusus Covid,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141,2026-11-19T19:09:42.635068+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-002,1275141,VK (TT Observasi di R Bersalin) Non Covid,8,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141,2026-11-19T19:09:42.635068+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-002,1275141,ICU Dengan Ventilator,6,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141,2026-11-19T19:09:42.635068+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-002,1275141,NICU Dengan Ventilator,4,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141,2026-11-19T19:09:42.635068+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-002,1275141,PICU Dengan Ventilator,3,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141,2026-11-19T19:09:42.635068+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-003,1275046,VIP,2,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:09:44.067416+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-003,1275046,Kelas I,47,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:09:44.067416+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-003,1275046,Kelas II,15,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:09:44.067416+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-003,1275046,Kelas III,46,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:09:44.067416+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-003,1275046,ICU Tanpa Ventilator,1,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:09:44.067416+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-003,1275046,NICU Tanpa Ventilator,3,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:09:44.067416+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-003,1275046,PICU Tanpa Ventilator,2,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:09:44.067416+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-003,1275046,Perinatologi,1,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:09:44.067416+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-003,1275046,ICU Tekanan Negatif dengan Ventilator,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:09:44.067416+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-003,1275046,ICU Tekanan Negatif tanpa Ventilator,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:09:44.067416+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-003,1275046,ICU Tanpa Tekanan Negatif Dengan Ventilator,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:09:44.067416+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-003,1275046,ICU Tanpa Tekanan Negatif Tanpa Ventilator,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:09:44.067416+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-003,1275046,Isolasi Tekanan Negatif,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:09:44.067416+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-003,1275046,Isolasi Tanpa Tekanan Negatif,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:09:44.067416+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-003,1275046,NICU Khusus Covid,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:09:44.067416+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-003,1275046,PICU Khusus Covid,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:09:44.067416+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-003,1275046,IGD Khusus Covid,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:09:44.067416+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-003,1275046,VK (TT Observasi di R Bersalin) Khusus Covid,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:09:44.067416+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-003,1275046,Isolasi Perinatologi Khusus Covid,0,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:09:44.067416+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-003,1275046,ICU Dengan Ventilator,9,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:09:44.067416+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG
+rs-003,1275046,NICU Dengan Ventilator,1,EXTRACTED,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:09:44.067416+00:00,KAPASITAS_TERLAPOR_BUKAN_TT_KOSONG

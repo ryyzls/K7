@@ -1,0 +1,207 @@
+﻿hospital_id,hospital_uri,name,service_links_assumed_from_class,facility_links_assumed_from_class,bpjs_value_assumed_from_rule,coordinate_source,coordinate_evidence,hospital_level_service_verification,hospital_level_facility_verification,hospital_level_bpjs_verification
+rs-001,http://localhost:8000/rs/rs-001,Og Hospital,8,7,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-002,http://localhost:8000/rs/rs-002,RS AL Dr. Komang Makes Belawan,8,7,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-003,http://localhost:8000/rs/rs-003,RS Bhayangkara Tingkat II Medan,9,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-004,http://localhost:8000/rs/rs-004,RS Bhayangkara Tk. IV Batangtoru,5,5,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-005,http://localhost:8000/rs/rs-005,RS Bhayangkara Tk.iii Kota Tebing Tinggi,8,7,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-006,http://localhost:8000/rs/rs-006,RS Chevani,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-007,http://localhost:8000/rs/rs-007,RS Columbia Asia Aksara,9,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-008,http://localhost:8000/rs/rs-008,RS Columbia Asia Medan,9,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-009,http://localhost:8000/rs/rs-009,RS Dhillon,5,5,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-010,http://localhost:8000/rs/rs-010,RS Dokter Takdir,5,5,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-011,http://localhost:8000/rs/rs-011,RS Efarina Etaham Pematang Siantar,9,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-012,http://localhost:8000/rs/rs-012,RS Gigi Dan Mulut Prima,3,3,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-013,http://localhost:8000/rs/rs-013,RS Grand Medica,5,5,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-014,http://localhost:8000/rs/rs-014,RS Grandmed,9,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-015,http://localhost:8000/rs/rs-015,RS Ibu Dan Anak Artha Mahinrus,4,4,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-016,http://localhost:8000/rs/rs-016,RS Ibu Dan Anak Eva,4,4,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-017,http://localhost:8000/rs/rs-017,RS Ibu Dan Anak Grand Fatimah,4,4,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-018,http://localhost:8000/rs/rs-018,RS Ibu Dan Anak Maharani,4,4,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-019,http://localhost:8000/rs/rs-019,RS Ibu Dan Anak Mina Husada,4,4,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-020,http://localhost:8000/rs/rs-020,RS Ibu Dan Anak Murni Teguh Rosiva,4,4,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-021,http://localhost:8000/rs/rs-021,RS Ibu Dan Anak Pramaliesa,4,4,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-022,http://localhost:8000/rs/rs-022,RS Ibu Dan Anak Stella Maris,4,4,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-023,http://localhost:8000/rs/rs-023,RS Jiwa Bina Karsa Medan,3,3,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-024,http://localhost:8000/rs/rs-024,RS Jiwa Bina Karsa Tuntungan,3,3,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-025,http://localhost:8000/rs/rs-025,RS Jiwa Prof. Dr. Muhammad Ildrem,3,3,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-026,http://localhost:8000/rs/rs-026,RS Khusus Bedah Accuplast,4,4,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-027,http://localhost:8000/rs/rs-027,RS Khusus Bedah Setia Budi,4,4,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-028,http://localhost:8000/rs/rs-028,RS Khusus Gigi Dan Mulut Univ. Sumatera Utara,3,3,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-029,http://localhost:8000/rs/rs-029,RS Khusus Ginjal Rasyida,3,3,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-030,http://localhost:8000/rs/rs-030,RS Khusus Mata Medan Baru Medical Centre,3,3,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-031,http://localhost:8000/rs/rs-031,RS Khusus Mata Mencirim Tujuh-tujuh,3,3,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-032,http://localhost:8000/rs/rs-032,RS Khusus Mata Prima Vision,3,3,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-033,http://localhost:8000/rs/rs-033,RS Khusus Mata Provinsi Sumatera Utara,3,3,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-034,http://localhost:8000/rs/rs-034,RS Khusus Mata Smec,3,3,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-035,http://localhost:8000/rs/rs-035,RS Khusus Paru Sumatera Utara,3,3,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-036,http://localhost:8000/rs/rs-036,RS Mata Siantar,3,3,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-037,http://localhost:8000/rs/rs-037,RS Metta Medika,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-038,http://localhost:8000/rs/rs-038,RS Metta Medika,8,7,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-039,http://localhost:8000/rs/rs-039,RS Metta Medika II,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-040,http://localhost:8000/rs/rs-040,RS Murni Teguh Horas Insani,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-041,http://localhost:8000/rs/rs-041,RS Murni Teguh Pematang Siantar,5,5,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-042,http://localhost:8000/rs/rs-042,RS Pendidikan Prof. Dr. Chairuddin Panusunan Lubis Universitas Sumatera Utara,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-043,http://localhost:8000/rs/rs-043,RS Pratama Lologolu Soguna Ba Zato,3,4,true,unknown,unknown,not_provided,not_provided,not_provided
+rs-044,http://localhost:8000/rs/rs-044,RS Rasyida Siantar,5,5,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-045,http://localhost:8000/rs/rs-045,RS Regina Maris,8,7,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-046,http://localhost:8000/rs/rs-046,RS Sapta Medika,5,5,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-047,http://localhost:8000/rs/rs-047,RS Seger Waras,5,5,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-048,http://localhost:8000/rs/rs-048,RS Sri Pamela Membang Muda,5,5,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-049,http://localhost:8000/rs/rs-049,RS Sri Pamela Sei Dadap,5,5,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-050,http://localhost:8000/rs/rs-050,RS Sri Pamela Torgamba,5,5,true,unknown,unknown,not_provided,not_provided,not_provided
+rs-051,http://localhost:8000/rs/rs-051,RS Sufina Aziz,8,7,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-052,http://localhost:8000/rs/rs-052,RS Tiga Bersaudara,5,5,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-053,http://localhost:8000/rs/rs-053,RS Tk. II Putri Hijau Medan,9,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-054,http://localhost:8000/rs/rs-054,RS Tk. IV 01.07.01,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-055,http://localhost:8000/rs/rs-055,RS Tk. IV 01.07.02 Binjai,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-056,http://localhost:8000/rs/rs-056,RS TNI Tk. IV 01.07.03,5,5,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-057,http://localhost:8000/rs/rs-057,RS Umum Advent Medan,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-058,http://localhost:8000/rs/rs-058,RS Umum AL Fuadi,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-059,http://localhost:8000/rs/rs-059,RS Umum Amanda,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-060,http://localhost:8000/rs/rs-060,RS Umum Armina Madina Panyabungan,5,5,true,unknown,unknown,not_provided,not_provided,not_provided
+rs-061,http://localhost:8000/rs/rs-061,RS Umum Artha Medica,8,7,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-062,http://localhost:8000/rs/rs-062,RS Umum Balimbingan Ptp 4,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-063,http://localhost:8000/rs/rs-063,RS Umum Bandung,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-064,http://localhost:8000/rs/rs-064,RS Umum Bethesda Gunungsitoli,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-065,http://localhost:8000/rs/rs-065,RS Umum Bidadari,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-066,http://localhost:8000/rs/rs-066,RS Umum Bidadari Batubara,9,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-067,http://localhost:8000/rs/rs-067,RS Umum Bina Kasih,9,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-068,http://localhost:8000/rs/rs-068,RS Umum Bunda Mulia,5,5,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-069,http://localhost:8000/rs/rs-069,RS Umum Bunda Thamrin,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-070,http://localhost:8000/rs/rs-070,RS Umum Catharina 1914,5,5,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-071,http://localhost:8000/rs/rs-071,RS Umum Citra Medika,8,7,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-072,http://localhost:8000/rs/rs-072,RS Umum Daerah Aek Kanopan,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-073,http://localhost:8000/rs/rs-073,RS Umum Daerah Bangun Purba,5,5,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-074,http://localhost:8000/rs/rs-074,RS Umum Daerah Batu Bara,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-075,http://localhost:8000/rs/rs-075,RS Umum Daerah Cerah Medika Kab. Nias Barat,5,5,true,unknown,unknown,not_provided,not_provided,not_provided
+rs-076,http://localhost:8000/rs/rs-076,RS Umum Daerah Dolok Sanggul,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-077,http://localhost:8000/rs/rs-077,RS Umum Daerah Dr. Djasamen Saragih,9,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-078,http://localhost:8000/rs/rs-078,RS Umum Daerah Dr. Fl Tobing Sibolga,9,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-079,http://localhost:8000/rs/rs-079,RS Umum Daerah Dr. H. Kumpulan Pane,9,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-080,http://localhost:8000/rs/rs-080,RS Umum Daerah Dr. Hadrianus Sinaga,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-081,http://localhost:8000/rs/rs-081,RS Umum Daerah Dr. Husni Thamrin,5,5,true,unknown,unknown,not_provided,not_provided,not_provided
+rs-082,http://localhost:8000/rs/rs-082,RS Umum Daerah Dr. M. Thomsen Nias,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-083,http://localhost:8000/rs/rs-083,RS Umum Daerah Dr. Pirngadi,9,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-084,http://localhost:8000/rs/rs-084,RS Umum Daerah Dr. R. M. Djoelham Binjai,9,7,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-085,http://localhost:8000/rs/rs-085,RS Umum Daerah Dr. Tengku Mansyur,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-086,http://localhost:8000/rs/rs-086,RS Umum Daerah Drs. H. Amri Tambunan,9,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-087,http://localhost:8000/rs/rs-087,RS Umum Daerah Gunung Tua,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-088,http://localhost:8000/rs/rs-088,RS Umum Daerah H. Abdul Manan Simatupang,8,7,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-089,http://localhost:8000/rs/rs-089,RS Umum Daerah H. Bachtiar Djafar,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-090,http://localhost:8000/rs/rs-090,RS Umum Daerah Kabupaten Karo,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-091,http://localhost:8000/rs/rs-091,RS Umum Daerah Kota Pinang,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-092,http://localhost:8000/rs/rs-092,RS Umum Daerah Lukas Hilisimaetano,5,5,true,unknown,unknown,not_provided,not_provided,not_provided
+rs-093,http://localhost:8000/rs/rs-093,RS Umum Daerah Nias Selatan,5,5,true,unknown,unknown,not_provided,not_provided,not_provided
+rs-094,http://localhost:8000/rs/rs-094,RS Umum Daerah Padang Sidempuan,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-095,http://localhost:8000/rs/rs-095,RS Umum Daerah Pandan,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-096,http://localhost:8000/rs/rs-096,RS Umum Daerah Panyabungan,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-097,http://localhost:8000/rs/rs-097,RS Umum Daerah Parapat,5,5,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-098,http://localhost:8000/rs/rs-098,RS Umum Daerah Perdagangan,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-099,http://localhost:8000/rs/rs-099,RS Umum Daerah Pintu Padang,5,5,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-100,http://localhost:8000/rs/rs-100,RS Umum Daerah Porsea,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-101,http://localhost:8000/rs/rs-101,RS Umum Daerah Rantau Prapat,9,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-102,http://localhost:8000/rs/rs-102,RS Umum Daerah Salak,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-103,http://localhost:8000/rs/rs-103,RS Umum Daerah Sibuhuan,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-104,http://localhost:8000/rs/rs-104,RS Umum Daerah Sidikalang,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-105,http://localhost:8000/rs/rs-105,RS Umum Daerah Sultan Sulaiman Syariful Alamsyah,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-106,http://localhost:8000/rs/rs-106,RS Umum Daerah Tafaeri,5,5,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-107,http://localhost:8000/rs/rs-107,RS Umum Daerah Tanjung Pura,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-108,http://localhost:8000/rs/rs-108,RS Umum Daerah Tapanuli Selatan,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-109,http://localhost:8000/rs/rs-109,RS Umum Daerah Tarutung,9,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-110,http://localhost:8000/rs/rs-110,RS Umum Daerah Tuan Rondahaim,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-111,http://localhost:8000/rs/rs-111,RS Umum Deli,5,5,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-112,http://localhost:8000/rs/rs-112,RS Umum Delia,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-113,http://localhost:8000/rs/rs-113,RS Umum Delima Medan,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-114,http://localhost:8000/rs/rs-114,RS Umum Dr. Gerhard L. Tobing,8,7,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-115,http://localhost:8000/rs/rs-115,RS Umum Efarina Etaham,9,7,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-116,http://localhost:8000/rs/rs-116,RS Umum Elpi AL Azis,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-117,http://localhost:8000/rs/rs-117,RS Umum Eshmun,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-118,http://localhost:8000/rs/rs-118,RS Umum Estomihi,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-119,http://localhost:8000/rs/rs-119,RS Umum Flora,5,5,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-120,http://localhost:8000/rs/rs-120,RS Umum Full Bethesda,8,7,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-121,http://localhost:8000/rs/rs-121,RS Umum Hadi Husada,5,5,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-122,http://localhost:8000/rs/rs-122,RS Umum Haji Medan,9,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-123,http://localhost:8000/rs/rs-123,RS Umum Harapan,8,7,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-124,http://localhost:8000/rs/rs-124,RS Umum Hartati Medical Centre,5,5,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-125,http://localhost:8000/rs/rs-125,RS Umum Hermina Medan,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-126,http://localhost:8000/rs/rs-126,RS Umum Hidayah,5,5,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-127,http://localhost:8000/rs/rs-127,RS Umum HKBP Balige,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-128,http://localhost:8000/rs/rs-128,RS Umum Imelda Pekerja Indonesia,9,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-129,http://localhost:8000/rs/rs-129,RS Umum Inanta,8,7,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-130,http://localhost:8000/rs/rs-130,RS Umum Islam Malahayati,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-131,http://localhost:8000/rs/rs-131,RS Umum Karya Bakti Ujung Bandar,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-132,http://localhost:8000/rs/rs-132,RS Umum Karya Husada,5,5,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-133,http://localhost:8000/rs/rs-133,RS Umum Kasih Insani,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-134,http://localhost:8000/rs/rs-134,RS Umum Kasih Permata Dara,5,5,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-135,http://localhost:8000/rs/rs-135,RS Umum Keliat,5,5,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-136,http://localhost:8000/rs/rs-136,RS Umum Laras Kabupaten Simalungun,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-137,http://localhost:8000/rs/rs-137,RS Umum Lasmi Kartika,5,5,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-138,http://localhost:8000/rs/rs-138,RS Umum Latersia,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-139,http://localhost:8000/rs/rs-139,RS Umum Madani,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-140,http://localhost:8000/rs/rs-140,RS Umum Mahawira Prima Indonesia,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-141,http://localhost:8000/rs/rs-141,RS Umum Mahkota Bidadari,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-142,http://localhost:8000/rs/rs-142,RS Umum Martha Friska,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-143,http://localhost:8000/rs/rs-143,RS Umum Martha Friska Multatuli,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-144,http://localhost:8000/rs/rs-144,RS Umum Materna,5,5,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-145,http://localhost:8000/rs/rs-145,RS Umum Melati,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-146,http://localhost:8000/rs/rs-146,RS Umum Melati Desa Pon,5,5,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-147,http://localhost:8000/rs/rs-147,RS Umum Methodist,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-148,http://localhost:8000/rs/rs-148,RS Umum Metta Medika,8,7,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-149,http://localhost:8000/rs/rs-149,RS Umum Mitra Guray Petumbukan,8,7,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-150,http://localhost:8000/rs/rs-150,RS Umum Mitra Medika,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-151,http://localhost:8000/rs/rs-151,RS Umum Mitra Medika,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-152,http://localhost:8000/rs/rs-152,RS Umum Mitra Medika Amplas,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-153,http://localhost:8000/rs/rs-153,RS Umum Mitra Medika Premiere,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-154,http://localhost:8000/rs/rs-154,RS Umum Mitra Sehat,8,7,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-155,http://localhost:8000/rs/rs-155,RS Umum Mitra Sejati,9,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-156,http://localhost:8000/rs/rs-156,RS Umum Muhammadiyah Sumatera Utara,5,5,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-157,http://localhost:8000/rs/rs-157,RS Umum Murni Teguh Memorial Hospital,10,7,,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-158,http://localhost:8000/rs/rs-158,RS Umum Murni Teguh Methodist Susanna Wesley,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-159,http://localhost:8000/rs/rs-159,RS Umum Natama,5,5,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-160,http://localhost:8000/rs/rs-160,RS Umum Nuraini,5,5,true,unknown,unknown,not_provided,not_provided,not_provided
+rs-161,http://localhost:8000/rs/rs-161,RS Umum Pabatu,8,7,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-162,http://localhost:8000/rs/rs-162,RS Umum Pancur Batu,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-163,http://localhost:8000/rs/rs-163,RS Umum Patar Asih,8,7,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-164,http://localhost:8000/rs/rs-164,RS Umum Permata Hati,5,5,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-165,http://localhost:8000/rs/rs-165,RS Umum Permata Madina Panyabungan,8,7,true,unknown,unknown,not_provided,not_provided,not_provided
+rs-166,http://localhost:8000/rs/rs-166,RS Umum Permata Madina Sibuhuan,5,5,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-167,http://localhost:8000/rs/rs-167,RS Umum Pertamina Pangkalan Brandan,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-168,http://localhost:8000/rs/rs-168,RS Umum Prima Husada Cipta Medan,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-169,http://localhost:8000/rs/rs-169,RS Umum Prof. Dr. Boloni,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-170,http://localhost:8000/rs/rs-170,RS Umum Ptp II Tg Selamat,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-171,http://localhost:8000/rs/rs-171,RS Umum Pusat H. Adam Malik,10,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-172,http://localhost:8000/rs/rs-172,RS Umum Putri Bidadari,9,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-173,http://localhost:8000/rs/rs-173,RS Umum Rahmad Hidayah,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-174,http://localhost:8000/rs/rs-174,RS Umum Ratu Mas,5,5,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-175,http://localhost:8000/rs/rs-175,RS Umum Royal Maternity,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-176,http://localhost:8000/rs/rs-176,RS Umum Royal Prima,9,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-177,http://localhost:8000/rs/rs-177,RS Umum Royal Prima Marelan,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-178,http://localhost:8000/rs/rs-178,RS Umum Santa Elisabeth Medan,9,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-179,http://localhost:8000/rs/rs-179,RS Umum Sarah,5,5,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-180,http://localhost:8000/rs/rs-180,RS Umum Sari Mutiara Lubuk Pakam,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-181,http://localhost:8000/rs/rs-181,RS Umum Sawit Indah Perbaungan,5,5,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-182,http://localhost:8000/rs/rs-182,RS Umum Sembiring Deli Tua,9,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-183,http://localhost:8000/rs/rs-183,RS Umum Serenapita,5,5,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-184,http://localhost:8000/rs/rs-184,RS Umum Setio Husodo,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-185,http://localhost:8000/rs/rs-185,RS Umum Siloam Dhirga Surya,9,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-186,http://localhost:8000/rs/rs-186,RS Umum Simalem,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-187,http://localhost:8000/rs/rs-187,RS Umum Sinar Husni,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-188,http://localhost:8000/rs/rs-188,RS Umum Sint Lucia,5,5,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-189,http://localhost:8000/rs/rs-189,RS Umum Sri Pamela,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-190,http://localhost:8000/rs/rs-190,RS Umum Sri Ratu,5,5,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-191,http://localhost:8000/rs/rs-191,RS Umum Stella Maris,5,5,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-192,http://localhost:8000/rs/rs-192,RS Umum Sundari,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-193,http://localhost:8000/rs/rs-193,RS Umum Sylvani,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-194,http://localhost:8000/rs/rs-194,RS Umum Tere Margareth,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-195,http://localhost:8000/rs/rs-195,RS Umum Tiara Kasih Sejati,8,7,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-196,http://localhost:8000/rs/rs-196,RS Umum Universitas Prima Indonesia,5,5,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-197,http://localhost:8000/rs/rs-197,RS Umum Utama,5,5,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-198,http://localhost:8000/rs/rs-198,RS Umum Vina Estetica,8,7,true,osm,candidate_osm_not_independently_verified,not_provided,not_provided,not_provided
+rs-199,http://localhost:8000/rs/rs-199,RS Umum Vita Insani,9,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-200,http://localhost:8000/rs/rs-200,RS Umum Wampu Norita,5,5,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-201,http://localhost:8000/rs/rs-201,RS Umum Wira Husada,5,5,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-202,http://localhost:8000/rs/rs-202,RS Umum Wulan Windy,8,7,true,jalan,street_approximation,not_provided,not_provided,not_provided
+rs-203,http://localhost:8000/rs/rs-203,RS Umum Yoshua,8,7,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided
+rs-204,http://localhost:8000/rs/rs-204,Rsau Dr. Abdul Malik,5,5,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-205,http://localhost:8000/rs/rs-205,RSU Herna,8,7,true,nama,name_match_not_independently_verified,not_provided,not_provided,not_provided
+rs-206,http://localhost:8000/rs/rs-206,Uptd Rumah Sakit Pratama Nias,3,4,true,kabkota,municipality_approximation,not_provided,not_provided,not_provided

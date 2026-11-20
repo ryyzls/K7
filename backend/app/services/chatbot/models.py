@@ -8,8 +8,8 @@ from typing import Any
 # ---------------------------------------------------------------------------
 OUT_OF_SCOPE_TEXT = "Mohon maaf, saat ini saya hanya dapat membantu memberikan informasi yang berkaitan dengan layanan website ini."
 
-DATA_NOTE = "Data per Permenkes No. 3/2020 & OSM"
-DISCLAIMER = "\n\n---\n*Data berdasarkan Permenkes No. 3/2020 & OpenStreetMap. Chatbot ini bukan untuk diagnosis medis.*"
+DATA_NOTE = "Layanan terlapor SIRS Kemenkes; lokasi OpenStreetMap"
+DISCLAIMER = "\n\nLayanan bersumber dari laporan SIRS, bukan verifikasi operasional atau ketersediaan saat ini. Label klinis yang belum direview ditahan. Fasilitas dan BPJS dari data lama belum terverifikasi. Sumber dan tanggal tersedia pada halaman detail. Chatbot ini bukan untuk diagnosis medis."
 DISCLAIMER_EMERGENCY = "\n\nSEGERA HUBUNGI LAYANAN DARURAT DI ATAS ATAU DATANGI UGD TERDEKAT. Chatbot ini BUKAN pengganti pertolongan medis profesional darurat."
 
 # ---------------------------------------------------------------------------

@@ -1,0 +1,46 @@
+[
+  {
+    "id": "rs-171",
+    "nama": "RS Umum Pusat H. Adam Malik",
+    "alamat": "Jl Bunga Lau No. 17",
+    "url": "https://rsham.go.id/profil/hubungi-kami",
+    "status": "verified",
+    "scope": "hospital",
+    "evidence_url": "https://rsham.go.id/profil/hubungi-kami",
+    "checked_at": "2026-11-19T14:15:52+00:00",
+    "notes": "Nama Adam Malik dan alamat Bunga Lau 17, Medan, Sumatera Utara cocok. Direktori resmi https://rs.kemkes.go.id/hospitals/all/rs-h-adam-malik juga menunjuk rsham.go.id. Telepon situs berbeda dari dataset; tidak diubah."
+  },
+  {
+    "id": "rs-007",
+    "nama": "RS Columbia Asia Aksara",
+    "alamat": "Jl. Letda Sujono, LK.X No. 90",
+    "url": "https://columbiaasia.co.id/rs-columbia-asia-aksara/informasi-umum-aksara/",
+    "status": "verified",
+    "scope": "branch",
+    "evidence_url": "https://columbiaasia.co.id/rs-columbia-asia-aksara/informasi-umum-aksara/",
+    "checked_at": "2026-11-19T14:15:52+00:00",
+    "notes": "Halaman cabang Aksara: nama, Medan Sumatera Utara, Letda Sujono LK X No 90 dan nomor 06188806888 cocok dengan RDF; bukan cabang Jalan Listrik."
+  },
+  {
+    "id": "rs-008",
+    "nama": "RS Columbia Asia Medan",
+    "alamat": "Jalan Listrik No 2A",
+    "url": "https://columbiaasia.co.id/rs-columbia-asia-medan/",
+    "status": "verified",
+    "scope": "branch",
+    "evidence_url": "https://columbiaasia.co.id/hubungi-kami/",
+    "checked_at": "2026-11-19T14:15:52+00:00",
+    "notes": "Halaman cabang Medan dibuka. Halaman kontak jaringan mengonfirmasi Jalan Listrik No 2A, Medan Sumatera Utara dan 0614566368; berbeda dari cabang Aksara."
+  },
+  {
+    "id": "rs-125",
+    "nama": "RS Umum Hermina Medan",
+    "alamat": "JL. ASRAMA KEL. SEI SIKAMBING C II, KEC. MEDAN HELVETIA",
+    "url": "https://herminahospitals.com/id/branch/hermina-medan",
+    "status": "needs_review",
+    "scope": "branch",
+    "evidence_url": "https://herminahospitals.com/id/branch/hermina-medan",
+    "checked_at": "2026-11-19T14:15:52+00:00",
+    "notes": "Halaman kandidat dibuka namun isi identitas tidak terbaca melalui alat browser; hanya iframe. Cuplikan pencarian tidak cukup untuk verifikasi. Perlu pemeriksaan manual nama, alamat Asrama dan telepon 06180862525."
+  }
+]

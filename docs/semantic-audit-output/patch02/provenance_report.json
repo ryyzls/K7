@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "scope": "local files only; no live Fuseki check",
+  "source_hospitals": 206,
+  "source_triples": 5833,
+  "source_sha256": "365fa93455c5c15c1435a697886315f4cf2c553e9e64fe293e6e03c1f4cd57ca",
+  "provenance_overlay_triples": 17590,
+  "derived_service_claims": 1407,
+  "derived_facility_claims": 1250,
+  "derived_bpjs_claims": 206,
+  "coordinates_by_source": {
+    "jalan": 41,
+    "osm": 39,
+    "nama": 52,
+    "kabkota": 65,
+    "unknown": 9
+  },
+  "examples": [
+    {
+      "subject": "http://localhost:8000/rs/rs-001",
+      "predicate": "http://carisehat.id/ontology/menyediakanLayanan",
+      "object": "http://localhost:8000/layanan/ugd-24-jam",
+      "status": "derived_by_generator_not_verified"
+    },
+    {
+      "subject": "http://localhost:8000/rs/rs-001",
+      "predicate": "http://carisehat.id/ontology/menyediakanLayanan",
+      "object": "http://localhost:8000/layanan/rawat-inap",
+      "status": "derived_by_generator_not_verified"
+    },
+    {
+      "subject": "http://localhost:8000/rs/rs-001",
+      "predicate": "http://carisehat.id/ontology/menyediakanLayanan",
+      "object": "http://localhost:8000/layanan/penyakit-dalam",
+      "status": "derived_by_generator_not_verified"
+    }
+  ],
+  "caveats": [
+    "Derived claims are NOT verified hospital-specific facts.",
+    "Coordinate labels refer to source method, NOT geographic verification.",
+    "No source provenance for administrative CSV has been independently verified.",
+    "This draft overlay is NOT loaded into Fuseki or used by website until explicitly integrated."
+  ]
+}

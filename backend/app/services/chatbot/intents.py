@@ -178,14 +178,6 @@ def classify_message_intent(
             "entities": {"compare_pair": [compare_pair[0]], "use_last_rs": True},
         }
 
-    # 10. Disambiguasi nama RS kembar / sama kuat
-    if is_disambiguate:
-        return {
-            "intent": "DISAMBIGUASI",
-            "res_hospital": res_hospital,
-            "entities": {},
-        }
-
     # 10b. Rating / Ulasan Inquiry (keterbatasan data — harus sebelum NOT_FOUND)
     if re.search(r"\b(rating|ulasan|review|bintang|penilaian|rekomendasi\s+terbaik|nilai\s+rs)\b", tl):
         return {
@@ -197,10 +189,13 @@ def classify_message_intent(
     # 10c. Jam Buka Inquiry (keterbatasan data — harus sebelum NOT_FOUND)
     if re.search(r"\bjam\s+buka\b|\bjam\s+operasional\b|\bbuka\s+jam\b|\bwaktu\s+operasional\b", tl):
         return {
-            "intent": "JAM_BUKA_INQUIRY",
+            "intent": "ATRIBUT" if has_resolved_rs else "JAM_BUKA_INQUIRY",
             "res_hospital": res_hospital,
-            "entities": {},
+            "entities": {"attribute": "jam_buka"},
         }
+
+    if is_disambiguate:
+        return {"intent": "DISAMBIGUASI", "res_hospital": res_hospital, "entities": {}}
 
     # 11. Nama RS tidak ditemukan
     if is_not_found_rs:
@@ -226,7 +221,7 @@ def classify_message_intent(
 
     # 12b. Follow-up pertanyaan atribut RS terakhir dari state percakapan
     attr_only = extract_attribute(raw_text)
-    if attr_only and state and state.get("last_hospital_ids"):
+    if attr_only and state and state.get("last_intent") in ("DETAIL", "ATRIBUT") and state.get("last_hospital_ids"):
         last_id = state["last_hospital_ids"][0]
         last_rs = next((h for h in hospitals if h["id"] == last_id), None)
         if last_rs:

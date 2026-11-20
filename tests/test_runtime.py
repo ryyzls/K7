@@ -40,4 +40,7 @@ class RuntimeTests(unittest.TestCase):
             self.assertEqual(self.c.get('/api/search').status_code,502)
             self.assertEqual(self.c.get('/api/health').status_code,503)
             r=self.c.post('/api/chat',json={'text':'RS kelas A di Medan'})
-            self.assertIn('kendala',r.json()['text'])
+            self.assertEqual(r.status_code,200)
+            self.assertIn('SIRS',r.json()['text'])
+            self.assertIn('belum direview',r.json()['text'])
+            self.assertNotIn('Pelayanan medik dasar / umum',r.json()['text'])

@@ -33,6 +33,7 @@ python scripts/csv_ke_rdf.py --koordinat data/koordinat.csv # hasil: semantic/rd
 docker compose exec backend python -m app.services.rdf_loader --force
 ```
 `hospitals-sumut.ttl` dibuat otomatis: jangan diedit tangan, ubah CSV/skripnya. Kelas, properti, dan ontologi ada di `semantic/rdf/ontologi.ttl`.
+Website resmi dan bukti verifikasinya disimpan dalam RDF tambahan. Lihat [panduan enrichment website RS](docs/WEBSITE_RESMI_RS.md) untuk memperbarui dan menyinkronkan hasil pemeriksaan.
 Layanan hanya diturunkan dari jenis RS khusus (mis. RSIA -> Anak, Bersalin); layanan RS umum dan fasilitas belum ada datanya.
 Koordinat bersumber `kabkota` adalah perkiraan kasar (titik pusat wilayah), bukan lokasi RS.
 

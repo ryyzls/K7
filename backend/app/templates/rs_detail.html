@@ -362,7 +362,60 @@
         margin: 1rem auto 2rem
       }
     }
-  </style>
+    .official-website{font-size:.9rem;overflow-wrap:anywhere}
+  .official-website a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+  .official-website a:hover{opacity:.8}
+  .official-website a:focus-visible{outline:3px solid currentColor;outline-offset:4px}
+  .official-website>span{opacity:.8}
+
+  .schedule-table {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 480px;
+    margin-top: 0.8rem;
+  }
+  .schedule-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 0.95rem;
+  }
+  .schedule-row:last-child {
+    border-bottom: none;
+  }
+  .schedule-day {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .schedule-time {
+    color: var(--ink-soft);
+  }
+  .schedule-time.closed {
+    color: var(--mute);
+    font-style: italic;
+  }
+  .clean-bullet-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem 2rem;
+    margin: 0.8rem 0 0;
+    padding-left: 1.25rem;
+  }
+  .clean-bullet-list li {
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+  @media (max-width: 640px) {
+    .clean-bullet-list {
+      grid-template-columns: 1fr;
+      gap: 0.5rem 0;
+    }
+  }
+</style>
 </head>
 <!-- RDFa: schema.org + vocabulary hf -->
 
@@ -378,9 +431,6 @@
   <div class="ulos" aria-hidden="true"></div>
 
   <main class="wrap">
-    <p class="disclaimer" role="note">⚠️ Layanan, fasilitas, dan BPJS merupakan inferensi dari dataset standar
-      Permenkes, belum diverifikasi pada Rumah Sakit. Koordinat dapat berupa perkiraan. Hubungi Rumah Sakit untuk memastikan informasi
-      operasional.</p>
     <section class="hero">
       {% if h.foto %}
       <img property="image" src="{{ h.foto }}" alt="{{ h.nama }}"
@@ -390,16 +440,21 @@
         h.bpjs %}<span class="pill bpjs">Menerima BPJS</span>{% endif %}</div>
       <h1 property="name">{{ h.nama }}</h1>
       <p>{{ h.kabkota }}, Sumatera Utara</p>
+      <p class="official-website">
+        {% if h.website %}
+        <a property="url" href="{{ h.website }}" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">&#127760;</span> {{ h.website }}</a>
+        {% else %}<span>Website: Belum tersedia</span>{% endif %}
+      </p>
     </section>
 
     <section class="card">
-      <h2>Informasi umum</h2>
+      <h2>Informasi Umum</h2>
       <div class="info">
-        <p><small>Klasifikasi</small>Kelas <span property="hf:kelas">{{ h.kelas }}</span>, rumah sakit <span
-            property="hf:jenis">{{ h.jenis }}</span></p>
+        <p><small>Klasifikasi</small>Kelas <span property="hf:kelas">{{ h.kelas or 'Belum tersedia' }}</span>, rumah sakit <span
+            property="hf:jenis">{{ h.jenis or 'Belum tersedia' }}</span></p>
         <p property="address" typeof="PostalAddress"><small>Alamat</small>
-          <span property="streetAddress">{{ h.alamat }}</span>,
-          <span property="addressLocality">{{ h.kabkota }}</span>,
+          <span property="streetAddress">{{ h.alamat or 'Belum tersedia' }}</span>,
+          <span property="addressLocality">{{ h.kabkota or 'Belum tersedia' }}</span>,
           <span property="addressRegion">Sumatera Utara</span>
           <meta property="addressCountry" content="ID">
         </p>
@@ -407,35 +462,116 @@
           <meta property="latitude" content="{{ h.lat }}">
           <meta property="longitude" content="{{ h.lon }}">
         </span>{% endif %}
-        {% if h.telepon %}<p><small>Telepon</small><span property="telephone">{{ h.telepon }}</span></p>{% endif %}
-        {% if h.website %}<p><small>Situs web</small><a property="url" href="{{ h.website }}">{{ h.website }}</a></p>{%
-        endif %}
+        <p><small>Telepon</small><span property="telephone">{% if h.telepon %}<a href="tel:{{ h.telepon }}">{{ h.telepon }}</a>{% else %}Belum tersedia{% endif %}</span></p>
+        <p><small>Email</small><span property="email">{% if h.email %}<a href="mailto:{{ h.email }}">{{ h.email }}</a>{% else %}Belum tersedia{% endif %}</span></p>
+        <p><small>Website</small><span>{% if h.website %}<a href="{{ h.website }}" target="_blank" rel="noopener noreferrer">{{ h.website }}</a>{% else %}Belum tersedia{% endif %}</span></p>
+        <p><small>Gawat Darurat (IGD)</small><span>{% if h.igd_24jam_terlapor and h.igd_24jam_terlapor.igd_24jam_terlapor %}Buka 24 Jam{% else %}Belum tersedia{% endif %}</span></p>
+      </div>
+    </section>
+
+    <!-- Jam Operasional & Poliklinik -->
+    <section class="card">
+      <h2 style="font-size:1.15rem;font-weight:700;margin-bottom:1.2rem;color:var(--ink);text-transform:none;letter-spacing:normal">Jam Operasional &amp; Poliklinik</h2>
+      
+      <div style="margin-bottom:1.2rem;padding-bottom:.8rem;border-bottom:1px solid #f1f5f9">
+        <div style="font-size:.85rem;color:var(--mute);margin-bottom:.2rem">Instalasi Gawat Darurat (IGD)</div>
+        <div style="font-size:1.05rem;font-weight:600;color:var(--ink)">
+          {% if h.igd_24jam_terlapor and h.igd_24jam_terlapor.igd_24jam_terlapor %}
+          Buka 24 Jam
+          {% elif h.igd_tersedia %}
+          Buka 24 Jam
+          {% else %}
+          Belum tersedia
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="schedule-table">
+        {% for d in h.jam_operasional.jadwal_harian %}
+        <div class="schedule-row">
+          <span class="schedule-day">{{ d.hari }}</span>
+          <span class="schedule-time {% if d.jam == 'Tutup' %}closed{% endif %}">{{ d.jam }}</span>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- Spesialisasi -->
+    <section class="card">
+      <h2 style="font-size:1.15rem;font-weight:700;margin-bottom:1.2rem;color:var(--ink);text-transform:none;letter-spacing:normal">Spesialisasi</h2>
+      {% if h.spesialisasi %}
+      <ul class="clean-bullet-list">
+        {% for sp in h.spesialisasi %}
+        <li>{{ sp }}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="none" style="margin:0">Belum tersedia</p>
+      {% endif %}
+    </section>
+
+    <!-- Fasilitas Medis -->
+    <section class="card">
+      <h2 style="font-size:1.15rem;font-weight:700;margin-bottom:1.2rem;color:var(--ink);text-transform:none;letter-spacing:normal">Fasilitas Medis</h2>
+      {% if h.fasilitas %}
+      <ul class="clean-bullet-list">
+        {% for f in h.fasilitas %}
+        <li>{{ f }}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="none" style="margin:0">Belum tersedia</p>
+      {% endif %}
+      
+      <!-- Hidden RDFa metadata for semantic preservation -->
+      <div style="display:none" aria-hidden="true">
+        {% for fact in h.layanan_facts %}<div prefix="cs: http://carisehat.id/ontology/sirs/" about="{{ h.uri }}">
+          <div rel="cs:catatanPelayanan" resource="{{ fact.record_uri }}"><div about="{{ fact.record_uri }}" typeof="cs:PelayananTercatat">
+            <span property="cs:labelPelayanan">{{ fact.label }}</span>
+            <a rel="cs:sumberProfil" href="{{ fact.source_url }}">Sumber SIRS</a>
+            <time property="cs:tanggalPengambilan" datatype="http://www.w3.org/2001/XMLSchema#dateTime" content="{{ fact.retrieved_at }}">{{ fact.retrieved_at }}</time>
+            <span property="cs:statusPublikasi">{{ fact.source_status }}</span>
+          </div></div></div>{% endfor %}
       </div>
     </section>
 
     <section class="card">
-      <h2>Layanan</h2>
-      {% if h.layanan %}<ul class="tags">{% for l in h.layanan %}<li property="availableService"
-          typeof="MedicalProcedure"><span property="name">{{ l }}</span></li>{% endfor %}</ul>
-      {% else %}<p class="none">Data layanan belum tersedia.</p>{% endif %}
+      <h2 style="font-size:1.15rem;font-weight:700;margin-bottom:1.2rem;color:var(--ink);text-transform:none;letter-spacing:normal">Rumah Sakit Alternatif Terdekat &amp; Setara</h2>
+      {% if alternatives %}
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.75rem">
+        {% for alt in alternatives %}
+        <div style="padding:1rem;border:1px solid var(--line);border-radius:10px;background:#F8FAFC;display:flex;flex-direction:column;justify-content:space-between;gap:.6rem">
+          <div style="width:100%;height:135px;border-radius:8px;overflow:hidden;background:#ddeffa">
+            <img src="{{ alt.foto or ('/images/rs/' ~ alt.id ~ '/foto_1.jpg') }}" alt="{{ alt.nama }}" style="width:100%;height:100%;object-fit:cover;display:block" onerror="this.onerror=null;this.parentElement.style.display='none';">
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem">
+              <strong><a href="/rs/{{ alt.id }}" style="color:var(--ink);text-decoration:none">{{ alt.nama }}</a></strong>
+              <span style="font-size:.72rem;font-weight:700;background:#E2E8F0;color:var(--ink-soft);padding:.18rem .5rem;border-radius:99px;white-space:nowrap">Kelas {{ alt.kelas }}</span>
+            </div>
+            <p style="margin:.3rem 0 0;font-size:.8rem;color:var(--mute)">{{ alt.kabkota }}</p>
+          </div>
+          <div style="display:flex;gap:.4rem;margin-top:.4rem">
+            <a href="/rs/{{ alt.id }}" style="display:inline-block;padding:.35rem .75rem;font-size:.8rem;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);text-decoration:none;font-weight:600">Lihat Detail</a>
+            <a href="/?compare={{ h.id }},{{ alt.id }}" style="display:inline-flex;align-items:center;gap:.3rem;padding:.35rem .75rem;font-size:.8rem;border:1px solid #14b8a6;border-radius:6px;background:#f0fdf4;color:#0f766e;text-decoration:none;font-weight:600">Bandingkan</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p class="none">Belum tersedia</p>
+      {% endif %}
     </section>
 
+    {% if h.lat is not none %}
     <section class="card">
-      <h2>Fasilitas</h2>
-      {% if h.fasilitas %}<ul class="tags fas">{% for f in h.fasilitas %}<li>{{ f }}</li>{% endfor %}</ul>
-      {% else %}<p class="none">Data fasilitas belum tersedia.</p>{% endif %}
-    </section>
-
-    <section class="card">
-      <h2>Data semantik &amp; peta</h2>
+      <h2>Peta Lokasi</h2>
       <p class="dl">
-        <a href="/rs/{{ h.id }}.rdf">RDF/XML</a>
-        <a href="/rs/{{ h.id }}.ttl">Turtle</a>
-        {% if h.lat is not none %}<a class="p"
-          href="https://www.openstreetmap.org/?mlat={{ h.lat }}&amp;mlon={{ h.lon }}#map=17/{{ h.lat }}/{{ h.lon }}">Lihat
-          di OpenStreetMap</a>{% endif %}
+        <a class="p"
+          href="https://www.openstreetmap.org/?mlat={{ h.lat }}&amp;mlon={{ h.lon }}#map=17/{{ h.lat }}/{{ h.lon }}" target="_blank" rel="noopener">Lihat di OpenStreetMap &rarr;</a>
       </p>
     </section>
+    {% endif %}
   </main>
   <footer>Data terstruktur RDFa &middot; schema.org &middot; &copy; kontributor OpenStreetMap</footer>
   <script>

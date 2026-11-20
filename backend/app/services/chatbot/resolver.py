@@ -74,6 +74,8 @@ STRIP_PATTERNS = [
 def clean_hospital_query(text: str) -> str:
     """Normalisasi & buang kata perintah, atribut, dan awalan tipe RS."""
     t = normalize(text)
+    t = re.sub(r"\b(?:berapa|seberapa)\s+(?:jarak(?:nya)?|jauh)\b|\bjarak(?:nya)?\b|\bke\b|\blokasi\s+saya\b", " ", t)
+    t = re.sub(r"\b(?:tanpa|non|bukan|tidak\s+terima)\s+bpjs\b", " ", t)
     for p in STRIP_PATTERNS:
         t = re.sub(p, " ", t)
     t = re.sub(r"\s+", " ", t).strip()
@@ -83,6 +85,9 @@ def clean_hospital_query(text: str) -> str:
 def extract_attribute(text: str) -> str | None:
     """Ekstraksi atribut spesifik yang ditanyakan pengguna mengenai RS."""
     tl = text.lower()
+    if re.search(r"\b(jarak(?:nya)?|seberapa\s+jauh|berapa\s+jauh)\b", tl):
+        return "jarak"
+    tl = re.sub(r"\b(telepon|telp|alamat|lokasi|layanan|fasilitas|kelas|jenis|pemilik)nya\b", r"\1", tl)
     if re.search(r"\b(telepon|telp|nomor|kontak|hubungi|no telp|no hp|hotline)\b", tl):
         return "telepon"
     if re.search(r"\b(alamat|lokasi|dimana|di mana|letak|posisi|berada|letaknya|dimanakah|di manakah)\b", tl):
@@ -112,6 +117,10 @@ def extract_attribute(text: str) -> str | None:
 
 def extract_compare_pair(tl: str) -> list[str]:
     """Ekstraksi dua nama rumah sakit untuk intent COMPARE."""
+    followup = re.search(r"^(?:bandingkan|banding)\s+dengan\s+(.+)", tl)
+    if followup:
+        name = clean_hospital_query(followup.group(1))
+        return [name] if name else []
     m = re.search(
         r"(?:bandingkan|banding|perbandingan|mana yang lebih bagus antara)\s+(.+?)(?:\s+(?:dan|vs|versus|dengan)\s+)(.+)",
         tl,

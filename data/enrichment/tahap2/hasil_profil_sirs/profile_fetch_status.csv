@@ -1,0 +1,4 @@
+﻿id_carisehat,kode_rs_kemenkes,nama_master,nama_halaman,status,jumlah_pelayanan,jumlah_tempat_tidur,jumlah_sdm,url_sumber,waktu_ambil_utc,error
+rs-001,1276079,OG Hospital,OG Hospital,EXTRACTED,23,20,27,https://sirs.kemkes.go.id/fo/home/profile_rs/1276079,2026-11-19T19:09:41.245818+00:00,
+rs-002,1275141,RS AL Dr. Komang Makes Belawan,RS AL Dr. Komang Makes Belawan,EXTRACTED,28,20,39,https://sirs.kemkes.go.id/fo/home/profile_rs/1275141,2026-11-19T19:09:42.635068+00:00,
+rs-003,1275046,RS Bhayangkara Tingkat II Medan,RS Bhayangkara Tingkat II Medan,EXTRACTED,66,21,60,https://sirs.kemkes.go.id/fo/home/profile_rs/1275046,2026-11-19T19:09:44.067416+00:00,

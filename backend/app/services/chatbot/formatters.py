@@ -34,7 +34,7 @@ OPENING_TEMPLATES: dict[str, list[str]] = {
         "Berikut {total} rumah sakit yang sesuai dengan pencarian Anda:",
         "Saya menemukan {total} rumah sakit yang memenuhi kriteria Anda:",
         "Terdapat {total} rumah sakit di database kami yang cocok dengan kebutuhan Anda:",
-        "Berikut rekomendasi {total} rumah sakit untuk Anda:",
+        "Berikut {total} rumah sakit yang tercatat sesuai filter Anda:",
     ],
     "NEARBY_RESULTS": [
         "📍 **Berikut rumah sakit terdekat dari lokasi Anda:**\n",
@@ -111,7 +111,7 @@ def format_detail_rs(
     # Layanan lengkap
     layanan = rs.get("layanan") or []
     if layanan:
-        lines.append(f"\n🩺 **Layanan Medis ({len(layanan)}):**\n" + ", ".join(layanan))
+        lines.append(f"\n🩺 **Layanan terlapor SIRS ({len(layanan)}), belum diverifikasi operasional:**\n" + ", ".join(layanan))
 
     # Fasilitas lengkap
     fasilitas = rs.get("fasilitas") or []
@@ -140,6 +140,7 @@ def format_attribute_rs(
     rs: dict,
     attribute: str,
     empathy: str = "",
+    user_loc: tuple[float, float] | None = None,
 ) -> dict:
     """Format jawaban ringkas langsung untuk atribut spesifik 1 RS (ATRIBUT)."""
     lines = []
@@ -194,7 +195,7 @@ def format_attribute_rs(
     elif attr == "layanan":
         lay = rs.get("layanan", [])
         if lay:
-            lines.append(f"🩺 Layanan medis yang tersedia di **{nama}** ({len(lay)}):\n" + ", ".join(lay))
+            lines.append(f"🩺 Layanan terlapor SIRS (bukan ketersediaan saat ini) di **{nama}** ({len(lay)}):\n" + ", ".join(lay))
         else:
             lines.append(f"Belum ada daftar spesifik layanan medis terdaftar untuk **{nama}**.")
 
@@ -205,6 +206,14 @@ def format_attribute_rs(
         else:
             lines.append(f"Belum ada daftar fasilitas penunjang terdaftar untuk **{nama}**.")
 
+    elif attr == "jarak":
+        if not user_loc:
+            lines.append(f"Untuk menghitung jarak ke **{nama}**, silakan izinkan akses lokasi (GPS) di browser lalu tanyakan kembali.")
+        elif rs.get("lat") is None or rs.get("lon") is None or rs.get("sumber_koordinat") not in ("osm", "jalan", "nama"):
+            lines.append(f"Jarak ke **{nama}** belum dapat dihitung karena koordinat rumah sakit belum terverifikasi.")
+        else:
+            distance = haversine_distance(user_loc[0], user_loc[1], rs["lat"], rs["lon"])
+            lines.append(f"Jarak **{nama}** dari lokasi Anda sekitar **{distance} km** (jarak garis lurus, bukan jarak perjalanan melalui jalan).")
     else:
         lines.append(f"Informasi mengenai **{nama}**:")
         lines.append(f"- Wilayah: {rs.get('kabkota')}")

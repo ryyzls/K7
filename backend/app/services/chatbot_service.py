@@ -455,7 +455,7 @@ async def process_chat_message(
     if intent == "ATRIBUT":
         target_rs = res_hospital["target_rs"]
         attr = search_ent.get("attribute") or res_hospital.get("attribute") or "info"
-        res = format_attribute_rs(target_rs, attr, empathy)
+        res = format_attribute_rs(target_rs, attr, empathy, user_loc=user_loc)
         curr_state["last_hospital_ids"] = [target_rs["id"]]
         curr_state["last_intent"] = "ATRIBUT"
         curr_state["pending"] = None
@@ -540,6 +540,8 @@ async def process_chat_message(
             seed=seed,
         )
         curr_state["last_intent"] = "SEARCH_NEARBY"
+        curr_state["pending"] = "ask_city" if not user_loc else None
+        curr_state["filters"] = kw_filter
         res["state"] = curr_state
         return res
 
@@ -556,10 +558,11 @@ async def process_chat_message(
             filters["kabkota"] = search_ent["kabkota"]
         offset = 0
         curr_state["pending"] = None
-    elif any(tl.startswith(c) for c in ["yang ", "kalau ", "ada ", "apakah ", "bisa ", "kelas "]):
+    elif any(tl.startswith(c) for c in ["yang ", "kalau ", "ada ", "apakah ", "bisa ", "kelas ", "lihat rs kelas "]):
         # Follow-up bertahap: gabungkan konteks dari history + current
         # (nilai terbaru menimpa nilai lama — B9 fix)
-        filters = _build_context_filters(history, search_ent)
+        filters = dict(curr_state.get("filters", {}))
+        filters.update(_build_context_filters(history if not filters else [], search_ent))
         # Hanya ambil field filter sah
         filters = {k: v for k, v in filters.items() if k in ("kelas", "jenis", "kabkota", "layanan", "bpjs", "fasilitas")}
         offset = 0
@@ -572,7 +575,7 @@ async def process_chat_message(
         offset = 0
 
     # KLARIFIKASI: Jika sama sekali tidak ada filter, tanyakan ke pengguna
-    if not any(filters.values()) and not is_pagination:
+    if not filters and not is_pagination:
         klarifikasi_text = (
             "Tentu, saya siap membantu menemukan rumah sakit yang sesuai! 🏥\n\n"
             "Agar pencarian lebih akurat, bisakah Anda menyebutkan:\n"
@@ -593,12 +596,12 @@ async def process_chat_message(
 
     # Eksekusi search melalui sp.search_hospitals (agar testable via mock)
     try:
-        raw_results = await sp.search_hospitals(
+        raw_results = await hospital_repo.search_hospitals(
             kelas=filters.get("kelas", ""),
             jenis=filters.get("jenis", ""),
             kabkota=filters.get("kabkota", ""),
             layanan=filters.get("layanan", ""),
-            bpjs=filters.get("bpjs") if filters.get("bpjs") is not None else False,
+            bpjs=filters.get("bpjs"),
             fasilitas=filters.get("fasilitas", ""),
             limit=500,
             offset=0,

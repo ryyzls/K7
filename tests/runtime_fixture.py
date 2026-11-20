@@ -7,9 +7,10 @@ os.environ.update(DATABASE_URL="sqlite://", AUTO_LOAD_RDF="false", FRONTEND_DIR=
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
-from rdflib import Graph
+from rdflib import Dataset, URIRef
 from app.config import settings
-settings.gemini_api_key = ""
+if hasattr(settings, "gemini_api_key"):
+    settings.gemini_api_key = ""
 settings.booking_access_key = "test-operator-only"
 settings.auto_load_rdf = False
 from app.main import app
@@ -23,9 +24,11 @@ def db():
         yield session
 app.dependency_overrides[get_db] = db
 # Lifespan still executes the real application initialization against SQLite only.
-graph = Graph()
+graph = Dataset()
 for path in (ROOT / "semantic/rdf").glob("*.ttl"):
-    graph.parse(path, format="turtle")
+    graph.default_graph.parse(path, format="turtle")
+from app.services.sirs import GRAPH_URI
+graph.graph(URIRef(GRAPH_URI)).parse(ROOT / 'semantic/sirs/services-reviewed.ttl', format='turtle')
 async def select(query):
     return [{str(k): str(v) for k,v in row.asdict().items()} for row in graph.query(sp.PREFIXES + query)]
 async def construct(uri, accept):

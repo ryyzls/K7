@@ -108,3 +108,11 @@ hf:standarRegulasi a owl:DatatypeProperty ;
 # Menggunakan schema:image (standar schema.org) untuk URL foto RS.
 # schema:image sudah terdefinisi oleh schema.org, tidak perlu deklarasi ulang.
 # Foto bersumber dari Google Maps Places API, hak cipta pengambil foto asli.
+
+# Official website verification metadata; schema:url is reserved for reviewed URLs.
+hf:websiteStatus a owl:DatatypeProperty ; rdfs:domain hf:RumahSakit ; rdfs:range xsd:string .
+hf:websiteEvidence a owl:ObjectProperty ; rdfs:domain hf:RumahSakit .
+hf:websiteCheckedAt a owl:DatatypeProperty ; rdfs:domain hf:RumahSakit ; rdfs:range xsd:dateTime .
+hf:websiteScope a owl:DatatypeProperty ; rdfs:domain hf:RumahSakit ; rdfs:range xsd:string .
+hf:websiteNotes a owl:DatatypeProperty ; rdfs:domain hf:RumahSakit ; rdfs:range xsd:string .
+hf:websiteCandidate a owl:ObjectProperty ; rdfs:domain hf:RumahSakit .

@@ -1,0 +1,66 @@
+{
+  "source": "CariSehat ZIP K7(4), test browser against local runtime",
+  "base_url": "http://127.0.0.1:8000",
+  "note": "Hanya pengujian browser dan screenshot; booking mutations blocked. Tidak menguji kebenaran semua data RS.",
+  "counts": {
+    "pass": 11,
+    "fail": 0
+  },
+  "results": [
+    {
+      "name": "homepage_load_and_206",
+      "status": "PASS",
+      "detail": "206 RS tertera di status katalog"
+    },
+    {
+      "name": "hero_search",
+      "status": "PASS",
+      "detail": "Pencarian Adam Malik: 2 rumah sakit ditemukan"
+    },
+    {
+      "name": "detail_and_semantic_link",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "return_to_catalog",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "filter_class_C",
+      "status": "PASS",
+      "detail": "120 RS kelas C"
+    },
+    {
+      "name": "no_result_and_reset",
+      "status": "PASS",
+      "detail": "0 hasil dan reset kembali ke 206 RS"
+    },
+    {
+      "name": "responsive_375",
+      "status": "PASS",
+      "detail": "Screenshot catalog_375.png"
+    },
+    {
+      "name": "responsive_768",
+      "status": "PASS",
+      "detail": "Screenshot catalog_768.png"
+    },
+    {
+      "name": "responsive_1440",
+      "status": "PASS",
+      "detail": "Screenshot catalog_1440.png"
+    },
+    {
+      "name": "sparql_studio_js",
+      "status": "PASS",
+      "detail": "YASGUI berhasil dirender dalam browser"
+    },
+    {
+      "name": "no_uncaught_homepage_js_errors",
+      "status": "PASS",
+      "detail": ""
+    }
+  ]
+}

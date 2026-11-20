@@ -1,0 +1,81 @@
+{
+  "status": "PASS",
+  "scope": "live backend HTTP, RDF serialization, metadata presence; NO browser execution; NO DBpedia re-test",
+  "timestamp_utc": "2026-11-20T05:25:21.754524+00:00",
+  "base_url": "http://localhost:8000",
+  "rs_id": "rs-001",
+  "tests": [
+    {
+      "test": "backend_health",
+      "status": "PASS",
+      "detail": "Fuseki=ok, PG=ok, RS=206"
+    },
+    {
+      "test": "api_search_206_unique",
+      "status": "PASS",
+      "detail": "items=206, unique_ids=206"
+    },
+    {
+      "test": "api_class_filter",
+      "status": "PASS",
+      "detail": "kelas=C, items=120"
+    },
+    {
+      "test": "detail_open_graph",
+      "status": "PASS",
+      "detail": "missing=[]",
+      "og_url": "http://localhost:8000/rs/rs-001"
+    },
+    {
+      "test": "detail_rdfa_markup",
+      "status": "PASS",
+      "detail": "Hospital type=True; name=True; address=True"
+    },
+    {
+      "test": "detail_html",
+      "status": "PASS",
+      "detail": "Og Hospital | CariSehat"
+    },
+    {
+      "test": "export_ttl_parse_content_type",
+      "status": "PASS",
+      "detail": "triples=91, content_type=text/turtle"
+    },
+    {
+      "test": "export_rdf_parse_content_type",
+      "status": "PASS",
+      "detail": "triples=91, content_type=application/rdf+xml"
+    },
+    {
+      "test": "ttl_rdfxml_graph_equivalence",
+      "status": "PASS",
+      "detail": "TTL=91, RDFXML=91"
+    },
+    {
+      "test": "export_rs_identity",
+      "status": "PASS",
+      "detail": "RS subjects=1"
+    },
+    {
+      "test": "sparql_studio_http",
+      "status": "PASS",
+      "detail": "http=200, html=3454 bytes; browser JS not tested"
+    },
+    {
+      "test": "sparql_proxy_select",
+      "status": "PASS",
+      "detail": "count=206"
+    },
+    {
+      "test": "unknown_hospital_404",
+      "status": "PASS",
+      "detail": "http=404"
+    }
+  ],
+  "caveats": [
+    "RDFa markup presence is not a full RDFa graph parser validation.",
+    "SPARQL studio page HTTP does not prove YASGUI JavaScript executes.",
+    "No write requests, no production booking writes, no Fuseki load/update.",
+    "Results require live runtime; ZIP alone cannot prove PASS."
+  ]
+}

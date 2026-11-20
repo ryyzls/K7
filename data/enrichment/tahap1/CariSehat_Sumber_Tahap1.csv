@@ -1,0 +1,7 @@
+﻿id,nama,url,kegunaan,catatan
+SIRS_REKAP,Kemenkes RS Online - rekap nasional,https://sirs.kemkes.go.id/fo/home/rekap_rs_all?id=0,"Daftar resmi dengan kode, nama, wilayah, alamat, telepon, pemilik, kelas, jenis",Sumber aktual berubah seiring pembaruan; perlu unduh snapshot bertanggal
+SIRS_DASH,Kemenkes RS Online - dashboard,https://sirs.kemkes.go.id/fo/home/dashboard_rs,Daftar rumah sakit yang dapat dicari,Bukan eksport file terverifikasi
+SIRS_PROFILE,Kemenkes RS Online - profil berdasarkan kode,https://sirs.kemkes.go.id/fo/home/profile_rs/,"Profil per RS: klasifikasi, telepon, layanan, kapasitas TT, SDM",TT tercatat bukan jumlah tempat tidur kosong real time; last update kadang kosong
+SATUSEHAT_MSI,SATUSEHAT Master Sarana Index,https://satusehat.kemkes.go.id/platform/docs/id/master-data/master-sarana-index/rest-api-msi/,Identitas fasilitas dan kode sarana,Akses API dapat memerlukan kredensial/otorisasi
+OPEN_DATA_SUMUT,Satu Data Indonesia - RS Sumatera Utara,https://data.go.id/dataset/dataset/data-rumah-sakit-menurut-kabupaten-kota-di-sumatera-utara,Data agregat rumah sakit per wilayah,Data agregat tidak otomatis cocok untuk master individu
+SIRANAP,Kemenkes SIRANAP,https://keslan.kemkes.go.id/app/siranap/,"Tempat tidur, ketersediaan dan waktu update jika dipublikasikan",Bukan snapshot kapasitas permanen; data dinamis

@@ -1,0 +1,37 @@
+{
+  "hospitals": 206,
+  "staging_triples": 81967,
+  "prepared_triples": 93595,
+  "observations": 10219,
+  "accepted_observations": 1409,
+  "accepted_labels": 35,
+  "hospitals_with_accepted_services": 200,
+  "excluded_observations": {
+    "pelayanan_klinis_terlapor": 6943,
+    "operasional_pendukung": 1664,
+    "perlu_review": 203
+  },
+  "categories": {
+    "pelayanan_klinis_terlapor": 239,
+    "operasional_pendukung": 16,
+    "diagnostik_pemeriksaan": 34,
+    "perlu_review": 10,
+    "gawat_darurat_terlapor": 1
+  },
+  "bed_rows_not_published": 3466,
+  "staff_rows_not_published": 9362,
+  "staff_missing_group": 537,
+  "named_graph": "http://carisehat.id/graph/sirs/2026-11-19",
+  "policy": "RULE_REVIEWED diagnostic/emergency only; no clinical inference",
+  "sha256": {
+    "carisehat_sirs_206_overlay_STAGING.ttl": "b6366b5d60d5e642e6077c15f44d3db8afe5efdc9faf1be68fa02221c5787e75",
+    "kamus_300_layanan.csv": "cd560748aea9de307945f16b68db84582688107466aff624dfa8b81b44f65498",
+    "kapasitas_tempat_tidur_206_staging.csv": "4a78f566b3700f2436bf150e04e90da08e43e474e2dcee3d3f6a786d0b149fcc",
+    "manifest_validasi.json": "3341ae4c6a4d375c3b7c14392137e391d903dc057fbf45a00180ea8a4c9dd52c",
+    "pelayanan_206_normalisasi.csv": "10baabe98f045df7a6f043b4e5de4969bcdf9d49edb495e165a01d9147d84824",
+    "pelayanan_duplikat_review.csv": "a1b6506f9cd43b967516f76425a3e0d3d0ab8198835c5b82ce2f204afec68dff",
+    "README_TAHAP3.md": "8b522d1750b8b61e0463ff148b066d67d681569fd5c6fe5e2f3003aac909b053",
+    "ringkasan_mutu_206_rs.csv": "c9b05d0022ad7a5b06a55ce19e406d93521c90f6cc589f9f856ea669524392aa",
+    "sdm_206_staging.csv": "9902c690640f569c05cce7d08d0313bc540b9fd33daa9549e67247c43ec6548f"
+  }
+}

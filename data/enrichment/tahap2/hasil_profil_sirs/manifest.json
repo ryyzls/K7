@@ -1,0 +1,14 @@
+{
+  "source": "https://sirs.kemkes.go.id/fo/home/profile_rs/",
+  "input": "/workspace/data/enrichment/tahap1/CariSehat_Master_206_Rekonsiliasi_SIRS.csv",
+  "records_selected": 3,
+  "total_input": 206,
+  "successful_extractions": 3,
+  "needs_review": 0,
+  "errors": 0,
+  "service_records": 117,
+  "bed_records": 61,
+  "sdm_records": 126,
+  "generated_utc": "2026-11-19T19:09:44.323014+00:00",
+  "warning": "STAGING ONLY. Do not automatically merge into application. Verify parser and identity matches; figures may be stale."
+}

@@ -1,0 +1,21 @@
+{
+  "hospital_count": 206,
+  "rdf_triple_count": 5833,
+  "coordinate_sources": {
+    "jalan": 41,
+    "kabkota": 65,
+    "nama": 52,
+    "osm": 39,
+    "unknown": 9
+  },
+  "website_statuses": {
+    "needs_review": 1,
+    "unreviewed": 202,
+    "verified": 3
+  },
+  "website_verified": 3,
+  "missing_coordinates": 9,
+  "service_links_total": 1407,
+  "facility_links_total": 1250,
+  "warnings": []
+}

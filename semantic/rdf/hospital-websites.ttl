@@ -1,0 +1,436 @@
+@prefix hf: <http://carisehat.id/ontology/> .
+@prefix schema: <https://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://localhost:8000/rs/rs-001> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-002> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-003> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-004> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-005> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-006> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-007> hf:websiteCheckedAt "2026-11-19T14:15:52+00:00"^^xsd:dateTime ;
+    hf:websiteEvidence <https://columbiaasia.co.id/rs-columbia-asia-aksara/informasi-umum-aksara/> ;
+    hf:websiteNotes "Halaman cabang Aksara: nama, Medan Sumatera Utara, Letda Sujono LK X No 90 dan nomor 06188806888 cocok dengan RDF; bukan cabang Jalan Listrik." ;
+    hf:websiteScope "branch" ;
+    hf:websiteStatus "verified" ;
+    schema:url <https://columbiaasia.co.id/rs-columbia-asia-aksara/informasi-umum-aksara/> .
+
+<http://localhost:8000/rs/rs-008> hf:websiteCheckedAt "2026-11-19T14:15:52+00:00"^^xsd:dateTime ;
+    hf:websiteEvidence <https://columbiaasia.co.id/hubungi-kami/> ;
+    hf:websiteNotes "Halaman cabang Medan dibuka. Halaman kontak jaringan mengonfirmasi Jalan Listrik No 2A, Medan Sumatera Utara dan 0614566368; berbeda dari cabang Aksara." ;
+    hf:websiteScope "branch" ;
+    hf:websiteStatus "verified" ;
+    schema:url <https://columbiaasia.co.id/rs-columbia-asia-medan/> .
+
+<http://localhost:8000/rs/rs-009> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-010> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-011> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-012> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-013> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-014> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-015> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-016> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-017> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-018> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-019> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-020> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-021> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-022> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-023> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-024> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-025> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-026> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-027> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-028> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-029> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-030> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-031> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-032> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-033> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-034> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-035> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-036> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-037> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-038> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-039> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-040> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-041> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-042> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-043> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-044> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-045> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-046> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-047> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-048> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-049> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-050> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-051> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-052> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-053> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-054> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-055> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-056> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-057> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-058> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-059> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-060> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-061> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-062> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-063> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-064> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-065> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-066> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-067> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-068> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-069> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-070> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-071> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-072> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-073> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-074> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-075> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-076> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-077> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-078> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-079> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-080> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-081> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-082> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-083> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-084> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-085> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-086> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-087> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-088> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-089> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-090> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-091> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-092> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-093> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-094> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-095> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-096> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-097> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-098> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-099> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-100> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-101> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-102> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-103> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-104> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-105> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-106> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-107> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-108> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-109> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-110> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-111> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-112> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-113> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-114> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-115> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-116> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-117> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-118> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-119> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-120> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-121> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-122> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-123> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-124> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-125> hf:websiteCandidate <https://herminahospitals.com/id/branch/hermina-medan> ;
+    hf:websiteCheckedAt "2026-11-19T14:15:52+00:00"^^xsd:dateTime ;
+    hf:websiteEvidence <https://herminahospitals.com/id/branch/hermina-medan> ;
+    hf:websiteNotes "Halaman kandidat dibuka namun isi identitas tidak terbaca melalui alat browser; hanya iframe. Cuplikan pencarian tidak cukup untuk verifikasi. Perlu pemeriksaan manual nama, alamat Asrama dan telepon 06180862525." ;
+    hf:websiteScope "branch" ;
+    hf:websiteStatus "needs_review" .
+
+<http://localhost:8000/rs/rs-126> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-127> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-128> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-129> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-130> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-131> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-132> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-133> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-134> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-135> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-136> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-137> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-138> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-139> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-140> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-141> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-142> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-143> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-144> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-145> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-146> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-147> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-148> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-149> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-150> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-151> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-152> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-153> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-154> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-155> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-156> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-157> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-158> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-159> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-160> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-161> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-162> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-163> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-164> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-165> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-166> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-167> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-168> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-169> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-170> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-171> hf:websiteCheckedAt "2026-11-19T14:15:52+00:00"^^xsd:dateTime ;
+    hf:websiteEvidence <https://rsham.go.id/profil/hubungi-kami> ;
+    hf:websiteNotes "Nama Adam Malik dan alamat Bunga Lau 17, Medan, Sumatera Utara cocok. Direktori resmi https://rs.kemkes.go.id/hospitals/all/rs-h-adam-malik juga menunjuk rsham.go.id. Telepon situs berbeda dari dataset; tidak diubah." ;
+    hf:websiteScope "hospital" ;
+    hf:websiteStatus "verified" ;
+    schema:url <https://rsham.go.id/profil/hubungi-kami> .
+
+<http://localhost:8000/rs/rs-172> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-173> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-174> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-175> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-176> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-177> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-178> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-179> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-180> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-181> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-182> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-183> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-184> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-185> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-186> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-187> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-188> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-189> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-190> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-191> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-192> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-193> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-194> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-195> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-196> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-197> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-198> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-199> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-200> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-201> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-202> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-203> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-204> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-205> hf:websiteStatus "unreviewed" .
+
+<http://localhost:8000/rs/rs-206> hf:websiteStatus "unreviewed" .
+

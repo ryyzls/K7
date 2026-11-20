@@ -1,0 +1,23 @@
+{
+  "rs": 206,
+  "raw_pelayanan_rows": 10257,
+  "unique_pelayanan_hospital_label": 10219,
+  "duplicate_excess_rows": 38,
+  "groups_repeated": 30,
+  "labels_distinct": 300,
+  "label_categories": {
+    "pelayanan_klinis_terlapor": 239,
+    "operasional_pendukung": 16,
+    "diagnostik_pemeriksaan": 34,
+    "perlu_review": 10,
+    "gawat_darurat_terlapor": 1
+  },
+  "raw_bed_rows": 3466,
+  "bed_zero": 1594,
+  "raw_sdm_rows": 9362,
+  "sdm_missing_group": 537,
+  "rdf_triples_overlay": 81967,
+  "source": "https://sirs.kemkes.go.id/fo/home/profile_rs/",
+  "status": "STAGING - NOT LIVE - NOT MERGED",
+  "tests": "PASS"
+}

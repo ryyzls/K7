@@ -345,8 +345,8 @@ class ChatbotScenariosTest(unittest.TestCase):
         res = run_sync(process_chat_message("RS kelas B di Medan"))
 
         self.assertFalse(res["is_emergency"])
-        self.assertEqual(len(res["hospitals"]), 0)
-        self.assertTrue(any(w in res["text"].lower() for w in ["database", "kendala", "server"]))
+        self.assertTrue(res["hospitals"])
+        self.assertTrue(all(h["kelas"] == "B" and h["kabkota"] == "Kota Medan" for h in res["hospitals"]))
 
 
 if __name__ == "__main__":

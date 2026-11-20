@@ -1,0 +1,6 @@
+id_carisehat,kode_kemenkes,nama,kabkota,field_type,value,conflict_reason,sources,priority,added_at
+rs-205,1271075,RSU Herna,Kota Medan,website,https://www.rshernamedan.com,Domain terdaftar www.rshernamedan.com namun perlu verifikasi keaktifan langsung,https://avitaliahealth.com,MEDIUM,2026-11-20
+rs-110,1209077,RS Umum Daerah Tuan Rondahaim,Simalungun,website,https://rsudrondahaim.id,Domain terdaftar namun perlu verifikasi keaktifan server,https://rsudrondahaim.id,MEDIUM,2026-11-20
+rs-038,1277027,RS Metta Medika,Kota Padang Sidempuan,website,https://linktr.ee/mettamedikapadangsidimpuan,Layanan digital terpusat via Linktree resmi,https://linktr.ee/mettamedikapadangsidimpuan,MEDIUM,2026-11-20
+rs-039,1271033,RS Metta Medika II,Kota Sibolga,website,https://linktr.ee/rsmettamedika2,Layanan digital terpusat via Linktree resmi,https://linktr.ee/rsmettamedika2,MEDIUM,2026-11-20
+rs-148,1271032,RS Umum Metta Medika,Kota Sibolga,website,https://linktr.ee/rsmettamedikasibolgaa,Layanan digital terpusat via Linktree resmi,https://linktr.ee/rsmettamedikasibolgaa,MEDIUM,2026-11-20

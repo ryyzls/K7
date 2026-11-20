@@ -1,0 +1,5289 @@
+[
+  {
+    "id_carisehat": "rs-001",
+    "kode_kemenkes": "1276079",
+    "nama": "OG Hospital",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 3,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 20,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 170
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1276079",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-002",
+    "kode_kemenkes": "1275141",
+    "nama": "RS AL Dr. Komang Makes Belawan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 4,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 3,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 7,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 98
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275141",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-003",
+    "kode_kemenkes": "1275046",
+    "nama": "RS Bhayangkara Tingkat II Medan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 9,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 3,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 2,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 127
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275046",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-004",
+    "kode_kemenkes": "1203067",
+    "nama": "RS Bhayangkara Tk. IV Batangtoru",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 3,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 4,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 60
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1203067",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-005",
+    "kode_kemenkes": "1274058",
+    "nama": "RS Bhayangkara Tk.III Kota Tebing Tinggi",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 9,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 2,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 130
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1274058",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-006",
+    "kode_kemenkes": "1274063",
+    "nama": "RS Chevani",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 8,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 4,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 4,
+      "isolasi": 14,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 169
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1274063",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-007",
+    "kode_kemenkes": "1275074",
+    "nama": "RS Columbia Asia Aksara",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 13,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 5,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 2,
+      "isolasi": 19,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 211
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275074",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-008",
+    "kode_kemenkes": "1275852",
+    "nama": "RS Columbia Asia Medan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 8,
+      "nicu_dengan_ventilator": 4,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 6,
+      "iccu": 0,
+      "total_tt_rawat_inap": 201
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275852",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-009",
+    "kode_kemenkes": "1212201",
+    "nama": "RS Dhillon",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 2,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 2,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 2,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 53
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212201",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-010",
+    "kode_kemenkes": "1207069",
+    "nama": "RS Dokter Takdir",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 32
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Kamar Bedah / Operasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1207069",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-011",
+    "kode_kemenkes": "1273119",
+    "nama": "RS Efarina Etaham Pematang Siantar",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 14,
+      "icu_tanpa_ventilator": 5,
+      "nicu_dengan_ventilator": 5,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 4,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 12,
+      "hcu": 5,
+      "iccu": 0,
+      "total_tt_rawat_inap": 270
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1273119",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-012",
+    "kode_kemenkes": "1275932",
+    "nama": "RS Gigi dan Mulut Prima",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 2,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 11
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275932",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-013",
+    "kode_kemenkes": "1212202",
+    "nama": "RS Grand Medica",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 2,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 1,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 6,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 57
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212202",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-014",
+    "kode_kemenkes": "1218158",
+    "nama": "RS Grandmed",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 17,
+      "icu_tanpa_ventilator": 7,
+      "nicu_dengan_ventilator": 5,
+      "nicu_tanpa_ventilator": 10,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 41,
+      "hcu": 0,
+      "iccu": 16,
+      "total_tt_rawat_inap": 444
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1218158",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-015",
+    "kode_kemenkes": "1275929",
+    "nama": "RS Ibu Dan Anak Artha Mahinrus",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 3,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 2,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 2,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 40
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275929",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-016",
+    "kode_kemenkes": "1275910",
+    "nama": "RS Ibu dan Anak Eva",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 11
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Kamar Bedah / Operasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275910",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-017",
+    "kode_kemenkes": "1276092",
+    "nama": "RS Ibu dan Anak Grand Fatimah",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 2,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 3,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 39
+    },
+    "fasilitas_diagnostik_terlapor": [],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1276092",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-018",
+    "kode_kemenkes": "1212186",
+    "nama": "RS Ibu dan Anak Maharani",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 1,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 37
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212186",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-019",
+    "kode_kemenkes": "1211127",
+    "nama": "RS Ibu dan Anak Mina Husada",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 2,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 3,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 33
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1211127",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-020",
+    "kode_kemenkes": "1275783",
+    "nama": "RS Ibu dan Anak Murni Teguh Rosiva",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 2,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 5,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 2,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 51
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275783",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-021",
+    "kode_kemenkes": "1212197",
+    "nama": "RS Ibu dan Anak Pramaliesa",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 3,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 2,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 50
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212197",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-022",
+    "kode_kemenkes": "1275998",
+    "nama": "RS Ibu dan Anak Stella Maris",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 5,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 12,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 78
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275998",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-023",
+    "kode_kemenkes": "1275999",
+    "nama": "RS Jiwa Bina Karsa Medan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 34
+    },
+    "fasilitas_diagnostik_terlapor": [],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275999",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-024",
+    "kode_kemenkes": "1212184",
+    "nama": "RS Jiwa Bina Karsa Tuntungan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 7,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 65
+    },
+    "fasilitas_diagnostik_terlapor": [],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212184",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-025",
+    "kode_kemenkes": "1275221",
+    "nama": "RS Jiwa Prof. Dr. Muhammad Ildrem",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 26,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 14,
+      "iccu": 6,
+      "total_tt_rawat_inap": 450
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275221",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-026",
+    "kode_kemenkes": "1275232",
+    "nama": "RS Khusus Bedah Accuplast",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 2,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 4,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 28
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275232",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-027",
+    "kode_kemenkes": "1275921",
+    "nama": "RS Khusus Bedah Setia Budi",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 3,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 27
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275921",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-028",
+    "kode_kemenkes": "1275874",
+    "nama": "RS Khusus Gigi dan Mulut Univ. Sumatera Utara",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 14
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275874",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-029",
+    "kode_kemenkes": "1275918",
+    "nama": "RS Khusus Ginjal Rasyida",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 4,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 3,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 57
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275918",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-030",
+    "kode_kemenkes": "1275309",
+    "nama": "RS Khusus Mata Medan Baru Medical Centre",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 1,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 14
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275309",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-031",
+    "kode_kemenkes": "1275914",
+    "nama": "RS Khusus Mata Mencirim Tujuh-Tujuh",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 1,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 15
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275914",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-032",
+    "kode_kemenkes": "1275928",
+    "nama": "RS Khusus Mata Prima Vision",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 1,
+      "iccu": 0,
+      "total_tt_rawat_inap": 16
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275928",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-033",
+    "kode_kemenkes": "1275922",
+    "nama": "RS Khusus Mata Provinsi Sumatera Utara",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 3,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 2,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 30
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Kamar Bedah / Operasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275922",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-034",
+    "kode_kemenkes": "1275898",
+    "nama": "RS Khusus Mata SMEC",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 16
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275898",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-035",
+    "kode_kemenkes": "1275933",
+    "nama": "RS Khusus Paru Sumatera Utara",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 4,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 8,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 75
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275933",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-036",
+    "kode_kemenkes": "1273107",
+    "nama": "RS Mata Siantar",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 3,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 16
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1273107",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-037",
+    "kode_kemenkes": "1278013",
+    "nama": "RUMAH SAKIT METTA MEDIKA",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 9,
+      "icu_tanpa_ventilator": 3,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 5,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 7,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 180
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1278013",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-038",
+    "kode_kemenkes": "1277027",
+    "nama": "RS Metta Medika",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1277027",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-039",
+    "kode_kemenkes": "1271033",
+    "nama": "RS Metta Medika II",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 4,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 113
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1271033",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-040",
+    "kode_kemenkes": "1273102",
+    "nama": "RS Murni Teguh Horas Insani",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 7,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 2,
+      "picu_dengan_ventilator": 2,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 137
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "USG",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1273102",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-041",
+    "kode_kemenkes": "1273120",
+    "nama": "RS Murni Teguh Pematang Siantar",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 2,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 4,
+      "hcu": 1,
+      "iccu": 0,
+      "total_tt_rawat_inap": 51
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "USG",
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1273120",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-042",
+    "kode_kemenkes": "1275913",
+    "nama": "RS Pendidikan Prof. dr. Chairuddin Panusunan Lubis Universitas Sumatera Utara",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 7,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 5,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 2,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 12,
+      "hcu": 0,
+      "iccu": 1,
+      "total_tt_rawat_inap": 120
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275913",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-043",
+    "kode_kemenkes": "1225013",
+    "nama": "RS Pratama Lologolu Soguna Ba Zato",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 4,
+      "isolasi": 2,
+      "hcu": 6,
+      "iccu": 0,
+      "total_tt_rawat_inap": 84
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1225013",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-044",
+    "kode_kemenkes": "1273108",
+    "nama": "RS Rasyida Siantar",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 22,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 65
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1273108",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-045",
+    "kode_kemenkes": "1275073",
+    "nama": "RS Regina Maris",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 9,
+      "icu_tanpa_ventilator": 7,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 7,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 218
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275073",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-046",
+    "kode_kemenkes": "1219015",
+    "nama": "RS Sapta Medika",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 4,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 8,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 96
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1219015",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-047",
+    "kode_kemenkes": "1208068",
+    "nama": "RS Seger Waras",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 3,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 3,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 1,
+      "iccu": 0,
+      "total_tt_rawat_inap": 64
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1208068",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-048",
+    "kode_kemenkes": "1223018",
+    "nama": "RS Sri Pamela Membang Muda",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 3,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 1,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 5,
+      "hcu": 1,
+      "iccu": 0,
+      "total_tt_rawat_inap": 50
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1223018",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-049",
+    "kode_kemenkes": "1208053",
+    "nama": "RS Sri Pamela Sei Dadap",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 2,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 1,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 1,
+      "hcu": 1,
+      "iccu": 0,
+      "total_tt_rawat_inap": 50
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1208053",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-050",
+    "kode_kemenkes": "1207052",
+    "nama": "RS Sri Pamela Torgamba",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 2,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 1,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 4,
+      "hcu": 1,
+      "iccu": 0,
+      "total_tt_rawat_inap": 49
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1207052",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-051",
+    "kode_kemenkes": "1275996",
+    "nama": "RS SUFINA AZIZ",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 5,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 2,
+      "isolasi": 5,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 110
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275996",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-052",
+    "kode_kemenkes": "1223005",
+    "nama": "RS Tiga Bersaudara",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 4,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 4,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 2,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 67
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1223005",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-053",
+    "kode_kemenkes": "1275035",
+    "nama": "RS Tk. II Putri Hijau Medan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 10,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 4,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 10,
+      "hcu": 2,
+      "iccu": 2,
+      "total_tt_rawat_inap": 198
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275035",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-054",
+    "kode_kemenkes": "1273022",
+    "nama": "RS Tk. IV 01.07.01",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 8,
+      "icu_tanpa_ventilator": 3,
+      "nicu_dengan_ventilator": 5,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 2,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 176
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1273022",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-055",
+    "kode_kemenkes": "1276040",
+    "nama": "RS Tk. IV 01.07.02 Binjai",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 11,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1276040",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-056",
+    "kode_kemenkes": "1277015",
+    "nama": "RS TNI Tk. IV 01.07.03",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 3,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 5,
+      "hcu": 3,
+      "iccu": 0,
+      "total_tt_rawat_inap": 55
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1277015",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-057",
+    "kode_kemenkes": "1275094",
+    "nama": "RS Umum Advent Medan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 11,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 17,
+      "hcu": 4,
+      "iccu": 0,
+      "total_tt_rawat_inap": 229
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275094",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-058",
+    "kode_kemenkes": "1276078",
+    "nama": "RS Umum AL Fuadi",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 7,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 13,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 128
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1276078",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-059",
+    "kode_kemenkes": "1211126",
+    "nama": "RS Umum Amanda",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 10,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 6,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 7,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 150
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1211126",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-060",
+    "kode_kemenkes": "1202029",
+    "nama": "RS Umum Armina Madina Panyabungan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 4,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 1,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 2,
+      "isolasi": 9,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 60
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1202029",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-061",
+    "kode_kemenkes": "1276036",
+    "nama": "RS Umum Artha Medica",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 7,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 16,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 162
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1276036",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-062",
+    "kode_kemenkes": "1209010",
+    "nama": "RS Umum Balimbingan PTP 4",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 6,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1209010",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-063",
+    "kode_kemenkes": "1275772",
+    "nama": "RS Umum Bandung",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 2,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 13,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275772",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-064",
+    "kode_kemenkes": "1278002",
+    "nama": "RS Umum Bethesda Gunungsitoli",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 7,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 2,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 6,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 110
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1278002",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-065",
+    "kode_kemenkes": "1276075",
+    "nama": "RS Umum Bidadari",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 9,
+      "icu_tanpa_ventilator": 12,
+      "nicu_dengan_ventilator": 8,
+      "nicu_tanpa_ventilator": 7,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 8,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 209
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1276075",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-066",
+    "kode_kemenkes": "1219017",
+    "nama": "RS Umum Bidadari Batubara",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 36,
+      "icu_tanpa_ventilator": 6,
+      "nicu_dengan_ventilator": 14,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 21,
+      "hcu": 5,
+      "iccu": 0,
+      "total_tt_rawat_inap": 497
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1219017",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-067",
+    "kode_kemenkes": "1275997",
+    "nama": "RS Umum Bina Kasih",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 13,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 11,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 4,
+      "isolasi": 19,
+      "hcu": 4,
+      "iccu": 0,
+      "total_tt_rawat_inap": 208
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275997",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-068",
+    "kode_kemenkes": "1208059",
+    "nama": "RS Umum Bunda Mulia",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 46
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1208059",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-069",
+    "kode_kemenkes": "1275890",
+    "nama": "RSU BUNDA THAMRIN",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 17,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 6,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 2,
+      "isolasi": 0,
+      "hcu": 6,
+      "iccu": 4,
+      "total_tt_rawat_inap": 312
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275890",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-070",
+    "kode_kemenkes": "1208020",
+    "nama": "RS Umum Catharina 1914",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 3,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 11,
+      "hcu": 1,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1208020",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-071",
+    "kode_kemenkes": "1212179",
+    "nama": "RS Umum Citra Medika",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 10,
+      "hcu": 4,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212179",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-072",
+    "kode_kemenkes": "1223002",
+    "nama": "RS Umum Daerah Aek Kanopan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 16,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 106
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1223002",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-073",
+    "kode_kemenkes": "1212198",
+    "nama": "RS Umum Daerah Bangun Purba",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 3,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 5,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 4,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 56
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212198",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-074",
+    "kode_kemenkes": "1219003",
+    "nama": "RS Umum Daerah Batu Bara",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 7,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 2,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 7,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 101
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1219003",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-075",
+    "kode_kemenkes": "1225002",
+    "nama": "RS Umum Daerah Cerah Medika Kab. Nias Barat",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 2,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 32
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1225002",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-076",
+    "kode_kemenkes": "1205035",
+    "nama": "RS Umum Daerah Dolok Sanggul",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 2,
+      "isolasi": 8,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 155
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1205035",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-077",
+    "kode_kemenkes": "1273011",
+    "nama": "RS Umum Daerah Dr. Djasamen Saragih",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 9,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 3,
+      "picu_dengan_ventilator": 2,
+      "picu_tanpa_ventilator": 3,
+      "isolasi": 25,
+      "hcu": 0,
+      "iccu": 2,
+      "total_tt_rawat_inap": 190
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1273011",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-078",
+    "kode_kemenkes": "1271016",
+    "nama": "RS Umum Daerah Dr. FL Tobing Sibolga",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 11,
+      "icu_tanpa_ventilator": 3,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 5,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 2,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 211
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1271016",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-079",
+    "kode_kemenkes": "1274012",
+    "nama": "RS Umum Daerah Dr. H. Kumpulan Pane",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 9,
+      "icu_tanpa_ventilator": 3,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 1,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 8,
+      "hcu": 6,
+      "iccu": 6,
+      "total_tt_rawat_inap": 200
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "USG",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1274012",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-080",
+    "kode_kemenkes": "1205024",
+    "nama": "RS Umum Daerah Dr. Hadrianus Sinaga",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 5,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 110
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1205024",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-081",
+    "kode_kemenkes": "1202017",
+    "nama": "RS Umum Daerah dr. Husni Thamrin",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 50
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1202017",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-082",
+    "kode_kemenkes": "1201016",
+    "nama": "RS Umum Daerah dr. M. Thomsen Nias",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 10,
+      "icu_tanpa_ventilator": 4,
+      "nicu_dengan_ventilator": 6,
+      "nicu_tanpa_ventilator": 3,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 15,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 230
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1201016",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-083",
+    "kode_kemenkes": "1275013",
+    "nama": "RS Umum Daerah Dr. Pirngadi",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 13,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 3,
+      "nicu_tanpa_ventilator": 2,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 9,
+      "iccu": 3,
+      "total_tt_rawat_inap": 236
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275013",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-084",
+    "kode_kemenkes": "1276014",
+    "nama": "RS Umum Daerah Dr. R. M. Djoelham Binjai",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 4,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 5,
+      "isolasi": 4,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 165
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1276014",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-085",
+    "kode_kemenkes": "1272010",
+    "nama": "RS Umum Daerah Dr. Tengku Mansyur",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 3,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 11,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 108
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1272010",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-086",
+    "kode_kemenkes": "1212012",
+    "nama": "RS Umum Daerah Drs. H. Amri Tambunan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 11,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 10,
+      "picu_dengan_ventilator": 2,
+      "picu_tanpa_ventilator": 2,
+      "isolasi": 7,
+      "hcu": 2,
+      "iccu": 3,
+      "total_tt_rawat_inap": 238
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "USG",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212012",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-087",
+    "kode_kemenkes": "1203044",
+    "nama": "RS Umum Daerah Gunung Tua",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 3,
+      "icu_tanpa_ventilator": 3,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 15,
+      "hcu": 4,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1203044",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-088",
+    "kode_kemenkes": "1208016",
+    "nama": "RS Umum Daerah H. Abdul Manan Simatupang",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 7,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 4,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 6,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 117
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1208016",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-089",
+    "kode_kemenkes": "1275012",
+    "nama": "RS Umum Daerah H. Bachtiar Djafar",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 1,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 10,
+      "hcu": 3,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275012",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-090",
+    "kode_kemenkes": "1211011",
+    "nama": "RS Umum Daerah Kabupaten Karo",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 2,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 2,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 3,
+      "isolasi": 2,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 99
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1211011",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-091",
+    "kode_kemenkes": "1222002",
+    "nama": "RS Umum Daerah Kota Pinang",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 4,
+      "isolasi": 19,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 113
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1222002",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-092",
+    "kode_kemenkes": "1214010",
+    "nama": "RS Umum Daerah Lukas Hilisimaetano",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 50
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1214010",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-093",
+    "kode_kemenkes": "1214022",
+    "nama": "RS Umum Daerah Nias Selatan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 3,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 40
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1214022",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-094",
+    "kode_kemenkes": "1277011",
+    "nama": "RS Umum Daerah Padang Sidempuan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 4,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 5,
+      "iccu": 0,
+      "total_tt_rawat_inap": 101
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1277011",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-095",
+    "kode_kemenkes": "1204056",
+    "nama": "RS Umum Daerah Pandan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 2,
+      "isolasi": 1,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 130
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1204056",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-096",
+    "kode_kemenkes": "1203022",
+    "nama": "RS Umum Daerah Panyabungan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 12,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 6,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 3,
+      "isolasi": 2,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 165
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1203022",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-097",
+    "kode_kemenkes": "1209065",
+    "nama": "RS Umum Daerah Parapat",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 4,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 50
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1209065",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-098",
+    "kode_kemenkes": "1209076",
+    "nama": "RS Umum Daerah Perdagangan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 10,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 2,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 105
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1209076",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-099",
+    "kode_kemenkes": "1203066",
+    "nama": "RS Umum Daerah Pintu Padang",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 3,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 6,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 52
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1203066",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-100",
+    "kode_kemenkes": "1205046",
+    "nama": "RS Umum Daerah Porsea",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 7,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 6,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 1,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 107
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1205046",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-101",
+    "kode_kemenkes": "1207015",
+    "nama": "RS Umum Daerah Rantau Prapat",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 10,
+      "icu_tanpa_ventilator": 9,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 6,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 4,
+      "isolasi": 16,
+      "hcu": 0,
+      "iccu": 12,
+      "total_tt_rawat_inap": 263
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1207015",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-102",
+    "kode_kemenkes": "1216011",
+    "nama": "RS Umum Daerah Salak",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 4,
+      "nicu_tanpa_ventilator": 3,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 8,
+      "isolasi": 8,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1216011",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-103",
+    "kode_kemenkes": "1203055",
+    "nama": "RS Umum Daerah Sibuhuan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 7,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 8,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1203055",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-104",
+    "kode_kemenkes": "1210010",
+    "nama": "RS Umum Daerah Sidikalang",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 5,
+      "nicu_tanpa_ventilator": 2,
+      "picu_dengan_ventilator": 2,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 8,
+      "hcu": 0,
+      "iccu": 3,
+      "total_tt_rawat_inap": 146
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1210010",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-105",
+    "kode_kemenkes": "1218125",
+    "nama": "RS Umum Daerah Sultan Sulaiman Syariful Alamsyah",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 4,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 6,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 8,
+      "hcu": 0,
+      "iccu": 4,
+      "total_tt_rawat_inap": 132
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1218125",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-106",
+    "kode_kemenkes": "1224002",
+    "nama": "RS Umum Daerah Tafaeri",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 3,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 2,
+      "isolasi": 2,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 44
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1224002",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-107",
+    "kode_kemenkes": "1213013",
+    "nama": "RS Umum Daerah Tanjung Pura",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 6,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 9,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1213013",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-108",
+    "kode_kemenkes": "1203033",
+    "nama": "RS Umum Daerah Tapanuli Selatan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 2,
+      "icu_tanpa_ventilator": 4,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 2,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 3,
+      "isolasi": 10,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 109
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1203033",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-109",
+    "kode_kemenkes": "1205013",
+    "nama": "RS Umum Daerah Tarutung",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 4,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 3,
+      "hcu": 0,
+      "iccu": 6,
+      "total_tt_rawat_inap": 212
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1205013",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-110",
+    "kode_kemenkes": "1209077",
+    "nama": "RS Umum Daerah Tuan Rondahaim",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 1,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 102
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1209077",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-111",
+    "kode_kemenkes": "1275050",
+    "nama": "RS Umum Deli",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 3,
+      "icu_tanpa_ventilator": 3,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 61
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275050",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-112",
+    "kode_kemenkes": "1213057",
+    "nama": "RS Umum Delia",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 4,
+      "icu_tanpa_ventilator": 3,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 3,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 11,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 124
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1213057",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-113",
+    "kode_kemenkes": "1275061",
+    "nama": "RS Umum Delima Medan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 2,
+      "isolasi": 11,
+      "hcu": 3,
+      "iccu": 0,
+      "total_tt_rawat_inap": 99
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275061",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-114",
+    "kode_kemenkes": "1212023",
+    "nama": "RSU dr. G. L. TOBING",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212023",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-115",
+    "kode_kemenkes": "1211124",
+    "nama": "RS Umum Efarina Etaham",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 10,
+      "icu_tanpa_ventilator": 3,
+      "nicu_dengan_ventilator": 3,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 2,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 10,
+      "hcu": 4,
+      "iccu": 0,
+      "total_tt_rawat_inap": 207
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1211124",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-116",
+    "kode_kemenkes": "1207066",
+    "nama": "RS Umum Elpi Al Azis",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 5,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 12,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 117
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1207066",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-117",
+    "kode_kemenkes": "1275931",
+    "nama": "RS Umum Eshmun",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 9,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 6,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 16,
+      "hcu": 1,
+      "iccu": 0,
+      "total_tt_rawat_inap": 166
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275931",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-118",
+    "kode_kemenkes": "1275841",
+    "nama": "RS Umum Estomihi",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 11,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 101
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275841",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-119",
+    "kode_kemenkes": "1223006",
+    "nama": "RS Umum Flora",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 52
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1223006",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-120",
+    "kode_kemenkes": "1275147",
+    "nama": "RS Umum Full Bethesda",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 3,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 2,
+      "isolasi": 10,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275147",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-121",
+    "kode_kemenkes": "1272033",
+    "nama": "RS Umum Hadi Husada",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 6,
+      "hcu": 1,
+      "iccu": 0,
+      "total_tt_rawat_inap": 49
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1272033",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-122",
+    "kode_kemenkes": "1275794",
+    "nama": "RS Umum Haji Medan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 10,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 12,
+      "picu_dengan_ventilator": 6,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 10,
+      "iccu": 6,
+      "total_tt_rawat_inap": 342
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275794",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-123",
+    "kode_kemenkes": "1273033",
+    "nama": "RS Umum Harapan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 8,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 3,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 2,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 5,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 149
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "USG",
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1273033",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-124",
+    "kode_kemenkes": "1207068",
+    "nama": "RS Umum Hartati Medical Centre",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 4,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 7,
+      "hcu": 1,
+      "iccu": 0,
+      "total_tt_rawat_inap": 72
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1207068",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-125",
+    "kode_kemenkes": "1275930",
+    "nama": "RS Umum Hermina Medan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 9,
+      "icu_tanpa_ventilator": 3,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 2,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 22,
+      "hcu": 8,
+      "iccu": 0,
+      "total_tt_rawat_inap": 186
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275930",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-126",
+    "kode_kemenkes": "1212067",
+    "nama": "RS Umum Hidayah",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 3,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 6,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 57
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212067",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-127",
+    "kode_kemenkes": "1205061",
+    "nama": "RS Umum HKBP Balige",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 3,
+      "icu_tanpa_ventilator": 6,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 5,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 165
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1205061",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-128",
+    "kode_kemenkes": "1275622",
+    "nama": "RS Umum Imelda Pekerja Indonesia",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 12,
+      "icu_tanpa_ventilator": 3,
+      "nicu_dengan_ventilator": 3,
+      "nicu_tanpa_ventilator": 7,
+      "picu_dengan_ventilator": 2,
+      "picu_tanpa_ventilator": 2,
+      "isolasi": 20,
+      "hcu": 7,
+      "iccu": 0,
+      "total_tt_rawat_inap": 225
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275622",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-129",
+    "kode_kemenkes": "1277026",
+    "nama": "RS Umum Inanta",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 2,
+      "isolasi": 2,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1277026",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-130",
+    "kode_kemenkes": "1275163",
+    "nama": "RS Umum Islam Malahayati",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 2,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 2,
+      "isolasi": 10,
+      "hcu": 3,
+      "iccu": 1,
+      "total_tt_rawat_inap": 102
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275163",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-131",
+    "kode_kemenkes": "1207067",
+    "nama": "RS Umum Karya Bakti Ujung Bandar",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 2,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 13,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 96
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1207067",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-132",
+    "kode_kemenkes": "1209081",
+    "nama": "RS Umum Karya Husada",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 3,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 51
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1209081",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-133",
+    "kode_kemenkes": "1212183",
+    "nama": "RS Umum Kasih Insani",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 4,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 2,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212183",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-134",
+    "kode_kemenkes": "1219016",
+    "nama": "RS Umum Kasih Permata Dara",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 3,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 2,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 56
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1219016",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-135",
+    "kode_kemenkes": "1212174",
+    "nama": "RS Umum Keliat",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 3,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 6,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 50
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212174",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-136",
+    "kode_kemenkes": "1209021",
+    "nama": "RS Umum Laras Kabupaten Simalungun",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 4,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1209021",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-137",
+    "kode_kemenkes": "1219002",
+    "nama": "RS Umum Lasmi Kartika",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 2,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 3,
+      "isolasi": 4,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 50
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1219002",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-138",
+    "kode_kemenkes": "1276074",
+    "nama": "RS Umum Latersia",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 3,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 10,
+      "hcu": 4,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "USG",
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1276074",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-139",
+    "kode_kemenkes": "1275909",
+    "nama": "RS Umum Madani",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 8,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 3,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 17,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 162
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275909",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-140",
+    "kode_kemenkes": "1212199",
+    "nama": "RS Umum Mahawira Prima Indonesia",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 2,
+      "icu_tanpa_ventilator": 4,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 101
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212199",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-141",
+    "kode_kemenkes": "1213062",
+    "nama": "RS Umum Mahkota Bidadari",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 9,
+      "icu_tanpa_ventilator": 3,
+      "nicu_dengan_ventilator": 5,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 22,
+      "hcu": 4,
+      "iccu": 0,
+      "total_tt_rawat_inap": 211
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1213062",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-142",
+    "kode_kemenkes": "1275633",
+    "nama": "RS Umum Martha Friska",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 8,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 1,
+      "picu_dengan_ventilator": 2,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 16,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 152
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275633",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-143",
+    "kode_kemenkes": "1275888",
+    "nama": "RS Umum Martha Friska Multatuli",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 8,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 28,
+      "hcu": 6,
+      "iccu": 0,
+      "total_tt_rawat_inap": 153
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275888",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-144",
+    "kode_kemenkes": "1275130",
+    "nama": "RS Umum Materna",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 6,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 60
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "USG",
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275130",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-145",
+    "kode_kemenkes": "1218024",
+    "nama": "RS Umum Melati",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 2,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 6,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 140
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1218024",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-146",
+    "kode_kemenkes": "1218029",
+    "nama": "RS Umum Melati Desa Pon",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 33
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1218029",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-147",
+    "kode_kemenkes": "1275126",
+    "nama": "RS Umum Methodist",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 4,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 1,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 10,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 109
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275126",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-148",
+    "kode_kemenkes": "1271032",
+    "nama": "RS Umum Metta Medika",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 102
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1271032",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-149",
+    "kode_kemenkes": "1212200",
+    "nama": "RS Umum Mitra Guray Petumbukan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 3,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 2,
+      "isolasi": 10,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 105
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212200",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-150",
+    "kode_kemenkes": "1275516",
+    "nama": "RS Umum Mitra Medika",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 9,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 6,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 9,
+      "hcu": 1,
+      "iccu": 0,
+      "total_tt_rawat_inap": 143
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275516",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-151",
+    "kode_kemenkes": "1212181",
+    "nama": "RS Umum Mitra Medika",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 10,
+      "icu_tanpa_ventilator": 4,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 9,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 1,
+      "iccu": 0,
+      "total_tt_rawat_inap": 223
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212181",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-152",
+    "kode_kemenkes": "1275923",
+    "nama": "RS Umum Mitra Medika Amplas",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 9,
+      "icu_tanpa_ventilator": 3,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 6,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 5,
+      "hcu": 1,
+      "iccu": 0,
+      "total_tt_rawat_inap": 197
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275923",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-153",
+    "kode_kemenkes": "1275011",
+    "nama": "RS Umum Mitra Medika Premiere",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 10,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 3,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 2,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 11,
+      "hcu": 1,
+      "iccu": 2,
+      "total_tt_rawat_inap": 153
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275011",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-154",
+    "kode_kemenkes": "1212175",
+    "nama": "RS Umum Mitra Sehat",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 2,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 2,
+      "isolasi": 10,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212175",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-155",
+    "kode_kemenkes": "1275298",
+    "nama": "RS Umum Mitra Sejati",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 14,
+      "icu_tanpa_ventilator": 6,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 2,
+      "picu_dengan_ventilator": 3,
+      "picu_tanpa_ventilator": 2,
+      "isolasi": 0,
+      "hcu": 4,
+      "iccu": 0,
+      "total_tt_rawat_inap": 260
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275298",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-156",
+    "kode_kemenkes": "1275885",
+    "nama": "RS Umum Muhammadiyah Sumatera Utara",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 3,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 1,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 4,
+      "hcu": 1,
+      "iccu": 0,
+      "total_tt_rawat_inap": 81
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275885",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-157",
+    "kode_kemenkes": "1275889",
+    "nama": "RS Umum Murni Teguh Memorial Hospital",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 18,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 4,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 6,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 56,
+      "iccu": 5,
+      "total_tt_rawat_inap": 356
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275889",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-158",
+    "kode_kemenkes": "1275100",
+    "nama": "RS Umum Murni Teguh Methodist Susanna Wesley",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 12,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 4,
+      "nicu_tanpa_ventilator": 8,
+      "picu_dengan_ventilator": 4,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 8,
+      "hcu": 8,
+      "iccu": 0,
+      "total_tt_rawat_inap": 203
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275100",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-159",
+    "kode_kemenkes": "1274061",
+    "nama": "RS Umum Natama",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 3,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 1,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 3,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 65
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1274061",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-160",
+    "kode_kemenkes": "1206063",
+    "nama": "RS Umum Nuraini",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 4,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 1,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 70
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1206063",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-161",
+    "kode_kemenkes": "1218026",
+    "nama": "RS Umum Pabatu",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 2,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 3,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 94
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1218026",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-162",
+    "kode_kemenkes": "1212185",
+    "nama": "RS Umum Pancur Batu",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 2,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 2,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212185",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-163",
+    "kode_kemenkes": "1212172",
+    "nama": "RS Umum Patar Asih",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 2,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 3,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212172",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-164",
+    "kode_kemenkes": "1208064",
+    "nama": "RS Umum Permata Hati",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 105
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1208064",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-165",
+    "kode_kemenkes": "1202028",
+    "nama": "RS Umum Permata Madina Panyabungan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 3,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 10,
+      "hcu": 1,
+      "iccu": 0,
+      "total_tt_rawat_inap": 108
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1202028",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-166",
+    "kode_kemenkes": "1221002",
+    "nama": "RS Umum Permata Madina Sibuhuan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 6,
+      "hcu": 4,
+      "iccu": 0,
+      "total_tt_rawat_inap": 76
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1221002",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-167",
+    "kode_kemenkes": "1213035",
+    "nama": "RS Umum Pertamina Pangkalan Brandan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 2,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 12,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1213035",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-168",
+    "kode_kemenkes": "1275600",
+    "nama": "RS Umum Prima Husada Cipta Medan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 4,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 2,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 115
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275600",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-169",
+    "kode_kemenkes": "1275750",
+    "nama": "RS Umum Prof. Dr. Boloni",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 3,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 7,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275750",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-170",
+    "kode_kemenkes": "1213024",
+    "nama": "RS Umum PTP II Tg Selamat",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 2,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 8,
+      "hcu": 3,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1213024",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-171",
+    "kode_kemenkes": "1275655",
+    "nama": "RS Umum Pusat H. Adam Malik",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 15,
+      "icu_tanpa_ventilator": 68,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 8,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 6,
+      "hcu": 20,
+      "iccu": 10,
+      "total_tt_rawat_inap": 777
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275655",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-172",
+    "kode_kemenkes": "1213059",
+    "nama": "RS Umum Putri Bidadari",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 14,
+      "icu_tanpa_ventilator": 5,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 8,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 35,
+      "hcu": 5,
+      "iccu": 3,
+      "total_tt_rawat_inap": 344
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1213059",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-173",
+    "kode_kemenkes": "1212171",
+    "nama": "RS Umum Rahmad Hidayah",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 2,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 2,
+      "isolasi": 4,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212171",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-174",
+    "kode_kemenkes": "1276076",
+    "nama": "RS Umum Ratu Mas",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 3,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 3,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 6,
+      "hcu": 3,
+      "iccu": 0,
+      "total_tt_rawat_inap": 51
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1276076",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-175",
+    "kode_kemenkes": "1275935",
+    "nama": "RS Umum Royal Maternity",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 3,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 2,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 4,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 51
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275935",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-176",
+    "kode_kemenkes": "1275907",
+    "nama": "RS Umum Royal Prima",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 19,
+      "icu_tanpa_ventilator": 9,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 8,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 3,
+      "isolasi": 0,
+      "hcu": 4,
+      "iccu": 0,
+      "total_tt_rawat_inap": 429
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275907",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-177",
+    "kode_kemenkes": "1275936",
+    "nama": "RS Umum Royal Prima Marelan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 6,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 7,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 122
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275936",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-178",
+    "kode_kemenkes": "1275072",
+    "nama": "RS Umum Santa Elisabeth Medan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 13,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 4,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 4,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 208
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275072",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-179",
+    "kode_kemenkes": "1275724",
+    "nama": "RS Umum Sarah",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 2,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 3,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 50
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275724",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-180",
+    "kode_kemenkes": "1212093",
+    "nama": "RS Umum Sari Mutiara Lubuk Pakam",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 5,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 104
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212093",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-181",
+    "kode_kemenkes": "1218025",
+    "nama": "RS Umum Sawit Indah Perbaungan",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 2,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 1,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 3,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 50
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1218025",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-182",
+    "kode_kemenkes": "1212045",
+    "nama": "RS Umum Sembiring Deli Tua",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 25,
+      "icu_tanpa_ventilator": 9,
+      "nicu_dengan_ventilator": 42,
+      "nicu_tanpa_ventilator": 16,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 709
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212045",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-183",
+    "kode_kemenkes": "1210021",
+    "nama": "RS Umum Serenapita",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 1,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 2,
+      "isolasi": 4,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 41
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1210021",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-184",
+    "kode_kemenkes": "1208056",
+    "nama": "RS Umum Setio Husodo",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 4,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 6,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 114
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1208056",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-185",
+    "kode_kemenkes": "1275911",
+    "nama": "RS Umum Siloam Dhirga Surya",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 9,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 2,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 8,
+      "hcu": 6,
+      "iccu": 0,
+      "total_tt_rawat_inap": 208
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "USG",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275911",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-186",
+    "kode_kemenkes": "1211033",
+    "nama": "RS Umum Simalem",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 2,
+      "icu_tanpa_ventilator": 4,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 2,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 87
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1211033",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-187",
+    "kode_kemenkes": "1212136",
+    "nama": "RS Umum Sinar Husni",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 2,
+      "icu_tanpa_ventilator": 4,
+      "nicu_dengan_ventilator": 3,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212136",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-188",
+    "kode_kemenkes": "1205142",
+    "nama": "RS Umum Sint Lucia",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 2,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 1,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 4,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 50
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1205142",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-189",
+    "kode_kemenkes": "1274034",
+    "nama": "RS Umum Sri Pamela",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 10,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 3,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 12,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 169
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Hemodialisis",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1274034",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-190",
+    "kode_kemenkes": "1275702",
+    "nama": "RS Umum Sri Ratu",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 3,
+      "icu_tanpa_ventilator": 3,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 3,
+      "hcu": 1,
+      "iccu": 0,
+      "total_tt_rawat_inap": 78
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275702",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-191",
+    "kode_kemenkes": "1214011",
+    "nama": "RS Umum Stella Maris",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 3,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 1,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 6,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 50
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1214011",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-192",
+    "kode_kemenkes": "1275265",
+    "nama": "RS Umum Sundari",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 7,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 2,
+      "nicu_tanpa_ventilator": 7,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 145
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275265",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-193",
+    "kode_kemenkes": "1276077",
+    "nama": "RS Umum Sylvani",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 3,
+      "icu_tanpa_ventilator": 4,
+      "nicu_dengan_ventilator": 3,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 8,
+      "hcu": 1,
+      "iccu": 0,
+      "total_tt_rawat_inap": 181
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1276077",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-194",
+    "kode_kemenkes": "1275899",
+    "nama": "RS Umum Tere Margareth",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 6,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 3,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 3,
+      "isolasi": 4,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 104
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275899",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-195",
+    "kode_kemenkes": "1273106",
+    "nama": "RS Umum Tiara Kasih Sejati",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 4,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 3,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 10,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 99
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1273106",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-196",
+    "kode_kemenkes": "1274062",
+    "nama": "RS Umum Universitas Prima Indonesia",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 3,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 5,
+      "hcu": 1,
+      "iccu": 0,
+      "total_tt_rawat_inap": 52
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1274062",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-197",
+    "kode_kemenkes": "1208066",
+    "nama": "RS Umum Utama",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 2,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 2,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 66
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1208066",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-198",
+    "kode_kemenkes": "1275276",
+    "nama": "RS Umum Vina Estetica",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 100
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275276",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-199",
+    "kode_kemenkes": "1273055",
+    "nama": "RS Umum Vita Insani",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 22,
+      "icu_tanpa_ventilator": 4,
+      "nicu_dengan_ventilator": 8,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 10,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 1,
+      "iccu": 0,
+      "total_tt_rawat_inap": 254
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "CT Scan",
+      "USG",
+      "Radiologi",
+      "Hemodialisis",
+      "Laboratorium Klinik",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1273055",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-200",
+    "kode_kemenkes": "1213058",
+    "nama": "RS Umum Wampu Norita",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 3,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 6,
+      "hcu": 1,
+      "iccu": 0,
+      "total_tt_rawat_inap": 50
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1213058",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-201",
+    "kode_kemenkes": "1208057",
+    "nama": "RS Umum Wira Husada",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 7,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 3,
+      "picu_dengan_ventilator": 1,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 8,
+      "hcu": 1,
+      "iccu": 0,
+      "total_tt_rawat_inap": 117
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1208057",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-202",
+    "kode_kemenkes": "1275830",
+    "nama": "RS Umum Wulan Windy",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 15,
+      "icu_tanpa_ventilator": 6,
+      "nicu_dengan_ventilator": 1,
+      "nicu_tanpa_ventilator": 1,
+      "picu_dengan_ventilator": 9,
+      "picu_tanpa_ventilator": 9,
+      "isolasi": 25,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 297
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275830",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-203",
+    "kode_kemenkes": "1212177",
+    "nama": "RS Umum Yoshua",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 5,
+      "icu_tanpa_ventilator": 1,
+      "nicu_dengan_ventilator": 3,
+      "nicu_tanpa_ventilator": 4,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 4,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 102
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1212177",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-204",
+    "kode_kemenkes": "1275152",
+    "nama": "RSAU Dr. Abdul Malik",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 3,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 2,
+      "iccu": 0,
+      "total_tt_rawat_inap": 52
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1275152",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-205",
+    "kode_kemenkes": "1271075",
+    "nama": "RSU Herna",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 7,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 2,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 1,
+      "isolasi": 2,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 104
+    },
+    "fasilitas_diagnostik_terlapor": [
+      "Radiologi",
+      "Kamar Bedah / Operasi",
+      "Instalasi Farmasi"
+    ],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1271075",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  },
+  {
+    "id_carisehat": "rs-206",
+    "kode_kemenkes": "1201027",
+    "nama": "UPTD Rumah Sakit Pratama Nias",
+    "ruang_perawatan_kritis_terlapor": {
+      "icu_dengan_ventilator": 0,
+      "icu_tanpa_ventilator": 0,
+      "nicu_dengan_ventilator": 0,
+      "nicu_tanpa_ventilator": 0,
+      "picu_dengan_ventilator": 0,
+      "picu_tanpa_ventilator": 0,
+      "isolasi": 0,
+      "hcu": 0,
+      "iccu": 0,
+      "total_tt_rawat_inap": 16
+    },
+    "fasilitas_diagnostik_terlapor": [],
+    "sumber_bukti": "https://sirs.kemkes.go.id/fo/home/profile_rs/1201027",
+    "tanggal_pemeriksaan": "2026-11-20T00:00:00+07:00",
+    "disclaimer": "Fasilitas fisik dan kapasitas tempat tidur berdasarkan laporan administratif faskes di SIRS Kemenkes, bukan ketersediaan ruangan kosong real-time."
+  }
+]

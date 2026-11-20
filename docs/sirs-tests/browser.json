@@ -1,0 +1,7 @@
+[
+  "PASS 35 curated service choices; clinical labels withheld",
+  "PASS live service filter and detail provenance",
+  "PASS Leaflet map initialized",
+  "PASS deterministic chatbot identifies reported SIRS source",
+  "PASS no uncaught JavaScript errors"
+]

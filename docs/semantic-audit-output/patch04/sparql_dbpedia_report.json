@@ -1,0 +1,117 @@
+{
+  "checked_utc": "2026-11-20T05:25:04.851144+00:00",
+  "scope": "runtime SELECT only; no updates; DBpedia availability not guaranteed",
+  "fuseki_endpoint": "http://localhost:3030/hospital/query",
+  "dbpedia_endpoint": "https://dbpedia.org/sparql",
+  "internal": {
+    "hospital_count": {
+      "status": "PASS",
+      "rows": [
+        {
+          "count": "206"
+        }
+      ],
+      "elapsed_ms": 2078,
+      "count": 206,
+      "expected": 206
+    },
+    "cities_count": {
+      "status": "PASS",
+      "rows": [
+        {
+          "count": "33"
+        }
+      ],
+      "elapsed_ms": 32,
+      "count": 33,
+      "expected": 33
+    },
+    "linked_regions": {
+      "status": "PASS",
+      "rows": [
+        {
+          "count": "34"
+        }
+      ],
+      "elapsed_ms": 0,
+      "count": 34,
+      "expected": 34
+    },
+    "hospital_sample": {
+      "status": "PASS",
+      "rows": [
+        {
+          "rs": "http://localhost:8000/rs/rs-001",
+          "name": "Og Hospital",
+          "cityName": "Kota Binjai"
+        },
+        {
+          "rs": "http://localhost:8000/rs/rs-002",
+          "name": "RS AL Dr. Komang Makes Belawan",
+          "cityName": "Kota Medan"
+        },
+        {
+          "rs": "http://localhost:8000/rs/rs-003",
+          "name": "RS Bhayangkara Tingkat II Medan",
+          "cityName": "Kota Medan"
+        }
+      ],
+      "elapsed_ms": 15
+    },
+    "regional_grouping": {
+      "status": "PASS",
+      "rows": [
+        {
+          "cityName": "Kota Medan",
+          "count": "66"
+        },
+        {
+          "cityName": "Kab. Deli Serdang",
+          "count": "26"
+        },
+        {
+          "cityName": "Kota Binjai",
+          "count": "10"
+        },
+        {
+          "cityName": "Kota Pematang Siantar",
+          "count": "10"
+        },
+        {
+          "cityName": "Kab. Asahan",
+          "count": "9"
+        }
+      ],
+      "elapsed_ms": 16
+    },
+    "linked_hospital_example": {
+      "status": "PASS",
+      "rows": [
+        {
+          "name": "Og Hospital",
+          "cityName": "Kota Binjai",
+          "dbpedia": "http://dbpedia.org/resource/Binjai"
+        },
+        {
+          "name": "RS AL Dr. Komang Makes Belawan",
+          "cityName": "Kota Medan",
+          "dbpedia": "http://dbpedia.org/resource/Medan"
+        },
+        {
+          "name": "RS Bhayangkara Tingkat II Medan",
+          "cityName": "Kota Medan",
+          "dbpedia": "http://dbpedia.org/resource/Medan"
+        }
+      ],
+      "elapsed_ms": 16
+    }
+  },
+  "external": {
+    "status": "PASS",
+    "row_count": 1,
+    "sample_label": "Medan",
+    "elapsed_ms": 1281
+  },
+  "overall_internal": "PASS",
+  "overall_external": "PASS"
+}

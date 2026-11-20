@@ -128,6 +128,9 @@ def is_in_scope_whitelist(
     tl = normalize(raw_text)
     if not tl:
         return True
+    # Fuzzy name matches must not turn pet care or general medical advice into RS results.
+    if re.search(r"\b(kucing|anjing|kelinci|hewan|vaksin)\b", tl) and not re.search(r"\b(?:rs|rumah\s*sakit)\b", tl):
+        return False
 
     # 1. Quick reply resmi bot sendiri
     if tl in KNOWN_QUICK_REPLIES or any(tl == normalize(qr) for qr in KNOWN_QUICK_REPLIES):
@@ -192,8 +195,8 @@ def is_in_scope_whitelist(
     if state and (state.get("filters") or state.get("last_hospital_ids")):
         follow_up_starts = [
             "yang ", "kalau ", "bagaimana ", "berapa ", "ada ", "apakah ",
-            "bisa ", "lanjut", "lainnya", "lihat lainnya", "alamatnya", "teleponnya",
-            "terima bpjs", "punya icu", "kelas "
+            "bisa ", "lanjut", "lainnya", "lihat lainnya", "selanjutnya", "berikutnya", "alamatnya", "teleponnya",
+            "terima bpjs", "punya icu", "kelas ", "jaraknya", "seberapa jauh"
         ]
         if any(tl.startswith(c) or f" {c} " in tl for c in follow_up_starts):
             return True
