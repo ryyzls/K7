@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { createPortal } from 'react-dom';
-import { getAllHospitals, getCityInfo } from '../api';
+import { getAllHospitals } from '../api';
 import { FACILITY_ICON, KELAS_DESCRIPTION, SERVICE_META } from '../constants';
 import { useApp } from '../context/AppContext';
 import {
@@ -16,14 +16,12 @@ import {
 import SiteHeader from '../components/SiteHeader';
 import LeafletMap from '../components/LeafletMap';
 import BookingForm from '../components/BookingForm';
-import KnowledgeGraphModal from '../components/KnowledgeGraphModal';
 import { MinimalFooter } from '../components/Footer';
 
 const TABS = [
   { id: 'profil', label: 'Profil', icon: 'clinical_notes' },
   { id: 'fasilitas', label: 'Layanan & Fasilitas', icon: 'stethoscope' },
   { id: 'booking', label: 'Booking Simulasi', icon: 'bed' },
-  { id: 'semantik', label: 'Web Semantik', icon: 'account_tree' },
 ];
 
 function Gallery({ hospital }) {
@@ -193,10 +191,6 @@ export default function DetailPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [tab, setTab] = useState('profil');
-  const [graphOpen, setGraphOpen] = useState(false);
-  const [cityInfo, setCityInfo] = useState(null);
-  const [cityLoading, setCityLoading] = useState(false);
-  const [cityError, setCityError] = useState('');
 
   useEffect(() => {
     let cancelled = false;
@@ -204,15 +198,13 @@ export default function DetailPage() {
     setError('');
     setHospital(null);
     setTab('profil');
-    setCityInfo(null);
-    setCityError('');
 
     getAllHospitals()
       .then((items) => {
         if (cancelled) return;
         const found = items.find((item) => item.id === id);
         if (found) setHospital(found);
-        else setError('Rumah sakit tidak ditemukan dalam katalog semantik.');
+        else setError('Rumah sakit tidak ditemukan.');
       })
       .catch((err) => {
         if (!cancelled) setError(err.message);
@@ -225,15 +217,6 @@ export default function DetailPage() {
       cancelled = true;
     };
   }, [id]);
-
-  useEffect(() => {
-    if (tab !== 'semantik' || !hospital || cityInfo || cityLoading || cityError) return;
-    setCityLoading(true);
-    getCityInfo(hospital.kabkota)
-      .then((data) => setCityInfo(data))
-      .catch((err) => setCityError(err.message))
-      .finally(() => setCityLoading(false));
-  }, [tab, hospital, cityInfo, cityLoading, cityError]);
 
   if (loading) {
     return (
@@ -310,12 +293,6 @@ export default function DetailPage() {
       /* user cancelled share */
     }
   };
-
-  const semanticLinks = [
-    { href: `/rs/${encodeURIComponent(hospital.id)}`, icon: 'open_in_new', title: 'Halaman semantik', note: 'RDFa + OGP' },
-    { href: `/rs/${encodeURIComponent(hospital.id)}.rdf`, icon: 'download', title: 'Unduh RDF/XML', note: '.rdf' },
-    { href: `/rs/${encodeURIComponent(hospital.id)}.ttl`, icon: 'download', title: 'Unduh Turtle', note: '.ttl' },
-  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -730,155 +707,6 @@ export default function DetailPage() {
                 <BookingForm hospital={hospital} />
               </div>
             ) : null}
-
-            {tab === 'semantik' ? (
-              <div className="animate-fade-in space-y-7">
-                <div>
-                  <h2 className="text-2xl font-bold tracking-tight text-[#0F172A]">
-                    Integrasi Web Semantik &amp; Linked Data
-                  </h2>
-                  <p className="mt-1.5 max-w-3xl text-sm leading-relaxed text-slate-500">
-                    Data rumah sakit ini dimodelkan dalam ontologi RDF/OWL dan terhubung ke ekosistem
-                    Linked Open Data global melalui DBpedia, Schema.org, dan W3C.
-                  </p>
-                </div>
-
-                <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                  <p className="text-[10.5px] font-bold uppercase tracking-wider text-slate-400">
-                    URI entitas
-                  </p>
-                  <div className="mt-1.5 flex items-start gap-2">
-                    <code className="min-w-0 flex-1 break-all rounded-lg bg-white px-3 py-2 font-mono text-[11px] text-brand-navy ring-1 ring-slate-200">
-                      {hospital.uri || `https://carisehat.id/rs/${hospital.id}`}
-                    </code>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        navigator.clipboard?.writeText(hospital.uri || '');
-                        toast('URI disalin.', 'success');
-                      }}
-                      className="shrink-0 rounded-lg border border-slate-300 bg-white px-2.5 py-2 text-[10.5px] font-semibold text-slate-600 transition hover:bg-slate-100"
-                    >
-                      Salin
-                    </button>
-                  </div>
-                </div>
-
-                <div className="grid gap-3 sm:grid-cols-3">
-                  {semanticLinks.map((link) => (
-                    <a
-                      key={link.title}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group rounded-xl border border-slate-200 bg-white p-4 transition hover:border-brand-blue/40 hover:shadow-sm"
-                    >
-                      <span className="material-symbols-outlined text-[22px] text-brand-blue">
-                        {link.icon}
-                      </span>
-                      <p className="mt-2 text-xs font-bold text-slate-800 group-hover:text-brand-blue">
-                        {link.title}
-                      </p>
-                      <p className="mt-0.5 font-mono text-[10px] text-slate-400">{link.note}</p>
-                    </a>
-                  ))}
-                </div>
-
-                <div className="flex flex-wrap gap-2.5">
-                  <button
-                    type="button"
-                    onClick={() => setGraphOpen(true)}
-                    className="inline-flex items-center gap-1.5 rounded-full bg-brand-navy px-4 py-2.5 text-xs font-semibold text-white transition hover:bg-brand-blue"
-                  >
-                    <span className="material-symbols-outlined text-[17px]">hub</span>
-                    Buka graf pengetahuan
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setCityLoading(true);
-                      setCityError('');
-                      getCityInfo(hospital.kabkota)
-                        .then((data) => setCityInfo(data))
-                        .catch((err) => setCityError(err.message))
-                        .finally(() => setCityLoading(false));
-                    }}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-slate-300 px-4 py-2.5 text-xs font-semibold text-slate-700 transition hover:bg-slate-50"
-                  >
-                    <span className="material-symbols-outlined text-[17px]">public</span>
-                    Muat DBpedia {hospital.kabkota}
-                  </button>
-                  <a
-                    href={`https://www.wikidata.org/w/index.php?search=${encodeURIComponent(hospital.nama)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-full border border-slate-300 px-4 py-2.5 text-xs font-semibold text-slate-700 transition hover:bg-slate-50"
-                  >
-                    <span className="material-symbols-outlined text-[17px]">travel_explore</span>
-                    Cari di Wikidata
-                  </a>
-                </div>
-
-                <div className="rounded-xl border border-teal-200 bg-teal-50/70 p-4">
-                  <p className="flex items-center gap-1.5 text-xs font-bold text-teal-800">
-                    <span className="material-symbols-outlined text-[17px]">public</span>
-                    Data eksternal DBpedia
-                  </p>
-                  {cityLoading ? (
-                    <p className="mt-2 flex items-center gap-2 text-xs text-teal-700">
-                      <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-teal-300 border-t-teal-700" />
-                      Memuat data dari DBpedia...
-                    </p>
-                  ) : cityError ? (
-                    <p className="mt-2 text-xs text-rose-700">Gagal menghubungi DBpedia: {cityError}</p>
-                  ) : cityInfo?.status === 'ok' && cityInfo.abstract ? (
-                    <>
-                      <p className="mt-2 text-[12.5px] leading-relaxed text-teal-900">
-                        {String(cityInfo.abstract).slice(0, 320)}
-                        {String(cityInfo.abstract).length > 320 ? '…' : ''}
-                      </p>
-                      {cityInfo.dbpedia_resource ? (
-                        <a
-                          href={cityInfo.dbpedia_resource}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-teal-800 underline"
-                        >
-                          Lihat resource DBpedia
-                          <span className="material-symbols-outlined text-[13px]">open_in_new</span>
-                        </a>
-                      ) : null}
-                    </>
-                  ) : (
-                    <p className="mt-2 text-xs text-teal-700">
-                      Data eksternal DBpedia untuk wilayah ini belum tersedia.
-                    </p>
-                  )}
-                </div>
-
-                <div className="overflow-hidden rounded-xl bg-slate-950">
-                  <div className="flex items-center justify-between border-b border-white/10 px-4 py-2.5">
-                    <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">
-                      Contoh triplet RDF
-                    </p>
-                    <span className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-[9px] text-white/50">
-                      Turtle
-                    </span>
-                  </div>
-                  <pre className="overflow-x-auto p-4 font-mono text-[10.5px] leading-relaxed text-slate-300">
-                    <code>{`@prefix hf: <https://carisehat.id/onto#> .
-@prefix schema: <https://schema.org/> .
-
-<${hospital.uri || `https://carisehat.id/rs/${hospital.id}`}>
-  a hf:RumahSakit ;
-  schema:name "${hospital.nama}" ;
-  hf:kelas "${hospital.kelas || '—'}" ;
-  hf:jenis "${hospital.jenis || '—'}" ;
-  hf:beradaDiKabupatenKota "${hospital.kabkota || '—'}" .`}</code>
-                  </pre>
-                </div>
-              </div>
-            ) : null}
           </div>
 
           {/* Sidebar */}
@@ -1045,7 +873,6 @@ export default function DetailPage() {
       </main>
 
       <MinimalFooter />
-      <KnowledgeGraphModal hospital={hospital} open={graphOpen} onClose={() => setGraphOpen(false)} />
     </div>
   );
 }
