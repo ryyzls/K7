@@ -177,7 +177,20 @@ export default function SearchPage() {
       <main className="flex-1">
         {/* Page header */}
         <section className="border-b border-slate-200 bg-white">
-          <div className="mx-auto max-w-7xl px-4 py-7 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
+            {/* Tombol Kembali ke Halaman Utama */}
+            <div className="mb-4">
+              <Link
+                to="/"
+                className="group inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-brand-navy hover:bg-slate-50 hover:text-brand-navy"
+              >
+                <span className="material-symbols-outlined text-[17px] transition-transform group-hover:-translate-x-1">
+                  arrow_back
+                </span>
+                <span>Kembali ke Halaman Utama</span>
+              </Link>
+            </div>
+
             {/* Omnibox Pencarian Langsung */}
             <form onSubmit={handleSearchSubmit} className="flex flex-col gap-2.5 sm:flex-row sm:items-center">
               <div className="relative flex-1">

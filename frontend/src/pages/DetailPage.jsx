@@ -316,17 +316,30 @@ export default function DetailPage() {
       <SiteHeader active="direktori" initialQuery="" />
 
       <main className="mx-auto max-w-[1280px] px-4 pb-16 pt-5 sm:px-6 lg:px-8">
-        <nav className="mb-4 flex items-center gap-1 text-[11px] text-slate-500" aria-label="Breadcrumb">
-          <Link to="/" className="hover:text-brand-blue">
-            Beranda
-          </Link>
-          <span className="material-symbols-outlined text-[14px] text-slate-300">chevron_right</span>
-          <Link to="/pencarian" className="hover:text-brand-blue">
-            Direktori
-          </Link>
-          <span className="material-symbols-outlined text-[14px] text-slate-300">chevron_right</span>
-          <span className="truncate font-medium text-slate-700">{hospital.nama}</span>
-        </nav>
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+          <button
+            type="button"
+            onClick={() => navigate(-1)}
+            className="group inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-brand-navy hover:bg-slate-50 hover:text-brand-navy"
+          >
+            <span className="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">
+              arrow_back
+            </span>
+            <span>Kembali</span>
+          </button>
+
+          <nav className="flex items-center gap-1 text-[11px] text-slate-500" aria-label="Breadcrumb">
+            <Link to="/" className="hover:text-brand-blue">
+              Beranda
+            </Link>
+            <span className="material-symbols-outlined text-[14px] text-slate-300">chevron_right</span>
+            <Link to="/pencarian" className="hover:text-brand-blue">
+              Direktori
+            </Link>
+            <span className="material-symbols-outlined text-[14px] text-slate-300">chevron_right</span>
+            <span className="truncate font-medium text-slate-700">{hospital.nama}</span>
+          </nav>
+        </div>
 
         {/* Title */}
         <section className="flex flex-col gap-3 pb-6">
