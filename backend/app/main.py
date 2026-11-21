@@ -8,6 +8,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy.exc import SQLAlchemyError
+from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from app.config import settings
 from app.database.connection import engine
@@ -16,6 +17,21 @@ from app.routers import api, booking, chat, semantic
 from app.services.rdf_loader import load_all
 
 log = logging.getLogger("carisehat")
+
+
+class SPAStaticFiles(StaticFiles):
+    """StaticFiles yang mengembalikan index.html untuk rute SPA (mis. /pencarian)."""
+
+    async def get_response(self, path: str, scope):
+        try:
+            response = await super().get_response(path, scope)
+        except StarletteHTTPException as exc:
+            if exc.status_code != 404 or "." in Path(path).name:
+                raise
+            return await super().get_response("index.html", scope)
+        if response.status_code == 404 and "." not in Path(path).name:
+            return await super().get_response("index.html", scope)
+        return response
 
 
 async def _boot():
@@ -50,5 +66,9 @@ app.include_router(api.router)
 app.include_router(booking.router)
 app.include_router(chat.router)
 app.include_router(semantic.router)
-if Path(settings.frontend_dir).exists():  # harus terakhir: melayani "/" dan file statis
-    app.mount("/", StaticFiles(directory=settings.frontend_dir, html=True), name="frontend")
+frontend_path = Path(settings.frontend_dir)
+dist_path = frontend_path / "dist"
+serve_dir = str(dist_path) if (dist_path / "index.html").exists() else str(frontend_path)
+if Path(serve_dir).exists():  # harus terakhir: melayani "/" dan file statis
+    app.mount("/", SPAStaticFiles(directory=serve_dir, html=True), name="frontend")
+

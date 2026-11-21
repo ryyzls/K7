@@ -1,6 +1,7 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict'),fs=require('fs'),vm=require('node:vm');
-const s=fs.readFileSync('frontend/index.html','utf8').replace(/\r\n/g,'\n');
+const targetFile = fs.existsSync('frontend/index.legacy.html') ? 'frontend/index.legacy.html' : 'frontend/index.html';
+const s=fs.readFileSync(targetFile,'utf8').replace(/\r\n/g,'\n');
 const fn=(name,end)=>s.slice(s.indexOf('function '+name+'('),s.indexOf(end,s.indexOf('function '+name+'(')));
 test('inline JavaScript syntax',()=>{for(const m of s.matchAll(/<script(?:\s[^>]*)?>(?<c>[\s\S]*?)<\/script>/g))if(m.groups.c.trim())new vm.Script(m.groups.c);});
 for(const word of ["RS O'Connor",'','Adam Malik'])test('hero submits exactly once: '+word,()=>{let calls=0;const fields={'#hero-q':{value:word},'#q':{value:'old'}};const ctx={$:x=>fields[x],t:1,clearTimeout(){},search(){calls++},document:{getElementById(){return null}}};vm.createContext(ctx);vm.runInContext(fn('goToExplorer','/* ============ Toast'),ctx);ctx.goToExplorer();assert.equal(calls,1);assert.equal(fields['#q'].value,word);});

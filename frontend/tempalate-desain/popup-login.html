@@ -1,0 +1,194 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>MediGraph ID - Masuk atau Daftar</title>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Poppins & DM Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&amp;family=Poppins:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#012D61',
+              primary: '#0A3B75',
+              emerald: '#10B981',
+              surface: '#F8FAFC',
+            }
+          },
+          fontFamily: {
+            heading: ['Poppins', 'sans-serif'],
+            body: ['"DM Sans"', 'sans-serif'],
+          },
+          borderRadius: {
+            '4xl': '2rem',
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="typography">
+    body {
+      font-family: 'DM Sans', sans-serif;
+    }
+    h1, h2, h3, .font-heading {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+<style data-purpose="visual-effects">
+    /* Subtle realistic elevation for modal card */
+    .modal-shadow {
+      box-shadow: 0 24px 60px -12px rgba(1, 45, 97, 0.22), 0 12px 28px -6px rgba(15, 23, 42, 0.15);
+    }
+    /* Backdrop blur styling */
+    .backdrop-blur-overlay {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body class="bg-slate-900 text-slate-800 antialiased min-h-screen relative overflow-hidden select-none">
+<!-- BEGIN: BackgroundHospitalContext -->
+<!-- Simulated underlying platform interface (Faskes Directory & Geospatial Network) -->
+<div class="fixed inset-0 w-full h-full overflow-hidden pointer-events-none filter brightness-75 scale-100" data-purpose="underlying-app-canvas">
+<!-- Top Navigation Bar Background -->
+<header class="w-full bg-white/90 border-b border-slate-200 px-8 py-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-[#012D61] flex items-center justify-center text-white font-bold text-lg">M</div>
+<span class="text-xl font-heading font-bold text-[#012D61]">MediGraph<span class="text-emerald-500">.ID</span></span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-72 h-10 bg-slate-100 rounded-full border border-slate-200"></div>
+<div class="w-24 h-10 bg-blue-50 rounded-full"></div>
+</div>
+</header>
+<!-- Synthetic Map & Medical Cards Background Area -->
+<main class="p-8 max-w-7xl mx-auto grid grid-cols-12 gap-6 opacity-60">
+<div class="col-span-8 bg-slate-200/80 rounded-3xl h-[650px] p-6 border border-slate-300 relative overflow-hidden flex flex-col justify-between">
+<div class="flex justify-between items-center">
+<div class="bg-white px-4 py-2 rounded-xl shadow-sm font-semibold text-slate-700">Peta Jaringan Faskes Nasional &amp; IGD Rujukan</div>
+<div class="flex gap-2">
+<span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-blue-500 inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+</div>
+</div>
+<!-- Mock nodes on map -->
+<div class="relative w-full h-80">
+<div class="absolute top-12 left-24 p-3 bg-white rounded-2xl shadow-lg border border-slate-200 text-xs font-semibold">RSUP Nasional Cipto Mangunkusumo <span class="text-emerald-600 block">Kapasitas IGD: 92%</span></div>
+<div class="absolute top-36 right-32 p-3 bg-white rounded-2xl shadow-lg border border-slate-200 text-xs font-semibold">RS Jantung Harapan Kita <span class="text-emerald-600 block">Tersedia: 8 Bed ICU</span></div>
+<div class="absolute bottom-16 left-60 p-3 bg-white rounded-2xl shadow-lg border border-slate-200 text-xs font-semibold">RS Universitas Indonesia <span class="text-blue-600 block">Terverifikasi BPJS</span></div>
+</div>
+</div>
+<div class="col-span-4 space-y-4">
+<div class="bg-white/80 rounded-2xl p-5 border border-slate-200 shadow-sm h-48"></div>
+<div class="bg-white/80 rounded-2xl p-5 border border-slate-200 shadow-sm h-48"></div>
+<div class="bg-white/80 rounded-2xl p-5 border border-slate-200 shadow-sm h-48"></div>
+</div>
+</main>
+</div>
+<!-- END: BackgroundHospitalContext -->
+<!-- BEGIN: ModalOverlayWrapper -->
+<!-- Dark translucent overlay matching exact reference screenshot mood -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/60 backdrop-blur-overlay" data-purpose="auth-modal-wrapper">
+<!-- BEGIN: ModalDialogCard -->
+<div aria-labelledby="modal-title" aria-modal="true" class="relative w-full max-w-[480px] bg-white rounded-[32px] sm:rounded-[36px] p-7 sm:p-10 modal-shadow transition-all duration-300 transform scale-100 animate-in fade-in zoom-in-95" data-purpose="auth-dialog-card" role="dialog">
+<!-- BEGIN: CloseButton -->
+<!-- Circular dismiss button matching reference position and style -->
+<button aria-label="Tutup jendela" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-slate-300" data-purpose="modal-close-trigger" type="button">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewBox="0 0 24 24">
+<line x1="18" x2="6" y1="6" y2="18"></line>
+<line x1="6" x2="18" y1="6" y2="18"></line>
+</svg>
+</button>
+<!-- END: CloseButton -->
+<!-- BEGIN: BrandEmblem -->
+<!-- Stylized Medical Graph Crest echoing the mountain form in reference -->
+<div class="flex justify-center pt-2 pb-6" data-purpose="brand-icon-container">
+<div class="relative w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center">
+<svg class="w-full h-full transform transition-transform hover:scale-105 duration-200" fill="none" viewBox="0 0 84 84" xmlns="http://www.w3.org/2000/svg">
+<!-- Interconnected Network Cross Emblem -->
+<path d="M42 8L64 26L52 38L42 28L32 38L20 26L42 8Z" fill="#012D61"></path>
+<path d="M42 28L68 54L55 67L42 54L29 67L16 54L42 28Z" fill="#012D61" fill-opacity="0.95"></path>
+<path d="M42 45L56 59L49 66L42 59L35 66L28 59L42 45Z" fill="#10B981"></path>
+<!-- Central Node Sparkle -->
+<circle cx="42" cy="38" fill="#10B981" r="4.5" stroke="#FFFFFF" stroke-width="2.5"></circle>
+<circle cx="21" cy="27" fill="#012D61" r="3.5"></circle>
+<circle cx="63" cy="27" fill="#012D61" r="3.5"></circle>
+</svg>
+</div>
+</div>
+<!-- END: BrandEmblem -->
+<!-- BEGIN: HeaderCopy -->
+<div class="text-center mb-8 px-2" data-purpose="modal-header-copy">
+<h2 class="font-heading font-extrabold text-[23px] sm:text-[27px] leading-[1.28] tracking-tight text-slate-900 mb-2" id="modal-title">
+          Untuk menjelajahi faskes lengkap, masuk atau daftar gratis
+        </h2>
+<p class="text-slate-500 text-sm sm:text-[14.5px] leading-relaxed max-w-sm mx-auto">
+          Akses ketersediaan IGD real-time, rujukan BPJS, serta rekam faskes favorit Anda.
+        </p>
+</div>
+<!-- END: HeaderCopy -->
+<!-- BEGIN: SSOButtonsStack -->
+<!-- Pill buttons replicated with accurate proportions, icons, and subtle hover states -->
+<div class="space-y-3 sm:space-y-3.5 mb-8" data-purpose="social-login-actions">
+<!-- Button 1: Google -->
+<button class="w-full h-[52px] sm:h-[54px] rounded-full bg-slate-100 hover:bg-slate-200/90 active:scale-[0.99] text-slate-800 font-semibold text-[15px] sm:text-base flex items-center justify-center gap-3.5 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 px-6" data-purpose="sso-google" type="button">
+<!-- Google Official Multi-color SVG -->
+<svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"></path>
+</svg>
+<span>Lanjutkan dengan Google</span>
+</button>
+<!-- Button 2: Facebook -->
+<button class="w-full h-[52px] sm:h-[54px] rounded-full bg-slate-100 hover:bg-slate-200/90 active:scale-[0.99] text-slate-800 font-semibold text-[15px] sm:text-base flex items-center justify-center gap-3.5 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 px-6" data-purpose="sso-facebook" type="button">
+<!-- Facebook Official Blue SVG -->
+<svg class="w-5 h-5 flex-shrink-0" fill="#1877F2" viewBox="0 0 24 24">
+<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+</svg>
+<span>Lanjutkan dengan Facebook</span>
+</button>
+<!-- Button 3: Apple -->
+
+<!-- Button 4: Email -->
+<button class="w-full h-[52px] sm:h-[54px] rounded-full bg-slate-100 hover:bg-slate-200/90 active:scale-[0.99] text-slate-800 font-semibold text-[15px] sm:text-base flex items-center justify-center gap-3.5 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-300 px-6" data-purpose="sso-email" type="button">
+<!-- Email / Envelope Icon -->
+<svg class="w-5 h-5 flex-shrink-0 text-slate-700" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<rect height="16" rx="3" width="20" x="2" y="4"></rect>
+<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+</svg>
+<span>Lanjutkan dengan email</span>
+</button>
+</div>
+<!-- END: SSOButtonsStack -->
+<!-- BEGIN: LegalFooter -->
+<footer class="text-center px-4" data-purpose="terms-and-privacy">
+<p class="text-xs sm:text-[13px] text-slate-500 leading-relaxed">
+          Dengan melanjutkan ke MediGraph ID, Anda menyetujui 
+          <a class="text-slate-800 underline underline-offset-2 hover:text-[#012D61] font-medium transition-colors" href="#terms">
+            Ketentuan Layanan
+          </a> 
+          dan 
+          <a class="text-slate-800 underline underline-offset-2 hover:text-[#012D61] font-medium transition-colors" href="#privacy">
+            Kebijakan Privasi
+          </a>.
+        </p>
+</footer>
+<!-- END: LegalFooter -->
+</div>
+<!-- END: ModalDialogCard -->
+</div>
+<!-- END: ModalOverlayWrapper -->
+
+
+</body></html>
