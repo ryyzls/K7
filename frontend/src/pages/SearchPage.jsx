@@ -188,7 +188,67 @@ export default function SearchPage() {
         {/* Page header */}
         <section className="border-b border-slate-200 bg-white">
           <div className="mx-auto max-w-7xl px-4 py-7 sm:px-6 lg:px-8">
-            <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
+            {/* Omnibox Pencarian Langsung */}
+            <form onSubmit={handleSearchSubmit} className="flex flex-col gap-2.5 sm:flex-row sm:items-center">
+              <div className="relative flex-1">
+                <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
+                  <span className="material-symbols-outlined text-[20px]">search</span>
+                </span>
+                <input
+                  type="search"
+                  value={searchInput}
+                  onChange={handleSearchChange}
+                  placeholder="Cari nama rumah sakit, spesialisasi, tindakan, atau lokasi..."
+                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-3 pl-10 pr-10 text-sm font-medium text-slate-800 outline-none transition placeholder:text-slate-400 hover:bg-slate-100/70 focus:border-brand-blue focus:bg-white focus:ring-2 focus:ring-brand-blue/20"
+                  aria-label="Cari nama rumah sakit, spesialisasi, atau lokasi"
+                />
+                {searchInput ? (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSearchInput('');
+                      if (debounceRef.current) clearTimeout(debounceRef.current);
+                      updateParams({ q: '' });
+                    }}
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 transition hover:text-slate-700"
+                    title="Hapus pencarian"
+                  >
+                    <span className="material-symbols-outlined text-[18px]">close</span>
+                  </button>
+                ) : null}
+              </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  type="submit"
+                  className="inline-flex items-center justify-center gap-1.5 rounded-2xl bg-brand-navy px-5 py-3 text-xs font-bold text-white shadow-sm transition hover:bg-brand-blue"
+                >
+                  <span className="material-symbols-outlined text-[16px]">search</span>
+                  Cari
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setFilterOpen(true)}
+                  className={cn(
+                    'inline-flex items-center justify-center gap-1.5 rounded-2xl border px-4 py-3 text-xs font-bold shadow-sm transition',
+                    activeCount
+                      ? 'border-brand-blue bg-brand-blue text-white'
+                      : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50',
+                  )}
+                  title="Buka panel filter lengkap"
+                >
+                  <span className="material-symbols-outlined text-[16px]">tune</span>
+                  <span>Filter</span>
+                  {activeCount ? (
+                    <span className="rounded-full bg-white/20 px-1.5 text-[10px]">{activeCount}</span>
+                  ) : null}
+                </button>
+              </div>
+            </form>
+
+            {/* Judul & Hasil di bawah bar pencarian */}
+            <div className="mt-6 flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
               <div>
                 <h1 className="font-heading text-2xl font-extrabold tracking-tight text-brand-navy md:text-3xl">
                   Direktori Rumah Sakit Sumatera Utara
@@ -259,65 +319,6 @@ export default function SearchPage() {
                 </button>
               </div>
             </div>
-
-            {/* Omnibox Pencarian Langsung */}
-            <form onSubmit={handleSearchSubmit} className="mt-5 flex flex-col gap-2.5 sm:flex-row sm:items-center">
-              <div className="relative flex-1">
-                <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
-                  <span className="material-symbols-outlined text-[20px]">search</span>
-                </span>
-                <input
-                  type="search"
-                  value={searchInput}
-                  onChange={handleSearchChange}
-                  placeholder="Cari nama rumah sakit, spesialisasi, tindakan, atau lokasi..."
-                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-3 pl-10 pr-10 text-sm font-medium text-slate-800 outline-none transition placeholder:text-slate-400 hover:bg-slate-100/70 focus:border-brand-blue focus:bg-white focus:ring-2 focus:ring-brand-blue/20"
-                  aria-label="Cari nama rumah sakit, spesialisasi, atau lokasi"
-                />
-                {searchInput ? (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSearchInput('');
-                      if (debounceRef.current) clearTimeout(debounceRef.current);
-                      updateParams({ q: '' });
-                    }}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 transition hover:text-slate-700"
-                    title="Hapus pencarian"
-                  >
-                    <span className="material-symbols-outlined text-[18px]">close</span>
-                  </button>
-                ) : null}
-              </div>
-
-              <div className="flex items-center gap-2">
-                <button
-                  type="submit"
-                  className="inline-flex items-center justify-center gap-1.5 rounded-2xl bg-brand-navy px-5 py-3 text-xs font-bold text-white shadow-sm transition hover:bg-brand-blue"
-                >
-                  <span className="material-symbols-outlined text-[16px]">search</span>
-                  Cari
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setFilterOpen(true)}
-                  className={cn(
-                    'inline-flex items-center justify-center gap-1.5 rounded-2xl border px-4 py-3 text-xs font-bold shadow-sm transition',
-                    activeCount
-                      ? 'border-brand-blue bg-brand-blue text-white'
-                      : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50',
-                  )}
-                  title="Buka panel filter lengkap"
-                >
-                  <span className="material-symbols-outlined text-[16px]">tune</span>
-                  <span>Filter</span>
-                  {activeCount ? (
-                    <span className="rounded-full bg-white/20 px-1.5 text-[10px]">{activeCount}</span>
-                  ) : null}
-                </button>
-              </div>
-            </form>
 
             <div className="mt-4 flex flex-wrap items-center gap-2">
               <button
