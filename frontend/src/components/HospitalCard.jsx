@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { cn, telHref } from '../utils';
+import { cn, telHref, websiteHref } from '../utils';
 
 function initials(name) {
   return String(name || 'RS')
@@ -26,6 +26,7 @@ export default function HospitalCard({
   const shown = tags.slice(0, compact ? 2 : 3);
   const detailHref = `/rumah-sakit/${encodeURIComponent(hospital.id)}`;
   const phone = telHref(hospital.telepon);
+  const web = websiteHref(hospital.website);
 
   return (
     <article
@@ -154,11 +155,23 @@ export default function HospitalCard({
           {phone ? (
             <a
               href={phone}
-              className="inline-flex items-center justify-center gap-1 rounded-full border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-600 transition hover:bg-slate-50"
+              className="inline-flex items-center justify-center gap-1 rounded-full border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-rose-600"
               title={`Telepon ${hospital.telepon}`}
               aria-label={`Telepon ${hospital.nama}`}
             >
               <span className="material-symbols-outlined text-[14px]">call</span>
+            </a>
+          ) : null}
+          {web ? (
+            <a
+              href={web}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-1 rounded-full border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-brand-blue"
+              title={`Website ${hospital.nama}`}
+              aria-label={`Website ${hospital.nama}`}
+            >
+              <span className="material-symbols-outlined text-[14px]">language</span>
             </a>
           ) : null}
           <button

@@ -13,7 +13,8 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-002",
@@ -31,7 +32,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email Resmi: rumkitalkomangmakes@gmail.com",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-003",
@@ -41,13 +43,13 @@
     "email": "pengaduan@rumkitbhayangkaramedan.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "pengaduan@rumkitbhayangkaramedan.com",
-    "website_url": "https://rumkitbhayangkaramedan.com/",
+    "website_url": "https://rumkitbhayangkaramedan.com",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Website resmi Rumah Sakit Bhayangkara Tingkat II Medan Jl KH Wahid Hasyim No 1",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://rumkitbhayangkaramedan.com/",
+    "website_display": "https://rumkitbhayangkaramedan.com",
     "website_domain": "rumkitbhayangkaramedan.com",
     "email_evidence": "pengaduan@rumkitbhayangkaramedan.com (Email resmi pengaduan/layanan)",
     "email_checked_at": "2026-11-20"
@@ -66,23 +68,24 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-005",
     "kode_kemenkes": "1274058",
     "nama": "RS Bhayangkara Tk.III Kota Tebing Tinggi",
-    "telepon": "0621 - 326701",
+    "telepon": "0621-326701",
     "email": null,
     "email_status": "NOT_FOUND",
     "email_display": "Belum tersedia",
-    "website_url": "https://rsbhayangkaratebingtinggi.wordpress.com/",
+    "website_url": "https://rsbhayangkaratebingtinggi.wordpress.com",
     "website_status": "CORROBORATED",
     "website_scope": null,
     "website_evidence": "Situs/Blog Resmi RS Bhayangkara Tk. III Tebing Tinggi, Jl. Pahlawan No. 17 Tebing Tinggi",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://rsbhayangkaratebingtinggi.wordpress.com/",
+    "website_display": "https://rsbhayangkaratebingtinggi.wordpress.com",
     "website_domain": "rsbhayangkaratebingtinggi.wordpress.com"
   },
   {
@@ -101,7 +104,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email kontak RS Chevani Tebing Tinggi: rschevani175@gmail.com",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-007",
@@ -117,7 +121,8 @@
     "website_evidence": "https://columbiaasia.co.id/rs-columbia-asia-aksara/informasi-umum-aksara/",
     "website_notes": "Halaman cabang Aksara: nama, Medan Sumatera Utara, Letda Sujono LK X No 90 dan nomor 06188806888 cocok dengan RDF; bukan cabang Jalan Listrik.",
     "website_checked_at": "2026-11-19T14:15:52+00:00",
-    "website_display": "https://columbiaasia.co.id/rs-columbia-asia-aksara/informasi-umum-aksara/"
+    "website_display": "https://columbiaasia.co.id/rs-columbia-asia-aksara/informasi-umum-aksara/",
+    "website_domain": "columbiaasia.co.id"
   },
   {
     "id_carisehat": "rs-008",
@@ -133,7 +138,8 @@
     "website_evidence": "https://columbiaasia.co.id/hubungi-kami/",
     "website_notes": "Halaman cabang Medan dibuka. Halaman kontak jaringan mengonfirmasi Jalan Listrik No 2A, Medan Sumatera Utara dan 0614566368; berbeda dari cabang Aksara.",
     "website_checked_at": "2026-11-19T14:15:52+00:00",
-    "website_display": "https://columbiaasia.co.id/rs-columbia-asia-medan/"
+    "website_display": "https://columbiaasia.co.id/rs-columbia-asia-medan/",
+    "website_domain": "columbiaasia.co.id"
   },
   {
     "id_carisehat": "rs-009",
@@ -158,7 +164,7 @@
     "id_carisehat": "rs-010",
     "kode_kemenkes": "1207069",
     "nama": "RS Dokter Takdir",
-    "telepon": "0624 327969",
+    "telepon": "0624-327969",
     "email": null,
     "email_status": "NOT_FOUND",
     "email_display": "Belum tersedia",
@@ -168,7 +174,8 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-011",
@@ -185,7 +192,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.rsefarinaetahamsiantar.com",
-    "website_domain": "rsefarinaetahamsiantar.com"
+    "website_domain": "www.rsefarinaetahamsiantar.com"
   },
   {
     "id_carisehat": "rs-012",
@@ -195,13 +202,13 @@
     "email": "rsgmprima@royalprima.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "rsgmprima@royalprima.com",
-    "website_url": "http://rsgmprima.unprimdn.ac.id/",
+    "website_url": "http://rsgmprima.unprimdn.ac.id",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "RSGM Prima Medan di Jl. Pabrik Tenun No.103 website resmi rsgmprima.unprimdn.ac.id",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "http://rsgmprima.unprimdn.ac.id/",
+    "website_display": "http://rsgmprima.unprimdn.ac.id",
     "website_domain": "rsgmprima.unprimdn.ac.id",
     "email_evidence": "Email: rsgmprima@royalprima.com",
     "email_checked_at": "2026-11-20"
@@ -222,7 +229,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email: rsgrandmedica@gmail.com",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-014",
@@ -239,7 +247,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.rsgrandmed.com",
-    "website_domain": "rsgrandmed.com",
+    "website_domain": "www.rsgrandmed.com",
     "email_evidence": "Email: info@rsgrandmed.com / rsgrandmed@gmail.com",
     "email_checked_at": "2026-11-20"
   },
@@ -259,7 +267,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email Resmi: rsiaarthamahinrus@gmail.com",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-016",
@@ -275,13 +284,14 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-017",
     "kode_kemenkes": "1276092",
     "nama": "RS Ibu dan Anak Grand Fatimah",
-    "telepon": "+62895703006020",
+    "telepon": "0895703006020",
     "email": null,
     "email_status": "NOT_FOUND",
     "email_display": "Belum tersedia",
@@ -291,7 +301,8 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-018",
@@ -301,13 +312,13 @@
     "email": "receptionist@rsiamaharani.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "receptionist@rsiamaharani.com",
-    "website_url": "https://rsiamaharani.com/",
+    "website_url": "https://rsiamaharani.com",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Jl. Sultan Serdang No. 100 Desa Buntu Bedimbar Tanjung Morawa Deli Serdang",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://rsiamaharani.com/",
+    "website_display": "https://rsiamaharani.com",
     "website_domain": "rsiamaharani.com",
     "email_evidence": "Email: receptionist@rsiamaharani.com",
     "email_checked_at": "2026-11-20"
@@ -316,7 +327,7 @@
     "id_carisehat": "rs-019",
     "kode_kemenkes": "1211127",
     "nama": "RS Ibu dan Anak Mina Husada",
-    "telepon": "(0628)9832858 -",
+    "telepon": "0628-9832858",
     "email": null,
     "email_status": "NOT_FOUND",
     "email_display": "Belum tersedia",
@@ -326,7 +337,8 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-020",
@@ -355,13 +367,13 @@
     "email": "rsia.pramaliesa@gmail.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "rsia.pramaliesa@gmail.com",
-    "website_url": "https://rsiapramaliesa.com/",
+    "website_url": "https://rsiapramaliesa.com",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Jl. Rumbia Sena No. 65 Dusun II Desa Baru Batang Kuis Deli Serdang",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://rsiapramaliesa.com/",
+    "website_display": "https://rsiapramaliesa.com",
     "website_domain": "rsiapramaliesa.com",
     "email_evidence": "Email: rsia.pramaliesa@gmail.com",
     "email_checked_at": "2026-11-20"
@@ -381,7 +393,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "http://www.rsiastellamaris.com",
-    "website_domain": "rsiastellamaris.com",
+    "website_domain": "www.rsiastellamaris.com",
     "email_evidence": "Email Resmi: customer_assistance@stellamarishospital.com",
     "email_checked_at": "2026-11-20"
   },
@@ -412,13 +424,13 @@
     "email": "binakarsa_tuntungan@yahoo.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "binakarsa_tuntungan@yahoo.com",
-    "website_url": "https://rsjbinakarsatuntungan.co.id/",
+    "website_url": "https://rsjbinakarsatuntungan.co.id",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Jl. Besar Tuntungan Desa Tuntungan I No. 142G Pancur Batu Deli Serdang",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://rsjbinakarsatuntungan.co.id/",
+    "website_display": "https://rsjbinakarsatuntungan.co.id",
     "website_domain": "rsjbinakarsatuntungan.co.id",
     "email_evidence": "Email: binakarsa_tuntungan@yahoo.com",
     "email_checked_at": "2026-11-20"
@@ -431,13 +443,13 @@
     "email": "rsj@sumutprov.go.id",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "rsj@sumutprov.go.id",
-    "website_url": "https://rsj.sumutprov.go.id/",
+    "website_url": "https://rsj.sumutprov.go.id",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Website Resmi UPTD Khusus RSJ Prof Dr Muhammad Ildrem Pemprov Sumut Jl Tali Air",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://rsj.sumutprov.go.id/",
+    "website_display": "https://rsj.sumutprov.go.id",
     "website_domain": "rsj.sumutprov.go.id",
     "email_evidence": "Email Resmi: rsj@sumutprov.go.id / rsjildrem@gmail.com",
     "email_checked_at": "2026-11-20"
@@ -446,7 +458,7 @@
     "id_carisehat": "rs-026",
     "kode_kemenkes": "1275232",
     "nama": "RS Khusus Bedah Accuplast",
-    "telepon": "061 4153054",
+    "telepon": "061-4153054",
     "email": "rsaccuplast@yahoo.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "rsaccuplast@yahoo.com",
@@ -458,7 +470,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email Resmi: rsaccuplast@yahoo.com / accuplastclinics@yahoo.com",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-027",
@@ -468,13 +481,13 @@
     "email": "admin@rssetiabudi.co.id",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "admin@rssetiabudi.co.id",
-    "website_url": "http://rssetiabudi.co.id/",
+    "website_url": "http://rssetiabudi.co.id",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Website Resmi RS Khusus Bedah Setia Budi Medan Jl Mesjid No 3",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "http://rssetiabudi.co.id/",
+    "website_display": "http://rssetiabudi.co.id",
     "website_domain": "rssetiabudi.co.id",
     "email_evidence": "Email: admin@rssetiabudi.co.id",
     "email_checked_at": "2026-11-20"
@@ -487,13 +500,13 @@
     "email": "rsgm@usu.ac.id",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "rsgm@usu.ac.id",
-    "website_url": "https://rsgm.usu.ac.id/",
+    "website_url": "https://rsgm.usu.ac.id",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Website Resmi Rumah Sakit Gigi dan Mulut USU Jl Alumni Kampus USU Medan",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://rsgm.usu.ac.id/",
+    "website_display": "https://rsgm.usu.ac.id",
     "website_domain": "rsgm.usu.ac.id",
     "email_evidence": "Email: rsgm@usu.ac.id",
     "email_checked_at": "2026-11-20"
@@ -502,7 +515,7 @@
     "id_carisehat": "rs-029",
     "kode_kemenkes": "1275918",
     "nama": "RS Khusus Ginjal Rasyida",
-    "telepon": "061 4148722",
+    "telepon": "061-4148722",
     "email": "rskgrasyida@gmail.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "rskgrasyida@gmail.com",
@@ -544,14 +557,14 @@
     "email": "rsmatam77@gmail.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "rsmatam77@gmail.com",
-    "website_url": "https://www.rsmata-m77.com/",
+    "website_url": "https://www.rsmata-m77.com",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Website Resmi RS Khusus Mata Mencirim Tujuh-Tujuh Jl Sei Mencirim No 77",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://www.rsmata-m77.com/",
-    "website_domain": "rsmata-m77.com",
+    "website_display": "https://www.rsmata-m77.com",
+    "website_domain": "www.rsmata-m77.com",
     "email_evidence": "Email: rsmatam77@gmail.com",
     "email_checked_at": "2026-11-20"
   },
@@ -559,7 +572,7 @@
     "id_carisehat": "rs-032",
     "kode_kemenkes": "1275928",
     "nama": "RS Khusus Mata Prima Vision",
-    "telepon": "061 80514888",
+    "telepon": "061-80514888",
     "email": "rsprimavision@gmail.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "rsprimavision@gmail.com",
@@ -570,7 +583,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.primavisionhospital.com",
-    "website_domain": "primavisionhospital.com",
+    "website_domain": "www.primavisionhospital.com",
     "email_evidence": "Email: rsprimavision@gmail.com",
     "email_checked_at": "2026-11-20"
   },
@@ -582,13 +595,13 @@
     "email": null,
     "email_status": "NOT_FOUND",
     "email_display": "Belum tersedia",
-    "website_url": "https://rskmata.sumutprov.go.id/",
+    "website_url": "https://rskmata.sumutprov.go.id",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Website Resmi UPTD Rumah Sakit Khusus Mata Provinsi Sumatera Utara Jl Kapten Sumarsono",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://rskmata.sumutprov.go.id/",
+    "website_display": "https://rskmata.sumutprov.go.id",
     "website_domain": "rskmata.sumutprov.go.id"
   },
   {
@@ -606,7 +619,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.rsmatasmec.com",
-    "website_domain": "rsmatasmec.com",
+    "website_domain": "www.rsmatasmec.com",
     "email_evidence": "Email Resmi Cabang Medan: medan@rsmatasmec.com",
     "email_checked_at": "2026-11-20"
   },
@@ -614,17 +627,17 @@
     "id_carisehat": "rs-035",
     "kode_kemenkes": "1275933",
     "nama": "RS Khusus Paru Sumatera Utara",
-    "telepon": "(061) 8214733 /",
+    "telepon": "061-8214733",
     "email": null,
     "email_status": "NOT_FOUND",
     "email_display": "Belum tersedia",
-    "website_url": "https://rskparu.sumutprov.go.id/",
+    "website_url": "https://rskparu.sumutprov.go.id",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Website Resmi UPT Rumah Sakit Khusus Paru Pemprov Sumatera Utara Jl Setia Budi Pasar II",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://rskparu.sumutprov.go.id/",
+    "website_display": "https://rskparu.sumutprov.go.id",
     "website_domain": "rskparu.sumutprov.go.id"
   },
   {
@@ -642,7 +655,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.rsmatasiantar.com",
-    "website_domain": "rsmatasiantar.com"
+    "website_domain": "www.rsmatasiantar.com"
   },
   {
     "id_carisehat": "rs-037",
@@ -658,7 +671,8 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-038",
@@ -711,7 +725,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.rsmurniteguh.com",
-    "website_domain": "rsmurniteguh.com",
+    "website_domain": "www.rsmurniteguh.com",
     "email_evidence": "Email Resmi: murniteguhhorasinsani@gmail.com",
     "email_checked_at": "2026-11-20"
   },
@@ -730,7 +744,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.rsmurniteguh.com",
-    "website_domain": "rsmurniteguh.com",
+    "website_domain": "www.rsmurniteguh.com",
     "email_evidence": "Email Resmi: sekretariat.mtps@rsmurniteguh.com",
     "email_checked_at": "2026-11-20"
   },
@@ -738,7 +752,7 @@
     "id_carisehat": "rs-042",
     "kode_kemenkes": "1275913",
     "nama": "RS Pendidikan Prof. dr. Chairuddin Panusunan Lubis Universitas Sumatera Utara",
-    "telepon": "061 8218928",
+    "telepon": "061-8218928",
     "email": "rs.usu@usu.ac.id",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "rs.usu@usu.ac.id",
@@ -757,7 +771,7 @@
     "id_carisehat": "rs-043",
     "kode_kemenkes": "1225013",
     "nama": "RS Pratama Lologolu Soguna Ba Zato",
-    "telepon": "082267208436_",
+    "telepon": "082267208436",
     "email": null,
     "email_status": "NOT_FOUND",
     "email_display": "Belum tersedia",
@@ -767,7 +781,8 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-044",
@@ -785,23 +800,24 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email: rasyida2018@gmail.com RS Rasyida Siantar",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-045",
     "kode_kemenkes": "1275073",
     "nama": "RS Regina Maris",
-    "telepon": "061 - 88880808",
+    "telepon": "061-88880808",
     "email": "customer.care@reginamarishospital.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "customer.care@reginamarishospital.com",
-    "website_url": "https://reginamarishospital.com/",
+    "website_url": "https://reginamarishospital.com",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Website Resmi RS Regina Maris Jl Brigjen Katamso No 403-405 Medan",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://reginamarishospital.com/",
+    "website_display": "https://reginamarishospital.com",
     "website_domain": "reginamarishospital.com",
     "email_evidence": "Email: customer.care@reginamarishospital.com",
     "email_checked_at": "2026-11-20"
@@ -839,7 +855,8 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-048",
@@ -856,7 +873,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://membangmuda.spmedika.co.id",
-    "website_domain": "spmedika.co.id",
+    "website_domain": "membangmuda.spmedika.co.id",
     "email_evidence": "Email kontak resmi tertera di website resmi RS Sri Pamela Membang Muda",
     "email_checked_at": "2026-11-20"
   },
@@ -875,7 +892,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://seidadap.spmedika.co.id",
-    "website_domain": "spmedika.co.id",
+    "website_domain": "seidadap.spmedika.co.id",
     "email_evidence": "Email domain resmi tertera di situs RS Sri Pamela Sei Dadap",
     "email_checked_at": "2026-11-20"
   },
@@ -894,7 +911,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://sritorgamba.spmedika.co.id",
-    "website_domain": "spmedika.co.id",
+    "website_domain": "sritorgamba.spmedika.co.id",
     "email_evidence": "Email domain resmi tertera di situs resmi RS Sri Pamela Torgamba",
     "email_checked_at": "2026-11-20"
   },
@@ -933,7 +950,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Dokumen kerja sama resmi RS Tiga Bersaudara Kampung Pajak Labura mencantumkan email resmi",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-053",
@@ -943,13 +961,13 @@
     "email": "rumkittkiikesdamsatubb@gmail.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "rumkittkiikesdamsatubb@gmail.com",
-    "website_url": "https://rumkitputrihijau.tni-ad.mil.id/",
+    "website_url": "https://rumkitputrihijau.tni-ad.mil.id",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Website Resmi Rumkit TK II Putri Hijau Kesdam I/BB Jl Putri Hijau No 17",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://rumkitputrihijau.tni-ad.mil.id/",
+    "website_display": "https://rumkitputrihijau.tni-ad.mil.id",
     "website_domain": "rumkitputrihijau.tni-ad.mil.id",
     "email_evidence": "Email Resmi: rumkittkiikesdamsatubb@gmail.com",
     "email_checked_at": "2026-11-20"
@@ -981,13 +999,13 @@
     "email": "info@rstentarabinjai.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "info@rstentarabinjai.com",
-    "website_url": "https://rstentarabinjai.com/",
+    "website_url": "https://rstentarabinjai.com",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Jl. Bandung No.4 Rambung Barat Binjai Selatan Kota Binjai",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://rstentarabinjai.com/",
+    "website_display": "https://rstentarabinjai.com",
     "website_domain": "rstentarabinjai.com",
     "email_evidence": "Email: info@rstentarabinjai.com / rstbinjai@gmail.com",
     "email_checked_at": "2026-11-20"
@@ -1045,7 +1063,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.rsualfuadi.com",
-    "website_domain": "rsualfuadi.com"
+    "website_domain": "www.rsualfuadi.com"
   },
   {
     "id_carisehat": "rs-059",
@@ -1063,7 +1081,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email Resmi: rsu.amanda@yahoo.com",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-060",
@@ -1079,7 +1098,8 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-061",
@@ -1134,7 +1154,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.rsubandung.com",
-    "website_domain": "rsubandung.com",
+    "website_domain": "www.rsubandung.com",
     "email_evidence": "Email Resmi: info@rsbandung.com",
     "email_checked_at": "2026-11-20"
   },
@@ -1154,7 +1174,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email Resmi: rs_bethesda@yahoo.com pada direktori fasilitas kesehatan resmi.",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-065",
@@ -1164,13 +1185,13 @@
     "email": "bidadaribinjai@gmail.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "bidadaribinjai@gmail.com",
-    "website_url": "https://rsu.bidadari.co.id/",
+    "website_url": "https://rsu.bidadari.co.id",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Jalan Perintis Kemerdekaan Nomor 174 Kebun Lada Kota Binjai",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://rsu.bidadari.co.id/",
+    "website_display": "https://rsu.bidadari.co.id",
     "website_domain": "rsu.bidadari.co.id",
     "email_evidence": "Email Resmi: bidadaribinjai@gmail.com",
     "email_checked_at": "2026-11-20"
@@ -1190,7 +1211,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://rsubatubara.bidadari.co.id",
-    "website_domain": "bidadari.co.id",
+    "website_domain": "rsubatubara.bidadari.co.id",
     "email_evidence": "Email resmi RSU Bidadari Batubara tertera pada website resmi bidadari.co.id",
     "email_checked_at": "2026-11-20"
   },
@@ -1198,17 +1219,17 @@
     "id_carisehat": "rs-067",
     "kode_kemenkes": "1275997",
     "nama": "RS Umum Bina Kasih",
-    "telepon": "061 8475111",
+    "telepon": "061-8475111",
     "email": "info@rsubinakasihmdn.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "info@rsubinakasihmdn.com",
-    "website_url": "https://rsubinakasihmdn.com/",
+    "website_url": "https://rsubinakasihmdn.com",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Website Resmi RSU Bina Kasih Sunggal Jl TB Simatupang No 148 Medan",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://rsubinakasihmdn.com/",
+    "website_display": "https://rsubinakasihmdn.com",
     "website_domain": "rsubinakasihmdn.com",
     "email_evidence": "Email Resmi: info@rsubinakasihmdn.com",
     "email_checked_at": "2026-11-20"
@@ -1229,7 +1250,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email RS Umum Bunda Mulia Kisaran Asahan tercatat di direktori faskes resmi",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-069",
@@ -1246,7 +1268,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.bundathamrin.com",
-    "website_domain": "bundathamrin.com",
+    "website_domain": "www.bundathamrin.com",
     "email_evidence": "Email: bundathamrin@gmail.com",
     "email_checked_at": "2026-11-20"
   },
@@ -1271,7 +1293,7 @@
     "id_carisehat": "rs-071",
     "kode_kemenkes": "1212179",
     "nama": "RS Umum Citra Medika",
-    "telepon": "+6282175981013",
+    "telepon": "082175981013",
     "email": "rsucitramedika@yahoo.com",
     "email_status": "CORROBORATED",
     "email_display": "rsucitramedika@yahoo.com",
@@ -1283,7 +1305,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email Resmi: rsucitramedika@yahoo.com",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-072",
@@ -1301,7 +1324,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email resmi RSUD Aek Kanopan Labuhanbatu Utara tercatat pada data faskes daerah",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-073",
@@ -1319,7 +1343,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email Resmi: rsbangunpurba@deliserdangkab.go.id",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-074",
@@ -1337,7 +1362,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email resmi RSUD Batu Bara pada registrasi fasyankes Kementerian Kesehatan",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-075",
@@ -1353,13 +1379,14 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-076",
     "kode_kemenkes": "1205035",
     "nama": "RS Umum Daerah Dolok Sanggul",
-    "telepon": "0633-31022,",
+    "telepon": "0633-31022",
     "email": "rsuddoloksanggul@gmail.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "rsuddoloksanggul@gmail.com",
@@ -1371,13 +1398,14 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email Resmi RSUD Dolok Sanggul di direktori Kemenkes: rsuddoloksanggul@gmail.com",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-077",
     "kode_kemenkes": "1273011",
     "nama": "RS Umum Daerah Dr. Djasamen Saragih",
-    "telepon": "0622-22959/0812",
+    "telepon": "0622-22959",
     "email": "djasamen_rsud@yahoo.co.id",
     "email_status": "CORROBORATED",
     "email_display": "djasamen_rsud@yahoo.co.id",
@@ -1407,7 +1435,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "http://www.rsufltobing.sibolgakota.go.id",
-    "website_domain": "rsufltobing.sibolgakota.go.id",
+    "website_domain": "www.rsufltobing.sibolgakota.go.id",
     "email_evidence": "Email resmi faskes RSUD Dr. F.L. Tobing Sibolga: rsufltobing@yahoo.com",
     "email_checked_at": "2026-11-20"
   },
@@ -1463,13 +1491,14 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-082",
     "kode_kemenkes": "1201016",
     "nama": "RS Umum Daerah dr. M. Thomsen Nias",
-    "telepon": "(0639)21271",
+    "telepon": "0639-21271",
     "email": "rsudgusit@yahoo.co.id",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "rsudgusit@yahoo.co.id",
@@ -1492,13 +1521,13 @@
     "email": "rsudpirngadi@medan.go.id",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "rsudpirngadi@medan.go.id",
-    "website_url": "https://rsudpirngadi.medan.go.id/",
+    "website_url": "https://rsudpirngadi.medan.go.id",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Website Resmi RSUD Dr Pirngadi Kota Medan Jl Prof HM Yamin No 47",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://rsudpirngadi.medan.go.id/",
+    "website_display": "https://rsudpirngadi.medan.go.id",
     "website_domain": "rsudpirngadi.medan.go.id",
     "email_evidence": "Email Resmi: rsudpirngadi@medan.go.id",
     "email_checked_at": "2026-11-20"
@@ -1518,7 +1547,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "http://www.rsuddjoelham.binjaikota.go.id",
-    "website_domain": "rsuddjoelham.binjaikota.go.id",
+    "website_domain": "www.rsuddjoelham.binjaikota.go.id",
     "email_evidence": "Email: rsuddjoelhambinjai@gmail.com",
     "email_checked_at": "2026-11-20"
   },
@@ -1536,7 +1565,8 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-086",
@@ -1546,13 +1576,13 @@
     "email": null,
     "email_status": "NOT_FOUND",
     "email_display": "Belum tersedia",
-    "website_url": "https://rsudhat.deliserdangkab.go.id/",
+    "website_url": "https://rsudhat.deliserdangkab.go.id",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Jl. M.H. Thamrin No. 126 Lubuk Pakam Deli Serdang",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://rsudhat.deliserdangkab.go.id/",
+    "website_display": "https://rsudhat.deliserdangkab.go.id",
     "website_domain": "rsudhat.deliserdangkab.go.id"
   },
   {
@@ -1589,7 +1619,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://rsudkisaran.asahankab.go.id",
-    "website_domain": "asahankab.go.id"
+    "website_domain": "rsudkisaran.asahankab.go.id"
   },
   {
     "id_carisehat": "rs-089",
@@ -1614,7 +1644,7 @@
     "id_carisehat": "rs-090",
     "kode_kemenkes": "1211011",
     "nama": "RS Umum Daerah Kabupaten Karo",
-    "telepon": "",
+    "telepon": "0628-20012",
     "email": "rsu_kabanjahe@yahoo.com",
     "email_status": "CORROBORATED",
     "email_display": "rsu_kabanjahe@yahoo.com",
@@ -1626,7 +1656,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email Resmi: rsu_kabanjahe@yahoo.com",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-091",
@@ -1643,7 +1674,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://rsud.labuhanbatuselatankab.go.id",
-    "website_domain": "labuhanbatuselatankab.go.id"
+    "website_domain": "rsud.labuhanbatuselatankab.go.id"
   },
   {
     "id_carisehat": "rs-092",
@@ -1661,7 +1692,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email Resmi: rsudlukas_hilisimaetano@yahoo.com (dan sdmk.rsudlukas@gmail.com)",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-093",
@@ -1677,16 +1709,17 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-094",
     "kode_kemenkes": "1277011",
     "nama": "RS Umum Daerah Padang Sidempuan",
-    "telepon": "(0634)21251",
-    "email": "Rsudpsp@padangsidimpuankota.go.id",
+    "telepon": "0634-21251",
+    "email": "rsudpsp@padangsidimpuankota.go.id",
     "email_status": "VERIFIED_OFFICIAL",
-    "email_display": "Rsudpsp@padangsidimpuankota.go.id",
+    "email_display": "rsudpsp@padangsidimpuankota.go.id",
     "website_url": "https://rsud.padangsidimpuankota.go.id",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
@@ -1731,7 +1764,8 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-097",
@@ -1749,7 +1783,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email: rsu.parapat@yahoo.com",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-098",
@@ -1766,7 +1801,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.rsudperdagangan.com",
-    "website_domain": "rsudperdagangan.com",
+    "website_domain": "www.rsudperdagangan.com",
     "email_evidence": "Email Resmi: info@rsudperdagangan.com",
     "email_checked_at": "2026-11-20"
   },
@@ -1784,7 +1819,8 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-100",
@@ -1821,7 +1857,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email unit rekam medis RSUD Rantau Prapat Labuhanbatu terdaftar di profil resmi faskes",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-102",
@@ -1839,7 +1876,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email Resmi RSUD Salak di Kemenkes: rsud.salak@pakpakbharatkab.go.id",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-103",
@@ -1857,7 +1895,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email Resmi RSUD Sibuhuan di Kemenkes: palassrsudsibuhuan@gmail.com",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-104",
@@ -1893,7 +1932,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://rsudsultansulaiman.serdangbedagaikab.go.id",
-    "website_domain": "serdangbedagaikab.go.id"
+    "website_domain": "rsudsultansulaiman.serdangbedagaikab.go.id"
   },
   {
     "id_carisehat": "rs-106",
@@ -1911,7 +1950,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email Resmi RSUD Tafaeri / Nias Utara: cs.rsnisut@gmail.com",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-107",
@@ -1921,13 +1961,13 @@
     "email": "rsud.tanjungpura@yahoo.co.id",
     "email_status": "CORROBORATED",
     "email_display": "rsud.tanjungpura@yahoo.co.id",
-    "website_url": "https://rsudtanjungpura.langkatkab.go.id/",
+    "website_url": "https://rsudtanjungpura.langkatkab.go.id",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Jl. Khairil Anwar No. 09 Tanjung Pura Langkat",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://rsudtanjungpura.langkatkab.go.id/",
+    "website_display": "https://rsudtanjungpura.langkatkab.go.id",
     "website_domain": "rsudtanjungpura.langkatkab.go.id",
     "email_evidence": "Email Resmi: rsud.tanjungpura@yahoo.co.id",
     "email_checked_at": "2026-11-20"
@@ -1947,7 +1987,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.rsud.tapselkab.go.id",
-    "website_domain": "rsud.tapselkab.go.id"
+    "website_domain": "www.rsud.tapselkab.go.id"
   },
   {
     "id_carisehat": "rs-109",
@@ -1963,7 +2003,8 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-110",
@@ -1992,14 +2033,14 @@
     "email": "rumahsakitdeli@gmail.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "rumahsakitdeli@gmail.com",
-    "website_url": "https://www.rsudeli.com/",
+    "website_url": "https://www.rsudeli.com",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Website Resmi RSU Deli Medan Jl Merbabu No 18-20A Medan",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://www.rsudeli.com/",
-    "website_domain": "rsudeli.com",
+    "website_display": "https://www.rsudeli.com",
+    "website_domain": "www.rsudeli.com",
     "email_evidence": "Email Resmi: rumahsakitdeli@gmail.com",
     "email_checked_at": "2026-11-20"
   },
@@ -2017,7 +2058,8 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-113",
@@ -2034,7 +2076,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.rsudelima.com",
-    "website_domain": "rsudelima.com",
+    "website_domain": "www.rsudelima.com",
     "email_evidence": "Email Resmi: rsudelima25@gmail.com",
     "email_checked_at": "2026-11-20"
   },
@@ -2092,13 +2134,14 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email RSU Elpi Al Azis Rantau Utara Labuhanbatu tercatat pada profil faskes",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-117",
     "kode_kemenkes": "1275931",
     "nama": "RS Umum Eshmun",
-    "telepon": "(061) 618881828",
+    "telepon": "061-618881828",
     "email": "eshmunhospital@yahoo.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "eshmunhospital@yahoo.com",
@@ -2129,7 +2172,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email resmi kontak RSU Estomihi Medan pada dokumen publik",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-119",
@@ -2147,7 +2191,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email RSU Flora Aek Kanopan Labuhanbatu Utara tercatat pada profil faskes resmi",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-120",
@@ -2163,13 +2208,14 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-121",
     "kode_kemenkes": "1272033",
     "nama": "RS Umum Hadi Husada",
-    "telepon": "+6282366616662",
+    "telepon": "082366616662",
     "email": "rshadihusada@gmail.com",
     "email_status": "CORROBORATED",
     "email_display": "rshadihusada@gmail.com",
@@ -2181,7 +2227,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email resmi RSU Hadi Husada Kota Tanjungbalai tercatat pada registrasi Kemenkes",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-122",
@@ -2206,7 +2253,7 @@
     "id_carisehat": "rs-123",
     "kode_kemenkes": "1273033",
     "nama": "RS Umum Harapan",
-    "telepon": "(0622) 21162,",
+    "telepon": "0622-21162",
     "email": null,
     "email_status": "NOT_FOUND",
     "email_display": "Belum tersedia",
@@ -2235,7 +2282,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email RSU Hartati Medical Centre Labuhanbatu tercatat pada profil kontak rumah sakit",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-125",
@@ -2260,7 +2308,7 @@
     "id_carisehat": "rs-126",
     "kode_kemenkes": "1212067",
     "nama": "RS Umum Hidayah",
-    "telepon": "061-80048838/08",
+    "telepon": "061-80048838",
     "email": "hidayahrsu@yahoo.com",
     "email_status": "CORROBORATED",
     "email_display": "hidayahrsu@yahoo.com",
@@ -2272,7 +2320,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email: hidayahrsu@yahoo.com",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-127",
@@ -2289,7 +2338,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.rshkbpbalige.or.id",
-    "website_domain": "rshkbpbalige.or.id",
+    "website_domain": "www.rshkbpbalige.or.id",
     "email_evidence": "Email Resmi RSU HKBP Balige: rshkbpbalige@gmail.com",
     "email_checked_at": "2026-11-20"
   },
@@ -2297,7 +2346,7 @@
     "id_carisehat": "rs-128",
     "kode_kemenkes": "1275622",
     "nama": "RS Umum Imelda Pekerja Indonesia",
-    "telepon": "061- 6610072",
+    "telepon": "061-6610072",
     "email": "imeldagood2018@gmail.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "imeldagood2018@gmail.com",
@@ -2326,13 +2375,14 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-130",
     "kode_kemenkes": "1275163",
     "nama": "RS Umum Islam Malahayati",
-    "telepon": "(061) 4518766",
+    "telepon": "061-4518766",
     "email": "pkrs@rsimalahayati.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "pkrs@rsimalahayati.com",
@@ -2351,7 +2401,7 @@
     "id_carisehat": "rs-131",
     "kode_kemenkes": "1207067",
     "nama": "RS Umum Karya Bakti Ujung Bandar",
-    "telepon": "0624 2600413",
+    "telepon": "0624-2600413",
     "email": "rsu.kbub@gmail.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "rsu.kbub@gmail.com",
@@ -2370,7 +2420,7 @@
     "id_carisehat": "rs-132",
     "kode_kemenkes": "1209081",
     "nama": "RS Umum Karya Husada",
-    "telepon": "0622 697025",
+    "telepon": "0622-697025",
     "email": "rumahsakit_karyahusada@yahoo.co.id",
     "email_status": "CORROBORATED",
     "email_display": "rumahsakit_karyahusada@yahoo.co.id",
@@ -2382,7 +2432,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email: rumahsakit_karyahusada@yahoo.co.id",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-133",
@@ -2417,7 +2468,8 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-135",
@@ -2435,7 +2487,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email: rsu.keliat@yahoo.com",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-136",
@@ -2472,7 +2525,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email RS Umum Lasmi Kartika Batu Bara terdaftar pada data registrasi faskes",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-138",
@@ -2490,7 +2544,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email Resmi: rsu_latersia.binjai@yahoo.co.id",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-139",
@@ -2519,13 +2574,13 @@
     "email": "mahawiraprimaindonesia@gmail.com",
     "email_status": "CORROBORATED",
     "email_display": "mahawiraprimaindonesia@gmail.com",
-    "website_url": "https://rsmahawiraprimaindonesia.wordpress.com/",
+    "website_url": "https://rsmahawiraprimaindonesia.wordpress.com",
     "website_status": "CORROBORATED",
     "website_scope": null,
     "website_evidence": "Jl. Cemara No. 16 Sampali Percut Sei Tuan Deli Serdang",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://rsmahawiraprimaindonesia.wordpress.com/",
+    "website_display": "https://rsmahawiraprimaindonesia.wordpress.com",
     "website_domain": "rsmahawiraprimaindonesia.wordpress.com",
     "email_evidence": "Email Resmi: mahawiraprimaindonesia@gmail.com",
     "email_checked_at": "2026-11-20"
@@ -2538,13 +2593,13 @@
     "email": "info@rsumahkotabidadari.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "info@rsumahkotabidadari.com",
-    "website_url": "https://rsumahkota.bidadari.co.id/",
+    "website_url": "https://rsumahkota.bidadari.co.id",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Jl. Sisingamangaraja No. 146 Paluh Manis Gebang Langkat",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://rsumahkota.bidadari.co.id/",
+    "website_display": "https://rsumahkota.bidadari.co.id",
     "website_domain": "rsumahkota.bidadari.co.id",
     "email_evidence": "Email Resmi: info@rsumahkotabidadari.com",
     "email_checked_at": "2026-11-20"
@@ -2553,7 +2608,7 @@
     "id_carisehat": "rs-142",
     "kode_kemenkes": "1275633",
     "nama": "RS Umum Martha Friska",
-    "telepon": "061 6610910",
+    "telepon": "061-6610910",
     "email": null,
     "email_status": "NOT_FOUND",
     "email_display": "Belum tersedia",
@@ -2598,7 +2653,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.rsmaterna.com",
-    "website_domain": "rsmaterna.com",
+    "website_domain": "www.rsmaterna.com",
     "email_evidence": "Email resmi info@rsmaterna.com tercantum di situs rsmaterna.com",
     "email_checked_at": "2026-11-20"
   },
@@ -2606,7 +2661,7 @@
     "id_carisehat": "rs-145",
     "kode_kemenkes": "1218024",
     "nama": "RS Umum Melati",
-    "telepon": "(061) 7990428",
+    "telepon": "061-7990428",
     "email": null,
     "email_status": "NOT_FOUND",
     "email_display": "Belum tersedia",
@@ -2617,7 +2672,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.rsmelatiperbaungan.com",
-    "website_domain": "rsmelatiperbaungan.com"
+    "website_domain": "www.rsmelatiperbaungan.com"
   },
   {
     "id_carisehat": "rs-146",
@@ -2635,13 +2690,14 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email kontak RSU Melati Desa Pon Serdang Bedagai pada profil faskes resmi",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-147",
     "kode_kemenkes": "1275126",
     "nama": "RS Umum Methodist",
-    "telepon": "(061) 7369000",
+    "telepon": "061-7369000",
     "email": "rsmethodistgloria@gmail.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "rsmethodistgloria@gmail.com",
@@ -2683,13 +2739,13 @@
     "email": "rsumitraguraypetumbukan@gmail.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "rsumitraguraypetumbukan@gmail.com",
-    "website_url": "https://rsumitraguraypetumbukan.com/",
+    "website_url": "https://rsumitraguraypetumbukan.com",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Jl. Besar Petumbukan No.29 Galang Deli Serdang",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://rsumitraguraypetumbukan.com/",
+    "website_display": "https://rsumitraguraypetumbukan.com",
     "website_domain": "rsumitraguraypetumbukan.com",
     "email_evidence": "Email: rsumitraguraypetumbukan@gmail.com",
     "email_checked_at": "2026-11-20"
@@ -2719,13 +2775,13 @@
     "email": null,
     "email_status": "NOT_FOUND",
     "email_display": "Belum tersedia",
-    "website_url": "https://bandarklippa.mitramedika.com/",
+    "website_url": "https://bandarklippa.mitramedika.com",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Jl. Medan - Batang Kuis Dusun XI Bandar Klippa Percut Sei Tuan Deli Serdang",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://bandarklippa.mitramedika.com/",
+    "website_display": "https://bandarklippa.mitramedika.com",
     "website_domain": "bandarklippa.mitramedika.com"
   },
   {
@@ -2780,7 +2836,8 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-155",
@@ -2833,7 +2890,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.rsmurniteguh.com",
-    "website_domain": "rsmurniteguh.com",
+    "website_domain": "www.rsmurniteguh.com",
     "email_evidence": "Email resmi informasi-corporate@rsmurniteguh.com di rsmurniteguh.com",
     "email_checked_at": "2026-11-20"
   },
@@ -2852,7 +2909,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.rsmurniteguh.com",
-    "website_domain": "rsmurniteguh.com",
+    "website_domain": "www.rsmurniteguh.com",
     "email_evidence": "Email jejaring corporate@rsmurniteguh.com melayani RSU MT Methodist Susanna Wesley",
     "email_checked_at": "2026-11-20"
   },
@@ -2870,7 +2927,8 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-160",
@@ -2895,7 +2953,7 @@
     "id_carisehat": "rs-161",
     "kode_kemenkes": "1218026",
     "nama": "RS Umum Pabatu",
-    "telepon": "0621 2613427",
+    "telepon": "0621-2613427",
     "email": null,
     "email_status": "NOT_FOUND",
     "email_display": "Belum tersedia",
@@ -2923,7 +2981,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.rsudpancurbatu.com",
-    "website_domain": "rsudpancurbatu.com",
+    "website_domain": "www.rsudpancurbatu.com",
     "email_evidence": "Email Resmi: rsudpancurbatu@deliserdangkab.go.id",
     "email_checked_at": "2026-11-20"
   },
@@ -2962,7 +3020,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email resmi RSU Permata Hati Kisaran Asahan tertera pada dokumen profil faskes",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-165",
@@ -2980,7 +3039,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email RSU Permata Madina Panyabungan: rspm155@gmail.com",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-166",
@@ -2998,7 +3058,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email Resmi RSU Permata Madina Sibuhuan: permatamadina.sibuhuan@gmail.com",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-167",
@@ -3059,7 +3120,7 @@
     "id_carisehat": "rs-170",
     "kode_kemenkes": "1213024",
     "nama": "RS Umum PTP II Tg Selamat",
-    "telepon": "+6281226318462",
+    "telepon": "081226318462",
     "email": "pimpinan_rsts@ptpn2.com",
     "email_status": "CORROBORATED",
     "email_display": "pimpinan_rsts@ptpn2.com",
@@ -3071,7 +3132,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email Resmi: pimpinan_rsts@ptpn2.com",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-171",
@@ -3089,7 +3151,8 @@
     "website_checked_at": "2026-11-19T14:15:52+00:00",
     "website_display": "https://rsham.go.id/profil/hubungi-kami",
     "email_evidence": "Email resmi RSUP H. Adam Malik Medan info@rsham.co.id",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": "rsham.go.id"
   },
   {
     "id_carisehat": "rs-172",
@@ -3122,13 +3185,14 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-174",
     "kode_kemenkes": "1276076",
     "nama": "RS Umum Ratu Mas",
-    "telepon": "(081370739531",
+    "telepon": "081370739531",
     "email": "rsuraturekrutmen@gmail.com",
     "email_status": "CORROBORATED",
     "email_display": "rsuraturekrutmen@gmail.com",
@@ -3140,13 +3204,14 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email Resmi (Rekrutmen): rsuraturekrutmen@gmail.com",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-175",
     "kode_kemenkes": "1275935",
     "nama": "RS Umum Royal Maternity",
-    "telepon": "+62 889-1200-22",
+    "telepon": "0889-1200-22",
     "email": null,
     "email_status": "NOT_FOUND",
     "email_display": "Belum tersedia",
@@ -3182,7 +3247,7 @@
     "id_carisehat": "rs-177",
     "kode_kemenkes": "1275936",
     "nama": "RS Umum Royal Prima Marelan",
-    "telepon": "061 42731858",
+    "telepon": "061-42731858",
     "email": "rsu.rpmarelan@gmail.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "rsu.rpmarelan@gmail.com",
@@ -3220,7 +3285,7 @@
     "id_carisehat": "rs-179",
     "kode_kemenkes": "1275724",
     "nama": "RS Umum Sarah",
-    "telepon": "061-4568383_",
+    "telepon": "061-4568383",
     "email": "cs.rsusarah@gmail.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "cs.rsusarah@gmail.com",
@@ -3231,7 +3296,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.sarahhospital.com",
-    "website_domain": "sarahhospital.com",
+    "website_domain": "www.sarahhospital.com",
     "email_evidence": "Email resmi cs.rsusarah@gmail.com dan sekretariat.rssarah@gmail.com",
     "email_checked_at": "2026-11-20"
   },
@@ -3251,7 +3316,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email: rsu_sarimutiara@yahoo.com",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-181",
@@ -3269,7 +3335,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email RSU Sawit Indah Perbaungan Serdang Bedagai pada direktori faskes",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-182",
@@ -3279,13 +3346,13 @@
     "email": "rsusembiring@gmail.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "rsusembiring@gmail.com",
-    "website_url": "https://rsusembiring.com/",
+    "website_url": "https://rsusembiring.com",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Jl. Besar No. 77 Deli Tua Kab. Deli Serdang",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://rsusembiring.com/",
+    "website_display": "https://rsusembiring.com",
     "website_domain": "rsusembiring.com",
     "email_evidence": "Email: rsusembiring@gmail.com",
     "email_checked_at": "2026-11-20"
@@ -3325,13 +3392,14 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email resmi RSU Setio Husodo Kisaran Asahan tercatat pada direktori faskes Kemenkes",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-185",
     "kode_kemenkes": "1275911",
     "nama": "RS Umum Siloam Dhirga Surya",
-    "telepon": "+6261 8888 1900",
+    "telepon": "061-88881900",
     "email": "info.shmd@siloamhospitals.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "info.shmd@siloamhospitals.com",
@@ -3342,7 +3410,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.siloamhospitals.com",
-    "website_domain": "siloamhospitals.com",
+    "website_domain": "www.siloamhospitals.com",
     "email_evidence": "Email resmi Siloam Medan info.shmd@siloamhospitals.com",
     "email_checked_at": "2026-11-20"
   },
@@ -3360,13 +3428,14 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-187",
     "kode_kemenkes": "1212136",
     "nama": "RS Umum Sinar Husni",
-    "telepon": "",
+    "telepon": "061-8451152",
     "email": null,
     "email_status": "NOT_FOUND",
     "email_display": "Belum tersedia",
@@ -3376,7 +3445,8 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-188",
@@ -3394,7 +3464,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email RSU Sint Lucia Siborongborong: rssintlucia@gmail.com",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-189",
@@ -3419,7 +3490,7 @@
     "id_carisehat": "rs-190",
     "kode_kemenkes": "1275702",
     "nama": "RS Umum Sri Ratu",
-    "telepon": "(061) - 4521074",
+    "telepon": "061-4521074",
     "email": "sriratumdn@yahoo.co.id",
     "email_status": "CORROBORATED",
     "email_display": "sriratumdn@yahoo.co.id",
@@ -3450,7 +3521,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email Resmi faskes RSU Stella Maris: sella.maris@ymail.com",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-192",
@@ -3468,7 +3540,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email operasional rsu.sundari@yahoo.co.id pada direktori resmi Kemkes/SIRS",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-193",
@@ -3485,7 +3558,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.rsusylvani.com",
-    "website_domain": "rsusylvani.com",
+    "website_domain": "www.rsusylvani.com",
     "email_evidence": "Email: rsusylvani@gmail.com",
     "email_checked_at": "2026-11-20"
   },
@@ -3512,7 +3585,7 @@
     "id_carisehat": "rs-195",
     "kode_kemenkes": "1273106",
     "nama": "RS Umum Tiara Kasih Sejati",
-    "telepon": "0622- 27617",
+    "telepon": "0622-27617",
     "email": null,
     "email_status": "NOT_FOUND",
     "email_display": "Belum tersedia",
@@ -3522,13 +3595,14 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-196",
     "kode_kemenkes": "1274062",
     "nama": "RS Umum Universitas Prima Indonesia",
-    "telepon": "(0621)-328488",
+    "telepon": "0621-328488",
     "email": "rsunpri@gmail.com",
     "email_status": "CORROBORATED",
     "email_display": "rsunpri@gmail.com",
@@ -3547,7 +3621,7 @@
     "id_carisehat": "rs-197",
     "kode_kemenkes": "1208066",
     "nama": "RS Umum Utama",
-    "telepon": "0623 42007",
+    "telepon": "0623-42007",
     "email": "utamarsia@gmail.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "utamarsia@gmail.com",
@@ -3566,7 +3640,7 @@
     "id_carisehat": "rs-198",
     "kode_kemenkes": "1275276",
     "nama": "RS Umum Vina Estetica",
-    "telepon": "061 4147646",
+    "telepon": "061-4147646",
     "email": "rsu.vina.estetica@gmail.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "rsu.vina.estetica@gmail.com",
@@ -3577,7 +3651,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.rsuvinaestetica.co.id",
-    "website_domain": "rsuvinaestetica.co.id",
+    "website_domain": "www.rsuvinaestetica.co.id",
     "email_evidence": "Email resmi rsu.vina.estetica@gmail.com di situs rsuvinaestetica.co.id",
     "email_checked_at": "2026-11-20"
   },
@@ -3585,7 +3659,7 @@
     "id_carisehat": "rs-199",
     "kode_kemenkes": "1273055",
     "nama": "RS Umum Vita Insani",
-    "telepon": "62-811601125",
+    "telepon": "0811601125",
     "email": "vitainsanirs@gmail.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "vitainsanirs@gmail.com",
@@ -3596,7 +3670,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.vitainsani.com",
-    "website_domain": "vitainsani.com",
+    "website_domain": "www.vitainsani.com",
     "email_evidence": "Email Resmi: vitainsanirs@gmail.com",
     "email_checked_at": "2026-11-20"
   },
@@ -3608,13 +3682,13 @@
     "email": "rsuwampunorita@gmail.com",
     "email_status": "VERIFIED_OFFICIAL",
     "email_display": "rsuwampunorita@gmail.com",
-    "website_url": "https://rsuwampunorita.co.id/",
+    "website_url": "https://rsuwampunorita.co.id",
     "website_status": "VERIFIED_OFFICIAL",
     "website_scope": null,
     "website_evidence": "Jl. Medan - Tanjung Pura No. 86 KM. 46 Jentera Stabat Wampu Langkat",
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
-    "website_display": "https://rsuwampunorita.co.id/",
+    "website_display": "https://rsuwampunorita.co.id",
     "website_domain": "rsuwampunorita.co.id",
     "email_evidence": "Surel (Email): rsuwampunorita@gmail.com",
     "email_checked_at": "2026-11-20"
@@ -3661,7 +3735,7 @@
     "id_carisehat": "rs-203",
     "kode_kemenkes": "1212177",
     "nama": "RS Umum Yoshua",
-    "telepon": "061 - 7956061",
+    "telepon": "061-7956061",
     "email": "rsuyoshua@gmail.com",
     "email_status": "CORROBORATED",
     "email_display": "rsuyoshua@gmail.com",
@@ -3673,7 +3747,8 @@
     "website_checked_at": null,
     "website_display": "Belum tersedia",
     "email_evidence": "Email Resmi: rsuyoshua@gmail.com",
-    "email_checked_at": "2026-11-20"
+    "email_checked_at": "2026-11-20",
+    "website_domain": ""
   },
   {
     "id_carisehat": "rs-204",
@@ -3709,7 +3784,7 @@
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": "2026-11-20",
     "website_display": "https://www.rshernamedan.com",
-    "website_domain": "rshernamedan.com",
+    "website_domain": "www.rshernamedan.com",
     "email_evidence": "Email operasional rsuhernamedan@yahoo.co.id tercantum di direktori kesehatan",
     "email_checked_at": "2026-11-20"
   },
@@ -3727,6 +3802,7 @@
     "website_evidence": null,
     "website_notes": "Website resmi faskes belum selesai direview secara independen.",
     "website_checked_at": null,
-    "website_display": "Belum tersedia"
+    "website_display": "Belum tersedia",
+    "website_domain": ""
   }
 ]

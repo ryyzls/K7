@@ -50,7 +50,7 @@
             schema:description "Senin-Jumat 07:00 - 14:00 WIB" ;
             schema:opens "07:00" ] ;
     schema:telephone "0821-7997-604" ;
-    schema:url <https://rumkitbhayangkaramedan.com/> .
+    schema:url <https://rumkitbhayangkaramedan.com> .
 
 <http://localhost:8000/rs/rs-004> a hf:RumahSakit ;
     hf:kepemilikanSirs "POLRI" ;
@@ -74,8 +74,8 @@
     hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
     hf:statusWebsite "CORROBORATED" ;
     schema:director "dr. ELI SAFRIN ALMIRON ,M.Ked.(Surg),Sp.OT" ;
-    schema:telephone "0621 - 326701" ;
-    schema:url <https://rsbhayangkaratebingtinggi.wordpress.com/> .
+    schema:telephone "0621-326701" ;
+    schema:url <https://rsbhayangkaratebingtinggi.wordpress.com> .
 
 <http://localhost:8000/rs/rs-006> a hf:RumahSakit ;
     hf:kepemilikanSirs "Perusahaan" ;
@@ -145,7 +145,7 @@
     hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
     hf:statusWebsite "BELUM_TERSEDIA" ;
     schema:director "dr.Nuraini Siregar,M.KM" ;
-    schema:telephone "0624 327969" .
+    schema:telephone "0624-327969" .
 
 <http://localhost:8000/rs/rs-011> a hf:RumahSakit ;
     hf:kepemilikanSirs "SWASTA/LAINNYA" ;
@@ -172,7 +172,7 @@
     schema:director "drg. Mustika Lili Perdani, MDSc" ;
     schema:email "rsgmprima@royalprima.com" ;
     schema:telephone "082167863838" ;
-    schema:url <http://rsgmprima.unprimdn.ac.id/> .
+    schema:url <http://rsgmprima.unprimdn.ac.id> .
 
 <http://localhost:8000/rs/rs-013> a hf:RumahSakit ;
     hf:kepemilikanSirs "Kementerian Lain" ;
@@ -246,7 +246,7 @@
             schema:closes "16:00" ;
             schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
             schema:opens "08:00" ] ;
-    schema:telephone "+62895703006020" .
+    schema:telephone "0895703006020" .
 
 <http://localhost:8000/rs/rs-018> a hf:RumahSakit ;
     hf:kepemilikanSirs "Perusahaan" ;
@@ -265,7 +265,7 @@
             schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
             schema:opens "08:00" ] ;
     schema:telephone "061-80110907" ;
-    schema:url <https://rsiamaharani.com/> .
+    schema:url <https://rsiamaharani.com> .
 
 <http://localhost:8000/rs/rs-019> a hf:RumahSakit ;
     hf:kepemilikanSirs "SWASTA/LAINNYA" ;
@@ -277,7 +277,7 @@
     hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
     hf:statusWebsite "BELUM_TERSEDIA" ;
     schema:director "dr. Raskami Indawati Br PA, MKM" ;
-    schema:telephone "(0628)9832858 -" .
+    schema:telephone "0628-9832858" .
 
 <http://localhost:8000/rs/rs-020> a hf:RumahSakit ;
     hf:kepemilikanSirs "Perusahaan" ;
@@ -310,7 +310,7 @@
             schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
             schema:opens "08:00" ] ;
     schema:telephone "08116219090" ;
-    schema:url <https://rsiapramaliesa.com/> .
+    schema:url <https://rsiapramaliesa.com> .
 
 <http://localhost:8000/rs/rs-022> a hf:RumahSakit ;
     hf:kepemilikanSirs "Perusahaan" ;
@@ -357,7 +357,7 @@
             schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
             schema:opens "08:00" ] ;
     schema:telephone "082163944599" ;
-    schema:url <https://rsjbinakarsatuntungan.co.id/> .
+    schema:url <https://rsjbinakarsatuntungan.co.id> .
 
 <http://localhost:8000/rs/rs-025> a hf:RumahSakit ;
     hf:kepemilikanSirs "Pemprop" ;
@@ -371,7 +371,7 @@
     schema:director "SRI SURIANI PURNAMAWATI, S.Si, Apt, M.Kes" ;
     schema:email "rsj@sumutprov.go.id" ;
     schema:telephone "061-8360542" ;
-    schema:url <https://rsj.sumutprov.go.id/> .
+    schema:url <https://rsj.sumutprov.go.id> .
 
 <http://localhost:8000/rs/rs-026> a hf:RumahSakit ;
     hf:kepemilikanSirs "Organisasi Sosial" ;
@@ -384,7 +384,7 @@
     hf:statusWebsite "BELUM_TERSEDIA" ;
     schema:director "dr. Retno Sari Dewi, M.Kes., Sp.KKLP" ;
     schema:email "rsaccuplast@yahoo.com" ;
-    schema:telephone "061 4153054" .
+    schema:telephone "061-4153054" .
 
 <http://localhost:8000/rs/rs-027> a hf:RumahSakit ;
     hf:kepemilikanSirs "Perusahaan" ;
@@ -398,7 +398,7 @@
     schema:director "dr. Feby Antoni" ;
     schema:email "admin@rssetiabudi.co.id" ;
     schema:telephone "081396256120" ;
-    schema:url <http://rssetiabudi.co.id/> .
+    schema:url <http://rssetiabudi.co.id> .
 
 <http://localhost:8000/rs/rs-028> a hf:RumahSakit ;
     hf:kepemilikanSirs "Kementerian Lain" ;
@@ -412,7 +412,7 @@
     schema:director "Dr. drg. Rini Octavia Nasution M.Kes., Sp.Perio.,Subsp.RPID(K)" ;
     schema:email "rsgm@usu.ac.id" ;
     schema:telephone "085791259191" ;
-    schema:url <https://rsgm.usu.ac.id/> .
+    schema:url <https://rsgm.usu.ac.id> .
 
 <http://localhost:8000/rs/rs-029> a hf:RumahSakit ;
     hf:kepemilikanSirs "Perusahaan" ;
@@ -425,7 +425,7 @@
     hf:statusWebsite "VERIFIED_OFFICIAL" ;
     schema:director "Dr. dr. Alwi Thamrin Nasution, Sp.PD., KGH" ;
     schema:email "rskgrasyida@gmail.com" ;
-    schema:telephone "061 4148722" ;
+    schema:telephone "061-4148722" ;
     schema:url <https://rsrasyida.com> .
 
 <http://localhost:8000/rs/rs-030> a hf:RumahSakit ;
@@ -454,7 +454,7 @@
     schema:director "dr. Annisa Dhiya Zafira, MARS, FISQUA" ;
     schema:email "rsmatam77@gmail.com" ;
     schema:telephone "08116207177" ;
-    schema:url <https://www.rsmata-m77.com/> .
+    schema:url <https://www.rsmata-m77.com> .
 
 <http://localhost:8000/rs/rs-032> a hf:RumahSakit ;
     hf:kepemilikanSirs "Perusahaan" ;
@@ -472,7 +472,7 @@
             schema:closes "20:00" ;
             schema:description "Senin-Sabtu 08:00 - 20:00 WIB" ;
             schema:opens "08:00" ] ;
-    schema:telephone "061 80514888" ;
+    schema:telephone "061-80514888" ;
     schema:url <https://www.primavisionhospital.com> .
 
 <http://localhost:8000/rs/rs-033> a hf:RumahSakit ;
@@ -486,7 +486,7 @@
     hf:statusWebsite "VERIFIED_OFFICIAL" ;
     schema:director "dr. Nelly Fitriani, M.Kes" ;
     schema:telephone "082374011686" ;
-    schema:url <https://rskmata.sumutprov.go.id/> .
+    schema:url <https://rskmata.sumutprov.go.id> .
 
 <http://localhost:8000/rs/rs-034> a hf:RumahSakit ;
     hf:kepemilikanSirs "Perusahaan" ;
@@ -512,8 +512,8 @@
     hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
     hf:statusWebsite "VERIFIED_OFFICIAL" ;
     schema:director "Pulo Rizal Togatorop, SKM, MPH" ;
-    schema:telephone "(061) 8214733 /" ;
-    schema:url <https://rskparu.sumutprov.go.id/> .
+    schema:telephone "061-8214733" ;
+    schema:url <https://rskparu.sumutprov.go.id> .
 
 <http://localhost:8000/rs/rs-036> a hf:RumahSakit ;
     hf:kepemilikanSirs "SWASTA/LAINNYA" ;
@@ -616,7 +616,7 @@
     hf:statusWebsite "VERIFIED_OFFICIAL" ;
     schema:director "dr. Inke Nadia Diniyanti Lubis, PGDip PID FAAET, M.Ked(Ped), Sp.A, Ph.D" ;
     schema:email "rs.usu@usu.ac.id" ;
-    schema:telephone "061 8218928" ;
+    schema:telephone "061-8218928" ;
     schema:url <https://rs.usu.ac.id> .
 
 <http://localhost:8000/rs/rs-043> a hf:RumahSakit ;
@@ -629,7 +629,7 @@
     hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
     hf:statusWebsite "BELUM_TERSEDIA" ;
     schema:director "dr. Ranebudayada Gohae" ;
-    schema:telephone "082267208436_" .
+    schema:telephone "082267208436" .
 
 <http://localhost:8000/rs/rs-044> a hf:RumahSakit ;
     hf:kepemilikanSirs "SWASTA/LAINNYA" ;
@@ -655,8 +655,8 @@
     hf:statusWebsite "VERIFIED_OFFICIAL" ;
     schema:director "Dr. dr. Ery Suhaymi, SH, MH, M.Ked (Surg), Sp.B" ;
     schema:email "customer.care@reginamarishospital.com" ;
-    schema:telephone "061 - 88880808" ;
-    schema:url <https://reginamarishospital.com/> .
+    schema:telephone "061-88880808" ;
+    schema:url <https://reginamarishospital.com> .
 
 <http://localhost:8000/rs/rs-046> a hf:RumahSakit ;
     hf:kepemilikanSirs "SWASTA/LAINNYA" ;
@@ -765,7 +765,7 @@
     schema:director "Kolonel Ckm dr. I Gede Wardhana Tohjiwa, Sp.PK." ;
     schema:email "rumkittkiikesdamsatubb@gmail.com" ;
     schema:telephone "08116122233" ;
-    schema:url <https://rumkitputrihijau.tni-ad.mil.id/> .
+    schema:url <https://rumkitputrihijau.tni-ad.mil.id> .
 
 <http://localhost:8000/rs/rs-054> a hf:RumahSakit ;
     hf:kepemilikanSirs "TNI AD" ;
@@ -793,7 +793,7 @@
     schema:director "dr. Revy Octarian Palmendha, Sp. T.H.T.B.K.L, FICS" ;
     schema:email "info@rstentarabinjai.com" ;
     schema:telephone "082361873345" ;
-    schema:url <https://rstentarabinjai.com/> .
+    schema:url <https://rstentarabinjai.com> .
 
 <http://localhost:8000/rs/rs-056> a hf:RumahSakit ;
     hf:kepemilikanSirs "TNI AD" ;
@@ -933,7 +933,7 @@
     schema:director "dr. Kartika Sari Ritonga, MM, C.PS" ;
     schema:email "bidadaribinjai@gmail.com" ;
     schema:telephone "0618830003" ;
-    schema:url <https://rsu.bidadari.co.id/> .
+    schema:url <https://rsu.bidadari.co.id> .
 
 <http://localhost:8000/rs/rs-066> a hf:RumahSakit ;
     hf:kepemilikanSirs "Perusahaan" ;
@@ -965,8 +965,8 @@
             schema:closes "21:00" ;
             schema:description "Senin-Minggu 07:00 - 21:00 WIB" ;
             schema:opens "07:00" ] ;
-    schema:telephone "061 8475111" ;
-    schema:url <https://rsubinakasihmdn.com/> .
+    schema:telephone "061-8475111" ;
+    schema:url <https://rsubinakasihmdn.com> .
 
 <http://localhost:8000/rs/rs-068> a hf:RumahSakit ;
     hf:kepemilikanSirs "Perorangan" ;
@@ -1024,7 +1024,7 @@
             schema:closes "16:00" ;
             schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
             schema:opens "08:00" ] ;
-    schema:telephone "+6282175981013" .
+    schema:telephone "082175981013" .
 
 <http://localhost:8000/rs/rs-072> a hf:RumahSakit ;
     hf:kepemilikanSirs "Pemkab" ;
@@ -1093,7 +1093,7 @@
     hf:statusWebsite "BELUM_TERSEDIA" ;
     schema:director "dr. Tiar Lusiana Sihombing" ;
     schema:email "rsuddoloksanggul@gmail.com" ;
-    schema:telephone "0633-31022," .
+    schema:telephone "0633-31022" .
 
 <http://localhost:8000/rs/rs-077> a hf:RumahSakit ;
     hf:kepemilikanSirs "Pemkot" ;
@@ -1106,7 +1106,7 @@
     hf:statusWebsite "CORROBORATED" ;
     schema:director "Drg. IRMA SURYANI, MKM" ;
     schema:email "djasamen_rsud@yahoo.co.id" ;
-    schema:telephone "0622-22959/0812" ;
+    schema:telephone "0622-22959" ;
     schema:url <https://rsuddjasamensaragih.wordpress.com> .
 
 <http://localhost:8000/rs/rs-078> a hf:RumahSakit ;
@@ -1189,7 +1189,7 @@
             schema:closes "14:00" ;
             schema:description "Senin-Jumat 08:00 - 14:00 WIB" ;
             schema:opens "08:00" ] ;
-    schema:telephone "(0639)21271" ;
+    schema:telephone "0639-21271" ;
     schema:url <http://rsud.niaskab.go.id> .
 
 <http://localhost:8000/rs/rs-083> a hf:RumahSakit ;
@@ -1204,7 +1204,7 @@
     schema:director "dr. Mardohar Tambunan, M.Kes" ;
     schema:email "rsudpirngadi@medan.go.id" ;
     schema:telephone "081264801020" ;
-    schema:url <https://rsudpirngadi.medan.go.id/> .
+    schema:url <https://rsudpirngadi.medan.go.id> .
 
 <http://localhost:8000/rs/rs-084> a hf:RumahSakit ;
     hf:kepemilikanSirs "Pemkot" ;
@@ -1253,7 +1253,7 @@
             schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
             schema:opens "08:00" ] ;
     schema:telephone "081369842524" ;
-    schema:url <https://rsudhat.deliserdangkab.go.id/> .
+    schema:url <https://rsudhat.deliserdangkab.go.id> .
 
 <http://localhost:8000/rs/rs-087> a hf:RumahSakit ;
     hf:kepemilikanSirs "Pemkab" ;
@@ -1306,7 +1306,8 @@
     hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
     hf:statusWebsite "BELUM_TERSEDIA" ;
     schema:director "dr. Jasura Pinem M.kes" ;
-    schema:email "rsu_kabanjahe@yahoo.com" .
+    schema:email "rsu_kabanjahe@yahoo.com" ;
+    schema:telephone "0628-20012" .
 
 <http://localhost:8000/rs/rs-091> a hf:RumahSakit ;
     hf:kepemilikanSirs "Pemkab" ;
@@ -1356,8 +1357,8 @@
     hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
     hf:statusWebsite "VERIFIED_OFFICIAL" ;
     schema:director "drg. SUSANTI LUBIS , M.K.M" ;
-    schema:email "Rsudpsp@padangsidimpuankota.go.id" ;
-    schema:telephone "(0634)21251" ;
+    schema:email "rsudpsp@padangsidimpuankota.go.id" ;
+    schema:telephone "0634-21251" ;
     schema:url <https://rsud.padangsidimpuankota.go.id> .
 
 <http://localhost:8000/rs/rs-095> a hf:RumahSakit ;
@@ -1545,7 +1546,7 @@
             schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
             schema:opens "08:00" ] ;
     schema:telephone "061-66471404" ;
-    schema:url <https://rsudtanjungpura.langkatkab.go.id/> .
+    schema:url <https://rsudtanjungpura.langkatkab.go.id> .
 
 <http://localhost:8000/rs/rs-108> a hf:RumahSakit ;
     hf:kepemilikanSirs "Pemkab" ;
@@ -1598,7 +1599,7 @@
     schema:director "dr. Lie King Fuan, M.Kes" ;
     schema:email "rumahsakitdeli@gmail.com" ;
     schema:telephone "061-4565229" ;
-    schema:url <https://www.rsudeli.com/> .
+    schema:url <https://www.rsudeli.com> .
 
 <http://localhost:8000/rs/rs-112> a hf:RumahSakit ;
     hf:kepemilikanSirs "Organisasi Sosial" ;
@@ -1688,7 +1689,7 @@
     hf:statusWebsite "VERIFIED_OFFICIAL" ;
     schema:director "dr. Jonni Sastra Manurung, M.K.M" ;
     schema:email "eshmunhospital@yahoo.com" ;
-    schema:telephone "(061) 618881828" ;
+    schema:telephone "061-618881828" ;
     schema:url <https://eshmunhospital.com> .
 
 <http://localhost:8000/rs/rs-118> a hf:RumahSakit ;
@@ -1745,7 +1746,7 @@
     hf:statusWebsite "BELUM_TERSEDIA" ;
     schema:director "dr. Isma Wahyuni, M.K.M" ;
     schema:email "rshadihusada@gmail.com" ;
-    schema:telephone "+6282366616662" .
+    schema:telephone "082366616662" .
 
 <http://localhost:8000/rs/rs-122> a hf:RumahSakit ;
     hf:kepemilikanSirs "Pemprop" ;
@@ -1776,7 +1777,7 @@
     hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
     hf:statusWebsite "VERIFIED_OFFICIAL" ;
     schema:director "dr. Evelin Simarmata" ;
-    schema:telephone "(0622) 21162," ;
+    schema:telephone "0622-21162" ;
     schema:url <https://rsharapansiantar.com> .
 
 <http://localhost:8000/rs/rs-124> a hf:RumahSakit ;
@@ -1822,7 +1823,7 @@
             schema:closes "16:00" ;
             schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
             schema:opens "08:00" ] ;
-    schema:telephone "061-80048838/08" .
+    schema:telephone "061-80048838" .
 
 <http://localhost:8000/rs/rs-127> a hf:RumahSakit ;
     hf:kepemilikanSirs "Organisasi Protestan" ;
@@ -1849,7 +1850,7 @@
     hf:statusWebsite "VERIFIED_OFFICIAL" ;
     schema:director "Regina Sukendra, S.E" ;
     schema:email "imeldagood2018@gmail.com" ;
-    schema:telephone "061- 6610072" ;
+    schema:telephone "061-6610072" ;
     schema:url <https://rsuimelda.com> .
 
 <http://localhost:8000/rs/rs-129> a hf:RumahSakit ;
@@ -1875,7 +1876,7 @@
     hf:statusWebsite "VERIFIED_OFFICIAL" ;
     schema:director "Dr. M. TAUFIQ, Sp.THT-KL" ;
     schema:email "pkrs@rsimalahayati.com" ;
-    schema:telephone "(061) 4518766" ;
+    schema:telephone "061-4518766" ;
     schema:url <https://rsimalahayati.com> .
 
 <http://localhost:8000/rs/rs-131> a hf:RumahSakit ;
@@ -1889,7 +1890,7 @@
     hf:statusWebsite "VERIFIED_OFFICIAL" ;
     schema:director "dr.Rilie Ritonga Sp.OG" ;
     schema:email "rsu.kbub@gmail.com" ;
-    schema:telephone "0624 2600413" ;
+    schema:telephone "0624-2600413" ;
     schema:url <https://rsukaryabakti.com> .
 
 <http://localhost:8000/rs/rs-132> a hf:RumahSakit ;
@@ -1903,7 +1904,7 @@
     hf:statusWebsite "BELUM_TERSEDIA" ;
     schema:director "dr. Kevin Sotarduga Nainggolan" ;
     schema:email "rumahsakit_karyahusada@yahoo.co.id" ;
-    schema:telephone "0622 697025" .
+    schema:telephone "0622-697025" .
 
 <http://localhost:8000/rs/rs-133> a hf:RumahSakit ;
     hf:kepemilikanSirs "Perusahaan" ;
@@ -2025,7 +2026,7 @@
     schema:director "dr. Millenia Graciella Situmorang" ;
     schema:email "mahawiraprimaindonesia@gmail.com" ;
     schema:telephone "0821-6357-0227" ;
-    schema:url <https://rsmahawiraprimaindonesia.wordpress.com/> .
+    schema:url <https://rsmahawiraprimaindonesia.wordpress.com> .
 
 <http://localhost:8000/rs/rs-141> a hf:RumahSakit ;
     hf:kepemilikanSirs "Perusahaan" ;
@@ -2044,7 +2045,7 @@
             schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
             schema:opens "08:00" ] ;
     schema:telephone "085359267962" ;
-    schema:url <https://rsumahkota.bidadari.co.id/> .
+    schema:url <https://rsumahkota.bidadari.co.id> .
 
 <http://localhost:8000/rs/rs-142> a hf:RumahSakit ;
     hf:kepemilikanSirs "Perusahaan" ;
@@ -2056,7 +2057,7 @@
     hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
     hf:statusWebsite "VERIFIED_OFFICIAL" ;
     schema:director "dr. Adrian Martin Hutauruk, M.Kes, FISQua, CHAE, CHMEE, CHCEE" ;
-    schema:telephone "061 6610910" ;
+    schema:telephone "061-6610910" ;
     schema:url <https://rsmarthafriska.com> .
 
 <http://localhost:8000/rs/rs-143> a hf:RumahSakit ;
@@ -2096,7 +2097,7 @@
     hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
     hf:statusWebsite "VERIFIED_OFFICIAL" ;
     schema:director "dr. Lusi Nurlina Nasution" ;
-    schema:telephone "(061) 7990428" ;
+    schema:telephone "061-7990428" ;
     schema:url <https://www.rsmelatiperbaungan.com> .
 
 <http://localhost:8000/rs/rs-146> a hf:RumahSakit ;
@@ -2123,7 +2124,7 @@
     hf:statusWebsite "VERIFIED_OFFICIAL" ;
     schema:director "dr. Denny Hadi, M.Ked (Clin-Path), Sp.PK" ;
     schema:email "rsmethodistgloria@gmail.com" ;
-    schema:telephone "(061) 7369000" ;
+    schema:telephone "061-7369000" ;
     schema:url <https://rsmethodistmedan.com> .
 
 <http://localhost:8000/rs/rs-148> a hf:RumahSakit ;
@@ -2162,7 +2163,7 @@
             schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
             schema:opens "08:00" ] ;
     schema:telephone "061-7980216" ;
-    schema:url <https://rsumitraguraypetumbukan.com/> .
+    schema:url <https://rsumitraguraypetumbukan.com> .
 
 <http://localhost:8000/rs/rs-150> a hf:RumahSakit ;
     hf:kepemilikanSirs "Organisasi Sosial" ;
@@ -2188,7 +2189,7 @@
     hf:statusWebsite "VERIFIED_OFFICIAL" ;
     schema:director "dr. Dwi Ajeng Ayu Saputri Ritonga,MKM" ;
     schema:telephone "081269028201" ;
-    schema:url <https://bandarklippa.mitramedika.com/> .
+    schema:url <https://bandarklippa.mitramedika.com> .
 
 <http://localhost:8000/rs/rs-152> a hf:RumahSakit ;
     hf:kepemilikanSirs "SWASTA/LAINNYA" ;
@@ -2326,7 +2327,7 @@
     hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
     hf:statusWebsite "CORROBORATED" ;
     schema:director "DR. RATNAWIYAH SIRAIT, MKM" ;
-    schema:telephone "0621 2613427" ;
+    schema:telephone "0621-2613427" ;
     schema:url <https://ptpmn.co.id> .
 
 <http://localhost:8000/rs/rs-162> a hf:RumahSakit ;
@@ -2463,7 +2464,7 @@
             schema:closes "16:00" ;
             schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
             schema:opens "08:00" ] ;
-    schema:telephone "+6281226318462" .
+    schema:telephone "081226318462" .
 
 <http://localhost:8000/rs/rs-171> a hf:RumahSakit ;
     hf:kepemilikanSirs "Kemkes" ;
@@ -2530,7 +2531,7 @@
             schema:closes "16:00" ;
             schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
             schema:opens "08:00" ] ;
-    schema:telephone "(081370739531" .
+    schema:telephone "081370739531" .
 
 <http://localhost:8000/rs/rs-175> a hf:RumahSakit ;
     hf:kepemilikanSirs "SWASTA/LAINNYA" ;
@@ -2542,7 +2543,7 @@
     hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
     hf:statusWebsite "VERIFIED_OFFICIAL" ;
     schema:director "dr. Lailatul Husna, Sp.PD" ;
-    schema:telephone "+62 889-1200-22" ;
+    schema:telephone "0889-1200-22" ;
     schema:url <https://rsroyalmaternity.com> .
 
 <http://localhost:8000/rs/rs-176> a hf:RumahSakit ;
@@ -2570,7 +2571,7 @@
     hf:statusWebsite "VERIFIED_OFFICIAL" ;
     schema:director "dr. Ashry Ramadhana Ginting" ;
     schema:email "rsu.rpmarelan@gmail.com" ;
-    schema:telephone "061 42731858" ;
+    schema:telephone "061-42731858" ;
     schema:url <https://rsroyalprimarelan.com> .
 
 <http://localhost:8000/rs/rs-178> a hf:RumahSakit ;
@@ -2598,7 +2599,7 @@
     hf:statusWebsite "VERIFIED_OFFICIAL" ;
     schema:director "dr. Teren, MKes, QHIA" ;
     schema:email "cs.rsusarah@gmail.com" ;
-    schema:telephone "061-4568383_" ;
+    schema:telephone "061-4568383" ;
     schema:url <https://www.sarahhospital.com> .
 
 <http://localhost:8000/rs/rs-180> a hf:RumahSakit ;
@@ -2649,7 +2650,7 @@
             schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
             schema:opens "08:00" ] ;
     schema:telephone "082370497169" ;
-    schema:url <https://rsusembiring.com/> .
+    schema:url <https://rsusembiring.com> .
 
 <http://localhost:8000/rs/rs-183> a hf:RumahSakit ;
     hf:kepemilikanSirs "Perusahaan" ;
@@ -2689,7 +2690,7 @@
     hf:statusWebsite "VERIFIED_OFFICIAL" ;
     schema:director "dr. Kartika Kuesno, M.K.M" ;
     schema:email "info.shmd@siloamhospitals.com" ;
-    schema:telephone "+6261 8888 1900" ;
+    schema:telephone "061-88881900" ;
     schema:url <https://www.siloamhospitals.com> .
 
 <http://localhost:8000/rs/rs-186> a hf:RumahSakit ;
@@ -2718,7 +2719,8 @@
             rdfs:label "Poliklinik Rawat Jalan" ;
             schema:closes "16:00" ;
             schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
-            schema:opens "08:00" ] .
+            schema:opens "08:00" ] ;
+    schema:telephone "061-8451152" .
 
 <http://localhost:8000/rs/rs-188> a hf:RumahSakit ;
     hf:kepemilikanSirs "Organisasi Katholik" ;
@@ -2763,7 +2765,7 @@
     hf:statusWebsite "CORROBORATED" ;
     schema:director "dr. Maria Seri Arihta,M.K.M" ;
     schema:email "sriratumdn@yahoo.co.id" ;
-    schema:telephone "(061) - 4521074" ;
+    schema:telephone "061-4521074" ;
     schema:url <https://rsusriratu.com> .
 
 <http://localhost:8000/rs/rs-191> a hf:RumahSakit ;
@@ -2835,7 +2837,7 @@
     hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
     hf:statusWebsite "BELUM_TERSEDIA" ;
     schema:director "dr. Yenni Hastita" ;
-    schema:telephone "0622- 27617" .
+    schema:telephone "0622-27617" .
 
 <http://localhost:8000/rs/rs-196> a hf:RumahSakit ;
     hf:kepemilikanSirs "Organisasi Sosial" ;
@@ -2848,7 +2850,7 @@
     hf:statusWebsite "CORROBORATED" ;
     schema:director "dr. Sim Siyen, MKM" ;
     schema:email "rsunpri@gmail.com" ;
-    schema:telephone "(0621)-328488" ;
+    schema:telephone "0621-328488" ;
     schema:url <https://unprimdn.ac.id> .
 
 <http://localhost:8000/rs/rs-197> a hf:RumahSakit ;
@@ -2862,7 +2864,7 @@
     hf:statusWebsite "VERIFIED_OFFICIAL" ;
     schema:director "Dr. Bambang Wahyudi" ;
     schema:email "utamarsia@gmail.com" ;
-    schema:telephone "0623 42007" ;
+    schema:telephone "0623-42007" ;
     schema:url <https://rsutama.com> .
 
 <http://localhost:8000/rs/rs-198> a hf:RumahSakit ;
@@ -2876,7 +2878,7 @@
     hf:statusWebsite "VERIFIED_OFFICIAL" ;
     schema:director "dr.Jhon Lihar Purba, M.Kes" ;
     schema:email "rsu.vina.estetica@gmail.com" ;
-    schema:telephone "061 4147646" ;
+    schema:telephone "061-4147646" ;
     schema:url <https://www.rsuvinaestetica.co.id> .
 
 <http://localhost:8000/rs/rs-199> a hf:RumahSakit ;
@@ -2895,7 +2897,7 @@
             schema:closes "19:00" ;
             schema:description "Senin-Sabtu 08:00 - 19:00 WIB" ;
             schema:opens "08:00" ] ;
-    schema:telephone "62-811601125" ;
+    schema:telephone "0811601125" ;
     schema:url <https://www.vitainsani.com> .
 
 <http://localhost:8000/rs/rs-200> a hf:RumahSakit ;
@@ -2910,7 +2912,7 @@
     schema:director "dr. Nur Hajizah, M.Biomed" ;
     schema:email "rsuwampunorita@gmail.com" ;
     schema:telephone "082365264946" ;
-    schema:url <https://rsuwampunorita.co.id/> .
+    schema:url <https://rsuwampunorita.co.id> .
 
 <http://localhost:8000/rs/rs-201> a hf:RumahSakit ;
     hf:kepemilikanSirs "SWASTA/LAINNYA" ;
@@ -2956,7 +2958,7 @@
             schema:closes "16:00" ;
             schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
             schema:opens "08:00" ] ;
-    schema:telephone "061 - 7956061" .
+    schema:telephone "061-7956061" .
 
 <http://localhost:8000/rs/rs-204> a hf:RumahSakit ;
     hf:kepemilikanSirs "TNI AU" ;

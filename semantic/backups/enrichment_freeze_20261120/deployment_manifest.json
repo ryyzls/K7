@@ -1,11 +1,11 @@
 {
   "base": "http://localhost:3030/hospital",
   "graph": "http://carisehat.id/graph/enrichment/2026-11-20",
-  "deployed_at": "2026-11-21T00:13:21.149865+00:00",
+  "deployed_at": "2026-11-21T01:03:16.678049+00:00",
   "default_triples": 5906,
   "default_sha256": "5141963614af8b5f11f13dcf5ef3bb3351dca10eb84dc11d9d020323c9fbdf5a",
-  "deployed_triples": 2837,
+  "deployed_triples": 2839,
   "source_file": "/Users/muhammadlukmantoro/Desktop/semester-3/tubes/K7/semantic/named_graphs/carisehat-enrichment-freeze.ttl",
   "status": "VERIFIED",
-  "verified_fuseki_triples": 2837
+  "verified_fuseki_triples": 2839
 }

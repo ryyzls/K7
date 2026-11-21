@@ -144,7 +144,12 @@ def to_hospital(r: dict) -> dict:
     h["luas_tanah"] = prof.get("luas_tanah")
     h["luas_bangunan"] = prof.get("luas_bangunan")
     
-    # Website & Email integration (Mass Discovery)
+    # Kontak (Telepon, Email, Website) integration
+    clean_tel = kontak.get("telepon")
+    if clean_tel:
+        h["telepon"] = clean_tel
+    h["telepon_display"] = h.get("telepon") or "Belum tersedia"
+
     cand_web = kontak.get("website_url")
     if cand_web:
         h["website"] = cand_web

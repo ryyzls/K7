@@ -13,8 +13,13 @@ export function telHref(phone) {
 }
 
 export function websiteHref(url) {
-  if (!url) return '';
+  if (!url || url === 'Belum tersedia') return '';
   return /^https?:\/\//i.test(url) ? url : `https://${url}`;
+}
+
+export function emailHref(email) {
+  if (!email || email === 'Belum tersedia') return '';
+  return `mailto:${email.trim()}`;
 }
 
 export function mapsSearchUrl(hospital) {

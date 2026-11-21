@@ -7,6 +7,7 @@ import { useApp } from '../context/AppContext';
 import {
   cn,
   directionsUrl,
+  emailHref,
   mapsSearchUrl,
   openStreetMapUrl,
   telHref,
@@ -290,6 +291,7 @@ export default function DetailPage() {
   const fasilitas = hospital.fasilitas || [];
   const phone = telHref(hospital.telepon);
   const web = websiteHref(hospital.website);
+  const emailLink = emailHref(hospital.email);
   const hasEmergency = [...layanan, ...fasilitas].some((item) => /igd|ugd|gawat darurat|ambulans/i.test(item));
   const hasICU = fasilitas.some((item) => /icu|intensive/i.test(item));
   const saved = isFavorite(hospital.id);
@@ -967,10 +969,19 @@ export default function DetailPage() {
                       href={web}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-2.5 text-xs font-semibold text-slate-600 transition hover:bg-slate-50"
+                      className="flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-2.5 text-xs font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-brand-blue"
                     >
                       <span className="material-symbols-outlined text-[16px]">language</span>
                       Situs resmi
+                    </a>
+                  ) : null}
+                  {emailLink ? (
+                    <a
+                      href={emailLink}
+                      className="flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-2.5 text-xs font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-brand-blue"
+                    >
+                      <span className="material-symbols-outlined text-[16px]">mail</span>
+                      Kirim Email
                     </a>
                   ) : null}
                 </div>
@@ -1001,25 +1012,39 @@ export default function DetailPage() {
                       {hospital.alamat || 'Alamat belum tersedia'}
                     </span>
                   </InfoRow>
-                  {phone ? (
-                    <InfoRow icon="call" label="Telepon">
-                      <a href={phone} className="text-[12.5px] text-brand-blue hover:underline">
+                  <InfoRow icon="call" label="Telepon">
+                    {phone ? (
+                      <a href={phone} className="text-[12.5px] font-medium text-brand-blue hover:underline">
                         {hospital.telepon}
                       </a>
-                    </InfoRow>
-                  ) : null}
-                  {web ? (
-                    <InfoRow icon="language" label="Website">
+                    ) : (
+                      <span className="text-[12.5px] text-slate-400">Belum tersedia</span>
+                    )}
+                  </InfoRow>
+                  <InfoRow icon="mail" label="Email">
+                    {emailLink ? (
+                      <a href={emailLink} className="text-[12.5px] font-medium text-brand-blue hover:underline break-all">
+                        {hospital.email}
+                      </a>
+                    ) : (
+                      <span className="text-[12.5px] text-slate-400">Belum tersedia</span>
+                    )}
+                  </InfoRow>
+                  <InfoRow icon="language" label="Website">
+                    {web ? (
                       <a
                         href={web}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[12.5px] text-brand-blue hover:underline"
+                        className="inline-flex items-center gap-1 text-[12.5px] font-medium text-brand-blue hover:underline break-all"
                       >
-                        Kunjungi situs resmi
+                        <span>{hospital.website.replace(/^https?:\/\//i, '').replace(/\/$/, '')}</span>
+                        <span className="material-symbols-outlined text-[13px]">open_in_new</span>
                       </a>
-                    </InfoRow>
-                  ) : null}
+                    ) : (
+                      <span className="text-[12.5px] text-slate-400">Belum tersedia</span>
+                    )}
+                  </InfoRow>
                   <InfoRow icon="my_location" label="Koordinat">
                     <span className="text-[12px]">
                       {hospital.lat != null
