@@ -233,10 +233,10 @@ export default function HospitalCard({
         <div className="mt-6 flex items-center gap-2 border-t border-slate-100 pt-4">
           <Link
             to={detailHref}
-            className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-slate-900 py-2.5 px-4 text-xs font-semibold text-white shadow-sm transition hover:bg-brand-blue"
+            className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-white py-2.5 px-4 text-xs font-semibold text-slate-700 shadow-sm transition-all hover:border-brand-navy hover:bg-slate-50 hover:text-brand-navy"
           >
             <span>Lihat Detail</span>
-            <span className="material-symbols-outlined text-[15px]">arrow_forward</span>
+            <span className="material-symbols-outlined text-[15px] text-slate-400">arrow_forward</span>
           </Link>
 
           {/* Secondary Info Toggle (Click State for Mobile & Quick Glance) */}

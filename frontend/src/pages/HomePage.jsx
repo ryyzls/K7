@@ -98,7 +98,7 @@ export default function HomePage() {
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-slate-950/65 to-slate-950/90" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(5,150,105,0.18),transparent_45%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(0,87,184,0.25),transparent_50%)]" />
 
         <div className="relative z-10 mx-auto flex w-full max-w-[1360px] flex-1 flex-col justify-center px-6 py-16 lg:px-10">
           <div className="max-w-3xl">
@@ -130,7 +130,7 @@ export default function HomePage() {
               </div>
               <button
                 type="submit"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-3 text-sm font-bold text-emerald-950 transition hover:bg-emerald-400"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-brand-navy px-6 py-3 text-sm font-bold text-white shadow-md transition hover:bg-brand-blue"
               >
                 Cari sekarang
                 <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
