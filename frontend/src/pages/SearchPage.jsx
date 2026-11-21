@@ -181,9 +181,7 @@ export default function SearchPage() {
     <div className="flex min-h-screen flex-col bg-slate-50">
       <SiteHeader
         active="direktori"
-        initialQuery={filters.q}
-        onFilterClick={() => setFilterOpen(true)}
-        filterActive={activeCount > 0}
+        showSearch={false}
       />
 
       <main className="flex-1">
@@ -192,10 +190,6 @@ export default function SearchPage() {
           <div className="mx-auto max-w-7xl px-4 py-7 sm:px-6 lg:px-8">
             <div className="flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
               <div>
-                <div className="mb-1 flex items-center gap-2 text-[10.5px] font-bold uppercase tracking-[0.15em] text-brand-blue">
-                  <span className="h-2 w-2 rounded-full bg-brand-blue" />
-                  Wilayah faskes terverifikasi
-                </div>
                 <h1 className="font-heading text-2xl font-extrabold tracking-tight text-brand-navy md:text-3xl">
                   Direktori Rumah Sakit Sumatera Utara
                 </h1>
