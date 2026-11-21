@@ -94,50 +94,33 @@ function Gallery({ hospital }) {
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-2 overflow-hidden rounded-2xl md:h-[440px] md:grid-cols-12 md:gap-2.5">
-          <button
-            type="button"
-            onClick={() => setLightbox(0)}
-            className="group relative h-64 overflow-hidden md:col-span-7 md:h-full"
-          >
-            <img
-              src={photos[0]}
-              alt={`${hospital.nama} — foto utama`}
-              className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.015]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/30 to-transparent opacity-0 transition group-hover:opacity-100" />
-            <span className="absolute bottom-3 right-3 inline-flex items-center gap-1 rounded-lg border border-white/40 bg-white/90 px-2.5 py-1.5 text-[11px] font-semibold text-slate-800 opacity-0 shadow-sm backdrop-blur transition group-hover:opacity-100">
-              <span className="material-symbols-outlined text-[15px]">zoom_in</span>
-              Perbesar
-            </span>
-          </button>
-
-          <div className="grid h-40 grid-cols-2 gap-2 md:col-span-5 md:h-full md:grid-cols-1 md:gap-2.5">
-            {[1, 2].map((index) => {
-              const src = photos[index];
-              return (
-                <button
-                  key={index}
-                  type="button"
-                  onClick={() => setLightbox(index)}
-                  className="group relative h-full overflow-hidden"
-                >
-                  <img
-                    src={src}
-                    alt={`${hospital.nama} — foto ${index + 1}`}
-                    loading="lazy"
-                    className="h-full w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-[1.015]"
-                  />
-                  {index === 2 && photos.length > 3 ? (
-                    <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-lg border border-slate-200/60 bg-white/95 px-3 py-1.5 text-[11px] font-semibold text-slate-900 shadow-sm backdrop-blur">
-                      <span className="material-symbols-outlined text-[15px]">grid_view</span>
-                      Lihat semua {photos.length} foto
-                    </span>
-                  ) : null}
-                </button>
-              );
-            })}
-          </div>
+        <div className="grid grid-cols-1 gap-2.5 overflow-hidden rounded-2xl md:h-[340px] md:grid-cols-3">
+          {photos.slice(0, 3).map((src, index) => (
+            <button
+              key={index}
+              type="button"
+              onClick={() => setLightbox(index)}
+              className="group relative h-56 overflow-hidden md:h-full"
+            >
+              <img
+                src={src}
+                alt={`${hospital.nama} — foto ${index + 1}`}
+                loading="lazy"
+                className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/30 to-transparent opacity-0 transition group-hover:opacity-100" />
+              <span className="absolute bottom-3 right-3 inline-flex items-center gap-1 rounded-lg border border-white/40 bg-white/90 px-2.5 py-1.5 text-[11px] font-semibold text-slate-800 opacity-0 shadow-sm backdrop-blur transition group-hover:opacity-100">
+                <span className="material-symbols-outlined text-[15px]">zoom_in</span>
+                Perbesar
+              </span>
+              {index === 2 && photos.length > 3 ? (
+                <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-lg border border-slate-200/60 bg-white/95 px-3 py-1.5 text-[11px] font-semibold text-slate-900 shadow-sm backdrop-blur">
+                  <span className="material-symbols-outlined text-[15px]">grid_view</span>
+                  Lihat semua {photos.length} foto
+                </span>
+              ) : null}
+            </button>
+          ))}
         </div>
       )}
 
