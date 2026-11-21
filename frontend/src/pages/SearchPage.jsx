@@ -42,7 +42,6 @@ export default function SearchPage() {
   const [filterOpen, setFilterOpen] = useState(false);
   const [showMap, setShowMap] = useState(true);
   const resultsRef = useRef(null);
-  const debounceRef = useRef(null);
 
   const filters = useMemo(
     () => ({
@@ -63,17 +62,11 @@ export default function SearchPage() {
   }, [filters.q]);
 
   const handleSearchChange = (event) => {
-    const val = event.target.value;
-    setSearchInput(val);
-    if (debounceRef.current) clearTimeout(debounceRef.current);
-    debounceRef.current = setTimeout(() => {
-      updateParams({ q: val.trim() });
-    }, 350);
+    setSearchInput(event.target.value);
   };
 
   const handleSearchSubmit = (event) => {
     event?.preventDefault();
-    if (debounceRef.current) clearTimeout(debounceRef.current);
     updateParams({ q: searchInput.trim() });
   };
 
@@ -205,7 +198,6 @@ export default function SearchPage() {
                     type="button"
                     onClick={() => {
                       setSearchInput('');
-                      if (debounceRef.current) clearTimeout(debounceRef.current);
                       updateParams({ q: '' });
                     }}
                     className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 transition hover:text-slate-700"
