@@ -67,8 +67,11 @@ app.include_router(booking.router)
 app.include_router(chat.router)
 app.include_router(semantic.router)
 frontend_path = Path(settings.frontend_dir)
+public_images = frontend_path / "public" / "images"
+if public_images.exists():
+    app.mount("/images", StaticFiles(directory=str(public_images), follow_symlink=True), name="public-images")
 dist_path = frontend_path / "dist"
 serve_dir = str(dist_path) if (dist_path / "index.html").exists() else str(frontend_path)
 if Path(serve_dir).exists():  # harus terakhir: melayani "/" dan file statis
-    app.mount("/", SPAStaticFiles(directory=serve_dir, html=True), name="frontend")
+    app.mount("/", SPAStaticFiles(directory=serve_dir, html=True, follow_symlink=True), name="frontend")
 

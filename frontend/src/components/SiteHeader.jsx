@@ -7,6 +7,7 @@ import { BrandMark } from './BrandMark';
 function SearchField({ initialQuery = '', compact = false, onSubmit, autoFocus = false }) {
   const [value, setValue] = useState(initialQuery);
   const inputRef = useRef(null);
+  const debounceRef = useRef(null);
 
   useEffect(() => {
     setValue(initialQuery);
@@ -16,11 +17,21 @@ function SearchField({ initialQuery = '', compact = false, onSubmit, autoFocus =
     if (autoFocus) inputRef.current?.focus();
   }, [autoFocus]);
 
+  const handleChange = (event) => {
+    const val = event.target.value;
+    setValue(val);
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => {
+      onSubmit?.(val.trim());
+    }, 400);
+  };
+
   return (
     <form
       className="relative flex w-full items-center"
       onSubmit={(event) => {
         event.preventDefault();
+        if (debounceRef.current) clearTimeout(debounceRef.current);
         onSubmit?.(value.trim());
       }}
       role="search"
@@ -31,7 +42,7 @@ function SearchField({ initialQuery = '', compact = false, onSubmit, autoFocus =
       <input
         ref={inputRef}
         value={value}
-        onChange={(event) => setValue(event.target.value)}
+        onChange={handleChange}
         className={cn(
           'w-full rounded-full border border-transparent bg-slate-100 pl-10 pr-10 font-medium text-slate-800 outline-none transition-all placeholder:text-slate-400 hover:bg-slate-200/80 focus:border-brand-blue focus:bg-white focus:ring-2 focus:ring-brand-blue/20',
           compact ? 'py-2 text-xs' : 'py-2.5 text-sm',
@@ -46,6 +57,8 @@ function SearchField({ initialQuery = '', compact = false, onSubmit, autoFocus =
           className="absolute right-3 flex items-center text-slate-400 transition-colors hover:text-slate-700"
           onClick={() => {
             setValue('');
+            if (debounceRef.current) clearTimeout(debounceRef.current);
+            onSubmit?.('');
             inputRef.current?.focus();
           }}
           title="Hapus pencarian"

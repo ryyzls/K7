@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react';
 // In production the built `dist/` folder is served directly by FastAPI.
 export default defineConfig({
   plugins: [react()],
+  publicDir: false,
   server: {
     port: 5173,
     proxy: {
@@ -18,6 +19,6 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    emptyOutDir: true,
+    emptyOutDir: false,
   },
 });
