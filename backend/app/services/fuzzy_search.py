@@ -181,41 +181,125 @@ def generate_auto_aliases(nama: str) -> list[str]:
 # ---------------------------------------------------------------------------
 # Skor Kemiripan
 # ---------------------------------------------------------------------------
-def skor(query: str, nama: str) -> float:
-    """Skor kemiripan 0..1 antara query dan nama."""
+def _token_fragment_score(query: str, target: str, allow_internal_fragment: bool = True) -> float:
+    """Skor 0..1 untuk token query terhadap token target.
+
+    - Token sama: 1.00
+    - Awalan token (minimal 2 karakter): 0.94
+    - Potongan di tengah token (minimal 2 karakter): 0.84 untuk 2 karakter,
+      dan 0.88 untuk 3 karakter atau lebih.
+    - Fuzzy typo hanya untuk token minimal 5 karakter.
+
+    Batas minimum mencegah query satu huruf dan substring dua huruf yang terlalu
+    umum menghasilkan terlalu banyak kecocokan palsu.
+    """
+    q = normalize(query)
+    t = normalize(target)
+    if not q or not t:
+        return 0.0
+    if q == t:
+        return 1.0
+    if len(q) >= 2 and t.startswith(q):
+        return 0.94
+    if allow_internal_fragment and len(q) >= 2 and q in t:
+        # Fragmen 2 karakter diperbolehkan agar query seperti "djo"/"jo"
+        # dapat mengenali Djoelham; skor lebih rendah untuk mengurangi false positive.
+        return 0.84 if len(q) == 2 else 0.88
+    if len(q) >= 5 and abs(len(q) - len(t)) <= 2:
+        ratio = difflib.SequenceMatcher(None, q, t).ratio()
+        if ratio >= 0.72:
+            return ratio
+    return 0.0
+
+
+def _partial_text_score(query: str, target: str, allow_internal_fragment: bool = True) -> float:
+    """Cocokkan seluruh token query dengan token pada teks target."""
+    q_norm = normalize(query)
+    t_norm = normalize(target)
+    if not q_norm or not t_norm:
+        return 0.0
+
+    if q_norm == t_norm or q_norm.replace(" ", "") == t_norm.replace(" ", ""):
+        return 1.0
+
+    # Query multi-kata yang muncul berurutan tetap mendapat skor tertinggi.
+    if f" {q_norm} " in f" {t_norm} ":
+        return 1.0
+
+    q_tokens = q_norm.split()
+    t_tokens = t_norm.split()
+    scores: list[float] = []
+
+    for q_token in q_tokens:
+        best = max(
+            (
+                _token_fragment_score(q_token, target_token, allow_internal_fragment)
+                for target_token in t_tokens
+            ),
+            default=0.0,
+        )
+        if best == 0.0:
+            return 0.0
+        scores.append(best)
+
+    return sum(scores) / len(scores) if scores else 0.0
+
+
+def skor(query: str, nama: str, *, allow_internal_fragment: bool = True) -> float:
+    """Skor kemiripan 0..1, termasuk prefix dan potongan kata."""
     q_norm = normalize(query)
     n_norm = normalize(nama)
     if not q_norm or not n_norm:
         return 0.0
 
-    # Cocok persis
     if q_norm == n_norm:
         return 1.0
 
-    # Cocok tanpa spasi persis (misal 'adammalik' == 'adam malik')
     if q_norm.replace(" ", "") == n_norm.replace(" ", ""):
         return 1.0
 
-    # Substring whole words
-    padded_n = f" {n_norm} "
-    padded_q = f" {q_norm} "
-    if padded_q in padded_n:
+    # Pertahankan pencocokan frasa utuh yang sudah digunakan sebelumnya.
+    if f" {q_norm} " in f" {n_norm} ":
         return 1.0
 
-    q_words = expand(q_norm).split()
-    n_words = expand(n_norm).split()
-    if not q_words or not n_words:
-        return 0.0
+    # Matching partial: contoh co/col -> Columbia, lum/bia -> Columbia.
+    partial_score = _partial_text_score(q_norm, n_norm, allow_internal_fragment)
 
-    total = 0.0
-    for qw in q_words:
-        best_ratio = max(difflib.SequenceMatcher(None, qw, nw).ratio() for nw in n_words)
-        total += best_ratio
+    # Tetap dukung ekspansi singkatan yang sudah ada.
+    q_expanded = expand(q_norm)
+    n_expanded = expand(n_norm)
+    expanded_score = _partial_text_score(q_expanded, n_expanded, allow_internal_fragment)
 
-    ratio_avg = total / len(q_words)
-    # Full sequence ratio as backup
-    full_ratio = difflib.SequenceMatcher(None, q_norm, n_norm).ratio()
-    return max(ratio_avg, full_ratio)
+    # Fuzzy typo dipertahankan, tetapi tidak dipakai untuk token pendek.
+    q_words = q_expanded.split()
+    n_words = n_expanded.split()
+    fuzzy_score = 0.0
+    eligible_words = [word for word in q_words if len(word) >= 5]
+    if eligible_words and n_words:
+        best_scores = []
+        for qw in eligible_words:
+            eligible_targets = [nw for nw in n_words if abs(len(qw) - len(nw)) <= 2]
+            if not eligible_targets:
+                best_scores = []
+                break
+            best_ratio = max(
+                difflib.SequenceMatcher(None, qw, nw).ratio()
+                for nw in eligible_targets
+            )
+            # Pertahankan toleransi typo 1-2 karakter tanpa menerima kemiripan lemah.
+            if best_ratio < 0.72:
+                best_scores = []
+                break
+            best_scores.append(best_ratio)
+
+        if best_scores and len(best_scores) == len(eligible_words):
+            fuzzy_score = sum(best_scores) / len(best_scores)
+            if len(q_words) == 1 and len(q_norm) >= 5:
+                full_ratio = difflib.SequenceMatcher(None, q_norm, n_norm).ratio()
+                if full_ratio >= 0.72:
+                    fuzzy_score = max(fuzzy_score, full_ratio)
+
+    return max(partial_score, expanded_score, fuzzy_score)
 
 
 def akronim(nama: str) -> set[str]:
@@ -245,39 +329,64 @@ def get_all_aliases(rs_id: str, nama: str) -> list[str]:
     return _AUTO_ALIAS_CACHE[rs_id]
 
 
-def skor_rs(query: str, h: dict) -> float:
-    """Skor kemiripan satu RS: nama asli, alias manual & otomatis, dan akronim."""
+def _skor_nama_rs(query: str, h: dict) -> float:
+    """Skor nama RS dari nama RDF, alias manual/otomatis, dan akronim."""
     qn = normalize(query)
     q_inti = tanpa_generik(query)
 
-    s = skor(query, h["nama"])
+    s = skor(query, h.get("nama", ""))
     if q_inti and q_inti != query:
-        s = max(s, skor(q_inti, h["nama"]))
+        s = max(s, skor(q_inti, h.get("nama", "")))
 
-    # Periksa seluruh alias (manual & otomatis)
     aliases = get_all_aliases(h.get("id", ""), h.get("nama", ""))
     for alias in aliases:
-        s = max(s, skor(query, alias))
+        # Alias tanpa spasi umumnya hasil penggabungan otomatis (contoh matasiantar).
+        # Hindari substring di tengah gabungan itu agar query "asia" tidak salah
+        # cocok dengan "mata siantar"; prefix dan exact alias tetap didukung.
+        allow_internal = " " in normalize(alias)
+        s = max(s, skor(query, alias, allow_internal_fragment=allow_internal))
         if q_inti:
-            s = max(s, skor(q_inti, alias))
+            s = max(s, skor(q_inti, alias, allow_internal_fragment=allow_internal))
 
-    # Cocokkan akronim
     kunci = qn.replace(" ", "")
-    if kunci and kunci in akronim(h["nama"]):
+    if kunci and kunci in akronim(h.get("nama", "")):
         s = max(s, 0.95)
 
     return s
 
 
+def skor_alamat(query: str, alamat: str) -> float:
+    """Skor alamat yang sengaja dibatasi agar kalah dari kecocokan nama RS."""
+    raw_score = _partial_text_score(query, alamat)
+    if raw_score <= 0.0:
+        return 0.0
+
+    # Maksimum 0.78: hasil nama yang valid (partial mulai 0.88) selalu di atas alamat.
+    return min(0.78, raw_score * 0.78)
+
+
+def skor_rs(query: str, h: dict) -> float:
+    """Skor satu RS dari nama/alias dan alamat; nama selalu berbobot lebih tinggi."""
+    nama_score = _skor_nama_rs(query, h)
+    alamat_score = skor_alamat(query, h.get("alamat", ""))
+    return max(nama_score, alamat_score)
+
+
 def rank(query: str, items: list[dict], ambang: float = AMBANG) -> list[dict]:
-    """Urutkan RS berdasarkan kemiripan nama/alias."""
-    nq = normalize(query)
-    hasil: list[tuple[float, dict]] = []
+    """Urutkan hasil: kecocokan nama RS lebih dahulu, kemudian kecocokan alamat."""
+    hasil: list[tuple[int, float, float, str, dict]] = []
+
     for h in items:
-        s = skor_rs(query, h)
-        if nq and nq in normalize(h.get("alamat", "")):
-            s = max(s, 0.8)
-        if s >= ambang:
-            hasil.append((s, h))
-    hasil.sort(key=lambda x: (-x[0], x[1]["nama"]))
-    return [h for _, h in hasil]
+        nama_score = _skor_nama_rs(query, h)
+        alamat_score = skor_alamat(query, h.get("alamat", ""))
+
+        # Kandidat lolos jika cocok pada nama atau alamat.
+        if max(nama_score, alamat_score) < ambang:
+            continue
+
+        # Seluruh kandidat yang cocok pada nama ditempatkan sebelum alamat-only.
+        nama_priority = 0 if nama_score >= ambang else 1
+        hasil.append((nama_priority, -nama_score, -alamat_score, h.get("nama", ""), h))
+
+    hasil.sort(key=lambda x: (x[0], x[1], x[2], x[3]))
+    return [item[-1] for item in hasil]
