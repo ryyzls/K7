@@ -189,7 +189,7 @@ export default function SearchPage() {
                   value={searchInput}
                   onChange={handleSearchChange}
                   placeholder="Cari nama rumah sakit, spesialisasi, tindakan, atau lokasi..."
-                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-3 pl-10 pr-10 text-sm font-medium text-slate-800 outline-none transition placeholder:text-slate-400 hover:bg-slate-100/70 focus:border-brand-blue focus:bg-white focus:ring-2 focus:ring-brand-blue/20"
+                  className="w-full rounded-full border border-slate-200 bg-slate-50 py-3 pl-10 pr-10 text-sm font-medium text-slate-800 outline-none transition placeholder:text-slate-400 hover:bg-slate-100/70 focus:border-brand-blue focus:bg-white focus:ring-2 focus:ring-brand-blue/20"
                   aria-label="Cari nama rumah sakit, spesialisasi, atau lokasi"
                   autoComplete="off"
                 />
@@ -210,7 +210,7 @@ export default function SearchPage() {
 
               <button
                 type="submit"
-                className="inline-flex items-center justify-center gap-1.5 rounded-2xl bg-brand-navy px-6 py-3 text-xs font-bold text-white shadow-sm transition hover:bg-brand-blue"
+                className="inline-flex items-center justify-center gap-1.5 rounded-full bg-brand-navy px-6 py-3 text-xs font-bold text-white shadow-sm transition hover:bg-brand-blue"
               >
                 <span className="material-symbols-outlined text-[16px]">search</span>
                 Cari

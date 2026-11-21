@@ -98,14 +98,14 @@ export default function HospitalCard({
 
         {/* Desktop Hover Action Pill: Floating Quick Actions */}
         {hasSecondaryActions ? (
-          <div className="absolute inset-x-3.5 bottom-3 hidden md:flex items-center justify-between gap-2 rounded-xl border border-white/30 bg-slate-900/85 px-3 py-1.5 text-white shadow-lg backdrop-blur-md opacity-0 translate-y-1.5 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+          <div className="absolute inset-x-3.5 bottom-3 hidden md:flex items-center justify-between gap-2 rounded-full border border-white/30 bg-slate-900/85 px-4 py-1.5 text-white shadow-lg backdrop-blur-md opacity-0 translate-y-1.5 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
             <span className="text-[11px] font-medium text-slate-300">Aksi Cepat:</span>
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1.5">
               {phone ? (
                 <a
                   href={phone}
                   onClick={(e) => e.stopPropagation()}
-                  className="flex h-7 w-7 items-center justify-center rounded-lg bg-white/15 text-white transition hover:bg-emerald-600"
+                  className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15 text-white transition hover:bg-emerald-600"
                   title={`Telepon: ${hospital.telepon}`}
                   aria-label={`Telepon ${hospital.nama}`}
                 >
@@ -118,7 +118,7 @@ export default function HospitalCard({
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
-                  className="flex h-7 w-7 items-center justify-center rounded-lg bg-white/15 text-white transition hover:bg-sky-600"
+                  className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15 text-white transition hover:bg-sky-600"
                   title={`Kunjungi Website: ${hospital.nama}`}
                   aria-label={`Website ${hospital.nama}`}
                 >
@@ -133,7 +133,7 @@ export default function HospitalCard({
                     e.stopPropagation();
                     onRoute?.(hospital);
                   }}
-                  className="flex h-7 w-7 items-center justify-center rounded-lg bg-white/15 text-white transition hover:bg-brand-blue"
+                  className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15 text-white transition hover:bg-brand-blue"
                   title="Buka rute navigasi"
                   aria-label={`Rute ke ${hospital.nama}`}
                 >
@@ -233,7 +233,7 @@ export default function HospitalCard({
         <div className="mt-6 flex items-center gap-2 border-t border-slate-100 pt-4">
           <Link
             to={detailHref}
-            className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-slate-200 bg-white py-2.5 px-4 text-xs font-semibold text-slate-700 shadow-sm transition-all hover:border-brand-navy hover:bg-slate-50 hover:text-brand-navy"
+            className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full border border-slate-200 bg-white py-2.5 px-5 text-xs font-semibold text-slate-700 shadow-sm transition-all hover:border-brand-navy hover:bg-slate-50 hover:text-brand-navy"
           >
             <span>Lihat Detail</span>
             <span className="material-symbols-outlined text-[15px] text-slate-400">arrow_forward</span>
@@ -245,7 +245,7 @@ export default function HospitalCard({
               type="button"
               onClick={() => setShowSecondary((prev) => !prev)}
               className={cn(
-                'flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-xl border transition-colors',
+                'flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-full border transition-colors',
                 showSecondary
                   ? 'border-brand-blue bg-brand-blue/10 text-brand-blue'
                   : 'border-slate-200 bg-white text-slate-500 hover:bg-slate-50 hover:text-slate-700',

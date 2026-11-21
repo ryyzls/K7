@@ -114,7 +114,7 @@ export default function HomePage() {
 
             <form
               onSubmit={goSearch}
-              className="mt-7 flex flex-col gap-2 rounded-2xl border border-white/15 bg-white/10 p-2 backdrop-blur-md sm:flex-row sm:items-center"
+              className="mt-7 flex flex-col gap-2 rounded-full border border-white/15 bg-white/10 p-2 backdrop-blur-md sm:flex-row sm:items-center"
             >
               <div className="relative flex-1">
                 <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-white/55">
@@ -124,13 +124,13 @@ export default function HomePage() {
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
                   placeholder="Cari rumah sakit, layanan, atau wilayah..."
-                  className="w-full rounded-xl border border-transparent bg-transparent py-3 pl-12 pr-4 text-sm text-white outline-none placeholder:text-white/50 focus:border-white/30 focus:bg-white/5"
+                  className="w-full rounded-full border border-transparent bg-transparent py-3 pl-12 pr-4 text-sm text-white outline-none placeholder:text-white/50 focus:border-white/30 focus:bg-white/5"
                   aria-label="Cari rumah sakit"
                 />
               </div>
               <button
                 type="submit"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-brand-navy px-6 py-3 text-sm font-bold text-white shadow-md transition hover:bg-brand-blue"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-brand-navy px-7 py-3 text-sm font-bold text-white shadow-md transition hover:bg-brand-blue"
               >
                 Cari sekarang
                 <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
