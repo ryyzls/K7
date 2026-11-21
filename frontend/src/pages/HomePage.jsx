@@ -167,10 +167,10 @@ export default function HomePage() {
           <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div>
               <h2 className="font-sans text-[26px] font-bold leading-snug tracking-tight text-slate-900 sm:text-[32px]">
-                Jelajahi Spesialisasi Medis
+                Jelajahi Layanan Medis
               </h2>
               <p className="mt-1.5 max-w-2xl text-sm text-slate-500">
-                Temukan fasilitas kesehatan terakreditasi berdasarkan keahlian klinis dan teknologi
+                Temukan fasilitas kesehatan terakreditasi berdasarkan ketersediaan layanan klinis dan teknologi
                 pendukung.
               </p>
             </div>

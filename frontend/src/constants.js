@@ -81,28 +81,28 @@ export const FACILITY_ICON = {
 
 export const SPECIALTIES = [
   {
-    title: 'Radiologi & Imaging',
-    service: 'Radiologi',
-    image: '/images/rs/rs-005/foto_1.jpg',
-    note: 'Pemeriksaan pencitraan medis',
+    title: 'CT Scan',
+    service: 'CT Scan',
+    image: '/images/layanan/CT_SCAN.jpeg',
+    note: 'Pemeriksaan tomografi terkomputerisasi',
   },
   {
-    title: 'Kesehatan Anak',
-    service: 'Kesehatan Anak',
-    image: '/images/template/specialty-pediatrics.jpg',
-    note: 'Perawatan pediatri',
+    title: 'Patologi Anatomi',
+    service: 'Patologi Anatomi',
+    image: '/images/layanan/PANTOLOGI_ANATOMI.jpeg',
+    note: 'Diagnostik histopatologi & sitologi',
   },
   {
-    title: 'Kesehatan Jiwa',
-    service: 'Kesehatan Jiwa / Psikiatri',
-    image: '/images/rs/rs-025/foto_1.jpg',
-    note: 'Layanan psikiatri',
+    title: 'BERA (Audimetri)',
+    service: 'BERA (Brain Evoke Response Audimetri)',
+    image: '/images/layanan/bera.jpeg',
+    note: 'Pemeriksaan fungsi saraf pendengaran',
   },
   {
-    title: 'Bedah & Tindakan',
-    service: 'Bedah',
-    image: '/images/rs/rs-014/foto_1.jpg',
-    note: 'Tindakan bedah terencana',
+    title: 'Medical Check Up',
+    service: 'Medical Check Up',
+    image: '/images/layanan/medical_cekup.jpeg',
+    note: 'Pemeriksaan kesehatan berkala',
   },
 ];
 
