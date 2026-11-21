@@ -517,16 +517,10 @@ class TestZeroExternalNetwork(unittest.TestCase):
             for n in all_rs
         }
 
-        for alias, canonical in ALIAS_RS.items():
-            # Canonical harus ada di RDF (nama RS yang benar)
-            canon_norm = re.sub(r"\s+", " ", canonical.lower().strip())
-            # Cek dengan substring matching (nama bisa punya prefix "RS Umum Daerah ...")
-            found = any(canon_norm in rn or rn in canon_norm for rn in all_names_norm)
-            self.assertTrue(
-                found,
-                f"Alias '{alias}' → '{canonical}' tidak ditemukan di RDF. "
-                f"Pastikan nama kanonik akurat."
-            )
+        all_ids = {n["id"] for n in all_rs}
+        for rs_id, aliases in ALIAS_RS.items():
+            self.assertIn(rs_id, all_ids, f"RS ID '{rs_id}' tidak ditemukan di RDF.")
+            self.assertIsInstance(aliases, list)
 
     def test_fuseki_url_in_sparql_service_is_local(self):
         """URL Fuseki harus mengarah ke localhost, bukan server eksternal."""

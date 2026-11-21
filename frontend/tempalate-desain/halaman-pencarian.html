@@ -1,0 +1,170 @@
+<!DOCTYPE html><html class="h-full" lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>MediGraph ID | Direktori Rumah Sakit &amp; Pemetaan Fasilitas Kesehatan</title>
+<!-- Fonts: Poppins (Headings) & DM Sans (Body) -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Poppins:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#012D61',
+              blue: '#0057B8',
+              accent: '#0A84FF',
+              surface: '#F8FAFC',
+              emerald: '#059669',
+              emeraldDark: '#064E3B'
+            }
+          },
+          fontFamily: {
+            heading: ['Poppins', 'sans-serif'],
+            body: ['"DM Sans"', 'sans-serif']
+          },
+          boxShadow: {
+            'card': '0 2px 10px rgba(1, 45, 97, 0.06)',
+            'floating': '0 8px 30px rgba(1, 45, 97, 0.12)'
+          }
+        }
+      }
+    }
+  </script>
+<!-- Typography & Base Reset -->
+<style data-purpose="typography">
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: #1E293B;
+      background-color: #F8FAFC;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', sans-serif;
+    }
+    /* Hide custom scrollbar for horizontal filter pills while remaining scrollable */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<!-- Map Canvas Grid & Decorative Styles -->
+<style data-purpose="map-styling">
+    .map-grid-pattern {
+      background-color: #eaf1f7;
+      background-image: 
+        radial-gradient(#cfdbe7 1.2px, transparent 1.2px), 
+        linear-gradient(to right, rgba(215, 227, 240, 0.5) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(215, 227, 240, 0.5) 1px, transparent 1px);
+      background-size: 24px 24px, 72px 72px, 72px 72px;
+      background-position: 0 0, 0 0, 0 0;
+    }
+  </style>
+</head>
+<body class="h-full flex flex-col text-slate-800 antialiased selection:bg-blue-100 selection:text-brand-navy overflow-y-auto">
+<!-- BEGIN: MainHeader -->
+<header class="h-16 border-b border-slate-200 bg-white flex items-center justify-between px-4 lg:px-6 z-30 shrink-0"><!-- Left: Brand Logo -->
+<div class="flex items-center shrink-0">
+  <a class="flex items-center space-x-2.5 group" href="#">
+    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-navy to-brand-blue flex items-center justify-center text-white shadow-md shadow-brand-navy/20">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M12 3v6"></path>
+        <path d="M12 15v6"></path>
+        <path d="M3 12h6"></path>
+        <path d="M15 12h6"></path>
+        <circle cx="12" cy="3" r="1.5"></circle>
+        <circle cx="21" cy="12" r="1.5"></circle>
+        <circle cx="12" cy="21" r="1.5"></circle>
+        <circle cx="3" cy="12" r="1.5"></circle>
+      </svg>
+    </div>
+    <div>
+      <span class="text-xl font-heading font-extrabold tracking-tight text-brand-navy">MediGraph<span class="text-brand-blue">ID</span></span>
+      <span class="block text-[10px] tracking-wider font-semibold text-slate-400 uppercase -mt-1 font-body">CariSehat Network</span>
+    </div>
+  </a>
+</div>
+
+<!-- Center: Prominent Search Omnibox + Filter Pill Button -->
+<div class="flex-1 max-w-2xl mx-6 hidden md:flex items-center space-x-2.5" data-purpose="search-and-filter-center">
+  <div class="relative flex-1">
+    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path>
+      </svg>
+    </div>
+    <input class="w-full pl-10 pr-10 py-2.5 bg-slate-100 hover:bg-slate-200/80 focus:bg-white text-sm font-medium rounded-full border border-transparent focus:border-brand-blue focus:ring-2 focus:ring-brand-blue/20 transition-all outline-none text-slate-800" placeholder="Cari rumah sakit, spesialisasi, atau lokasi..." type="text" value="Sumatera Utara &amp; Medan">
+    <button class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600" title="Hapus pencarian">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+      </svg>
+    </button>
+  </div>
+  <!-- Integrated Clean Filters Button -->
+  <button class="inline-flex items-center space-x-1.5 px-4 py-2.5 rounded-full text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200/80 border border-slate-200 shadow-sm whitespace-nowrap transition-colors shrink-0" title="Buka Panel Filter">
+    <svg class="w-3.5 h-3.5 text-slate-600" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M4 21v-7"></path>
+      <path d="M4 10V3"></path>
+      <path d="M12 21v-9"></path>
+      <path d="M12 8V3"></path>
+      <path d="M20 21v-5"></path>
+      <path d="M20 12V3"></path>
+      <circle cx="4" cy="14" r="2"></circle>
+      <circle cx="12" cy="8" r="2"></circle>
+      <circle cx="20" cy="16" r="2"></circle>
+    </svg>
+    <span>Filter</span>
+  </button>
+</div>
+
+<!-- Right: Simplified Navigation & Actions -->
+<nav aria-label="Navigasi Utama" class="flex items-center space-x-3 shrink-0">
+  <!-- Compact Dropdown Link -->
+  <div class="relative hidden lg:block">
+    <button class="flex items-center space-x-1 text-sm font-medium text-slate-600 hover:text-brand-navy px-3 py-2 rounded-full hover:bg-slate-100 transition-colors">
+      <span>Eksplorasi</span>
+      <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- SPARQL Outline Button -->
+  <button class="hidden sm:inline-flex items-center space-x-1.5 text-xs font-semibold px-3.5 py-2 rounded-full text-slate-700 hover:bg-slate-100 border border-slate-200 transition-colors shadow-sm">
+    <svg class="w-3.5 h-3.5 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+    </svg>
+    <span>Akses SPARQL</span>
+  </button>
+
+  <!-- Masuk / Registrasi Pill Button -->
+  <button class="px-5 py-2 rounded-full text-xs font-semibold bg-brand-navy hover:bg-[#021f42] text-white shadow-sm transition-all flex items-center space-x-1.5">
+    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+    </svg>
+    <span>Masuk / Registrasi</span>
+  </button>
+</nav></header>
+<!-- END: MainHeader -->
+<!-- BEGIN: FilterSubheader -->
+
+<!-- END: FilterSubheader -->
+<!-- BEGIN: MainContentSplitView -->
+<main class="flex-1 w-full bg-slate-50"><div class="bg-white border-b border-slate-200"><div class="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center justify-between gap-4"><div><div class="flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-brand-blue mb-1"><span class="w-2 h-2 rounded-full bg-brand-blue inline-block"></span><span>Wilayah Faskes Terverifikasi</span></div><h1 class="text-2xl md:text-3xl font-heading font-extrabold text-brand-navy tracking-tight">Sumatera Utara &amp; Medan</h1><p class="text-sm text-slate-500 mt-1">Menampilkan <span class="font-bold text-brand-navy">24 Rumah Sakit</span> terakreditasi Kemenkes RI &amp; BPJS SatuSehat</p></div><div class="flex flex-wrap items-center gap-3"><div class="flex items-center space-x-2 bg-slate-50 px-3.5 py-2 rounded-xl border border-slate-200 text-xs"><span class="text-slate-500 font-medium">Urutkan:</span><select class="bg-transparent font-bold text-brand-navy outline-none cursor-pointer text-xs"><option selected="">Paling Relevan</option><option>Kapasitas Bed IGD Terbanyak</option><option>Rating Tertinggi</option><option>Jarak Terdekat</option></select></div><div class="flex items-center space-x-2"><span class="px-3 py-2 rounded-xl bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200 inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> IGD Siaga 24 Jam</span><span class="px-3 py-2 rounded-xl bg-blue-50 text-brand-blue text-xs font-bold border border-blue-100">BPJS Aktif</span></div></div></div></div><div id="hospital-results-container"><section class="w-full bg-white border-b border-slate-100"><div class="max-w-7xl mx-auto px-6 py-10 lg:py-12"><div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"><div class="lg:col-span-3"><div class="w-full h-56 lg:h-64 rounded-2xl overflow-hidden shadow-sm border border-slate-200/80 bg-slate-100 relative group"><img src="https://lh3.googleusercontent.com/aida/ALJJyrAakSLFjsyy4v2H1l76TDweCa2SwH7qVkhCeb4gTmpEn68Fdat53ebv1kCOVjKxbF25N0mQTEPV_95fK2Dss_Qc4KpOD-fnh_-vMslqo1xNpGPlax6TfXC9_LHwgShYPXt1wMJBJVmkJIQ-A3fBrYg-j2oX0wgSIGMs3GCgNfrtLsRVs7nyueJlWLL0dvaN2w01afMO7-j2tD2km0teuwNp78BGSMFVPiHx2i79aJPV7A" alt="RSUP H. Adam Malik exterior building" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"><div class="absolute top-3 left-3 bg-brand-navy/90 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Foto Resmi</div></div></div><div class="lg:col-span-6 flex flex-col justify-center"><div class="flex flex-wrap items-center gap-2 mb-2"><span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-brand-navy text-white tracking-wide">Kelas A • Rujukan Nasional</span><span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Paripurna KARS</span><span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-brand-blue border border-blue-100">BPJS Aktif</span></div><h2 class="text-xl lg:text-2xl font-heading font-bold text-brand-navy tracking-tight leading-snug">RSUP H. ADAM MALIK</h2><p class="text-xs font-bold text-slate-500 uppercase tracking-wider mt-0.5">MEDAN - SUMATERA UTARA</p><p class="text-xs text-slate-500 mt-1 flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><span class="line-clamp-1">Jl. Bunga Lau No. 17, Kemenkes RI, Medan Tuntungan, Kota Medan 20136</span></p><div class="mt-4 pt-3 border-t border-slate-100 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs text-slate-600"><div><span class="font-medium text-slate-400 text-[11px]">Telepon: </span><span class="font-semibold text-slate-700">(061) 8364581</span></div><div><span class="font-medium text-slate-400 text-[11px]">Email: </span><span class="font-semibold text-slate-700">humas@rsupham.co.id</span></div></div><div class="mt-4"><a href="#" class="inline-flex items-center gap-2 bg-[#012D61] text-white px-5 py-2.5 rounded-lg hover:bg-blue-900 transition font-medium text-xs shadow-sm group"><span>Lihat Detail Rumah Sakit</span><svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></a></div></div><div class="lg:col-span-3"><div class="relative w-full h-56 lg:h-64 rounded-2xl overflow-hidden shadow-sm border border-slate-200 map-grid-pattern group"><svg class="w-full h-full absolute inset-0 opacity-80 pointer-events-none" xmlns="http://www.w3.org/2000/svg"><path d="M-20,100 Q150,80 320,180 T680,240" fill="none" opacity="0.6" stroke="#bdd5ea" stroke-dasharray="6 4" stroke-width="2"></path><path d="M120,-30 C130,120 90,210 110,360" fill="none" opacity="0.7" stroke="#90c2e7" stroke-linecap="round" stroke-width="5"></path><path d="M-40,210 L700,230" fill="none" opacity="0.9" stroke="#ffd166" stroke-linecap="round" stroke-width="6"></path><text fill="#64748b" font-family="Poppins" font-size="10" font-weight="700" letter-spacing="1.5" opacity="0.6" x="50" y="190">MEDAN TUNTUNGAN</text></svg><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none"><div class="w-8 h-8 rounded-full bg-brand-blue text-white shadow-md ring-2 ring-white flex items-center justify-center animate-bounce"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></div><div class="w-2.5 h-2.5 bg-brand-blue rotate-45 -mt-1 shadow-sm"></div></div><div class="absolute top-3 left-3 bg-white/95 backdrop-blur-sm rounded-xl p-2.5 shadow-sm border border-slate-200/80 max-w-[200px]"><span class="text-[9px] font-bold text-brand-blue uppercase tracking-wider block">Google Maps</span><h4 class="text-xs font-heading font-bold text-slate-800 truncate">RSUP H. Adam Malik</h4><a href="#" class="mt-1 text-[11px] font-semibold text-brand-blue hover:underline flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg><span>Buka Peta</span></a></div></div></div></div></div></section><section class="w-full bg-slate-50 border-b border-slate-200/60"><div class="max-w-7xl mx-auto px-6 py-10 lg:py-12"><div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"><div class="lg:col-span-3"><div class="w-full h-56 lg:h-64 rounded-2xl overflow-hidden shadow-sm border border-slate-200/80 bg-slate-100 relative group"><img src="https://lh3.googleusercontent.com/aida/ALJJyrAVYbR07UifK1UzQX6NgEz1ibgzX7wbOukJaKAtY5YHdykNr0wn1bI8IFL8ThFq04OtY8jlIYSSvysoCWfgGoOnJEjIqOOSgP6HQYew2976o3UjvDYwhuxRKTKDRMntzL4VW9Sxjwb4AgfVzGrEFuhzmF5pqzOva0SweCWNzmueSjg8scRuoUWOjtGdpj0Q_P1pPFrwFykigu6a37LkgRMzur2zLLRtDwTMIcvxDpAvNA" alt="RS Columbia Asia Medan building interior" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"><div class="absolute top-3 left-3 bg-brand-navy/90 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Foto Resmi</div></div></div><div class="lg:col-span-6 flex flex-col justify-center"><div class="flex flex-wrap items-center gap-2 mb-2"><span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-brand-navy text-white tracking-wide">Kelas B • Internasional</span><span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-brand-blue border border-blue-100">BPJS Rekanan</span><span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">IGD 24 Jam</span></div><h2 class="text-xl lg:text-2xl font-heading font-bold text-brand-navy tracking-tight leading-snug">RS COLUMBIA ASIA MEDAN</h2><p class="text-xs font-bold text-slate-500 uppercase tracking-wider mt-0.5">MEDAN - SUMATERA UTARA</p><p class="text-xs text-slate-500 mt-1 flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><span class="line-clamp-1">Jl. Listrik No. 2A, Petisah Hulu, Kec. Medan Baru, Kota Medan 20112</span></p><div class="mt-4 pt-3 border-t border-slate-200/60 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs text-slate-600"><div><span class="font-medium text-slate-400 text-[11px]">Telepon: </span><span class="font-semibold text-slate-700">(061) 4566368</span></div><div><span class="font-medium text-slate-400 text-[11px]">Email: </span><span class="font-semibold text-slate-700">customercare.medan@columbiaasia.com</span></div></div><div class="mt-4"><a href="#" class="inline-flex items-center gap-2 bg-[#012D61] text-white px-5 py-2.5 rounded-lg hover:bg-blue-900 transition font-medium text-xs shadow-sm group"><span>Lihat Detail Rumah Sakit</span><svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></a></div></div><div class="lg:col-span-3"><div class="relative w-full h-56 lg:h-64 rounded-2xl overflow-hidden shadow-sm border border-slate-200 map-grid-pattern group"><svg class="w-full h-full absolute inset-0 opacity-80 pointer-events-none" xmlns="http://www.w3.org/2000/svg"><path d="M-20,130 Q160,100 360,190 T700,210" fill="none" opacity="0.6" stroke="#bdd5ea" stroke-dasharray="6 4" stroke-width="2"></path><path d="M170,-30 C190,130 150,220 180,380" fill="none" opacity="0.7" stroke="#90c2e7" stroke-linecap="round" stroke-width="5"></path><path d="M-40,160 L700,180" fill="none" opacity="0.9" stroke="#ffd166" stroke-linecap="round" stroke-width="6"></path><text fill="#64748b" font-family="Poppins" font-size="10" font-weight="700" letter-spacing="1.5" opacity="0.6" x="60" y="110">MEDAN KOTA</text></svg><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none"><div class="w-8 h-8 rounded-full bg-brand-blue text-white shadow-md ring-2 ring-white flex items-center justify-center animate-bounce"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></div><div class="w-2.5 h-2.5 bg-brand-blue rotate-45 -mt-1 shadow-sm"></div></div><div class="absolute top-3 left-3 bg-white/95 backdrop-blur-sm rounded-xl p-2.5 shadow-sm border border-slate-200/80 max-w-[200px]"><span class="text-[9px] font-bold text-brand-blue uppercase tracking-wider block">Google Maps</span><h4 class="text-xs font-heading font-bold text-slate-800 truncate">RS Columbia Asia Medan</h4><a href="#" class="mt-1 text-[11px] font-semibold text-brand-blue hover:underline flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg><span>Buka Peta</span></a></div></div></div></div></div></section><section class="w-full bg-white border-b border-slate-100"><div class="max-w-7xl mx-auto px-6 py-10 lg:py-12"><div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"><div class="lg:col-span-3"><div class="w-full h-56 lg:h-64 rounded-2xl overflow-hidden shadow-sm border border-slate-200/80 bg-slate-100 relative group"><img src="https://lh3.googleusercontent.com/aida/ALJJyrC8QcuGEaoKYSCRONQSsCLAyV_BP4KlVnagPWv5EoscF5pOlk3y_ao6ss3yLWw6tpCiGvT1_zbp_gUo7amN6XSvTmdcG5UbWyIJPGVoG-wGAhaW4W8fTHknQV1ZE1qVOmOCR_xHxPysopGsT6UDA85Axo-KVWBknlUxMrZe6Y6b2YB3ZQiXSrH5asHGkYWFYQ1K8Yh1uS22bKuk37dfdD9KuHy-nEc_9E2n1-rQ4YpIcQ" alt="RS Siloam Dhirga Surya building exterior" class="w-full h-full object-cover group-hover:scale-105 transition duration-500"><div class="absolute top-3 left-3 bg-brand-navy/90 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Foto Resmi</div></div></div><div class="lg:col-span-6 flex flex-col justify-center"><div class="flex flex-wrap items-center gap-2 mb-2"><span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-brand-navy text-white tracking-wide">Kelas B • Swasta Internasional</span><span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500 text-white">JCI Accredited</span><span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Trauma Center 24 Jam</span></div><h2 class="text-xl lg:text-2xl font-heading font-bold text-brand-navy tracking-tight leading-snug">RS SILOAM DHIRGA SURYA</h2><p class="text-xs font-bold text-slate-500 uppercase tracking-wider mt-0.5">MEDAN - SUMATERA UTARA</p><p class="text-xs text-slate-500 mt-1 flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><span class="line-clamp-1">Jl. Imam Bonjol No. 6, Petisah Tengah, Kec. Medan Petisah, Kota Medan 20112</span></p><div class="mt-4 pt-3 border-t border-slate-100 flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs text-slate-600"><div><span class="font-medium text-slate-400 text-[11px]">Telepon: </span><span class="font-semibold text-slate-700">(061) 88881900</span></div><div><span class="font-medium text-slate-400 text-[11px]">Email: </span><span class="font-semibold text-slate-700">info.medan@siloamhospitals.com</span></div></div><div class="mt-4"><a href="#" class="inline-flex items-center gap-2 bg-[#012D61] text-white px-5 py-2.5 rounded-lg hover:bg-blue-900 transition font-medium text-xs shadow-sm group"><span>Lihat Detail Rumah Sakit</span><svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></a></div></div><div class="lg:col-span-3"><div class="relative w-full h-56 lg:h-64 rounded-2xl overflow-hidden shadow-sm border border-slate-200 map-grid-pattern group"><svg class="w-full h-full absolute inset-0 opacity-80 pointer-events-none" xmlns="http://www.w3.org/2000/svg"><path d="M-20,180 Q180,120 380,210 T720,220" fill="none" opacity="0.6" stroke="#bdd5ea" stroke-dasharray="6 4" stroke-width="2"></path><path d="M220,-30 C200,100 240,240 210,380" fill="none" opacity="0.7" stroke="#90c2e7" stroke-linecap="round" stroke-width="5"></path><path d="M-30,140 L700,160" fill="none" opacity="0.9" stroke="#ffd166" stroke-linecap="round" stroke-width="6"></path><text fill="#64748b" font-family="Poppins" font-size="10" font-weight="700" letter-spacing="1.5" opacity="0.6" x="70" y="130">MEDAN PETISAH</text></svg><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none"><div class="w-8 h-8 rounded-full bg-brand-blue text-white shadow-md ring-2 ring-white flex items-center justify-center animate-bounce"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></div><div class="w-2.5 h-2.5 bg-brand-blue rotate-45 -mt-1 shadow-sm"></div></div><div class="absolute top-3 left-3 bg-white/95 backdrop-blur-sm rounded-xl p-2.5 shadow-sm border border-slate-200/80 max-w-[200px]"><span class="text-[9px] font-bold text-brand-blue uppercase tracking-wider block">Google Maps</span><h4 class="text-xs font-heading font-bold text-slate-800 truncate">RS Siloam Dhirga Surya</h4><a href="#" class="mt-1 text-[11px] font-semibold text-brand-blue hover:underline flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg><span>Buka Peta</span></a></div></div></div></div></div></section><div class="py-10 bg-slate-50 border-t border-slate-200 flex flex-col items-center justify-center"><div class="inline-flex items-center gap-2"><button class="w-8 h-8 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center cursor-not-allowed text-xs transition" disabled="" title="Sebelumnya"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button><button class="w-8 h-8 rounded-full bg-[#012D61] text-white flex items-center justify-center font-bold text-xs shadow-sm">1</button><button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center font-medium text-xs transition">2</button><button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center font-medium text-xs transition">3</button><span class="px-1 text-slate-400 text-xs font-medium">...</span><button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center font-medium text-xs transition">8</button><button class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center text-xs transition" title="Selanjutnya"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button></div><p class="text-xs text-slate-400 font-medium mt-3">Menampilkan 1 - 3 dari 24 Rumah Sakit di Sumatera Utara &amp; Medan</p></div></div></main>
+<!-- END: MainContentSplitView -->
+
+
+
+
+
+
+
+
+</body></html>
