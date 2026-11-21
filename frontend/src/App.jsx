@@ -56,6 +56,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/pencarian" element={<SearchPage />} />
         <Route path="/rumah-sakit/:id" element={<DetailPage />} />
+        <Route path="/rs/:id" element={<DetailPage />} />
         <Route path="/peta" element={<MapPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

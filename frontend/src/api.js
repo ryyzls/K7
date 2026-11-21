@@ -68,9 +68,28 @@ export async function createBooking(payload, idempotencyKey) {
   });
 }
 
-export async function getBookingStatus(code, accessKey = '') {
-  return request(`/api/booking/${encodeURIComponent(code)}`, {
+export async function getBookingStatus(code, { phone = '', accessKey = '' } = {}) {
+  const query = phone ? `?no_telp=${encodeURIComponent(phone)}` : '';
+  return request(`/api/booking/${encodeURIComponent(code)}${query}`, {
     headers: accessKey ? { 'X-Booking-Key': accessKey } : {},
+  });
+}
+
+export async function getRoomAvailability(kodeRs, masuk, keluar) {
+  const search = cleanParams({ tanggal_masuk: masuk, tanggal_keluar: keluar });
+  return request(`/api/availability/${encodeURIComponent(kodeRs)}?${search.toString()}`);
+}
+
+export async function getConsultationSchedule(kodeRs, tanggal) {
+  const search = cleanParams({ tanggal });
+  return request(`/api/konsultasi/${encodeURIComponent(kodeRs)}?${search.toString()}`);
+}
+
+export async function createConsultation(payload, idempotencyKey) {
+  return request('/api/konsultasi/reservasi', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: idempotencyKey ? { 'Idempotency-Key': idempotencyKey } : {},
   });
 }
 

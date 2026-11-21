@@ -1,5 +1,5 @@
-import { useMemo, useRef, useState } from 'react';
-import { createBooking, getBookingStatus } from '../api';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { createBooking, getBookingStatus, getRoomAvailability } from '../api';
 import { todayISO } from '../utils';
 import { useApp } from '../context/AppContext';
 
@@ -10,6 +10,7 @@ const EMPTY = {
   no_telp: '',
   jenis_kamar: '',
   tanggal_masuk: '',
+  tanggal_keluar: '',
   catatan: '',
 };
 
@@ -31,13 +32,31 @@ export default function BookingForm({ hospital }) {
 
   const [checkOpen, setCheckOpen] = useState(false);
   const [checkCode, setCheckCode] = useState('');
-  const [checkKey, setCheckKey] = useState('');
+  const [checkPhone, setCheckPhone] = useState('');
   const [checking, setChecking] = useState(false);
   const [checkResult, setCheckResult] = useState(null);
   const [checkError, setCheckError] = useState('');
+  const [availability, setAvailability] = useState(null);
 
   const minDate = useMemo(() => todayISO(), []);
   const set = (key, value) => setForm((current) => ({ ...current, [key]: value }));
+
+  // Sisa kuota kamar dari SQL (digabung dengan RS dari RDF via rs_id)
+  useEffect(() => {
+    if (!form.tanggal_masuk) return undefined;
+    if (form.tanggal_keluar && form.tanggal_keluar < form.tanggal_masuk) return undefined;
+    let cancelled = false;
+    getRoomAvailability(hospital.id, form.tanggal_masuk, form.tanggal_keluar || undefined)
+      .then((data) => {
+        if (!cancelled) setAvailability(Object.fromEntries(data.items.map((item) => [item.jenis_kamar, item])));
+      })
+      .catch(() => {
+        if (!cancelled) setAvailability(null);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [hospital.id, form.tanggal_masuk, form.tanggal_keluar, result]);
 
   const submit = async (event) => {
     event.preventDefault();
@@ -52,6 +71,7 @@ export default function BookingForm({ hospital }) {
       no_telp: form.no_telp.trim(),
       jenis_kamar: form.jenis_kamar,
       tanggal_masuk: form.tanggal_masuk,
+      tanggal_keluar: form.tanggal_keluar || null,
       catatan: form.catatan.trim() || null,
     };
 
@@ -78,13 +98,11 @@ export default function BookingForm({ hospital }) {
     setCheckError('');
     setCheckResult(null);
     try {
-      const response = await getBookingStatus(checkCode.trim().toUpperCase(), checkKey.trim());
+      const response = await getBookingStatus(checkCode.trim().toUpperCase(), { phone: checkPhone.trim() });
       setCheckResult(response);
     } catch (error) {
       if (error.status === 403) {
-        setCheckError(
-          'Akses status dibatasi untuk operator simulasi. Masukkan kunci operator yang benar pada backend.',
-        );
+        setCheckError('Kode booking dan nomor telepon pemesan tidak cocok.');
       } else if (error.status === 404) {
         setCheckError('Kode booking tidak ditemukan.');
       } else {
@@ -134,7 +152,7 @@ export default function BookingForm({ hospital }) {
             {result.jenis_kamar} • Masuk {result.tanggal_masuk} • Status: {result.status}
           </p>
           <p className="mt-1 text-[10.5px] text-slate-400">
-            Simpan kode ini. Untuk alasan keamanan, pengecekan status memerlukan kunci operator simulasi.
+            Simpan kode ini. Untuk mengecek status, gunakan kode booking beserta nomor telepon pemesan.
           </p>
         </div>
       ) : null}
@@ -172,11 +190,16 @@ export default function BookingForm({ hospital }) {
             className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm outline-none transition focus:border-brand-blue focus:bg-white focus:ring-2 focus:ring-brand-blue/15"
           >
             <option value="">Pilih jenis kamar</option>
-            {ROOM_TYPES.map((room) => (
-              <option key={room} value={room}>
-                {room}
-              </option>
-            ))}
+            {ROOM_TYPES.map((room) => {
+              const info = availability?.[room];
+              const full = info && info.sisa <= 0;
+              return (
+                <option key={room} value={room} disabled={full}>
+                  {room}
+                  {info ? (full ? ' — penuh' : ` — sisa ${info.sisa} kamar`) : ''}
+                </option>
+              );
+            })}
           </select>
         </label>
 
@@ -191,6 +214,40 @@ export default function BookingForm({ hospital }) {
             className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm outline-none transition focus:border-brand-blue focus:bg-white focus:ring-2 focus:ring-brand-blue/15"
           />
         </label>
+
+        <label className="block">
+          <span className="mb-1 block text-xs font-semibold text-slate-700">
+            Tanggal rencana keluar <span className="font-normal text-slate-400">(opsional)</span>
+          </span>
+          <input
+            type="date"
+            min={form.tanggal_masuk || minDate}
+            value={form.tanggal_keluar}
+            onChange={(event) => set('tanggal_keluar', event.target.value)}
+            className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm outline-none transition focus:border-brand-blue focus:bg-white focus:ring-2 focus:ring-brand-blue/15"
+          />
+        </label>
+
+        {availability ? (
+          <div className="flex flex-wrap gap-1.5 sm:col-span-2" aria-label="Ketersediaan kamar">
+            {ROOM_TYPES.map((room) => {
+              const info = availability[room];
+              if (!info) return null;
+              return (
+                <span
+                  key={room}
+                  className={`rounded-full border px-2.5 py-1 text-[10.5px] font-semibold ${
+                    info.sisa > 0
+                      ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
+                      : 'border-rose-200 bg-rose-50 text-rose-700'
+                  }`}
+                >
+                  {room}: {info.sisa > 0 ? `${info.sisa}/${info.kapasitas} tersedia` : 'penuh'}
+                </span>
+              );
+            })}
+          </div>
+        ) : null}
 
         <label className="block sm:col-span-2">
           <span className="mb-1 block text-xs font-semibold text-slate-700">
@@ -242,8 +299,7 @@ export default function BookingForm({ hospital }) {
         {checkOpen ? (
           <div className="mt-3 animate-fade-in space-y-2.5">
             <p className="text-[11px] leading-relaxed text-slate-500">
-              Endpoint status bersifat terbatas. Pengecekan memerlukan kunci akses operator simulasi yang
-              dikonfigurasi pada backend (<code className="rounded bg-slate-100 px-1">BOOKING_ACCESS_KEY</code>).
+              Masukkan kode booking dan nomor telepon yang dipakai saat memesan.
             </p>
             <form onSubmit={checkStatus} className="grid gap-2 sm:grid-cols-2">
               <input
@@ -254,10 +310,10 @@ export default function BookingForm({ hospital }) {
                 className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs uppercase outline-none focus:border-brand-blue focus:bg-white"
               />
               <input
-                value={checkKey}
-                onChange={(event) => setCheckKey(event.target.value)}
-                placeholder="Kunci operator"
-                type="password"
+                value={checkPhone}
+                onChange={(event) => setCheckPhone(event.target.value)}
+                placeholder="Nomor telepon pemesan"
+                type="tel"
                 required
                 className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs outline-none focus:border-brand-blue focus:bg-white"
               />

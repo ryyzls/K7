@@ -41,8 +41,9 @@ function MessageBubble({ message, onQuickReply, onClose }) {
                 components={{
                   a: ({ href = '', children, ...props }) => {
                     if (href.startsWith('/')) {
+                      const target = href.replace(/^\/rs\/([^/?#]+)/, '/rumah-sakit/$1');
                       return (
-                        <Link to={href} onClick={onClose} {...props}>
+                        <Link to={target} onClick={onClose} {...props}>
                           {children}
                         </Link>
                       );

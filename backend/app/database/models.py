@@ -60,7 +60,8 @@ class BookingKamar(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     kode_booking: Mapped[str] = mapped_column(String(20), unique=True)
     kode_rs: Mapped[str] = mapped_column(String(20), index=True)
-    nama_rs: Mapped[str] = mapped_column(String(200))
+    # Polyglot: nama RS sumbernya RDF. Kolom dipertahankan nullable hanya demi data lama.
+    nama_rs: Mapped[str | None] = mapped_column(String(200), nullable=True)
     nama_pasien: Mapped[str] = mapped_column(String(100))
     no_telp: Mapped[str] = mapped_column(String(20))
     tanggal_masuk: Mapped[datetime.date]
@@ -70,4 +71,7 @@ class BookingKamar(Base):
     status: Mapped[str] = mapped_column(String(15), default="menunggu", server_default=text("'menunggu'"))
     created_at: Mapped[datetime.datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
+    )
+    updated_at: Mapped[datetime.datetime | None] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=True
     )

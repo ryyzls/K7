@@ -118,7 +118,7 @@ def format_detail_rs(
     if fasilitas:
         lines.append(f"\n🏢 **Fasilitas Penunjang ({len(fasilitas)}):**\n" + ", ".join(fasilitas))
 
-    lines.append(f"\n🔗 [Lihat Detail Lengkap di Portal](/rs/{rs['id']})")
+    lines.append(f"\n🔗 [Lihat Detail Lengkap di Portal](/rumah-sakit/{rs['id']})")
 
     body = "\n".join(lines) + DISCLAIMER
     qr = [
@@ -221,7 +221,7 @@ def format_attribute_rs(
         if rs.get("telepon"):
             lines.append(f"- Telepon: {rs.get('telepon')}")
 
-    lines.append(f"\nUntuk profil lengkap faskes ini, Anda dapat membuka [Detail {nama}](/rs/{rs['id']}).")
+    lines.append(f"\nUntuk profil lengkap faskes ini, Anda dapat membuka [Detail {nama}](/rumah-sakit/{rs['id']}).")
     body = "\n".join(lines) + DISCLAIMER
 
     return {
@@ -300,7 +300,7 @@ def format_list_filter(
             lines.append(f"   📞 {rs['telepon']}")
         if rs.get("layanan"):
             lines.append(f"   🩺 Layanan: {', '.join(rs['layanan'][:3])}")
-        lines.append(f"   🔗 [Lihat Detail](/rs/{rs['id']})\n")
+        lines.append(f"   🔗 [Lihat Detail](/rumah-sakit/{rs['id']})\n")
 
     # Paging indicator
     remaining = total_count - (offset + len(hospitals))
@@ -375,7 +375,7 @@ def format_nearby_results(
             lines.append(f"   🏠 {rs['alamat']}")
         if rs.get("telepon"):
             lines.append(f"   📞 {rs['telepon']}")
-        lines.append(f"   🔗 [Lihat Detail](/rs/{rs['id']})\n")
+        lines.append(f"   🔗 [Lihat Detail](/rumah-sakit/{rs['id']})\n")
 
     body = "\n".join(lines) + DISCLAIMER
     return {

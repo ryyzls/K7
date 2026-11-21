@@ -98,11 +98,17 @@ async def compare(ids: str = Query(..., description="Daftar ID RS dipisah koma, 
 
 
 @router.get("/hospitals/{rs_id}")
-async def hospital_detail(rs_id: str):
-    """Mengembalikan profil lengkap rumah sakit termasuk kode Kemenkes, spesialisasi SIRS, fasilitas, kontak, dan jam operasional."""
+async def hospital_detail(rs_id: str, db: Session = Depends(get_db)):
+    """Profil RS dari RDF (SPARQL) digabung dengan sisa kuota kamar dari SQL (Federated Mapping via rs_id)."""
     h = await sp.get_hospital(rs_id)
     if not h:
         return JSONResponse({"detail": f"Rumah sakit '{rs_id}' tidak ditemukan"}, status_code=404)
+    try:
+        from app.services.availability_service import kamar_availability
+        h = {**h, "ketersediaan_kamar": kamar_availability(db, rs_id)}
+    except Exception:  # SQL belum siap tidak boleh merusak profil RDF
+        db.rollback()
+        h = {**h, "ketersediaan_kamar": None}
     return h
 
 

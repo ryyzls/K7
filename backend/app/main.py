@@ -13,7 +13,9 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 from app.config import settings
 from app.database.connection import engine
 from app.database import models  # noqa: F401 — trigger ORM model registration
-from app.routers import api, booking, chat, semantic
+from app.database.migrate import run_migrations
+from app.routers import admin, api, booking, chat, konsultasi, semantic
+from app.services.admin_auth import ensure_default_admin
 from app.services.rdf_loader import load_all
 
 log = logging.getLogger("carisehat")
@@ -43,6 +45,11 @@ async def _boot():
 async def lifespan(app: FastAPI):
     # Auto-create tabel baru (booking_kamar) tanpa perlu rebuild volume PostgreSQL
     models.Base.metadata.create_all(engine)
+    try:  # migrasi SQL idempotent (admin, kuota, jadwal, trigger, view) + akun admin awal
+        await asyncio.to_thread(run_migrations, engine)
+        await asyncio.to_thread(ensure_default_admin)
+    except Exception:
+        log.exception("Migrasi/seed admin gagal; fitur admin & kuota tidak aktif sampai diperbaiki.")
     task = asyncio.create_task(_boot()) if settings.auto_load_rdf else None
     yield
     if task:
@@ -64,6 +71,9 @@ async def database_error(request: Request, exc: SQLAlchemyError):
 
 app.include_router(api.router)
 app.include_router(booking.router)
+app.include_router(konsultasi.router)
+app.include_router(admin.router)
+app.include_router(admin.ui_router)  # halaman /admin (harus sebelum mount SPA "/")
 app.include_router(chat.router)
 app.include_router(semantic.router)
 frontend_path = Path(settings.frontend_dir)
