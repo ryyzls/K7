@@ -218,109 +218,17 @@ export default function SearchPage() {
                 ) : null}
               </div>
 
-              <div className="flex items-center gap-2">
-                <button
-                  type="submit"
-                  className="inline-flex items-center justify-center gap-1.5 rounded-2xl bg-brand-navy px-5 py-3 text-xs font-bold text-white shadow-sm transition hover:bg-brand-blue"
-                >
-                  <span className="material-symbols-outlined text-[16px]">search</span>
-                  Cari
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setFilterOpen(true)}
-                  className={cn(
-                    'inline-flex items-center justify-center gap-1.5 rounded-2xl border px-4 py-3 text-xs font-bold shadow-sm transition',
-                    activeCount
-                      ? 'border-brand-blue bg-brand-blue text-white'
-                      : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50',
-                  )}
-                  title="Buka panel filter lengkap"
-                >
-                  <span className="material-symbols-outlined text-[16px]">tune</span>
-                  <span>Filter</span>
-                  {activeCount ? (
-                    <span className="rounded-full bg-white/20 px-1.5 text-[10px]">{activeCount}</span>
-                  ) : null}
-                </button>
-              </div>
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center gap-1.5 rounded-2xl bg-brand-navy px-6 py-3 text-xs font-bold text-white shadow-sm transition hover:bg-brand-blue"
+              >
+                <span className="material-symbols-outlined text-[16px]">search</span>
+                Cari
+              </button>
             </form>
 
-            {/* Judul & Hasil di bawah bar pencarian */}
-            <div className="mt-6 flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
-              <div>
-                <h1 className="font-heading text-2xl font-extrabold tracking-tight text-brand-navy md:text-3xl">
-                  Direktori Rumah Sakit Sumatera Utara
-                </h1>
-                <p className="mt-1 text-sm text-slate-500">
-                  {loading ? (
-                    'Memuat data rumah sakit...'
-                  ) : activeCount > 0 ? (
-                    <>
-                      Menampilkan{' '}
-                      <span className="font-bold text-brand-navy">{filtered.length} rumah sakit</span> dari
-                      katalog semantik Kemenkes RI &amp; BPJS SatuSehat.
-                    </>
-                  ) : (
-                    <>
-                      Menampilkan{' '}
-                      <span className="font-bold text-brand-navy">seluruh rumah sakit</span> dari
-                      katalog semantik Kemenkes RI &amp; BPJS SatuSehat.
-                    </>
-                  )}
-                </p>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-2.5">
-                <label className="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2 text-xs">
-                  <span className="font-medium text-slate-500">Urutkan</span>
-                  <select
-                    value={sort}
-                    onChange={(event) => updateParams({ sort: event.target.value })}
-                    className="cursor-pointer bg-transparent text-xs font-bold text-brand-navy outline-none"
-                    aria-label="Urutkan hasil"
-                  >
-                    <option value="relevan">Paling relevan</option>
-                    <option value="nama">Nama A–Z</option>
-                    <option value="kelas">Kelas</option>
-                    <option value="wilayah">Wilayah</option>
-                  </select>
-                </label>
-
-                <button
-                  type="button"
-                  onClick={() => updateParams({ bpjs: filters.bpjs ? '' : '1' })}
-                  className={cn(
-                    'inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-bold transition',
-                    filters.bpjs
-                      ? 'border-emerald-300 bg-emerald-50 text-emerald-700'
-                      : 'border-slate-200 bg-white text-slate-600 hover:border-emerald-200 hover:text-emerald-700',
-                  )}
-                  aria-pressed={filters.bpjs}
-                >
-                  <span className="material-symbols-outlined text-[15px]">verified</span>
-                  BPJS aktif
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setShowMap((current) => !current)}
-                  className={cn(
-                    'hidden items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-bold transition lg:inline-flex',
-                    showMap
-                      ? 'border-brand-blue bg-blue-50 text-brand-blue'
-                      : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50',
-                  )}
-                  aria-pressed={showMap}
-                >
-                  <span className="material-symbols-outlined text-[15px]">map</span>
-                  Peta
-                </button>
-              </div>
-            </div>
-
-            <div className="mt-4 flex flex-wrap items-center gap-2">
+            {/* Tepat di bawah bar pencarian: Filter pills & Active chips */}
+            <div className="mt-3.5 flex flex-wrap items-center gap-2">
               <button
                 type="button"
                 onClick={() => setFilterOpen(true)}
@@ -391,6 +299,79 @@ export default function SearchPage() {
                 ))}
               </div>
             ) : null}
+
+            {/* Judul & Hasil di bawah filter */}
+            <div className="mt-6 flex flex-col justify-between gap-4 border-t border-slate-100 pt-5 lg:flex-row lg:items-end">
+              <div>
+                <h1 className="font-heading text-2xl font-extrabold tracking-tight text-brand-navy md:text-3xl">
+                  Direktori Rumah Sakit Sumatera Utara
+                </h1>
+                <p className="mt-1 text-sm text-slate-500">
+                  {loading ? (
+                    'Memuat data rumah sakit...'
+                  ) : activeCount > 0 ? (
+                    <>
+                      Menampilkan{' '}
+                      <span className="font-bold text-brand-navy">{filtered.length} rumah sakit</span> dari
+                      katalog semantik Kemenkes RI &amp; BPJS SatuSehat.
+                    </>
+                  ) : (
+                    <>
+                      Menampilkan{' '}
+                      <span className="font-bold text-brand-navy">seluruh rumah sakit</span> dari
+                      katalog semantik Kemenkes RI &amp; BPJS SatuSehat.
+                    </>
+                  )}
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2.5">
+                <label className="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2 text-xs">
+                  <span className="font-medium text-slate-500">Urutkan</span>
+                  <select
+                    value={sort}
+                    onChange={(event) => updateParams({ sort: event.target.value })}
+                    className="cursor-pointer bg-transparent text-xs font-bold text-brand-navy outline-none"
+                    aria-label="Urutkan hasil"
+                  >
+                    <option value="relevan">Paling relevan</option>
+                    <option value="nama">Nama A–Z</option>
+                    <option value="kelas">Kelas</option>
+                    <option value="wilayah">Wilayah</option>
+                  </select>
+                </label>
+
+                <button
+                  type="button"
+                  onClick={() => updateParams({ bpjs: filters.bpjs ? '' : '1' })}
+                  className={cn(
+                    'inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-bold transition',
+                    filters.bpjs
+                      ? 'border-emerald-300 bg-emerald-50 text-emerald-700'
+                      : 'border-slate-200 bg-white text-slate-600 hover:border-emerald-200 hover:text-emerald-700',
+                  )}
+                  aria-pressed={filters.bpjs}
+                >
+                  <span className="material-symbols-outlined text-[15px]">verified</span>
+                  BPJS aktif
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setShowMap((current) => !current)}
+                  className={cn(
+                    'hidden items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-bold transition lg:inline-flex',
+                    showMap
+                      ? 'border-brand-blue bg-blue-50 text-brand-blue'
+                      : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50',
+                  )}
+                  aria-pressed={showMap}
+                >
+                  <span className="material-symbols-outlined text-[15px]">map</span>
+                  Peta
+                </button>
+              </div>
+            </div>
           </div>
         </section>
 
