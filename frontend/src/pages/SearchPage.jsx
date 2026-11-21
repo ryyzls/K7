@@ -179,10 +179,7 @@ export default function SearchPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-slate-50">
-      <SiteHeader
-        active="direktori"
-        showSearch={false}
-      />
+      <SiteHeader active="direktori" />
 
       <main className="flex-1">
         {/* Page header */}

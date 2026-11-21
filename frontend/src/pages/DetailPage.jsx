@@ -601,7 +601,7 @@ export default function DetailPage() {
                     ) : null}
                   </div>
 
-                  <div className="grid gap-3 md:grid-cols-3">
+                  <div className="grid gap-3 sm:grid-cols-2">
                     <a
                       href={directionsUrl(hospital)}
                       target="_blank"
@@ -634,21 +634,6 @@ export default function DetailPage() {
                         </span>
                       </span>
                     </a>
-                    <button
-                      type="button"
-                      onClick={() => setTab('semantik')}
-                      className="flex items-start gap-3 rounded-xl border border-slate-100 bg-slate-50 p-3.5 text-left transition hover:border-brand-blue/30 hover:bg-blue-50/40"
-                    >
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-violet-50 text-violet-700">
-                        <span className="material-symbols-outlined text-[20px]">account_tree</span>
-                      </span>
-                      <span>
-                        <span className="block text-sm font-bold text-slate-900">Data semantik</span>
-                        <span className="block text-[11px] leading-snug text-slate-500">
-                          RDF, DBpedia, dan graf relasi
-                        </span>
-                      </span>
-                    </button>
                   </div>
 
                   <div className="rounded-xl border border-slate-200 bg-slate-50 p-3.5 text-[11.5px] leading-relaxed text-slate-500">
