@@ -126,7 +126,7 @@ function Gallery({ hospital }) {
                     src={src}
                     alt={`${hospital.nama} — foto ${index + 1}`}
                     loading="lazy"
-                    className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.015]"
+                    className="h-full w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-[1.015]"
                   />
                   {index === 2 && photos.length > 3 ? (
                     <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-lg border border-slate-200/60 bg-white/95 px-3 py-1.5 text-[11px] font-semibold text-slate-900 shadow-sm backdrop-blur">
