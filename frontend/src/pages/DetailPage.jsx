@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+﻿import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 import { getAllHospitals } from '../api';
@@ -16,12 +16,16 @@ import {
 import SiteHeader from '../components/SiteHeader';
 import LeafletMap from '../components/LeafletMap';
 import BookingForm from '../components/BookingForm';
+import PoliklinikSection from '../components/PoliklinikSection';
+import UlasanSection from '../components/UlasanSection';
 import { MinimalFooter } from '../components/Footer';
 
 const TABS = [
   { id: 'profil', label: 'Profil', icon: 'clinical_notes' },
+  { id: 'poliklinik', label: 'Poliklinik & Jadwal', icon: 'medical_information' },
   { id: 'fasilitas', label: 'Layanan & Fasilitas', icon: 'stethoscope' },
-  { id: 'booking', label: 'Booking Simulasi', icon: 'bed' },
+  { id: 'ulasan', label: 'Ulasan Pasien', icon: 'reviews' },
+  { id: 'booking', label: 'Booking Kamar', icon: 'bed' },
 ];
 
 function Gallery({ hospital }) {
@@ -726,6 +730,12 @@ export default function DetailPage() {
               </div>
             ) : null}
 
+            {tab === 'poliklinik' ? <PoliklinikSection hospital={hospital} /> : null}
+
+            {tab === 'ulasan' ? <UlasanSection hospital={hospital} /> : null}
+
+
+
             {tab === 'booking' ? (
               <div className="animate-fade-in">
                 <h2 className="mb-1 text-2xl font-bold tracking-tight text-[#0F172A]">
@@ -906,3 +916,5 @@ export default function DetailPage() {
     </div>
   );
 }
+
+

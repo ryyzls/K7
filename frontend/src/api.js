@@ -1,12 +1,14 @@
-const API_BASE = import.meta.env.VITE_API_BASE || '';
+﻿const API_BASE = import.meta.env.VITE_API_BASE || '';
 
 async function request(path, options = {}) {
+  const { token, headers: customHeaders, ...rest } = options;
   const res = await fetch(`${API_BASE}${path}`, {
-    ...options,
+    ...rest,
     headers: {
       Accept: 'application/json',
-      ...(options.body ? { 'Content-Type': 'application/json' } : {}),
-      ...(options.headers || {}),
+      ...(rest.body ? { 'Content-Type': 'application/json' } : {}),
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...(customHeaders || {}),
     },
   });
 
@@ -14,7 +16,11 @@ async function request(path, options = {}) {
     let detail = `HTTP ${res.status}`;
     try {
       const payload = await res.json();
-      if (payload?.detail) detail = payload.detail;
+      if (payload?.detail) {
+        detail = Array.isArray(payload.detail)
+          ? payload.detail.map((d) => d.msg || JSON.stringify(d)).join('; ')
+          : payload.detail;
+      }
     } catch {
       /* ignore non-JSON errors */
     }
@@ -93,12 +99,88 @@ export async function createConsultation(payload, idempotencyKey) {
   });
 }
 
+/* === Modul MSBD: Auth Pasien, Poliklinik, Favorit, Ulasan & Peringkat RS === */
+
+export async function registerPatient(payload) {
+  return request('/api/auth/register', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function loginPatient(payload) {
+  return request('/api/auth/login', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function logoutPatient(token) {
+  return request('/api/auth/logout', {
+    method: 'POST',
+    token,
+  });
+}
+
+export async function getPatientDashboard(token) {
+  return request('/api/pasien/dashboard', { token });
+}
+
+export async function getPoliklinikByRs(rsId) {
+  return request(`/api/poliklinik/${encodeURIComponent(rsId)}`);
+}
+
+export async function createPoliklinikReservasi(payload, idempotencyKey, token) {
+  return request('/api/poliklinik/reservasi', {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    token,
+    headers: idempotencyKey ? { 'Idempotency-Key': idempotencyKey } : {},
+  });
+}
+
+export async function cancelPoliklinikReservasi(kodeReservasi, token) {
+  return request(`/api/pasien/reservasi/${encodeURIComponent(kodeReservasi)}/batal`, {
+    method: 'PATCH',
+    token,
+  });
+}
+
+export async function addFavoriteRs(rsId, catatan, token) {
+  return request(`/api/pasien/favorit/${encodeURIComponent(rsId)}`, {
+    method: 'POST',
+    body: JSON.stringify({ catatan: catatan || null }),
+    token,
+  });
+}
+
+export async function removeFavoriteRs(rsId, token) {
+  return request(`/api/pasien/favorit/${encodeURIComponent(rsId)}`, {
+    method: 'DELETE',
+    token,
+  });
+}
+
+export async function submitHospitalReview(rsId, payload, token) {
+  return request(`/api/rs/${encodeURIComponent(rsId)}/ulasan`, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    token,
+  });
+}
+
+export async function getHospitalReviews(rsId, page = 1, limit = 10) {
+  const search = cleanParams({ page, limit });
+  return request(`/api/rs/${encodeURIComponent(rsId)}/ulasan?${search.toString()}`);
+}
+
+export async function getHospitalRankings(minUlasan = 1, limit = 30) {
+  const search = cleanParams({ min_ulasan: minUlasan, limit });
+  return request(`/api/rs-peringkat?${search.toString()}`);
+}
+
 let allHospitalsPromise = null;
 
-/**
- * The dataset contains ~206 records, so one cached request is cheaper than
- * re-fetching the same collection for the home and detail screens.
- */
 export function getAllHospitals(force = false) {
   if (!force && allHospitalsPromise) return allHospitalsPromise;
 

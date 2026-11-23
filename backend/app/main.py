@@ -1,4 +1,4 @@
-import asyncio
+﻿import asyncio
 import logging
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -11,10 +11,11 @@ from sqlalchemy.exc import SQLAlchemyError
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from app.config import settings
+from app.database import models, orm_models  # noqa: F401 — trigger ORM model registration
 from app.database.connection import engine
-from app.database import models  # noqa: F401 — trigger ORM model registration
 from app.database.migrate import run_migrations
-from app.routers import admin, api, booking, chat, konsultasi, semantic
+from app.database.seed_msbd import seed_msbd_data
+from app.routers import admin, api, auth_pasien, booking, chat, konsultasi, poliklinik_ulasan, semantic
 from app.services.admin_auth import ensure_default_admin
 from app.services.rdf_loader import load_all
 
@@ -43,13 +44,13 @@ async def _boot():
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Auto-create tabel baru (booking_kamar) tanpa perlu rebuild volume PostgreSQL
     models.Base.metadata.create_all(engine)
-    try:  # migrasi SQL idempotent (admin, kuota, jadwal, trigger, view) + akun admin awal
+    try:
         await asyncio.to_thread(run_migrations, engine)
         await asyncio.to_thread(ensure_default_admin)
+        await asyncio.to_thread(seed_msbd_data)
     except Exception:
-        log.exception("Migrasi/seed admin gagal; fitur admin & kuota tidak aktif sampai diperbaiki.")
+        log.exception("Migrasi/seed awal gagal; periksa koneksi database.")
     task = asyncio.create_task(_boot()) if settings.auto_load_rdf else None
     yield
     if task:
@@ -70,12 +71,15 @@ async def database_error(request: Request, exc: SQLAlchemyError):
 
 
 app.include_router(api.router)
+app.include_router(auth_pasien.router)
+app.include_router(poliklinik_ulasan.router)
 app.include_router(booking.router)
 app.include_router(konsultasi.router)
 app.include_router(admin.router)
 app.include_router(admin.ui_router)  # halaman /admin (harus sebelum mount SPA "/")
 app.include_router(chat.router)
 app.include_router(semantic.router)
+
 frontend_path = Path(settings.frontend_dir)
 public_images = frontend_path / "public" / "images"
 if public_images.exists():
@@ -84,4 +88,3 @@ dist_path = frontend_path / "dist"
 serve_dir = str(dist_path) if (dist_path / "index.html").exists() else str(frontend_path)
 if Path(serve_dir).exists():  # harus terakhir: melayani "/" dan file statis
     app.mount("/", SPAStaticFiles(directory=serve_dir, html=True, follow_symlink=True), name="frontend")
-

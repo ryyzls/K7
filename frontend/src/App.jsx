@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
 import LoginModal from './components/LoginModal';
@@ -6,6 +6,8 @@ import Toasts from './components/Toasts';
 import ChatWidget from './components/ChatWidget';
 import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
+import DashboardPage from './pages/DashboardPage';
+import RankingPage from './pages/RankingPage';
 import DetailPage from './pages/DetailPage';
 import MapPage from './pages/MapPage';
 
@@ -58,6 +60,8 @@ export default function App() {
         <Route path="/rumah-sakit/:id" element={<DetailPage />} />
         <Route path="/rs/:id" element={<DetailPage />} />
         <Route path="/peta" element={<MapPage />} />
+        <Route path="/peringkat" element={<RankingPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <LoginModal />
@@ -66,3 +70,5 @@ export default function App() {
     </AppProvider>
   );
 }
+
+

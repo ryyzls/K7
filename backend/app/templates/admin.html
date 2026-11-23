@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="id">
 <head>
 <meta charset="utf-8">
@@ -254,6 +254,68 @@ const VIEWS = {
       else confirmAct(`Hapus pengaturan kuota ${rs} / ${j}?`, async () => { await api(`/kuota/${encodeURIComponent(rs)}/${encodeURIComponent(j)}`, { method: 'DELETE' }); toast('Dihapus', 'ok'); reload(); }); };
   } },
 
+  poliklinik: { label: 'Poliklinik', perm: 'poliklinik.read', st: { rs: '' }, async render(el) {
+    const st = this.st, reload = () => this.render(el);
+    const d = await api('/poliklinik?' + qs({ rs_id: st.rs }));
+    el.innerHTML = `<div class="head"><h1>Master Poliklinik</h1>${can('poliklinik.write') ? '<button class="btn primary" id="add">+ Tambah Poliklinik</button>' : ''}</div>
+    <p class="mute small">Data unit poliklinik (3NF) dan sisa kuota harian dihitung oleh view <code>v_okupansi_poliklinik</code>.</p>
+    <div class="filters"><input id="frs" placeholder="Filter rs_id (mis. rs-001)" value="${esc(st.rs)}"></div>
+    ${table([
+      { h: 'RS', f: r => rsLabel(r.rs_id, r.nama_rs) },
+      { h: 'Kode & Nama Poli', f: r => `<b>${esc(r.kode_poli)}</b> — ${esc(r.nama_poli)}<br><span class="mute small">${esc(r.spesialisasi)}</span>` },
+      { h: 'Lokasi', f: r => esc(r.lokasi_ruangan || '-') },
+      { h: 'Kuota Harian', f: r => r.kuota_harian },
+      { h: 'Terisi / Sisa', f: r => `${r.terisi_hari_ini} / <b style="color:${r.sisa_hari_ini ? 'var(--ok)' : 'var(--bad)'}">${r.sisa_hari_ini}</b>` },
+      { h: 'Status', f: r => `<span class="badge ${r.aktif ? 'b-ok' : 'b-off'}">${r.aktif ? 'aktif' : 'nonaktif'}</span>` },
+      { h: 'Aksi', cls: 'act', f: r => can('poliklinik.write') ? `<button class="btn sm" data-a="edit" data-id="${r.poliklinik_id}">Ubah</button> <button class="btn sm danger" data-a="del" data-id="${r.poliklinik_id}">Hapus</button>` : '' }
+    ], d.items, 'Belum ada data poliklinik.')}`;
+    let t; $('#frs', el).oninput = e => { clearTimeout(t); t = setTimeout(() => { st.rs = e.target.value.trim(); reload(); }, 350); };
+    const fields = (r = {}) => [
+      { name: 'rs_id', label: 'Rumah sakit', type: 'rs', required: true, value: r.rs_id, wide: true },
+      { name: 'kode_poli', label: 'Kode Poli (mis. POLI-INT)', required: true, value: r.kode_poli },
+      { name: 'nama_poli', label: 'Nama Poliklinik', required: true, value: r.nama_poli },
+      { name: 'spesialisasi', label: 'Spesialisasi', required: true, value: r.spesialisasi },
+      { name: 'lokasi_ruangan', label: 'Lokasi Ruangan', nullable: true, value: r.lokasi_ruangan },
+      { name: 'jam_operasional', label: 'Jam Operasional', value: r.jam_operasional || 'Senin-Sabtu, 08:00-15:00 WIB' },
+      { name: 'kuota_harian', label: 'Kuota Harian', type: 'number', min: 0, max: 1000, required: true, value: r.kuota_harian ?? 30 },
+      { name: 'aktif', label: '', type: 'checkbox', hint: 'Unit poliklinik aktif', value: r.aktif ?? true, wide: true }
+    ];
+    const ad = $('#add', el);
+    if (ad) ad.onclick = () => openForm({ title: 'Tambah Poliklinik', fields: fields(), onSubmit: async v => { await api('/poliklinik', { method: 'POST', body: v }); toast('Poliklinik ditambahkan', 'ok'); reload(); } });
+    el.onclick = e => {
+      const b = e.target.closest('[data-a]'); if (!b) return;
+      const id = Number(b.dataset.id), r = d.items.find(x => x.poliklinik_id === id);
+      if (b.dataset.a === 'edit') openForm({ title: 'Ubah Poliklinik', fields: fields(r), onSubmit: async v => { await api('/poliklinik/' + id, { method: 'PUT', body: v }); toast('Poliklinik diperbarui', 'ok'); reload(); } });
+      else confirmAct('Hapus unit poliklinik ini? (Akan ditolak FK jika masih memiliki jadwal dokter.)', async () => { await api('/poliklinik/' + id, { method: 'DELETE' }); toast('Poliklinik dihapus', 'ok'); reload(); });
+    };
+  } },
+
+  ulasan: { label: 'Moderasi Ulasan', perm: 'ulasan.moderate', st: { status: '' }, async render(el) {
+    const st = this.st, reload = () => this.render(el);
+    const d = await api('/ulasan?' + qs({ status_moderasi: st.status }));
+    el.innerHTML = `<div class="head"><h1>Moderasi Ulasan Pasien</h1></div>
+    <p class="mute small">Ulasan berstatus <code>disetujui</code> otomatis dihitung ke view peringkat rumah sakit <code>v_peringkat_rs</code>.</p>
+    <div class="filters"><select id="fs"><option value="">Semua status</option>${['disetujui', 'menunggu', 'ditolak'].map(x => `<option ${st.status === x ? 'selected' : ''}>${x}</option>`).join('')}</select></div>
+    ${table([
+      { h: 'Waktu', f: r => fmtDT(r.created_at) },
+      { h: 'Rumah Sakit', f: r => rsLabel(r.rs_id, r.nama_rs) },
+      { h: 'Pasien', f: r => `<b>${esc(r.nama_pengguna)}</b><br><span class="mute small">@${esc(r.username)}</span>` },
+      { h: 'Rating', f: r => `<b>★ ${r.rating}/5</b>` },
+      { h: 'Komentar', f: r => esc(r.komentar) },
+      { h: 'Status', f: r => `<span class="badge ${r.status_moderasi === 'disetujui' ? 'b-ok' : r.status_moderasi === 'ditolak' ? 'b-off' : 'b-menunggu'}">${esc(r.status_moderasi)}</span>${r.dimoderasi_oleh ? `<br><span class="mute small">oleh ${esc(r.dimoderasi_oleh)}</span>` : ''}` },
+      { h: 'Aksi', cls: 'act', f: r => `<button class="btn sm" data-m="disetujui" data-id="${r.id}">Setujui</button> <button class="btn sm danger" data-m="ditolak" data-id="${r.id}">Tolak</button>` }
+    ], d.items, 'Belum ada ulasan.')}`;
+    $('#fs', el).onchange = e => { st.status = e.target.value; reload(); };
+    el.onclick = async e => {
+      const b = e.target.closest('[data-m]'); if (!b) return;
+      try {
+        await api('/ulasan/' + b.dataset.id, { method: 'PUT', body: { status_moderasi: b.dataset.m } });
+        toast('Status moderasi ulasan diperbarui', 'ok');
+        reload();
+      } catch (err) { toast(err.message, 'err'); }
+    };
+  } },
+
   jadwal: { label: 'Jadwal Konsultasi', perm: 'jadwal.read', async render(el) {
     const d = await api('/jadwal'), reload = () => this.render(el);
     el.innerHTML = `<div class="head"><h1>Jadwal Konsultasi Dokter</h1>${can('jadwal.write') ? '<button class="btn primary" id="add">+ Tambah jadwal</button>' : ''}</div>
@@ -362,3 +424,6 @@ $('#login-form').onsubmit = async e => {
 </script>
 </body>
 </html>
+
+
+

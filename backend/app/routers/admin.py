@@ -5,6 +5,10 @@ memanggil set_actor() agar trigger audit_log mencatat pelaku. Semua SQL memakai 
 parameter; body divalidasi Pydantic. Atribut deskriptif RS tidak pernah disimpan di SQL:
 nama/kabupaten diambil dari RDF lewat rs_id.
 """
+
+from sqlalchemy import select, text
+from sqlalchemy.orm import Session, joinedload
+from app.database.orm_models import Poliklinik, UlasanRS
 import datetime
 import secrets
 import string
@@ -42,6 +46,12 @@ _CONSTRAINT_MSG = {
     "uq_reservasi_pasien_aktif": "Nomor telepon ini sudah punya reservasi aktif pada sesi tersebut",
     "booking_idempotency_booking_id_fkey": "Booking masih direferensikan ledger idempotency",
 }
+
+_CONSTRAINT_MSG.update({
+    "uq_poliklinik_rs_kode": "Kode poliklinik sudah dipakai pada rumah sakit ini",
+    "uq_poliklinik_rs_spesialisasi": "Unit poliklinik untuk spesialisasi tersebut sudah terdaftar di RS ini",
+    "jadwal_konsultasi_poliklinik_id_fkey": "Poliklinik masih memiliki jadwal dokter aktif; nonaktifkan poli alih-alih menghapus",
+})
 _DUMMY_HASH: str | None = None
 
 
@@ -186,6 +196,25 @@ class UserPatch(BaseModel):
     password: str | None = Field(default=None, min_length=8, max_length=128)
 
 
+ModerasiStatus = Literal["menunggu", "disetujui", "ditolak"]
+
+
+class PoliklinikIn(BaseModel):
+    model_config = ConfigDict(str_strip_whitespace=True)
+    rs_id: str = RS_ID
+    kode_poli: str = Field(min_length=2, max_length=24, pattern=r"^[A-Za-z0-9_-]+$")
+    nama_poli: str = Field(min_length=3, max_length=100)
+    spesialisasi: str = Field(min_length=2, max_length=80)
+    lokasi_ruangan: str | None = Field(default=None, max_length=100)
+    jam_operasional: str | None = Field(default="Senin-Sabtu, 08:00-15:00 WIB", max_length=60)
+    kuota_harian: int = Field(default=30, ge=0, le=1000)
+    aktif: bool = True
+
+
+class UlasanModerasiPatch(BaseModel):
+    status_moderasi: ModerasiStatus
+
+
 # ─── UI ──────────────────────────────────────────────────────────────────────
 
 @ui_router.get("/admin", response_class=HTMLResponse, include_in_schema=False)
@@ -281,6 +310,25 @@ def dashboard(user: dict = Depends(require_perm("dashboard.view")), db: Session 
         total_rs = len(hospital_repo.get_all_hospitals())
     except Exception:
         total_rs = None
+
+        okupansi_poli = _with_names(
+        db.execute(text("SELECT * FROM v_okupansi_poliklinik ORDER BY sisa_hari_ini ASC, rs_id LIMIT 6")).mappings().all(),
+        "rs_id",
+    )
+    peringkat_rs = _with_names(
+        db.execute(text("SELECT * FROM v_peringkat_rs ORDER BY peringkat_rating ASC LIMIT 5")).mappings().all(),
+        "rs_id",
+    )
+    return {
+        "stats": stats,
+        "total_rs_rdf": total_rs,
+        "top_rs": top,
+        "by_jenis": by_jenis,
+        "recent_booking": recent,
+        "okupansi": okupansi,
+        "okupansi_poliklinik": okupansi_poli,
+        "peringkat_rs": peringkat_rs,
+    }
     return {"stats": stats, "total_rs_rdf": total_rs, "top_rs": top, "by_jenis": by_jenis,
             "recent_booking": recent, "okupansi": okupansi}
 
@@ -598,3 +646,143 @@ def list_audit(tabel: str = "", aktor: str = "", limit: int = Query(30, ge=1, le
     rows = db.execute(text("SELECT id, waktu, aktor, aksi, tabel, record_id, data_lama, data_baru FROM audit_log " + where +
                            " ORDER BY id DESC LIMIT :limit OFFSET :offset"), p).mappings().all()
     return {"total": total, "items": [dict(r) for r in rows]}
+
+# ─── Master Poliklinik (ORM + View v_okupansi_poliklinik + RDF) ──────────────
+
+@router.get("/poliklinik", summary="Daftar unit poliklinik beserta okupansi hari ini")
+def list_poliklinik_admin(
+    rs_id: str = "",
+    user: dict = Depends(require_perm("poliklinik.read")),
+    db: Session = Depends(get_db),
+):
+    rows = db.execute(
+        text(
+            "SELECT * FROM v_okupansi_poliklinik "
+            "WHERE (:rs = '' OR rs_id = :rs) ORDER BY rs_id, nama_poli"
+        ),
+        {"rs": rs_id},
+    ).mappings().all()
+    return {"items": _with_names(rows, "rs_id")}
+
+
+@router.post("/poliklinik", status_code=201, summary="Tambah unit poliklinik baru via SQLAlchemy ORM")
+def create_poliklinik_admin(
+    body: PoliklinikIn,
+    user: dict = Depends(require_perm("poliklinik.write")),
+    db: Session = Depends(get_db),
+):
+    _need_rs(body.rs_id)  # Validasi rs_id ke Fuseki RDF
+    with tx(db):
+        set_actor(db, user)  # Memicu trg_audit_poliklinik mencatat username admin
+        poli = Poliklinik(
+            rs_id=body.rs_id,
+            kode_poli=body.kode_poli.upper(),
+            nama_poli=body.nama_poli,
+            spesialisasi=body.spesialisasi,
+            lokasi_ruangan=body.lokasi_ruangan,
+            jam_operasional=body.jam_operasional,
+            kuota_harian=body.kuota_harian,
+            aktif=body.aktif,
+        )
+        db.add(poli)
+        db.flush()
+        new_id = poli.id
+    return {"message": "Unit poliklinik berhasil ditambahkan", "id": new_id}
+
+
+@router.put("/poliklinik/{pid}", summary="Ubah data unit poliklinik via SQLAlchemy ORM")
+def update_poliklinik_admin(
+    pid: int,
+    body: PoliklinikIn,
+    user: dict = Depends(require_perm("poliklinik.write")),
+    db: Session = Depends(get_db),
+):
+    _need_rs(body.rs_id)
+    with tx(db):
+        set_actor(db, user)
+        poli = db.get(Poliklinik, pid)
+        if not poli:
+            raise HTTPException(404, "Unit poliklinik tidak ditemukan")
+        poli.rs_id = body.rs_id
+        poli.kode_poli = body.kode_poli.upper()
+        poli.nama_poli = body.nama_poli
+        poli.spesialisasi = body.spesialisasi
+        poli.lokasi_ruangan = body.lokasi_ruangan
+        poli.jam_operasional = body.jam_operasional
+        poli.kuota_harian = body.kuota_harian
+        poli.aktif = body.aktif
+    return {"message": "Unit poliklinik diperbarui", "id": pid}
+
+
+@router.delete("/poliklinik/{pid}", summary="Hapus unit poliklinik (ditolak FK jika masih ada jadwal)")
+def delete_poliklinik_admin(
+    pid: int,
+    user: dict = Depends(require_perm("poliklinik.write")),
+    db: Session = Depends(get_db),
+):
+    with tx(db):
+        set_actor(db, user)
+        poli = db.get(Poliklinik, pid)
+        if not poli:
+            raise HTTPException(404, "Unit poliklinik tidak ditemukan")
+        db.delete(poli)
+    return {"message": "Unit poliklinik dihapus", "id": pid}
+
+    # ─── Moderasi Ulasan RS & Eksekusi Stored Procedure ──────────────────────────
+
+@router.get("/ulasan", summary="Daftar ulasan pasien untuk moderasi admin")
+def list_ulasan_admin(
+    status_moderasi: str = "",
+    rs_id: str = "",
+    user: dict = Depends(require_perm("ulasan.moderate")),
+    db: Session = Depends(get_db),
+):
+    stmt = select(UlasanRS).options(joinedload(UlasanRS.user)).order_by(UlasanRS.created_at.desc())
+    if status_moderasi:
+        stmt = stmt.where(UlasanRS.status_moderasi == status_moderasi)
+    if rs_id:
+        stmt = stmt.where(UlasanRS.rs_id == rs_id)
+
+    items = db.scalars(stmt.limit(100)).all()
+    rows = [
+        {
+            "id": u.id,
+            "rs_id": u.rs_id,
+            "username": u.user.username if u.user else "-",
+            "nama_pengguna": u.user.nama_lengkap if u.user else "Pengguna",
+            "rating": u.rating,
+            "komentar": u.komentar,
+            "status_moderasi": u.status_moderasi,
+            "dimoderasi_oleh": u.dimoderasi_oleh,
+            "created_at": u.created_at,
+        }
+        for u in items
+    ]
+    return {"items": _with_names(rows, "rs_id")}
+
+
+@router.put("/ulasan/{uid}", summary="Setujui atau tolak ulasan pasien")
+def moderate_ulasan_admin(
+    uid: int,
+    body: UlasanModerasiPatch,
+    user: dict = Depends(require_perm("ulasan.moderate")),
+    db: Session = Depends(get_db),
+):
+    with tx(db):
+        set_actor(db, user)
+        ulasan = db.get(UlasanRS, uid)
+        if not ulasan:
+            raise HTTPException(404, "Ulasan tidak ditemukan")
+        ulasan.status_moderasi = body.status_moderasi
+        ulasan.dimoderasi_oleh = user["username"]
+    return {"message": "Status moderasi ulasan diperbarui", "id": uid, "status_moderasi": body.status_moderasi}
+
+
+@router.post("/reservasi/tutup-kedaluwarsa", summary="Jalankan Stored Procedure prc_tutup_antrean_kedaluwarsa")
+def jalankan_prosedur_tutup_antrean(
+    user: dict = Depends(require_perm("reservasi.write")),
+    db: Session = Depends(get_db),
+):
+    with tx(db):
+        db.execute(text("CALL prc_tutup_antrean_kedaluwarsa()"))
+    return {"message": "Stored procedure prc_tutup_antrean_kedaluwarsa berhasil dijalankan"}

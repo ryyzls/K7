@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import { cn } from '../utils';
@@ -28,6 +28,8 @@ export default function SiteHeader({ active = '' }) {
     { label: 'Beranda', to: '/', id: 'beranda' },
     { label: 'Direktori', to: '/pencarian', id: 'direktori' },
     { label: 'Peta', to: '/peta', id: 'peta' },
+    { label: 'Peringkat RS', to: '/peringkat', id: 'peringkat' },
+    ...(user ? [{ label: 'Dashboard Pasien', to: '/dashboard', id: 'dashboard' }] : []),
   ];
 
   return (
@@ -79,9 +81,10 @@ export default function SiteHeader({ active = '' }) {
               {accountOpen && (
                 <div className="absolute right-0 top-11 w-52 animate-fade-in rounded-xl border border-slate-200 bg-white p-2 shadow-floating">
                   <p className="px-2 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-slate-400">
-                    Sesi simulasi
+                    Akun Pasien
                   </p>
-                  <p className="px-2 pb-2 text-xs text-slate-600">Masuk via {user.provider}</p>
+                  <p className="px-2 pb-2 text-xs text-slate-600">{user.nama_lengkap || user.name} (@{user.username || 'pasien'})</p>
+                  <button type="button" onClick={() => navigate('/dashboard')} className="mb-1 w-full rounded-lg px-2 py-2 text-left text-xs font-semibold text-brand-navy hover:bg-slate-100">Dashboard Saya</button>
                   <button
                     type="button"
                     onClick={logout}
@@ -129,3 +132,5 @@ export default function SiteHeader({ active = '' }) {
     </header>
   );
 }
+
+

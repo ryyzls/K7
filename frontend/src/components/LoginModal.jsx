@@ -1,60 +1,33 @@
-import { useEffect } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useApp } from '../context/AppContext';
 
-function GoogleIcon() {
-  return (
-    <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
-      <path
-        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-        fill="#4285F4"
-      />
-      <path
-        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-        fill="#34A853"
-      />
-      <path
-        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
-        fill="#FBBC05"
-      />
-      <path
-        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
-        fill="#EA4335"
-      />
-    </svg>
-  );
-}
-
-function FacebookIcon() {
-  return (
-    <svg className="h-5 w-5 shrink-0" fill="#1877F2" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-    </svg>
-  );
-}
-
-function Emblem() {
-  return (
-    <div className="flex justify-center pb-6 pt-2">
-      <div className="relative flex h-16 w-16 items-center justify-center sm:h-20 sm:w-20">
-        <img
-          src="/images/cari-sehat-icon.png"
-          alt=""
-          className="h-full w-full rounded-2xl object-cover shadow-soft"
-        />
-        <span className="absolute -bottom-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-emerald-500 text-white">
-          <span className="material-symbols-outlined text-[15px]">health_and_safety</span>
-        </span>
-      </div>
-    </div>
-  );
-}
+const DEMO_ACCOUNTS = [
+  { username: 'pasien_demo', label: 'Budi Santoso (pasien_demo)' },
+  { username: 'rizal_medan', label: 'Fahri Arizal (rizal_medan)' },
+  { username: 'siti_aminah', label: 'Siti Aminah (siti_aminah)' },
+];
 
 export default function LoginModal() {
-  const { loginOpen, closeLogin, login } = useApp();
+  const { loginOpen, closeLogin, login, registerAndLogin } = useApp();
+  const [mode, setMode] = useState('login');
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
+
+  const [ident, setIdent] = useState('');
+  const [password, setPassword] = useState('');
+
+  const [regForm, setRegForm] = useState({
+    username: '',
+    email: '',
+    nama_lengkap: '',
+    no_telp: '',
+    password: '',
+  });
 
   useEffect(() => {
     if (!loginOpen) return undefined;
+    setError('');
     const onKeyDown = (event) => {
       if (event.key === 'Escape') closeLogin();
     };
@@ -69,6 +42,43 @@ export default function LoginModal() {
 
   if (!loginOpen) return null;
 
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    if (submitting) return;
+    setSubmitting(true);
+    setError('');
+    try {
+      await login(ident.trim(), password);
+      setIdent('');
+      setPassword('');
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleRegister = async (event) => {
+    event.preventDefault();
+    if (submitting) return;
+    setSubmitting(true);
+    setError('');
+    try {
+      await registerAndLogin({
+        username: regForm.username.trim(),
+        email: regForm.email.trim(),
+        nama_lengkap: regForm.nama_lengkap.trim(),
+        no_telp: regForm.no_telp.trim() || null,
+        password: regForm.password,
+      });
+      setRegForm({ username: '', email: '', nama_lengkap: '', no_telp: '', password: '' });
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return createPortal(
     <div
       className="fixed inset-0 z-[100] flex animate-fade-in items-center justify-center bg-slate-950/60 p-4 backdrop-blur-overlay sm:p-6"
@@ -80,82 +90,198 @@ export default function LoginModal() {
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
-        className="modal-shadow relative w-full max-w-[480px] animate-zoom-in rounded-[32px] bg-white p-7 transition-all sm:rounded-[36px] sm:p-10"
+        className="modal-shadow relative max-h-[92vh] w-full max-w-[480px] animate-zoom-in overflow-y-auto rounded-[28px] bg-white p-6 transition-all sm:p-8"
       >
         <button
           type="button"
           onClick={closeLogin}
           aria-label="Tutup jendela"
-          className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition-colors hover:bg-slate-200 hover:text-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-300"
+          className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition-colors hover:bg-slate-200 hover:text-slate-800"
         >
-          <span className="material-symbols-outlined text-[21px]">close</span>
+          <span className="material-symbols-outlined text-[20px]">close</span>
         </button>
 
-        <Emblem />
-
-        <div className="mb-8 px-2 text-center">
-          <h2
-            id="modal-title"
-            className="mb-2 font-heading text-[23px] font-extrabold leading-[1.28] tracking-tight text-slate-900 sm:text-[27px]"
-          >
-            Untuk menjelajahi faskes lengkap, masuk atau daftar gratis
-          </h2>
-          <p className="mx-auto max-w-sm text-sm leading-relaxed text-slate-500 sm:text-[14.5px]">
-            Akses ketersediaan IGD, rujukan BPJS, serta rekam faskes favorit Anda dalam satu akun.
-          </p>
+        <div className="mb-4 flex items-center gap-3">
+          <img
+            src="/images/cari-sehat-icon.png"
+            alt=""
+            className="h-11 w-11 rounded-xl object-cover shadow-soft"
+          />
+          <div>
+            <h2 id="modal-title" className="font-heading text-xl font-extrabold text-slate-900">
+              Akun Pasien CariSehat
+            </h2>
+            <p className="text-xs text-slate-500">
+              Terhubung ke PostgreSQL (Reservasi Poli, Favorit &amp; Ulasan RS)
+            </p>
+          </div>
         </div>
 
-        <div className="mb-6 space-y-3 sm:space-y-3.5">
+        <div className="mb-5 grid grid-cols-2 rounded-xl bg-slate-100 p-1">
           <button
             type="button"
-            onClick={() => login('Google')}
-            className="flex h-[52px] w-full items-center justify-center gap-3.5 rounded-full bg-slate-100 px-6 text-[15px] font-semibold text-slate-800 transition-all hover:bg-slate-200/90 active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-slate-300 focus:ring-offset-2 sm:h-[54px] sm:text-base"
+            onClick={() => {
+              setMode('login');
+              setError('');
+            }}
+            className={`rounded-lg py-2 text-xs font-bold transition ${
+              mode === 'login'
+                ? 'bg-white text-brand-navy shadow-sm'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
           >
-            <GoogleIcon />
-            <span>Lanjutkan dengan Google</span>
+            Masuk
           </button>
           <button
             type="button"
-            onClick={() => login('Facebook')}
-            className="flex h-[52px] w-full items-center justify-center gap-3.5 rounded-full bg-slate-100 px-6 text-[15px] font-semibold text-slate-800 transition-all hover:bg-slate-200/90 active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-slate-300 focus:ring-offset-2 sm:h-[54px] sm:text-base"
+            onClick={() => {
+              setMode('register');
+              setError('');
+            }}
+            className={`rounded-lg py-2 text-xs font-bold transition ${
+              mode === 'register'
+                ? 'bg-white text-brand-navy shadow-sm'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
           >
-            <FacebookIcon />
-            <span>Lanjutkan dengan Facebook</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => login('Email')}
-            className="flex h-[52px] w-full items-center justify-center gap-3.5 rounded-full bg-slate-100 px-6 text-[15px] font-semibold text-slate-800 transition-all hover:bg-slate-200/90 active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-slate-300 focus:ring-offset-2 sm:h-[54px] sm:text-base"
-          >
-            <span className="material-symbols-outlined text-[21px] text-slate-700">mail</span>
-            <span>Lanjutkan dengan email</span>
+            Daftar Baru
           </button>
         </div>
 
-        <p className="mb-4 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-center text-[11px] leading-relaxed text-amber-700">
-          Mode demo akademik: pilih salah satu metode untuk masuk sebagai pengguna simulasi. Tidak ada
-          kredensial yang dikirim ke server.
-        </p>
+        {error ? (
+          <div className="mb-4 rounded-xl border border-rose-200 bg-rose-50 px-3.5 py-2.5 text-xs font-medium text-rose-700">
+            {error}
+          </div>
+        ) : null}
 
-        <footer className="px-4 text-center">
-          <p className="text-xs leading-relaxed text-slate-500 sm:text-[13px]">
-            Dengan melanjutkan ke CariSehat, Anda menyetujui{' '}
-            <a
-              className="font-medium text-slate-800 underline underline-offset-2 transition-colors hover:text-brand-navy"
-              href="#terms"
+        {mode === 'login' ? (
+          <form onSubmit={handleLogin} className="space-y-3.5">
+            <div>
+              <label className="mb-1 block text-xs font-semibold text-slate-700">
+                Username atau Email
+              </label>
+              <input
+                type="text"
+                required
+                value={ident}
+                onChange={(e) => setIdent(e.target.value)}
+                placeholder="Contoh: pasien_demo"
+                className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:border-brand-blue focus:outline-none"
+              />
+            </div>
+            <div>
+              <label className="mb-1 block text-xs font-semibold text-slate-700">Kata Sandi</label>
+              <input
+                type="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Masukkan kata sandi"
+                className="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm focus:border-brand-blue focus:outline-none"
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={submitting}
+              className="w-full rounded-full bg-brand-navy py-3 text-sm font-semibold text-white transition hover:bg-brand-blue disabled:opacity-50"
             >
-              Ketentuan Layanan
-            </a>{' '}
-            dan{' '}
-            <a
-              className="font-medium text-slate-800 underline underline-offset-2 transition-colors hover:text-brand-navy"
-              href="#privacy"
+              {submitting ? 'Memproses...' : 'Masuk ke Akun'}
+            </button>
+
+            <div className="rounded-xl border border-slate-200 bg-slate-50 p-3">
+              <p className="mb-2 text-[11px] font-semibold text-slate-600">
+                Isi cepat akun demo MSBD (password: <code>Demo1234!</code>):
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {DEMO_ACCOUNTS.map((acc) => (
+                  <button
+                    key={acc.username}
+                    type="button"
+                    onClick={() => {
+                      setIdent(acc.username);
+                      setPassword('Demo1234!');
+                    }}
+                    className="rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-[11px] font-semibold text-brand-navy transition hover:border-brand-blue hover:bg-blue-50"
+                  >
+                    {acc.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </form>
+        ) : (
+          <form onSubmit={handleRegister} className="space-y-3">
+            <div>
+              <label className="mb-1 block text-xs font-semibold text-slate-700">Nama Lengkap</label>
+              <input
+                type="text"
+                required
+                minLength={2}
+                value={regForm.nama_lengkap}
+                onChange={(e) => setRegForm({ ...regForm, nama_lengkap: e.target.value })}
+                placeholder="Nama sesuai KTP"
+                className="w-full rounded-xl border border-slate-300 px-3.5 py-2 text-sm focus:border-brand-blue focus:outline-none"
+              />
+            </div>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <div>
+                <label className="mb-1 block text-xs font-semibold text-slate-700">Username</label>
+                <input
+                  type="text"
+                  required
+                  minLength={3}
+                  pattern="^[A-Za-z0-9_.-]+$"
+                  value={regForm.username}
+                  onChange={(e) => setRegForm({ ...regForm, username: e.target.value })}
+                  placeholder="huruf/angka/_"
+                  className="w-full rounded-xl border border-slate-300 px-3.5 py-2 text-sm focus:border-brand-blue focus:outline-none"
+                />
+              </div>
+              <div>
+                <label className="mb-1 block text-xs font-semibold text-slate-700">No. Telepon</label>
+                <input
+                  type="tel"
+                  value={regForm.no_telp}
+                  onChange={(e) => setRegForm({ ...regForm, no_telp: e.target.value })}
+                  placeholder="0812xxxxxxxx"
+                  className="w-full rounded-xl border border-slate-300 px-3.5 py-2 text-sm focus:border-brand-blue focus:outline-none"
+                />
+              </div>
+            </div>
+            <div>
+              <label className="mb-1 block text-xs font-semibold text-slate-700">Email</label>
+              <input
+                type="email"
+                required
+                value={regForm.email}
+                onChange={(e) => setRegForm({ ...regForm, email: e.target.value })}
+                placeholder="nama@email.com"
+                className="w-full rounded-xl border border-slate-300 px-3.5 py-2 text-sm focus:border-brand-blue focus:outline-none"
+              />
+            </div>
+            <div>
+              <label className="mb-1 block text-xs font-semibold text-slate-700">
+                Kata Sandi (min. 6 karakter)
+              </label>
+              <input
+                type="password"
+                required
+                minLength={6}
+                value={regForm.password}
+                onChange={(e) => setRegForm({ ...regForm, password: e.target.value })}
+                placeholder="Minimal 6 karakter"
+                className="w-full rounded-xl border border-slate-300 px-3.5 py-2 text-sm focus:border-brand-blue focus:outline-none"
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={submitting}
+              className="w-full rounded-full bg-brand-navy py-3 text-sm font-semibold text-white transition hover:bg-brand-blue disabled:opacity-50"
             >
-              Kebijakan Privasi
-            </a>
-            .
-          </p>
-        </footer>
+              {submitting ? 'Mendaftarkan...' : 'Daftar & Masuk'}
+            </button>
+          </form>
+        )}
       </div>
     </div>,
     document.body,
