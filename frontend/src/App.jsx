@@ -58,6 +58,8 @@ export default function App() {
         <Route path="/rumah-sakit/:id" element={<DetailPage />} />
         <Route path="/rs/:id" element={<DetailPage />} />
         <Route path="/peta" element={<MapPage />} />
+        <Route path="/peta-rs" element={<MapPage />} />
+        <Route path="/map" element={<MapPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <LoginModal />

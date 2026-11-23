@@ -1,562 +1,538 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { getFilterOptions, searchHospitals } from '../api';
-import { KELAS_OPTIONS } from '../constants';
-import { cn, pageList, sortHospitals } from '../utils';
-import { useApp } from '../context/AppContext';
-import SiteHeader from '../components/SiteHeader';
+import { compareHospitals, getFilterOptions, searchHospitals } from '../api';
+import { sortHospitals } from '../utils';
 import HospitalCard from '../components/HospitalCard';
-import LeafletMap from '../components/LeafletMap';
-import SearchFilterPanel, { countActiveFilters } from '../components/SearchFilterPanel';
-import { MinimalFooter } from '../components/Footer';
+import CompareDock from '../components/CompareDock';
+import CompareModal from '../components/CompareModal';
 
-const PER_PAGE = 12;
+const STORAGE_KEY = 'carisehat_filter_ctx';
 
-function SkeletonGrid() {
-  return (
-    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-      {Array.from({ length: 6 }).map((_, index) => (
-        <div key={index} className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
-          <div className="h-[185px] animate-pulse bg-slate-100" />
-          <div className="space-y-3 p-5">
-            <div className="h-4 w-4/5 animate-pulse rounded bg-slate-100" />
-            <div className="h-3 w-1/2 animate-pulse rounded bg-slate-100" />
-            <div className="h-3 w-full animate-pulse rounded bg-slate-100" />
-            <div className="h-8 w-full animate-pulse rounded-full bg-slate-100" />
-          </div>
-        </div>
-      ))}
-    </div>
-  );
+function readStoredContext() {
+  try {
+    const raw = sessionStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+}
+
+function writeStoredContext(ctx) {
+  try {
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(ctx));
+  } catch {
+    // Ignore storage errors
+  }
 }
 
 export default function SearchPage() {
   const navigate = useNavigate();
-  const { toggleFavorite, isFavorite } = useApp();
   const [searchParams, setSearchParams] = useSearchParams();
+
+  // Load initial from params or sessionStorage
+  const storedCtx = useMemo(() => readStoredContext(), []);
+
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-  const [retry, setRetry] = useState(0);
+  const [error, setError] = useState(false);
   const [options, setOptions] = useState({ kabkota: [], layanan: [] });
-  const [filterOpen, setFilterOpen] = useState(false);
-  const [showMap, setShowMap] = useState(true);
-  const resultsRef = useRef(null);
 
-  const filters = useMemo(
-    () => ({
-      q: searchParams.get('q') || '',
-      kelas: searchParams.get('kelas') || '',
-      jenis: searchParams.get('jenis') || '',
-      kabkota: searchParams.get('kabkota') || '',
-      layanan: searchParams.get('layanan') || '',
-      bpjs: searchParams.get('bpjs') === '1',
-    }),
-    [searchParams],
-  );
+  // Filters state
+  const [q, setQ] = useState(searchParams.get('q') || storedCtx.q || '');
+  const [kabkota, setKabkota] = useState(searchParams.get('kabkota') || storedCtx.kabkota || '');
+  const [kelas, setKelas] = useState(searchParams.get('kelas') || storedCtx.kelas || '');
+  const [jenis, setJenis] = useState(searchParams.get('jenis') || storedCtx.jenis || '');
+  const [layanan, setLayanan] = useState(searchParams.get('layanan') || storedCtx.layanan || '');
+  const [sort, setSort] = useState(searchParams.get('sort') || storedCtx.sort || 'relevan');
+  const [currentPage, setCurrentPage] = useState(Number(searchParams.get('page')) || storedCtx.page || 1);
+  const [perPage, setPerPage] = useState(Number(searchParams.get('perPage')) || storedCtx.perPage || 20);
 
-  const [searchInput, setSearchInput] = useState(filters.q);
+  // Compare state
+  const [compareIds, setCompareIds] = useState(() => {
+    const p = searchParams.get('compare');
+    return p ? p.split(',').map((s) => s.trim()).filter(Boolean) : [];
+  });
+  const [compareData, setCompareData] = useState(null);
+  const [showCompareModal, setShowCompareModal] = useState(false);
 
-  useEffect(() => {
-    setSearchInput(filters.q);
-  }, [filters.q]);
-
-  const handleSearchChange = (event) => {
-    setSearchInput(event.target.value);
-  };
-
-  const handleSearchSubmit = (event) => {
-    event?.preventDefault();
-    updateParams({ q: searchInput.trim() });
-  };
-
-  const sort = searchParams.get('sort') || 'relevan';
-  const page = Math.max(1, Number(searchParams.get('page')) || 1);
-  const filterKey = `${filters.q}|${filters.kelas}|${filters.jenis}|${filters.kabkota}|${filters.layanan}`;
-  const activeCount = countActiveFilters(filters);
-
+  // Fetch filter options once
   useEffect(() => {
     getFilterOptions()
-      .then((data) => setOptions({ kabkota: data.kabkota || [], layanan: data.layanan || [] }))
-      .catch(() => {
-        /* filters stay empty; search still works */
-      });
+      .then((data) => {
+        setOptions({
+          kabkota: data.kabkota || [],
+          layanan: data.layanan || [],
+        });
+      })
+      .catch(() => {});
   }, []);
 
+  // Fetch hospitals whenever search filters change
   useEffect(() => {
-    let cancelled = false;
+    let active = true;
     setLoading(true);
-    setError('');
+    setError(false);
+
+    // Save to sessionStorage
+    writeStoredContext({
+      q,
+      kabkota,
+      kelas,
+      jenis,
+      layanan,
+      sort,
+      page: currentPage,
+      perPage,
+    });
 
     searchHospitals({
-      q: filters.q,
-      kelas: filters.kelas,
-      jenis: filters.jenis,
-      kabkota: filters.kabkota,
-      layanan: filters.layanan,
-      limit: 500,
+      q,
+      kabkota,
+      kelas,
+      jenis,
+      layanan,
     })
       .then((data) => {
-        if (cancelled) return;
+        if (!active) return;
         setItems(data.items || []);
+        setLoading(false);
       })
-      .catch((err) => {
-        if (cancelled) return;
-        setItems([]);
-        setError(err.message);
+      .catch(() => {
+        if (!active) return;
+        setError(true);
+        setLoading(false);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [q, kabkota, kelas, jenis, layanan, sort, currentPage, perPage]);
+
+  // Sync compare URL param with compareIds
+  useEffect(() => {
+    const p = searchParams.get('compare');
+    if (p) {
+      const ids = p.split(',').map((s) => s.trim()).filter(Boolean);
+      if (ids.length > 0) {
+        setCompareIds(ids);
+      }
+    }
+  }, [searchParams]);
+
+  // Fetch compare matrix when compareIds has at least 2 hospitals
+  useEffect(() => {
+    if (compareIds.length < 2) {
+      setCompareData(null);
+      return;
+    }
+    let cancelled = false;
+    compareHospitals(compareIds)
+      .then((data) => {
+        if (!cancelled) {
+          setCompareData(data);
+          setShowCompareModal(true);
+        }
       })
-      .finally(() => {
-        if (!cancelled) setLoading(false);
+      .catch(() => {
+        if (!cancelled) {
+          setCompareData(null);
+          setShowCompareModal(false);
+        }
       });
 
     return () => {
       cancelled = true;
     };
-  }, [filterKey, retry]);
+  }, [compareIds]);
 
-  const filtered = useMemo(() => {
-    const base = filters.bpjs ? items.filter((hospital) => hospital.bpjs) : items;
-    return sortHospitals(base, sort);
-  }, [items, filters.bpjs, sort]);
-
-  const totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
-  const currentPage = Math.min(page, totalPages);
-  const pageItems = filtered.slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE);
-
-  const updateParams = (patch, { resetPage = true } = {}) => {
-    const next = new URLSearchParams(searchParams);
-    Object.entries(patch).forEach(([key, value]) => {
-      if (value === '' || value === null || value === undefined || value === false) next.delete(key);
-      else next.set(key, value === true ? '1' : String(value));
+  const handleToggleCompare = (id) => {
+    setCompareIds((prev) => {
+      let updated;
+      if (prev.includes(id)) {
+        updated = prev.filter((x) => x !== id);
+      } else {
+        if (prev.length >= 3) {
+          alert('Maksimal membandingkan 3 rumah sakit sekaligus.');
+          return prev;
+        }
+        updated = [...prev, id];
+      }
+      return updated;
     });
-    if (resetPage) next.delete('page');
-    setSearchParams(next);
   };
 
-  const applyFilters = (draft) => {
-    updateParams(
-      {
-        q: draft.q.trim(),
-        kelas: draft.kelas,
-        jenis: draft.jenis,
-        kabkota: draft.kabkota,
-        layanan: draft.layanan,
-        bpjs: draft.bpjs ? '1' : '',
-      },
-      { resetPage: true },
-    );
-    setFilterOpen(false);
-    window.setTimeout(() => resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+  const handleRemoveCompare = (id) => {
+    setCompareIds((prev) => prev.filter((x) => x !== id));
   };
 
-  const resetFilters = () => {
-    setSearchParams(new URLSearchParams());
+  const handleClearCompare = () => {
+    setCompareIds([]);
+    setCompareData(null);
+    setShowCompareModal(false);
   };
 
-  const goPage = (nextPage) => {
-    const next = new URLSearchParams(searchParams);
-    if (nextPage <= 1) next.delete('page');
-    else next.set('page', String(nextPage));
-    setSearchParams(next);
-    window.setTimeout(() => resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 40);
+  const handleOpenCompareModal = () => {
+    if (compareIds.length < 2) {
+      alert('Pilih minimal 2 rumah sakit untuk dibandingkan.');
+      return;
+    }
+    if (compareData) {
+      setShowCompareModal(true);
+    } else {
+      compareHospitals(compareIds).then((data) => {
+        setCompareData(data);
+        setShowCompareModal(true);
+      });
+    }
   };
 
-  const chips = [
-    filters.q && { key: 'q', label: `“${filters.q}”` },
-    filters.kelas && { key: 'kelas', label: `Kelas ${filters.kelas}` },
-    filters.jenis && { key: 'jenis', label: `RS ${filters.jenis}` },
-    filters.kabkota && { key: 'kabkota', label: filters.kabkota },
-    filters.layanan && { key: 'layanan', label: filters.layanan },
-    filters.bpjs && { key: 'bpjs', label: 'BPJS' },
-  ].filter(Boolean);
+  // Reset all filters
+  const handleResetFilters = () => {
+    setQ('');
+    setKabkota('');
+    setKelas('');
+    setJenis('');
+    setLayanan('');
+    setSort('relevan');
+    setCurrentPage(1);
+    setSearchParams({});
+    try {
+      sessionStorage.removeItem(STORAGE_KEY);
+    } catch {}
+  };
+
+  // Sorted items
+  const sortedItems = useMemo(() => {
+    return sortHospitals(items, sort);
+  }, [items, sort]);
+
+  // Paginated items
+  const totalPages = Math.max(1, Math.ceil(sortedItems.length / perPage));
+  const validPage = Math.min(Math.max(1, currentPage), totalPages);
+  const startIdx = (validPage - 1) * perPage;
+  const pageItems = sortedItems.slice(startIdx, startIdx + perPage);
+
+  const hasFilter = Boolean(q || kabkota || kelas || jenis || layanan);
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-50">
-      <SiteHeader active="direktori" />
-
-      <main className="flex-1">
-        {/* Page header */}
-        <section className="border-b border-slate-200 bg-white">
-          <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
-            {/* Tombol Kembali ke Halaman Utama */}
-            <div className="mb-4">
-              <Link
-                to="/"
-                className="group inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-brand-navy hover:bg-slate-50 hover:text-brand-navy"
-              >
-                <span className="material-symbols-outlined text-[17px] transition-transform group-hover:-translate-x-1">
-                  arrow_back
-                </span>
-                <span>Kembali ke Halaman Utama</span>
-              </Link>
-            </div>
-
-            {/* Omnibox Pencarian Langsung */}
-            <form onSubmit={handleSearchSubmit} className="flex flex-col gap-2.5 sm:flex-row sm:items-center">
-              <div className="relative flex-1">
-                <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
-                  <span className="material-symbols-outlined text-[20px]">search</span>
-                </span>
-                <input
-                  type="text"
-                  value={searchInput}
-                  onChange={handleSearchChange}
-                  placeholder="Cari nama rumah sakit, spesialisasi, tindakan, atau lokasi..."
-                  className="w-full rounded-full border border-slate-200 bg-slate-50 py-3 pl-10 pr-10 text-sm font-medium text-slate-800 outline-none transition placeholder:text-slate-400 hover:bg-slate-100/70 focus:border-brand-blue focus:bg-white focus:ring-2 focus:ring-brand-blue/20"
-                  aria-label="Cari nama rumah sakit, spesialisasi, atau lokasi"
-                  autoComplete="off"
-                />
-                {searchInput ? (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSearchInput('');
-                      updateParams({ q: '' });
-                    }}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 transition hover:text-slate-700"
-                    title="Hapus pencarian"
-                  >
-                    <span className="material-symbols-outlined text-[18px]">close</span>
-                  </button>
-                ) : null}
-              </div>
-
-              <button
-                type="submit"
-                className="inline-flex items-center justify-center gap-1.5 rounded-full bg-brand-navy px-6 py-3 text-xs font-bold text-white shadow-sm transition hover:bg-brand-blue"
-              >
-                <span className="material-symbols-outlined text-[16px]">search</span>
-                Cari
-              </button>
-            </form>
-
-            {/* Tepat di bawah bar pencarian: Filter pills & Active chips */}
-            <div className="mt-3.5 flex flex-wrap items-center gap-2">
-              <button
-                type="button"
-                onClick={() => setFilterOpen(true)}
-                className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-100 px-3.5 py-1.5 text-[11px] font-semibold text-slate-700 transition hover:bg-slate-200/80"
-              >
-                <span className="material-symbols-outlined text-[14px]">tune</span>
-                Semua Filter
-                {activeCount ? (
-                  <span className="rounded-full bg-brand-navy px-1.5 text-[10px] text-white">{activeCount}</span>
-                ) : null}
-              </button>
-
-              <span className="text-[10.5px] font-bold uppercase tracking-wide text-slate-400">
-                Kelas:
-              </span>
-              <button
-                type="button"
-                onClick={() => updateParams({ kelas: '' })}
-                className={cn(
-                  'rounded-full border px-3 py-1 text-[11px] font-semibold transition',
-                  !filters.kelas
-                    ? 'border-brand-navy bg-brand-navy text-white'
-                    : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300',
-                )}
-              >
-                Semua
-              </button>
-              {KELAS_OPTIONS.map((option) => (
-                <button
-                  key={option.value}
-                  type="button"
-                  onClick={() => updateParams({ kelas: option.value })}
-                  className={cn(
-                    'rounded-full border px-3 py-1 text-[11px] font-bold transition',
-                    filters.kelas === option.value
-                      ? 'border-brand-navy bg-brand-navy text-white'
-                      : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300',
-                  )}
-                >
-                  {option.value}
-                </button>
-              ))}
-
-              {chips.length ? (
-                <button
-                  type="button"
-                  onClick={resetFilters}
-                  className="ml-auto inline-flex items-center gap-1 text-[11px] font-semibold text-slate-500 transition hover:text-rose-600"
-                >
-                  <span className="material-symbols-outlined text-[14px]">close</span>
-                  Reset semua
-                </button>
-              ) : null}
-            </div>
-
-            {chips.length ? (
-              <div className="mt-2.5 flex flex-wrap items-center gap-1.5">
-                {chips.map((chip) => (
-                  <button
-                    key={chip.key}
-                    type="button"
-                    onClick={() => updateParams({ [chip.key]: '' })}
-                    className="inline-flex items-center gap-1 rounded-full border border-blue-100 bg-blue-50 px-2.5 py-1 text-[10.5px] font-semibold text-brand-blue transition hover:bg-blue-100"
-                  >
-                    {chip.label}
-                    <span className="material-symbols-outlined text-[13px]">close</span>
-                  </button>
-                ))}
-              </div>
-            ) : null}
-
-            {/* Judul & Hasil di bawah filter */}
-            <div className="mt-6 flex flex-col justify-between gap-4 border-t border-slate-100 pt-5 lg:flex-row lg:items-end">
-              <div>
-                <h1 className="font-heading text-2xl font-extrabold tracking-tight text-brand-navy md:text-3xl">
-                  Direktori Rumah Sakit Sumatera Utara
-                </h1>
-                <p className="mt-1 text-sm text-slate-500">
-                  {loading ? (
-                    'Memuat data rumah sakit...'
-                  ) : activeCount > 0 ? (
-                    <>
-                      Menampilkan{' '}
-                      <span className="font-bold text-brand-navy">{filtered.length} rumah sakit</span> dari
-                      katalog semantik Kemenkes RI &amp; BPJS SatuSehat.
-                    </>
-                  ) : (
-                    <>
-                      Menampilkan{' '}
-                      <span className="font-bold text-brand-navy">seluruh rumah sakit</span> dari
-                      katalog semantik Kemenkes RI &amp; BPJS SatuSehat.
-                    </>
-                  )}
-                </p>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-2.5">
-                <label className="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2 text-xs">
-                  <span className="font-medium text-slate-500">Urutkan</span>
-                  <select
-                    value={sort}
-                    onChange={(event) => updateParams({ sort: event.target.value })}
-                    className="cursor-pointer bg-transparent text-xs font-bold text-brand-navy outline-none"
-                    aria-label="Urutkan hasil"
-                  >
-                    <option value="relevan">Paling relevan</option>
-                    <option value="nama">Nama A–Z</option>
-                    <option value="kelas">Kelas</option>
-                    <option value="wilayah">Wilayah</option>
-                  </select>
-                </label>
-
-                <button
-                  type="button"
-                  onClick={() => updateParams({ bpjs: filters.bpjs ? '' : '1' })}
-                  className={cn(
-                    'inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-bold transition',
-                    filters.bpjs
-                      ? 'border-emerald-300 bg-emerald-50 text-emerald-700'
-                      : 'border-slate-200 bg-white text-slate-600 hover:border-emerald-200 hover:text-emerald-700',
-                  )}
-                  aria-pressed={filters.bpjs}
-                >
-                  <span className="material-symbols-outlined text-[15px]">verified</span>
-                  BPJS aktif
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setShowMap((current) => !current)}
-                  className={cn(
-                    'hidden items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-bold transition lg:inline-flex',
-                    showMap
-                      ? 'border-brand-blue bg-blue-50 text-brand-blue'
-                      : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50',
-                  )}
-                  aria-pressed={showMap}
-                >
-                  <span className="material-symbols-outlined text-[15px]">map</span>
-                  Peta
-                </button>
-              </div>
-            </div>
+    <div className="min-h-screen bg-white">
+      {/* Navbar */}
+      <header className="d-head">
+        <div className="d-head-inner">
+          <Link className="brand" to="/" aria-label="CariSehat, Beranda">
+            <img className="brand-image" src="/images/cari-sehat-logo.png" alt="Cari Sehat" width="190" height="64" />
+          </Link>
+          <nav className="d-site-nav" aria-label="Menu utama">
+            <Link to="/">Beranda</Link>
+            <Link to="/pencarian" aria-current="page">Cari Rumah Sakit</Link>
+            <Link to="/peta">Peta</Link>
+            <a href="/#about">Tentang</a>
+          </nav>
+          <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center' }}>
+            <Link className="btn btn-ghost" to="/peta">
+              <i className="fa-solid fa-map-location-dot" aria-hidden="true" style={{ color: 'var(--toba)' }} />
+              <span>Buka Peta</span>
+            </Link>
           </div>
-        </section>
+        </div>
+      </header>
 
-        <section ref={resultsRef} className="scroll-mt-20">
-          <div className="mx-auto max-w-7xl px-4 py-7 sm:px-6 lg:px-8">
-            {error ? (
-              <div className="rounded-2xl border border-rose-200 bg-white p-10 text-center shadow-card">
-                <span className="material-symbols-outlined text-[40px] text-rose-400">wifi_off</span>
-                <h2 className="mt-2 font-heading text-lg font-bold text-slate-900">
-                  Server belum terhubung
-                </h2>
-                <p className="mx-auto mt-1 max-w-md text-sm text-slate-500">
-                  Pastikan backend dan Fuseki berjalan, lalu coba lagi. Detail: {error}
-                </p>
-                <button
-                  type="button"
-                  onClick={() => setRetry((current) => current + 1)}
-                  className="mt-5 rounded-full bg-brand-navy px-5 py-2.5 text-xs font-semibold text-white transition hover:bg-brand-blue"
-                >
-                  Coba lagi
-                </button>
-              </div>
-            ) : loading ? (
-              <div className={cn('grid gap-6', showMap ? 'lg:grid-cols-12' : '')}>
-                <div className={showMap ? 'lg:col-span-7 xl:col-span-8' : ''}>
-                  <SkeletonGrid />
-                </div>
-                {showMap ? (
-                  <div className="hidden lg:col-span-5 lg:block xl:col-span-4">
-                    <div className="h-[calc(100vh-110px)] animate-pulse rounded-2xl border border-slate-200 bg-white" />
-                  </div>
-                ) : null}
-              </div>
-            ) : pageItems.length ? (
-              <div className={cn('grid gap-6', showMap ? 'lg:grid-cols-12' : '')}>
-                <div className={showMap ? 'lg:col-span-7 xl:col-span-8' : ''}>
-                  <div
-                    className={cn(
-                      'grid grid-cols-1 gap-5 sm:grid-cols-2',
-                      !showMap && 'lg:grid-cols-3',
+      {/* Explorer Catalog Main */}
+      <main id="explorer">
+        <aside>
+          <div className="explorer-header">
+            <div className="catalog-title">
+              <h2>Daftar Rumah Sakit</h2>
+              <div id="status" aria-live="polite">
+                {loading ? (
+                  <>
+                    <span className="spin" />
+                    <span>Mencari rumah sakit...</span>
+                  </>
+                ) : error ? (
+                  <span className="text-rose-600 font-semibold">
+                    <i className="fa-solid fa-triangle-exclamation" /> Koneksi ke backend terputus
+                  </span>
+                ) : (
+                  <span>
+                    <b>{sortedItems.length}</b> rumah sakit ditemukan{' '}
+                    {sortedItems.length > perPage && (
+                      <>
+                        halaman <b>{validPage}</b>/<b>{totalPages}</b>
+                      </>
                     )}
-                  >
-                    {pageItems.map((hospital) => (
-                      <HospitalCard
-                        key={hospital.id}
-                        hospital={hospital}
-                        showSave
-                        saved={isFavorite(hospital.id)}
-                        onSave={() => toggleFavorite(hospital.id)}
-                        onRoute={(item) =>
-                          navigate(`/peta?rs=${encodeURIComponent(item.id)}&route=1`)
-                        }
-                      />
-                    ))}
-                  </div>
-
-                  {totalPages > 1 ? (
-                    <div className="mt-8 flex items-center justify-center border-t border-slate-200 pt-6">
-                      <div className="flex items-center gap-1.5">
-                        <button
-                          type="button"
-                          onClick={() => goPage(currentPage - 1)}
-                          disabled={currentPage === 1}
-                          className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
-                          aria-label="Halaman sebelumnya"
-                        >
-                          <span className="material-symbols-outlined text-[17px]">chevron_left</span>
-                        </button>
-                        {pageList(currentPage, totalPages).map((entry, index) =>
-                          entry === '…' ? (
-                            <span key={`gap-${index}`} className="px-1 text-xs text-slate-400">
-                              …
-                            </span>
-                          ) : (
-                            <button
-                              key={entry}
-                              type="button"
-                              onClick={() => goPage(entry)}
-                              className={cn(
-                                'flex h-8 min-w-8 items-center justify-center rounded-lg border px-2 text-xs font-semibold transition',
-                                entry === currentPage
-                                  ? 'border-brand-navy bg-brand-navy text-white'
-                                  : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50',
-                              )}
-                              aria-current={entry === currentPage ? 'page' : undefined}
-                            >
-                              {entry}
-                            </button>
-                          ),
-                        )}
-                        <button
-                          type="button"
-                          onClick={() => goPage(currentPage + 1)}
-                          disabled={currentPage === totalPages}
-                          className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
-                          aria-label="Halaman berikutnya"
-                        >
-                          <span className="material-symbols-outlined text-[17px]">chevron_right</span>
-                        </button>
-                      </div>
-                    </div>
-                  ) : null}
-                </div>
-
-                {showMap ? (
-                  <aside className="hidden lg:col-span-5 lg:block xl:col-span-4">
-                    <div className="sticky top-20 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-card">
-                      <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3">
-                        <div>
-                          <p className="text-[10px] font-bold uppercase tracking-wider text-brand-blue">
-                            Sebaran hasil
-                          </p>
-                          <p className="text-xs font-semibold text-slate-700">
-                            {filtered.filter((item) => item.lat != null).length} titik terpetakan
-                          </p>
-                        </div>
-                        <Link
-                          to={`/peta?${new URLSearchParams({
-                            ...(filters.kabkota ? { kabkota: filters.kabkota } : {}),
-                            ...(filters.kelas ? { kelas: filters.kelas } : {}),
-                          }).toString()}`}
-                          className="inline-flex items-center gap-1 text-[11px] font-semibold text-brand-blue hover:underline"
-                        >
-                          Perbesar
-                          <span className="material-symbols-outlined text-[14px]">open_in_full</span>
-                        </Link>
-                      </div>
-                      <div className="h-[calc(100vh-190px)] min-h-[420px]">
-                        <LeafletMap
-                          hospitals={filtered}
-                          fit
-                          showLocate
-                          className="h-full"
-                        />
-                      </div>
-                    </div>
-                  </aside>
-                ) : null}
+                  </span>
+                )}
               </div>
-            ) : (
-              <div className="rounded-2xl border border-slate-200 bg-white p-12 text-center shadow-card">
-                <span className="material-symbols-outlined text-[48px] text-slate-300">
-                  location_off
-                </span>
-                <h2 className="mt-3 font-heading text-lg font-bold text-slate-900">
-                  Tidak ada hasil yang cocok
-                </h2>
-                <p className="mx-auto mt-1 max-w-md text-sm text-slate-500">
-                  Coba ubah kata kunci, kelas, atau wilayah. Anda juga dapat mereset seluruh filter untuk
-                  melihat semua fasilitas.
-                </p>
-                <div className="mt-5 flex flex-wrap justify-center gap-2">
-                  <button
-                    type="button"
-                    onClick={resetFilters}
-                    className="rounded-full bg-brand-navy px-5 py-2.5 text-xs font-semibold text-white transition hover:bg-brand-blue"
-                  >
-                    Reset filter
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setFilterOpen(true)}
-                    className="rounded-full border border-slate-300 px-5 py-2.5 text-xs font-semibold text-slate-700 transition hover:bg-slate-50"
-                  >
-                    Buka panel filter
-                  </button>
-                </div>
-              </div>
-            )}
+            </div>
+
+            <label className="sort-control" htmlFor="sort">
+              Urutkan:
+              <select
+                id="sort"
+                value={sort}
+                onChange={(e) => {
+                  setSort(e.target.value);
+                  setCurrentPage(1);
+                }}
+                aria-label="Urutkan hasil katalog"
+              >
+                <option value="relevan">Relevansi</option>
+                <option value="nama">Nama Rumah Sakit (A-Z)</option>
+                <option value="kelas">Kelas (A &rarr; D)</option>
+              </select>
+            </label>
           </div>
-        </section>
+
+          {/* Filters Form */}
+          <form className="filters" onSubmit={(e) => e.preventDefault()} role="search" aria-label="Filter katalog rumah sakit">
+            <div className="search" style={{ position: 'relative' }}>
+              <i
+                className="fa-solid fa-magnifying-glass"
+                style={{
+                  position: 'absolute',
+                  left: '1rem',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  color: 'var(--mute)',
+                }}
+                aria-hidden="true"
+              />
+              <input
+                id="search-input"
+                type="search"
+                placeholder="Cari nama rumah sakit, layanan, alamat, atau spesialis..."
+                value={q}
+                onChange={(e) => {
+                  setQ(e.target.value);
+                  setCurrentPage(1);
+                }}
+                style={{ paddingLeft: '2.5rem' }}
+                aria-label="Cari nama rumah sakit"
+              />
+            </div>
+
+            <div className="filter-grid">
+              <label>
+                Kabupaten/kota
+                <select
+                  id="kab"
+                  value={kabkota}
+                  onChange={(e) => {
+                    setKabkota(e.target.value);
+                    setCurrentPage(1);
+                  }}
+                  aria-label="Pilih kabupaten atau kota"
+                >
+                  <option value="">Semua Wilayah (33 Kab/Kota)</option>
+                  {options.kabkota.map((k) => (
+                    <option key={k} value={k}>
+                      {k}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label>
+                Kelas Rumah Sakit
+                <select
+                  id="kelas"
+                  value={kelas}
+                  onChange={(e) => {
+                    setKelas(e.target.value);
+                    setCurrentPage(1);
+                  }}
+                  aria-label="Pilih kelas rumah sakit"
+                >
+                  <option value="">Semua Kelas</option>
+                  <option value="A">Kelas A</option>
+                  <option value="B">Kelas B</option>
+                  <option value="C">Kelas C</option>
+                  <option value="D">Kelas D</option>
+                </select>
+              </label>
+
+              <label>
+                Jenis Rumah Sakit
+                <select
+                  id="jenis"
+                  value={jenis}
+                  onChange={(e) => {
+                    setJenis(e.target.value);
+                    setCurrentPage(1);
+                  }}
+                  aria-label="Pilih jenis rumah sakit"
+                >
+                  <option value="">Semua Jenis Rumah Sakit</option>
+                  <option value="Umum">Rumah Sakit Umum (RSU)</option>
+                  <option value="Khusus">Rumah Sakit Khusus (RSK)</option>
+                </select>
+              </label>
+
+              <label>
+                Layanan Medis
+                <select
+                  id="lay"
+                  value={layanan}
+                  onChange={(e) => {
+                    setLayanan(e.target.value);
+                    setCurrentPage(1);
+                  }}
+                  aria-label="Pilih layanan medis"
+                >
+                  <option value="">Semua Layanan Spesialisasi</option>
+                  {options.layanan.map((l) => (
+                    <option key={l} value={l}>
+                      {l}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              {hasFilter && (
+                <button
+                  className="link-btn"
+                  id="reset"
+                  type="button"
+                  onClick={handleResetFilters}
+                  title="Bersihkan semua filter"
+                >
+                  Reset Filter
+                </button>
+              )}
+            </div>
+          </form>
+
+          {/* Hospital Card List */}
+          {loading ? (
+            <div style={{ textAlign: 'center', padding: '4rem 1rem' }}>
+              <div className="spin" style={{ margin: '0 auto 1rem', width: 28, height: 28, borderWidth: 3 }} />
+              <p style={{ color: 'var(--mute)' }}>Memuat katalog rumah sakit...</p>
+            </div>
+          ) : error ? (
+            <div style={{ textAlign: 'center', padding: '4rem 1rem' }}>
+              <h3 style={{ color: 'var(--emergency)', fontWeight: 800 }}>Server belum terhubung</h3>
+              <p style={{ color: 'var(--mute)' }}>Pastikan backend API berjalan, lalu coba lagi.</p>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => setCurrentPage((p) => p)}
+                style={{ marginTop: '1rem' }}
+              >
+                Coba Lagi
+              </button>
+            </div>
+          ) : pageItems.length === 0 ? (
+            <div style={{ textAlign: 'center', padding: '4rem 1rem' }}>
+              <h3 style={{ fontWeight: 800 }}>Tidak ada hasil</h3>
+              <p style={{ color: 'var(--mute)' }}>
+                Tidak ada rumah sakit yang cocok dengan filter yang dipilih. Coba ubah kata kunci atau reset filter.
+              </p>
+              <button
+                type="button"
+                className="btn btn-ghost"
+                onClick={handleResetFilters}
+                style={{ marginTop: '1rem' }}
+              >
+                Reset Filter
+              </button>
+            </div>
+          ) : (
+            <ul id="list" className="hospital-grid" aria-label="Daftar katalog rumah sakit">
+              {pageItems.map((h) => (
+                <li key={h.id}>
+                  <HospitalCard
+                    hospital={h}
+                    compareSelected={compareIds.includes(h.id)}
+                    onCompareToggle={handleToggleCompare}
+                  />
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {/* Pagination Bar */}
+          {!loading && sortedItems.length > 0 && (
+            <div className="pagination-bar" id="pagination">
+              <div className="per-page-wrap">
+                <span>Tampilkan</span>
+                <select
+                  id="per-page"
+                  value={String(perPage)}
+                  onChange={(e) => {
+                    setPerPage(Number(e.target.value));
+                    setCurrentPage(1);
+                  }}
+                  aria-label="Jumlah Rumah Sakit per halaman"
+                >
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+                <span>Rumah Sakit per halaman</span>
+              </div>
+
+              <div className="pagination-info" id="pg-info">
+                Halaman <b>{validPage}</b> dari <b>{totalPages}</b> (Total <b>{sortedItems.length}</b> RS)
+              </div>
+
+              <div className="pagination-controls" id="pg-controls">
+                <button
+                  type="button"
+                  className="pg-btn"
+                  disabled={validPage <= 1}
+                  onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                  aria-label="Halaman sebelumnya"
+                >
+                  &larr;
+                </button>
+
+                {Array.from({ length: totalPages }, (_, i) => i + 1)
+                  .filter((p) => p === 1 || p === totalPages || Math.abs(p - validPage) <= 1)
+                  .map((p, idx, arr) => (
+                    <span key={p} style={{ display: 'inline-flex', alignItems: 'center' }}>
+                      {idx > 0 && arr[idx - 1] !== p - 1 && <span style={{ padding: '0 4px', color: 'var(--mute)' }}>...</span>}
+                      <button
+                        type="button"
+                        className={`pg-btn ${p === validPage ? 'active' : ''}`}
+                        onClick={() => setCurrentPage(p)}
+                      >
+                        {p}
+                      </button>
+                    </span>
+                  ))}
+
+                <button
+                  type="button"
+                  className="pg-btn"
+                  disabled={validPage >= totalPages}
+                  onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                  aria-label="Halaman berikutnya"
+                >
+                  &rarr;
+                </button>
+              </div>
+            </div>
+          )}
+        </aside>
       </main>
 
-      <MinimalFooter />
+      {/* Floating Compare Dock */}
+      <CompareDock
+        comparedIds={compareIds}
+        hospitals={items}
+        onRemove={handleRemoveCompare}
+        onClear={handleClearCompare}
+        onOpenCompare={handleOpenCompareModal}
+      />
 
-      <SearchFilterPanel
-        open={filterOpen}
-        onClose={() => setFilterOpen(false)}
-        filters={filters}
-        options={options}
-        onApply={applyFilters}
-        onReset={resetFilters}
+      {/* Compare Modal Dialog */}
+      <CompareModal
+        open={showCompareModal}
+        compareData={compareData}
+        onClose={() => setShowCompareModal(false)}
+        onRemove={handleRemoveCompare}
       />
     </div>
   );

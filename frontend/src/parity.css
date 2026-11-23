@@ -1,0 +1,58 @@
+/* Visual baseline: commit 86c9e78. React owns state and interactions. */
+:root{--brand-navy:#0f766e;--brand-blue:#115e59;--line:#e2e8f0}
+html,body,input,button,select,textarea,h1,h2,h3,h4,h5,h6{font-family:'Plus Jakarta Sans',sans-serif}
+body{background:#fff;color:#0f172a}
+.parity-route-sidebar{flex:0 0 370px;max-width:100%;overflow-y:auto;background:#fff;padding:22px;border-right:1px solid #e2e8f0}
+.parity-route-sidebar header{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.parity-route-sidebar h1{font-weight:800;font-size:22px}
+.parity-route-modes{display:flex;gap:8px;margin-bottom:24px}
+.parity-route-modes button{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px;border-radius:12px;font-size:13px}
+.parity-route-modes button[aria-pressed=true]{background:#e6f6f4;color:#0f766e}
+.parity-route-places>div{display:flex;gap:15px;padding:14px 0}
+.parity-route-places>div+div{border-top:1px solid #e2e8f0}
+.parity-route-places small{display:block;color:#64748b;margin-bottom:6px}
+.parity-route-places strong{font-size:14px;font-weight:600;line-height:1.6}
+.parity-route-places>div:last-child>.material-symbols-outlined{color:#dc2626}
+.parity-route-summary{border-top:1px solid #e2e8f0;padding:20px 0}
+.parity-route-summary h2{font-weight:700;margin-bottom:6px}
+.parity-route-note{font-size:12px;color:#64748b;line-height:1.6;margin-top:12px}
+.parity-route-steps li{display:grid;grid-template-columns:24px 1fr 45px;gap:12px;align-items:start;border-top:1px solid #e2e8f0;padding:14px 0;font-size:13px;line-height:1.6}
+.parity-route-steps small{text-align:right;color:#64748b}
+@media(max-width:767px){.parity-route-layout{flex-direction:column;height:auto!important;overflow:visible!important}.parity-route-sidebar{flex:auto;max-height:48vh;border-right:0;border-bottom:1px solid #e2e8f0}.parity-route-layout>div:last-child{flex:none;height:52vh;min-height:320px}}
+.parity-filter-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-bottom:24px}
+.parity-filter-row select,.parity-filter-row button{min-width:0;padding:12px;border:1px solid #dce5ee;border-radius:12px;background:white;font-size:14px}
+.parity-filter-row button{border-color:#0f766e;color:#0f766e;font-weight:700}
+@media(max-width:768px){.parity-filter-row{grid-template-columns:repeat(2,minmax(0,1fr))}.parity-filter-row button{grid-column:1/-1}}
+.parity-detail-section{scroll-margin-top:140px;margin-bottom:32px}
+.parity-detail-tab{border:1px solid transparent;border-radius:24px;white-space:nowrap}
+.parity-detail-tab[aria-current=location]{background:#f0fdfa;border-color:#99f6e4;color:#0f766e}
+.parity-gallery+section{padding-top:24px}
+.parity-semantic-links>a,.parity-semantic-links>button{padding:10px 14px;border:1px solid #cbd5e1;border-radius:10px;color:#0f766e;font-weight:600;font-size:14px}
+.parity-hospital-card{border:1px solid #dce5ee;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 2px 4px #0f172a08;display:flex;flex-direction:column}
+.parity-card-photo{width:100%;aspect-ratio:1.78;object-fit:cover;background:#f1f5f9}
+.parity-card-copy{padding:18px 20px 10px;flex:1}
+.parity-card-copy h3{font-weight:800;font-size:17px;line-height:1.45;margin:0 0 8px}
+.parity-card-copy p{font-size:14px;color:#64748b;margin:5px 0;line-height:1.5}
+.parity-card-actions{border-top:1px solid #edf2f7;display:flex;align-items:center;gap:18px;padding:14px 20px}
+.parity-card-facts{display:flex;gap:20px;flex:1;font-size:13px}
+.parity-card-facts small{display:block;color:#64748b;font-size:11px;line-height:1.5}
+.parity-card-buttons{display:flex;gap:8px;flex-wrap:wrap;max-width:150px}
+.parity-card-buttons a,.parity-card-buttons button{padding:9px 14px;border:1px solid #0f766e;border-radius:11px;font-size:13px;font-weight:700;color:#0f766e}
+.parity-card-buttons a{background:#0f766e;color:white}
+.parity-card-buttons button[aria-pressed=true]{background:#ccfbf1}
+.parity-gallery{position:relative;width:100%;height:clamp(240px,35vw,480px);border-radius:18px;overflow:hidden;background:#f1f5f9}
+.parity-gallery>img{width:100%;height:100%;object-fit:cover}
+.parity-gallery button{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:#0f172acc;color:white;display:grid;place-items:center}
+.parity-gallery-prev{left:16px}.parity-gallery-next{right:16px}
+.parity-gallery output{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);background:#0f172acc;color:#fff;padding:6px 14px;border-radius:20px;font-size:13px}
+.parity-gallery-empty{padding:80px 20px;text-align:center;background:#f1f5f9;border-radius:18px}
+.parity-hero{padding:30px max(24px,calc((100% - 1280px)/2));background:#f6fbfe;border-bottom:1px solid #e2e8f0}
+.parity-hero-main{display:grid;grid-template-columns:1fr 1.05fr;gap:24px;align-items:center}
+.parity-hero h1{font-size:clamp(28px,3.2vw,45px);font-weight:800;line-height:1.17;letter-spacing:-.035em;margin:0 0 12px}
+.parity-hero h1 span{color:#0f766e}.parity-hero p{line-height:1.55;color:#334155;max-width:48ch}
+.parity-hero img{width:100%;max-height:190px;object-fit:cover;border-radius:18px 18px 0 0}
+.parity-hero form{display:flex;align-items:center;gap:12px;margin-top:20px;background:#fff;border:1px solid #e2e8f0;border-radius:18px;padding:10px 16px;box-shadow:0 4px 16px #0f172a12}
+.parity-hero input{flex:1;min-width:0;border:0;background:transparent;padding:10px;outline-offset:3px}
+.parity-hero select{max-width:30%;background:white;padding:10px;border-left:1px solid #e2e8f0}
+.parity-hero button{background:#0f766e;color:white;padding:12px 20px;border-radius:12px;font-weight:700}
+@media(max-width:640px){.parity-hero-main{grid-template-columns:1fr}.parity-hero-main>img{display:none}.parity-hero form{flex-wrap:wrap}.parity-hero input{flex-basis:80%}.parity-hero select{max-width:none;flex:1}.parity-card-actions{gap:12px;padding:12px 16px}.parity-card-facts{gap:14px}}

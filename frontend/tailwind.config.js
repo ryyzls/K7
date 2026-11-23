@@ -5,8 +5,8 @@ export default {
     extend: {
       colors: {
         brand: {
-          navy: '#012D61',
-          blue: '#0057B8',
+          navy: '#0F766E',
+          blue: '#115E59',
           accent: '#0A84FF',
           surface: '#F8FAFC',
           emerald: '#059669',
@@ -37,10 +37,10 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Newsreader', 'Georgia', 'serif'],
-        body: ['Newsreader', 'Georgia', 'serif'],
-        heading: ['Newsreader', 'Georgia', 'serif'],
-        editorial: ['Newsreader', 'Georgia', 'serif'],
+        sans: ['Plus Jakarta Sans', 'sans-serif'],
+        body: ['Plus Jakarta Sans', 'sans-serif'],
+        heading: ['Plus Jakarta Sans', 'sans-serif'],
+        editorial: ['Plus Jakarta Sans', 'sans-serif'],
       },
       boxShadow: {
         card: '0 2px 10px rgba(1, 45, 97, 0.06)',

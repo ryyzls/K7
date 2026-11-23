@@ -1,256 +1,307 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useRef } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { createPortal } from 'react-dom';
-import { getAllHospitals } from '../api';
-import { FACILITY_ICON, KELAS_DESCRIPTION, SERVICE_META } from '../constants';
-import { useApp } from '../context/AppContext';
-import {
-  cn,
-  directionsUrl,
-  emailHref,
-  mapsSearchUrl,
-  openStreetMapUrl,
-  telHref,
-  websiteHref,
-} from '../utils';
-import SiteHeader from '../components/SiteHeader';
-import LeafletMap from '../components/LeafletMap';
-import BookingForm from '../components/BookingForm';
-import { MinimalFooter } from '../components/Footer';
+import { getHospital, getHospitalAlternatives } from '../api';
+import { colorOf } from '../components/HospitalCard';
+import KnowledgeGraphModal from '../components/KnowledgeGraphModal';
 
-const TABS = [
-  { id: 'profil', label: 'Profil', icon: 'clinical_notes' },
-  { id: 'fasilitas', label: 'Layanan & Fasilitas', icon: 'stethoscope' },
-  { id: 'booking', label: 'Booking Simulasi', icon: 'bed' },
-];
-
-function Gallery({ hospital }) {
-  const photos = useMemo(
-    () => [...new Set([...(hospital.galeri || []), hospital.foto].filter(Boolean))],
-    [hospital],
-  );
-  const [lightbox, setLightbox] = useState(null);
-
-  useEffect(() => {
-    if (lightbox == null) return undefined;
-    const onKeyDown = (event) => {
-      if (event.key === 'Escape') setLightbox(null);
-      if (event.key === 'ArrowRight') setLightbox((current) => (current + 1) % photos.length);
-      if (event.key === 'ArrowLeft') setLightbox((current) => (current - 1 + photos.length) % photos.length);
-    };
-    document.addEventListener('keydown', onKeyDown);
-    return () => document.removeEventListener('keydown', onKeyDown);
-  }, [lightbox, photos.length]);
-
-  if (!photos.length) {
-    return (
-      <div className="flex h-64 items-center justify-center rounded-2xl border border-slate-200 bg-slate-100 text-slate-400">
-        <span className="material-symbols-outlined text-[48px]">image_not_supported</span>
-      </div>
-    );
-  }
-
-  return (
-    <>
-      {photos.length === 1 ? (
-        <div className="overflow-hidden rounded-2xl md:h-[440px]">
-          <button
-            type="button"
-            onClick={() => setLightbox(0)}
-            className="group relative h-64 w-full overflow-hidden md:h-full"
-          >
-            <img
-              src={photos[0]}
-              alt={`${hospital.nama} — foto utama`}
-              className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.01]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/30 to-transparent opacity-0 transition group-hover:opacity-100" />
-            <span className="absolute bottom-3 right-3 inline-flex items-center gap-1 rounded-lg border border-white/40 bg-white/90 px-2.5 py-1.5 text-[11px] font-semibold text-slate-800 opacity-0 shadow-sm backdrop-blur transition group-hover:opacity-100">
-              <span className="material-symbols-outlined text-[15px]">zoom_in</span>
-              Perbesar
-            </span>
-          </button>
-        </div>
-      ) : photos.length === 2 ? (
-        <div className="grid grid-cols-1 gap-2 overflow-hidden rounded-2xl md:h-[440px] md:grid-cols-2 md:gap-2.5">
-          {photos.slice(0, 2).map((src, index) => (
-            <button
-              key={index}
-              type="button"
-              onClick={() => setLightbox(index)}
-              className="group relative h-64 overflow-hidden md:h-full"
-            >
-              <img
-                src={src}
-                alt={`${hospital.nama} — foto ${index + 1}`}
-                className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.015]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/30 to-transparent opacity-0 transition group-hover:opacity-100" />
-              <span className="absolute bottom-3 right-3 inline-flex items-center gap-1 rounded-lg border border-white/40 bg-white/90 px-2.5 py-1.5 text-[11px] font-semibold text-slate-800 opacity-0 shadow-sm backdrop-blur transition group-hover:opacity-100">
-                <span className="material-symbols-outlined text-[15px]">zoom_in</span>
-                Perbesar
-              </span>
-            </button>
-          ))}
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 gap-2.5 overflow-hidden rounded-2xl md:h-[340px] md:grid-cols-3">
-          {photos.slice(0, 3).map((src, index) => (
-            <button
-              key={index}
-              type="button"
-              onClick={() => setLightbox(index)}
-              className="group relative h-56 overflow-hidden md:h-full"
-            >
-              <img
-                src={src}
-                alt={`${hospital.nama} — foto ${index + 1}`}
-                loading="lazy"
-                className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/30 to-transparent opacity-0 transition group-hover:opacity-100" />
-              <span className="absolute bottom-3 right-3 inline-flex items-center gap-1 rounded-lg border border-white/40 bg-white/90 px-2.5 py-1.5 text-[11px] font-semibold text-slate-800 opacity-0 shadow-sm backdrop-blur transition group-hover:opacity-100">
-                <span className="material-symbols-outlined text-[15px]">zoom_in</span>
-                Perbesar
-              </span>
-              {index === 2 && photos.length > 3 ? (
-                <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-lg border border-slate-200/60 bg-white/95 px-3 py-1.5 text-[11px] font-semibold text-slate-900 shadow-sm backdrop-blur">
-                  <span className="material-symbols-outlined text-[15px]">grid_view</span>
-                  Lihat semua {photos.length} foto
-                </span>
-              ) : null}
-            </button>
-          ))}
-        </div>
-      )}
-
-      {lightbox != null
-        ? createPortal(
-            <div
-              className="fixed inset-0 z-[95] flex animate-fade-in flex-col bg-slate-950/95"
-              role="dialog"
-              aria-modal="true"
-              aria-label="Galeri foto rumah sakit"
-              onMouseDown={(event) => {
-                if (event.target === event.currentTarget) setLightbox(null);
-              }}
-            >
-              <div className="flex items-center justify-between px-4 py-3 text-white">
-                <p className="text-sm font-semibold">{hospital.nama}</p>
-                <button
-                  type="button"
-                  onClick={() => setLightbox(null)}
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 transition hover:bg-white/20"
-                  aria-label="Tutup galeri"
-                >
-                  <span className="material-symbols-outlined text-[20px]">close</span>
-                </button>
-              </div>
-              <div className="relative flex flex-1 items-center justify-center overflow-hidden p-4">
-                <img
-                  src={photos[lightbox]}
-                  alt={`${hospital.nama} — foto ${lightbox + 1}`}
-                  className="max-h-full max-w-full rounded-lg object-contain"
-                />
-                {photos.length > 1 ? (
-                  <>
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setLightbox((current) => (current - 1 + photos.length) % photos.length)
-                      }
-                      className="absolute left-3 flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur transition hover:bg-white/25"
-                      aria-label="Foto sebelumnya"
-                    >
-                      <span className="material-symbols-outlined">chevron_left</span>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setLightbox((current) => (current + 1) % photos.length)}
-                      className="absolute right-3 flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur transition hover:bg-white/25"
-                      aria-label="Foto berikutnya"
-                    >
-                      <span className="material-symbols-outlined">chevron_right</span>
-                    </button>
-                  </>
-                ) : null}
-              </div>
-              <p className="pb-4 text-center text-xs text-white/70">
-                {lightbox + 1} / {photos.length}
-              </p>
-            </div>,
-            document.body,
-          )
-        : null}
-    </>
-  );
-}
-
-function InfoRow({ icon, label, children }) {
-  return (
-    <div className="flex items-start gap-3">
-      <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-brand-blue">
-        <span className="material-symbols-outlined text-[19px]">{icon}</span>
-      </span>
-      <div className="min-w-0">
-        <p className="text-[10.5px] font-semibold uppercase tracking-wide text-slate-400">{label}</p>
-        <div className="mt-0.5 text-sm font-medium leading-snug text-slate-800">{children}</div>
-      </div>
-    </div>
-  );
-}
+const DESC = {
+  A: 'Subspesialis luas',
+  B: 'Spesialis lengkap',
+  C: 'Spesialis dasar',
+  D: 'Pelayanan dasar',
+};
 
 export default function DetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { toggleFavorite, isFavorite, toast } = useApp();
   const [hospital, setHospital] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-  const [tab, setTab] = useState('profil');
+  const [error, setError] = useState(null);
+
+  // Alternatives state
+  const [alternatives, setAlternatives] = useState([]);
+  const [loadingAlts, setLoadingAlts] = useState(false);
+  const [altsMessage, setAltsMessage] = useState('');
+
+  // Active quicknav section
+  const [activeNav, setActiveNav] = useState('sec-profil');
+
+  // Booking simulation form states
+  const [bookingFormData, setBookingFormData] = useState({
+    nama_pasien: '',
+    no_telp: '',
+    jenis_kamar: '',
+    tanggal_masuk: '',
+    catatan: '',
+  });
+  const [bookingLoading, setBookingLoading] = useState(false);
+  const [bookingResult, setBookingResult] = useState(null);
+
+  // Check booking states
+  const [checkCode, setCheckCode] = useState('');
+  const [checkLoading, setCheckLoading] = useState(false);
+  const [checkResult, setCheckResult] = useState(null);
+  const [checkError, setCheckError] = useState(null);
+
+  // Carousel index
+  const [slideIndex, setSlideIndex] = useState(0);
+
+  // Knowledge Graph Modal
+  const [showKG, setShowKG] = useState(false);
+
+  // Leaflet map container ref
+  const mapContainerRef = useRef(null);
+  const mapInstanceRef = useRef(null);
 
   useEffect(() => {
-    let cancelled = false;
+    let isMounted = true;
     setLoading(true);
-    setError('');
-    setHospital(null);
-    setTab('profil');
+    setError(null);
 
-    getAllHospitals()
-      .then((items) => {
-        if (cancelled) return;
-        const found = items.find((item) => item.id === id);
-        if (found) setHospital(found);
-        else setError('Rumah sakit tidak ditemukan.');
+    getHospital(id)
+      .then((data) => {
+        if (!isMounted) return;
+        setHospital(data);
+        setLoading(false);
       })
       .catch((err) => {
-        if (!cancelled) setError(err.message);
-      })
-      .finally(() => {
-        if (!cancelled) setLoading(false);
+        if (!isMounted) return;
+        setError(err.message || 'Gagal memuat detail rumah sakit');
+        setLoading(false);
       });
 
     return () => {
-      cancelled = true;
+      isMounted = false;
     };
   }, [id]);
 
+  // Load alternatives (maksimal 3 RS terdekat & setara)
+  useEffect(() => {
+    if (!id) return;
+    setLoadingAlts(true);
+    getHospitalAlternatives(id, 3)
+      .then((res) => {
+        if (res.has_alternatives && res.alternatives?.length) {
+          setAlternatives(res.alternatives.slice(0, 3));
+        } else {
+          setAlternatives([]);
+          setAltsMessage(res.message || 'Tidak ada rumah sakit alternatif serupa di wilayah ini.');
+        }
+      })
+      .catch(() => {
+        setAlternatives([]);
+        setAltsMessage('Rekomendasi alternatif tidak dapat dimuat saat ini.');
+      })
+      .finally(() => setLoadingAlts(false));
+  }, [id]);
+
+  // Gallery photos
+  const photos = useMemo(() => {
+    if (!hospital) return [];
+    return [...new Set([...(hospital.galeri || []), hospital.foto].filter(Boolean))];
+  }, [hospital]);
+
+  // Initialize Leaflet mini-map in #sec-lokasi
+  useEffect(() => {
+    if (!hospital || hospital.lat == null || hospital.lon == null || !mapContainerRef.current) {
+      return;
+    }
+
+    if (mapInstanceRef.current) {
+      mapInstanceRef.current.remove();
+      mapInstanceRef.current = null;
+    }
+
+    if (window.L) {
+      const L = window.L;
+      const map = L.map(mapContainerRef.current, {
+        scrollWheelZoom: false,
+      }).setView([hospital.lat, hospital.lon], 15);
+
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap',
+      }).addTo(map);
+
+      const marker = L.marker([hospital.lat, hospital.lon]).addTo(map);
+      marker.bindPopup(`<b>${hospital.nama}</b><br>${hospital.alamat || hospital.kabkota || ''}`).openPopup();
+
+      mapInstanceRef.current = map;
+      setTimeout(() => map.invalidateSize(), 300);
+    }
+
+    return () => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove();
+        mapInstanceRef.current = null;
+      }
+    };
+  }, [hospital]);
+
+  // Handle Quicknav click
+  const scrollToSection = (sectionId) => {
+    setActiveNav(sectionId);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  // Schedule logic
+  const scheduleData = useMemo(() => {
+    if (!hospital) return [];
+    const isVitaInsani = hospital.id === 'rs-199' || (hospital.nama || '').toLowerCase().includes('vita insani');
+    if (isVitaInsani) {
+      return [
+        { hari: 'Senin', jam: '08:00 - 20:00' },
+        { hari: 'Selasa', jam: '08:00 - 20:00' },
+        { hari: 'Rabu', jam: '08:00 - 20:00' },
+        { hari: 'Kamis', jam: '08:00 - 20:00' },
+        { hari: 'Jumat', jam: '08:00 - 20:00' },
+        { hari: 'Sabtu', jam: '08:00 - 15:00' },
+        { hari: 'Minggu', jam: 'Tutup' },
+      ];
+    }
+    if (hospital.jam_operasional?.jadwal_harian?.length) {
+      return hospital.jam_operasional.jadwal_harian;
+    }
+    const units = hospital.jam_operasional?.unit_operasional || [];
+    let defaultHours = '08:00 - 16:00';
+    for (const u of units) {
+      if (u.unit && (u.unit.toLowerCase().includes('poli') || u.unit.toLowerCase().includes('rawat jalan'))) {
+        if (u.jadwal_deskripsi) defaultHours = u.jadwal_deskripsi;
+        break;
+      }
+    }
+    return [
+      { hari: 'Senin', jam: defaultHours },
+      { hari: 'Selasa', jam: defaultHours },
+      { hari: 'Rabu', jam: defaultHours },
+      { hari: 'Kamis', jam: defaultHours },
+      { hari: 'Jumat', jam: defaultHours },
+      { hari: 'Sabtu', jam: '08:00 - 12:00' },
+      { hari: 'Minggu', jam: 'Tutup' },
+    ];
+  }, [hospital]);
+
+  // Spesialisasi logic
+  const spesialisasiList = useMemo(() => {
+    if (!hospital) return [];
+    const isVitaInsani = hospital.id === 'rs-199' || (hospital.nama || '').toLowerCase().includes('vita insani');
+    if (isVitaInsani) return ['Konseling Kesehatan Mental', 'Psikologi'];
+    if (Array.isArray(hospital.spesialisasi) && hospital.spesialisasi.length) {
+      return hospital.spesialisasi;
+    }
+    return [];
+  }, [hospital]);
+
+  // Fasilitas logic
+  const fasilitasList = useMemo(() => {
+    if (!hospital) return [];
+    const isVitaInsani = hospital.id === 'rs-199' || (hospital.nama || '').toLowerCase().includes('vita insani');
+    if (isVitaInsani) return ['Layanan Kesehatan Rumah'];
+    if (Array.isArray(hospital.fasilitas) && hospital.fasilitas.length) {
+      return hospital.fasilitas;
+    }
+    if (hospital.fasilitas_medis_berbukti?.fasilitas_diagnostik_terlapor?.length) {
+      return hospital.fasilitas_medis_berbukti.fasilitas_diagnostik_terlapor;
+    }
+    return [];
+  }, [hospital]);
+
+  // Handle Booking Submission
+  const handleBookingSubmit = async (e) => {
+    e.preventDefault();
+    setBookingLoading(true);
+    setBookingResult(null);
+
+    try {
+      const payload = {
+        ...bookingFormData,
+        rs_id: hospital.id,
+        nama_rs: hospital.nama,
+      };
+      const res = await fetch('/api/booking', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.detail || 'Gagal membuat reservasi');
+      }
+      setBookingResult({ success: true, data });
+      setBookingFormData({
+        nama_pasien: '',
+        no_telp: '',
+        jenis_kamar: '',
+        tanggal_masuk: '',
+        catatan: '',
+      });
+    } catch (err) {
+      setBookingResult({ success: false, error: err.message });
+    } finally {
+      setBookingLoading(false);
+    }
+  };
+
+  // Handle Check Booking
+  const handleCheckBooking = async (e) => {
+    e.preventDefault();
+    if (!checkCode.trim()) return;
+    setCheckLoading(true);
+    setCheckResult(null);
+    setCheckError(null);
+
+    try {
+      const res = await fetch(`/api/booking/${encodeURIComponent(checkCode.trim())}`);
+      if (res.status === 404) {
+        setCheckError('Kode booking tidak ditemukan.');
+        return;
+      }
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.detail || 'Gagal mengecek kode booking');
+      }
+      setCheckResult(data);
+    } catch (err) {
+      setCheckError(err.message);
+    } finally {
+      setCheckLoading(false);
+    }
+  };
+
+  // Handle Cancel Booking
+  const handleCancelBooking = async (code) => {
+    if (!window.confirm(`Batalkan booking ${code}?`)) return;
+    try {
+      const res = await fetch(`/api/booking/${encodeURIComponent(code)}`, {
+        method: 'DELETE',
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.detail || 'Gagal membatalkan');
+      }
+      alert('Booking berhasil dibatalkan');
+      setCheckResult((prev) => (prev ? { ...prev, status: 'dibatalkan' } : null));
+    } catch (err) {
+      alert('Gagal membatalkan: ' + err.message);
+    }
+  };
+
   if (loading) {
     return (
-      <div className="min-h-screen bg-white">
-        <SiteHeader />
-        <div className="mx-auto max-w-[1280px] px-4 py-10 sm:px-6 lg:px-8">
-          <div className="h-9 w-2/3 animate-pulse rounded bg-slate-100" />
-          <div className="mt-3 h-4 w-1/2 animate-pulse rounded bg-slate-100" />
-          <div className="mt-7 h-[440px] animate-pulse rounded-2xl bg-slate-100" />
-          <div className="mt-10 grid gap-10 lg:grid-cols-12">
-            <div className="space-y-3 lg:col-span-8">
-              <div className="h-7 w-1/2 animate-pulse rounded bg-slate-100" />
-              <div className="h-4 w-full animate-pulse rounded bg-slate-100" />
-              <div className="h-4 w-5/6 animate-pulse rounded bg-slate-100" />
-            </div>
-            <div className="h-72 animate-pulse rounded-2xl bg-slate-100 lg:col-span-4" />
+      <div className="d-sheet">
+        <header className="d-head">
+          <div className="d-head-inner">
+            <Link className="brand" to="/">
+              <img className="brand-image" src="/images/cari-sehat-logo.png" alt="Cari Sehat" width="190" height="64" />
+            </Link>
           </div>
+        </header>
+        <div className="d-body" style={{ textAlign: 'center', padding: '5rem 1rem' }}>
+          <div className="spin" style={{ margin: '0 auto 1rem', width: 28, height: 28, borderWidth: 3 }} />
+          <p style={{ color: 'var(--mute)' }}>Memuat detail rumah sakit...</p>
         </div>
       </div>
     );
@@ -258,651 +309,776 @@ export default function DetailPage() {
 
   if (error || !hospital) {
     return (
-      <div className="flex min-h-screen flex-col bg-slate-50">
-        <SiteHeader />
-        <div className="mx-auto flex w-full max-w-xl flex-1 flex-col items-center justify-center px-5 py-20 text-center">
-          <span className="material-symbols-outlined text-[54px] text-slate-300">domain_disabled</span>
-          <h1 className="mt-3 font-heading text-2xl font-bold text-slate-900">
-            Profil tidak dapat ditampilkan
-          </h1>
-          <p className="mt-2 text-sm text-slate-500">{error || 'Rumah sakit tidak ditemukan.'}</p>
-          <div className="mt-6 flex gap-2">
-            <button
-              type="button"
-              onClick={() => navigate(-1)}
-              className="rounded-full border border-slate-300 bg-white px-5 py-2.5 text-xs font-semibold text-slate-700 transition hover:bg-slate-50"
-            >
-              Kembali
-            </button>
-            <Link
-              to="/pencarian"
-              className="rounded-full bg-brand-navy px-5 py-2.5 text-xs font-semibold text-white transition hover:bg-brand-blue"
-            >
-              Cari rumah sakit
+      <div className="d-sheet">
+        <header className="d-head">
+          <div className="d-head-inner">
+            <Link className="brand" to="/">
+              <img className="brand-image" src="/images/cari-sehat-logo.png" alt="Cari Sehat" width="190" height="64" />
             </Link>
+            <button className="d-back" type="button" onClick={() => navigate(-1)}>
+              <i className="fa-solid fa-arrow-left" aria-hidden="true" />
+              <span>Kembali</span>
+            </button>
           </div>
+        </header>
+        <div className="d-body" style={{ textAlign: 'center', padding: '5rem 1rem' }}>
+          <h2 style={{ color: 'var(--emergency)' }}>Data tidak ditemukan</h2>
+          <p style={{ color: 'var(--mute)' }}>{error || 'Rumah sakit yang diminta tidak tersedia dalam katalog.'}</p>
+          <Link className="btn btn-primary" to="/pencarian" style={{ marginTop: '1rem' }}>
+            Kembali ke Katalog
+          </Link>
         </div>
-        <MinimalFooter />
       </div>
     );
   }
 
-  const layanan = hospital.layanan || [];
-  const fasilitas = hospital.fasilitas || [];
-  const phone = telHref(hospital.telepon);
-  const web = websiteHref(hospital.website);
-  const emailLink = emailHref(hospital.email);
-  const hasEmergency = [...layanan, ...fasilitas].some((item) => /igd|ugd|gawat darurat|ambulans/i.test(item));
-  const hasICU = fasilitas.some((item) => /icu|intensive/i.test(item));
-  const saved = isFavorite(hospital.id);
-  const featuredServices = layanan.slice(0, 6);
-
-  const share = async () => {
-    const url = window.location.href;
-    try {
-      if (navigator.share) {
-        await navigator.share({ title: hospital.nama, text: `Profil ${hospital.nama} di CariSehat`, url });
-      } else {
-        await navigator.clipboard.writeText(url);
-        toast('Tautan profil disalin.', 'success');
-      }
-    } catch {
-      /* user cancelled share */
-    }
-  };
+  const c = colorOf(hospital.kelas);
+  const isIgd24 =
+    (hospital.igd_24jam_terlapor &&
+      (hospital.igd_24jam_terlapor.buka_24_jam || hospital.igd_24jam_terlapor.igd_24jam_terlapor)) ||
+    hospital.igd_tersedia;
+  const igdText = isIgd24 ? 'Buka 24 Jam' : 'Belum tersedia';
+  const telLink = hospital.telepon ? `tel:${hospital.telepon.replace(/[^0-9+]/g, '')}` : '';
 
   return (
-    <div className="min-h-screen bg-white">
-      <SiteHeader active="direktori" initialQuery="" />
-
-      <main className="mx-auto max-w-[1280px] px-4 pb-16 pt-5 sm:px-6 lg:px-8">
-        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-          <button
-            type="button"
-            onClick={() => navigate(-1)}
-            className="group inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 py-1.5 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-brand-navy hover:bg-slate-50 hover:text-brand-navy"
-          >
-            <span className="material-symbols-outlined text-[16px] transition-transform group-hover:-translate-x-1">
-              arrow_back
-            </span>
-            <span>Kembali</span>
-          </button>
-
-          <nav className="flex items-center gap-1 text-[11px] text-slate-500" aria-label="Breadcrumb">
-            <Link to="/" className="hover:text-brand-blue">
-              Beranda
-            </Link>
-            <span className="material-symbols-outlined text-[14px] text-slate-300">chevron_right</span>
-            <Link to="/pencarian" className="hover:text-brand-blue">
-              Direktori
-            </Link>
-            <span className="material-symbols-outlined text-[14px] text-slate-300">chevron_right</span>
-            <span className="truncate font-medium text-slate-700">{hospital.nama}</span>
+    <div className="d-sheet" style={{ '--c': c }}>
+      {/* Site Header */}
+      <header className="d-head">
+        <div className="d-head-inner">
+          <Link className="brand" to="/" aria-label="CariSehat, Beranda">
+            <img className="brand-image" src="/images/cari-sehat-logo.png" alt="Cari Sehat" width="190" height="64" />
+          </Link>
+          <nav className="d-site-nav" aria-label="Navigasi utama">
+            <Link to="/">Beranda</Link>
+            <Link to="/pencarian" aria-current="page">Cari Rumah Sakit</Link>
+            <Link to="/peta">Peta</Link>
+            <a href="/#about">Tentang</a>
           </nav>
+          <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center' }}>
+            <button
+              className="btn btn-ghost"
+              type="button"
+              onClick={() => setShowKG(true)}
+              title="Eksplorasi Graf Pengetahuan Semantik"
+            >
+              <i className="fa-solid fa-circle-nodes" aria-hidden="true" style={{ color: 'var(--toba)' }} />
+              <span>Graf Pengetahuan</span>
+            </button>
+            <button
+              className="d-back"
+              type="button"
+              onClick={() => navigate(-1)}
+              aria-label="Kembali ke katalog rumah sakit"
+            >
+              <i className="fa-solid fa-arrow-left" aria-hidden="true" />
+              <span>Kembali</span>
+            </button>
+          </div>
         </div>
+      </header>
 
-        {/* Title */}
-        <section className="flex flex-col gap-3 pb-6">
-          <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
-            <div className="min-w-0">
-              <div className="mb-2 flex flex-wrap items-center gap-1.5">
-                <span className="rounded-full bg-slate-100 px-2.5 py-1 text-[10.5px] font-bold text-slate-700">
-                  Kelas {hospital.kelas || '—'}
+      <div className="d-body">
+        <div className="d-body-inner">
+          {/* Hero Header */}
+          <div className="d-hero" style={{ overflow: 'hidden' }}>
+            {/* Gallery / Carousel */}
+            {photos.length > 0 && (
+              <div className="hospital-carousel" aria-label="Galeri foto rumah sakit" style={{ height: 260, maxHeight: 260, width: '100%', overflow: 'hidden' }}>
+                <div className="hospital-slides" tabIndex={0} style={{ width: '100%', height: '100%' }}>
+                  {photos.map((src, i) => (
+                    <img
+                      key={i}
+                      src={src}
+                      alt={`Foto ${i + 1} ${hospital.nama}`}
+                      loading={i === 0 ? 'eager' : 'lazy'}
+                      style={{
+                        display: i === slideIndex ? 'block' : 'none',
+                        width: '100%',
+                        height: 260,
+                        maxHeight: 260,
+                        objectFit: 'cover',
+                      }}
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                      }}
+                    />
+                  ))}
+                </div>
+                {photos.length > 1 && (
+                  <div className="carousel-controls">
+                    <button
+                      type="button"
+                      aria-label="Foto sebelumnya"
+                      onClick={() => setSlideIndex((prev) => (prev - 1 + photos.length) % photos.length)}
+                    >
+                      &#10094;
+                    </button>
+                    <output>{slideIndex + 1} / {photos.length}</output>
+                    <button
+                      type="button"
+                      aria-label="Foto berikutnya"
+                      onClick={() => setSlideIndex((prev) => (prev + 1) % photos.length)}
+                    >
+                      &#10095;
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+
+            <div className="d-hero-top">
+              <div className="d-pills">
+                <span className="badge" title={DESC[hospital.kelas] || 'Kelas Rumah Sakit'}>
+                  Kelas {hospital.kelas || '?'}
                 </span>
-                <span className="rounded-full bg-blue-50 px-2.5 py-1 text-[10.5px] font-bold text-brand-blue">
-                  RS {hospital.jenis || '—'}
+                <span className="pill">
+                  <i className="fa-solid fa-hospital" aria-hidden="true" /> {hospital.jenis || 'Rumah Sakit'}
                 </span>
                 {hospital.bpjs ? (
-                  <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-1 text-[10.5px] font-bold text-emerald-700">
-                    <span className="material-symbols-outlined text-[13px]">check_circle</span>
-                    Menerima BPJS
-                  </span>
+                  <span className="pill pill-bpjs">Menerima BPJS Kesehatan</span>
                 ) : (
-                  <span className="rounded-full bg-amber-50 px-2.5 py-1 text-[10.5px] font-bold text-amber-700">
-                    Konfirmasi BPJS
+                  <span className="pill pill-warn">
+                    <i className="fa-solid fa-triangle-exclamation" aria-hidden="true" /> Konfirmasi BPJS ke Rumah Sakit
                   </span>
                 )}
-                {hasEmergency ? (
-                  <span className="inline-flex items-center gap-1 rounded-full bg-rose-50 px-2.5 py-1 text-[10.5px] font-bold text-rose-700">
-                    <span className="material-symbols-outlined text-[13px]">emergency</span>
-                    IGD tercatat
-                  </span>
-                ) : null}
               </div>
-
-              <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-[#0F172A] sm:text-4xl lg:text-[42px]">
-                {hospital.nama}
-              </h1>
-
-              <div className="mt-2 flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-sm text-slate-600">
-                <span className="font-medium text-slate-700">
-                  {KELAS_DESCRIPTION[hospital.kelas] || 'Klasifikasi rumah sakit'}
-                </span>
-                <span className="font-light text-slate-300">•</span>
-                <span className="inline-flex items-center gap-1 text-slate-600">
-                  <span className="material-symbols-outlined text-[16px] text-brand-blue">location_on</span>
-                  {hospital.kabkota || 'Sumatera Utara'}
-                </span>
-                <span className="hidden font-light text-slate-300 sm:inline">•</span>
-                <span className="hidden max-w-md truncate text-slate-500 sm:inline" title={hospital.alamat}>
-                  {hospital.alamat}
-                </span>
-              </div>
+              <h2 id="d-title">{hospital.nama}</h2>
+              <p className="d-hero-sub">
+                <i className="fa-solid fa-location-dot" aria-hidden="true" /> {hospital.kabkota}, Provinsi Sumatera Utara
+              </p>
+              {hospital.website && (
+                <div className="rs-website" style={{ margin: '0.4rem 0 1.2rem', fontSize: '0.9rem' }}>
+                  <a href={hospital.website} target="_blank" rel="noopener noreferrer">
+                    <i className="fa-solid fa-globe" aria-hidden="true" /> {hospital.website}
+                  </a>
+                </div>
+              )}
             </div>
 
-            <div className="flex shrink-0 items-center gap-2 self-start md:self-auto">
-              <button
-                type="button"
-                onClick={share}
-                className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-slate-950"
-              >
-                <span className="material-symbols-outlined text-[19px]">share</span>
-                <span className="underline">Bagikan</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => toggleFavorite(hospital.id)}
-                className={cn(
-                  'inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium transition hover:bg-slate-50',
-                  saved ? 'text-rose-600' : 'text-slate-700 hover:text-slate-950',
-                )}
-              >
-                <span
-                  className={cn('material-symbols-outlined text-[19px]', saved && 'material-symbols-filled')}
+            <div className="d-hero-actions">
+              {hospital.lat != null && hospital.lon != null && (
+                <button
+                  className="btn btn-primary"
+                  type="button"
+                  onClick={() => scrollToSection('sec-lokasi')}
                 >
-                  favorite
-                </span>
-                <span className="underline">{saved ? 'Tersimpan' : 'Simpan'}</span>
-              </button>
+                  <i className="fa-solid fa-diamond-turn-right" aria-hidden="true" /> Petunjuk Rute Cepat
+                </button>
+              )}
+              {telLink && (
+                <a className="btn btn-ghost" href={telLink}>
+                  <i className="fa-solid fa-phone" aria-hidden="true" /> Hubungi Hotline
+                </a>
+              )}
             </div>
           </div>
-        </section>
 
-        <Gallery hospital={hospital} />
+          {/* Sticky Quick Navigation */}
+          <div className="d-quicknav" role="tablist">
+            <button
+              type="button"
+              className={`d-navpill ${activeNav === 'sec-profil' ? 'active' : ''}`}
+              onClick={() => scrollToSection('sec-profil')}
+            >
+              <i className="fa-solid fa-clipboard-list" aria-hidden="true" /> Profil
+            </button>
+            <button
+              type="button"
+              className={`d-navpill ${activeNav === 'sec-jam' ? 'active' : ''}`}
+              onClick={() => scrollToSection('sec-jam')}
+            >
+              <i className="fa-solid fa-clock" aria-hidden="true" /> Jam &amp; IGD
+            </button>
+            <button
+              type="button"
+              className={`d-navpill ${activeNav === 'sec-spesialisasi' ? 'active' : ''}`}
+              onClick={() => scrollToSection('sec-spesialisasi')}
+            >
+              <i className="fa-solid fa-stethoscope" aria-hidden="true" /> Spesialisasi
+            </button>
+            <button
+              type="button"
+              className={`d-navpill ${activeNav === 'sec-fasilitas' ? 'active' : ''}`}
+              onClick={() => scrollToSection('sec-fasilitas')}
+            >
+              <i className="fa-solid fa-hospital-user" aria-hidden="true" /> Fasilitas Medis
+            </button>
+            <button
+              type="button"
+              className={`d-navpill ${activeNav === 'sec-alternatif' ? 'active' : ''}`}
+              onClick={() => scrollToSection('sec-alternatif')}
+            >
+              <i className="fa-solid fa-arrows-split-up-and-left" aria-hidden="true" /> Alternatif
+            </button>
+            <button
+              type="button"
+              className={`d-navpill ${activeNav === 'sec-booking' ? 'active' : ''}`}
+              onClick={() => scrollToSection('sec-booking')}
+            >
+              <i className="fa-solid fa-bed" aria-hidden="true" /> Booking Simulasi
+            </button>
+            <button
+              type="button"
+              className={`d-navpill ${activeNav === 'sec-lokasi' ? 'active' : ''}`}
+              onClick={() => scrollToSection('sec-lokasi')}
+            >
+              <i className="fa-solid fa-location-dot" aria-hidden="true" /> Lokasi Peta
+            </button>
+          </div>
 
-        {/* Two column */}
-        <section className="mt-9 grid grid-cols-1 items-start gap-9 lg:mt-11 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-8">
-            {/* Tabs */}
-            <div className="sticky top-16 z-20 -mx-4 mb-7 overflow-x-auto border-b border-slate-200 bg-white/95 px-4 backdrop-blur sm:mx-0 sm:px-0">
-              <div className="flex min-w-max gap-1">
-                {TABS.map((item) => (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() => setTab(item.id)}
-                    className={cn(
-                      'inline-flex items-center gap-1.5 border-b-2 px-3.5 py-3 text-[12.5px] font-semibold transition',
-                      tab === item.id
-                        ? 'border-brand-navy text-brand-navy'
-                        : 'border-transparent text-slate-500 hover:text-slate-800',
-                    )}
-                  >
-                    <span className="material-symbols-outlined text-[17px]">{item.icon}</span>
-                    {item.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {tab === 'profil' ? (
-              <div className="animate-fade-in space-y-8">
-                <div className="space-y-3">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <h2 className="text-2xl font-bold tracking-tight text-[#0F172A]">
-                      Tentang Rumah Sakit
-                    </h2>
-                    <div className="flex flex-wrap gap-1.5">
-                      <span className="rounded-full bg-slate-100 px-2.5 py-1 text-[10.5px] font-semibold text-slate-700">
-                        {layanan.length} layanan
-                      </span>
-                      <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-[10.5px] font-semibold text-emerald-700">
-                        {fasilitas.length} fasilitas
-                      </span>
-                    </div>
-                  </div>
-                  <p className="max-w-3xl text-[14.5px] leading-relaxed text-slate-600">
-                    <strong className="font-semibold text-slate-800">{hospital.nama}</strong> adalah rumah
-                    sakit {String(hospital.jenis || '').toLowerCase()} kelas{' '}
-                    {hospital.kelas || 'belum terklasifikasi'} yang berlokasi di{' '}
-                    {hospital.kabkota || 'Sumatera Utara'}. Profil ini disusun dari katalog semantik
-                    CariSehat dan mencakup layanan, fasilitas penunjang, kontak, serta koordinat
-                    geospasial.
-                  </p>
+          {/* Detail Content Grid */}
+          <div className="d-detail-grid">
+            <div className="d-main-column">
+              {/* Section 1: Profil */}
+              <section id="sec-profil" className="d-card">
+                <div className="d-card-head">
+                  <h3>
+                    <i className="fa-solid fa-clipboard-list" aria-hidden="true" /> Profil &amp; Informasi Rumah Sakit
+                  </h3>
                 </div>
-
-                <div className="grid gap-3 sm:grid-cols-3">
-                  <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                    <span className="material-symbols-outlined text-[22px] text-brand-blue">domain</span>
-                    <p className="mt-2 text-sm font-bold text-slate-900">
-                      Kelas {hospital.kelas || '—'} · RS {hospital.jenis || '—'}
-                    </p>
-                    <p className="mt-0.5 text-[11px] leading-snug text-slate-500">
-                      {KELAS_DESCRIPTION[hospital.kelas] || 'Klasifikasi sesuai data katalog'}
-                    </p>
-                  </div>
-                  <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                    <span className="material-symbols-outlined text-[22px] text-emerald-600">
-                      verified_user
-                    </span>
-                    <p className="mt-2 text-sm font-bold text-slate-900">
-                      {hospital.bpjs ? 'Menerima BPJS' : 'Konfirmasi BPJS'}
-                    </p>
-                    <p className="mt-0.5 text-[11px] leading-snug text-slate-500">
-                      {hospital.bpjs
-                        ? 'Tercatat menerima pasien BPJS Kesehatan.'
-                        : 'Status BPJS belum tercatat pada katalog.'}
-                    </p>
-                  </div>
-                  <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
-                    <span className="material-symbols-outlined text-[22px] text-brand-blue">bed</span>
-                    <p className="mt-2 text-sm font-bold text-slate-900">
-                      {hasICU ? 'Fasilitas intensif' : hasEmergency ? 'IGD tercatat' : 'Fasilitas dasar'}
-                    </p>
-                    <p className="mt-0.5 text-[11px] leading-snug text-slate-500">
-                      {hasICU
-                        ? 'Data fasilitas mencantumkan ICU/perawatan intensif.'
-                        : hasEmergency
-                          ? 'Data layanan mencantumkan IGD/UGD atau ambulans.'
-                          : 'Rincian fasilitas mengikuti data katalog.'}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="border-t border-slate-100" />
-
-                <div className="space-y-5">
-                  <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
-                    <h2 className="text-2xl font-bold tracking-tight text-[#0F172A]">
-                      Spesialisasi &amp; Layanan Unggulan
-                    </h2>
-                    <button
-                      type="button"
-                      onClick={() => setTab('fasilitas')}
-                      className="inline-flex items-center gap-1 text-xs font-semibold text-brand-blue hover:underline"
-                    >
-                      Semua layanan
-                      <span className="material-symbols-outlined text-[15px]">arrow_forward</span>
-                    </button>
-                  </div>
-
-                  {featuredServices.length ? (
-                    <div className="grid grid-cols-1 gap-3.5 md:grid-cols-2">
-                      {featuredServices.map((service) => {
-                        const meta = SERVICE_META[service] || { icon: 'medical_services' };
-                        return (
-                          <div
-                            key={service}
-                            className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-4 transition hover:border-slate-300"
-                          >
-                            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-brand-blue">
-                              <span className="material-symbols-outlined text-[20px]">{meta.icon}</span>
-                            </span>
-                            <div>
-                              <h4 className="text-sm font-semibold leading-snug text-slate-900">
-                                {service}
-                              </h4>
-                              <p className="mt-0.5 text-[11px] text-slate-500">
-                                Layanan tercatat pada katalog semantik
-                              </p>
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    <p className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-500">
-                      Data rincian layanan belum tersedia untuk fasilitas ini.
-                    </p>
-                  )}
-                </div>
-
-                <div className="border-t border-slate-100" />
-
-                <div className="space-y-5">
-                  <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
+                <div className="info-grid">
+                  <div className="info-item">
+                    <i className="fa-solid fa-hospital" aria-hidden="true" style={{ fontSize: '1.15rem', color: 'var(--toba)' }} />
                     <div>
-                      <h2 className="text-2xl font-bold tracking-tight text-[#0F172A]">
-                        Lokasi Spesifik &amp; Akses
-                      </h2>
-                      <p className="mt-1 flex items-start gap-1.5 text-xs text-slate-500 sm:text-sm">
-                        <span className="material-symbols-outlined mt-0.5 text-[16px] text-brand-blue">
-                          location_on
-                        </span>
-                        <span>{hospital.alamat || 'Alamat belum tersedia'}</span>
-                      </p>
+                      <small>Klasifikasi &amp; Tipe</small>
+                      <strong>
+                        Kelas {hospital.kelas || 'Belum terklasifikasi'}{' '}
+                        <span style={{ display: 'inline-block', width: '0.8rem' }} /> Rumah Sakit {hospital.jenis}
+                      </strong>
                     </div>
-                    <button
-                      type="button"
-                      onClick={() => navigate(`/peta?rs=${encodeURIComponent(hospital.id)}&route=1`)}
-                      className="inline-flex w-fit items-center gap-1.5 rounded-full border border-slate-300 bg-white px-3.5 py-2 text-xs font-semibold text-slate-700 transition hover:bg-slate-50"
-                    >
-                      <span className="material-symbols-outlined text-[16px]">directions</span>
-                      Petunjuk rute
-                    </button>
                   </div>
-
-                  <div className="relative h-72 overflow-hidden rounded-2xl border border-slate-200 shadow-sm lg:h-80">
-                    {hospital.lat != null && hospital.lon != null ? (
-                      <LeafletMap
-                        hospitals={[hospital]}
-                        selectedId={hospital.id}
-                        fit={false}
-                        className="h-full"
-                      />
-                    ) : (
-                      <div className="map-grid-pattern flex h-full flex-col items-center justify-center text-slate-400">
-                        <span className="material-symbols-outlined text-[42px]">location_off</span>
-                        <p className="mt-2 text-xs font-medium">Koordinat peta belum tersedia.</p>
-                      </div>
-                    )}
-                    {hospital.lat != null ? (
-                      <div className="pointer-events-none absolute bottom-3 left-3 right-3 z-[500] flex items-center gap-2 rounded-lg border border-slate-800 bg-slate-950/90 px-3 py-1.5 font-mono text-[10.5px] text-slate-200 shadow-sm backdrop-blur sm:right-auto">
-                        <span className="material-symbols-outlined text-[14px] text-emerald-400">
-                          my_location
-                        </span>
-                        <span className="truncate">
-                          {Number(hospital.lat).toFixed(6)}, {Number(hospital.lon).toFixed(6)}
-                        </span>
-                      </div>
-                    ) : null}
-                  </div>
-
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    <a
-                      href={directionsUrl(hospital)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-start gap-3 rounded-xl border border-slate-100 bg-slate-50 p-3.5 transition hover:border-brand-blue/30 hover:bg-blue-50/40"
-                    >
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-brand-blue">
-                        <span className="material-symbols-outlined text-[20px]">directions_car</span>
-                      </span>
-                      <span>
-                        <span className="block text-sm font-bold text-slate-900">Google Maps</span>
-                        <span className="block text-[11px] leading-snug text-slate-500">
-                          Navigasi kendaraan pribadi
-                        </span>
-                      </span>
-                    </a>
-                    <a
-                      href={openStreetMapUrl(hospital) || mapsSearchUrl(hospital)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-start gap-3 rounded-xl border border-slate-100 bg-slate-50 p-3.5 transition hover:border-brand-blue/30 hover:bg-blue-50/40"
-                    >
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-50 text-emerald-700">
-                        <span className="material-symbols-outlined text-[20px]">map</span>
-                      </span>
-                      <span>
-                        <span className="block text-sm font-bold text-slate-900">OpenStreetMap</span>
-                        <span className="block text-[11px] leading-snug text-slate-500">
-                          Lihat titik pada peta terbuka
-                        </span>
-                      </span>
-                    </a>
-                  </div>
-
-                  <div className="rounded-xl border border-slate-200 bg-slate-50 p-3.5 text-[11.5px] leading-relaxed text-slate-500">
-                    <span className="mb-1 flex items-center gap-1 font-bold text-slate-700">
-                      <span className="material-symbols-outlined text-[15px]">info</span>
-                      Catatan akses
-                    </span>
-                    Informasi jadwal poli, ketersediaan kamar, dan akses darurat dapat berubah. Konfirmasikan
-                    langsung kepada rumah sakit sebelum berkunjung.
+                  <div className="info-item">
+                    <i className="fa-solid fa-truck-medical" aria-hidden="true" style={{ fontSize: '1.15rem', color: 'var(--emergency)' }} />
+                    <div>
+                      <small>Instalasi Gawat Darurat (IGD)</small>
+                      <strong style={{ color: 'var(--emergency)' }}>{igdText}</strong>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ) : null}
+              </section>
 
-            {tab === 'fasilitas' ? (
-              <div className="animate-fade-in space-y-7">
-                <div>
-                  <h2 className="text-2xl font-bold tracking-tight text-[#0F172A]">
-                    Layanan Medis
-                  </h2>
-                  <p className="mt-1 text-sm text-slate-500">
-                    {layanan.length} layanan tercatat pada katalog semantik.
-                  </p>
-                  {layanan.length ? (
-                    <div className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-                      {layanan.map((service) => {
-                        const meta = SERVICE_META[service] || { icon: 'medical_services' };
-                        return (
-                          <div
-                            key={service}
-                            className="flex items-center gap-2.5 rounded-xl border border-slate-200 bg-white px-3.5 py-2.5"
-                          >
-                            <span className="material-symbols-outlined text-[19px] text-brand-blue">
-                              {meta.icon}
-                            </span>
-                            <span className="text-[12.5px] font-medium text-slate-700">{service}</span>
-                          </div>
-                        );
-                      })}
+              {/* Section 2: Jam Operasional & IGD */}
+              <section id="sec-jam" className="d-card">
+                <div className="d-card-head">
+                  <h3>
+                    <i className="fa-solid fa-clock" aria-hidden="true" /> Jam Operasional &amp; Poliklinik
+                  </h3>
+                </div>
+                <div className="operational-hours-layout">
+                  {/* Left Column: IGD Card */}
+                  <div className="igd-highlight-card">
+                    <div className="igd-card-top">
+                      <div className="igd-badge-icon">
+                        <i className="fa-solid fa-truck-medical" aria-hidden="true" />
+                      </div>
+                      <div>
+                        <span className="igd-badge-label">Layanan Siaga</span>
+                        <h4 className="igd-badge-title">Instalasi Gawat Darurat (IGD)</h4>
+                      </div>
                     </div>
-                  ) : (
-                    <p className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-500">
-                      Data layanan belum tersedia.
+                    <div className="igd-status-row">
+                      <span className="igd-pulse-ring" />
+                      <span className="igd-status-text">{igdText}</span>
+                    </div>
+                    <p className="igd-badge-desc">
+                      Layanan tanggap darurat medis beroperasi 24 jam setiap hari untuk menangani kondisi kritis dan kegawatdaruratan medis.
                     </p>
-                  )}
-                </div>
+                  </div>
 
-                <div className="border-t border-slate-100" />
-
-                <div>
-                  <h2 className="text-2xl font-bold tracking-tight text-[#0F172A]">
-                    Fasilitas Penunjang
-                  </h2>
-                  <p className="mt-1 text-sm text-slate-500">
-                    {fasilitas.length} fasilitas tercatat pada katalog semantik.
-                  </p>
-                  {fasilitas.length ? (
-                    <div className="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-                      {fasilitas.map((facility) => (
-                        <div
-                          key={facility}
-                          className="flex items-center gap-2.5 rounded-xl border border-slate-200 bg-white px-3.5 py-2.5"
-                        >
-                          <span className="material-symbols-outlined text-[19px] text-emerald-600">
-                            {FACILITY_ICON[facility] || 'check_circle'}
+                  {/* Right Column: Schedule Table */}
+                  <div className="schedule-box">
+                    <div className="schedule-box-header">
+                      <span>Jadwal Poliklinik &amp; Rawat Jalan</span>
+                    </div>
+                    <div className="schedule-table">
+                      {scheduleData.map((d, idx) => (
+                        <div key={idx} className="schedule-row">
+                          <span className="schedule-day">{d.hari}</span>
+                          <span className="schedule-dots" />
+                          <span className={`schedule-badge ${d.jam === 'Tutup' ? 'closed' : ''}`}>
+                            {d.jam}
                           </span>
-                          <span className="text-[12.5px] font-medium text-slate-700">{facility}</span>
                         </div>
                       ))}
                     </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* Section 3: Spesialisasi */}
+              <section id="sec-spesialisasi" className="d-card">
+                <div className="d-card-head">
+                  <h3>
+                    <i className="fa-solid fa-stethoscope" aria-hidden="true" /> Spesialisasi
+                  </h3>
+                </div>
+                <div style={{ marginTop: '.8rem' }}>
+                  {spesialisasiList.length ? (
+                    <ul
+                      className="clean-bullet-list"
+                      style={{
+                        listStyleType: 'disc',
+                        paddingLeft: '1.5rem',
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+                        gap: '0.6rem 2rem',
+                        margin: 0,
+                      }}
+                    >
+                      {spesialisasiList.map((s, idx) => (
+                        <li key={idx} style={{ display: 'list-item', listStyleType: 'disc', color: 'var(--ink)' }}>
+                          {s}
+                        </li>
+                      ))}
+                    </ul>
                   ) : (
-                    <p className="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-500">
-                      Data fasilitas belum tersedia.
-                    </p>
+                    <p style={{ margin: 0, color: 'var(--mute)', fontSize: '0.88rem' }}>Belum tersedia</p>
                   )}
                 </div>
+              </section>
 
-                <div className="rounded-xl border border-blue-100 bg-blue-50/60 p-4 text-[11.5px] leading-relaxed text-slate-600">
-                  <strong className="text-slate-800">Catatan data.</strong> Layanan dan fasilitas dapat
-                  terbatas atau diturunkan dari jenis rumah sakit. Konfirmasikan ketersediaan terkini secara
-                  langsung kepada rumah sakit.
+              {/* Section 4: Fasilitas Medis */}
+              <section id="sec-fasilitas" className="d-card">
+                <div className="d-card-head">
+                  <h3>
+                    <i className="fa-solid fa-hospital-user" aria-hidden="true" /> Fasilitas Medis
+                  </h3>
                 </div>
-              </div>
-            ) : null}
-
-            {tab === 'booking' ? (
-              <div className="animate-fade-in">
-                <h2 className="mb-1 text-2xl font-bold tracking-tight text-[#0F172A]">
-                  Reservasi Kamar Rawat Inap
-                </h2>
-                <p className="mb-5 text-sm text-slate-500">
-                  Demo interaktif Tugas Besar MSBD berbasis PostgreSQL.
-                </p>
-                <BookingForm hospital={hospital} />
-              </div>
-            ) : null}
-          </div>
-
-          {/* Sidebar */}
-          <aside className="lg:col-span-4">
-            <div className="sticky top-24 space-y-4">
-              <section className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm">
-                <div className="flex flex-col gap-1.5">
-                  <div className="flex items-center justify-between gap-2">
-                    <div className="flex items-center gap-2">
-                      <span className="relative flex h-2.5 w-2.5">
-                        {hasEmergency ? (
-                          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                        ) : null}
-                        <span
-                          className={cn(
-                            'relative inline-flex h-2.5 w-2.5 rounded-full',
-                            hasEmergency ? 'bg-emerald-500' : 'bg-amber-500',
-                          )}
-                        />
-                      </span>
-                      <span className="text-sm font-bold text-slate-900">
-                        {hasEmergency ? 'Layanan IGD tercatat' : 'Jam operasional'}
-                      </span>
-                    </div>
-                    <span
-                      className={cn(
-                        'rounded-full px-2 py-0.5 text-[10px] font-semibold',
-                        hasEmergency ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-700',
-                      )}
+                <div style={{ marginTop: '.8rem' }}>
+                  {fasilitasList.length ? (
+                    <ul
+                      className="clean-bullet-list"
+                      style={{
+                        listStyleType: 'disc',
+                        paddingLeft: '1.5rem',
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+                        gap: '0.6rem 2rem',
+                        margin: 0,
+                      }}
                     >
-                      {hasEmergency ? 'Siaga' : 'Konfirmasi'}
-                    </span>
-                  </div>
-                  <p className="mt-1 flex items-center gap-1 text-[11px] text-slate-500">
-                    <span className="material-symbols-outlined text-[14px] text-slate-400">location_on</span>
-                    {hospital.kabkota || 'Sumatera Utara'}
+                      {fasilitasList.map((f, idx) => (
+                        <li key={idx} style={{ display: 'list-item', listStyleType: 'disc', color: 'var(--ink)' }}>
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p style={{ margin: 0, color: 'var(--mute)', fontSize: '0.88rem' }}>Belum tersedia</p>
+                  )}
+                </div>
+              </section>
+
+              {/* Section: Alternatif Rumah Sakit (3 Rekomendasi Terdekat & Setara) */}
+              <section id="sec-alternatif" className="d-card">
+                <div className="d-card-head">
+                  <h3>
+                    <i className="fa-solid fa-arrows-split-up-and-left" aria-hidden="true" /> Rumah Sakit Alternatif Terdekat &amp; Setara
+                  </h3>
+                </div>
+                <div style={{ marginTop: '.8rem' }}>
+                  {loadingAlts ? (
+                    <div style={{ padding: '1rem', textAlign: 'center', color: 'var(--mute)' }}>
+                      <div className="spin" style={{ display: 'inline-block', marginRight: '0.5rem' }} />
+                      Memuat alternatif rumah sakit...
+                    </div>
+                  ) : alternatives.length > 0 ? (
+                    <div
+                      className="d-alternatives-grid"
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                        gap: '1rem',
+                      }}
+                    >
+                      {alternatives.slice(0, 3).map((alt) => {
+                        const foto = alt.foto || `/images/rs/${alt.id}/foto_1.jpg`;
+                        return (
+                          <article key={alt.id} className="alt-card">
+                            <div className="alt-card-thumb">
+                              <img
+                                src={foto}
+                                alt={alt.nama}
+                                loading="lazy"
+                                onError={(e) => {
+                                  e.currentTarget.parentElement.style.display = 'none';
+                                }}
+                              />
+                            </div>
+                            <div className="alt-card-header">
+                              <h4>{alt.nama}</h4>
+                              <span className="alt-kelas-badge">Kelas {alt.kelas}</span>
+                            </div>
+                            <p className="alt-meta">
+                              <i className="fa-solid fa-location-dot" aria-hidden="true" /> {alt.kabkota}
+                            </p>
+                            <div className="alt-actions">
+                              <Link className="btn btn-ghost btn-sm" to={`/rumah-sakit/${encodeURIComponent(alt.id)}`}>
+                                Lihat Detail
+                              </Link>
+                              <button
+                                type="button"
+                                className="btn-compare-sm"
+                                onClick={() => navigate(`/pencarian?compare=${encodeURIComponent(alt.id)}`)}
+                                title="Bandingkan langsung dengan rumah sakit ini"
+                              >
+                                <i className="fa-solid fa-code-compare" aria-hidden="true" /> <span>Bandingkan</span>
+                              </button>
+                            </div>
+                          </article>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <p style={{ margin: 0, color: 'var(--mute)', fontSize: '0.88rem' }}>{altsMessage}</p>
+                  )}
+                </div>
+              </section>
+
+              {/* Section: Reservasi Rawat Inap (Simulasi) */}
+              <section id="sec-booking" className="d-card">
+                <div className="d-card-head">
+                  <h3>
+                    <i className="fa-solid fa-bed" aria-hidden="true" /> Reservasi Kamar Rawat Inap
+                  </h3>
+                  <span className="d-card-badge sim-badge">Simulasi PostgreSQL</span>
+                </div>
+                <div className="sim-banner">
+                  <span className="sim-tag">SIMULASI AKADEMIK</span>
+                  <p>
+                    Pemesanan kamar rawat inap ini merupakan demo interaktif Tugas Besar MSBD berbasis PostgreSQL. Data pemesanan tercatat di basis data lokal dan tidak diteruskan ke sistem rumah sakit asli.
                   </p>
                 </div>
 
-                <div className="my-4 border-t border-slate-100" />
-
-                <div className="grid grid-cols-2 gap-2.5 text-center">
-                  <div className="rounded-xl bg-slate-50 p-2.5">
-                    <p className="text-[10px] font-medium text-slate-500">Kelas</p>
-                    <p className="mt-0.5 text-base font-extrabold text-slate-900">{hospital.kelas || '—'}</p>
+                <form onSubmit={handleBookingSubmit} className="booking-form-grid">
+                  <div className="form-row">
+                    <label>
+                      Nama Pasien
+                      <input
+                        name="nama_pasien"
+                        placeholder="Nama lengkap pasien"
+                        required
+                        value={bookingFormData.nama_pasien}
+                        onChange={(e) => setBookingFormData({ ...bookingFormData, nama_pasien: e.target.value })}
+                      />
+                    </label>
+                    <label>
+                      Nomor WhatsApp / HP
+                      <input
+                        name="no_telp"
+                        type="tel"
+                        placeholder="08xxxxxxxxxx"
+                        required
+                        value={bookingFormData.no_telp}
+                        onChange={(e) => setBookingFormData({ ...bookingFormData, no_telp: e.target.value })}
+                      />
+                    </label>
                   </div>
-                  <div className="rounded-xl bg-slate-50 p-2.5">
-                    <p className="text-[10px] font-medium text-slate-500">Jenis</p>
-                    <p className="mt-0.5 text-sm font-extrabold text-slate-900">{hospital.jenis || '—'}</p>
-                  </div>
-                </div>
-
-                <div className="mt-4 flex flex-col gap-2.5">
-                  <button
-                    type="button"
-                    onClick={() => navigate(`/peta?rs=${encodeURIComponent(hospital.id)}&route=1`)}
-                    disabled={hospital.lat == null || hospital.lon == null}
-                    className="flex w-full items-center justify-center gap-2 rounded-full bg-brand-navy px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-blue disabled:cursor-not-allowed disabled:opacity-50"
-                  >
-                    <span className="material-symbols-outlined text-[19px]">directions</span>
-                    Petunjuk Rute
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setTab('booking')}
-                    className="flex w-full items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-6 py-2.5 text-sm font-semibold text-slate-800 transition hover:border-slate-800 hover:bg-slate-50"
-                  >
-                    <span className="material-symbols-outlined text-[18px]">bed</span>
-                    Pesan kamar (simulasi)
-                  </button>
-                  {web ? (
-                    <a
-                      href={web}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-2.5 text-xs font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-brand-blue"
-                    >
-                      <span className="material-symbols-outlined text-[16px]">language</span>
-                      Situs resmi
-                    </a>
-                  ) : null}
-                  {emailLink ? (
-                    <a
-                      href={emailLink}
-                      className="flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-2.5 text-xs font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-brand-blue"
-                    >
-                      <span className="material-symbols-outlined text-[16px]">mail</span>
-                      Kirim Email
-                    </a>
-                  ) : null}
-                </div>
-
-                {phone ? (
-                  <div className="pt-4 text-center">
-                    <a
-                      href={phone}
-                      className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-600 transition hover:text-slate-900"
-                    >
-                      <span className="material-symbols-outlined text-[16px] text-rose-600">call</span>
-                      Hubungi: <strong className="text-slate-900">{hospital.telepon}</strong>
-                    </a>
-                  </div>
-                ) : null}
-
-                <div className="mt-4 flex items-center justify-center gap-1.5 border-t border-slate-100 pt-3 text-[10px] text-slate-400">
-                  <span className="material-symbols-outlined text-[14px]">verified</span>
-                  Data terverifikasi katalog semantik
-                </div>
-              </section>
-
-              <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                <h3 className="text-sm font-bold text-slate-900">Informasi Kontak</h3>
-                <div className="mt-4 space-y-3.5">
-                  <InfoRow icon="location_on" label="Alamat">
-                    <span className="text-[12.5px] leading-relaxed">
-                      {hospital.alamat || 'Alamat belum tersedia'}
-                    </span>
-                  </InfoRow>
-                  <InfoRow icon="call" label="Telepon">
-                    {phone ? (
-                      <a href={phone} className="text-[12.5px] font-medium text-brand-blue hover:underline">
-                        {hospital.telepon}
-                      </a>
-                    ) : (
-                      <span className="text-[12.5px] text-slate-400">Belum tersedia</span>
-                    )}
-                  </InfoRow>
-                  <InfoRow icon="mail" label="Email">
-                    {emailLink ? (
-                      <a href={emailLink} className="text-[12.5px] font-medium text-brand-blue hover:underline break-all">
-                        {hospital.email}
-                      </a>
-                    ) : (
-                      <span className="text-[12.5px] text-slate-400">Belum tersedia</span>
-                    )}
-                  </InfoRow>
-                  <InfoRow icon="language" label="Website">
-                    {web ? (
-                      <a
-                        href={web}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-[12.5px] font-medium text-brand-blue hover:underline break-all"
+                  <div className="form-row">
+                    <label>
+                      Jenis Kamar Rawat Inap
+                      <select
+                        name="jenis_kamar"
+                        required
+                        value={bookingFormData.jenis_kamar}
+                        onChange={(e) => setBookingFormData({ ...bookingFormData, jenis_kamar: e.target.value })}
                       >
-                        <span>{hospital.website.replace(/^https?:\/\//i, '').replace(/\/$/, '')}</span>
-                        <span className="material-symbols-outlined text-[13px]">open_in_new</span>
-                      </a>
+                        <option value="">-- Pilih Jenis Kamar --</option>
+                        <option value="VIP">VIP</option>
+                        <option value="Kelas I">Kelas I</option>
+                        <option value="Kelas II">Kelas II</option>
+                        <option value="Kelas III">Kelas III</option>
+                        <option value="ICU">ICU (Intensive Care Unit)</option>
+                      </select>
+                    </label>
+                    <label>
+                      Tanggal Rencana Masuk
+                      <input
+                        name="tanggal_masuk"
+                        type="date"
+                        required
+                        min={new Date().toISOString().split('T')[0]}
+                        value={bookingFormData.tanggal_masuk}
+                        onChange={(e) => setBookingFormData({ ...bookingFormData, tanggal_masuk: e.target.value })}
+                      />
+                    </label>
+                  </div>
+                  <label>
+                    Catatan Medis Khusus / Kebutuhan (Opsional)
+                    <textarea
+                      name="catatan"
+                      placeholder="Contoh: Memerlukan kursi roda, riwayat alergi..."
+                      rows="2"
+                      value={bookingFormData.catatan}
+                      onChange={(e) => setBookingFormData({ ...bookingFormData, catatan: e.target.value })}
+                    />
+                  </label>
+                  <button type="submit" className="btn btn-primary btn-submit-booking" disabled={bookingLoading}>
+                    {bookingLoading ? (
+                      <>
+                        <div className="spin" style={{ marginRight: '0.4rem' }} /> Memproses...
+                      </>
                     ) : (
-                      <span className="text-[12.5px] text-slate-400">Belum tersedia</span>
+                      <>
+                        <i className="fa-solid fa-bed" aria-hidden="true" /> Konfirmasi Reservasi Kamar (Simulasi)
+                      </>
                     )}
-                  </InfoRow>
-                  <InfoRow icon="my_location" label="Koordinat">
-                    <span className="text-[12px]">
-                      {hospital.lat != null
-                        ? `${Number(hospital.lat).toFixed(5)}, ${Number(hospital.lon).toFixed(5)}`
-                        : 'Belum tersedia'}
-                    </span>
-                  </InfoRow>
+                  </button>
+                </form>
+
+                {bookingResult && (
+                  <div
+                    style={{
+                      marginTop: '.9rem',
+                      padding: '.8rem 1rem',
+                      borderRadius: 10,
+                      background: bookingResult.success ? 'var(--toba-mist)' : '#fee2e2',
+                      border: `1px solid ${bookingResult.success ? '#99f6e4' : '#fca5a5'}`,
+                      color: bookingResult.success ? 'var(--toba-d)' : '#991b1b',
+                    }}
+                  >
+                    {bookingResult.success ? (
+                      <div>
+                        <strong>Reservasi Berhasil Dibuat!</strong>
+                        <p style={{ margin: '0.3rem 0 0', fontSize: '0.85rem' }}>
+                          Kode Booking: <b>{bookingResult.data?.kode_booking}</b>. Simpan kode ini untuk mengecek status reservasi Anda.
+                        </p>
+                      </div>
+                    ) : (
+                      <div>
+                        <strong>Gagal:</strong> {bookingResult.error}
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                <hr style={{ border: 0, borderTop: '1px solid var(--line)', margin: '1.4rem 0' }} />
+
+                <div className="check-booking-box">
+                  <h4>
+                    <i className="fa-solid fa-magnifying-glass" aria-hidden="true" /> Cek Status Kode Pemesanan
+                  </h4>
+                  <p style={{ fontSize: '.82rem', marginBottom: '.6rem', color: 'var(--mute)' }}>
+                    Sudah pernah membuat reservasi simulasi? Masukkan kode booking untuk mengecek data.
+                  </p>
+                  <form onSubmit={handleCheckBooking} className="check-booking-form">
+                    <input
+                      name="kode_cek"
+                      placeholder="Masukkan kode (contoh: BK-20261117-XXXXXXXX)"
+                      required
+                      value={checkCode}
+                      onChange={(e) => setCheckCode(e.target.value)}
+                    />
+                    <button type="submit" className="btn btn-ghost" disabled={checkLoading}>
+                      {checkLoading ? 'Memeriksa...' : 'Cek Status'}
+                    </button>
+                  </form>
+
+                  {checkError && (
+                    <div style={{ marginTop: '.7rem', color: '#be123c', fontSize: '.85rem' }}>
+                      <i className="fa-solid fa-circle-xmark" aria-hidden="true" /> {checkError}
+                    </div>
+                  )}
+
+                  {checkResult && (
+                    <div
+                      style={{
+                        marginTop: '.7rem',
+                        background: '#f8fafc',
+                        border: '1px solid var(--line)',
+                        borderRadius: 10,
+                        padding: '.8rem',
+                        fontSize: '.85rem',
+                      }}
+                    >
+                      <strong>
+                        {checkResult.status === 'dibatalkan' && (
+                          <i className="fa-solid fa-circle-xmark" aria-hidden="true" style={{ color: '#be123c', marginRight: 4 }} />
+                        )}
+                        Booking {checkResult.kode_booking}
+                      </strong>
+                      <div style={{ marginTop: '.4rem', display: 'grid', gap: '.2rem' }}>
+                        <span>
+                          <i className="fa-solid fa-user" aria-hidden="true" /> {checkResult.nama_pasien}{' '}
+                          <span style={{ display: 'inline-block', width: '0.8rem' }} />{' '}
+                          <i className="fa-solid fa-phone" aria-hidden="true" /> {checkResult.no_telp}
+                        </span>
+                        <span>
+                          <i className="fa-solid fa-hospital" aria-hidden="true" /> {checkResult.nama_rs}
+                        </span>
+                        <span>
+                          <i className="fa-solid fa-bed" aria-hidden="true" /> {checkResult.jenis_kamar}{' '}
+                          <span style={{ display: 'inline-block', width: '0.8rem' }} />{' '}
+                          <i className="fa-solid fa-calendar-days" aria-hidden="true" /> Masuk: {checkResult.tanggal_masuk}
+                        </span>
+                        <span
+                          style={{
+                            color:
+                              checkResult.status === 'dikonfirmasi'
+                                ? '#059669'
+                                : checkResult.status === 'dibatalkan'
+                                  ? '#be123c'
+                                  : '#d97706',
+                            fontWeight: 600,
+                          }}
+                        >
+                          Status: {checkResult.status?.toUpperCase()}
+                        </span>
+                      </div>
+                      {checkResult.status === 'menunggu' && (
+                        <button
+                          type="button"
+                          className="btn btn-ghost"
+                          style={{ marginTop: '.5rem', color: '#be123c', borderColor: '#be123c' }}
+                          onClick={() => handleCancelBooking(checkResult.kode_booking)}
+                        >
+                          Batalkan Booking
+                        </button>
+                      )}
+                    </div>
+                  )}
                 </div>
               </section>
             </div>
-          </aside>
-        </section>
-      </main>
 
-      <MinimalFooter />
+            {/* Side Column */}
+            <aside className="d-side-column">
+              <section id="sec-contact" className="d-card">
+                <div className="d-card-head">
+                  <h3>Informasi Kontak</h3>
+                </div>
+                <div className="info-grid" style={{ gridTemplateColumns: '1fr' }}>
+                  <div className="info-item">
+                    <i className="fa-solid fa-location-dot" aria-hidden="true" style={{ color: 'var(--toba)', fontSize: '1.15rem' }} />
+                    <div>
+                      <small>Alamat</small>
+                      <span>{hospital.alamat || 'Belum tersedia'}</span>
+                    </div>
+                  </div>
+                  <div className="info-item">
+                    <i className="fa-solid fa-phone" aria-hidden="true" style={{ color: 'var(--toba)', fontSize: '1.15rem' }} />
+                    <div>
+                      <small>Telepon</small>
+                      {hospital.telepon ? (
+                        <a href={telLink}>{hospital.telepon}</a>
+                      ) : (
+                        <span style={{ color: 'var(--mute)' }}>Belum tersedia</span>
+                      )}
+                    </div>
+                  </div>
+                  <div className="info-item">
+                    <i
+                      className="fa-solid fa-envelope"
+                      aria-hidden="true"
+                      style={{ color: hospital.email ? 'var(--toba)' : 'var(--mute)', fontSize: '1.15rem' }}
+                    />
+                    <div>
+                      <small>Email</small>
+                      {hospital.email ? (
+                        <a href={`mailto:${hospital.email}`}>{hospital.email}</a>
+                      ) : (
+                        <span style={{ color: 'var(--mute)' }}>Belum tersedia</span>
+                      )}
+                    </div>
+                  </div>
+                  <div className="info-item">
+                    <i
+                      className="fa-solid fa-globe"
+                      aria-hidden="true"
+                      style={{ color: hospital.website ? 'var(--toba)' : 'var(--mute)', fontSize: '1.15rem' }}
+                    />
+                    <div>
+                      <small>Website</small>
+                      {hospital.website ? (
+                        <a href={hospital.website} target="_blank" rel="noopener noreferrer">
+                          {hospital.website}
+                        </a>
+                      ) : (
+                        <span style={{ color: 'var(--mute)' }}>Belum tersedia</span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+                {hospital.lat != null && hospital.lon != null && (
+                  <button
+                    className="btn btn-primary"
+                    style={{ width: '100%', justifyContent: 'center', marginTop: '0.85rem' }}
+                    type="button"
+                    onClick={() => scrollToSection('sec-lokasi')}
+                  >
+                    <i className="fa-solid fa-diamond-turn-right" aria-hidden="true" /> Lihat Rute di Peta
+                  </button>
+                )}
+              </section>
+
+              <section className="d-card">
+                <div className="d-card-head">
+                  <h3>Booking Simulasi</h3>
+                </div>
+                <p style={{ fontSize: '.82rem', color: 'var(--mute)', margin: 0, lineHeight: 1.5 }}>
+                  Simulasi pemesanan kamar rawat inap untuk keperluan akademik MSBD.
+                </p>
+                <button
+                  type="button"
+                  className="btn btn-ghost"
+                  style={{ width: '100%', justifyContent: 'center', marginTop: '0.85rem' }}
+                  onClick={() => scrollToSection('sec-booking')}
+                >
+                  Booking Sekarang
+                </button>
+              </section>
+            </aside>
+          </div>
+
+          {/* Section 5: Lokasi Peta (Full Width) */}
+          <section id="sec-lokasi" className="d-card" style={{ marginTop: '1.25rem' }}>
+            <div className="d-card-head">
+              <h3>
+                <i className="fa-solid fa-location-dot" aria-hidden="true" /> Lokasi Peta
+              </h3>
+            </div>
+            {hospital.lat != null && hospital.lon != null ? (
+              <>
+                <div
+                  ref={mapContainerRef}
+                  style={{
+                    width: '100%',
+                    height: 380,
+                    borderRadius: 14,
+                    overflow: 'hidden',
+                    border: '1px solid var(--line)',
+                    background: '#e2e8f0',
+                  }}
+                />
+                <div style={{ display: 'flex', gap: '.6rem', marginTop: '1rem', flexWrap: 'wrap' }}>
+                  <button
+                    className="btn btn-primary"
+                    type="button"
+                    onClick={() => navigate(`/peta?lat=${hospital.lat}&lon=${hospital.lon}&destId=${hospital.id}`)}
+                  >
+                    <i className="fa-solid fa-diamond-turn-right" aria-hidden="true" /> Panduan Rute ke Rumah Sakit Ini
+                  </button>
+                  <a
+                    className="btn btn-ghost"
+                    href={`https://www.openstreetmap.org/?mlat=${hospital.lat}&mlon=${hospital.lon}#map=17/${hospital.lat}/${hospital.lon}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i className="fa-solid fa-arrow-up-right-from-square" aria-hidden="true" /> Buka di OpenStreetMap
+                  </a>
+                </div>
+              </>
+            ) : (
+              <p style={{ margin: 0, color: 'var(--mute)' }}>Koordinat lokasi rumah sakit belum tersedia.</p>
+            )}
+          </section>
+        </div>
+      </div>
+
+      {/* Knowledge Graph Modal */}
+      {showKG && (
+        <KnowledgeGraphModal hospitalId={hospital.id} onClose={() => setShowKG(false)} />
+      )}
     </div>
   );
 }

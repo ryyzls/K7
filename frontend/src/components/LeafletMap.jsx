@@ -4,6 +4,38 @@ import { cn } from '../utils';
 
 let cachedPosition = null;
 
+export function translateInstruction(text) {
+  if (!text) return 'Lanjut di rute';
+  return text
+    .replace(/^Head\s+northwest/i, 'Mulai ke arah barat laut')
+    .replace(/^Head\s+northeast/i, 'Mulai ke arah timur laut')
+    .replace(/^Head\s+southwest/i, 'Mulai ke arah barat daya')
+    .replace(/^Head\s+southeast/i, 'Mulai ke arah tenggara')
+    .replace(/^Head\s+north/i, 'Mulai ke arah utara')
+    .replace(/^Head\s+south/i, 'Mulai ke arah selatan')
+    .replace(/^Head\s+east/i, 'Mulai ke arah timur')
+    .replace(/^Head\s+west/i, 'Mulai ke arah barat')
+    .replace(/^Head/i, 'Mulai perjalanan')
+    .replace(/^Turn\s+sharp\s+right/i, 'Belok kanan tajam')
+    .replace(/^Turn\s+sharp\s+left/i, 'Belok kiri tajam')
+    .replace(/^Turn\s+slight\s+right/i, 'Serong kanan')
+    .replace(/^Turn\s+slight\s+left/i, 'Serong kiri')
+    .replace(/^Turn\s+right/i, 'Belok kanan')
+    .replace(/^Turn\s+left/i, 'Belok kiri')
+    .replace(/^Make\s+a\s+U-turn/i, 'Putar balik')
+    .replace(/^Continue/i, 'Lurus terus')
+    .replace(/^Keep\s+right/i, 'Tetap di lajur kanan')
+    .replace(/^Keep\s+left/i, 'Tetap di lajur kiri')
+    .replace(/\bonto\b/gi, 'ke')
+    .replace(/\bon\b/gi, 'di')
+    .replace(/You have arrived at your destination/gi, 'Anda telah tiba di tujuan')
+    .replace(/Destination reached/gi, 'Anda telah tiba di tujuan')
+    .replace(/Take the (\d+)[a-z]* exit/gi, 'Ambil jalan keluar ke-$1')
+    .replace(/At the roundabout/gi, 'Di bundaran')
+    .replace(/\s+towards\s+/gi, ' menuju ')
+    .replace(/\s+to\s+/gi, ' ke ');
+}
+
 export function getUserPosition({ timeout = 10000 } = {}) {
   if (cachedPosition) return Promise.resolve(cachedPosition);
   if (!navigator.geolocation) {
@@ -94,6 +126,7 @@ export default function LeafletMap({
   zoom = 8,
   showZoom = true,
   showLocate = true,
+  showPopup = true,
   routeTarget = null,
   routeMode = 'driving',
   onRouteInfo = null,
@@ -207,16 +240,18 @@ export default function LeafletMap({
         title: hospital.nama,
         zIndexOffset: active ? 1000 : 0,
       });
-      marker.bindPopup(popupElement(hospital, callbacksRef.current.onSelect), {
-        maxWidth: 250,
-        minWidth: 220,
-      });
+      if (!routeTarget && showPopup) {
+        marker.bindPopup(popupElement(hospital, callbacksRef.current.onSelect), {
+          maxWidth: 250,
+          minWidth: 220,
+        });
+      }
       marker.on('click', () => callbacksRef.current.onSelect?.(hospital));
       layer.addLayer(marker);
       markerMapRef.current.set(hospital.id, marker);
     });
 
-    if (selectedId && markerMapRef.current.has(selectedId)) {
+    if (!routeTarget && showPopup && selectedId && markerMapRef.current.has(selectedId)) {
       const marker = markerMapRef.current.get(selectedId);
       if (layer.zoomToShowLayer) layer.zoomToShowLayer(marker, () => marker.openPopup());
       else marker.openPopup();
@@ -260,6 +295,49 @@ export default function LeafletMap({
     getUserPosition()
       .then((position) => {
         if (cancelled) return;
+
+        if (L.Routing) {
+          L.Routing.Localization = L.Routing.Localization || {};
+          L.Routing.Localization.id = {
+            directions: {
+              N: 'utara',
+              NE: 'timur laut',
+              E: 'timur',
+              SE: 'tenggara',
+              S: 'selatan',
+              SW: 'barat daya',
+              W: 'barat',
+              NW: 'barat laut',
+            },
+            instructions: {
+              Head: ['Mulai ke arah {dir}', ' di {road}'],
+              Continue: ['Lurus ke arah {dir}', ' di {road}'],
+              SlightRight: ['Serong kanan', ' ke {road}'],
+              Right: ['Belok kanan', ' ke {road}'],
+              SharpRight: ['Belok kanan tajam', ' ke {road}'],
+              TurnAround: ['Putar balik'],
+              SharpLeft: ['Belok kiri tajam', ' ke {road}'],
+              Left: ['Belok kiri', ' ke {road}'],
+              SlightLeft: ['Serong kiri', ' ke {road}'],
+              WaypointReached: ['Titik tujuan tercapai'],
+              Roundabout: ['Ambil bundaran, keluar ke-{exit}', ' menuju {road}'],
+              DestinationReached: ['Anda telah tiba di tujuan'],
+              Fork: ['Di pertigaan, ambil arah {modifier}', ' menuju {road}'],
+              Merge: ['Bergabung ke arah {modifier}', ' ke {road}'],
+              OnRamp: ['Masuk jalur ke arah {modifier}', ' menuju {road}'],
+              OffRamp: ['Keluar jalur ke arah {modifier}', ' menuju {road}'],
+              EndOfRoad: ['Di ujung jalan, belok {modifier}', ' ke {road}'],
+              Onto: ['Masuk ke {road}'],
+            },
+            formatOrder: (n) => String(n),
+            ui: {
+              startPlaceholder: 'Lokasi Anda',
+              viaPlaceholder: 'Via {viaNumber}',
+              endPlaceholder: 'Rumah sakit',
+            },
+          };
+        }
+
         const router =
           routeMode === 'foot' && L.Routing?.osrmv1
             ? L.Routing.osrmv1({
@@ -283,6 +361,7 @@ export default function LeafletMap({
           draggableWaypoints: false,
           fitSelectedRoutes: true,
           showAlternatives: false,
+          language: 'id',
           show: false,
           lineOptions: {
             styles: [
@@ -312,7 +391,28 @@ export default function LeafletMap({
 
         control.on('routesfound', (event) => {
           if (cancelled) return;
-          const summary = event.routes?.[0]?.summary;
+          const route = event.routes?.[0];
+          const summary = route?.summary;
+          const formatter = control.getFormatter ? control.getFormatter() : (L.Routing?.Formatter ? new L.Routing.Formatter({ language: 'id' }) : null);
+          const rawInstructions = route?.instructions || [];
+          const instructions = rawInstructions.map((step) => {
+            let txt = '';
+            if (formatter?.formatInstruction) {
+              try {
+                txt = formatter.formatInstruction(step);
+              } catch {
+                txt = step.text || step.road || '';
+              }
+            } else {
+              txt = step.text || step.road || '';
+            }
+            return {
+              text: translateInstruction(txt),
+              distance: step.distance,
+              time: step.time,
+              type: step.type,
+            };
+          });
           if (summary) {
             callbacksRef.current.onRouteInfo?.({
               distance: summary.totalDistance,
@@ -320,6 +420,7 @@ export default function LeafletMap({
               mode: routeMode,
               origin: position,
               destination: [routeTarget.lat, routeTarget.lon],
+              instructions,
             });
           }
         });

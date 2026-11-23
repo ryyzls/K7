@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { createBooking, getBookingStatus, getRoomAvailability } from '../api';
+import { createBooking, deleteBooking, getBookingStatus, getRoomAvailability } from '../api';
 import { todayISO } from '../utils';
 import { useApp } from '../context/AppContext';
 
@@ -36,6 +36,23 @@ export default function BookingForm({ hospital }) {
   const [checking, setChecking] = useState(false);
   const [checkResult, setCheckResult] = useState(null);
   const [checkError, setCheckError] = useState('');
+  const [cancelling, setCancelling] = useState(false);
+
+  const handleCancelBooking = async () => {
+    if (!checkResult?.kode_booking) return;
+    const kode = checkResult.kode_booking;
+    if (!window.confirm(`Batalkan pemesanan kamar dengan kode ${kode}?`)) return;
+    setCancelling(true);
+    try {
+      await deleteBooking(kode);
+      setCheckResult((prev) => (prev ? { ...prev, status: 'dibatalkan' } : null));
+      toast('Pemesanan kamar berhasil dibatalkan.', 'success');
+    } catch (err) {
+      toast(err.message || 'Gagal membatalkan pemesanan', 'error');
+    } finally {
+      setCancelling(false);
+    }
+  };
   const [availability, setAvailability] = useState(null);
 
   const minDate = useMemo(() => todayISO(), []);
@@ -347,6 +364,19 @@ export default function BookingForm({ hospital }) {
                 <p>
                   {checkResult.jenis_kamar} • Masuk {checkResult.tanggal_masuk}
                 </p>
+                {checkResult.status !== 'dibatalkan' && (
+                  <div className="mt-2.5 pt-2 border-t border-slate-200/80 flex justify-end">
+                    <button
+                      type="button"
+                      onClick={handleCancelBooking}
+                      disabled={cancelling}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-rose-200 bg-rose-50 px-3 py-1 text-xs font-semibold text-rose-700 transition hover:bg-rose-100 disabled:opacity-50"
+                    >
+                      <span className="material-symbols-outlined text-[15px]">cancel</span>
+                      {cancelling ? 'Membatalkan...' : 'Batalkan Pemesanan'}
+                    </button>
+                  </div>
+                )}
               </div>
             ) : null}
           </div>

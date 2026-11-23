@@ -93,6 +93,30 @@ export async function createConsultation(payload, idempotencyKey) {
   });
 }
 
+export async function compareHospitals(ids) {
+  const search = cleanParams({ ids: ids.join(',') });
+  return request(`/api/compare?${search.toString()}`);
+}
+
+export async function getHospital(rsId) {
+  return request(`/api/hospitals/${encodeURIComponent(rsId)}`);
+}
+
+export async function getHospitalOperationalHours(rsId) {
+  return request(`/api/hospitals/${encodeURIComponent(rsId)}/operational-hours`);
+}
+
+export async function getHospitalAlternatives(rsId, limit = 4) {
+  const search = cleanParams({ limit });
+  return request(`/api/hospitals/${encodeURIComponent(rsId)}/alternatives?${search.toString()}`);
+}
+
+export async function deleteBooking(kode) {
+  return request(`/api/booking/${encodeURIComponent(kode)}`, {
+    method: 'DELETE',
+  });
+}
+
 let allHospitalsPromise = null;
 
 /**
