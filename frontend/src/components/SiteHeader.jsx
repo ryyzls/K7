@@ -21,7 +21,7 @@ export default function SiteHeader({ active = '' }) {
     { label: 'Direktori', to: '/pencarian', id: 'direktori' },
     { label: 'Peta', to: '/peta', id: 'peta' },
     { label: 'Peringkat RS', to: '/peringkat', id: 'peringkat' },
-    ...(user ? [{ label: 'Ruang Pasien', to: '/dashboard', id: 'dashboard' }] : []),
+    ...(user ? [{ label: 'Dashboard Pasien', to: '/dashboard', id: 'dashboard' }] : []),
   ];
 
   return (
@@ -38,7 +38,7 @@ export default function SiteHeader({ active = '' }) {
               type="button"
               onClick={() => navigate(item.to)}
               className={cn(
-                'rounded-lg px-3 py-2 text-sm font-medium transition-colors duration-150',
+                'rounded-full px-3.5 py-2 text-sm font-semibold transition-colors duration-150',
                 active === item.id
                   ? 'bg-toba-mist text-toba-dark ring-1 ring-toba/25'
                   : 'text-slate-600 hover:bg-slate-100 hover:text-toba-dark',
@@ -54,7 +54,7 @@ export default function SiteHeader({ active = '' }) {
             <button
               type="button"
               onClick={() => setCompareModalOpen(true)}
-              className="inline-flex items-center gap-2 rounded-lg border border-toba/30 bg-toba-mist px-3 py-2 text-xs font-medium text-toba-dark transition-colors duration-150 hover:bg-toba-soft"
+              className="inline-flex items-center gap-2 rounded-full border border-toba/30 bg-toba-mist px-3 py-2 text-xs font-medium text-toba-dark transition-colors duration-150 hover:bg-toba-soft"
               title="Buka matriks perbandingan rumah sakit"
               aria-label={`Bandingkan ${compareIds.length} rumah sakit`}
             >
@@ -67,10 +67,10 @@ export default function SiteHeader({ active = '' }) {
             <button
               type="button"
               onClick={openLogin}
-              className="inline-flex items-center gap-2 rounded-lg bg-toba px-4 py-2 text-xs font-medium text-white shadow-sm transition-colors duration-150 hover:bg-toba-dark"
+              className="inline-flex items-center gap-2 rounded-full bg-toba px-4 py-2 text-xs font-semibold text-white shadow-sm transition-colors duration-150 hover:bg-toba-dark"
             >
               <span className="material-symbols-outlined text-base">person</span>
-              <span className="hidden sm:inline">Masuk / registrasi</span>
+              <span className="hidden sm:inline">Masuk / Registrasi</span>
               <span className="sm:hidden">Masuk</span>
             </button>
           ) : (
@@ -86,7 +86,7 @@ export default function SiteHeader({ active = '' }) {
               {accountOpen && (
                 <div className="absolute right-0 top-11 w-56 animate-fade-in rounded-xl border border-slate-200 bg-white p-2 shadow-floating">
                   <p className="px-2 py-1.5 text-xs font-medium text-slate-500">
-                    Akun pasien
+                    Akun Pasien
                   </p>
                   <p className="px-2 pb-2 text-xs text-slate-600">
                     {user.nama_lengkap || user.name} (@{user.username || 'pasien'})
@@ -96,7 +96,7 @@ export default function SiteHeader({ active = '' }) {
                     onClick={() => navigate('/dashboard')}
                     className="mb-1 w-full rounded-lg px-2 py-2 text-left text-xs font-semibold text-toba-dark hover:bg-toba-mist"
                   >
-                    Ruang Pasien
+                    Dashboard Pasien
                   </button>
                   <button
                     type="button"

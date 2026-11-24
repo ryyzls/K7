@@ -1,4 +1,4 @@
-ï»¿import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAllHospitals, getFilterOptions } from '../api';
 import { KELAS_COLOR, SPECIALTIES, HOME_IMAGES } from '../constants';
@@ -14,13 +14,13 @@ function SpecialtyCard({ item }) {
   return (
     <Link
       to={`/pencarian?layanan=${encodeURIComponent(item.service)}`}
-      className="group relative block aspect-square overflow-hidden rounded-2xl bg-slate-200 shadow-sm transition-shadow duration-150 hover:shadow-md"
+      className="group relative block aspect-square overflow-hidden rounded-2xl bg-slate-900 shadow-sm transition-all duration-300 hover:shadow-lg"
     >
       <img
         src={item.image}
         alt={item.title}
         loading="lazy"
-        className="absolute inset-0 h-full w-full object-cover object-center"
+        className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
         onError={(event) => {
           event.currentTarget.style.display = 'none';
         }}
@@ -96,7 +96,7 @@ export default function HomePage() {
         <div className="mx-auto grid max-w-[1400px] grid-cols-1 items-center gap-8 px-4 py-8 sm:px-6 lg:grid-cols-12 lg:gap-10 lg:py-12">
           {/* Kolom Kiri: Pencarian Rumah Sakit */}
           <div className="lg:col-span-6">
-            <h1 className="text-4xl font-medium leading-[1.08] tracking-tight text-slate-900 sm:text-[44px] lg:text-[56px]">
+            <h1 className="text-4xl font-bold leading-[1.08] tracking-tight text-slate-900 sm:text-[44px] lg:text-[56px]">
               Cari dan petakan rumah sakit di <span className="text-toba-dark">Sumatera Utara</span>
             </h1>
 
@@ -156,19 +156,19 @@ export default function HomePage() {
             <div className="mt-6 grid grid-cols-3 gap-3 border-t border-slate-200/80 pt-5">
               <div>
                 <p className="text-2xl font-medium tabular-nums text-slate-900">
-                  {loading ? 'â€”' : stats.total}
+                  {loading ? '—' : stats.total}
                 </p>
                 <p className="text-xs text-slate-500">Rumah sakit</p>
               </div>
               <div>
                 <p className="text-2xl font-medium tabular-nums text-slate-900">
-                  {loading ? 'â€”' : stats.bpjs}
+                  {loading ? '—' : stats.bpjs}
                 </p>
                 <p className="text-xs text-slate-500">Menerima BPJS</p>
               </div>
               <div>
                 <p className="text-2xl font-medium tabular-nums text-slate-900">
-                  {loading ? 'â€”' : stats.regions}
+                  {loading ? '—' : stats.regions}
                 </p>
                 <p className="text-xs text-slate-500">Kabupaten/kota</p>
               </div>
@@ -206,7 +206,7 @@ export default function HomePage() {
                   className="pointer-events-auto inline-flex items-center gap-2 rounded-lg bg-toba-dark px-4 py-2 text-xs font-semibold text-white transition-colors duration-150 hover:bg-toba"
                 >
                   <span className="material-symbols-outlined text-base">open_in_full</span>
-                  Buka peta dan rute
+                  Buka Peta & Rute
                 </Link>
               </div>
             </div>
@@ -219,8 +219,8 @@ export default function HomePage() {
         <div className="mx-auto max-w-[1360px] px-6 lg:px-10">
           <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div>
-              <h2 className="text-2xl font-semibold leading-tight text-slate-900 sm:text-3xl">
-                Jelajahi layanan medis
+              <h2 className="text-2xl font-bold leading-tight text-slate-900 sm:text-3xl">
+                Jelajahi Layanan Medis
               </h2>
               <p className="mt-2 max-w-2xl text-sm text-slate-500">
                 Jelajahi layanan klinis dan fasilitas pendukung di rumah sakit Sumatera Utara.
@@ -248,7 +248,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-[1120px] px-6">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="flex flex-col justify-center lg:col-span-5">
-              <h2 className="text-3xl font-medium leading-tight text-slate-900 md:text-4xl">
+              <h2 className="text-3xl font-bold leading-tight text-slate-900 md:text-4xl">
                 Bandingkan rumah sakit berdasarkan layanan dan fasilitas
               </h2>
               <p className="mt-4 text-base leading-relaxed text-slate-600">
@@ -260,7 +260,7 @@ export default function HomePage() {
                   to="/pencarian"
                   className="inline-flex items-center justify-center rounded-lg border border-toba px-5 py-3 text-sm font-medium text-toba-dark transition-colors duration-150 hover:bg-toba hover:text-white"
                 >
-                  Mulai bandingkan RS
+                  Mulai Bandingkan RS
                 </Link>
               </div>
             </div>
@@ -294,8 +294,8 @@ export default function HomePage() {
         <div className="mx-auto max-w-[1160px] px-6">
           <div className="mb-9 flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div className="max-w-2xl">
-              <h2 className="text-3xl font-medium leading-tight text-slate-900 md:text-4xl">
-                Direktori rumah sakit
+              <h2 className="text-3xl font-bold leading-tight text-slate-900 md:text-4xl">
+                Direktori Rumah Sakit
               </h2>
               <p className="mt-2 text-sm text-slate-500">
                 Rumah sakit di kabupaten dan kota Sumatera Utara.
@@ -329,11 +329,11 @@ export default function HomePage() {
                   key={index}
                   className="overflow-hidden rounded-2xl border border-slate-200 bg-white"
                 >
-                  <div className="h-48 bg-slate-100" />
+                  <div className="h-48 animate-pulse bg-slate-100" />
                   <div className="space-y-3 p-5">
-                    <div className="h-4 w-3/4 rounded bg-slate-100" />
-                    <div className="h-3 w-1/2 rounded bg-slate-100" />
-                    <div className="h-3 w-full rounded bg-slate-100" />
+                    <div className="h-4 w-3/4 animate-pulse rounded bg-slate-100" />
+                    <div className="h-3 w-1/2 animate-pulse rounded bg-slate-100" />
+                    <div className="h-3 w-full animate-pulse rounded bg-slate-100" />
                   </div>
                 </div>
               ))}
