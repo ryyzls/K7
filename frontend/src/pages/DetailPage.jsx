@@ -11,6 +11,16 @@ const DESC = {
   D: 'Pelayanan dasar',
 };
 
+function formatWebsiteLabel(url) {
+  if (!url) return '';
+  try {
+    const u = new URL(url.startsWith('http') ? url : `https://${url}`);
+    return u.hostname.replace(/^www\./, '');
+  } catch {
+    return url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/.*$/, '');
+  }
+}
+
 export default function DetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -448,8 +458,9 @@ export default function DetailPage() {
               </p>
               {hospital.website && (
                 <div className="rs-website" style={{ margin: '0.4rem 0 1.2rem', fontSize: '0.9rem' }}>
-                  <a href={hospital.website} target="_blank" rel="noopener noreferrer">
-                    <i className="fa-solid fa-globe" aria-hidden="true" /> {hospital.website}
+                  <a href={hospital.website} target="_blank" rel="noopener noreferrer" title={hospital.website}>
+                    <i className="fa-solid fa-globe" aria-hidden="true" /> {formatWebsiteLabel(hospital.website)}{' '}
+                    <i className="fa-solid fa-arrow-up-right-from-square" aria-hidden="true" style={{ fontSize: '0.75rem', opacity: 0.75 }} />
                   </a>
                 </div>
               )}
@@ -564,43 +575,18 @@ export default function DetailPage() {
                     <i className="fa-solid fa-clock" aria-hidden="true" /> Jam Operasional &amp; Poliklinik
                   </h3>
                 </div>
-                <div className="operational-hours-layout">
-                  {/* Left Column: IGD Card */}
-                  <div className="igd-highlight-card">
-                    <div className="igd-card-top">
-                      <div className="igd-badge-icon">
-                        <i className="fa-solid fa-truck-medical" aria-hidden="true" />
-                      </div>
-                      <div>
-                        <span className="igd-badge-label">Layanan Siaga</span>
-                        <h4 className="igd-badge-title">Instalasi Gawat Darurat (IGD)</h4>
-                      </div>
-                    </div>
-                    <div className="igd-status-row">
-                      <span className="igd-pulse-ring" />
-                      <span className="igd-status-text">{igdText}</span>
-                    </div>
-                    <p className="igd-badge-desc">
-                      Layanan tanggap darurat medis beroperasi 24 jam setiap hari untuk menangani kondisi kritis dan kegawatdaruratan medis.
-                    </p>
+                <div style={{ marginTop: '.8rem' }}>
+                  <div style={{ marginBottom: '1.2rem', paddingBottom: '.8rem', borderBottom: '1px solid #f1f5f9' }}>
+                    <div style={{ fontSize: '.85rem', color: 'var(--mute)', marginBottom: '.2rem' }}>Instalasi Gawat Darurat (IGD)</div>
+                    <div style={{ fontSize: '1.05rem', fontWeight: 600, color: 'var(--ink)' }}>{igdText}</div>
                   </div>
-
-                  {/* Right Column: Schedule Table */}
-                  <div className="schedule-box">
-                    <div className="schedule-box-header">
-                      <span>Jadwal Poliklinik &amp; Rawat Jalan</span>
-                    </div>
-                    <div className="schedule-table">
-                      {scheduleData.map((d, idx) => (
-                        <div key={idx} className="schedule-row">
-                          <span className="schedule-day">{d.hari}</span>
-                          <span className="schedule-dots" />
-                          <span className={`schedule-badge ${d.jam === 'Tutup' ? 'closed' : ''}`}>
-                            {d.jam}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
+                  <div className="schedule-table">
+                    {scheduleData.map((d, idx) => (
+                      <div key={idx} className="schedule-row">
+                        <span className="schedule-day">{d.hari}</span>
+                        <span className={`schedule-time ${d.jam === 'Tutup' ? 'closed' : ''}`}>{d.jam}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </section>
@@ -988,10 +974,17 @@ export default function DetailPage() {
                       style={{ color: hospital.website ? 'var(--toba)' : 'var(--mute)', fontSize: '1.15rem' }}
                     />
                     <div>
-                      <small>Website</small>
+                      <small>Website Resmi</small>
                       {hospital.website ? (
-                        <a href={hospital.website} target="_blank" rel="noopener noreferrer">
-                          {hospital.website}
+                        <a
+                          href={hospital.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title={hospital.website}
+                          style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
+                        >
+                          <span>{formatWebsiteLabel(hospital.website)}</span>
+                          <i className="fa-solid fa-arrow-up-right-from-square" aria-hidden="true" style={{ fontSize: '0.75rem', opacity: 0.75 }} />
                         </a>
                       ) : (
                         <span style={{ color: 'var(--mute)' }}>Belum tersedia</span>

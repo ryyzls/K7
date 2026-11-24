@@ -159,6 +159,22 @@
   background: #eef3f7;
 }
 
+/* Fix Leaflet tiles breaking due to Tailwind CSS Preflight */
+.leaflet-container img {
+  max-width: none !important;
+  max-height: none !important;
+}
+
+.leaflet-tile {
+  max-width: none !important;
+  max-height: none !important;
+}
+
+.leaflet-tile-container img {
+  max-width: none !important;
+  max-height: none !important;
+}
+
 .leaflet-control-attribution {
   font-size: 9px !important;
 }
@@ -983,136 +999,22 @@ input[type='date']::-webkit-calendar-picker-indicator {
   margin-bottom: 0.2rem;
 }
 
-/* Operational Hours & Schedule Layout */
-.operational-hours-layout {
-  display: grid;
-  grid-template-columns: minmax(260px, 1fr) minmax(320px, 1.4fr);
-  gap: 1.25rem;
-  margin-top: 0.8rem;
-  align-items: stretch;
-}
-
-@media (max-width: 768px) {
-  .operational-hours-layout {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-}
-
-.igd-highlight-card {
-  background: linear-gradient(145deg, #f0fdf4 0%, #e6f5f2 100%);
-  border: 1px solid rgba(15, 118, 110, 0.2);
-  border-radius: var(--r-sm);
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 0.85rem;
-}
-
-.igd-card-top {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-}
-
-.igd-badge-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  background: var(--toba);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.25rem;
-  flex-shrink: 0;
-}
-
-.igd-badge-label {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 700;
-  color: var(--toba);
-  display: block;
-}
-
-.igd-badge-title {
-  margin: 0;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--ink);
-}
-
-.igd-status-row {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: #ffffff;
-  padding: 0.45rem 0.85rem;
-  border-radius: 99px;
-  border: 1px solid rgba(15, 118, 110, 0.25);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  width: fit-content;
-}
-
-.igd-pulse-ring {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #10b981;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
-}
-
-.igd-status-text {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--toba-d);
-}
-
-.igd-badge-desc {
-  margin: 0;
-  font-size: 0.8rem;
-  color: var(--ink-soft);
-  line-height: 1.5;
-}
-
-.schedule-box {
-  background: #f8fafc;
-  border: 1px solid var(--line);
-  border-radius: var(--r-sm);
-  padding: 1rem 1.25rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.schedule-box-header {
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--mute);
-  padding-bottom: 0.55rem;
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 0.4rem;
-}
-
+/* Schedule Table */
 .schedule-table {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
-  margin-top: 0;
-  width: 100%;
+  gap: 0.5rem;
+  max-width: 1050px;
+  margin-top: 0.8rem;
 }
 
 .schedule-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.4rem 0;
-  border-bottom: 1px solid #edf2f7;
-  gap: 0.75rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.95rem;
 }
 
 .schedule-row:last-child {
@@ -1122,32 +1024,16 @@ input[type='date']::-webkit-calendar-picker-indicator {
 .schedule-day {
   font-weight: 600;
   color: var(--ink);
-  font-size: 0.9rem;
-  white-space: nowrap;
 }
 
-.schedule-dots {
-  flex: 1;
-  border-bottom: 1px dashed #cbd5e1;
-  margin: 0 0.25rem;
-  height: 1px;
-}
-
-.schedule-badge {
-  display: inline-block;
-  padding: 0.2rem 0.65rem;
-  border-radius: 6px;
-  font-size: 0.82rem;
+.schedule-time {
+  color: var(--ink-soft);
   font-weight: 600;
-  background: #e6f5f2;
-  color: var(--toba-d);
-  white-space: nowrap;
 }
 
-.schedule-badge.closed {
-  background: #fee2e2;
-  color: #b91c1c;
-  font-style: normal;
+.schedule-time.closed {
+  color: #dc2626;
+  font-style: italic;
 }
 
 /* Clean Bullet List with Visible Bullets */
@@ -1832,6 +1718,14 @@ input[type='date']::-webkit-calendar-picker-indicator {
   overflow: hidden;
   position: relative;
   background: #e2e8f0;
+  width: 100%;
+  height: 100%;
+}
+.route-map-host .leaflet-container {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 @media (max-width: 760px) {
   .route-page {

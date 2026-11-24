@@ -23,6 +23,122 @@ function formatDuration(seconds) {
   return `${Math.floor(minutes / 60)} j ${minutes % 60} mnt`;
 }
 
+function getDirectionIcon(step) {
+  const text = (step.text || '').toLowerCase();
+  const type = (step.type || '').toLowerCase();
+  const modifier = (step.modifier || '').toLowerCase();
+
+  // 1. Putar balik / U-Turn
+  if (
+    type.includes('turnaround') ||
+    type.includes('u-turn') ||
+    modifier.includes('u-turn') ||
+    text.includes('putar balik') ||
+    text.includes('u-turn')
+  ) {
+    return (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-label="Putar balik">
+        <path d="M19 20V9a5 5 0 0 0-10 0v11" />
+        <polyline points="5 16 9 20 13 16" />
+      </svg>
+    );
+  }
+
+  // 2. Belok kanan tajam
+  if (type.includes('sharpright') || text.includes('kanan tajam')) {
+    return (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-label="Belok kanan tajam">
+        <path d="M5 19V11a3 3 0 0 1 3-3h12" />
+        <polyline points="15 4 19 8 15 12" />
+      </svg>
+    );
+  }
+
+  // 3. Belok kiri tajam
+  if (type.includes('sharpleft') || text.includes('kiri tajam')) {
+    return (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-label="Belok kiri tajam">
+        <path d="M19 19V11a3 3 0 0 0-3-3H4" />
+        <polyline points="9 4 5 8 9 12" />
+      </svg>
+    );
+  }
+
+  // 4. Serong kanan
+  if (type.includes('slightright') || text.includes('serong kanan')) {
+    return (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-label="Serong kanan">
+        <line x1="7" y1="17" x2="17" y2="7" />
+        <polyline points="7 7 17 7 17 17" />
+      </svg>
+    );
+  }
+
+  // 5. Serong kiri
+  if (type.includes('slightleft') || text.includes('serong kiri')) {
+    return (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-label="Serong kiri">
+        <line x1="17" y1="17" x2="7" y2="7" />
+        <polyline points="17 7 7 7 7 17" />
+      </svg>
+    );
+  }
+
+  // 6. Belok kanan
+  if (type.includes('right') || modifier.includes('right') || text.includes('belok kanan') || text.includes('ke kanan')) {
+    return (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-label="Belok kanan">
+        <path d="M6 19V11a3 3 0 0 1 3-3h9" />
+        <polyline points="14 4 18 8 14 12" />
+      </svg>
+    );
+  }
+
+  // 7. Belok kiri
+  if (type.includes('left') || modifier.includes('left') || text.includes('belok kiri') || text.includes('ke kiri')) {
+    return (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-label="Belok kiri">
+        <path d="M18 19V11a3 3 0 0 0-3-3H9" />
+        <polyline points="10 4 6 8 10 12" />
+      </svg>
+    );
+  }
+
+  // 8. Bundaran / Roundabout
+  if (type.includes('roundabout') || text.includes('bundaran')) {
+    return (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-label="Bundaran">
+        <circle cx="12" cy="12" r="5" />
+        <path d="M12 2a10 10 0 0 1 9 6" />
+        <polyline points="21 4 21 8 17 8" />
+      </svg>
+    );
+  }
+
+  // 9. Tiba di tujuan
+  if (
+    type.includes('destination') ||
+    type.includes('waypoint') ||
+    text.includes('sampai di tujuan') ||
+    text.includes('tiba di tujuan')
+  ) {
+    return (
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="#dc2626" stroke="#991b1b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-label="Tiba di tujuan">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+        <circle cx="12" cy="9" r="2.5" fill="#fff" />
+      </svg>
+    );
+  }
+
+  // 10. Mulai / Lurus / Default
+  return (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" aria-label="Lurus">
+      <line x1="12" y1="19" x2="12" y2="5" />
+      <polyline points="7 10 12 5 17 10" />
+    </svg>
+  );
+}
+
 export default function MapPage() {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -40,6 +156,30 @@ export default function MapPage() {
 
   const [routeInfo, setRouteInfo] = useState(null);
   const [routeError, setRouteError] = useState('');
+  const [originAddress, setOriginAddress] = useState('');
+
+  // Reverse-geocode origin coordinates to human-readable street/place name
+  useEffect(() => {
+    if (!routeInfo?.origin) return undefined;
+    const [lat, lon] = routeInfo.origin;
+    const controller = new AbortController();
+    fetch(`https://photon.komoot.io/reverse?lat=${lat}&lon=${lon}`, {
+      signal: controller.signal,
+      credentials: 'omit',
+    })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        const place = data?.features?.[0]?.properties;
+        if (place) {
+          const street = place.street ? [place.street, place.housenumber].filter(Boolean).join(' ') : place.name;
+          const addr = [...new Set([street, place.district, place.city || place.county].filter(Boolean))].join(', ');
+          if (addr) setOriginAddress(addr);
+        }
+      })
+      .catch(() => {});
+
+    return () => controller.abort();
+  }, [routeInfo?.origin]);
 
   // Fetch hospitals and filter options
   useEffect(() => {
@@ -125,7 +265,12 @@ export default function MapPage() {
 
           <div className="route-place">
             <small>Lokasi Keberangkatan</small>
-            <strong>Lokasi Anda (GPS / Otomatis)</strong>
+            <strong>{originAddress || 'Lokasi Anda (GPS / Otomatis)'}</strong>
+            {originAddress && (
+              <span style={{ fontSize: '0.78rem', color: 'var(--mute)', display: 'block', marginTop: 2 }}>
+                Terdeteksi otomatis via GPS
+              </span>
+            )}
           </div>
 
           <div className="route-place">
@@ -190,19 +335,18 @@ export default function MapPage() {
                   >
                     <span
                       style={{
-                        minWidth: 22,
-                        height: 22,
-                        borderRadius: '50%',
+                        minWidth: 26,
+                        height: 26,
+                        borderRadius: 6,
                         background: 'var(--toba-mist)',
                         color: 'var(--toba-d)',
                         display: 'grid',
                         placeItems: 'center',
-                        fontSize: '0.72rem',
-                        fontWeight: 800,
                         flexShrink: 0,
+                        marginTop: 2,
                       }}
                     >
-                      {idx + 1}
+                      {getDirectionIcon(step)}
                     </span>
                     <div style={{ flex: 1 }}>
                       <div style={{ fontWeight: 600, color: 'var(--ink)' }}>{translateInstruction(step.text)}</div>

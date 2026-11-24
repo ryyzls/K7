@@ -153,10 +153,44 @@ export default function LeafletMap({
     });
     mapRef.current = map;
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    // Google Maps Road (Layanan default - sangat stabil, cepat, dan tidak terblokir di ISP Indonesia)
+    const gmRoadLayer = L.tileLayer('https://mt{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+      subdomains: ['0', '1', '2', '3'],
+      maxZoom: 20,
+      attribution: '&copy; <a href="https://maps.google.com">Google Maps</a>',
+    });
+
+    // CARTO Voyager (Tile cepat & stabil)
+    const cartoLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      subdomains: 'abcd',
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    });
+
+    // OpenStreetMap
+    const osmLayer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    }).addTo(map);
+    });
+
+    // Google Maps Satelit
+    const gmSatLayer = L.tileLayer('https://mt{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
+      subdomains: ['0', '1', '2', '3'],
+      maxZoom: 20,
+      attribution: '&copy; <a href="https://maps.google.com">Google Maps</a>',
+    });
+
+    // Set Google Maps as active layer by default to prevent white/blank tile dropouts
+    gmRoadLayer.addTo(map);
+
+    const baseMaps = {
+      'Google Maps': gmRoadLayer,
+      'Peta Voyager': cartoLayer,
+      'OpenStreetMap': osmLayer,
+      'Google Satelit': gmSatLayer,
+    };
+
+    L.control.layers(baseMaps, {}, { position: 'topright', collapsed: true }).addTo(map);
 
     if (showZoom) {
       L.control.zoom({ position: 'topright' }).addTo(map);
@@ -411,6 +445,7 @@ export default function LeafletMap({
               distance: step.distance,
               time: step.time,
               type: step.type,
+              modifier: step.modifier,
             };
           });
           if (summary) {
@@ -423,6 +458,13 @@ export default function LeafletMap({
               instructions,
             });
           }
+          window.setTimeout(() => {
+            try {
+              map.invalidateSize();
+            } catch {
+              /* noop */
+            }
+          }, 150);
         });
 
         control.on('routingerror', () => {
@@ -444,6 +486,7 @@ export default function LeafletMap({
     <div
       ref={containerRef}
       className={cn('z-0 h-full w-full bg-[#eaf1f7]', className)}
+      style={{ width: '100%', height: '100%' }}
       role="application"
       aria-label="Peta persebaran rumah sakit"
     />
