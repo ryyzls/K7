@@ -3,6 +3,8 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getHospital, getHospitalAlternatives } from '../api';
 import { colorOf } from '../components/HospitalCard';
 import KnowledgeGraphModal from '../components/KnowledgeGraphModal';
+import BookingForm from '../components/BookingForm';
+import { websiteHref, emailHref } from '../utils';
 
 const DESC = {
   A: 'Subspesialis luas',
@@ -36,22 +38,6 @@ export default function DetailPage() {
   // Active quicknav section
   const [activeNav, setActiveNav] = useState('sec-profil');
 
-  // Booking simulation form states
-  const [bookingFormData, setBookingFormData] = useState({
-    nama_pasien: '',
-    no_telp: '',
-    jenis_kamar: '',
-    tanggal_masuk: '',
-    catatan: '',
-  });
-  const [bookingLoading, setBookingLoading] = useState(false);
-  const [bookingResult, setBookingResult] = useState(null);
-
-  // Check booking states
-  const [checkCode, setCheckCode] = useState('');
-  const [checkLoading, setCheckLoading] = useState(false);
-  const [checkResult, setCheckResult] = useState(null);
-  const [checkError, setCheckError] = useState(null);
 
   // Carousel index
   const [slideIndex, setSlideIndex] = useState(0);
@@ -134,7 +120,13 @@ export default function DetailPage() {
       }).addTo(map);
 
       const marker = L.marker([hospital.lat, hospital.lon]).addTo(map);
-      marker.bindPopup(`<b>${hospital.nama}</b><br>${hospital.alamat || hospital.kabkota || ''}`).openPopup();
+      const popup = document.createElement('div');
+      const title = document.createElement('strong');
+      title.textContent = hospital.nama;
+      const address = document.createElement('p');
+      address.textContent = hospital.alamat || hospital.kabkota || '';
+      popup.append(title, address);
+      marker.bindPopup(popup).openPopup();
 
       mapInstanceRef.current = map;
       setTimeout(() => map.invalidateSize(), 300);
@@ -157,147 +149,13 @@ export default function DetailPage() {
     }
   };
 
-  // Schedule logic
-  const scheduleData = useMemo(() => {
-    if (!hospital) return [];
-    const isVitaInsani = hospital.id === 'rs-199' || (hospital.nama || '').toLowerCase().includes('vita insani');
-    if (isVitaInsani) {
-      return [
-        { hari: 'Senin', jam: '08:00 - 20:00' },
-        { hari: 'Selasa', jam: '08:00 - 20:00' },
-        { hari: 'Rabu', jam: '08:00 - 20:00' },
-        { hari: 'Kamis', jam: '08:00 - 20:00' },
-        { hari: 'Jumat', jam: '08:00 - 20:00' },
-        { hari: 'Sabtu', jam: '08:00 - 15:00' },
-        { hari: 'Minggu', jam: 'Tutup' },
-      ];
-    }
-    if (hospital.jam_operasional?.jadwal_harian?.length) {
-      return hospital.jam_operasional.jadwal_harian;
-    }
-    const units = hospital.jam_operasional?.unit_operasional || [];
-    let defaultHours = '08:00 - 16:00';
-    for (const u of units) {
-      if (u.unit && (u.unit.toLowerCase().includes('poli') || u.unit.toLowerCase().includes('rawat jalan'))) {
-        if (u.jadwal_deskripsi) defaultHours = u.jadwal_deskripsi;
-        break;
-      }
-    }
-    return [
-      { hari: 'Senin', jam: defaultHours },
-      { hari: 'Selasa', jam: defaultHours },
-      { hari: 'Rabu', jam: defaultHours },
-      { hari: 'Kamis', jam: defaultHours },
-      { hari: 'Jumat', jam: defaultHours },
-      { hari: 'Sabtu', jam: '08:00 - 12:00' },
-      { hari: 'Minggu', jam: 'Tutup' },
-    ];
-  }, [hospital]);
-
-  // Spesialisasi logic
-  const spesialisasiList = useMemo(() => {
-    if (!hospital) return [];
-    const isVitaInsani = hospital.id === 'rs-199' || (hospital.nama || '').toLowerCase().includes('vita insani');
-    if (isVitaInsani) return ['Konseling Kesehatan Mental', 'Psikologi'];
-    if (Array.isArray(hospital.spesialisasi) && hospital.spesialisasi.length) {
-      return hospital.spesialisasi;
-    }
-    return [];
-  }, [hospital]);
-
-  // Fasilitas logic
-  const fasilitasList = useMemo(() => {
-    if (!hospital) return [];
-    const isVitaInsani = hospital.id === 'rs-199' || (hospital.nama || '').toLowerCase().includes('vita insani');
-    if (isVitaInsani) return ['Layanan Kesehatan Rumah'];
-    if (Array.isArray(hospital.fasilitas) && hospital.fasilitas.length) {
-      return hospital.fasilitas;
-    }
-    if (hospital.fasilitas_medis_berbukti?.fasilitas_diagnostik_terlapor?.length) {
-      return hospital.fasilitas_medis_berbukti.fasilitas_diagnostik_terlapor;
-    }
-    return [];
-  }, [hospital]);
-
-  // Handle Booking Submission
-  const handleBookingSubmit = async (e) => {
-    e.preventDefault();
-    setBookingLoading(true);
-    setBookingResult(null);
-
-    try {
-      const payload = {
-        ...bookingFormData,
-        rs_id: hospital.id,
-        nama_rs: hospital.nama,
-      };
-      const res = await fetch('/api/booking', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.detail || 'Gagal membuat reservasi');
-      }
-      setBookingResult({ success: true, data });
-      setBookingFormData({
-        nama_pasien: '',
-        no_telp: '',
-        jenis_kamar: '',
-        tanggal_masuk: '',
-        catatan: '',
-      });
-    } catch (err) {
-      setBookingResult({ success: false, error: err.message });
-    } finally {
-      setBookingLoading(false);
-    }
-  };
-
-  // Handle Check Booking
-  const handleCheckBooking = async (e) => {
-    e.preventDefault();
-    if (!checkCode.trim()) return;
-    setCheckLoading(true);
-    setCheckResult(null);
-    setCheckError(null);
-
-    try {
-      const res = await fetch(`/api/booking/${encodeURIComponent(checkCode.trim())}`);
-      if (res.status === 404) {
-        setCheckError('Kode booking tidak ditemukan.');
-        return;
-      }
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.detail || 'Gagal mengecek kode booking');
-      }
-      setCheckResult(data);
-    } catch (err) {
-      setCheckError(err.message);
-    } finally {
-      setCheckLoading(false);
-    }
-  };
-
-  // Handle Cancel Booking
-  const handleCancelBooking = async (code) => {
-    if (!window.confirm(`Batalkan booking ${code}?`)) return;
-    try {
-      const res = await fetch(`/api/booking/${encodeURIComponent(code)}`, {
-        method: 'DELETE',
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.detail || 'Gagal membatalkan');
-      }
-      alert('Booking berhasil dibatalkan');
-      setCheckResult((prev) => (prev ? { ...prev, status: 'dibatalkan' } : null));
-    } catch (err) {
-      alert('Gagal membatalkan: ' + err.message);
-    }
-  };
+  const scheduleData = hospital?.jam_operasional?.jadwal_harian ||
+    ['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu','Minggu'].map(hari=>({hari,jam:'Belum tersedia'}));
+  const spesialisasiList = hospital?.spesialisasi || [];
+  const fasilitasList = [...new Set([
+    ...(hospital?.fasilitas_medis_berbukti?.fasilitas_diagnostik_terlapor || []),
+    ...(hospital?.fasilitas_medis_berbukti?.fasilitas_tempat_tidur_khusus || []).filter(f=>typeof f==='string'),
+  ])];
 
   if (loading) {
     return (
@@ -458,7 +316,7 @@ export default function DetailPage() {
               </p>
               {hospital.website && (
                 <div className="rs-website" style={{ margin: '0.4rem 0 1.2rem', fontSize: '0.9rem' }}>
-                  <a href={hospital.website} target="_blank" rel="noopener noreferrer" title={hospital.website}>
+                  <a href={websiteHref(hospital.website) || undefined} target="_blank" rel="noopener noreferrer" title={hospital.website}>
                     <i className="fa-solid fa-globe" aria-hidden="true" /> {formatWebsiteLabel(hospital.website)}{' '}
                     <i className="fa-solid fa-arrow-up-right-from-square" aria-hidden="true" style={{ fontSize: '0.75rem', opacity: 0.75 }} />
                   </a>
@@ -548,6 +406,16 @@ export default function DetailPage() {
                   </h3>
                 </div>
                 <div className="info-grid">
+                  {[
+                    ['Kode Kemenkes', hospital.kode_kemenkes],
+                    ['Nama Rumah Sakit', hospital.nama],
+                    ['Kabupaten/Kota', hospital.kabkota],
+                    ['Alamat', hospital.alamat],
+                    ['Direktur', hospital.direktur],
+                    ['Kepemilikan', hospital.kepemilikan || hospital.pemilik],
+                    ['Luas Tanah', hospital.luas_tanah],
+                    ['Luas Bangunan', hospital.luas_bangunan],
+                  ].map(([label,value])=><div className="info-item" key={label}><div><small>{label}</small><strong>{value ?? 'Belum tersedia'}</strong></div></div>)}
                   <div className="info-item">
                     <i className="fa-solid fa-hospital" aria-hidden="true" style={{ fontSize: '1.15rem', color: 'var(--toba)' }} />
                     <div>
@@ -580,14 +448,13 @@ export default function DetailPage() {
                     <div style={{ fontSize: '.85rem', color: 'var(--mute)', marginBottom: '.2rem' }}>Instalasi Gawat Darurat (IGD)</div>
                     <div style={{ fontSize: '1.05rem', fontWeight: 600, color: 'var(--ink)' }}>{igdText}</div>
                   </div>
-                  <div className="schedule-table">
-                    {scheduleData.map((d, idx) => (
-                      <div key={idx} className="schedule-row">
-                        <span className="schedule-day">{d.hari}</span>
-                        <span className={`schedule-time ${d.jam === 'Tutup' ? 'closed' : ''}`}>{d.jam}</span>
-                      </div>
-                    ))}
-                  </div>
+                  {(hospital.jam_operasional?.unit_operasional || [{unit:'Poliklinik Rawat Jalan',jadwal_harian:scheduleData}])
+                    .filter(unit=>unit.jadwal_harian).map(unit=><div key={unit.unit} style={{marginBottom:'1.2rem'}}>
+                      <h4 style={{marginBottom:'.6rem'}}>{unit.unit}</h4>
+                      <div className="schedule-table">{unit.jadwal_harian.map(d=><div key={d.hari} className="schedule-row">
+                        <span className="schedule-day">{d.hari}</span><span className={`schedule-time ${d.jam==='Tutup'?'closed':''}`}>{d.jam}</span>
+                      </div>)}</div>
+                    </div>)}
                 </div>
               </section>
 
@@ -659,7 +526,7 @@ export default function DetailPage() {
               <section id="sec-alternatif" className="d-card">
                 <div className="d-card-head">
                   <h3>
-                    <i className="fa-solid fa-arrows-split-up-and-left" aria-hidden="true" /> Rumah Sakit Alternatif Terdekat &amp; Setara
+                    <i className="fa-solid fa-arrows-split-up-and-left" aria-hidden="true" /> Rumah Sakit Alternatif dengan Layanan Serupa
                   </h3>
                 </div>
                 <div style={{ marginTop: '.8rem' }}>
@@ -705,7 +572,7 @@ export default function DetailPage() {
                               <button
                                 type="button"
                                 className="btn-compare-sm"
-                                onClick={() => navigate(`/pencarian?compare=${encodeURIComponent(alt.id)}`)}
+                                onClick={() => navigate(`/pencarian?compare=${encodeURIComponent(hospital.id)},${encodeURIComponent(alt.id)}`)}
                                 title="Bandingkan langsung dengan rumah sakit ini"
                               >
                                 <i className="fa-solid fa-code-compare" aria-hidden="true" /> <span>Bandingkan</span>
@@ -736,194 +603,7 @@ export default function DetailPage() {
                   </p>
                 </div>
 
-                <form onSubmit={handleBookingSubmit} className="booking-form-grid">
-                  <div className="form-row">
-                    <label>
-                      Nama Pasien
-                      <input
-                        name="nama_pasien"
-                        placeholder="Nama lengkap pasien"
-                        required
-                        value={bookingFormData.nama_pasien}
-                        onChange={(e) => setBookingFormData({ ...bookingFormData, nama_pasien: e.target.value })}
-                      />
-                    </label>
-                    <label>
-                      Nomor WhatsApp / HP
-                      <input
-                        name="no_telp"
-                        type="tel"
-                        placeholder="08xxxxxxxxxx"
-                        required
-                        value={bookingFormData.no_telp}
-                        onChange={(e) => setBookingFormData({ ...bookingFormData, no_telp: e.target.value })}
-                      />
-                    </label>
-                  </div>
-                  <div className="form-row">
-                    <label>
-                      Jenis Kamar Rawat Inap
-                      <select
-                        name="jenis_kamar"
-                        required
-                        value={bookingFormData.jenis_kamar}
-                        onChange={(e) => setBookingFormData({ ...bookingFormData, jenis_kamar: e.target.value })}
-                      >
-                        <option value="">-- Pilih Jenis Kamar --</option>
-                        <option value="VIP">VIP</option>
-                        <option value="Kelas I">Kelas I</option>
-                        <option value="Kelas II">Kelas II</option>
-                        <option value="Kelas III">Kelas III</option>
-                        <option value="ICU">ICU (Intensive Care Unit)</option>
-                      </select>
-                    </label>
-                    <label>
-                      Tanggal Rencana Masuk
-                      <input
-                        name="tanggal_masuk"
-                        type="date"
-                        required
-                        min={new Date().toISOString().split('T')[0]}
-                        value={bookingFormData.tanggal_masuk}
-                        onChange={(e) => setBookingFormData({ ...bookingFormData, tanggal_masuk: e.target.value })}
-                      />
-                    </label>
-                  </div>
-                  <label>
-                    Catatan Medis Khusus / Kebutuhan (Opsional)
-                    <textarea
-                      name="catatan"
-                      placeholder="Contoh: Memerlukan kursi roda, riwayat alergi..."
-                      rows="2"
-                      value={bookingFormData.catatan}
-                      onChange={(e) => setBookingFormData({ ...bookingFormData, catatan: e.target.value })}
-                    />
-                  </label>
-                  <button type="submit" className="btn btn-primary btn-submit-booking" disabled={bookingLoading}>
-                    {bookingLoading ? (
-                      <>
-                        <div className="spin" style={{ marginRight: '0.4rem' }} /> Memproses...
-                      </>
-                    ) : (
-                      <>
-                        <i className="fa-solid fa-bed" aria-hidden="true" /> Konfirmasi Reservasi Kamar (Simulasi)
-                      </>
-                    )}
-                  </button>
-                </form>
-
-                {bookingResult && (
-                  <div
-                    style={{
-                      marginTop: '.9rem',
-                      padding: '.8rem 1rem',
-                      borderRadius: 10,
-                      background: bookingResult.success ? 'var(--toba-mist)' : '#fee2e2',
-                      border: `1px solid ${bookingResult.success ? '#99f6e4' : '#fca5a5'}`,
-                      color: bookingResult.success ? 'var(--toba-d)' : '#991b1b',
-                    }}
-                  >
-                    {bookingResult.success ? (
-                      <div>
-                        <strong>Reservasi Berhasil Dibuat!</strong>
-                        <p style={{ margin: '0.3rem 0 0', fontSize: '0.85rem' }}>
-                          Kode Booking: <b>{bookingResult.data?.kode_booking}</b>. Simpan kode ini untuk mengecek status reservasi Anda.
-                        </p>
-                      </div>
-                    ) : (
-                      <div>
-                        <strong>Gagal:</strong> {bookingResult.error}
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                <hr style={{ border: 0, borderTop: '1px solid var(--line)', margin: '1.4rem 0' }} />
-
-                <div className="check-booking-box">
-                  <h4>
-                    <i className="fa-solid fa-magnifying-glass" aria-hidden="true" /> Cek Status Kode Pemesanan
-                  </h4>
-                  <p style={{ fontSize: '.82rem', marginBottom: '.6rem', color: 'var(--mute)' }}>
-                    Sudah pernah membuat reservasi simulasi? Masukkan kode booking untuk mengecek data.
-                  </p>
-                  <form onSubmit={handleCheckBooking} className="check-booking-form">
-                    <input
-                      name="kode_cek"
-                      placeholder="Masukkan kode (contoh: BK-20261117-XXXXXXXX)"
-                      required
-                      value={checkCode}
-                      onChange={(e) => setCheckCode(e.target.value)}
-                    />
-                    <button type="submit" className="btn btn-ghost" disabled={checkLoading}>
-                      {checkLoading ? 'Memeriksa...' : 'Cek Status'}
-                    </button>
-                  </form>
-
-                  {checkError && (
-                    <div style={{ marginTop: '.7rem', color: '#be123c', fontSize: '.85rem' }}>
-                      <i className="fa-solid fa-circle-xmark" aria-hidden="true" /> {checkError}
-                    </div>
-                  )}
-
-                  {checkResult && (
-                    <div
-                      style={{
-                        marginTop: '.7rem',
-                        background: '#f8fafc',
-                        border: '1px solid var(--line)',
-                        borderRadius: 10,
-                        padding: '.8rem',
-                        fontSize: '.85rem',
-                      }}
-                    >
-                      <strong>
-                        {checkResult.status === 'dibatalkan' && (
-                          <i className="fa-solid fa-circle-xmark" aria-hidden="true" style={{ color: '#be123c', marginRight: 4 }} />
-                        )}
-                        Booking {checkResult.kode_booking}
-                      </strong>
-                      <div style={{ marginTop: '.4rem', display: 'grid', gap: '.2rem' }}>
-                        <span>
-                          <i className="fa-solid fa-user" aria-hidden="true" /> {checkResult.nama_pasien}{' '}
-                          <span style={{ display: 'inline-block', width: '0.8rem' }} />{' '}
-                          <i className="fa-solid fa-phone" aria-hidden="true" /> {checkResult.no_telp}
-                        </span>
-                        <span>
-                          <i className="fa-solid fa-hospital" aria-hidden="true" /> {checkResult.nama_rs}
-                        </span>
-                        <span>
-                          <i className="fa-solid fa-bed" aria-hidden="true" /> {checkResult.jenis_kamar}{' '}
-                          <span style={{ display: 'inline-block', width: '0.8rem' }} />{' '}
-                          <i className="fa-solid fa-calendar-days" aria-hidden="true" /> Masuk: {checkResult.tanggal_masuk}
-                        </span>
-                        <span
-                          style={{
-                            color:
-                              checkResult.status === 'dikonfirmasi'
-                                ? '#059669'
-                                : checkResult.status === 'dibatalkan'
-                                  ? '#be123c'
-                                  : '#d97706',
-                            fontWeight: 600,
-                          }}
-                        >
-                          Status: {checkResult.status?.toUpperCase()}
-                        </span>
-                      </div>
-                      {checkResult.status === 'menunggu' && (
-                        <button
-                          type="button"
-                          className="btn btn-ghost"
-                          style={{ marginTop: '.5rem', color: '#be123c', borderColor: '#be123c' }}
-                          onClick={() => handleCancelBooking(checkResult.kode_booking)}
-                        >
-                          Batalkan Booking
-                        </button>
-                      )}
-                    </div>
-                  )}
-                </div>
+                <BookingForm hospital={hospital} />
               </section>
             </div>
 
@@ -961,7 +641,7 @@ export default function DetailPage() {
                     <div>
                       <small>Email</small>
                       {hospital.email ? (
-                        <a href={`mailto:${hospital.email}`}>{hospital.email}</a>
+                        <a href={emailHref(hospital.email) || undefined}>{hospital.email}</a>
                       ) : (
                         <span style={{ color: 'var(--mute)' }}>Belum tersedia</span>
                       )}
@@ -977,7 +657,7 @@ export default function DetailPage() {
                       <small>Website Resmi</small>
                       {hospital.website ? (
                         <a
-                          href={hospital.website}
+                          href={websiteHref(hospital.website) || undefined}
                           target="_blank"
                           rel="noopener noreferrer"
                           title={hospital.website}
@@ -1030,6 +710,7 @@ export default function DetailPage() {
                 <i className="fa-solid fa-location-dot" aria-hidden="true" /> Lokasi Peta
               </h3>
             </div>
+            {hospital.sumber_koordinat === 'kabkota' && <p>Koordinat perkiraan pusat wilayah, bukan lokasi pasti rumah sakit.</p>}
             {hospital.lat != null && hospital.lon != null ? (
               <>
                 <div

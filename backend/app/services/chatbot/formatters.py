@@ -175,13 +175,14 @@ def format_attribute_rs(
             lines.append(f"Data fasilitas **{nama}** belum mencantumkan ruang perawatan intensif (ICU).")
 
     elif attr == "jam_buka":
-        has_ugd = "UGD 24 Jam" in rs.get("layanan", [])
-        ugd_info = "Sebagai informasi resmi, rumah sakit ini memiliki layanan **UGD 24 Jam** yang siaga setiap hari." if has_ugd else ""
-        telp = rs.get("telepon")
-        telp_info = f" Silakan hubungi nomor telepon RS di **{telp}** untuk konfirmasi jadwal praktik dokter." if telp else ""
-        lines.append(
-            f"⏰ Mohon maaf, jadwal operasional poliklinik/praktik dokter spesialis untuk **{nama}** tidak tersedia di database kami.{telp_info}\n\n{ugd_info}".strip()
-        )
+        from app.services.enrichment_service import get_hospital_enrichment
+        hours = get_hospital_enrichment(rs.get("id", ""))["jam_operasional"]["jadwal_harian"]
+        available = [row for row in hours if row["jam"] != "Belum tersedia"]
+        if available:
+            lines.append(f"Jadwal poliklinik tercatat untuk **{nama}**:")
+            lines.extend(f"{row['hari']}: {row['jam']}" for row in hours)
+        else:
+            lines.append(f"Jadwal poliklinik **{nama}** belum tersedia. Hubungi rumah sakit untuk konfirmasi.")
 
     elif attr == "jenis":
         lines.append(f"🏥 **{nama}** adalah Rumah Sakit berjenis **{rs.get('jenis', 'Umum')}** Kelas {rs.get('kelas', '-')}.")

@@ -29,13 +29,28 @@ for path in (ROOT / "semantic/rdf").glob("*.ttl"):
     graph.default_graph.parse(path, format="turtle")
 from app.services.sirs import GRAPH_URI
 graph.graph(URIRef(GRAPH_URI)).parse(ROOT / 'semantic/sirs/services-reviewed.ttl', format='turtle')
+graph.graph(URIRef('http://carisehat.id/graph/enrichment/2026-11-20')).parse(ROOT / 'semantic/named_graphs/carisehat-enrichment-freeze.ttl', format='turtle')
 async def select(query):
     return [{str(k): str(v) for k,v in row.asdict().items()} for row in graph.query(sp.PREFIXES + query)]
 async def construct(uri, accept):
-    query = f"CONSTRUCT {{ ?s ?p ?o }} WHERE {{ VALUES ?s {{ <{uri}> }} ?s ?p ?o }}" if uri else "CONSTRUCT { ?s ?p ?o } WHERE { ?s ?p ?o }"
-    return graph.query(query).graph.serialize(format="xml" if accept == "application/rdf+xml" else "turtle")
+    return graph.query(sp.PREFIXES + sp.build_construct_query(uri)).graph.serialize(format="xml" if accept == "application/rdf+xml" else "turtle")
 sp.select = select
 sp.construct = construct
+# Local protocol adapter for public SPARQL proxy tests. This is RDFLib, not Jena.
+from fastapi import APIRouter, Request, Response
+from urllib.parse import parse_qs
+fixture_router = APIRouter()
+@fixture_router.post('/_fixture-fuseki/query')
+async def fixture_query(request: Request):
+    query = parse_qs((await request.body()).decode()).get('query', [''])[0]
+    result = graph.query(query)
+    if result.type in ('SELECT', 'ASK'):
+        return Response(result.serialize(format='json'), media_type='application/sparql-results+json')
+    accept = request.headers.get('accept', '')
+    return Response(result.graph.serialize(format='xml' if 'rdf+xml' in accept else 'turtle'),
+                    media_type='application/rdf+xml' if 'rdf+xml' in accept else 'text/turtle')
+app.router.routes[0:0] = fixture_router.routes
+settings.fuseki_url = 'http://127.0.0.1:8765/_fixture-fuseki'
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="127.0.0.1", port=8765)

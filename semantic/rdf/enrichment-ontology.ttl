@@ -1,0 +1,31 @@
+@prefix hf: <http://carisehat.id/ontology/> .
+@prefix cs: <http://carisehat.id/ontology/sirs/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Terms used by the existing SIRS/enrichment graphs. No clinical inference rules.
+hf:FasilitasTempatTidurKritis a owl:Class ; rdfs:label "Kapasitas tempat tidur terlapor" .
+hf:fasilitasKritis a owl:ObjectProperty ; rdfs:domain hf:RumahSakit ; rdfs:range hf:FasilitasTempatTidurKritis .
+hf:direktur a owl:DatatypeProperty ; rdfs:domain hf:RumahSakit ; rdfs:range xsd:string .
+hf:kepemilikanSirs a owl:DatatypeProperty ; rdfs:domain hf:RumahSakit ; rdfs:range xsd:string .
+hf:luasTanah a owl:DatatypeProperty ; rdfs:range xsd:string .
+hf:luasBangunan a owl:DatatypeProperty ; rdfs:range xsd:string .
+hf:memilikiFasilitasDiagnostik a owl:DatatypeProperty ; rdfs:range xsd:string .
+hf:statusEmail a owl:DatatypeProperty ; rdfs:range xsd:string .
+hf:statusIgd24Jam a owl:DatatypeProperty ; rdfs:range xsd:string .
+hf:statusJamOperasional a owl:DatatypeProperty ; rdfs:range xsd:string .
+hf:statusVerifikasi a owl:DatatypeProperty ; rdfs:range xsd:string .
+hf:statusWebsite a owl:DatatypeProperty ; rdfs:range xsd:string .
+cs:catatanPelayanan a owl:ObjectProperty ; rdfs:domain hf:RumahSakit .
+cs:untukRumahSakit a owl:ObjectProperty ; rdfs:range hf:RumahSakit .
+cs:sumberProfil a owl:ObjectProperty .
+cs:kodeRegistrasiKemenkes a owl:DatatypeProperty ; rdfs:range xsd:string .
+cs:jenisFasilitas a owl:DatatypeProperty ; rdfs:range xsd:string .
+cs:kapasitasTerlapor a owl:DatatypeProperty ; rdfs:range xsd:integer .
+cs:kategoriKurasi a owl:DatatypeProperty ; rdfs:range xsd:string .
+cs:labelPelayanan a owl:DatatypeProperty ; rdfs:range xsd:string .
+cs:layakPencarian a owl:DatatypeProperty ; rdfs:range xsd:boolean .
+cs:statusKurasi a owl:DatatypeProperty ; rdfs:range xsd:string .
+cs:statusPublikasi a owl:DatatypeProperty ; rdfs:range xsd:string .
+cs:tanggalPengambilan a owl:DatatypeProperty .

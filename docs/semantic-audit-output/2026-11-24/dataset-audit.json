@@ -1,0 +1,220 @@
+{
+  "scope": "local files, not live Fuseki",
+  "triples": {
+    "default": 6148,
+    "sirs": 93595,
+    "enrichment": 7901
+  },
+  "hospitals": 206,
+  "identity_exact": true,
+  "regions": 33,
+  "unique_kemenkes_codes": 206,
+  "duplicate_codes": {},
+  "profile_identity_mismatches": [],
+  "sirs_observations": 10219,
+  "invalid_typed_literals": 0,
+  "undefined_local_predicates": [
+    "http://carisehat.id/ontology/fasilitasKritis",
+    "http://carisehat.id/ontology/kepemilikanSirs",
+    "http://carisehat.id/ontology/luasBangunan",
+    "http://carisehat.id/ontology/luasTanah",
+    "http://carisehat.id/ontology/memilikiFasilitasDiagnostik",
+    "http://carisehat.id/ontology/sirs/catatanPelayanan",
+    "http://carisehat.id/ontology/sirs/jenisFasilitas",
+    "http://carisehat.id/ontology/sirs/kapasitasTerlapor",
+    "http://carisehat.id/ontology/sirs/kategoriKurasi",
+    "http://carisehat.id/ontology/sirs/kodeRegistrasiKemenkes",
+    "http://carisehat.id/ontology/sirs/labelPelayanan",
+    "http://carisehat.id/ontology/sirs/layakPencarian",
+    "http://carisehat.id/ontology/sirs/statusKurasi",
+    "http://carisehat.id/ontology/sirs/statusPublikasi",
+    "http://carisehat.id/ontology/sirs/sumberProfil",
+    "http://carisehat.id/ontology/sirs/tanggalPengambilan",
+    "http://carisehat.id/ontology/sirs/untukRumahSakit",
+    "http://carisehat.id/ontology/statusEmail",
+    "http://carisehat.id/ontology/statusIgd24Jam",
+    "http://carisehat.id/ontology/statusJamOperasional",
+    "http://carisehat.id/ontology/statusVerifikasi",
+    "http://carisehat.id/ontology/statusWebsite"
+  ],
+  "duplicate_coordinate_groups": {
+    "('2.958863', '99.065365')": [
+      "rs-044",
+      "rs-054",
+      "rs-011"
+    ],
+    "('3.474454', '98.715897')": [
+      "rs-135",
+      "rs-009",
+      "rs-086",
+      "rs-162",
+      "rs-173",
+      "rs-133",
+      "rs-203",
+      "rs-021",
+      "rs-126",
+      "rs-013"
+    ],
+    "('3.761725', '98.176919')": [
+      "rs-167",
+      "rs-170",
+      "rs-112",
+      "rs-141",
+      "rs-172"
+    ],
+    "('3.681634', '98.656093')": [
+      "rs-117",
+      "rs-202"
+    ],
+    "('1.629230', '99.692611')": [
+      "rs-087",
+      "rs-166",
+      "rs-103"
+    ],
+    "('2.153426', '99.785079')": [
+      "rs-124",
+      "rs-116",
+      "rs-101",
+      "rs-010"
+    ],
+    "('3.601672', '98.483820')": [
+      "rs-084",
+      "rs-017"
+    ],
+    "('2.156475', '99.784549')": [
+      "rs-052",
+      "rs-072"
+    ],
+    "('2.950708', '98.784316')": [
+      "rs-136",
+      "rs-098",
+      "rs-110"
+    ],
+    "('1.384180', '99.274601')": [
+      "rs-129",
+      "rs-038"
+    ],
+    "('3.589462', '98.674162')": [
+      "rs-026",
+      "rs-035",
+      "rs-023",
+      "rs-139",
+      "rs-192",
+      "rs-089"
+    ],
+    "('1.290057', '97.615077')": [
+      "rs-037",
+      "rs-064",
+      "rs-082"
+    ],
+    "('2.851800', '99.623301')": [
+      "rs-197",
+      "rs-164",
+      "rs-070",
+      "rs-049",
+      "rs-068",
+      "rs-047",
+      "rs-184"
+    ],
+    "('2.610918', '98.902260')": [
+      "rs-127",
+      "rs-100"
+    ],
+    "('2.828960', '98.312278')": [
+      "rs-104",
+      "rs-183"
+    ],
+    "('None', 'None')": [
+      "rs-075",
+      "rs-060",
+      "rs-081",
+      "rs-093",
+      "rs-092",
+      "rs-160",
+      "rs-043",
+      "rs-165",
+      "rs-050"
+    ],
+    "('2.950635', '99.066850')": [
+      "rs-186",
+      "rs-059"
+    ],
+    "('3.327369', '99.162302')": [
+      "rs-189",
+      "rs-079"
+    ],
+    "('3.224064', '99.503580')": [
+      "rs-137",
+      "rs-074",
+      "rs-046"
+    ],
+    "('2.978450', '99.079291')": [
+      "rs-041",
+      "rs-040"
+    ],
+    "('2.970342', '99.802090')": [
+      "rs-085",
+      "rs-121"
+    ],
+    "('1.736506', '98.782477')": [
+      "rs-039",
+      "rs-078"
+    ]
+  },
+  "coordinate_sources": {
+    "nama": 52,
+    "osm": 39,
+    "kabkota": 65,
+    "jalan": 41,
+    "None": 9
+  },
+  "candidate_hours_rows": 158,
+  "candidate_hours_hospitals": 140,
+  "candidate_hours_status": {
+    "VERIFIED_OFFICIAL": 85,
+    "CORROBORATED": 20,
+    "NOT_FOUND": 53
+  },
+  "legacy_final_hours_populated": 44,
+  "legacy_populated_despite_not_found": [
+    "rs-001",
+    "rs-009",
+    "rs-013",
+    "rs-017",
+    "rs-018",
+    "rs-021",
+    "rs-024",
+    "rs-071",
+    "rs-073",
+    "rs-084",
+    "rs-086",
+    "rs-107",
+    "rs-112",
+    "rs-114",
+    "rs-120",
+    "rs-122",
+    "rs-126",
+    "rs-135",
+    "rs-138",
+    "rs-141",
+    "rs-149",
+    "rs-154",
+    "rs-162",
+    "rs-163",
+    "rs-170",
+    "rs-172",
+    "rs-173",
+    "rs-174",
+    "rs-180",
+    "rs-182",
+    "rs-187",
+    "rs-193",
+    "rs-203"
+  ],
+  "legacy_structured_schedule_hospitals": 3,
+  "source_hashes": {
+    "semantic\\rdf\\hospital-websites.ttl": "16f54a5f49de6fb5aecd310184fd94cc3d428a6dcd677a14dd29c3a5bca3893b",
+    "semantic\\rdf\\hospitals-sumut.ttl": "365fa93455c5c15c1435a697886315f4cf2c553e9e64fe293e6e03c1f4cd57ca",
+    "semantic\\rdf\\ontologi.ttl": "05356d6533675f461830aaaacb8fde37048dbc005a5e1ae60357f3c2c57aee13"
+  }
+}

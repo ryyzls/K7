@@ -270,36 +270,9 @@ def skor(query: str, nama: str, *, allow_internal_fragment: bool = True) -> floa
     n_expanded = expand(n_norm)
     expanded_score = _partial_text_score(q_expanded, n_expanded, allow_internal_fragment)
 
-    # Fuzzy typo dipertahankan, tetapi tidak dipakai untuk token pendek.
-    q_words = q_expanded.split()
-    n_words = n_expanded.split()
-    fuzzy_score = 0.0
-    eligible_words = [word for word in q_words if len(word) >= 5]
-    if eligible_words and n_words:
-        best_scores = []
-        for qw in eligible_words:
-            eligible_targets = [nw for nw in n_words if abs(len(qw) - len(nw)) <= 2]
-            if not eligible_targets:
-                best_scores = []
-                break
-            best_ratio = max(
-                difflib.SequenceMatcher(None, qw, nw).ratio()
-                for nw in eligible_targets
-            )
-            # Pertahankan toleransi typo 1-2 karakter tanpa menerima kemiripan lemah.
-            if best_ratio < 0.72:
-                best_scores = []
-                break
-            best_scores.append(best_ratio)
-
-        if best_scores and len(best_scores) == len(eligible_words):
-            fuzzy_score = sum(best_scores) / len(best_scores)
-            if len(q_words) == 1 and len(q_norm) >= 5:
-                full_ratio = difflib.SequenceMatcher(None, q_norm, n_norm).ratio()
-                if full_ratio >= 0.72:
-                    fuzzy_score = max(fuzzy_score, full_ratio)
-
-    return max(partial_score, expanded_score, fuzzy_score)
+    # Every query token must match. Dropping short words (e.g. "adam") made
+    # "Adam Malik" score equally with "Abdul Malik" merely on "malik".
+    return max(partial_score, expanded_score)
 
 
 def akronim(nama: str) -> set[str]:

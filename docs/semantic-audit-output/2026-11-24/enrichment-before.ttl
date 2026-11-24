@@ -1,0 +1,3002 @@
+@prefix cs: <http://carisehat.id/ontology/sirs/> .
+@prefix hf: <http://carisehat.id/ontology/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+
+<http://localhost:8000/rs/rs-001> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "1.087,7 m2" ;
+    hf:luasTanah "2.460 m2" ;
+    cs:kodeRegistrasiKemenkes "1276079" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Naeni Juliani, M.K.M" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "06142365911" .
+
+<http://localhost:8000/rs/rs-002> a hf:RumahSakit ;
+    hf:kepemilikanSirs "TNI AL" ;
+    hf:luasBangunan "71175" ;
+    hf:luasTanah "8550" ;
+    cs:kodeRegistrasiKemenkes "1275141" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Uncok Ramses Simanjuntak,Sp.B" ;
+    schema:email "rumkitalkomangmakes@gmail.com" ;
+    schema:telephone "061-6941741" .
+
+<http://localhost:8000/rs/rs-003> a hf:RumahSakit ;
+    hf:kepemilikanSirs "POLRI" ;
+    hf:luasBangunan "4676.5" ;
+    hf:luasTanah "40000" ;
+    cs:kodeRegistrasiKemenkes "1275046" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "Dr. dr. SYARIF HIDAYATULLAH, Sp.OT., M.KES." ;
+    schema:email "pengaduan@rumkitbhayangkaramedan.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "14:00" ;
+            schema:description "Senin-Jumat 07:00 - 14:00 WIB" ;
+            schema:opens "07:00" ] ;
+    schema:telephone "0821-7997-604" ;
+    schema:url <https://rumkitbhayangkaramedan.com> .
+
+<http://localhost:8000/rs/rs-004> a hf:RumahSakit ;
+    hf:kepemilikanSirs "POLRI" ;
+    hf:luasBangunan "1.932 M2" ;
+    hf:luasTanah "45.000 M2" ;
+    cs:kodeRegistrasiKemenkes "1203067" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. MUHAMMAD AKBAR, M.Ked, Sp.A" ;
+    schema:telephone "082161004550" .
+
+<http://localhost:8000/rs/rs-005> a hf:RumahSakit ;
+    hf:kepemilikanSirs "POLRI" ;
+    hf:luasBangunan "16.606" ;
+    hf:luasTanah "4380" ;
+    cs:kodeRegistrasiKemenkes "1274058" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "CORROBORATED" ;
+    schema:director "dr. ELI SAFRIN ALMIRON ,M.Ked.(Surg),Sp.OT" ;
+    schema:telephone "0621-326701" ;
+    schema:url <https://rsbhayangkaratebingtinggi.wordpress.com> .
+
+<http://localhost:8000/rs/rs-006> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "7.892" ;
+    hf:luasTanah "9.873" ;
+    cs:kodeRegistrasiKemenkes "1274063" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Happy,MKM" ;
+    schema:email "rschevani175@gmail.com" ;
+    schema:telephone "06213950222" .
+
+<http://localhost:8000/rs/rs-007> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "20.739" ;
+    hf:luasTanah "6.269" ;
+    cs:kodeRegistrasiKemenkes "1275074" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "verified" ;
+    schema:director "dr. Mardianto, SpPD, KEMD, FINASIM" ;
+    schema:telephone "061-88806888" ;
+    schema:url <https://columbiaasia.co.id/rs-columbia-asia-aksara/informasi-umum-aksara/> .
+
+<http://localhost:8000/rs/rs-008> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "25.740m2" ;
+    hf:luasTanah "12.065m2" ;
+    cs:kodeRegistrasiKemenkes "1275852" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "verified" ;
+    schema:director "Dr. dr. Beni Satria, M.Kes.,S.H.,M.H.,FISQua" ;
+    schema:telephone "061-4566368" ;
+    schema:url <https://columbiaasia.co.id/rs-columbia-asia-medan/> .
+
+<http://localhost:8000/rs/rs-009> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "1.216 M2" ;
+    hf:luasTanah "5108 M2" ;
+    cs:kodeRegistrasiKemenkes "1212201" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Syafrizal Amin Nasution, M. Kes, M. Ked (Clinpath), Sp. PK" ;
+    schema:email "dhillonhospitalmarketing@gmail.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "082166409817" ;
+    schema:url <https://rumahsakitdhillon.com> .
+
+<http://localhost:8000/rs/rs-010> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "630" ;
+    hf:luasTanah "210" ;
+    cs:kodeRegistrasiKemenkes "1207069" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr.Nuraini Siregar,M.KM" ;
+    schema:telephone "0624-327969" .
+
+<http://localhost:8000/rs/rs-011> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "9.312" ;
+    hf:luasTanah "20.554" ;
+    cs:kodeRegistrasiKemenkes "1273119" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Nopitasari Br Tarigan, M.Biomed, AAM" ;
+    schema:telephone "085261163933" ;
+    schema:url <https://www.rsefarinaetahamsiantar.com> .
+
+<http://localhost:8000/rs/rs-012> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "2.184 m2" ;
+    hf:luasTanah "1.138 m2" ;
+    cs:kodeRegistrasiKemenkes "1275932" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "drg. Mustika Lili Perdani, MDSc" ;
+    schema:email "rsgmprima@royalprima.com" ;
+    schema:telephone "082167863838" ;
+    schema:url <http://rsgmprima.unprimdn.ac.id> .
+
+<http://localhost:8000/rs/rs-013> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Kementerian Lain" ;
+    hf:luasBangunan "1264" ;
+    hf:luasTanah "1264" ;
+    cs:kodeRegistrasiKemenkes "1212202" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. M. Nisril Syahputra, Sp.B" ;
+    schema:email "rsgrandmedica@gmail.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "081533846120" .
+
+<http://localhost:8000/rs/rs-014> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "18000" ;
+    hf:luasTanah "42000" ;
+    cs:kodeRegistrasiKemenkes "1218158" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Arif Sujatmiko, MKes" ;
+    schema:email "info@rsgrandmed.com" ;
+    schema:telephone "08116057610" ;
+    schema:url <https://www.rsgrandmed.com> .
+
+<http://localhost:8000/rs/rs-015> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "831" ;
+    hf:luasTanah "773" ;
+    cs:kodeRegistrasiKemenkes "1275929" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr.Roro Jenny Satyo Putri, MARS.,MH. kes" ;
+    schema:email "rsiaarthamahinrus@gmail.com" ;
+    schema:telephone "061-80088892" .
+
+<http://localhost:8000/rs/rs-016> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "100" ;
+    hf:luasTanah "300" ;
+    cs:kodeRegistrasiKemenkes "1275910" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. HENRY GUNAWAN M.Ked (OG) SpOG" ;
+    schema:telephone "0617367933" .
+
+<http://localhost:8000/rs/rs-017> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "496m2" ;
+    hf:luasTanah "798 m2" ;
+    cs:kodeRegistrasiKemenkes "1276092" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Aulia Novasyra, M.Kes" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "0895703006020" .
+
+<http://localhost:8000/rs/rs-018> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "1.855,82" ;
+    hf:luasTanah "399m+464m" ;
+    cs:kodeRegistrasiKemenkes "1212186" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Muhammad Sofyan, MKM" ;
+    schema:email "receptionist@rsiamaharani.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "061-80110907" ;
+    schema:url <https://rsiamaharani.com> .
+
+<http://localhost:8000/rs/rs-019> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "2000" ;
+    hf:luasTanah "4600" ;
+    cs:kodeRegistrasiKemenkes "1211127" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Raskami Indawati Br PA, MKM" ;
+    schema:telephone "0628-9832858" .
+
+<http://localhost:8000/rs/rs-020> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "2791" ;
+    hf:luasTanah "838.28" ;
+    cs:kodeRegistrasiKemenkes "1275783" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Marganda DA Pasaribu, MKK" ;
+    schema:email "rsia.rosiva@rsmurniteguh.com" ;
+    schema:telephone "082174347885" ;
+    schema:url <https://rsmurniteguh.com> .
+
+<http://localhost:8000/rs/rs-021> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "1868 M" ;
+    hf:luasTanah "2561 M" ;
+    cs:kodeRegistrasiKemenkes "1212197" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Suheri Parulian Gultom, M. Kes" ;
+    schema:email "rsia.pramaliesa@gmail.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "08116219090" ;
+    schema:url <https://rsiapramaliesa.com> .
+
+<http://localhost:8000/rs/rs-022> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "22.103 m2, Pagar 631 m2, Perkerasan 1667 m2" ;
+    hf:luasTanah "5308 m2" ;
+    cs:kodeRegistrasiKemenkes "1275998" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Syaiful Ramadhan, M.Kes" ;
+    schema:email "customer_assistance@stellamarishospital.com" ;
+    schema:telephone "061-4158383" ;
+    schema:url <http://www.rsiastellamaris.com> .
+
+<http://localhost:8000/rs/rs-023> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "700 M²" ;
+    hf:luasTanah "1100 M²" ;
+    cs:kodeRegistrasiKemenkes "1275999" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Ryan Hidaya" ;
+    schema:email "binakarsa@yahoo.com" ;
+    schema:telephone "08138827769" ;
+    schema:url <https://rsjbinakarsamedan.co.id> .
+
+<http://localhost:8000/rs/rs-024> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "3.000 M" ;
+    hf:luasTanah "9.500 M" ;
+    cs:kodeRegistrasiKemenkes "1212184" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Dahlia Rosally Turangan, M.Ked(KJ), SpKJ" ;
+    schema:email "binakarsa_tuntungan@yahoo.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "082163944599" ;
+    schema:url <https://rsjbinakarsatuntungan.co.id> .
+
+<http://localhost:8000/rs/rs-025> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemprop" ;
+    hf:luasBangunan "12628" ;
+    hf:luasTanah "38000" ;
+    cs:kodeRegistrasiKemenkes "1275221" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "SRI SURIANI PURNAMAWATI, S.Si, Apt, M.Kes" ;
+    schema:email "rsj@sumutprov.go.id" ;
+    schema:telephone "061-8360542" ;
+    schema:url <https://rsj.sumutprov.go.id> .
+
+<http://localhost:8000/rs/rs-026> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "1200" ;
+    hf:luasTanah "2000" ;
+    cs:kodeRegistrasiKemenkes "1275232" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Retno Sari Dewi, M.Kes., Sp.KKLP" ;
+    schema:email "rsaccuplast@yahoo.com" ;
+    schema:telephone "061-4153054" .
+
+<http://localhost:8000/rs/rs-027> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "3.511" ;
+    hf:luasTanah "2.174" ;
+    cs:kodeRegistrasiKemenkes "1275921" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Feby Antoni" ;
+    schema:email "admin@rssetiabudi.co.id" ;
+    schema:telephone "081396256120" ;
+    schema:url <http://rssetiabudi.co.id> .
+
+<http://localhost:8000/rs/rs-028> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Kementerian Lain" ;
+    hf:luasBangunan "-" ;
+    hf:luasTanah "6.965,5 m2" ;
+    cs:kodeRegistrasiKemenkes "1275874" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "Dr. drg. Rini Octavia Nasution M.Kes., Sp.Perio.,Subsp.RPID(K)" ;
+    schema:email "rsgm@usu.ac.id" ;
+    schema:telephone "085791259191" ;
+    schema:url <https://rsgm.usu.ac.id> .
+
+<http://localhost:8000/rs/rs-029> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "5364" ;
+    hf:luasTanah "1759" ;
+    cs:kodeRegistrasiKemenkes "1275918" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "Dr. dr. Alwi Thamrin Nasution, Sp.PD., KGH" ;
+    schema:email "rskgrasyida@gmail.com" ;
+    schema:telephone "061-4148722" ;
+    schema:url <https://rsrasyida.com> .
+
+<http://localhost:8000/rs/rs-030> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "2580" ;
+    hf:luasTanah "842" ;
+    cs:kodeRegistrasiKemenkes "1275309" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Lucyana, MKM" ;
+    schema:email "mbmc.mata@yahoo.com" ;
+    schema:telephone "4530989" ;
+    schema:url <https://rskmatamedanbaru.com> .
+
+<http://localhost:8000/rs/rs-031> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "1094" ;
+    hf:luasTanah "529" ;
+    cs:kodeRegistrasiKemenkes "1275914" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Annisa Dhiya Zafira, MARS, FISQUA" ;
+    schema:email "rsmatam77@gmail.com" ;
+    schema:telephone "08116207177" ;
+    schema:url <https://www.rsmata-m77.com> .
+
+<http://localhost:8000/rs/rs-032> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "920" ;
+    hf:luasTanah "1540" ;
+    cs:kodeRegistrasiKemenkes "1275928" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Prasti Windika Syafitri" ;
+    schema:email "rsprimavision@gmail.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "20:00" ;
+            schema:description "Senin-Sabtu 08:00 - 20:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "061-80514888" ;
+    schema:url <https://www.primavisionhospital.com> .
+
+<http://localhost:8000/rs/rs-033> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemprop" ;
+    hf:luasBangunan "1610" ;
+    hf:luasTanah "4591" ;
+    cs:kodeRegistrasiKemenkes "1275922" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Nelly Fitriani, M.Kes" ;
+    schema:telephone "082374011686" ;
+    schema:url <https://rskmata.sumutprov.go.id> .
+
+<http://localhost:8000/rs/rs-034> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "4660 m2" ;
+    hf:luasTanah "1805 m2" ;
+    cs:kodeRegistrasiKemenkes "1275898" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Dharmayanti, MKes" ;
+    schema:email "medan@rsmatasmec.com" ;
+    schema:telephone "061-4518222" ;
+    schema:url <https://www.rsmatasmec.com> .
+
+<http://localhost:8000/rs/rs-035> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemprop" ;
+    hf:luasBangunan "4632 m2" ;
+    hf:luasTanah "18485 m2" ;
+    cs:kodeRegistrasiKemenkes "1275933" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "Pulo Rizal Togatorop, SKM, MPH" ;
+    schema:telephone "061-8214733" ;
+    schema:url <https://rskparu.sumutprov.go.id> .
+
+<http://localhost:8000/rs/rs-036> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "576.00 M2" ;
+    hf:luasTanah "730.00 M2" ;
+    cs:kodeRegistrasiKemenkes "1273107" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Sefira Dwi Ramadhany, Sp.M" ;
+    schema:telephone "62225559" ;
+    schema:url <https://www.rsmatasiantar.com> .
+
+<http://localhost:8000/rs/rs-037> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "12442" ;
+    hf:luasTanah "4002" ;
+    cs:kodeRegistrasiKemenkes "1278013" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr Devan Perwira Sp. K.F.R., AIFO-K" ;
+    schema:telephone "082370600802" .
+
+<http://localhost:8000/rs/rs-038> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "2368" ;
+    hf:luasTanah "772" ;
+    cs:kodeRegistrasiKemenkes "1277027" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "REVIEW_REQUIRED" ;
+    schema:director "dr. Sri Rezki Lubis" ;
+    schema:telephone "0634-4320777" ;
+    schema:url <https://linktr.ee/mettamedikapadangsidimpuan> .
+
+<http://localhost:8000/rs/rs-039> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "2433,375" ;
+    hf:luasTanah "821,5" ;
+    cs:kodeRegistrasiKemenkes "1271033" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "REVIEW_REQUIRED" ;
+    schema:director "drg. Henry Gunawan, M.K.M" ;
+    schema:email "metta.medika@gmail.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "20:00" ;
+            schema:description "Senin-Sabtu 08:00 - 20:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "0631-24001" ;
+    schema:url <https://linktr.ee/rsmettamedika2> .
+
+<http://localhost:8000/rs/rs-040> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "2700" ;
+    hf:luasTanah "7840" ;
+    cs:kodeRegistrasiKemenkes "1273102" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Herman Ramli" ;
+    schema:email "murniteguhhorasinsani@gmail.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Pendaftaran Pasien" ;
+            schema:closes "17:00" ;
+            schema:description "Senin-Minggu 08:00 - 17:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "08116829705" ;
+    schema:url <https://www.rsmurniteguh.com> .
+
+<http://localhost:8000/rs/rs-041> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "1566" ;
+    hf:luasTanah "1574" ;
+    cs:kodeRegistrasiKemenkes "1273120" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Alexander Agung Sunarjo" ;
+    schema:email "sekretariat.mtps@rsmurniteguh.com" ;
+    schema:telephone "0812-6061-2160" ;
+    schema:url <https://www.rsmurniteguh.com> .
+
+<http://localhost:8000/rs/rs-042> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Kementerian Lain" ;
+    hf:luasBangunan "5200" ;
+    hf:luasTanah "38000" ;
+    cs:kodeRegistrasiKemenkes "1275913" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Inke Nadia Diniyanti Lubis, PGDip PID FAAET, M.Ked(Ped), Sp.A, Ph.D" ;
+    schema:email "rs.usu@usu.ac.id" ;
+    schema:telephone "061-8218928" ;
+    schema:url <https://rs.usu.ac.id> .
+
+<http://localhost:8000/rs/rs-043> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "4.056,13 m²" ;
+    hf:luasTanah "21.000 m²" ;
+    cs:kodeRegistrasiKemenkes "1225013" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Ranebudayada Gohae" ;
+    schema:telephone "082267208436" .
+
+<http://localhost:8000/rs/rs-044> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "2.200" ;
+    hf:luasTanah "1.231" ;
+    cs:kodeRegistrasiKemenkes "1273108" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Issumi Maharani Tanjung, MKM" ;
+    schema:email "rasyida2018@gmail.com" ;
+    schema:telephone "081377378817" .
+
+<http://localhost:8000/rs/rs-045> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "44828" ;
+    hf:luasTanah "7414" ;
+    cs:kodeRegistrasiKemenkes "1275073" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "Dr. dr. Ery Suhaymi, SH, MH, M.Ked (Surg), Sp.B" ;
+    schema:email "customer.care@reginamarishospital.com" ;
+    schema:telephone "061-88880808" ;
+    schema:url <https://reginamarishospital.com> .
+
+<http://localhost:8000/rs/rs-046> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "4.548,28" ;
+    hf:luasTanah "501" ;
+    cs:kodeRegistrasiKemenkes "1219015" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Ahmad Fadhil Halimy Harahap" ;
+    schema:email "saptamedika1010@gmail.com" ;
+    schema:telephone "085359980800" ;
+    schema:url <https://saptamedika.com> .
+
+<http://localhost:8000/rs/rs-047> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perorangan" ;
+    hf:luasBangunan "Belum tercatat" ;
+    hf:luasTanah "Belum tercatat" ;
+    cs:kodeRegistrasiKemenkes "1208068" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Diana Agustina Ritonga , MKM" ;
+    schema:telephone "082370559958" .
+
+<http://localhost:8000/rs/rs-048> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "1.5 Ha" ;
+    hf:luasTanah "5.57 Ha" ;
+    cs:kodeRegistrasiKemenkes "1223018" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "Syahriadi Siregar" ;
+    schema:email "membangmudasripamela@gmail.com" ;
+    schema:telephone "081264345122" ;
+    schema:url <https://membangmuda.spmedika.co.id> .
+
+<http://localhost:8000/rs/rs-049> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "2025 M2" ;
+    hf:luasTanah "13662 M2" ;
+    cs:kodeRegistrasiKemenkes "1208053" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Resmanto, M.K.M" ;
+    schema:email "rsu@seidadap.spmedika.co.id" ;
+    schema:telephone "082304260117" ;
+    schema:url <https://seidadap.spmedika.co.id> .
+
+<http://localhost:8000/rs/rs-050> a hf:RumahSakit ;
+    hf:kepemilikanSirs "BUMN" ;
+    hf:luasBangunan "3.5" ;
+    hf:luasTanah "25.39" ;
+    cs:kodeRegistrasiKemenkes "1207052" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Efni Mulkan Hasibuan.M.K.M" ;
+    schema:email "rsu@sritorgamba.spmedika.co.id" ;
+    schema:telephone "082210865225" ;
+    schema:url <https://sritorgamba.spmedika.co.id> .
+
+<http://localhost:8000/rs/rs-051> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "4558" ;
+    hf:luasTanah "17795" ;
+    cs:kodeRegistrasiKemenkes "1275996" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "Maya Kartika Sari, S.Kes., M.K.M" ;
+    schema:email "info@sufinaaziz.com" ;
+    schema:telephone "061-8441111" ;
+    schema:url <https://sufinaaziz.com> .
+
+<http://localhost:8000/rs/rs-052> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perorangan" ;
+    hf:luasBangunan "1.056 M2" ;
+    hf:luasTanah "528 M2" ;
+    cs:kodeRegistrasiKemenkes "1223005" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Safridawati Matondang, M.K.M." ;
+    schema:email "rsutigabersaudara@gmail.com" ;
+    schema:telephone "081260142618" .
+
+<http://localhost:8000/rs/rs-053> a hf:RumahSakit ;
+    hf:kepemilikanSirs "TNI AD" ;
+    hf:luasBangunan "18.293,2" ;
+    hf:luasTanah "46.434" ;
+    cs:kodeRegistrasiKemenkes "1275035" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "Kolonel Ckm dr. I Gede Wardhana Tohjiwa, Sp.PK." ;
+    schema:email "rumkittkiikesdamsatubb@gmail.com" ;
+    schema:telephone "08116122233" ;
+    schema:url <https://rumkitputrihijau.tni-ad.mil.id> .
+
+<http://localhost:8000/rs/rs-054> a hf:RumahSakit ;
+    hf:kepemilikanSirs "TNI AD" ;
+    hf:luasBangunan "6.700 M³" ;
+    hf:luasTanah "66.725 M³" ;
+    cs:kodeRegistrasiKemenkes "1273022" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "Mayor Ckm dr. Ivan Paulus Gunata, Sp.KJ, M.A.R.S" ;
+    schema:email "rumkit_siantar@yahoo.co.id" ;
+    schema:telephone "081370816838" ;
+    schema:url <https://rumkitsiantar.tni-ad.mil.id> .
+
+<http://localhost:8000/rs/rs-055> a hf:RumahSakit ;
+    hf:kepemilikanSirs "TNI AD" ;
+    hf:luasBangunan "3509" ;
+    hf:luasTanah "28892" ;
+    cs:kodeRegistrasiKemenkes "1276040" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Revy Octarian Palmendha, Sp. T.H.T.B.K.L, FICS" ;
+    schema:email "info@rstentarabinjai.com" ;
+    schema:telephone "082361873345" ;
+    schema:url <https://rstentarabinjai.com> .
+
+<http://localhost:8000/rs/rs-056> a hf:RumahSakit ;
+    hf:kepemilikanSirs "TNI AD" ;
+    hf:luasBangunan "2942" ;
+    hf:luasTanah "32065" ;
+    cs:kodeRegistrasiKemenkes "1277015" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "Mayor Ckm dr. Finot, Sp.PA" ;
+    schema:email "rumkittnipsp@gmail.com" ;
+    schema:telephone "081260811173" ;
+    schema:url <https://rumkittnipsp.com> .
+
+<http://localhost:8000/rs/rs-057> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "10000" ;
+    hf:luasTanah "25000" ;
+    cs:kodeRegistrasiKemenkes "1275094" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Rudy Charles Dodo Sitepu, M.H(Kes)" ;
+    schema:email "info@rsadventmedan.com" ;
+    schema:telephone "082281730947" ;
+    schema:url <https://rsadventmedan.com> .
+
+<http://localhost:8000/rs/rs-058> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "2000" ;
+    hf:luasTanah "2900" ;
+    cs:kodeRegistrasiKemenkes "1276078" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Allen Meiyano" ;
+    schema:telephone "08116222126" ;
+    schema:url <https://www.rsualfuadi.com> .
+
+<http://localhost:8000/rs/rs-059> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "3.759" ;
+    hf:luasTanah "3950" ;
+    cs:kodeRegistrasiKemenkes "1211126" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Febriyani Sembiring" ;
+    schema:email "rsu.amanda@yahoo.com" ;
+    schema:telephone "0628-93034" .
+
+<http://localhost:8000/rs/rs-060> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "1802" ;
+    hf:luasTanah "2209" ;
+    cs:kodeRegistrasiKemenkes "1202029" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Indira Pratiwi Nasution" ;
+    schema:telephone "081540800117" .
+
+<http://localhost:8000/rs/rs-061> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "4652,98" ;
+    hf:luasTanah "2799" ;
+    cs:kodeRegistrasiKemenkes "1276036" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Tulus Samuel Sitorus, M.K.M" ;
+    schema:email "officialrsuarthamedica@gmail.com" ;
+    schema:telephone "085270868805" ;
+    schema:url <https://rsuarthamedica.com> .
+
+<http://localhost:8000/rs/rs-062> a hf:RumahSakit ;
+    hf:kepemilikanSirs "BUMN" ;
+    hf:luasBangunan "-20.235,76" ;
+    hf:luasTanah "-21" ;
+    cs:kodeRegistrasiKemenkes "1209010" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "CORROBORATED" ;
+    schema:director "dr. Indah Mutia Sari,MKM" ;
+    schema:email "rumahsakitbalimbingan@gmail.com" ;
+    schema:telephone "081370846809" ;
+    schema:url <https://ptpmn.co.id> .
+
+<http://localhost:8000/rs/rs-063> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "1360" ;
+    hf:luasTanah "1.335" ;
+    cs:kodeRegistrasiKemenkes "1275772" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Rehulina Ginting, M.Kes, Sp.KKLP" ;
+    schema:email "info@rsbandung.com" ;
+    schema:telephone "0614567993" ;
+    schema:url <https://www.rsubandung.com> .
+
+<http://localhost:8000/rs/rs-064> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "3135.57" ;
+    hf:luasTanah "3135.57" ;
+    cs:kodeRegistrasiKemenkes "1278002" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Yorien Setia Alfarianti Lase" ;
+    schema:email "rs_bethesda@yahoo.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "14:00" ;
+            schema:description "Senin-Sabtu 08:00 - 14:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "81264480577" .
+
+<http://localhost:8000/rs/rs-065> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "16480" ;
+    hf:luasTanah "16480" ;
+    cs:kodeRegistrasiKemenkes "1276075" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Kartika Sari Ritonga, MM, C.PS" ;
+    schema:email "bidadaribinjai@gmail.com" ;
+    schema:telephone "0618830003" ;
+    schema:url <https://rsu.bidadari.co.id> .
+
+<http://localhost:8000/rs/rs-066> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "8.662 m2" ;
+    hf:luasTanah "17.345,85 m2" ;
+    cs:kodeRegistrasiKemenkes "1219017" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Siti Luluk Raihan, MKM" ;
+    schema:email "rsbidadaribatubara@yahoo.com" ;
+    schema:telephone "081329928886" ;
+    schema:url <https://rsubatubara.bidadari.co.id> .
+
+<http://localhost:8000/rs/rs-067> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "10.240 M" ;
+    hf:luasTanah "12.5" ;
+    cs:kodeRegistrasiKemenkes "1275997" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "Dr. Wiyogo, M.KM FISQua" ;
+    schema:email "info@rsubinakasihmdn.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Pendaftaran Pasien" ;
+            schema:closes "21:00" ;
+            schema:description "Senin-Minggu 07:00 - 21:00 WIB" ;
+            schema:opens "07:00" ] ;
+    schema:telephone "061-8475111" ;
+    schema:url <https://rsubinakasihmdn.com> .
+
+<http://localhost:8000/rs/rs-068> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perorangan" ;
+    hf:luasBangunan "± 2.233 M2" ;
+    hf:luasTanah "1.984 M2" ;
+    cs:kodeRegistrasiKemenkes "1208059" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Binsar P. Sitanggang, SpOG(K).,SH,M.H" ;
+    schema:email "rsbundamulia@yahoo.com" ;
+    schema:telephone "081264299098" .
+
+<http://localhost:8000/rs/rs-069> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "4.376" ;
+    hf:luasTanah "1.358" ;
+    cs:kodeRegistrasiKemenkes "1275890" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Iskandar Candra, M.Kes, FISQua, KMK, CHQP" ;
+    schema:email "bundathamrin@gmail.com" ;
+    schema:telephone "061-4557318" ;
+    schema:url <https://www.bundathamrin.com> .
+
+<http://localhost:8000/rs/rs-070> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "3.794" ;
+    hf:luasTanah "19.000" ;
+    cs:kodeRegistrasiKemenkes "1208020" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "DR.dr. Elman Boy, MKes, Sp.KKPL, Subsp FOMC" ;
+    schema:telephone "081262484574" ;
+    schema:url <https://rsucatharina1914.com> .
+
+<http://localhost:8000/rs/rs-071> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "1266" ;
+    hf:luasTanah "1558" ;
+    cs:kodeRegistrasiKemenkes "1212179" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Hendra Taufiq Hasibuan" ;
+    schema:email "rsucitramedika@yahoo.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "082175981013" .
+
+<http://localhost:8000/rs/rs-072> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "1415" ;
+    hf:luasTanah "4289" ;
+    cs:kodeRegistrasiKemenkes "1223002" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. JURI FREZA" ;
+    schema:email "rsudaekkanopan_k@yahoo.com" ;
+    schema:telephone "0624-92525" .
+
+<http://localhost:8000/rs/rs-073> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "1950" ;
+    hf:luasTanah "2762" ;
+    cs:kodeRegistrasiKemenkes "1212198" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Silvia Karlia" ;
+    schema:email "rsbangunpurba@deliserdangkab.go.id" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "082181427461" .
+
+<http://localhost:8000/rs/rs-074> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "27000m2" ;
+    hf:luasTanah "40000m2" ;
+    cs:kodeRegistrasiKemenkes "1219003" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Yufly Yanza" ;
+    schema:email "batubararsud@gmail.com" ;
+    schema:telephone "085381337169" .
+
+<http://localhost:8000/rs/rs-075> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "2118 M2" ;
+    hf:luasTanah "30070 M2" ;
+    cs:kodeRegistrasiKemenkes "1225002" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. PESALMEN SARAGIH, M.Ked (Clin.Path), Sp.P.K" ;
+    schema:telephone "082273316731" .
+
+<http://localhost:8000/rs/rs-076> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "9000" ;
+    hf:luasTanah "12000" ;
+    cs:kodeRegistrasiKemenkes "1205035" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Tiar Lusiana Sihombing" ;
+    schema:email "rsuddoloksanggul@gmail.com" ;
+    schema:telephone "0633-31022" .
+
+<http://localhost:8000/rs/rs-077> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkot" ;
+    hf:luasBangunan "17" ;
+    hf:luasTanah "12280000" ;
+    cs:kodeRegistrasiKemenkes "1273011" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "CORROBORATED" ;
+    schema:director "Drg. IRMA SURYANI, MKM" ;
+    schema:email "djasamen_rsud@yahoo.co.id" ;
+    schema:telephone "0622-22959" ;
+    schema:url <https://rsuddjasamensaragih.wordpress.com> .
+
+<http://localhost:8000/rs/rs-078> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkot" ;
+    hf:luasBangunan "8433.99" ;
+    hf:luasTanah "13258" ;
+    cs:kodeRegistrasiKemenkes "1271016" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Masdyana Doloksaribu, MARS" ;
+    schema:email "rsufltobing@yahoo.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "14:00" ;
+            schema:description "Senin-Sabtu 08:00 - 14:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "0631-26118" ;
+    schema:url <http://www.rsufltobing.sibolgakota.go.id> .
+
+<http://localhost:8000/rs/rs-079> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkot" ;
+    hf:luasBangunan "18635,18" ;
+    hf:luasTanah "25068" ;
+    cs:kodeRegistrasiKemenkes "1274012" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "CORROBORATED" ;
+    schema:director "drg. Lili Marliana, M.K.M" ;
+    schema:email "rsudkumpulanpane@gmail.com" ;
+    schema:telephone "0621-21967" ;
+    schema:url <https://rsukumpulanpane.wordpress.com> .
+
+<http://localhost:8000/rs/rs-080> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "9.466 m2" ;
+    hf:luasTanah "28.751 m2" ;
+    cs:kodeRegistrasiKemenkes "1205024" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Iwan Hartono Sihaloho" ;
+    schema:email "rsuhadrianus@gmail.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Pendaftaran Pasien" ;
+            schema:closes "13:00" ;
+            schema:description "Senin-Kamis 08:00 - 13:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "081396875668" ;
+    schema:url <https://rsud.samosirkab.go.id> .
+
+<http://localhost:8000/rs/rs-081> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "4.098.75" ;
+    hf:luasTanah "5.465" ;
+    cs:kodeRegistrasiKemenkes "1202017" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr.Isa Anshori Nasution, M.K.M" ;
+    schema:telephone "0636-7325118" .
+
+<http://localhost:8000/rs/rs-082> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "34.285,65" ;
+    hf:luasTanah "28.918" ;
+    cs:kodeRegistrasiKemenkes "1201016" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Noferlina Zebua, M.K.M" ;
+    schema:email "rsudgusit@yahoo.co.id" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "14:00" ;
+            schema:description "Senin-Jumat 08:00 - 14:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "0639-21271" ;
+    schema:url <http://rsud.niaskab.go.id> .
+
+<http://localhost:8000/rs/rs-083> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkot" ;
+    hf:luasBangunan "36.924" ;
+    hf:luasTanah "38.494" ;
+    cs:kodeRegistrasiKemenkes "1275013" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Mardohar Tambunan, M.Kes" ;
+    schema:email "rsudpirngadi@medan.go.id" ;
+    schema:telephone "081264801020" ;
+    schema:url <https://rsudpirngadi.medan.go.id> .
+
+<http://localhost:8000/rs/rs-084> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkot" ;
+    hf:luasBangunan "7.679" ;
+    hf:luasTanah "4240" ;
+    cs:kodeRegistrasiKemenkes "1276014" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Romy Ananda Lukman" ;
+    schema:email "rsuddjoelhambinjai@gmail.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "061-80044777" ;
+    schema:url <http://www.rsuddjoelham.binjaikota.go.id> .
+
+<http://localhost:8000/rs/rs-085> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkot" ;
+    hf:luasBangunan "10.285" ;
+    hf:luasTanah "13.713" ;
+    cs:kodeRegistrasiKemenkes "1272010" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "DIAN RAMADHA SARI, S.Kep, Ners, M.K.M" ;
+    schema:telephone "0623-92089" .
+
+<http://localhost:8000/rs/rs-086> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "11928" ;
+    hf:luasTanah "25.512" ;
+    cs:kodeRegistrasiKemenkes "1212012" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Erlinda Yani, MKM" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "081369842524" ;
+    schema:url <https://rsudhat.deliserdangkab.go.id> .
+
+<http://localhost:8000/rs/rs-087> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "20000" ;
+    hf:luasTanah "30000" ;
+    cs:kodeRegistrasiKemenkes "1203044" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. WANDA EFFENDI HUSEIN SIREGAR" ;
+    schema:email "rsudgunungtua1@gmail.com" ;
+    schema:telephone "0636-5110209" ;
+    schema:url <https://rsud.padanglawasutarakab.go.id> .
+
+<http://localhost:8000/rs/rs-088> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "7398" ;
+    hf:luasTanah "38200" ;
+    cs:kodeRegistrasiKemenkes "1208016" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Eka Wildasari" ;
+    schema:telephone "0623-41785" ;
+    schema:url <https://rsudkisaran.asahankab.go.id> .
+
+<http://localhost:8000/rs/rs-089> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkot" ;
+    hf:luasBangunan "16923 m²" ;
+    hf:luasTanah "8417 m²" ;
+    cs:kodeRegistrasiKemenkes "1275012" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Mohd. Mukhlis, M.Kes" ;
+    schema:email "rsudhbachtiardjafar@medan.go.id" ;
+    schema:telephone "06142733825" ;
+    schema:url <https://rsudhbachtiardjafar.medan.go.id> .
+
+<http://localhost:8000/rs/rs-090> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "3000" ;
+    hf:luasTanah "30000" ;
+    cs:kodeRegistrasiKemenkes "1211011" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Jasura Pinem M.kes" ;
+    schema:email "rsu_kabanjahe@yahoo.com" ;
+    schema:telephone "0628-20012" .
+
+<http://localhost:8000/rs/rs-091> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "7069" ;
+    hf:luasTanah "13.639" ;
+    cs:kodeRegistrasiKemenkes "1222002" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Hasana Lisa, M.K.M" ;
+    schema:telephone "0624-496766" ;
+    schema:url <https://rsud.labuhanbatuselatankab.go.id> .
+
+<http://localhost:8000/rs/rs-092> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "25000" ;
+    hf:luasTanah "35000" ;
+    cs:kodeRegistrasiKemenkes "1214010" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "Kristalina Susanti Dakhi,SKM" ;
+    schema:email "rsudlukas_hilisimaetano@yahoo.com" ;
+    schema:telephone "081361905252" .
+
+<http://localhost:8000/rs/rs-093> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "14.888.27" ;
+    hf:luasTanah "29.143" ;
+    cs:kodeRegistrasiKemenkes "1214022" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Sumardiani Yusrah Fau., M.K.M" ;
+    schema:telephone "085137521271" .
+
+<http://localhost:8000/rs/rs-094> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkot" ;
+    hf:luasBangunan "4.855,2 m2" ;
+    hf:luasTanah "10.370 m2" ;
+    cs:kodeRegistrasiKemenkes "1277011" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "drg. SUSANTI LUBIS , M.K.M" ;
+    schema:email "rsudpsp@padangsidimpuankota.go.id" ;
+    schema:telephone "0634-21251" ;
+    schema:url <https://rsud.padangsidimpuankota.go.id> .
+
+<http://localhost:8000/rs/rs-095> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "1.236" ;
+    hf:luasTanah "2.835" ;
+    cs:kodeRegistrasiKemenkes "1204056" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "Plh. dr. Janri Aoyagie, MM" ;
+    schema:email "rsud.pandan@tapteng.go.id" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "18:00" ;
+            schema:description "Senin-Kamis 07:00 - 18:00 WIB" ;
+            schema:opens "07:00" ] ;
+    schema:telephone "08126469276" ;
+    schema:url <https://rsudpandan.tapteng.go.id> .
+
+<http://localhost:8000/rs/rs-096> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "10.449 59" ;
+    hf:luasTanah "88.200" ;
+    cs:kodeRegistrasiKemenkes "1203022" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "Evi Desvita, S.K.M, M.K.M" ;
+    schema:telephone "0636-20181" .
+
+<http://localhost:8000/rs/rs-097> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "1.055" ;
+    hf:luasTanah "15.18" ;
+    cs:kodeRegistrasiKemenkes "1209065" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Henry Jimmy Gultom" ;
+    schema:email "rsu.parapat@yahoo.com" ;
+    schema:telephone "081360862780" .
+
+<http://localhost:8000/rs/rs-098> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "5.153,04" ;
+    hf:luasTanah "32200" ;
+    cs:kodeRegistrasiKemenkes "1209076" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Donald Rudi Pangaribuan, M.K.M" ;
+    schema:email "info@rsudperdagangan.com" ;
+    schema:telephone "082287287212" ;
+    schema:url <https://www.rsudperdagangan.com> .
+
+<http://localhost:8000/rs/rs-099> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "596 M2" ;
+    hf:luasTanah "14.406 M2" ;
+    cs:kodeRegistrasiKemenkes "1203066" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Rusdy Shaleh Harahap" ;
+    schema:telephone "085270741078" .
+
+<http://localhost:8000/rs/rs-100> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "5.673" ;
+    hf:luasTanah "20,650" ;
+    cs:kodeRegistrasiKemenkes "1205046" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Freddi Seventry Sibarani, M.K.M" ;
+    schema:email "rsudporsea@gmail.com" ;
+    schema:telephone "0632-41084" ;
+    schema:url <https://rsudporsea.com> .
+
+<http://localhost:8000/rs/rs-101> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "5343,66" ;
+    hf:luasTanah "24.549,00" ;
+    cs:kodeRegistrasiKemenkes "1207015" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Ady Subrata, Sp.A.,M.K.M" ;
+    schema:email "rm_rsudrantauprapat@yahoo.co.id" ;
+    schema:telephone "81375404013" .
+
+<http://localhost:8000/rs/rs-102> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "4486.3" ;
+    hf:luasTanah "59458" ;
+    cs:kodeRegistrasiKemenkes "1216011" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Manuturi Situmorang,M.K.M" ;
+    schema:email "rsud.salak@pakpakbharatkab.go.id" ;
+    schema:telephone "081361429525" .
+
+<http://localhost:8000/rs/rs-103> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "5372 M" ;
+    hf:luasTanah "21.000 m" ;
+    cs:kodeRegistrasiKemenkes "1203055" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "Sukri Habibi P Daulay" ;
+    schema:email "palassrsudsibuhuan@gmail.com" ;
+    schema:telephone "082381267581" .
+
+<http://localhost:8000/rs/rs-104> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "6995" ;
+    hf:luasTanah "19380" ;
+    cs:kodeRegistrasiKemenkes "1210010" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Benny Christoni Purba, M.K.M" ;
+    schema:email "rsud.sidikalang@gmail.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "22:00" ;
+            schema:description "Senin-Sabtu 06:00 - 22:00 WIB" ;
+            schema:opens "06:00" ] ;
+    schema:telephone "0627-21096" ;
+    schema:url <https://rsud.dairikab.go.id> .
+
+<http://localhost:8000/rs/rs-105> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "6400 m2" ;
+    hf:luasTanah "20200 m2" ;
+    cs:kodeRegistrasiKemenkes "1218125" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Hendri Yanto, M.K.M" ;
+    schema:telephone "081262443228" ;
+    schema:url <https://rsudsultansulaiman.serdangbedagaikab.go.id> .
+
+<http://localhost:8000/rs/rs-106> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "1221" ;
+    hf:luasTanah "17380" ;
+    cs:kodeRegistrasiKemenkes "1224002" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. WARISMAN LAHAGU, M.Kes" ;
+    schema:email "cs.rsnisut@gmail.com" ;
+    schema:telephone "081262136883" .
+
+<http://localhost:8000/rs/rs-107> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "6.072,25" ;
+    hf:luasTanah "17.250" ;
+    cs:kodeRegistrasiKemenkes "1213013" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Dherma Wati Bangun, MKM" ;
+    schema:email "rsud.tanjungpura@yahoo.co.id" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "061-66471404" ;
+    schema:url <https://rsudtanjungpura.langkatkab.go.id> .
+
+<http://localhost:8000/rs/rs-108> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "1020" ;
+    hf:luasTanah "3,8 Ha" ;
+    cs:kodeRegistrasiKemenkes "1203033" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "Plt. dr. Dian Aspasia Limbong" ;
+    schema:telephone "0634-41002" ;
+    schema:url <https://www.rsud.tapselkab.go.id> .
+
+<http://localhost:8000/rs/rs-109> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "8.653 m2" ;
+    hf:luasTanah "5,5 Ha" ;
+    cs:kodeRegistrasiKemenkes "1205013" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. BOBBY SIMANJUNTAK, M.K.M" ;
+    schema:telephone "08116505091" .
+
+<http://localhost:8000/rs/rs-110> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "7042 m2" ;
+    hf:luasTanah "12602 m2" ;
+    cs:kodeRegistrasiKemenkes "1209077" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "REVIEW_REQUIRED" ;
+    schema:director "dr. Maslina Henny Sipayung, M. Si" ;
+    schema:email "rsud.tuan.rondahaim.pamraya@gmail.com" ;
+    schema:telephone "085355795285" ;
+    schema:url <https://rsudrondahaim.id> .
+
+<http://localhost:8000/rs/rs-111> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "3.209.82" ;
+    hf:luasTanah "862.1" ;
+    cs:kodeRegistrasiKemenkes "1275050" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Lie King Fuan, M.Kes" ;
+    schema:email "rumahsakitdeli@gmail.com" ;
+    schema:telephone "061-4565229" ;
+    schema:url <https://www.rsudeli.com> .
+
+<http://localhost:8000/rs/rs-112> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "2298m2" ;
+    hf:luasTanah "5000m2" ;
+    cs:kodeRegistrasiKemenkes "1213057" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Afrida Kurniati Sembiring" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "061-80044800" .
+
+<http://localhost:8000/rs/rs-113> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "2400" ;
+    hf:luasTanah "1919.6" ;
+    cs:kodeRegistrasiKemenkes "1275061" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Art Tirtanesha Limbong, M.Biomed" ;
+    schema:email "rsudelima25@gmail.com" ;
+    schema:telephone "082175927925" ;
+    schema:url <https://www.rsudelima.com> .
+
+<http://localhost:8000/rs/rs-114> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "9540" ;
+    hf:luasTanah "3238m3" ;
+    cs:kodeRegistrasiKemenkes "1212023" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "CORROBORATED" ;
+    schema:director "drg. Fadhly Fauzi" ;
+    schema:email "rsgl@ptpn-2.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "082277767241" ;
+    schema:url <https://rsgltobing.github.io> .
+
+<http://localhost:8000/rs/rs-115> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "10.314m2" ;
+    hf:luasTanah "12.971 m2" ;
+    cs:kodeRegistrasiKemenkes "1211124" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "drg. Irna Safrina Meliala, M.Kes" ;
+    schema:email "rseetaham@gmail.com" ;
+    schema:telephone "082277229567" ;
+    schema:url <https://rsefarinaberastagi.com> .
+
+<http://localhost:8000/rs/rs-116> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "Belum tercatat" ;
+    hf:luasTanah "Belum tercatat" ;
+    cs:kodeRegistrasiKemenkes "1207066" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. ROSNAINI, M.K.M" ;
+    schema:email "rsuelpialazis@gmail.com" ;
+    schema:telephone "06242600380" .
+
+<http://localhost:8000/rs/rs-117> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "12819" ;
+    hf:luasTanah "-" ;
+    cs:kodeRegistrasiKemenkes "1275931" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Jonni Sastra Manurung, M.K.M" ;
+    schema:email "eshmunhospital@yahoo.com" ;
+    schema:telephone "061-618881828" ;
+    schema:url <https://eshmunhospital.com> .
+
+<http://localhost:8000/rs/rs-118> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "±1.834m²" ;
+    hf:luasTanah "±1.204 m²" ;
+    cs:kodeRegistrasiKemenkes "1275841" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr.Diah Karlina M.Kes" ;
+    schema:email "estomihimdn@gmail.com" ;
+    schema:telephone "081374357689" .
+
+<http://localhost:8000/rs/rs-119> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "350" ;
+    hf:luasTanah "848" ;
+    cs:kodeRegistrasiKemenkes "1223006" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Desi Ranti Octavia Silaen" ;
+    schema:email "rsuflora@gmail.com" ;
+    schema:telephone "081376089445" .
+
+<http://localhost:8000/rs/rs-120> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "1428" ;
+    hf:luasTanah "5845" ;
+    cs:kodeRegistrasiKemenkes "1275147" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Indra Riris Delima Siregar M.K.M., M.BioMed" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "082163895407" .
+
+<http://localhost:8000/rs/rs-121> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "173" ;
+    hf:luasTanah "1.671" ;
+    cs:kodeRegistrasiKemenkes "1272033" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Isma Wahyuni, M.K.M" ;
+    schema:email "rshadihusada@gmail.com" ;
+    schema:telephone "082366616662" .
+
+<http://localhost:8000/rs/rs-122> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemprop" ;
+    hf:luasBangunan "13.099" ;
+    hf:luasTanah "60.000" ;
+    cs:kodeRegistrasiKemenkes "1275794" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. YULINDA ELVI NASUTION, M.Kes" ;
+    schema:email "rsuhajimedan@gmail.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "082173669967" ;
+    schema:url <https://rshajimedan.id> .
+
+<http://localhost:8000/rs/rs-123> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Katholik" ;
+    hf:luasBangunan "6.525" ;
+    hf:luasTanah "34.631" ;
+    cs:kodeRegistrasiKemenkes "1273033" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Evelin Simarmata" ;
+    schema:telephone "0622-21162" ;
+    schema:url <https://rsharapansiantar.com> .
+
+<http://localhost:8000/rs/rs-124> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "1200" ;
+    hf:luasTanah "1963" ;
+    cs:kodeRegistrasiKemenkes "1207068" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Lutfi Indrajaya Sebayang, M.Kes" ;
+    schema:email "rsuhmc150@gmail.com" ;
+    schema:telephone "081370142150" .
+
+<http://localhost:8000/rs/rs-125> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "11597" ;
+    hf:luasTanah "6312" ;
+    cs:kodeRegistrasiKemenkes "1275930" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Irvan Veryadi" ;
+    schema:email "marketing.medan@herminahospitals.com" ;
+    schema:telephone "06180862525" ;
+    schema:url <https://herminahospitals.com/id/branch/hermina-medan> .
+
+<http://localhost:8000/rs/rs-126> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "2000" ;
+    hf:luasTanah "2000" ;
+    cs:kodeRegistrasiKemenkes "1212067" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr.Sariana" ;
+    schema:email "hidayahrsu@yahoo.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "061-80048838" .
+
+<http://localhost:8000/rs/rs-127> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Protestan" ;
+    hf:luasBangunan "11.578" ;
+    hf:luasTanah "33.38" ;
+    cs:kodeRegistrasiKemenkes "1205061" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Saut Hutasoit, Sp.AN" ;
+    schema:email "rshkbpbalige@gmail.com" ;
+    schema:telephone "085360637560" ;
+    schema:url <https://www.rshkbpbalige.or.id> .
+
+<http://localhost:8000/rs/rs-128> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "9.363" ;
+    hf:luasTanah "10.643" ;
+    cs:kodeRegistrasiKemenkes "1275622" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "Regina Sukendra, S.E" ;
+    schema:email "imeldagood2018@gmail.com" ;
+    schema:telephone "061-6610072" ;
+    schema:url <https://rsuimelda.com> .
+
+<http://localhost:8000/rs/rs-129> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "3075" ;
+    hf:luasTanah "2445" ;
+    cs:kodeRegistrasiKemenkes "1277026" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Ria Hartaty, MKM" ;
+    schema:telephone "0851-8443-0834" .
+
+<http://localhost:8000/rs/rs-130> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "4,508" ;
+    hf:luasTanah "3.090" ;
+    cs:kodeRegistrasiKemenkes "1275163" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "Dr. M. TAUFIQ, Sp.THT-KL" ;
+    schema:email "pkrs@rsimalahayati.com" ;
+    schema:telephone "061-4518766" ;
+    schema:url <https://rsimalahayati.com> .
+
+<http://localhost:8000/rs/rs-131> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "3503" ;
+    hf:luasTanah "8000" ;
+    cs:kodeRegistrasiKemenkes "1207067" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr.Rilie Ritonga Sp.OG" ;
+    schema:email "rsu.kbub@gmail.com" ;
+    schema:telephone "0624-2600413" ;
+    schema:url <https://rsukaryabakti.com> .
+
+<http://localhost:8000/rs/rs-132> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "952" ;
+    hf:luasTanah "1927" ;
+    cs:kodeRegistrasiKemenkes "1209081" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Kevin Sotarduga Nainggolan" ;
+    schema:email "rumahsakit_karyahusada@yahoo.co.id" ;
+    schema:telephone "0622-697025" .
+
+<http://localhost:8000/rs/rs-133> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "408 M2" ;
+    hf:luasTanah "648 M2" ;
+    cs:kodeRegistrasiKemenkes "1212183" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Rikardo, MM, Sp. KKLP" ;
+    schema:email "info@rskasihinsani.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Pendaftaran Pasien" ;
+            schema:closes "21:00" ;
+            schema:description "Senin-Minggu 07:00 - 21:00 WIB" ;
+            schema:opens "07:00" ] ;
+    schema:telephone "081265565540" ;
+    schema:url <https://rskasihinsani.com> .
+
+<http://localhost:8000/rs/rs-134> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perorangan" ;
+    hf:luasBangunan "1.864" ;
+    hf:luasTanah "7500" ;
+    cs:kodeRegistrasiKemenkes "1219016" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Rini Andriani Saragih" ;
+    schema:telephone "082285637297" .
+
+<http://localhost:8000/rs/rs-135> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "2000" ;
+    hf:luasTanah "3500" ;
+    cs:kodeRegistrasiKemenkes "1212174" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Iskandar Nazar Syahputri, M.K.M.," ;
+    schema:email "rsu.keliat@yahoo.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "08126368799" .
+
+<http://localhost:8000/rs/rs-136> a hf:RumahSakit ;
+    hf:kepemilikanSirs "BUMN" ;
+    hf:luasBangunan "58397" ;
+    hf:luasTanah "160000" ;
+    cs:kodeRegistrasiKemenkes "1209021" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Sonny Pramudya Tarigan, MKM" ;
+    schema:email "rs_laras@ptpn4.co.id" ;
+    schema:telephone "085260922248" ;
+    schema:url <https://rslaras.ptpmn.co.id> .
+
+<http://localhost:8000/rs/rs-137> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "2730" ;
+    hf:luasTanah "3200" ;
+    cs:kodeRegistrasiKemenkes "1219002" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "drg. Nur Azizah" ;
+    schema:email "rsiakeluargalasmi18@yahoo.com" ;
+    schema:telephone "085218949205" .
+
+<http://localhost:8000/rs/rs-138> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "2400" ;
+    hf:luasTanah "2799" ;
+    cs:kodeRegistrasiKemenkes "1276074" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Retno Sundari" ;
+    schema:email "rsu_latersia.binjai@yahoo.co.id" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "085260000911" .
+
+<http://localhost:8000/rs/rs-139> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "3209" ;
+    hf:luasTanah "1116" ;
+    cs:kodeRegistrasiKemenkes "1275909" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "Dr. dr. H. Depi Masri, MARS" ;
+    schema:email "madani.rsu@gmail.com" ;
+    schema:telephone "0813-7017-1521" ;
+    schema:url <https://rsu-madani-medan.com> .
+
+<http://localhost:8000/rs/rs-140> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "1687,5" ;
+    hf:luasTanah "1687,5" ;
+    cs:kodeRegistrasiKemenkes "1212199" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "CORROBORATED" ;
+    schema:director "dr. Millenia Graciella Situmorang" ;
+    schema:email "mahawiraprimaindonesia@gmail.com" ;
+    schema:telephone "0821-6357-0227" ;
+    schema:url <https://rsmahawiraprimaindonesia.wordpress.com> .
+
+<http://localhost:8000/rs/rs-141> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "4500 m2" ;
+    hf:luasTanah "9889 m2" ;
+    cs:kodeRegistrasiKemenkes "1213062" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "DR.CAHYA NURHADI WARDHANA, SH" ;
+    schema:email "info@rsumahkotabidadari.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "085359267962" ;
+    schema:url <https://rsumahkota.bidadari.co.id> .
+
+<http://localhost:8000/rs/rs-142> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "13549" ;
+    hf:luasTanah "3672" ;
+    cs:kodeRegistrasiKemenkes "1275633" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Adrian Martin Hutauruk, M.Kes, FISQua, CHAE, CHMEE, CHCEE" ;
+    schema:telephone "061-6610910" ;
+    schema:url <https://rsmarthafriska.com> .
+
+<http://localhost:8000/rs/rs-143> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "3971" ;
+    hf:luasTanah "1766" ;
+    cs:kodeRegistrasiKemenkes "1275888" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "Dr. Syaiful M Sitompul" ;
+    schema:telephone "061-4149666" ;
+    schema:url <https://marthafriska.com> .
+
+<http://localhost:8000/rs/rs-144> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "2923" ;
+    hf:luasTanah "693" ;
+    cs:kodeRegistrasiKemenkes "1275130" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. John Barker Liem,M.K.M" ;
+    schema:email "info@rsmaterna.com" ;
+    schema:telephone "061-4514222" ;
+    schema:url <https://www.rsmaterna.com> .
+
+<http://localhost:8000/rs/rs-145> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "1300" ;
+    hf:luasTanah "-" ;
+    cs:kodeRegistrasiKemenkes "1218024" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Lusi Nurlina Nasution" ;
+    schema:telephone "061-7990428" ;
+    schema:url <https://www.rsmelatiperbaungan.com> .
+
+<http://localhost:8000/rs/rs-146> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "360" ;
+    hf:luasTanah "420" ;
+    cs:kodeRegistrasiKemenkes "1218029" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Edi" ;
+    schema:email "rsumelati_kampungpon@hotmail.com" ;
+    schema:telephone "085261086655" .
+
+<http://localhost:8000/rs/rs-147> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Protestan" ;
+    hf:luasBangunan "4900" ;
+    hf:luasTanah "2929" ;
+    cs:kodeRegistrasiKemenkes "1275126" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Denny Hadi, M.Ked (Clin-Path), Sp.PK" ;
+    schema:email "rsmethodistgloria@gmail.com" ;
+    schema:telephone "061-7369000" ;
+    schema:url <https://rsmethodistmedan.com> .
+
+<http://localhost:8000/rs/rs-148> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "2400 M³" ;
+    hf:luasTanah "625 M2" ;
+    cs:kodeRegistrasiKemenkes "1271032" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "REVIEW_REQUIRED" ;
+    schema:director "dr. Ratnawati, M.MKes" ;
+    schema:email "metta.medika@gmail.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "20:00" ;
+            schema:description "Senin-Sabtu 08:00 - 20:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "082165307266" ;
+    schema:url <https://linktr.ee/rsmettamedikasibolgaa> .
+
+<http://localhost:8000/rs/rs-149> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perorangan" ;
+    hf:luasBangunan "2.634" ;
+    hf:luasTanah "4.258" ;
+    cs:kodeRegistrasiKemenkes "1212200" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Siska Jayanthi Putri, M.Biomed" ;
+    schema:email "rsumitraguraypetumbukan@gmail.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "061-7980216" ;
+    schema:url <https://rsumitraguraypetumbukan.com> .
+
+<http://localhost:8000/rs/rs-150> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "6266" ;
+    hf:luasTanah "1899" ;
+    cs:kodeRegistrasiKemenkes "1275516" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Dyna Safitri Rakhelmi Rangkuti, MKM" ;
+    schema:telephone "061-664-0999" ;
+    schema:url <https://mitramedika.co.id> .
+
+<http://localhost:8000/rs/rs-151> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "9.796" ;
+    hf:luasTanah "2.561" ;
+    cs:kodeRegistrasiKemenkes "1212181" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Dwi Ajeng Ayu Saputri Ritonga,MKM" ;
+    schema:telephone "081269028201" ;
+    schema:url <https://bandarklippa.mitramedika.com> .
+
+<http://localhost:8000/rs/rs-152> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "11.79" ;
+    hf:luasTanah "9.371" ;
+    cs:kodeRegistrasiKemenkes "1275923" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Azwan Hakmi Lubis, Sp.A, Mkes" ;
+    schema:email "info@mitramedikaamplas.co.id" ;
+    schema:telephone "0617879070" ;
+    schema:url <https://amplas.mitramedika.com> .
+
+<http://localhost:8000/rs/rs-153> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "43829" ;
+    hf:luasTanah "2378" ;
+    cs:kodeRegistrasiKemenkes "1275011" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "Dr. dr. Arifah Devi Fitriani, M.Kes" ;
+    schema:email "info@mitramedikapremiere.com" ;
+    schema:telephone "0811328135" ;
+    schema:url <https://mitramedika.com> .
+
+<http://localhost:8000/rs/rs-154> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "3600" ;
+    hf:luasTanah "3500" ;
+    cs:kodeRegistrasiKemenkes "1212175" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Jon Rider Purba" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "085270253369" .
+
+<http://localhost:8000/rs/rs-155> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "14.612.95" ;
+    hf:luasTanah "7.455.95" ;
+    cs:kodeRegistrasiKemenkes "1275298" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "CORROBORATED" ;
+    schema:director "dr. Elvida Sulistiana Sinaga,MKM, MH" ;
+    schema:email "mitrasejatirsu@gmail.com" ;
+    schema:telephone "7875967" ;
+    schema:url <https://rsmitrasejati.com> .
+
+<http://localhost:8000/rs/rs-156> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "900" ;
+    hf:luasTanah "1700" ;
+    cs:kodeRegistrasiKemenkes "1275885" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "Dr.dr. M. Edy Syahputra Nasution, M.Ked (ORL-HNS), Sp.THT-KL" ;
+    schema:telephone "087743913910" ;
+    schema:url <https://rsumuhammadiyahsumut.id> .
+
+<http://localhost:8000/rs/rs-157> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "28000" ;
+    hf:luasTanah "6941" ;
+    cs:kodeRegistrasiKemenkes "1275889" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Tuan Juniar Situmorang, M.Kes" ;
+    schema:email "informasi-corporate@rsmurniteguh.com" ;
+    schema:telephone "061-80501888" ;
+    schema:url <https://www.rsmurniteguh.com> .
+
+<http://localhost:8000/rs/rs-158> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "4.052m2" ;
+    hf:luasTanah "21.242m2" ;
+    cs:kodeRegistrasiKemenkes "1275100" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Hendric, M.Kes" ;
+    schema:email "informasi-corporate@rsmurniteguh.com" ;
+    schema:telephone "08116047013" ;
+    schema:url <https://www.rsmurniteguh.com> .
+
+<http://localhost:8000/rs/rs-159> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "1400" ;
+    hf:luasTanah "2636,38" ;
+    cs:kodeRegistrasiKemenkes "1274061" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. EDY SYAHPUTRA" ;
+    schema:telephone "0621-24404" .
+
+<http://localhost:8000/rs/rs-160> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "2755" ;
+    hf:luasTanah "4350" ;
+    cs:kodeRegistrasiKemenkes "1206063" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr.Dedy Irawan Nst, M.Kes, M.Ked (Clin.Path) Sp.PK, CH.CHt. CPCCP." ;
+    schema:email "rsu_nuraini@yahoo.com" ;
+    schema:telephone "081360654283" ;
+    schema:url <https://rsunurainikotapinang.com> .
+
+<http://localhost:8000/rs/rs-161> a hf:RumahSakit ;
+    hf:kepemilikanSirs "BUMN" ;
+    hf:luasBangunan "7.004.71" ;
+    hf:luasTanah "17.995.29" ;
+    cs:kodeRegistrasiKemenkes "1218026" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "CORROBORATED" ;
+    schema:director "DR. RATNAWIYAH SIRAIT, MKM" ;
+    schema:telephone "0621-2613427" ;
+    schema:url <https://ptpmn.co.id> .
+
+<http://localhost:8000/rs/rs-162> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "2898" ;
+    hf:luasTanah "8554" ;
+    cs:kodeRegistrasiKemenkes "1212185" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "drg. Dina Saraswaty" ;
+    schema:email "rsudpancurbatu@deliserdangkab.go.id" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "082268821948" ;
+    schema:url <https://www.rsudpancurbatu.com> .
+
+<http://localhost:8000/rs/rs-163> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "6620 m2" ;
+    hf:luasTanah "28529 m2" ;
+    cs:kodeRegistrasiKemenkes "1212172" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "Ns. Chaidir Saputra Harahap, S.Kep., MKM." ;
+    schema:email "rspatarasih@gmail.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "08118408355" ;
+    schema:url <https://rspatarasih.com> .
+
+<http://localhost:8000/rs/rs-164> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "551" ;
+    hf:luasTanah "720" ;
+    cs:kodeRegistrasiKemenkes "1208064" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Harist Hamonangan,M.KM" ;
+    schema:email "rs.permatahati21@gmail.com" ;
+    schema:telephone "81360101887" .
+
+<http://localhost:8000/rs/rs-165> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "3820" ;
+    hf:luasTanah "9870" ;
+    cs:kodeRegistrasiKemenkes "1202028" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Evandoni, MM.Kes., CMC" ;
+    schema:email "rspm155@gmail.com" ;
+    schema:telephone "081260806680" .
+
+<http://localhost:8000/rs/rs-166> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "2224" ;
+    hf:luasTanah "6980" ;
+    cs:kodeRegistrasiKemenkes "1221002" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Rini Sri Amini, M.Kes" ;
+    schema:email "permatamadina.sibuhuan@gmail.com" ;
+    schema:telephone "085360426043" .
+
+<http://localhost:8000/rs/rs-167> a hf:RumahSakit ;
+    hf:kepemilikanSirs "BUMN" ;
+    hf:luasBangunan "5863 m2" ;
+    hf:luasTanah "24524 m2" ;
+    cs:kodeRegistrasiKemenkes "1213035" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "CORROBORATED" ;
+    schema:director "dr. Rahmat Suhita Wahyu Siregar, M.Ked(PD), M.H(Kes), Sp.PD, FINASIM" ;
+    schema:email "marketing.rsppb@pertamedika.co.id" ;
+    schema:telephone "150442" ;
+    schema:url <https://pertamedika-rsppb.blogspot.co.id> .
+
+<http://localhost:8000/rs/rs-168> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "2306" ;
+    hf:luasTanah "4573" ;
+    cs:kodeRegistrasiKemenkes "1275600" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr.Ausvin Geniusman Komaini, M.H.Kes,CPOD" ;
+    schema:telephone "061-6941927" ;
+    schema:url <https://phcm.co.id> .
+
+<http://localhost:8000/rs/rs-169> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "3207" ;
+    hf:luasTanah "1991" ;
+    cs:kodeRegistrasiKemenkes "1275750" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Leonardo Basa Dairy, Sp.PD-KGEH" ;
+    schema:email "rsuboloni@gmail.com" ;
+    schema:telephone "0812-6013-1946" ;
+    schema:url <https://rsuboloni.com> .
+
+<http://localhost:8000/rs/rs-170> a hf:RumahSakit ;
+    hf:kepemilikanSirs "BUMN" ;
+    hf:luasBangunan "22000" ;
+    hf:luasTanah "68200" ;
+    cs:kodeRegistrasiKemenkes "1213024" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "drg. Kardillah Yayang" ;
+    schema:email "pimpinan_rsts@ptpn2.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "081226318462" .
+
+<http://localhost:8000/rs/rs-171> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Kemkes" ;
+    hf:luasBangunan "94375" ;
+    hf:luasTanah "90429" ;
+    cs:kodeRegistrasiKemenkes "1275655" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "verified" ;
+    schema:director "dr. Zainal Safri, M.Ked (PD), Sp.PD-KKV, Sp.JP(K)" ;
+    schema:email "info@rsham.co.id" ;
+    schema:telephone "061-8363000" ;
+    schema:url <https://rsham.go.id/profil/hubungi-kami> .
+
+<http://localhost:8000/rs/rs-172> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "25587" ;
+    hf:luasTanah "29000" ;
+    cs:kodeRegistrasiKemenkes "1213059" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "CORROBORATED" ;
+    schema:director "dr. Maas Lubis, M.K.M., AAAK" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "085361517988" ;
+    schema:url <https://rsu.bidadari.co.id> .
+
+<http://localhost:8000/rs/rs-173> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "1560 m2" ;
+    hf:luasTanah "2000 m2" ;
+    cs:kodeRegistrasiKemenkes "1212171" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "drg. Mariani S Meliala, M.Kes" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "081262565230" .
+
+<http://localhost:8000/rs/rs-174> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "807" ;
+    hf:luasTanah "5.321" ;
+    cs:kodeRegistrasiKemenkes "1276076" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Hotpar Ningotan S" ;
+    schema:email "rsuraturekrutmen@gmail.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "081370739531" .
+
+<http://localhost:8000/rs/rs-175> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "6000" ;
+    hf:luasTanah "775" ;
+    cs:kodeRegistrasiKemenkes "1275935" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Lailatul Husna, Sp.PD" ;
+    schema:telephone "0889-1200-22" ;
+    schema:url <https://rsroyalmaternity.com> .
+
+<http://localhost:8000/rs/rs-176> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "9.08" ;
+    hf:luasTanah "1.98" ;
+    cs:kodeRegistrasiKemenkes "1275907" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "Dr. dr. Wienaldi, M.K.M." ;
+    schema:email "contact@royalprima.com" ;
+    schema:telephone "061-88813182" ;
+    schema:url <https://royalprima.com> .
+
+<http://localhost:8000/rs/rs-177> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "5.837 M2" ;
+    hf:luasTanah "3751 M2" ;
+    cs:kodeRegistrasiKemenkes "1275936" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Ashry Ramadhana Ginting" ;
+    schema:email "rsu.rpmarelan@gmail.com" ;
+    schema:telephone "061-42731858" ;
+    schema:url <https://rsroyalprimarelan.com> .
+
+<http://localhost:8000/rs/rs-178> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Katholik" ;
+    hf:luasBangunan "19017" ;
+    hf:luasTanah "20899" ;
+    cs:kodeRegistrasiKemenkes "1275072" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Eddy Jefferson, SpOT (K) Sports Injury" ;
+    schema:email "rsemdn@yahoo.co.id" ;
+    schema:telephone "081370397806" ;
+    schema:url <https://rumahsakitsantaelisabethmedan.id> .
+
+<http://localhost:8000/rs/rs-179> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "2838m2" ;
+    hf:luasTanah "1797m2" ;
+    cs:kodeRegistrasiKemenkes "1275724" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Teren, MKes, QHIA" ;
+    schema:email "cs.rsusarah@gmail.com" ;
+    schema:telephone "061-4568383" ;
+    schema:url <https://www.sarahhospital.com> .
+
+<http://localhost:8000/rs/rs-180> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "3620" ;
+    hf:luasTanah "4996,56" ;
+    cs:kodeRegistrasiKemenkes "1212093" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Arifin P. Sitompul, MHA" ;
+    schema:email "rsu_sarimutiara@yahoo.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "082171420661" .
+
+<http://localhost:8000/rs/rs-181> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "500 m2" ;
+    hf:luasTanah "530 m2" ;
+    cs:kodeRegistrasiKemenkes "1218025" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "drg. Muhammad Rinaldy, MKM" ;
+    schema:email "rsusawit@gmail.com" ;
+    schema:telephone "082276976727" .
+
+<http://localhost:8000/rs/rs-182> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "12.000" ;
+    hf:luasTanah "40.000" ;
+    cs:kodeRegistrasiKemenkes "1212045" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "DR.dr. Alprindo Sembiring, M.Kes.,MHKes.,CHQP, FISQua" ;
+    schema:email "rsusembiring@gmail.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "082370497169" ;
+    schema:url <https://rsusembiring.com> .
+
+<http://localhost:8000/rs/rs-183> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "3520" ;
+    hf:luasTanah "4125" ;
+    cs:kodeRegistrasiKemenkes "1210021" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Ladingan Victor Sianipar, M. Kes" ;
+    schema:email "rsu.serenapita@gmail.com" ;
+    schema:telephone "081330586491" ;
+    schema:url <https://rsuserenapita.id> .
+
+<http://localhost:8000/rs/rs-184> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "8.000" ;
+    hf:luasTanah "3.136" ;
+    cs:kodeRegistrasiKemenkes "1208056" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "drg. Lincoln Parasian Halomoan Tambunan" ;
+    schema:email "rssetiohusodo1@gmail.com" ;
+    schema:telephone "082360796310" .
+
+<http://localhost:8000/rs/rs-185> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "28773" ;
+    hf:luasTanah "2615" ;
+    cs:kodeRegistrasiKemenkes "1275911" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Kartika Kuesno, M.K.M" ;
+    schema:email "info.shmd@siloamhospitals.com" ;
+    schema:telephone "061-88881900" ;
+    schema:url <https://www.siloamhospitals.com> .
+
+<http://localhost:8000/rs/rs-186> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemprop" ;
+    hf:luasBangunan "50.000 m2" ;
+    hf:luasTanah "1.060.000 m2" ;
+    cs:kodeRegistrasiKemenkes "1211033" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Poppy, MKM" ;
+    schema:telephone "085185566870" .
+
+<http://localhost:8000/rs/rs-187> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "936" ;
+    hf:luasTanah "4140" ;
+    cs:kodeRegistrasiKemenkes "1212136" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Rizky Fachriza Harahap, M.Ked(OG), Sp.OG" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "061-8451152" .
+
+<http://localhost:8000/rs/rs-188> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Katholik" ;
+    hf:luasBangunan "3331 m2" ;
+    hf:luasTanah "6000 m2" ;
+    cs:kodeRegistrasiKemenkes "1205142" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "Purnama Sitindaon, S.Kep.MKM" ;
+    schema:email "rssintlucia@gmail.com" ;
+    schema:telephone "081262572329" .
+
+<http://localhost:8000/rs/rs-189> a hf:RumahSakit ;
+    hf:kepemilikanSirs "BUMN" ;
+    hf:luasBangunan "7500m2" ;
+    hf:luasTanah "114714m2" ;
+    cs:kodeRegistrasiKemenkes "1274034" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Ali Syahbana,Sp.THT.KL" ;
+    schema:email "rsusripamela@gmail.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "17:00" ;
+            schema:description "Senin-Jumat 08:00 - 17:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "0621-24748" ;
+    schema:url <https://sripamela.spmedika.co.id> .
+
+<http://localhost:8000/rs/rs-190> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "1691 m2" ;
+    hf:luasTanah "373.5 m2" ;
+    cs:kodeRegistrasiKemenkes "1275702" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "CORROBORATED" ;
+    schema:director "dr. Maria Seri Arihta,M.K.M" ;
+    schema:email "sriratumdn@yahoo.co.id" ;
+    schema:telephone "061-4521074" ;
+    schema:url <https://rsusriratu.com> .
+
+<http://localhost:8000/rs/rs-191> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Katholik" ;
+    hf:luasBangunan "2.257.25" ;
+    hf:luasTanah "1.600 Ha" ;
+    cs:kodeRegistrasiKemenkes "1214011" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Elias Boy Duha" ;
+    schema:email "sella.maris@ymail.com" ;
+    schema:telephone "82368196800" .
+
+<http://localhost:8000/rs/rs-192> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "3.467" ;
+    hf:luasTanah "4.272" ;
+    cs:kodeRegistrasiKemenkes "1275265" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Zulkarnain Hutasuhut" ;
+    schema:email "rsu.sundari@yahoo.co.id" ;
+    schema:telephone "061-8452536" .
+
+<http://localhost:8000/rs/rs-193> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "8461" ;
+    hf:luasTanah "3260" ;
+    cs:kodeRegistrasiKemenkes "1276077" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Dovi Camela Sitepu, M.Kes" ;
+    schema:email "rsusylvani@gmail.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "061-80045925" ;
+    schema:url <https://www.rsusylvani.com> .
+
+<http://localhost:8000/rs/rs-194> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "1.169" ;
+    hf:luasTanah "288" ;
+    cs:kodeRegistrasiKemenkes "1275899" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Sahat Hasiholan Pasaribu, M.Kes" ;
+    schema:email "rsuteremargareth@yahoo.com" ;
+    schema:telephone "061-8226089" ;
+    schema:url <https://rsteremargareth.com> .
+
+<http://localhost:8000/rs/rs-195> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perorangan" ;
+    hf:luasBangunan "2800" ;
+    hf:luasTanah "3563" ;
+    cs:kodeRegistrasiKemenkes "1273106" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "dr. Yenni Hastita" ;
+    schema:telephone "0622-27617" .
+
+<http://localhost:8000/rs/rs-196> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "1.725" ;
+    hf:luasTanah "1.122 M2" ;
+    cs:kodeRegistrasiKemenkes "1274062" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "CORROBORATED" ;
+    schema:director "dr. Sim Siyen, MKM" ;
+    schema:email "rsunpri@gmail.com" ;
+    schema:telephone "0621-328488" ;
+    schema:url <https://unprimdn.ac.id> .
+
+<http://localhost:8000/rs/rs-197> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "1188" ;
+    hf:luasTanah "756" ;
+    cs:kodeRegistrasiKemenkes "1208066" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "Dr. Bambang Wahyudi" ;
+    schema:email "utamarsia@gmail.com" ;
+    schema:telephone "0623-42007" ;
+    schema:url <https://rsutama.com> .
+
+<http://localhost:8000/rs/rs-198> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Organisasi Sosial" ;
+    hf:luasBangunan "-" ;
+    hf:luasTanah "-" ;
+    cs:kodeRegistrasiKemenkes "1275276" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr.Jhon Lihar Purba, M.Kes" ;
+    schema:email "rsu.vina.estetica@gmail.com" ;
+    schema:telephone "061-4147646" ;
+    schema:url <https://www.rsuvinaestetica.co.id> .
+
+<http://localhost:8000/rs/rs-199> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "23300" ;
+    hf:luasTanah "12943" ;
+    cs:kodeRegistrasiKemenkes "1273055" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Flora Maya Damanik, MARS, FISQua, CHAE, CHQP, CPCCP." ;
+    schema:email "vitainsanirs@gmail.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "19:00" ;
+            schema:description "Senin-Sabtu 08:00 - 19:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "0811601125" ;
+    schema:url <https://www.vitainsani.com> .
+
+<http://localhost:8000/rs/rs-200> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "380" ;
+    hf:luasTanah "500" ;
+    cs:kodeRegistrasiKemenkes "1213058" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Nur Hajizah, M.Biomed" ;
+    schema:email "rsuwampunorita@gmail.com" ;
+    schema:telephone "082365264946" ;
+    schema:url <https://rsuwampunorita.co.id> .
+
+<http://localhost:8000/rs/rs-201> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "1745" ;
+    hf:luasTanah "2.236.9" ;
+    cs:kodeRegistrasiKemenkes "1208057" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Faizal Muslim, MKM, CMC." ;
+    schema:email "rsuwira_husada@yahoo.com" ;
+    schema:telephone "0623-42532" ;
+    schema:url <https://rsuwirahusadakisaran.com> .
+
+<http://localhost:8000/rs/rs-202> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "7.906" ;
+    hf:luasTanah "5.451" ;
+    cs:kodeRegistrasiKemenkes "1275830" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. ChairulSyah Putra, MKM" ;
+    schema:email "info@wulanwindy.com" ;
+    schema:telephone "061-6850200" ;
+    schema:url <https://wulanwindy.mitramedika.com> .
+
+<http://localhost:8000/rs/rs-203> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Perusahaan" ;
+    hf:luasBangunan "1616" ;
+    hf:luasTanah "5813" ;
+    cs:kodeRegistrasiKemenkes "1212177" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JADWAL_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "Juliana Marpaung,SKp,M.Kep, FISQua" ;
+    schema:email "rsuyoshua@gmail.com" ;
+    schema:openingHoursSpecification [ a schema:OpeningHoursSpecification ;
+            rdfs:label "Poliklinik Rawat Jalan" ;
+            schema:closes "16:00" ;
+            schema:description "Senin - Jumat 08:00 - 16:00 WIB" ;
+            schema:opens "08:00" ] ;
+    schema:telephone "061-7956061" .
+
+<http://localhost:8000/rs/rs-204> a hf:RumahSakit ;
+    hf:kepemilikanSirs "TNI AU" ;
+    hf:luasBangunan "57,75" ;
+    hf:luasTanah "130,5" ;
+    cs:kodeRegistrasiKemenkes "1275152" ;
+    hf:statusEmail "VERIFIED_OFFICIAL" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "VERIFIED_OFFICIAL" ;
+    schema:director "dr. Budhi Febrian Purwo Jatmiko, Sp.N.,AIFO-K, CHRM" ;
+    schema:email "rumkitdr.abdulmalik@gmail.com" ;
+    schema:telephone "082142743598" ;
+    schema:url <https://rsauabdulmaliklanudswo.com> .
+
+<http://localhost:8000/rs/rs-205> a hf:RumahSakit ;
+    hf:kepemilikanSirs "SWASTA/LAINNYA" ;
+    hf:luasBangunan "15000" ;
+    hf:luasTanah "9870" ;
+    cs:kodeRegistrasiKemenkes "1271075" ;
+    hf:statusEmail "CORROBORATED" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "REVIEW_REQUIRED" ;
+    schema:director "dr Sesylia Clarissa" ;
+    schema:email "rsuhernamedan@yahoo.co.id" ;
+    schema:telephone "06144025026" ;
+    schema:url <https://www.rshernamedan.com> .
+
+<http://localhost:8000/rs/rs-206> a hf:RumahSakit ;
+    hf:kepemilikanSirs "Pemkab" ;
+    hf:luasBangunan "4758,2 M2" ;
+    hf:luasTanah "19328.0 m2" ;
+    cs:kodeRegistrasiKemenkes "1201027" ;
+    hf:statusEmail "BELUM_TERSEDIA" ;
+    hf:statusIgd24Jam "TIDAK_TERLAPOR" ;
+    hf:statusJamOperasional "JAM_BELUM_TERSEDIA" ;
+    hf:statusWebsite "BELUM_TERSEDIA" ;
+    schema:director "FREDI KALVIN MEMORI LAROSA, SKM, MKM" ;
+    schema:telephone "081376529298" .
+

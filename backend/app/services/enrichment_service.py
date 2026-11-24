@@ -10,6 +10,7 @@ Handles:
 """
 
 from datetime import datetime, time, timezone, timedelta
+from app.services.operating_hours import schedules
 import json
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -39,12 +40,17 @@ _KONTAK_CACHE: Dict[str, dict] = {}
 _FASILITAS_CACHE: Dict[str, dict] = {}
 _IGD_CACHE: Dict[str, dict] = {}
 _JAM_CACHE: Dict[str, dict] = {}
+_CANDIDATE_HOURS = []
 
 
 def _load_cache():
-    global _PROFILES_CACHE, _KONTAK_CACHE, _FASILITAS_CACHE, _IGD_CACHE, _JAM_CACHE
+    global _PROFILES_CACHE, _KONTAK_CACHE, _FASILITAS_CACHE, _IGD_CACHE, _JAM_CACHE, _CANDIDATE_HOURS
     if _PROFILES_CACHE:
         return
+
+    candidate_file = ENRICH_DIR / "candidate_hours.json"
+    if candidate_file.exists():
+        _CANDIDATE_HOURS = json.loads(candidate_file.read_text(encoding="utf8"))
 
     p_file = ENRICH_DIR / "profil_lengkap_206.json"
     k_file = ENRICH_DIR / "kontak_dan_website_206.json"
@@ -75,56 +81,8 @@ def parse_hhmm(s: str) -> time:
 
 
 def build_jadwal_harian(rs_id: str, jam_info: dict) -> List[dict]:
-    """Builds a standard 7-day schedule (Senin - Minggu) for a hospital."""
-    DAYS = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"]
-    
-    # Specific requirement for RS Vita Insani (rs-199)
-    if rs_id == "rs-199":
-        return [
-            {"hari": "Senin", "jam": "08:00 - 20:00"},
-            {"hari": "Selasa", "jam": "08:00 - 20:00"},
-            {"hari": "Rabu", "jam": "08:00 - 20:00"},
-            {"hari": "Kamis", "jam": "08:00 - 20:00"},
-            {"hari": "Jumat", "jam": "08:00 - 20:00"},
-            {"hari": "Sabtu", "jam": "08:00 - 15:00"},
-            {"hari": "Minggu", "jam": "Tutup"},
-        ]
-
-    # Specific for RSUP H. Adam Malik (rs-171)
-    if rs_id == "rs-171":
-        return [
-            {"hari": "Senin", "jam": "07:30 - 16:00"},
-            {"hari": "Selasa", "jam": "07:30 - 16:00"},
-            {"hari": "Rabu", "jam": "07:30 - 16:00"},
-            {"hari": "Kamis", "jam": "07:30 - 16:00"},
-            {"hari": "Jumat", "jam": "07:30 - 16:30"},
-            {"hari": "Sabtu", "jam": "Tutup"},
-            {"hari": "Minggu", "jam": "Tutup"},
-        ]
-
-    # Generic parser from units / unit_operasional
-    units_dict = jam_info.get("units", {})
-    poli_data = units_dict.get("poliklinik_rawat_jalan", {})
-    
-    jb = poli_data.get("jam_buka")
-    jt = poli_data.get("jam_tutup")
-    hari = poli_data.get("hari", "")
-
-    if jb and jt:
-        time_str = f"{jb} - {jt}"
-        res = []
-        is_senin_sabtu = "sabtu" in hari.lower()
-        for d in DAYS:
-            if d == "Minggu":
-                res.append({"hari": d, "jam": "Tutup"})
-            elif d == "Sabtu":
-                res.append({"hari": d, "jam": time_str if is_senin_sabtu else "Tutup"})
-            else:
-                res.append({"hari": d, "jam": time_str})
-        return res
-
-    # Fallback when no regular hours verified
-    return [{"hari": d, "jam": "Belum tersedia" if d != "Minggu" else "Tutup"} for d in DAYS]
+    """Compatibility: daily outpatient schedule from traceable records only."""
+    return schedules(rs_id, jam_info.get("kode_kemenkes"), jam_info, _CANDIDATE_HOURS)["poliklinik_rawat_jalan"]["jadwal_harian"]
 
 
 def get_hospital_enrichment(rs_id: str, current_dt_wib: Optional[datetime] = None) -> dict:
@@ -157,35 +115,17 @@ def get_hospital_enrichment(rs_id: str, current_dt_wib: Optional[datetime] = Non
         }
     })
 
-    # 2. Poliklinik Rawat Jalan
-    existing_poli = existing_units.get("Poliklinik Rawat Jalan", {})
-    poli_data = units_dict.get("poliklinik_rawat_jalan", {})
-    poli_jam = existing_poli.get("jadwal_deskripsi") or poli_data.get("jam_display") or "Belum tersedia"
-    is_poli_available = bool(poli_jam and poli_jam != "Belum tersedia")
-    unit_operasional.append({
-        "unit": "Poliklinik Rawat Jalan",
-        "jadwal_deskripsi": poli_jam,
-        "status_sekarang": {
-            "status_kode": "TERSEDIA" if is_poli_available else "BELUM_TERSEDIA",
-            "badge_color": "green" if is_poli_available else "gray",
-            "label": "Tersedia" if is_poli_available else "Belum tersedia"
-        }
-    })
-
-    # 3. Pendaftaran
-    existing_reg = existing_units.get("Loket Pendaftaran Rawat Jalan", {}) or existing_units.get("Pendaftaran Pasien", {})
-    reg_data = units_dict.get("pendaftaran", {})
-    reg_jam = existing_reg.get("jadwal_deskripsi") or reg_data.get("jam_display") or "Belum tersedia"
-    is_reg_available = bool(reg_jam and reg_jam != "Belum tersedia")
-    unit_operasional.append({
-        "unit": "Pendaftaran Pasien",
-        "jadwal_deskripsi": reg_jam,
-        "status_sekarang": {
-            "status_kode": "TERSEDIA" if is_reg_available else "BELUM_TERSEDIA",
-            "badge_color": "green" if is_reg_available else "gray",
-            "label": "Tersedia" if is_reg_available else "Belum tersedia"
-        }
-    })
+    normalized = schedules(rs_id, profile.get("kode_kemenkes"), jam_info, _CANDIDATE_HOURS)
+    for key in ("reguler", "poliklinik_rawat_jalan", "pendaftaran"):
+        unit = normalized[key]
+        available = any(row["jam"] != "Belum tersedia" for row in unit["jadwal_harian"])
+        unit_operasional.append({
+            **unit,
+            "jadwal_deskripsi": "; ".join(f"{r['hari']}: {r['jam']}" for r in unit["jadwal_harian"]
+                                            if r["jam"] != "Belum tersedia") or "Belum tersedia",
+            "status_sekarang": {"status_kode": "TERSEDIA" if available else "BELUM_TERSEDIA",
+                                "label": "Tersedia" if available else "Belum tersedia"},
+        })
 
     # Overall badge
     if is_igd_24:
@@ -195,7 +135,7 @@ def get_hospital_enrichment(rs_id: str, current_dt_wib: Optional[datetime] = Non
         overall_badge = "Jam Operasional"
         overall_summary = "Jam Operasional Faskes"
 
-    jadwal_harian = build_jadwal_harian(rs_id, jam_info)
+    jadwal_harian = normalized["poliklinik_rawat_jalan"]["jadwal_harian"]
 
     return {
         "id_carisehat": rs_id,

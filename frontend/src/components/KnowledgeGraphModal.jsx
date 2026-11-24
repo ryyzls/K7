@@ -1,130 +1,48 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-function buildGraph(hospital) {
-  const nodes = [
-    {
-      id: 'rs',
-      label: `${hospital.nama}\n(Kelas ${hospital.kelas || '—'})`,
-      color: { background: '#012D61', border: '#00193B' },
-      font: { color: '#ffffff', size: 14, face: 'Newsreader', bold: true },
-      shape: 'box',
-      margin: 14,
-      shadow: true,
-    },
-    {
-      id: 'kab',
-      label: hospital.kabkota || 'Sumatera Utara',
-      color: { background: '#0057B8', border: '#00275B' },
-      font: { color: '#ffffff', size: 12, face: 'Newsreader' },
-      shape: 'ellipse',
-    },
-    {
-      id: 'reg',
-      label: 'Permenkes No. 3/2020',
-      color: { background: '#F1F5F9', border: '#CBD5E1' },
-      font: { color: '#0F172A', size: 10, face: 'Newsreader' },
-      shape: 'box',
-    },
-  ];
-  const edges = [
-    {
-      from: 'rs',
-      to: 'kab',
-      label: 'hf:beradaDiKabupatenKota',
-      arrows: 'to',
-      font: { size: 9, color: '#64748B', face: 'Newsreader' },
-    },
-    {
-      from: 'rs',
-      to: 'reg',
-      label: 'hf:standarRegulasi',
-      arrows: 'to',
-      font: { size: 9, color: '#64748B', face: 'Newsreader' },
-    },
-  ];
-
-  const rawCity = String(hospital.kabkota || 'Sumatera_Utara')
-    .replace(/Kota |Kab\. /g, '')
-    .trim()
-    .replace(/\s+/g, '_');
-  nodes.push({
-    id: 'dbpedia',
-    label: `dbpedia:${rawCity}`,
-    color: { background: '#BE123C', border: '#8B1C23' },
-    font: { color: '#ffffff', size: 11, face: 'monospace' },
-    shape: 'box',
-    margin: 8,
-  });
-  edges.push({
-    from: 'kab',
-    to: 'dbpedia',
-    label: 'owl:sameAs',
-    arrows: 'to',
-    dashes: true,
-    font: { size: 9, color: '#BE123C', face: 'Newsreader' },
-  });
-
-  if (hospital.bpjs) {
-    nodes.push({
-      id: 'bpjs',
-      label: 'Menerima BPJS Kesehatan',
-      color: { background: '#D1FAE5', border: '#059669' },
-      font: { color: '#047857', size: 11, bold: true, face: 'Newsreader' },
-      shape: 'box',
-      margin: 8,
-    });
-    edges.push({
-      from: 'rs',
-      to: 'bpjs',
-      label: 'hf:menerimaBPJS',
-      arrows: 'to',
-      font: { size: 9, color: '#059669', face: 'Newsreader' },
-    });
+export function buildGraph(bindings) {
+  const nodes = new Map(), edges = [];
+  const short = value => value.split(/[\/#]/).filter(Boolean).pop();
+  for (const row of bindings) {
+    if (!row.s || !row.p || !row.o) continue;
+    for (const term of [row.s, row.o]) {
+      const key = `${term.type}:${term.value}`;
+      nodes.set(key, {id:key,label:term.type==='literal'?term.value:short(term.value),
+        shape:'box',margin:10,font:{face:'Plus Jakarta Sans',size:12},
+        color:{background:term.type==='literal'?'#f0fdfa':'#e0f2fe',border:'#0f766e'}});
+    }
+    edges.push({from:`${row.s.type}:${row.s.value}`,to:`${row.o.type}:${row.o.value}`,
+      label:short(row.p.value),arrows:'to',font:{size:10}});
   }
-
-  (hospital.layanan || []).slice(0, 7).forEach((service, index) => {
-    const id = `lay_${index}`;
-    nodes.push({
-      id,
-      label: service,
-      color: { background: '#ECFDF5', border: '#0F766E' },
-      font: { color: '#0F172A', size: 10, face: 'Newsreader' },
-      shape: 'box',
-    });
-    edges.push({
-      from: 'rs',
-      to: id,
-      label: 'schema:availableService',
-      arrows: 'to',
-      font: { size: 8, color: '#0F766E', face: 'Newsreader' },
-    });
-  });
-
-  (hospital.fasilitas || []).slice(0, 5).forEach((facility, index) => {
-    const id = `fas_${index}`;
-    nodes.push({
-      id,
-      label: facility,
-      color: { background: '#FEF3C7', border: '#D97706' },
-      font: { color: '#0F172A', size: 10, face: 'Newsreader' },
-      shape: 'box',
-    });
-    edges.push({
-      from: 'rs',
-      to: id,
-      label: 'hf:memilikiFasilitas',
-      arrows: 'to',
-      font: { size: 8, color: '#D97706', face: 'Newsreader' },
-    });
-  });
-
-  return { nodes, edges };
+  return {nodes:[...nodes.values()],edges};
 }
 
 export default function KnowledgeGraphModal({ hospital, open, onClose }) {
   const containerRef = useRef(null);
   const networkRef = useRef(null);
+  const [bindings,setBindings]=useState([]);
+  const [status,setStatus]=useState('');
+
+  useEffect(()=>{
+    if(!open || !hospital?.uri)return;
+    const controller=new AbortController();
+    setBindings([]);setStatus('Memuat relasi RDF...');
+    const value=JSON.stringify(hospital.uri);
+    const query=`PREFIX hf: <http://carisehat.id/ontology/>
+      SELECT DISTINCT ?s ?p ?o WHERE {
+        ?root a hf:RumahSakit . FILTER(STR(?root) = ${value})
+        { BIND(?root AS ?s) ?s ?p ?o }
+        UNION { ?root hf:beradaDiKabupatenKota ?s . ?s ?p ?o }
+        UNION { GRAPH ?g { ?root ?link ?s . FILTER(isBlank(?s)) ?s ?p ?o } }
+        UNION { GRAPH ?g { BIND(?root AS ?s) ?s ?p ?o } }
+      } ORDER BY ?s ?p ?o LIMIT 160`;
+    fetch('/sparql/query',{method:'POST',headers:{'Content-Type':'application/sparql-query',Accept:'application/sparql-results+json'},body:query,signal:controller.signal})
+      .then(async r=>{if(!r.ok)throw new Error('Graf belum dapat dimuat');return r.json();})
+      .then(data=>{if(!controller.signal.aborted){setBindings(data.results?.bindings||[]);setStatus(window.vis?'':'Pustaka graf belum tersedia');}})
+      .catch(e=>{if(!controller.signal.aborted)setStatus(e.message);});
+    return()=>controller.abort();
+  },[open,hospital?.uri]);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -142,7 +60,7 @@ export default function KnowledgeGraphModal({ hospital, open, onClose }) {
 
   useEffect(() => {
     if (!open || !hospital || !containerRef.current || !window.vis) return undefined;
-    const graph = buildGraph(hospital);
+    const graph = buildGraph(bindings);
     const data = {
       nodes: new window.vis.DataSet(graph.nodes),
       edges: new window.vis.DataSet(graph.edges),
@@ -172,7 +90,7 @@ export default function KnowledgeGraphModal({ hospital, open, onClose }) {
       networkRef.current?.destroy();
       networkRef.current = null;
     };
-  }, [open, hospital]);
+  }, [open, hospital, bindings]);
 
   if (!open || !hospital) return null;
 
@@ -212,7 +130,8 @@ export default function KnowledgeGraphModal({ hospital, open, onClose }) {
         </header>
 
         <div className="relative flex-1 bg-slate-50">
-          <div ref={containerRef} className="h-full w-full" />
+          <div ref={containerRef} className="h-full w-full" data-graph-nodes={buildGraph(bindings).nodes.length} />
+          {status && <p role="status" className="absolute left-4 top-4 bg-white p-3">{status}</p>}
           <div className="pointer-events-none absolute bottom-3 left-3 flex flex-wrap gap-2 rounded-xl border border-slate-200 bg-white/95 px-3 py-2 text-[10px] font-semibold text-slate-600 shadow-sm backdrop-blur">
             <span className="flex items-center gap-1">
               <i className="h-2 w-2 rounded-full bg-brand-navy" /> Rumah sakit

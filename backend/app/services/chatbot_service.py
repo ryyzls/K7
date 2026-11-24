@@ -408,13 +408,10 @@ async def process_chat_message(
     # =======================================================================
     if intent == "JAM_BUKA_INQUIRY":
         jam_text = (
-            "Database CariSehat belum memuat informasi jam operasional spesifik setiap rumah sakit.\n\n"
-            "Secara umum, rumah sakit di Indonesia memiliki:\n"
-            "- **UGD/IGD (Instalasi Gawat Darurat):** Buka 24 Jam, 7 hari seminggu\n"
-            "- **Poliklinik Rawat Jalan:** Umumnya 08.00–16.00 WIB (Senin–Sabtu)\n"
-            "- **Rawat Inap:** 24 Jam\n\n"
-            "Untuk jam operasional yang akurat, silakan hubungi langsung nomor telepon "
-            "rumah sakit yang bersangkutan."
+            "Informasi IGD 24 Jam dan Poliklinik berbeda untuk setiap rumah sakit. "
+            "Sebutkan nama rumah sakit untuk melihat jadwal yang tercatat, "
+            "atau buka bagian Jam Operasional pada profilnya. "
+            "Jam yang belum ada datanya ditampilkan sebagai Belum tersedia."
         )
         curr_state["last_intent"] = "JAM_BUKA_INQUIRY"
         return {

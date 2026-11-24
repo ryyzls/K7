@@ -91,6 +91,7 @@ export default function SearchPage() {
       kelas,
       jenis,
       layanan,
+      limit: 500,
     })
       .then((data) => {
         if (!active) return;

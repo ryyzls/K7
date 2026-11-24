@@ -70,11 +70,20 @@ async def sparql_proxy(request: Request):
     else:
         # Batasi ukuran request payload sebelum decode (dengan atau tanpa Content-Length)
         content_length = request.headers.get("content-length")
-        if content_length and int(content_length) > 100 * 1024:
-            raise HTTPException(413, "Ukuran request payload terlalu besar (maks 100 KB)")
-        body_bytes = await request.body()
-        if len(body_bytes) > 100 * 1024:
-            raise HTTPException(413, "Ukuran request payload terlalu besar (maks 100 KB)")
+        if content_length:
+            try:
+                size = int(content_length)
+            except ValueError:
+                raise HTTPException(400, "Content-Length tidak valid")
+            if size < 0:
+                raise HTTPException(400, "Content-Length tidak valid")
+            if size > 100 * 1024:
+                raise HTTPException(413, "Ukuran request payload terlalu besar (maks 100 KB)")
+        body_bytes = bytearray()
+        async for chunk in request.stream():
+            body_bytes.extend(chunk)
+            if len(body_bytes) > 100 * 1024:
+                raise HTTPException(413, "Ukuran request payload terlalu besar (maks 100 KB)")
         body = body_bytes.decode("utf-8", errors="replace")
         ctype = request.headers.get("content-type", "")
         query = body if ctype.startswith("application/sparql-query") else parse_qs(body).get("query", [""])[0]

@@ -165,11 +165,6 @@ def to_hospital(r: dict) -> dict:
     h["igd_24jam_terlapor"] = enrichment.get("igd_24jam", {})
     h["jam_operasional"] = enrichment.get("jam_operasional", {})
 
-    # Specific override for RS Vita Insani (rs-199) UI requirements
-    if h["id"] == "rs-199":
-        h["spesialisasi"] = ["Konseling Kesehatan Mental", "Psikologi"]
-        h["fasilitas"] = ["Layanan Kesehatan Rumah"]
-
     if not h.get("kode_kemenkes"):
         h["kode_kemenkes"] = prof.get("kode_kemenkes")
     if not h.get("kode_kemenkes") and spec_records:
@@ -195,20 +190,22 @@ async def filter_options() -> dict:
     return {"kabkota": [r["v"] for r in kab], "layanan": [r["v"] for r in lay]}
 
 
-async def construct(uri: str | None, accept: str) -> str:
-    if uri:
-        q = (f"CONSTRUCT {{ ?s ?p ?o . ?x rdfs:label ?l }} WHERE {{ VALUES ?s {{ <{uri}> }} ?s ?p ?o . "
-             f"OPTIONAL {{ ?s ?p2 ?x . ?x rdfs:label ?l }} }}")
-    else:
-        q = "CONSTRUCT { ?s ?p ?o } WHERE { ?s ?p ?o }"
+def build_construct_query(uri: str | None = None) -> str:
     scope = f'VALUES ?s {{ <{uri}> }}' if uri else ''
-    q = f'''CONSTRUCT {{ ?s ?p ?o . ?x rdfs:label ?l . ?s <{sirs.CS.catatanPelayanan}> ?obs . ?obs ?op ?ov }}
+    return f'''CONSTRUCT {{ ?s ?p ?o . ?x rdfs:label ?l . ?s <{sirs.CS.catatanPelayanan}> ?obs . ?obs ?op ?ov . ?o ?childP ?childO }}
     WHERE {{ {scope}
       {{ ?s ?p ?o . FILTER(?p != hf:menyediakanLayanan)
          OPTIONAL {{ ?s ?p2 ?x . ?x rdfs:label ?l }} }}
       UNION {{ GRAPH <{sirs.GRAPH_URI}> {{ ?s <{sirs.CS.catatanPelayanan}> ?obs .
          ?obs <{sirs.CS.layakPencarian}> true ; ?op ?ov . }} }}
+      UNION {{ GRAPH <http://carisehat.id/graph/enrichment/2026-11-20> {{
+         ?s ?p ?o . OPTIONAL {{ ?o ?childP ?childO }}
+      }} }}
     }}'''
+
+
+async def construct(uri: str | None, accept: str) -> str:
+    q = build_construct_query(uri)
     async with httpx.AsyncClient(timeout=30) as c:
         r = await c.post(f"{settings.fuseki_url}/query", data={"query": PREFIXES + q}, headers={"Accept": accept})
         r.raise_for_status()

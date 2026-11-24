@@ -1,0 +1,202 @@
+[
+  {
+    "name": "catalog_206",
+    "status": "PASS",
+    "detail": {
+      "hospitals": 206,
+      "regions": 33,
+      "codes": 206,
+      "bytes": 2821494
+    },
+    "seconds": 13.333
+  },
+  {
+    "name": "all_206_profiles",
+    "status": "PASS",
+    "detail": "206 details with unique matching identities and expected fields",
+    "seconds": 16.033
+  },
+  {
+    "name": "filter_{\"kelas\": \"A\"}",
+    "status": "PASS",
+    "detail": {
+      "count": 3,
+      "query_type": null
+    },
+    "seconds": 7.745
+  },
+  {
+    "name": "filter_{\"jenis\": \"Khusus\"}",
+    "status": "PASS",
+    "detail": {
+      "count": 23,
+      "query_type": null
+    },
+    "seconds": 7.779
+  },
+  {
+    "name": "filter_{\"kabkota\": \"Kota Medan\"}",
+    "status": "PASS",
+    "detail": {
+      "count": 66,
+      "query_type": null
+    },
+    "seconds": 8.002
+  },
+  {
+    "name": "filter_{\"kelas\": \"B\", \"jenis\": \"Umum\", \"kabkota\": \"Kota Medan\"}",
+    "status": "PASS",
+    "detail": {
+      "count": 11,
+      "query_type": null
+    },
+    "seconds": 8.133
+  },
+  {
+    "name": "filter_{\"spesialisasi\": \"Mata\"}",
+    "status": "PASS",
+    "detail": {
+      "count": 116,
+      "query_type": null
+    },
+    "seconds": 27.704
+  },
+  {
+    "name": "filter_{\"q\": \"dokter jantung\"}",
+    "status": "PASS",
+    "detail": {
+      "count": 106,
+      "query_type": "specialty_synonym"
+    },
+    "seconds": 26.321
+  },
+  {
+    "name": "pagination",
+    "status": "PASS",
+    "detail": "two disjoint pages",
+    "seconds": 16.165
+  },
+  {
+    "name": "search_edge_zzzzzzzzznotfoundzzzz",
+    "status": "PASS",
+    "detail": {
+      "count": 0
+    },
+    "seconds": 8.224
+  },
+  {
+    "name": "search_edge_\" } UNION { ?s ?p ?o } #",
+    "status": "PASS",
+    "detail": {
+      "count": 0
+    },
+    "seconds": 8.432
+  },
+  {
+    "name": "search_edge_<script>alert(1)</script>",
+    "status": "PASS",
+    "detail": {
+      "count": 0
+    },
+    "seconds": 8.364
+  },
+  {
+    "name": "compare_rs-001,rs-008",
+    "status": "PASS",
+    "detail": 2,
+    "seconds": 0.183
+  },
+  {
+    "name": "compare_rs-001,rs-008,rs-171",
+    "status": "PASS",
+    "detail": 3,
+    "seconds": 0.281
+  },
+  {
+    "name": "alternatives_exclude_self",
+    "status": "PASS",
+    "detail": 4,
+    "seconds": 8.193
+  },
+  {
+    "name": "RDF_XML_Turtle_roundtrip",
+    "status": "FAIL",
+    "detail": "",
+    "seconds": 0.343
+  },
+  {
+    "name": "page_/rs/rs-007",
+    "status": "PASS",
+    "detail": {
+      "bytes": 33354
+    },
+    "seconds": 8.17
+  },
+  {
+    "name": "page_/sparql",
+    "status": "PASS",
+    "detail": {
+      "bytes": 3454
+    },
+    "seconds": 0.004
+  },
+  {
+    "name": "SPARQL_SELECT",
+    "status": "PASS",
+    "detail": 200,
+    "seconds": 0.061
+  },
+  {
+    "name": "SPARQL_ASK",
+    "status": "PASS",
+    "detail": 200,
+    "seconds": 0.019
+  },
+  {
+    "name": "SPARQL_CONSTRUCT",
+    "status": "PASS",
+    "detail": 200,
+    "seconds": 0.025
+  },
+  {
+    "name": "SPARQL_DESCRIBE",
+    "status": "PASS",
+    "detail": 200,
+    "seconds": 0.022
+  },
+  {
+    "name": "blocked_CLEAR",
+    "status": "PASS",
+    "detail": 400,
+    "seconds": 0.001
+  },
+  {
+    "name": "blocked_INSERT",
+    "status": "PASS",
+    "detail": 400,
+    "seconds": 0.002
+  },
+  {
+    "name": "blocked_SELECT",
+    "status": "PASS",
+    "detail": 400,
+    "seconds": 0.001
+  },
+  {
+    "name": "operator_default_deny",
+    "status": "PASS",
+    "detail": 403,
+    "seconds": 0.004
+  },
+  {
+    "name": "search_performance",
+    "status": "PASS",
+    "detail": {
+      "n": 20,
+      "median_ms": 7533.2,
+      "p95_ms": 8024.5,
+      "environment": "isolated-rdflib"
+    },
+    "seconds": 151.997
+  }
+]

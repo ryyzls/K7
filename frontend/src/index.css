@@ -31,9 +31,14 @@
   --r: 16px;
   --r-sm: 10px;
   --r-pill: 999px;
-  --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
-  --shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.07), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
-  --shadow-lg: 0 20px 35px -8px rgba(15, 23, 42, 0.12), 0 8px 16px -4px rgba(15, 23, 42, 0.06);
+  --shadow-sm:
+    0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
+  --shadow:
+    0 4px 16px -2px rgba(15, 23, 42, 0.07),
+    0 2px 6px -1px rgba(15, 23, 42, 0.04);
+  --shadow-lg:
+    0 20px 35px -8px rgba(15, 23, 42, 0.12),
+    0 8px 16px -4px rgba(15, 23, 42, 0.06);
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -46,7 +51,11 @@
   html,
   body {
     @apply m-0 bg-slate-50 font-body text-ink antialiased;
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family:
+      "Plus Jakarta Sans",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
@@ -61,7 +70,11 @@
   button,
   select,
   textarea {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family:
+      "Plus Jakarta Sans",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
   }
 
   button {
@@ -78,10 +91,10 @@
     outline-offset: 2px;
   }
 
-  input[type='search']::-webkit-search-cancel-button,
-  input[type='search']::-webkit-search-decoration,
-  input[type='search']::-webkit-search-results-button,
-  input[type='search']::-webkit-search-results-decoration {
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
     -webkit-appearance: none;
     appearance: none;
     display: none;
@@ -90,18 +103,26 @@
 
 @layer components {
   .material-symbols-outlined {
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    font-variation-settings:
+      "FILL" 0,
+      "wght" 400,
+      "GRAD" 0,
+      "opsz" 24;
     font-size: 1.15em;
     line-height: 1;
     vertical-align: middle;
   }
 
   .material-symbols-filled {
-    font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+    font-variation-settings:
+      "FILL" 1,
+      "wght" 500,
+      "GRAD" 0,
+      "opsz" 24;
   }
 
   .font-serif-editorial {
-    font-family: 'Newsreader', Georgia, serif;
+    font-family: "Newsreader", Georgia, serif;
   }
 
   .no-scrollbar::-webkit-scrollbar {
@@ -119,8 +140,14 @@
       radial-gradient(#cfdbe7 1.2px, transparent 1.2px),
       linear-gradient(to right, rgba(215, 227, 240, 0.5) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(215, 227, 240, 0.5) 1px, transparent 1px);
-    background-size: 24px 24px, 72px 72px, 72px 72px;
-    background-position: 0 0, 0 0, 0 0;
+    background-size:
+      24px 24px,
+      72px 72px,
+      72px 72px;
+    background-position:
+      0 0,
+      0 0,
+      0 0;
   }
 
   .hairline {
@@ -155,7 +182,7 @@
 
 /* ---------- Leaflet ---------- */
 .leaflet-container {
-  font-family: 'Newsreader', Georgia, serif;
+  font-family: "Newsreader", Georgia, serif;
   background: #eef3f7;
 }
 
@@ -298,7 +325,7 @@
   border-radius: 999px;
   background: #012d61;
   color: #fff;
-  font-family: 'Newsreader', Georgia, serif;
+  font-family: "Newsreader", Georgia, serif;
   font-size: 12px;
   font-weight: 700;
   box-shadow: 0 6px 16px rgba(1, 45, 97, 0.3);
@@ -458,7 +485,7 @@
   background: transparent;
 }
 
-input[type='date']::-webkit-calendar-picker-indicator {
+input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
   opacity: 0.6;
 }
@@ -583,7 +610,9 @@ input[type='date']::-webkit-calendar-picker-indicator {
   flex-direction: column;
   min-height: 355px;
   max-width: 100%;
-  transition: box-shadow 0.22s var(--ease), border-color 0.22s var(--ease);
+  transition:
+    box-shadow 0.22s var(--ease),
+    border-color 0.22s var(--ease);
   box-shadow: var(--shadow-sm);
 }
 .card:hover {
@@ -592,7 +621,9 @@ input[type='date']::-webkit-calendar-picker-indicator {
 }
 .card.on {
   border-color: var(--c);
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--c) 30%, transparent), var(--shadow);
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--c) 30%, transparent),
+    var(--shadow);
 }
 .card-thumb {
   aspect-ratio: 16/9;
@@ -1145,7 +1176,9 @@ input[type='date']::-webkit-calendar-picker-indicator {
   flex-direction: column;
   justify-content: space-between;
   gap: 0.6rem;
-  transition: transform 0.15s var(--ease), box-shadow 0.15s var(--ease);
+  transition:
+    transform 0.15s var(--ease),
+    box-shadow 0.15s var(--ease);
 }
 .alt-card:hover {
   transform: translateY(-2px);
@@ -1767,6 +1800,3 @@ ul.clean-bullet-list li {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
   }
 }
-
-
-

@@ -14,12 +14,19 @@ export function telHref(phone) {
 
 export function websiteHref(url) {
   if (!url || url === 'Belum tersedia') return '';
-  return /^https?:\/\//i.test(url) ? url : `https://${url}`;
+  const value = String(url).trim();
+  if (/[\u0000-\u0020<>]/.test(value)) return '';
+  if (/^[a-z][a-z\d+.-]*:/i.test(value) && !/^https?:\/\//i.test(value)) return '';
+  try {
+    const parsed = new URL(/^https?:\/\//i.test(value) ? value : `https://${value}`);
+    return ['http:', 'https:'].includes(parsed.protocol) && parsed.hostname && !parsed.username && !parsed.password ? parsed.href : '';
+  } catch { return ''; }
 }
 
 export function emailHref(email) {
   if (!email || email === 'Belum tersedia') return '';
-  return `mailto:${email.trim()}`;
+  const value=String(email).trim();
+  return /^[^\s@?&#<>]+@[^\s@?&#<>]+\.[^\s@?&#<>]+$/.test(value) ? `mailto:${value}` : '';
 }
 
 export function mapsSearchUrl(hospital) {
