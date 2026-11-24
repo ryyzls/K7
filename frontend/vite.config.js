@@ -10,6 +10,7 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': 'http://localhost:8000',
+      '/images': 'http://localhost:8000',
       '/rs': 'http://localhost:8000',
       '/data': 'http://localhost:8000',
       '/sparql': 'http://localhost:8000',

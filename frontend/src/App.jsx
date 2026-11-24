@@ -4,6 +4,7 @@ import { AppProvider } from './context/AppContext';
 import LoginModal from './components/LoginModal';
 import Toasts from './components/Toasts';
 import ChatWidget from './components/ChatWidget';
+import CompareDock from './components/CompareDock';
 import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
 import DashboardPage from './pages/DashboardPage';
@@ -23,12 +24,8 @@ function NotFound() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-slate-50 px-6 text-center">
       <span className="material-symbols-outlined text-[64px] text-slate-300">explore_off</span>
-      <p className="mt-3 text-[10.5px] font-bold uppercase tracking-[0.16em] text-brand-blue">
-        404
-      </p>
-      <h1 className="mt-1 font-heading text-3xl font-extrabold text-brand-navy">
-        Halaman tidak ditemukan
-      </h1>
+      <p className="mt-3 text-[10.5px] font-bold uppercase tracking-[0.16em] text-toba">404</p>
+      <h1 className="mt-1 text-3xl font-extrabold text-slate-900">Halaman tidak ditemukan</h1>
       <p className="mt-2 max-w-md text-sm text-slate-500">
         Tautan yang Anda buka tidak tersedia. Kembali ke beranda atau mulai pencarian rumah sakit.
       </p>
@@ -41,7 +38,7 @@ function NotFound() {
         </Link>
         <Link
           to="/pencarian"
-          className="rounded-full bg-brand-navy px-5 py-2.5 text-xs font-semibold text-white transition hover:bg-brand-blue"
+          className="rounded-full bg-toba px-5 py-2.5 text-xs font-semibold text-white transition hover:bg-toba-dark"
         >
           Cari rumah sakit
         </Link>
@@ -66,9 +63,8 @@ export default function App() {
       </Routes>
       <LoginModal />
       <Toasts />
+      <CompareDock />
       <ChatWidget />
     </AppProvider>
   );
 }
-
-

@@ -21,7 +21,7 @@ function buildGraph(hospital) {
     },
     {
       id: 'reg',
-      label: 'Permenkes No. 3/2020',
+      label: 'Standar Permenkes No. 3/2020',
       color: { background: '#F1F5F9', border: '#CBD5E1' },
       font: { color: '#0F172A', size: 10, face: 'Newsreader' },
       shape: 'box',
@@ -31,39 +31,36 @@ function buildGraph(hospital) {
     {
       from: 'rs',
       to: 'kab',
-      label: 'hf:beradaDiKabupatenKota',
+      label: 'Wilayah Administratif',
       arrows: 'to',
       font: { size: 9, color: '#64748B', face: 'Newsreader' },
     },
     {
       from: 'rs',
       to: 'reg',
-      label: 'hf:standarRegulasi',
+      label: 'Acuan Klasifikasi',
       arrows: 'to',
       font: { size: 9, color: '#64748B', face: 'Newsreader' },
     },
   ];
 
-  const rawCity = String(hospital.kabkota || 'Sumatera_Utara')
-    .replace(/Kota |Kab\. /g, '')
-    .trim()
-    .replace(/\s+/g, '_');
-  nodes.push({
-    id: 'dbpedia',
-    label: `dbpedia:${rawCity}`,
-    color: { background: '#BE123C', border: '#8B1C23' },
-    font: { color: '#ffffff', size: 11, face: 'monospace' },
-    shape: 'box',
-    margin: 8,
-  });
-  edges.push({
-    from: 'kab',
-    to: 'dbpedia',
-    label: 'owl:sameAs',
-    arrows: 'to',
-    dashes: true,
-    font: { size: 9, color: '#BE123C', face: 'Newsreader' },
-  });
+  if (hospital.jenis) {
+    nodes.push({
+      id: 'jenis',
+      label: `RS ${hospital.jenis}`,
+      color: { background: '#EEF2FF', border: '#6366F1' },
+      font: { color: '#312E81', size: 11, face: 'Newsreader' },
+      shape: 'box',
+      margin: 8,
+    });
+    edges.push({
+      from: 'rs',
+      to: 'jenis',
+      label: 'Kategori RS',
+      arrows: 'to',
+      font: { size: 9, color: '#4F46E5', face: 'Newsreader' },
+    });
+  }
 
   if (hospital.bpjs) {
     nodes.push({
@@ -77,7 +74,7 @@ function buildGraph(hospital) {
     edges.push({
       from: 'rs',
       to: 'bpjs',
-      label: 'hf:menerimaBPJS',
+      label: 'Jaminan Kesehatan',
       arrows: 'to',
       font: { size: 9, color: '#059669', face: 'Newsreader' },
     });
@@ -95,7 +92,7 @@ function buildGraph(hospital) {
     edges.push({
       from: 'rs',
       to: id,
-      label: 'schema:availableService',
+      label: 'Layanan Medis',
       arrows: 'to',
       font: { size: 8, color: '#0F766E', face: 'Newsreader' },
     });
@@ -113,7 +110,7 @@ function buildGraph(hospital) {
     edges.push({
       from: 'rs',
       to: id,
-      label: 'hf:memilikiFasilitas',
+      label: 'Fasilitas Penunjang',
       arrows: 'to',
       font: { size: 8, color: '#D97706', face: 'Newsreader' },
     });
@@ -192,20 +189,20 @@ export default function KnowledgeGraphModal({ hospital, open, onClose }) {
         <header className="flex items-start justify-between gap-4 border-b border-slate-200 px-5 py-4">
           <div>
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-brand-blue">
-              W3C Network • Vis.js
+              Diagram Layanan Interaktif
             </p>
             <h2 id="graph-title" className="mt-0.5 font-heading text-lg font-bold leading-snug text-slate-900">
-              Graf Pengetahuan: {hospital.nama}
+              Peta Relasi Layanan: {hospital.nama}
             </h2>
             <p className="mt-0.5 text-xs text-slate-500">
-              Relasi RDF/OWL antara fasilitas, wilayah, layanan, dan data tertaut.
+              Visualisasi hubungan antara rumah sakit, wilayah cakupan, layanan medis, dan fasilitas penunjang.
             </p>
           </div>
           <button
             type="button"
             onClick={onClose}
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition hover:bg-slate-200 hover:text-slate-800"
-            aria-label="Tutup graf pengetahuan"
+            aria-label="Tutup diagram relasi"
           >
             <span className="material-symbols-outlined text-[20px]">close</span>
           </button>
@@ -230,14 +227,14 @@ export default function KnowledgeGraphModal({ hospital, open, onClose }) {
         </div>
 
         <footer className="flex flex-wrap items-center justify-between gap-2 border-t border-slate-200 px-5 py-3 text-[11px] text-slate-500">
-          <span>Geser untuk menjelajah, gulir untuk memperbesar.</span>
+          <span>Geser kanvas untuk menjelajah, gulir untuk memperbesar tampilan.</span>
           <a
-            href={`/rs/${encodeURIComponent(hospital.id)}`}
+            href={`/rumah-sakit/${encodeURIComponent(hospital.id)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="font-semibold text-brand-blue hover:underline"
           >
-            Buka halaman semantik RDF →
+            Buka profil lengkap rumah sakit →
           </a>
         </footer>
       </section>

@@ -311,7 +311,7 @@ def dashboard(user: dict = Depends(require_perm("dashboard.view")), db: Session 
     except Exception:
         total_rs = None
 
-        okupansi_poli = _with_names(
+    okupansi_poli = _with_names(
         db.execute(text("SELECT * FROM v_okupansi_poliklinik ORDER BY sisa_hari_ini ASC, rs_id LIMIT 6")).mappings().all(),
         "rs_id",
     )
@@ -329,8 +329,6 @@ def dashboard(user: dict = Depends(require_perm("dashboard.view")), db: Session 
         "okupansi_poliklinik": okupansi_poli,
         "peringkat_rs": peringkat_rs,
     }
-    return {"stats": stats, "total_rs_rdf": total_rs, "top_rs": top, "by_jenis": by_jenis,
-            "recent_booking": recent, "okupansi": okupansi}
 
 
 # ─── Booking CRUD ────────────────────────────────────────────────────────────

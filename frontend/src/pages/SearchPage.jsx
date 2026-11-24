@@ -1,16 +1,51 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+﻿import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { getFilterOptions, searchHospitals } from '../api';
+import { getAllHospitals, getFilterOptions, searchHospitals } from '../api';
 import { KELAS_OPTIONS } from '../constants';
 import { cn, pageList, sortHospitals } from '../utils';
+import {
+  computeSmartFallback,
+  matchesServiceKeywords,
+  parseNaturalQuery,
+} from '../smartSearch';
 import { useApp } from '../context/AppContext';
 import SiteHeader from '../components/SiteHeader';
 import HospitalCard from '../components/HospitalCard';
 import LeafletMap from '../components/LeafletMap';
+import SearchAutocomplete from '../components/SearchAutocomplete';
 import SearchFilterPanel, { countActiveFilters } from '../components/SearchFilterPanel';
 import { MinimalFooter } from '../components/Footer';
 
-const PER_PAGE = 12;
+const PER_PAGE_OPTIONS = [10, 12, 20, 50];
+
+const POPULAR_SEARCHES = [
+  { label: 'RSUP H. Adam Malik', query: 'rsup ham' },
+  { label: 'Cuci Darah BPJS Medan', query: 'cuci darah bpjs medan' },
+  { label: 'RS Kelas B Anak Medan', query: 'RS kelas B BPJS anak di Medan' },
+  { label: 'Poli Mata / Katarak', query: 'katarak' },
+  { label: 'RSUD Dr. Pirngadi', query: 'pirngadi' },
+];
+
+function getMatchBadge(hospital, parsed, rawQuery) {
+  if (parsed.serviceLabel && matchesServiceKeywords(hospital, parsed.serviceKeywords)) {
+    return { label: `${parsed.serviceLabel} tersedia`, tone: 'bg-emerald-50 text-emerald-700' };
+  }
+  const q = String(parsed.residualQuery || rawQuery || '').trim().toLowerCase();
+  if (!q) {
+    if (hospital.bpjs && parsed.bpjs) {
+      return { label: 'Menerima BPJS Kesehatan', tone: 'bg-emerald-50 text-emerald-700' };
+    }
+    return null;
+  }
+  const nama = String(hospital.nama || '').toLowerCase();
+  const alamat = String(hospital.alamat || '').toLowerCase();
+  const layanan = (hospital.layanan || []).join(' ').toLowerCase();
+
+  if (nama.includes(q)) return { label: 'Sesuai nama faskes', tone: 'bg-toba-mist text-toba-dark' };
+  if (layanan.includes(q)) return { label: 'Layanan tersedia', tone: 'bg-emerald-50 text-emerald-700' };
+  if (alamat.includes(q)) return { label: 'Sesuai wilayah/alamat', tone: 'bg-sky-50 text-sky-700' };
+  return { label: 'Rekomendasi terkait', tone: 'bg-slate-100 text-slate-700' };
+}
 
 function SkeletonGrid() {
   return (
@@ -22,7 +57,6 @@ function SkeletonGrid() {
             <div className="h-4 w-4/5 animate-pulse rounded bg-slate-100" />
             <div className="h-3 w-1/2 animate-pulse rounded bg-slate-100" />
             <div className="h-3 w-full animate-pulse rounded bg-slate-100" />
-            <div className="h-8 w-full animate-pulse rounded-full bg-slate-100" />
           </div>
         </div>
       ))}
@@ -34,6 +68,7 @@ export default function SearchPage() {
   const navigate = useNavigate();
   const { toggleFavorite, isFavorite } = useApp();
   const [searchParams, setSearchParams] = useSearchParams();
+  const [allHospitals, setAllHospitals] = useState([]);
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -41,6 +76,7 @@ export default function SearchPage() {
   const [options, setOptions] = useState({ kabkota: [], layanan: [] });
   const [filterOpen, setFilterOpen] = useState(false);
   const [showMap, setShowMap] = useState(true);
+  const [perPage, setPerPage] = useState(12);
   const resultsRef = useRef(null);
 
   const filters = useMemo(
@@ -61,26 +97,41 @@ export default function SearchPage() {
     setSearchInput(filters.q);
   }, [filters.q]);
 
-  const handleSearchChange = (event) => {
-    setSearchInput(event.target.value);
-  };
+  const parsedCommitted = useMemo(
+    () => parseNaturalQuery(filters.q, options),
+    [filters.q, options],
+  );
 
-  const handleSearchSubmit = (event) => {
-    event?.preventDefault();
-    updateParams({ q: searchInput.trim() });
-  };
+  const parsedDraft = useMemo(
+    () => parseNaturalQuery(searchInput, options),
+    [searchInput, options],
+  );
+
+  const effectiveFilters = useMemo(
+    () => ({
+      q: parsedCommitted.residualQuery,
+      kelas: filters.kelas || parsedCommitted.kelas,
+      jenis: filters.jenis,
+      kabkota: filters.kabkota || parsedCommitted.kabkota,
+      layananOption: filters.layanan || parsedCommitted.layananOption,
+      serviceKeywords: filters.layanan ? [] : parsedCommitted.serviceKeywords,
+      bpjs: filters.bpjs || parsedCommitted.bpjs,
+    }),
+    [filters, parsedCommitted],
+  );
 
   const sort = searchParams.get('sort') || 'relevan';
   const page = Math.max(1, Number(searchParams.get('page')) || 1);
-  const filterKey = `${filters.q}|${filters.kelas}|${filters.jenis}|${filters.kabkota}|${filters.layanan}`;
+  const filterKey = `${effectiveFilters.q}|${effectiveFilters.kelas}|${effectiveFilters.jenis}|${effectiveFilters.kabkota}|${effectiveFilters.layananOption}`;
   const activeCount = countActiveFilters(filters);
 
   useEffect(() => {
     getFilterOptions()
       .then((data) => setOptions({ kabkota: data.kabkota || [], layanan: data.layanan || [] }))
-      .catch(() => {
-        /* filters stay empty; search still works */
-      });
+      .catch(() => {});
+    getAllHospitals()
+      .then((list) => setAllHospitals(list))
+      .catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -89,11 +140,11 @@ export default function SearchPage() {
     setError('');
 
     searchHospitals({
-      q: filters.q,
-      kelas: filters.kelas,
-      jenis: filters.jenis,
-      kabkota: filters.kabkota,
-      layanan: filters.layanan,
+      q: effectiveFilters.q,
+      kelas: effectiveFilters.kelas,
+      jenis: effectiveFilters.jenis,
+      kabkota: effectiveFilters.kabkota,
+      layanan: effectiveFilters.layananOption,
       limit: 500,
     })
       .then((data) => {
@@ -115,13 +166,26 @@ export default function SearchPage() {
   }, [filterKey, retry]);
 
   const filtered = useMemo(() => {
-    const base = filters.bpjs ? items.filter((hospital) => hospital.bpjs) : items;
+    let base = items;
+    if (effectiveFilters.bpjs) {
+      base = base.filter((hospital) => hospital.bpjs);
+    }
+    if (effectiveFilters.serviceKeywords.length) {
+      base = base.filter((hospital) =>
+        matchesServiceKeywords(hospital, effectiveFilters.serviceKeywords),
+      );
+    }
     return sortHospitals(base, sort);
-  }, [items, filters.bpjs, sort]);
+  }, [items, effectiveFilters.bpjs, effectiveFilters.serviceKeywords, sort]);
 
-  const totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
+  const fallbackResult = useMemo(() => {
+    if (loading || error || filtered.length > 0) return null;
+    return computeSmartFallback(allHospitals, effectiveFilters);
+  }, [loading, error, filtered.length, allHospitals, effectiveFilters]);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / perPage));
   const currentPage = Math.min(page, totalPages);
-  const pageItems = filtered.slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE);
+  const pageItems = filtered.slice((currentPage - 1) * perPage, currentPage * perPage);
 
   const updateParams = (patch, { resetPage = true } = {}) => {
     const next = new URLSearchParams(searchParams);
@@ -150,6 +214,7 @@ export default function SearchPage() {
   };
 
   const resetFilters = () => {
+    setSearchInput('');
     setSearchParams(new URLSearchParams());
   };
 
@@ -175,62 +240,97 @@ export default function SearchPage() {
       <SiteHeader active="direktori" />
 
       <main className="flex-1">
-        {/* Page header */}
         <section className="border-b border-slate-200 bg-white">
           <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
-            {/* Tombol Kembali ke Halaman Utama */}
-            <div className="mb-4">
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
               <Link
                 to="/"
-                className="group inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-brand-navy hover:bg-slate-50 hover:text-brand-navy"
+                className="group inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-toba hover:bg-toba-mist hover:text-toba-dark"
               >
                 <span className="material-symbols-outlined text-[17px] transition-transform group-hover:-translate-x-1">
                   arrow_back
                 </span>
-                <span>Kembali ke Halaman Utama</span>
+                <span>Kembali ke Beranda</span>
               </Link>
+
+              <span className="hidden rounded-full bg-toba-mist px-3.5 py-1 text-[11px] font-bold text-toba-dark sm:inline-flex">
+                206 Rumah Sakit • 33 Kabupaten/Kota Sumatera Utara
+              </span>
             </div>
 
-            {/* Omnibox Pencarian Langsung */}
-            <form onSubmit={handleSearchSubmit} className="flex flex-col gap-2.5 sm:flex-row sm:items-center">
-              <div className="relative flex-1">
-                <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
-                  <span className="material-symbols-outlined text-[20px]">search</span>
-                </span>
-                <input
-                  type="text"
-                  value={searchInput}
-                  onChange={handleSearchChange}
-                  placeholder="Cari nama rumah sakit, spesialisasi, tindakan, atau lokasi..."
-                  className="w-full rounded-full border border-slate-200 bg-slate-50 py-3 pl-10 pr-10 text-sm font-medium text-slate-800 outline-none transition placeholder:text-slate-400 hover:bg-slate-100/70 focus:border-brand-blue focus:bg-white focus:ring-2 focus:ring-brand-blue/20"
-                  aria-label="Cari nama rumah sakit, spesialisasi, atau lokasi"
-                  autoComplete="off"
-                />
-                {searchInput ? (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSearchInput('');
-                      updateParams({ q: '' });
-                    }}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 transition hover:text-slate-700"
-                    title="Hapus pencarian"
-                  >
-                    <span className="material-symbols-outlined text-[18px]">close</span>
-                  </button>
-                ) : null}
-              </div>
+            {/* Search Bar dengan Instant Autocomplete */}
+            <SearchAutocomplete
+              value={searchInput}
+              onChange={(val) => {
+                setSearchInput(val);
+                if (!val) updateParams({ q: '' });
+              }}
+              onSubmit={(val) => updateParams({ q: val.trim() })}
+              onSelectHospital={(h) => navigate(`/rumah-sakit/${encodeURIComponent(h.id)}`)}
+              onSelectService={(srv) => {
+                if (srv.layanan) {
+                  setSearchInput('');
+                  updateParams({ q: '', layanan: srv.layanan });
+                } else {
+                  setSearchInput(srv.query);
+                  updateParams({ q: srv.query });
+                }
+              }}
+              onSelectRegion={(reg) => {
+                setSearchInput('');
+                updateParams({ q: '', kabkota: reg });
+              }}
+              hospitals={allHospitals}
+              options={options}
+              placeholder="Cari nama rumah sakit, poliklinik, keluhan (cth. cuci darah, katarak), atau kota..."
+              buttonLabel="Cari Rumah Sakit"
+            />
 
-              <button
-                type="submit"
-                className="inline-flex items-center justify-center gap-1.5 rounded-full bg-brand-navy px-6 py-3 text-xs font-bold text-white shadow-sm transition hover:bg-brand-blue"
+            {/* Pencarian Populer Pasien */}
+            <div className="mt-2.5 flex flex-wrap items-center gap-1.5">
+              <span className="text-[10.5px] font-bold uppercase tracking-wider text-slate-400">
+                Pencarian populer:
+              </span>
+              {POPULAR_SEARCHES.map((preset) => (
+                <button
+                  key={preset.label}
+                  type="button"
+                  onClick={() => {
+                    setSearchInput(preset.query);
+                    updateParams({ q: preset.query });
+                  }}
+                  className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] font-semibold text-slate-600 transition hover:border-toba hover:bg-toba-mist hover:text-toba-dark"
+                >
+                  {preset.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Kriteria Terdeteksi Otomatis */}
+            {parsedDraft.detectedTags.length > 0 ? (
+              <div
+                className="mt-3 flex flex-wrap items-center gap-1.5 rounded-xl border border-slate-200/80 bg-slate-50/90 px-3 py-2"
+                aria-label="Kriteria pencarian yang terdeteksi"
               >
-                <span className="material-symbols-outlined text-[16px]">search</span>
-                Cari
-              </button>
-            </form>
+                <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-500">
+                  <span className="material-symbols-outlined text-[15px] text-toba">auto_awesome</span>
+                  Menampilkan hasil untuk:
+                </span>
+                {parsedDraft.detectedTags.map((tag, idx) => (
+                  <span
+                    key={`${tag.label}-${idx}`}
+                    className={cn(
+                      'inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-bold',
+                      tag.tone,
+                    )}
+                  >
+                    {tag.label}
+                  </span>
+                ))}
+              </div>
+            ) : null}
 
-            {/* Tepat di bawah bar pencarian: Filter pills & Active chips */}
+            {/* Filter Pills */}
             <div className="mt-3.5 flex flex-wrap items-center gap-2">
               <button
                 type="button"
@@ -240,7 +340,7 @@ export default function SearchPage() {
                 <span className="material-symbols-outlined text-[14px]">tune</span>
                 Semua Filter
                 {activeCount ? (
-                  <span className="rounded-full bg-brand-navy px-1.5 text-[10px] text-white">{activeCount}</span>
+                  <span className="rounded-full bg-toba px-1.5 text-[10px] text-white">{activeCount}</span>
                 ) : null}
               </button>
 
@@ -252,8 +352,8 @@ export default function SearchPage() {
                 onClick={() => updateParams({ kelas: '' })}
                 className={cn(
                   'rounded-full border px-3 py-1 text-[11px] font-semibold transition',
-                  !filters.kelas
-                    ? 'border-brand-navy bg-brand-navy text-white'
+                  !effectiveFilters.kelas
+                    ? 'border-toba bg-toba text-white'
                     : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300',
                 )}
               >
@@ -266,8 +366,8 @@ export default function SearchPage() {
                   onClick={() => updateParams({ kelas: option.value })}
                   className={cn(
                     'rounded-full border px-3 py-1 text-[11px] font-bold transition',
-                    filters.kelas === option.value
-                      ? 'border-brand-navy bg-brand-navy text-white'
+                    effectiveFilters.kelas === option.value
+                      ? 'border-toba bg-toba text-white'
                       : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300',
                   )}
                 >
@@ -293,8 +393,11 @@ export default function SearchPage() {
                   <button
                     key={chip.key}
                     type="button"
-                    onClick={() => updateParams({ [chip.key]: '' })}
-                    className="inline-flex items-center gap-1 rounded-full border border-blue-100 bg-blue-50 px-2.5 py-1 text-[10.5px] font-semibold text-brand-blue transition hover:bg-blue-100"
+                    onClick={() => {
+                      if (chip.key === 'q') setSearchInput('');
+                      updateParams({ [chip.key]: '' });
+                    }}
+                    className="inline-flex items-center gap-1 rounded-full border border-toba/25 bg-toba-mist px-2.5 py-1 text-[10.5px] font-semibold text-toba-dark transition hover:bg-toba-soft"
                   >
                     {chip.label}
                     <span className="material-symbols-outlined text-[13px]">close</span>
@@ -303,57 +406,70 @@ export default function SearchPage() {
               </div>
             ) : null}
 
-            {/* Judul & Hasil di bawah filter */}
+            {/* Judul & Kontrol Urut / Baris / BPJS / Peta */}
             <div className="mt-6 flex flex-col justify-between gap-4 border-t border-slate-100 pt-5 lg:flex-row lg:items-end">
               <div>
-                <h1 className="font-heading text-2xl font-extrabold tracking-tight text-brand-navy md:text-3xl">
+                <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 md:text-3xl">
                   Direktori Rumah Sakit Sumatera Utara
                 </h1>
                 <p className="mt-1 text-sm text-slate-500">
                   {loading ? (
-                    'Memuat data rumah sakit...'
-                  ) : activeCount > 0 ? (
-                    <>
-                      Menampilkan{' '}
-                      <span className="font-bold text-brand-navy">{filtered.length} rumah sakit</span> dari
-                      katalog semantik Kemenkes RI &amp; BPJS SatuSehat.
-                    </>
+                    'Memuat daftar rumah sakit yang sesuai...'
                   ) : (
                     <>
                       Menampilkan{' '}
-                      <span className="font-bold text-brand-navy">seluruh rumah sakit</span> dari
-                      katalog semantik Kemenkes RI &amp; BPJS SatuSehat.
+                      <span className="font-bold text-toba-dark">{filtered.length} rumah sakit</span> sesuai
+                      kriteria pencarian Anda.
                     </>
                   )}
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-2.5">
-                <label className="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2 text-xs">
+              <div className="flex flex-wrap items-center gap-2">
+                <label className="flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs">
+                  <span className="font-medium text-slate-500">Tampil</span>
+                  <select
+                    value={perPage}
+                    onChange={(event) => {
+                      setPerPage(Number(event.target.value));
+                      updateParams({ page: '' });
+                    }}
+                    className="cursor-pointer bg-transparent text-xs font-bold text-toba-dark outline-none"
+                    aria-label="Jumlah baris per halaman"
+                  >
+                    {PER_PAGE_OPTIONS.map((num) => (
+                      <option key={num} value={num}>
+                        {num} RS
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                <label className="flex items-center gap-1.5 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs">
                   <span className="font-medium text-slate-500">Urutkan</span>
                   <select
                     value={sort}
                     onChange={(event) => updateParams({ sort: event.target.value })}
-                    className="cursor-pointer bg-transparent text-xs font-bold text-brand-navy outline-none"
+                    className="cursor-pointer bg-transparent text-xs font-bold text-toba-dark outline-none"
                     aria-label="Urutkan hasil"
                   >
-                    <option value="relevan">Paling relevan</option>
+                    <option value="relevan">Paling Relevan</option>
                     <option value="nama">Nama A–Z</option>
-                    <option value="kelas">Kelas</option>
-                    <option value="wilayah">Wilayah</option>
+                    <option value="kelas">Kelas (A → D)</option>
+                    <option value="wilayah">Kabupaten / Kota</option>
                   </select>
                 </label>
 
                 <button
                   type="button"
-                  onClick={() => updateParams({ bpjs: filters.bpjs ? '' : '1' })}
+                  onClick={() => updateParams({ bpjs: effectiveFilters.bpjs ? '' : '1' })}
                   className={cn(
                     'inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-bold transition',
-                    filters.bpjs
+                    effectiveFilters.bpjs
                       ? 'border-emerald-300 bg-emerald-50 text-emerald-700'
                       : 'border-slate-200 bg-white text-slate-600 hover:border-emerald-200 hover:text-emerald-700',
                   )}
-                  aria-pressed={filters.bpjs}
+                  aria-pressed={effectiveFilters.bpjs}
                 >
                   <span className="material-symbols-outlined text-[15px]">verified</span>
                   BPJS aktif
@@ -365,7 +481,7 @@ export default function SearchPage() {
                   className={cn(
                     'hidden items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-bold transition lg:inline-flex',
                     showMap
-                      ? 'border-brand-blue bg-blue-50 text-brand-blue'
+                      ? 'border-toba bg-toba-mist text-toba-dark'
                       : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50',
                   )}
                   aria-pressed={showMap}
@@ -383,16 +499,14 @@ export default function SearchPage() {
             {error ? (
               <div className="rounded-2xl border border-rose-200 bg-white p-10 text-center shadow-card">
                 <span className="material-symbols-outlined text-[40px] text-rose-400">wifi_off</span>
-                <h2 className="mt-2 font-heading text-lg font-bold text-slate-900">
-                  Server belum terhubung
-                </h2>
+                <h2 className="mt-2 text-lg font-bold text-slate-900">Koneksi terputus</h2>
                 <p className="mx-auto mt-1 max-w-md text-sm text-slate-500">
-                  Pastikan backend dan Fuseki berjalan, lalu coba lagi. Detail: {error}
+                  Data rumah sakit belum dapat dimuat saat ini. Silakan coba beberapa saat lagi.
                 </p>
                 <button
                   type="button"
                   onClick={() => setRetry((current) => current + 1)}
-                  className="mt-5 rounded-full bg-brand-navy px-5 py-2.5 text-xs font-semibold text-white transition hover:bg-brand-blue"
+                  className="mt-5 rounded-full bg-toba px-5 py-2.5 text-xs font-semibold text-white transition hover:bg-toba-dark"
                 >
                   Coba lagi
                 </button>
@@ -417,18 +531,36 @@ export default function SearchPage() {
                       !showMap && 'lg:grid-cols-3',
                     )}
                   >
-                    {pageItems.map((hospital) => (
-                      <HospitalCard
-                        key={hospital.id}
-                        hospital={hospital}
-                        showSave
-                        saved={isFavorite(hospital.id)}
-                        onSave={() => toggleFavorite(hospital.id)}
-                        onRoute={(item) =>
-                          navigate(`/peta?rs=${encodeURIComponent(item.id)}&route=1`)
-                        }
-                      />
-                    ))}
+                    {pageItems.map((hospital) => {
+                      const badge = getMatchBadge(hospital, parsedCommitted, filters.q);
+                      return (
+                        <div key={hospital.id} className="flex flex-col">
+                          {badge ? (
+                            <div className="mb-1.5 flex items-center px-1">
+                              <span
+                                className={cn(
+                                  'inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[10px] font-bold',
+                                  badge.tone,
+                                )}
+                              >
+                                <span className="material-symbols-outlined text-[12px]">check</span>
+                                {badge.label}
+                              </span>
+                            </div>
+                          ) : null}
+                          <HospitalCard
+                            hospital={hospital}
+                            className="flex-1"
+                            showSave
+                            saved={isFavorite(hospital.id)}
+                            onSave={() => toggleFavorite(hospital.id)}
+                            onRoute={(item) =>
+                              navigate(`/peta?rs=${encodeURIComponent(item.id)}&route=1`)
+                            }
+                          />
+                        </div>
+                      );
+                    })}
                   </div>
 
                   {totalPages > 1 ? (
@@ -456,7 +588,7 @@ export default function SearchPage() {
                               className={cn(
                                 'flex h-8 min-w-8 items-center justify-center rounded-lg border px-2 text-xs font-semibold transition',
                                 entry === currentPage
-                                  ? 'border-brand-navy bg-brand-navy text-white'
+                                  ? 'border-toba bg-toba text-white'
                                   : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50',
                               )}
                               aria-current={entry === currentPage ? 'page' : undefined}
@@ -482,23 +614,24 @@ export default function SearchPage() {
                 {showMap ? (
                   <aside className="hidden lg:col-span-5 lg:block xl:col-span-4">
                     <div className="sticky top-20 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-card">
-                      <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3">
+                      <div className="flex items-center justify-between border-b border-slate-200 bg-toba-mist/50 px-4 py-3">
                         <div>
-                          <p className="text-[10px] font-bold uppercase tracking-wider text-brand-blue">
-                            Sebaran hasil
+                          <p className="text-[10px] font-bold uppercase tracking-wider text-toba">
+                            Sebaran Lokasi Hasil
                           </p>
                           <p className="text-xs font-semibold text-slate-700">
-                            {filtered.filter((item) => item.lat != null).length} titik terpetakan
+                            {filtered.filter((item) => item.lat != null).length} titik rumah sakit
                           </p>
                         </div>
                         <Link
                           to={`/peta?${new URLSearchParams({
-                            ...(filters.kabkota ? { kabkota: filters.kabkota } : {}),
-                            ...(filters.kelas ? { kelas: filters.kelas } : {}),
+                            ...(effectiveFilters.kabkota ? { kabkota: effectiveFilters.kabkota } : {}),
+                            ...(effectiveFilters.kelas ? { kelas: effectiveFilters.kelas } : {}),
+                            ...(effectiveFilters.q ? { q: effectiveFilters.q } : {}),
                           }).toString()}`}
-                          className="inline-flex items-center gap-1 text-[11px] font-semibold text-brand-blue hover:underline"
+                          className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1 text-[11px] font-bold text-toba-dark ring-1 ring-toba/25 transition hover:bg-toba-soft"
                         >
-                          Perbesar
+                          Buka Peta Penuh
                           <span className="material-symbols-outlined text-[14px]">open_in_full</span>
                         </Link>
                       </div>
@@ -507,6 +640,7 @@ export default function SearchPage() {
                           hospitals={filtered}
                           fit
                           showLocate
+                          onSelect={(item) => navigate(`/rumah-sakit/${encodeURIComponent(item.id)}`)}
                           className="h-full"
                         />
                       </div>
@@ -515,33 +649,63 @@ export default function SearchPage() {
                 ) : null}
               </div>
             ) : (
-              <div className="rounded-2xl border border-slate-200 bg-white p-12 text-center shadow-card">
-                <span className="material-symbols-outlined text-[48px] text-slate-300">
-                  location_off
-                </span>
-                <h2 className="mt-3 font-heading text-lg font-bold text-slate-900">
-                  Tidak ada hasil yang cocok
-                </h2>
-                <p className="mx-auto mt-1 max-w-md text-sm text-slate-500">
-                  Coba ubah kata kunci, kelas, atau wilayah. Anda juga dapat mereset seluruh filter untuk
-                  melihat semua fasilitas.
-                </p>
-                <div className="mt-5 flex flex-wrap justify-center gap-2">
-                  <button
-                    type="button"
-                    onClick={resetFilters}
-                    className="rounded-full bg-brand-navy px-5 py-2.5 text-xs font-semibold text-white transition hover:bg-brand-blue"
-                  >
-                    Reset filter
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setFilterOpen(true)}
-                    className="rounded-full border border-slate-300 px-5 py-2.5 text-xs font-semibold text-slate-700 transition hover:bg-slate-50"
-                  >
-                    Buka panel filter
-                  </button>
+              <div className="space-y-6">
+                <div className="rounded-2xl border border-amber-200 bg-amber-50/70 p-6">
+                  <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+                    <div className="flex items-start gap-3">
+                      <span className="material-symbols-outlined mt-0.5 text-[24px] text-amber-600">
+                        info
+                      </span>
+                      <div>
+                        <h2 className="text-base font-extrabold text-slate-900">
+                          {fallbackResult?.title || 'Tidak ada hasil yang cocok persis'}
+                        </h2>
+                        <p className="mt-1 text-xs leading-relaxed text-slate-600">
+                          {fallbackResult?.description ||
+                            'Coba ubah kata kunci, kelas, atau wilayah untuk memperluas jangkauan pencarian.'}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex shrink-0 flex-wrap gap-2">
+                      <button
+                        type="button"
+                        onClick={resetFilters}
+                        className="rounded-full bg-toba px-4 py-2 text-xs font-bold text-white transition hover:bg-toba-dark"
+                      >
+                        Reset semua filter
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setFilterOpen(true)}
+                        className="rounded-full border border-slate-300 bg-white px-4 py-2 text-xs font-semibold text-slate-700 transition hover:bg-slate-50"
+                      >
+                        Ubah kriteria
+                      </button>
+                    </div>
+                  </div>
                 </div>
+
+                {fallbackResult?.items?.length ? (
+                  <div>
+                    <h3 className="mb-4 text-sm font-extrabold uppercase tracking-wider text-slate-500">
+                      Alternatif Fasilitas Kesehatan Terdekat
+                    </h3>
+                    <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                      {fallbackResult.items.map((hospital) => (
+                        <HospitalCard
+                          key={hospital.id}
+                          hospital={hospital}
+                          showSave
+                          saved={isFavorite(hospital.id)}
+                          onSave={() => toggleFavorite(hospital.id)}
+                          onRoute={(item) =>
+                            navigate(`/peta?rs=${encodeURIComponent(item.id)}&route=1`)
+                          }
+                        />
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
               </div>
             )}
           </div>

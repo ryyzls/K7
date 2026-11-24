@@ -1,24 +1,30 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
   color-scheme: light;
-  --brand-navy: #012d61;
-  --brand-blue: #0057b8;
+  --toba: #0f766e;
+  --toba-d: #115e59;
+  --toba-soft: #ccfbf1;
+  --toba-mist: #f0fdfa;
+  --brand-navy: #0f766e;
+  --brand-blue: #0284c7;
+  --ulos-red: #991b1b;
+  --ulos-gold: #d97706;
   --line: #e2e8f0;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 88px;
+    scroll-padding-top: 96px;
   }
 
   html,
   body {
-    @apply m-0 bg-slate-50 font-body text-ink antialiased;
-    font-family: 'Newsreader', Georgia, serif;
+    @apply m-0 bg-white font-sans text-ink antialiased;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
@@ -33,7 +39,7 @@
   button,
   select,
   textarea {
-    font-family: 'Newsreader', Georgia, serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
   button {
@@ -41,12 +47,12 @@
   }
 
   ::selection {
-    background: rgba(0, 87, 184, 0.18);
-    color: #012d61;
+    background: rgba(15, 118, 110, 0.16);
+    color: #115e59;
   }
 
   :focus-visible {
-    outline: 2px solid var(--brand-blue);
+    outline: 2px solid var(--toba);
     outline-offset: 2px;
   }
 
@@ -61,6 +67,23 @@
 }
 
 @layer components {
+  /* Pita tenun khas Motif Ulos Batak (ragi hotang / gorga) */
+  .ulos {
+    display: block;
+    height: 6px;
+    width: 100%;
+    background-color: #80574d;
+    background-image:
+      linear-gradient(90deg, transparent 0 10px, #b5905d 10px 12px, transparent 12px 16px, #e8dfd1 16px 17px, transparent 17px 28px),
+      repeating-linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.1) 0 3px,
+        transparent 3px 6px
+      );
+    background-size: 28px 6px, 12px 12px;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  }
+
   .material-symbols-outlined {
     font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     font-size: 1.15em;
@@ -73,7 +96,7 @@
   }
 
   .font-serif-editorial {
-    font-family: 'Newsreader', Georgia, serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
   .no-scrollbar::-webkit-scrollbar {
@@ -86,13 +109,12 @@
   }
 
   .map-grid-pattern {
-    background-color: #eaf1f7;
+    background-color: #eaf5f3;
     background-image:
-      radial-gradient(#cfdbe7 1.2px, transparent 1.2px),
-      linear-gradient(to right, rgba(215, 227, 240, 0.5) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(215, 227, 240, 0.5) 1px, transparent 1px);
+      radial-gradient(#b7ddd6 1.2px, transparent 1.2px),
+      linear-gradient(to right, rgba(183, 221, 214, 0.45) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(183, 221, 214, 0.45) 1px, transparent 1px);
     background-size: 24px 24px, 72px 72px, 72px 72px;
-    background-position: 0 0, 0 0, 0 0;
   }
 
   .hairline {
@@ -127,8 +149,8 @@
 
 /* ---------- Leaflet ---------- */
 .leaflet-container {
-  font-family: 'Newsreader', Georgia, serif;
-  background: #eef3f7;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #eef6f4;
 }
 
 .leaflet-control-attribution {
@@ -137,7 +159,7 @@
 
 .leaflet-popup-content-wrapper {
   border-radius: 14px !important;
-  box-shadow: 0 12px 30px rgba(1, 45, 97, 0.14) !important;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.14) !important;
 }
 
 .leaflet-popup-content {
@@ -252,12 +274,12 @@
   justify-content: center;
   border: 3px solid #fff;
   border-radius: 999px;
-  background: #012d61;
+  background: #0f766e;
   color: #fff;
-  font-family: 'Newsreader', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 12px;
   font-weight: 700;
-  box-shadow: 0 6px 16px rgba(1, 45, 97, 0.3);
+  box-shadow: 0 6px 16px rgba(15, 118, 110, 0.3);
 }
 
 .carisehat-origin {
@@ -265,9 +287,9 @@
   width: 18px;
   border: 3px solid #fff;
   border-radius: 999px;
-  background: #0057b8;
+  background: #0284c7;
   box-shadow:
-    0 0 0 8px rgba(0, 87, 184, 0.18),
+    0 0 0 8px rgba(2, 132, 199, 0.18),
     0 3px 8px rgba(15, 23, 42, 0.25);
 }
 
@@ -279,7 +301,7 @@
   justify-content: center;
   border: 2.5px solid #fff;
   border-radius: 999px 999px 999px 6px;
-  background: #012d61;
+  background: #0f766e;
   color: #fff;
   transform: rotate(-45deg);
   box-shadow: 0 6px 14px rgba(15, 23, 42, 0.32);
@@ -322,7 +344,7 @@
 .chat-markdown h2,
 .chat-markdown h3,
 .chat-markdown h4 {
-  @apply mb-1 mt-3 font-heading font-bold text-slate-900;
+  @apply mb-1 mt-3 font-bold text-slate-900;
 }
 
 .chat-markdown h1 {
@@ -356,11 +378,11 @@
 }
 
 .chat-markdown li::marker {
-  color: #0057b8;
+  color: #0f766e;
 }
 
 .chat-markdown a {
-  @apply font-semibold text-brand-blue underline underline-offset-2;
+  @apply font-semibold text-toba underline underline-offset-2;
 }
 
 .chat-markdown hr {
@@ -368,7 +390,7 @@
 }
 
 .chat-markdown blockquote {
-  @apply my-2 border-l-2 border-brand-blue bg-slate-50 py-1 pl-3 italic text-slate-600;
+  @apply my-2 border-l-2 border-toba bg-toba-mist py-1 pl-3 italic text-slate-600;
 }
 
 .chat-markdown code {
@@ -388,11 +410,10 @@
   @apply border border-slate-200 p-1.5 align-top;
 }
 
-/* ---------- Misc ---------- */
 .modal-shadow {
   box-shadow:
-    0 24px 60px -12px rgba(1, 45, 97, 0.22),
-    0 12px 28px -6px rgba(15, 23, 42, 0.15);
+    0 24px 60px -12px rgba(15, 23, 42, 0.22),
+    0 12px 28px -6px rgba(15, 23, 42, 0.14);
 }
 
 .backdrop-blur-overlay {

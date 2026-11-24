@@ -528,7 +528,7 @@
         {% for fact in h.layanan_facts %}<div prefix="cs: http://carisehat.id/ontology/sirs/" about="{{ h.uri }}">
           <div rel="cs:catatanPelayanan" resource="{{ fact.record_uri }}"><div about="{{ fact.record_uri }}" typeof="cs:PelayananTercatat">
             <span property="cs:labelPelayanan">{{ fact.label }}</span>
-            <a rel="cs:sumberProfil" href="{{ fact.source_url }}">Sumber SIRS</a>
+            <a rel="cs:sumberProfil" href="{{ fact.source_url }}">Sumber layanan</a>
             <time property="cs:tanggalPengambilan" datatype="http://www.w3.org/2001/XMLSchema#dateTime" content="{{ fact.retrieved_at }}">{{ fact.retrieved_at }}</time>
             <span property="cs:statusPublikasi">{{ fact.source_status }}</span>
           </div></div></div>{% endfor %}
@@ -573,7 +573,7 @@
     </section>
     {% endif %}
   </main>
-  <footer>Data terstruktur RDFa &middot; schema.org &middot; &copy; kontributor OpenStreetMap</footer>
+  <footer>Informasi rumah sakit &middot; &copy; kontributor OpenStreetMap</footer>
   <script>
     (function(){
       var backBtn = document.getElementById('rs-back');

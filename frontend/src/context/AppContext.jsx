@@ -1,4 +1,4 @@
-﻿import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import {
   addFavoriteRs,
   getPatientDashboard,
@@ -13,11 +13,18 @@ const AppContext = createContext(null);
 const USER_KEY = 'carisehat_user';
 const TOKEN_KEY = 'carisehat_token';
 const FAVORITES_KEY = 'carisehat_favorites';
+const COMPARE_KEY = 'carisehat_compare';
+const MAX_COMPARE = 3;
 
 function readStorage(key, fallback) {
   try {
     const raw = localStorage.getItem(key);
-    return raw ? JSON.parse(raw) : fallback;
+    if (!raw) return fallback;
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(fallback)) {
+      return Array.isArray(parsed) ? parsed : fallback;
+    }
+    return parsed ?? fallback;
   } catch {
     return fallback;
   }
@@ -35,6 +42,8 @@ export function AppProvider({ children }) {
   const [loginOpen, setLoginOpen] = useState(false);
   const [toasts, setToasts] = useState([]);
   const [favorites, setFavorites] = useState(() => readStorage(FAVORITES_KEY, []));
+  const [compareIds, setCompareIds] = useState(() => readStorage(COMPARE_KEY, []).slice(0, MAX_COMPARE));
+  const [compareModalOpen, setCompareModalOpen] = useState(false);
 
   useEffect(() => {
     try {
@@ -61,6 +70,14 @@ export function AppProvider({ children }) {
       /* ignore */
     }
   }, [favorites]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(COMPARE_KEY, JSON.stringify(compareIds));
+    } catch {
+      /* ignore */
+    }
+  }, [compareIds]);
 
   const toast = useCallback((message, tone = 'info') => {
     const id = `${Date.now()}-${Math.random().toString(16).slice(2)}`;
@@ -139,7 +156,7 @@ export function AppProvider({ children }) {
           } else {
             await addFavoriteRs(id, null, token);
             setFavorites((current) => [...new Set([...current, id])]);
-            toast('Rumah sakit disimpan ke daftar favorit PostgreSQL.', 'success');
+            toast('Rumah sakit disimpan ke daftar favorit Anda.', 'success');
           }
           return;
         } catch (err) {
@@ -164,6 +181,30 @@ export function AppProvider({ children }) {
     [favorites, token, toast],
   );
 
+  const toggleCompare = useCallback(
+    (id) => {
+      if (!id) return;
+      if (compareIds.includes(id)) {
+        setCompareIds((current) => current.filter((item) => item !== id));
+        toast('Rumah sakit dihapus dari daftar perbandingan.', 'info');
+        return;
+      }
+      if (compareIds.length >= MAX_COMPARE) {
+        toast(`Maksimal ${MAX_COMPARE} rumah sakit dapat dibandingkan sekaligus.`, 'info');
+        setCompareModalOpen(true);
+        return;
+      }
+      setCompareIds((current) => [...current, id]);
+      toast('Rumah sakit ditambahkan ke daftar perbandingan.', 'success');
+    },
+    [compareIds, toast],
+  );
+
+  const clearCompare = useCallback(() => {
+    setCompareIds([]);
+    setCompareModalOpen(false);
+  }, []);
+
   const value = useMemo(
     () => ({
       user,
@@ -180,6 +221,13 @@ export function AppProvider({ children }) {
       favorites,
       toggleFavorite,
       isFavorite: (id) => favorites.includes(id),
+      compareIds,
+      maxCompare: MAX_COMPARE,
+      toggleCompare,
+      clearCompare,
+      isCompared: (id) => compareIds.includes(id),
+      compareModalOpen,
+      setCompareModalOpen,
     }),
     [
       user,
@@ -194,6 +242,10 @@ export function AppProvider({ children }) {
       toast,
       favorites,
       toggleFavorite,
+      compareIds,
+      toggleCompare,
+      clearCompare,
+      compareModalOpen,
     ],
   );
 

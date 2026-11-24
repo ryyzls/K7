@@ -121,7 +121,7 @@ export default function BookingForm({ hospital }) {
         <span className="material-symbols-outlined mt-0.5 text-[20px] text-brand-blue">science</span>
         <p className="text-[11.5px] leading-relaxed text-slate-600">
           <strong className="font-bold text-slate-800">Simulasi akademik.</strong> Reservasi ini disimpan
-          pada basis data PostgreSQL lokal untuk demonstrasi Tugas Besar MSBD dan tidak diteruskan ke sistem
+          pada sistem CariSehat sebagai simulasi pendaftaran awal dan tidak diteruskan ke sistem
           rumah sakit asli.
         </p>
       </div>

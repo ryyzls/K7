@@ -1,12 +1,12 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#012D61" />
+    <meta name="theme-color" content="#0F766E" />
     <meta
       name="description"
-      content="CariSehat — direktori 206 rumah sakit di 33 kabupaten/kota Sumatera Utara dengan peta digital, rute, data semantik, dan asisten pintar."
+      content="CariSehat — Direktori 206 rumah sakit di 33 kabupaten/kota Sumatera Utara dengan peta, rute, informasi layanan, BPJS, jadwal poliklinik, dan ulasan pasien."
     />
     <link rel="icon" type="image/png" href="/images/cari-sehat-icon.png" />
     <link rel="apple-touch-icon" href="/images/cari-sehat-icon.png" />
@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link
@@ -44,12 +44,11 @@
       href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css"
     />
 
-    <title>CariSehat — Direktori &amp; Eksplorasi Rumah Sakit Sumatera Utara</title>
+    <title>CariSehat — Direktori Rumah Sakit Sumatera Utara</title>
   </head>
   <body>
     <div id="root"></div>
 
-    <!-- Map, graph, and geo libraries stay on the CDN; React components read window.L / window.vis. -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.79.0/dist/L.Control.Locate.min.js"></script>

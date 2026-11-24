@@ -1,26 +1,32 @@
-/** @type {import('tailwindcss').Config} */
+﻿/** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
       colors: {
+        toba: {
+          DEFAULT: '#0F766E',
+          dark: '#115E59',
+          soft: '#CCFBF1',
+          mist: '#F0FDFA',
+        },
         brand: {
-          navy: '#012D61',
-          blue: '#0057B8',
-          accent: '#0A84FF',
+          navy: '#0F766E',
+          blue: '#0284C7',
+          accent: '#0EA5E9',
           surface: '#F8FAFC',
           emerald: '#059669',
           emeraldDark: '#064E3B',
         },
         primary: {
-          DEFAULT: '#012D61',
-          container: '#00193B',
-          soft: '#EAF1FB',
+          DEFAULT: '#0F766E',
+          container: '#115E59',
+          soft: '#F0FDFA',
         },
         secondary: {
-          DEFAULT: '#0057B8',
-          soft: '#E8F1FD',
-          dark: '#00275B',
+          DEFAULT: '#0284C7',
+          soft: '#E0F2FE',
+          dark: '#0369A1',
         },
         ink: {
           DEFAULT: '#0F172A',
@@ -28,29 +34,23 @@ export default {
           muted: '#64748B',
           light: '#94A3B8',
         },
-        medical: {
-          emerald: '#059669',
-          emeraldSoft: '#ECFDF5',
-          gold: '#B49148',
-          red: '#B91C1C',
-          amber: '#B45309',
+        ulos: {
+          red: '#991B1B',
+          gold: '#D97706',
+          charcoal: '#1E293B',
         },
       },
       fontFamily: {
-        sans: ['Newsreader', 'Georgia', 'serif'],
-        body: ['Newsreader', 'Georgia', 'serif'],
-        heading: ['Newsreader', 'Georgia', 'serif'],
-        editorial: ['Newsreader', 'Georgia', 'serif'],
+        sans: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        body: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        heading: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        editorial: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       boxShadow: {
-        card: '0 2px 10px rgba(1, 45, 97, 0.06)',
-        floating: '0 8px 30px rgba(1, 45, 97, 0.12)',
+        card: '0 2px 10px rgba(15, 118, 110, 0.06)',
+        floating: '0 10px 30px rgba(15, 23, 42, 0.12)',
         soft: '0 4px 20px -4px rgba(15, 23, 42, 0.08)',
-        modal: '0 24px 60px -12px rgba(1, 45, 97, 0.22), 0 12px 28px -6px rgba(15, 23, 42, 0.15)',
-      },
-      letterSpacing: {
-        tightest: '-0.035em',
-        editorial: '0.12em',
+        modal: '0 24px 60px -12px rgba(15, 23, 42, 0.22), 0 12px 28px -6px rgba(15, 23, 42, 0.14)',
       },
       keyframes: {
         fadeIn: {
@@ -62,14 +62,14 @@ export default {
           to: { opacity: '1', transform: 'scale(1)' },
         },
         slideUp: {
-          from: { opacity: '0', transform: 'translateY(16px)' },
+          from: { opacity: '0', transform: 'translateY(14px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
         },
       },
       animation: {
         'fade-in': 'fadeIn 180ms ease-out both',
         'zoom-in': 'zoomIn 200ms cubic-bezier(0.16, 1, 0.3, 1) both',
-        'slide-up': 'slideUp 260ms cubic-bezier(0.16, 1, 0.3, 1) both',
+        'slide-up': 'slideUp 240ms cubic-bezier(0.16, 1, 0.3, 1) both',
       },
     },
   },

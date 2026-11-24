@@ -7,8 +7,8 @@ export function MinimalFooter() {
         <p className="font-medium text-slate-600">
           © {new Date().getFullYear()} CariSehat. Direktori Layanan Kesehatan Sumatera Utara.
         </p>
-        <p className="text-[11px] text-slate-400">
-          Informasi kontak, fasilitas, dan rujukan rumah sakit terintegrasi.
+        <p className="text-xs text-slate-400">
+          Informasi kontak, layanan, dan fasilitas rumah sakit.
         </p>
       </div>
     </footer>
@@ -17,32 +17,29 @@ export function MinimalFooter() {
 
 export function EditorialFooter() {
   return (
-    <footer className="w-full border-t border-slate-200 bg-[#F4F6F9] font-sans text-[13px] text-slate-700">
+    <footer className="w-full border-t border-slate-200 bg-stone-50 font-sans text-sm text-slate-700">
       <div className="mx-auto max-w-[1360px] px-6 py-12 lg:px-10">
         <div className="grid grid-cols-1 gap-8 border-b border-slate-200/80 pb-10 md:grid-cols-2 lg:grid-cols-4">
-          {/* Brand Info */}
           <div className="lg:col-span-2">
             <div className="mb-4 flex items-center gap-3">
               <img
                 src="/images/cari-sehat-icon.png"
                 alt="CariSehat"
-                className="h-9 w-9 rounded-xl object-cover shadow-sm"
+                className="h-9 w-9 rounded-lg object-contain"
               />
-              <span className="font-serif-editorial text-[21px] font-semibold text-brand-navy">
+              <span className="font-serif-editorial text-xl font-semibold text-brand-navy">
                 CariSehat
               </span>
             </div>
-            <p className="max-w-md font-light leading-relaxed text-slate-600">
-              Direktori resmi layanan rumah sakit se-Sumatera Utara. Menghubungkan 206 fasilitas
-              kesehatan, 33 kabupaten/kota, dan informasi rujukan dalam satu platform pencarian yang
-              mudah, cepat, dan akurat.
+            <p className="max-w-md leading-relaxed text-slate-600">
+              Direktori 206 rumah sakit di 33 kabupaten/kota Sumatera Utara dengan informasi kelas,
+              status BPJS, layanan, jadwal poliklinik, dan kuota kamar.
             </p>
           </div>
 
-          {/* Layanan */}
           <div>
-            <h4 className="mb-3 text-[11px] font-bold uppercase tracking-wider text-slate-900">
-              Layanan Utama
+            <h4 className="mb-3 text-xs font-medium text-slate-900">
+              Layanan utama
             </h4>
             <ul className="space-y-2.5 text-slate-600">
               <li>
@@ -71,9 +68,8 @@ export function EditorialFooter() {
             </ul>
           </div>
 
-          {/* Jelajahi */}
           <div>
-            <h4 className="mb-3 text-[11px] font-bold uppercase tracking-wider text-slate-900">
+            <h4 className="mb-3 text-xs font-medium text-slate-900">
               Jelajahi
             </h4>
             <ul className="space-y-2.5 text-slate-600">
@@ -96,10 +92,9 @@ export function EditorialFooter() {
           </div>
         </div>
 
-        {/* Bottom Copyright */}
         <div className="flex flex-col items-center justify-between gap-3 pt-6 text-xs text-slate-500 sm:flex-row">
           <p>© {new Date().getFullYear()} CariSehat. Hak cipta dilindungi.</p>
-          <p className="text-[11.5px] text-slate-400">
+          <p className="text-xs text-slate-400">
             Platform Informasi Rumah Sakit Sumatera Utara
           </p>
         </div>

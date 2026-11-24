@@ -55,6 +55,19 @@ export async function getMapConfig() {
   return request('/api/config/maps');
 }
 
+export async function compareHospitalsApi(ids = []) {
+  const cleaned = [...new Set((ids || []).map((x) => String(x).trim()).filter(Boolean))].slice(0, 3);
+  return request(`/api/compare?ids=${encodeURIComponent(cleaned.join(','))}`);
+}
+
+export async function getHospitalOperationalHours(rsId) {
+  return request(`/api/hospitals/${encodeURIComponent(rsId)}/operational-hours`);
+}
+
+export async function getHospitalAlternatives(rsId, limit = 4) {
+  return request(`/api/hospitals/${encodeURIComponent(rsId)}/alternatives?limit=${encodeURIComponent(limit)}`);
+}
+
 export async function sendChat(payload) {
   return request('/api/chat', {
     method: 'POST',

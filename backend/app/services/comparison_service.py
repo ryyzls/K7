@@ -122,8 +122,8 @@ async def compare_hospitals(rs_ids: list[str]) -> dict[str, Any]:
             "unique_services_per_hospital": unique_per_hospital,
         },
         "disclaimers": [
-            "Data layanan dan spesialisasi bersumber dari laporan profil SIRS Kemenkes dan belum diverifikasi secara operasional real-time.",
-            "Fasilitas fisik belum diverifikasi secara independen.",
-            "CariSehat tidak mengarang data ketersediaan tempat tidur, biaya berobat, estimasi jarak rute, atau jadwal dokter.",
+            "Informasi layanan dan spesialisasi bersumber dari profil Kementerian Kesehatan; perubahan terbaru mungkin belum tercatat.",
+            "Fasilitas rumah sakit belum selalu diperiksa langsung.",
+            "Informasi tempat tidur, biaya, jarak, dan jadwal dokter dapat berbeda atau belum tersedia.",
         ],
     }

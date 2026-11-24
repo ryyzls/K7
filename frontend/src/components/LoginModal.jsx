@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useApp } from '../context/AppContext';
 
@@ -112,7 +112,7 @@ export default function LoginModal() {
               Akun Pasien CariSehat
             </h2>
             <p className="text-xs text-slate-500">
-              Terhubung ke PostgreSQL (Reservasi Poli, Favorit &amp; Ulasan RS)
+              Akses Reservasi Poliklinik, RS Favorit &amp; Ulasan Pasien
             </p>
           </div>
         </div>
@@ -190,7 +190,7 @@ export default function LoginModal() {
 
             <div className="rounded-xl border border-slate-200 bg-slate-50 p-3">
               <p className="mb-2 text-[11px] font-semibold text-slate-600">
-                Isi cepat akun demo MSBD (password: <code>Demo1234!</code>):
+                Akses cepat akun simulasi pasien (sandi: <code>Demo1234!</code>):
               </p>
               <div className="flex flex-wrap gap-1.5">
                 {DEMO_ACCOUNTS.map((acc) => (

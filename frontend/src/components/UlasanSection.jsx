@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getHospitalReviews, submitHospitalReview } from '../api';
 import { useApp } from '../context/AppContext';
 
@@ -45,7 +45,7 @@ export default function UlasanSection({ hospital }) {
         token,
       );
       setKomentar('');
-      toast('Ulasan Anda berhasil disimpan ke PostgreSQL.', 'success');
+      toast('Ulasan Anda berhasil disimpan. Terima kasih!', 'success');
       loadReviews();
     } catch (err) {
       toast(`Gagal mengirim ulasan: ${err.message}`, 'error');

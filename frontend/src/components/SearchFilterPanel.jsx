@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+﻿import { useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { KELAS_DESCRIPTION, KELAS_OPTIONS, JENIS_OPTIONS } from '../constants';
 import { cn } from '../utils';
@@ -55,22 +55,22 @@ export default function SearchFilterPanel({ open, onClose, filters = EMPTY, opti
         aria-modal="true"
         aria-labelledby="filter-title"
       >
-        <header className="flex items-start justify-between gap-3 border-b border-slate-200 px-5 py-4">
+        <header className="flex items-start justify-between gap-3 border-b border-slate-200 bg-toba-mist/60 px-5 py-4">
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-brand-blue">
-              Panel pencarian
+            <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-toba">
+              Direktori Rumah Sakit
             </p>
-            <h2 id="filter-title" className="mt-0.5 font-heading text-xl font-bold text-slate-900">
-              Filter rumah sakit
+            <h2 id="filter-title" className="mt-0.5 text-xl font-extrabold text-slate-900">
+              Filter Pencarian
             </h2>
             <p className="mt-1 text-xs text-slate-500">
-              {activeCount ? `${activeCount} filter aktif` : 'Pilih kriteria yang Anda butuhkan'}
+              {activeCount ? `${activeCount} filter aktif diterapkan` : 'Saring berdasarkan kelas, wilayah, dan layanan'}
             </p>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition hover:bg-slate-200 hover:text-slate-800"
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-slate-500 ring-1 ring-slate-200 transition hover:bg-slate-100 hover:text-slate-800"
             aria-label="Tutup panel filter"
           >
             <span className="material-symbols-outlined text-[20px]">close</span>
@@ -79,7 +79,7 @@ export default function SearchFilterPanel({ open, onClose, filters = EMPTY, opti
 
         <div className="flex-1 space-y-6 overflow-y-auto px-5 py-5 scrollbar-thin">
           <label className="block">
-            <span className="mb-1.5 block text-xs font-semibold text-slate-700">Kata kunci</span>
+            <span className="mb-1.5 block text-xs font-bold text-slate-700">Kata kunci atau layanan</span>
             <div className="relative">
               <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
                 <span className="material-symbols-outlined text-[18px]">search</span>
@@ -87,14 +87,14 @@ export default function SearchFilterPanel({ open, onClose, filters = EMPTY, opti
               <input
                 value={draft.q}
                 onChange={(event) => set('q', event.target.value)}
-                placeholder="Nama rumah sakit, alamat, layanan..."
-                className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-3 text-sm outline-none transition focus:border-brand-blue focus:bg-white focus:ring-2 focus:ring-brand-blue/15"
+                placeholder="Nama rumah sakit, alamat, atau layanan..."
+                className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pl-10 pr-3 text-sm outline-none transition focus:border-toba focus:bg-white focus:ring-2 focus:ring-toba/15"
               />
             </div>
           </label>
 
           <fieldset>
-            <legend className="mb-2 text-xs font-semibold text-slate-700">Kelas rumah sakit</legend>
+            <legend className="mb-2 text-xs font-bold text-slate-700">Kelas rumah sakit</legend>
             <div className="grid grid-cols-5 gap-1.5">
               <button
                 type="button"
@@ -102,7 +102,7 @@ export default function SearchFilterPanel({ open, onClose, filters = EMPTY, opti
                 className={cn(
                   'rounded-xl border px-2 py-2 text-xs font-semibold transition',
                   !draft.kelas
-                    ? 'border-brand-navy bg-brand-navy text-white'
+                    ? 'border-toba bg-toba text-white'
                     : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300',
                 )}
               >
@@ -117,7 +117,7 @@ export default function SearchFilterPanel({ open, onClose, filters = EMPTY, opti
                   className={cn(
                     'rounded-xl border px-2 py-2 text-xs font-bold transition',
                     draft.kelas === option.value
-                      ? 'border-brand-navy bg-brand-navy text-white'
+                      ? 'border-toba bg-toba text-white'
                       : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300',
                   )}
                 >
@@ -128,7 +128,7 @@ export default function SearchFilterPanel({ open, onClose, filters = EMPTY, opti
           </fieldset>
 
           <fieldset>
-            <legend className="mb-2 text-xs font-semibold text-slate-700">Jenis rumah sakit</legend>
+            <legend className="mb-2 text-xs font-bold text-slate-700">Jenis rumah sakit</legend>
             <div className="grid grid-cols-3 gap-1.5">
               <button
                 type="button"
@@ -136,7 +136,7 @@ export default function SearchFilterPanel({ open, onClose, filters = EMPTY, opti
                 className={cn(
                   'rounded-xl border px-2 py-2 text-xs font-semibold transition',
                   !draft.jenis
-                    ? 'border-brand-navy bg-brand-navy text-white'
+                    ? 'border-toba bg-toba text-white'
                     : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300',
                 )}
               >
@@ -150,7 +150,7 @@ export default function SearchFilterPanel({ open, onClose, filters = EMPTY, opti
                   className={cn(
                     'rounded-xl border px-2 py-2 text-xs font-semibold transition',
                     draft.jenis === option.value
-                      ? 'border-brand-navy bg-brand-navy text-white'
+                      ? 'border-toba bg-toba text-white'
                       : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300',
                   )}
                 >
@@ -161,11 +161,11 @@ export default function SearchFilterPanel({ open, onClose, filters = EMPTY, opti
           </fieldset>
 
           <label className="block">
-            <span className="mb-1.5 block text-xs font-semibold text-slate-700">Kabupaten / Kota</span>
+            <span className="mb-1.5 block text-xs font-bold text-slate-700">Kabupaten / Kota</span>
             <select
               value={draft.kabkota}
               onChange={(event) => set('kabkota', event.target.value)}
-              className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-800 outline-none transition focus:border-brand-blue focus:bg-white focus:ring-2 focus:ring-brand-blue/15"
+              className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-800 outline-none transition focus:border-toba focus:bg-white focus:ring-2 focus:ring-toba/15"
             >
               <option value="">Semua wilayah Sumatera Utara</option>
               {(options.kabkota || []).map((item) => (
@@ -177,13 +177,13 @@ export default function SearchFilterPanel({ open, onClose, filters = EMPTY, opti
           </label>
 
           <label className="block">
-            <span className="mb-1.5 block text-xs font-semibold text-slate-700">Layanan</span>
+            <span className="mb-1.5 block text-xs font-bold text-slate-700">Layanan &amp; Spesialisasi Medis</span>
             <select
               value={draft.layanan}
               onChange={(event) => set('layanan', event.target.value)}
-              className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-800 outline-none transition focus:border-brand-blue focus:bg-white focus:ring-2 focus:ring-brand-blue/15"
+              className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-800 outline-none transition focus:border-toba focus:bg-white focus:ring-2 focus:ring-toba/15"
             >
-              <option value="">Semua layanan</option>
+              <option value="">Semua layanan klinis</option>
               {(options.layanan || []).map((item) => (
                 <option key={item} value={item}>
                   {item}
@@ -192,15 +192,15 @@ export default function SearchFilterPanel({ open, onClose, filters = EMPTY, opti
             </select>
           </label>
 
-          <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3.5">
+          <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-toba-mist/50 p-3.5">
             <input
               type="checkbox"
               checked={draft.bpjs}
               onChange={(event) => set('bpjs', event.target.checked)}
-              className="mt-0.5 h-4 w-4 rounded border-slate-300 text-brand-blue focus:ring-brand-blue"
+              className="mt-0.5 h-4 w-4 rounded border-slate-300 text-toba focus:ring-toba"
             />
             <span>
-              <span className="block text-sm font-semibold text-slate-800">Hanya menerima BPJS</span>
+              <span className="block text-sm font-bold text-slate-800">Hanya menerima BPJS</span>
               <span className="mt-0.5 block text-[11px] leading-relaxed text-slate-500">
                 Tampilkan fasilitas yang tercatat menerima pasien BPJS Kesehatan.
               </span>
@@ -222,7 +222,7 @@ export default function SearchFilterPanel({ open, onClose, filters = EMPTY, opti
           <button
             type="button"
             onClick={() => onApply({ ...draft })}
-            className="flex flex-1 items-center justify-center gap-1.5 rounded-full bg-brand-navy px-4 py-2.5 text-xs font-semibold text-white transition hover:bg-brand-blue"
+            className="flex flex-1 items-center justify-center gap-1.5 rounded-full bg-toba px-4 py-2.5 text-xs font-bold text-white transition hover:bg-toba-dark"
           >
             <span className="material-symbols-outlined text-[16px]">tune</span>
             Terapkan filter
