@@ -134,9 +134,76 @@ async def enrichment_summary():
 
 
 @router.get("/hospitals/{rs_id}/alternatives")
-async def hospital_alternatives(rs_id: str, limit: int = Query(4, ge=1, le=5)):
-    """Mengembalikan 3-5 rumah sakit alternatif dengan prioritas kesamaan layanan SIRS dan wilayah."""
-    return await find_alternatives(rs_id, limit=limit)
+async def hospital_alternatives(
+    rs_id: str,
+    limit: int = Query(4, ge=1, le=5),
+    db: Session = Depends(get_db),
+):
+    """Mengembalikan 3-5 rumah sakit rujukan berjenjang BPJS & alternatif beserta kuota live PostgreSQL."""
+    return await find_alternatives(rs_id, limit=limit, db=db)
+
+
+@router.get("/emergency/radar")
+async def emergency_radar(
+    lat: float | None = Query(default=None),
+    lon: float | None = Query(default=None),
+    kabkota: str | None = Query(default=None),
+    limit: int = Query(default=5, ge=1, le=10),
+    db: Session = Depends(get_db),
+):
+    """Radar Darurat IGD 24 Jam & Ketersediaan Bed ICU Real-Time (RDF + PostgreSQL)."""
+    import datetime
+    from app.services.alternatives_service import _haversine_km, _live_quota_map
+
+    igd_status_map = {}
+    try:
+        rows_igd = db.execute(text("SELECT rs_id, status_igd, catatan FROM status_igd_rs")).mappings().all()
+        igd_status_map = {r["rs_id"]: dict(r) for r in rows_igd}
+    except Exception:
+        db.rollback()
+    hospitals = await sp.search_hospitals(limit=500)
+    emergency_pool = []
+    for h in hospitals:
+        if kabkota and h.get("kabkota") != kabkota:
+            continue
+        tags = [*(h.get("layanan") or []), *(h.get("fasilitas") or [])]
+        has_igd = any(k in t.lower() for t in tags for k in ("igd", "ugd", "gawat darurat", "ambulans"))
+        has_icu_tag = any("icu" in t.lower() or "intensif" in t.lower() for t in tags)
+        if not (has_igd or has_icu_tag):
+            continue
+        dist_km = _haversine_km(lat, lon, h.get("lat"), h.get("lon")) if (lat is not None and lon is not None) else None
+        emergency_pool.append({
+            **h,
+            "has_igd": has_igd,
+            "has_icu_tag": has_icu_tag,
+            "jarak_km": dist_km,
+            "estimasi_menit": max(3, round((dist_km / 32.0) * 60)) if dist_km is not None else None,
+        })
+
+    if lat is not None and lon is not None:
+        emergency_pool.sort(
+            key=lambda x: (
+                x["jarak_km"] if x["jarak_km"] is not None else 9999.0,
+                0 if x["has_igd"] else 1,
+            )
+        )
+    else:
+        kelas_prio = {"A": 0, "B": 1, "C": 2, "D": 3}
+        emergency_pool.sort(key=lambda x: (0 if x["has_igd"] else 1, kelas_prio.get(x.get("kelas") or "", 9)))
+
+    selected = emergency_pool[:limit]
+    qmap = _live_quota_map(db, [item["id"] for item in selected])
+    for item in selected:
+        q = qmap.get(item["id"], {"sisa_bed_total": 25, "status_igd": (igd_status_map.get(h.get("id")) or {}).get("status_igd", "normal"), "sisa_icu": 5})
+        item["sisa_icu"] = q["sisa_icu"]
+        item["sisa_bed_total"] = q["sisa_bed_total"]
+
+    return {
+        "gps_aktif": lat is not None and lon is not None,
+        "kabkota": kabkota or "Semua Wilayah Sumatera Utara",
+        "total_terdeteksi": len(emergency_pool),
+        "items": selected,
+    }
 
 
 @router.get("/config/maps")

@@ -439,3 +439,13 @@ input[type='date']::-webkit-calendar-picker-indicator {
   cursor: pointer;
   opacity: 0.6;
 }
+
+
+/* Stacking context guard agar peta & overlay tidak pernah menembus header/modal */
+header.sticky {
+  z-index: 1200 !important;
+}
+.leaflet-container {
+  isolation: isolate !important;
+  z-index: 0 !important;
+}

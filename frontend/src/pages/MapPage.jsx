@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { getAllHospitals, getFilterOptions } from '../api';
 import { KELAS_COLOR, KELAS_OPTIONS } from '../constants';

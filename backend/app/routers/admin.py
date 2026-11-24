@@ -17,7 +17,10 @@ from pathlib import Path
 from typing import Literal
 
 from fastapi import APIRouter, Depends, Header, HTTPException, Query
-from fastapi.responses import HTMLResponse
+import csv
+import io
+import json
+from fastapi.responses import HTMLResponse, Response
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 from sqlalchemy import text
 from sqlalchemy.exc import DBAPIError, IntegrityError, SQLAlchemyError
@@ -193,6 +196,7 @@ class UserPatch(BaseModel):
     nama_lengkap: str | None = Field(default=None, min_length=2, max_length=100)
     role_kode: str | None = Field(default=None, min_length=1, max_length=30)
     aktif: bool | None = None
+    scoped_rs_id: str | None = Field(default=None, max_length=20)
     password: str | None = Field(default=None, min_length=8, max_length=128)
 
 
@@ -319,6 +323,18 @@ def dashboard(user: dict = Depends(require_perm("dashboard.view")), db: Session 
         db.execute(text("SELECT * FROM v_peringkat_rs ORDER BY peringkat_rating ASC LIMIT 5")).mappings().all(),
         "rs_id",
     )
+    trend_rows = db.execute(text("""
+        WITH days AS (
+            SELECT generate_series(CURRENT_DATE - INTERVAL '6 days', CURRENT_DATE, '1 day')::date AS tgl
+        )
+        SELECT
+            d.tgl::text AS tanggal,
+            COALESCE((SELECT COUNT(*) FROM booking_kamar b WHERE b.created_at::date = d.tgl), 0) AS booking,
+            COALESCE((SELECT COUNT(*) FROM reservasi_konsultasi r WHERE r.created_at::date = d.tgl), 0) AS poli
+        FROM days d
+        ORDER BY d.tgl ASC
+    """)).mappings().all()
+
     return {
         "stats": stats,
         "total_rs_rdf": total_rs,
@@ -328,7 +344,42 @@ def dashboard(user: dict = Depends(require_perm("dashboard.view")), db: Session 
         "okupansi": okupansi,
         "okupansi_poliklinik": okupansi_poli,
         "peringkat_rs": peringkat_rs,
+        "trend_harian": [dict(r) for r in trend_rows],
     }
+
+
+@router.get("/dashboard/export.csv", summary="Ekspor ringkasan operasional ke file CSV")
+def export_dashboard_csv(user: dict = Depends(require_perm("dashboard.view")), db: Session = Depends(get_db)):
+    stats = dict(db.execute(text("SELECT * FROM v_statistik_dashboard")).mappings().one())
+    top = _with_names(db.execute(text("SELECT * FROM v_ringkasan_booking_per_rs ORDER BY total DESC, rs_id LIMIT 15")).mappings().all(), "rs_id")
+    by_jenis = db.execute(text(
+        "SELECT jenis_kamar, COUNT(*) AS total FROM booking_kamar WHERE status <> 'dibatalkan' "
+        "GROUP BY jenis_kamar ORDER BY total DESC"
+    )).mappings().all()
+
+    buf = io.StringIO()
+    w = csv.writer(buf)
+    w.writerow(["LAPORAN RINGKASAN OPERASIONAL CARISEHAT"])
+    w.writerow(["Dicetak Oleh", user.get("username", "-"), "Waktu", datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")])
+    w.writerow([])
+    w.writerow(["INDIKATOR UTAMA", "NILAI"])
+    for k, v in stats.items():
+        w.writerow([k, v])
+    w.writerow([])
+    w.writerow(["BOOKING AKTIF PER KELAS KAMAR", "TOTAL PESANAN"])
+    for r in by_jenis:
+        w.writerow([r["jenis_kamar"], r["total"]])
+    w.writerow([])
+    w.writerow(["RS ID", "NAMA RUMAH SAKIT", "TOTAL BOOKING", "MENUNGGU", "DIKONFIRMASI"])
+    for r in top:
+        w.writerow([r.get("rs_id", ""), r.get("nama_rs", ""), r.get("total", 0), r.get("menunggu", 0), r.get("dikonfirmasi", 0)])
+
+    csv_bytes = ("﻿" + buf.getvalue()).encode("utf-8")
+    return Response(
+        content=csv_bytes,
+        media_type="text/csv; charset=utf-8",
+        headers={"Content-Disposition": 'attachment; filename="laporan_operasional_carisehat.csv"'},
+    )
 
 
 # ─── Booking CRUD ────────────────────────────────────────────────────────────
@@ -431,6 +482,7 @@ def delete_booking(bid: int, user: dict = Depends(require_perm("booking.delete")
 
 @router.get("/kuota", summary="Kuota kamar per RS + okupansi hari ini (view v_okupansi_kamar)")
 def list_kuota(rs_id: str = "", user: dict = Depends(require_perm("kuota.read")), db: Session = Depends(get_db)):
+    rs_id = _enforce_rs_scope(user, rs_id)
     rows = db.execute(text("SELECT rs_id, jenis_kamar, kapasitas, terisi_hari_ini, sisa_hari_ini FROM v_okupansi_kamar "
                            "WHERE (:rs = '' OR rs_id = :rs) ORDER BY rs_id, jenis_kamar"), {"rs": rs_id}).mappings().all()
     return {"default_kapasitas": 5, "items": _with_names(rows, "rs_id")}
@@ -445,6 +497,88 @@ def upsert_kuota(body: KuotaIn, user: dict = Depends(require_perm("kuota.write")
                         "ON CONFLICT (rs_id, jenis_kamar) DO UPDATE SET kapasitas = EXCLUDED.kapasitas"),
                    {"rs": body.rs_id, "j": body.jenis_kamar, "k": body.kapasitas})
     return {"message": "Kuota disimpan", **body.model_dump()}
+
+
+class KuotaStepIn(BaseModel):
+    rs_id: str = RS_ID
+    jenis_kamar: RoomType
+    delta: int = Field(ge=-50, le=50)
+
+
+class IgdStatusIn(BaseModel):
+    rs_id: str = RS_ID
+    status_igd: Literal["normal", "siaga", "penuh"]
+    catatan: str = Field(default="", max_length=200)
+
+
+def _ensure_igd_status_table(db: Session) -> None:
+    db.execute(text("""
+        CREATE TABLE IF NOT EXISTS status_igd_rs (
+            rs_id VARCHAR(20) PRIMARY KEY,
+            status_igd VARCHAR(16) NOT NULL DEFAULT 'normal',
+            catatan TEXT NOT NULL DEFAULT '',
+            updated_by VARCHAR(60) NOT NULL DEFAULT 'system',
+            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+        )
+    """))
+
+
+@router.patch("/kuota/step", summary="Ubah cepat kapasitas kamar (+1 / -1) secara atomik")
+def step_kuota(body: KuotaStepIn, user: dict = Depends(require_perm("kuota.write")), db: Session = Depends(get_db)):
+    _need_rs(body.rs_id)
+    with tx(db):
+        set_actor(db, user)
+        cur = db.execute(
+            text("SELECT kapasitas FROM kuota_kamar WHERE rs_id = :rs AND jenis_kamar = :j"),
+            {"rs": body.rs_id, "j": body.jenis_kamar},
+        ).scalar_one_or_none()
+        base_cap = int(cur) if cur is not None else 5
+        new_cap = max(0, min(1000, base_cap + body.delta))
+        db.execute(
+            text("""
+                INSERT INTO kuota_kamar (rs_id, jenis_kamar, kapasitas)
+                VALUES (:rs, :j, :k)
+                ON CONFLICT (rs_id, jenis_kamar) DO UPDATE SET kapasitas = EXCLUDED.kapasitas
+            """),
+            {"rs": body.rs_id, "j": body.jenis_kamar, "k": new_cap},
+        )
+    return {"message": f"Kapasitas {body.jenis_kamar} diperbarui ke {new_cap}", "kapasitas": new_cap}
+
+
+@router.get("/igd-status", summary="Daftar status siaga IGD per rumah sakit")
+def list_igd_status(user: dict = Depends(require_perm("kuota.read")), db: Session = Depends(get_db)):
+    _ensure_igd_status_table(db)
+    db.commit()
+    rows = db.execute(text(
+        "SELECT rs_id, status_igd, catatan, updated_by, updated_at FROM status_igd_rs ORDER BY updated_at DESC"
+    )).mappings().all()
+    return {"items": _with_names(rows, "rs_id")}
+
+
+@router.post("/igd-status", summary="Atur status operasional IGD (normal / siaga / penuh)")
+def upsert_igd_status(body: IgdStatusIn, user: dict = Depends(require_perm("kuota.write")), db: Session = Depends(get_db)):
+    _need_rs(body.rs_id)
+    with tx(db):
+        _ensure_igd_status_table(db)
+        set_actor(db, user)
+        db.execute(
+            text("""
+                INSERT INTO status_igd_rs (rs_id, status_igd, catatan, updated_by, updated_at)
+                VALUES (:rs, :st, :cat, :by, NOW())
+                ON CONFLICT (rs_id) DO UPDATE SET
+                    status_igd = EXCLUDED.status_igd,
+                    catatan = EXCLUDED.catatan,
+                    updated_by = EXCLUDED.updated_by,
+                    updated_at = NOW()
+            """),
+            {
+                "rs": body.rs_id,
+                "st": body.status_igd,
+                "cat": body.catatan.strip(),
+                "by": user.get("username", "admin"),
+            },
+        )
+    return {"message": f"Status IGD diperbarui ke {body.status_igd.upper()}", **body.model_dump()}
 
 
 @router.delete("/kuota/{rs_id}/{jenis_kamar}", summary="Hapus pengaturan kuota (kembali ke default)")
@@ -467,6 +601,7 @@ _JADWAL_SQL = ("SELECT id, rs_id, nama_dokter, spesialisasi, hari, to_char(jam_m
 
 @router.get("/jadwal", summary="Daftar jadwal konsultasi dokter")
 def list_jadwal(rs_id: str = "", user: dict = Depends(require_perm("jadwal.read")), db: Session = Depends(get_db)):
+    rs_id = _enforce_rs_scope(user, rs_id)
     rows = db.execute(text(_JADWAL_SQL + "WHERE (:rs = '' OR rs_id = :rs) ORDER BY rs_id, hari, jam_mulai"),
                       {"rs": rs_id}).mappings().all()
     return {"items": _with_names(rows, "rs_id")}
@@ -558,7 +693,16 @@ def list_roles(user: dict = Depends(require_perm("user.manage")), db: Session = 
     return [{**dict(r), "permissions": [p["permission"] for p in perms if p["role_kode"] == r["kode"]]} for r in roles]
 
 
-_USER_COLS = "id, username, nama_lengkap, role_kode, aktif, last_login, created_at"
+def _enforce_rs_scope(user: dict, requested_rs: str = "") -> str:
+    scoped = (user.get("scoped_rs_id") or "").strip()
+    if scoped:
+        if requested_rs and requested_rs != scoped:
+            raise HTTPException(403, f"Akun ini hanya memiliki akses operasional untuk RS '{scoped}'.")
+        return scoped
+    return requested_rs
+
+
+_USER_COLS = "id, username, nama_lengkap, role_kode, scoped_rs_id, aktif, last_login, created_at"
 
 
 @router.get("/users")
@@ -581,10 +725,13 @@ def create_user(body: UserIn, user: dict = Depends(require_perm("user.manage")),
     with tx(db):
         set_actor(db, user)
         _check_role(db, body.role_kode)
+        sc_rs = (body.scoped_rs_id or "").strip() or None
+        if sc_rs:
+            _need_rs(sc_rs)
         new_id = db.execute(
-            text("INSERT INTO admin_users (username, password_hash, nama_lengkap, role_kode) "
-                 "VALUES (:u,:p,:n,:r) RETURNING id"),
-            {"u": body.username, "p": hash_password(body.password), "n": body.nama_lengkap, "r": body.role_kode}).scalar_one()
+            text("INSERT INTO admin_users (username, password_hash, nama_lengkap, role_kode, scoped_rs_id) "
+                 "VALUES (:u,:p,:n,:r,:sc) RETURNING id"),
+            {"u": body.username, "p": hash_password(body.password), "n": body.nama_lengkap, "r": body.role_kode, "sc": sc_rs}).scalar_one()
     return {"message": "Pengguna dibuat", "id": new_id}
 
 
@@ -644,6 +791,129 @@ def list_audit(tabel: str = "", aktor: str = "", limit: int = Query(30, ge=1, le
     rows = db.execute(text("SELECT id, waktu, aktor, aksi, tabel, record_id, data_lama, data_baru FROM audit_log " + where +
                            " ORDER BY id DESC LIMIT :limit OFFSET :offset"), p).mappings().all()
     return {"total": total, "items": [dict(r) for r in rows]}
+
+
+_ROLLBACK_TABLE_PERM = {
+    "booking_kamar": "booking.write",
+    "kuota_kamar": "kuota.write",
+    "jadwal_konsultasi": "jadwal.write",
+    "reservasi_konsultasi": "reservasi.write",
+    "poliklinik": "poliklinik.write",
+    "ulasan_rs": "ulasan.moderate",
+    "admin_users": "user.manage",
+}
+
+
+def _as_dict(val):
+    if val is None:
+        return None
+    if isinstance(val, str):
+        return json.loads(val)
+    return dict(val)
+
+
+@router.post("/audit/{audit_id}/rollback", summary="Pulihkan data berdasarkan catatan audit_log (1-Click Rollback)")
+def rollback_audit_entry(
+    audit_id: int,
+    user: dict = Depends(require_perm("audit.read")),
+    db: Session = Depends(get_db),
+):
+    row = db.execute(
+        text("SELECT id, aksi, tabel, record_id, data_lama, data_baru FROM audit_log WHERE id = :id"),
+        {"id": audit_id},
+    ).mappings().first()
+    if not row:
+        raise HTTPException(status_code=404, detail="Catatan audit tidak ditemukan.")
+
+    tabel = row["tabel"]
+    aksi = (row["aksi"] or "").upper()
+    req_perm = _ROLLBACK_TABLE_PERM.get(tabel)
+    if not req_perm:
+        raise HTTPException(status_code=400, detail=f"Modul '{tabel}' tidak mendukung rollback otomatis.")
+
+    perms = set(user.get("permissions") or [])
+    if req_perm not in perms:
+        raise HTTPException(status_code=403, detail=f"Membutuhkan izin '{req_perm}' untuk memulihkan modul {tabel}.")
+
+    data_lama = _as_dict(row["data_lama"])
+    data_baru = _as_dict(row["data_baru"])
+
+    col_rows = db.execute(
+        text("""
+            SELECT column_name
+            FROM information_schema.columns
+            WHERE table_schema = 'public' AND table_name = :tbl
+            ORDER BY ordinal_position
+        """),
+        {"tbl": tabel},
+    ).fetchall()
+    valid_cols = [c[0] for c in col_rows]
+    if not valid_cols:
+        raise HTTPException(status_code=400, detail=f"Skema tabel '{tabel}' tidak ditemukan.")
+
+    try:
+        set_actor(db, user)
+        if aksi == "UPDATE":
+            if not data_lama:
+                raise HTTPException(status_code=400, detail="Snapshot data_lama kosong, tidak bisa dipulihkan.")
+            if tabel == "kuota_kamar":
+                pk_where = "rs_id = :pk_rs AND jenis_kamar = :pk_jk"
+                params = {"pk_rs": data_lama["rs_id"], "pk_jk": data_lama["jenis_kamar"]}
+                skip = {"rs_id", "jenis_kamar", "created_at"}
+            else:
+                pk_where = "id = :pk_id"
+                params = {"pk_id": data_lama["id"]}
+                skip = {"id", "created_at"}
+
+            set_parts = []
+            for col in valid_cols:
+                if col in skip or col not in data_lama:
+                    continue
+                if col == "updated_at":
+                    set_parts.append("updated_at = NOW()")
+                else:
+                    set_parts.append(f"{col} = :v_{col}")
+                    params[f"v_{col}"] = data_lama[col]
+
+            res = db.execute(text(f"UPDATE {tabel} SET {', '.join(set_parts)} WHERE {pk_where}"), params)
+            if res.rowcount == 0:
+                raise HTTPException(status_code=404, detail="Baris target sudah tidak ada di database.")
+
+        elif aksi == "DELETE":
+            if not data_lama:
+                raise HTTPException(status_code=400, detail="Snapshot data_lama kosong, baris terhapus tidak bisa dipulihkan.")
+            cols = [c for c in valid_cols if c in data_lama]
+            placeholders = [f":v_{c}" for c in cols]
+            params = {f"v_{c}": data_lama[c] for c in cols}
+            db.execute(
+                text(f"INSERT INTO {tabel} ({', '.join(cols)}) VALUES ({', '.join(placeholders)})"),
+                params,
+            )
+
+        elif aksi == "INSERT":
+            if not data_baru:
+                raise HTTPException(status_code=400, detail="Snapshot data_baru kosong, data baru tidak bisa dibatalkan.")
+            if tabel == "kuota_kamar":
+                res = db.execute(
+                    text("DELETE FROM kuota_kamar WHERE rs_id = :rs AND jenis_kamar = :jk"),
+                    {"rs": data_baru["rs_id"], "jk": data_baru["jenis_kamar"]},
+                )
+            else:
+                res = db.execute(text(f"DELETE FROM {tabel} WHERE id = :id"), {"id": data_baru["id"]})
+            if res.rowcount == 0:
+                raise HTTPException(status_code=404, detail="Baris target sudah dihapus sebelumnya.")
+        else:
+            raise HTTPException(status_code=400, detail=f"Jenis tindakan '{aksi}' tidak didukung.")
+
+        db.commit()
+    except HTTPException:
+        db.rollback()
+        raise
+    except Exception as exc:
+        db.rollback()
+        raise HTTPException(status_code=400, detail=f"Gagal memulihkan data: {exc}")
+
+    return {"ok": True, "message": f"Data {tabel} ({row['record_id']}) berhasil dipulihkan dari audit #{audit_id}."}
 
 # ─── Master Poliklinik (ORM + View v_okupansi_poliklinik + RDF) ──────────────
 

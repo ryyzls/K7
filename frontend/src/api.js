@@ -208,3 +208,14 @@ export function getAllHospitals(force = false) {
 }
 
 export { API_BASE };
+
+
+export async function checkUnifiedTicket(code, phone) {
+  const search = cleanParams({ kode: code, no_telp: phone });
+  return request(`/api/tiket/cek?${search.toString()}`);
+}
+
+export async function getEmergencyRadar(params = {}) {
+  const search = cleanParams(params);
+  return request(`/api/emergency/radar?${search.toString()}`);
+}

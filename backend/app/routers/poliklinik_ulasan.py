@@ -286,3 +286,80 @@ def peringkat_rumah_sakit(
         {"min_ulasan": min_ulasan, "limit": limit},
     ).mappings().all()
     return {"min_ulasan": min_ulasan, "peringkat": [dict(r) for r in rows]}
+
+@router.get("/tiket/cek")
+def cek_tiket_universal(
+    kode: str = Query(..., min_length=4, max_length=40),
+    no_telp: str = Query(..., min_length=6, max_length=25),
+    db: Session = Depends(get_db),
+):
+    """Pelacak E-Ticket universal untuk Booking Kamar (BK-...) maupun Antrean Poliklinik (POL-...)."""
+    from app.database.models import BookingKamar
+    from app.database.orm_models import JadwalKonsultasi, Poliklinik
+    from app.services.availability_service import hospital_name
+
+    clean_code = kode.strip().upper()
+    clean_digits = "".join(ch for ch in no_telp if ch.isdigit())
+    if not clean_digits:
+        raise HTTPException(status_code=403, detail="Nomor telepon pemesan tidak valid.")
+
+    # 1. Cek pada tabel booking_kamar (BK-...)
+    bk = db.scalar(select(BookingKamar).where(BookingKamar.kode_booking == clean_code))
+    if bk is not None:
+        db_digits = "".join(ch for ch in (bk.no_telp or "") if ch.isdigit())
+        if not secrets.compare_digest(clean_digits.encode(), db_digits.encode()):
+            raise HTTPException(status_code=403, detail="Kode tiket dan nomor telepon pemesan tidak cocok.")
+        return {
+            "tipe": "kamar",
+            "kode_tiket": bk.kode_booking,
+            "kode_booking": bk.kode_booking,
+            "status": bk.status,
+            "rs_id": bk.kode_rs,
+            "nama_rs": hospital_name(bk.kode_rs) or bk.nama_rs or bk.kode_rs,
+            "nama_pasien": bk.nama_pasien,
+            "no_telp": bk.no_telp,
+            "layanan": f"Rawat Inap ? {bk.jenis_kamar}",
+            "detail_sekunder": f"Masuk {bk.tanggal_masuk}" + (f" s/d {bk.tanggal_keluar}" if bk.tanggal_keluar else ""),
+            "tanggal": str(bk.tanggal_masuk),
+            "nomor_antrean": None,
+            "catatan": bk.catatan,
+        }
+
+    # 2. Cek pada tabel reservasi_konsultasi (POL-... / TKT-...)
+    res = db.scalar(
+        select(ReservasiKonsultasi)
+        .options(joinedload(ReservasiKonsultasi.jadwal).joinedload(JadwalKonsultasi.poliklinik))
+        .where(
+            (ReservasiKonsultasi.kode_reservasi == clean_code)
+            | (ReservasiKonsultasi.kode_tiket == clean_code)
+        )
+    )
+    if res is not None:
+        db_digits = "".join(ch for ch in (res.no_telp or "") if ch.isdigit())
+        if not secrets.compare_digest(clean_digits.encode(), db_digits.encode()):
+            raise HTTPException(status_code=403, detail="Kode tiket dan nomor telepon pemesan tidak cocok.")
+        jadwal = res.jadwal
+        poli = jadwal.poliklinik if jadwal else None
+        rs_id = poli.rs_id if poli else ""
+        jam_str = (
+            f"{jadwal.jam_mulai.strftime('%H:%M')} - {jadwal.jam_selesai.strftime('%H:%M')} WIB"
+            if jadwal
+            else "Sesuai jadwal sesi"
+        )
+        return {
+            "tipe": "poliklinik",
+            "kode_tiket": res.kode_tiket or res.kode_reservasi,
+            "kode_booking": res.kode_reservasi,
+            "status": res.status,
+            "rs_id": rs_id,
+            "nama_rs": hospital_name(rs_id) or rs_id,
+            "nama_pasien": res.nama_pasien,
+            "no_telp": res.no_telp,
+            "layanan": poli.nama_poli if poli else "Poliklinik Rawat Jalan",
+            "detail_sekunder": f"{jadwal.nama_dokter} ({jam_str})" if jadwal else jam_str,
+            "tanggal": str(res.tanggal),
+            "nomor_antrean": res.nomor_antrean,
+            "catatan": res.keluhan,
+        }
+
+    raise HTTPException(status_code=403, detail="Kode tiket dan nomor telepon pemesan tidak cocok.")

@@ -105,6 +105,27 @@ pre{margin:0;white-space:pre-wrap;word-break:break-word;font-size:11px;backgroun
   aside nav button{width:auto}
   main{padding:1.1rem}
 }
+
+/* Visual Diff & Grafik Tren */
+.diff-list{display:flex;flex-direction:column;gap:.35rem;margin:.35rem 0}
+.diff-item{font-size:12px;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:.35rem .55rem;line-height:1.4}
+.diff-key{font-weight:700;color:var(--brand);margin-right:.35rem}
+.diff-old{background:#ffe4e6;color:#9f1239;padding:1px 5px;border-radius:4px;text-decoration:line-through}
+.diff-new{background:#d1fae5;color:#065f46;padding:1px 5px;border-radius:4px;font-weight:600}
+.trend-wrap{display:grid;grid-template-columns:repeat(7,1fr);gap:.65rem;align-items:end;height:145px;padding-top:1rem}
+.trend-col{display:flex;flex-direction:column;align-items:center;gap:.3rem;height:100%;justify-content:flex-end}
+.trend-pair{display:flex;align-items:flex-end;gap:4px;height:96px;width:100%;justify-content:center}
+.trend-bar-b{width:12px;background:var(--brand);border-radius:4px 4px 0 0;min-height:3px;transition:height .2s}
+.trend-bar-p{width:12px;background:#0d9488;border-radius:4px 4px 0 0;min-height:3px;transition:height .2s}
+.trend-lbl{font-size:11px;color:var(--mute);white-space:nowrap}
+
+.stepper{display:inline-flex;align-items:center;gap:.35rem}
+.step-btn{width:26px;height:26px;border-radius:7px;border:1px solid #cbd5e1;background:#fff;font-weight:700;cursor:pointer;display:inline-grid;place-items:center;line-height:1}
+.step-btn:hover{background:#f1f5f9;border-color:var(--brand)}
+.igd-normal{background:#d1fae5;color:#065f46}
+.igd-siaga{background:#fef3c7;color:#92400e}
+.igd-penuh{background:#ffe4e6;color:#9f1239}
+.alert-bar{background:#fffbeb;border:1px solid #fde68a;color:#92400e;border-radius:12px;padding:.75rem 1rem;margin-bottom:1rem;font-size:13px}
 </style>
 </head>
 <body>
@@ -189,6 +210,23 @@ const can = p => S.me && S.me.permissions.includes(p);
 const qs = o => new URLSearchParams(Object.entries(o).filter(([, v]) => v !== '' && v != null)).toString();
 const fmtDT = v => v ? new Date(v).toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' }) : '-';
 const badge = s => `<span class="badge b-${esc(s)}">${esc(s)}</span>`;
+function renderAuditDiff(oldObj, newObj) {
+  if (!oldObj && !newObj) return '<span class="mute small">-</span>';
+  if (!oldObj && newObj) {
+    return `<div class="diff-item"><span class="diff-key">Entri Baru</span><span class="diff-new">${esc(newObj.kode_booking || newObj.kode_reservasi || newObj.username || newObj.nama_poli || ('ID ' + (newObj.id ?? '')))}</span></div>`;
+  }
+  if (oldObj && !newObj) {
+    return `<div class="diff-item"><span class="diff-key">Data Dihapus</span><span class="diff-old">${esc(oldObj.kode_booking || oldObj.kode_reservasi || oldObj.username || oldObj.nama_poli || ('ID ' + (oldObj.id ?? '')))}</span></div>`;
+  }
+  const keys = Array.from(new Set([...Object.keys(oldObj), ...Object.keys(newObj)])).filter(k => k !== 'updated_at');
+  const diffs = keys.filter(k => JSON.stringify(oldObj[k]) !== JSON.stringify(newObj[k]));
+  if (!diffs.length) return '<span class="mute small">Tidak ada perubahan nilai</span>';
+  return `<div class="diff-list">${diffs.map(k => {
+    const vOld = oldObj[k] == null ? 'null' : String(oldObj[k]);
+    const vNew = newObj[k] == null ? 'null' : String(newObj[k]);
+    return `<div class="diff-item"><span class="diff-key">${esc(k)}:</span> <span class="diff-old">${esc(vOld)}</span> ? <span class="diff-new">${esc(vNew)}</span></div>`;
+  }).join('')}</div>`;
+}
 const rsLabel = (id, name) => `<b>${esc(name || S.rsMap[id] || id)}</b><br><span class="mute small">${esc(id)}</span>`;
 
 /* ---------- Modal & form ---------- */
@@ -285,7 +323,9 @@ const VIEWS = {
       const s = d.stats || {};
       const byJenis = d.by_jenis || [];
       const max = Math.max(1, ...byJenis.map(x => x.total));
-      el.innerHTML = `<div class="head"><h1>Ringkasan Operasional</h1><button class="btn" id="r">Muat Ulang</button></div>
+      const trend = d.trend_harian || [];
+      const maxTrend = Math.max(1, ...trend.flatMap(x => [Number(x.booking || 0), Number(x.poli || 0)]));
+      el.innerHTML = `<div class="head"><h1>Ringkasan Operasional</h1><div style="display:flex;gap:.5rem"><button class="btn" id="exp-csv">Ekspor Laporan CSV</button><button class="btn" id="r">Muat Ulang</button></div></div>
       <div class="cards">
         <div class="stat"><span>Rumah Sakit Terdaftar</span><b>${d.total_rs_rdf ?? '-'}</b></div>
         <div class="stat"><span>Total Booking Kamar</span><b>${s.total_booking ?? 0}</b></div>
@@ -301,8 +341,47 @@ const VIEWS = {
         <div class="panel"><h3>Rumah Sakit dengan Permintaan Tertinggi</h3>${table([{ h: 'Rumah Sakit', f: r => rsLabel(r.rs_id, r.nama_rs) }, { h: 'Total', f: r => r.total }, { h: 'Menunggu', f: r => r.menunggu }], d.top_rs, 'Belum ada data pemesanan.')}</div>
         <div class="panel"><h3>Booking Kamar Terbaru</h3>${table([{ h: 'Kode', f: r => esc(r.kode_booking) }, { h: 'Pasien', f: r => esc(r.nama_pasien) }, { h: 'Rumah Sakit', f: r => esc(r.nama_rs) }, { h: 'Status', f: r => badge(r.status) }], d.recent_booking, 'Belum ada booking terbaru.')}</div>
         <div class="panel"><h3>Ketersediaan Kamar Terbatas Hari Ini</h3>${table([{ h: 'Rumah Sakit', f: r => rsLabel(r.rs_id, r.nama_rs) }, { h: 'Kelas Kamar', f: r => esc(r.jenis_kamar) }, { h: 'Sisa / Kapasitas', f: r => `${r.sisa_hari_ini} / ${r.kapasitas}` }], d.okupansi, 'Belum ada konfigurasi kuota khusus.')}</div>
+      </div>
+      <div class="panel" style="margin-top:1rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem">
+          <h3 style="margin:0">Tren Reservasi 7 Hari Terakhir</h3>
+          <div class="small mute"><span style="display:inline-block;width:10px;height:10px;background:var(--brand);border-radius:2px;margin-right:4px"></span>Booking Kamar &nbsp;&nbsp;<span style="display:inline-block;width:10px;height:10px;background:#0d9488;border-radius:2px;margin-right:4px"></span>Antrean Poliklinik</div>
+        </div>
+        <div class="trend-wrap">
+          ${trend.map(t => {
+            const b = Number(t.booking || 0), p = Number(t.poli || 0);
+            const hB = Math.round((b / maxTrend) * 86);
+            const hP = Math.round((p / maxTrend) * 86);
+            const lbl = (t.tanggal || '').slice(5);
+            return `<div class="trend-col" title="${esc(t.tanggal)}: ${b} booking kamar, ${p} antrean poli">
+              <div class="small" style="font-size:11px;font-weight:600">${b}/${p}</div>
+              <div class="trend-pair"><div class="trend-bar-b" style="height:${Math.max(4, hB)}px"></div><div class="trend-bar-p" style="height:${Math.max(4, hP)}px"></div></div>
+              <div class="trend-lbl">${esc(lbl)}</div>
+            </div>`;
+          }).join('')}
+        </div>
       </div>`;
       $('#r', el).onclick = () => show('dashboard');
+      $('#exp-csv', el).onclick = async () => {
+        try {
+          const res = await fetch('/api/admin/dashboard/export.csv', {
+            headers: S.token ? { Authorization: 'Bearer ' + S.token } : {},
+          });
+          if (!res.ok) throw new Error('Gagal mengunduh CSV (HTTP ' + res.status + ')');
+          const blob = await res.blob();
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'laporan_operasional_carisehat.csv';
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          URL.revokeObjectURL(url);
+          toast('Laporan CSV berhasil diunduh', 'ok');
+        } catch (err) {
+          toast(err.message, 'bad');
+        }
+      };
     },
   },
 
@@ -314,12 +393,14 @@ const VIEWS = {
       const st = this.st;
       const reload = () => this.render(el);
       const d = await api('/bookings?' + qs(st));
-      el.innerHTML = `<div class="head"><h1>Booking Kamar Rawat Inap</h1>${can('booking.write') ? '<button class="btn primary" id="add">+ Tambah Booking</button>' : ''}</div>
+      const todayStr = new Date().toISOString().slice(0, 10);
+      const visibleItems = st.todayOnly ? (d.items || []).filter(r => String(r.tanggal_masuk || '').startsWith(todayStr)) : (d.items || []);
+      el.innerHTML = `<div class="head"><h1>Booking Kamar Rawat Inap</h1><div style="display:flex;gap:.5rem"><button class="btn ${st.todayOnly ? 'primary' : ''}" id="btoday">Masuk Hari Ini</button>${can('booking.write') ? '<button class="btn primary" id="add">+ Tambah Booking</button>' : ''}</div></div>
       <div class="filters"><input id="q" placeholder="Cari pasien / kode / telepon" value="${esc(st.q)}">
         <select id="fs"><option value="">Semua status</option>${['menunggu', 'dikonfirmasi', 'dibatalkan'].map(x => `<option ${st.status === x ? 'selected' : ''}>${x}</option>`).join('')}</select>
         <input id="frs" list="rslist2" placeholder="Filter rumah sakit" value="${esc(st.kode_rs)}"><datalist id="rslist2">${S.rs.map(h => `<option value="${esc(h.id)}">${esc(h.nama)}</option>`).join('')}</datalist></div>
       ${table([
-        { h: 'Kode', f: r => `<b>${esc(r.kode_booking)}</b><br><span class="mute small">${fmtDT(r.created_at)}</span>` },
+        { h: 'Kode', f: r => `<button class="btn sm" data-copy="${esc(r.kode_booking)}" title="Salin kode booking" style="font-family:monospace">${esc(r.kode_booking)}</button><br><span class="mute small">${fmtDT(r.created_at)}</span>` },
         { h: 'Rumah Sakit', f: r => rsLabel(r.kode_rs, r.nama_rs) },
         { h: 'Pasien', f: r => `${esc(r.nama_pasien)}<br><span class="mute small">${esc(r.no_telp)}</span>` },
         { h: 'Kelas Kamar', f: r => esc(r.jenis_kamar) },
@@ -330,11 +411,13 @@ const VIEWS = {
           ${r.status !== 'dibatalkan' ? `<button class="btn sm" data-a="cancel" data-id="${r.id}">Batalkan</button> ` : ''}
           <button class="btn sm" data-a="edit" data-id="${r.id}">Ubah</button>
           ${can('booking.delete') ? ` <button class="btn sm danger" data-a="del" data-id="${r.id}">Hapus</button>` : ''}` : '' }
-      ], d.items, 'Tidak ada booking yang cocok.')}
+      ], visibleItems, 'Tidak ada booking yang cocok.')}
       ${pager(st, d.total)}`;
       bindPager(el, st, reload);
       let t;
       $('#q', el).oninput = e => { clearTimeout(t); t = setTimeout(() => { st.q = e.target.value.trim(); st.offset = 0; reload(); }, 350); };
+      $('#btoday', el).onclick = () => { st.todayOnly = !st.todayOnly; reload(); };
+      el.querySelectorAll('[data-copy]').forEach(b => b.onclick = () => { navigator.clipboard?.writeText(b.dataset.copy); toast('Kode ' + b.dataset.copy + ' disalin', 'ok'); });
       $('#fs', el).onchange = e => { st.status = e.target.value; st.offset = 0; reload(); };
       $('#frs', el).onchange = e => { const m = e.target.value.match(/rs-\d+/i); st.kode_rs = m ? m[0].toLowerCase() : e.target.value.trim(); st.offset = 0; reload(); };
       const byId = id => d.items.find(x => x.id === Number(id));
@@ -370,105 +453,107 @@ const VIEWS = {
     label: 'Kuota Kamar',
     perm: 'kuota.read',
     async render(el) {
-      const d = await api('/kuota'), reload = () => this.render(el);
-      el.innerHTML = `<div class="head"><h1>Kuota Kamar per Rumah Sakit</h1>${can('kuota.write') ? '<button class="btn primary" id="add">+ Atur Kuota</button>' : ''}</div>
-      <p class="mute small">Unit kamar yang belum dikonfigurasi menggunakan kapasitas standar <b>${d.default_kapasitas}</b> kamar per kelas.</p>
+      const [d, igd] = await Promise.all([api('/kuota'), api('/igd-status').catch(() => ({ items: [] }))]);
+      const reload = () => this.render(el);
+      const items = d.items || [];
+      const igdItems = igd.items || [];
+      const highOcc = items.filter(r => Number(r.kapasitas) > 0 && (Number(r.terisi_hari_ini) / Number(r.kapasitas)) >= 0.85);
+
+      el.innerHTML = `<div class="head"><h1>Kuota Kamar & Kontrol Darurat IGD</h1><div style="display:flex;gap:.5rem">${can('kuota.write') ? '<button class="btn" id="add-igd">+ Status IGD RS</button><button class="btn primary" id="add">+ Atur Kuota Kamar</button>' : ''}</div></div>
+      <p class="mute small">Gunakan tombol <b>- / +</b> untuk memperbarui jumlah bed secara langsung. Unit tanpa pengaturan khusus memakai kapasitas standar <b>${d.default_kapasitas}</b> kamar.</p>
+      ${highOcc.length ? `<div class="alert-bar"><b>Peringatan Kapasitas Kritis (Okupansi ? 85%):</b> ${highOcc.map(x => `${esc(x.nama_rs || x.rs_id)} (${esc(x.jenis_kamar)}: ${x.terisi_hari_ini}/${x.kapasitas})`).join(' ? ')}</div>` : ''}
+
+      <div class="panel" style="margin-bottom:1rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem">
+          <h3 style="margin:0">Status Siaga IGD Rumah Sakit (Sinkron Radar Darurat)</h3>
+          <span class="mute small">${igdItems.length} RS dikonfigurasi</span>
+        </div>
+        ${table([
+          { h: 'Rumah Sakit', f: r => rsLabel(r.rs_id, r.nama_rs) },
+          { h: 'Status IGD', f: r => `<span class="badge igd-${esc(r.status_igd)}">${esc((r.status_igd || 'normal').toUpperCase())}</span>` },
+          { h: 'Catatan Operasional', f: r => esc(r.catatan || '-') },
+          { h: 'Diperbarui', f: r => `${esc(r.updated_by || '-')} ? ${fmtDT(r.updated_at)}` },
+          { h: 'Ubah Cepat', cls: 'act', f: r => can('kuota.write') ? ['normal', 'siaga', 'penuh'].map(st => `<button class="btn sm" data-igd="${esc(r.rs_id)}|${st}" ${r.status_igd === st ? 'disabled' : ''}>${st.toUpperCase()}</button>`).join(' ') : '' }
+        ], igdItems, 'Seluruh rumah sakit IGD berstatus NORMAL. Klik "+ Status IGD RS" untuk mengatur status siaga.')}
+      </div>
+
       ${table([
         { h: 'Rumah Sakit', f: r => rsLabel(r.rs_id, r.nama_rs) },
         { h: 'Kelas Kamar', f: r => esc(r.jenis_kamar) },
-        { h: 'Kapasitas', f: r => r.kapasitas },
-        { h: 'Terisi Hari Ini', f: r => r.terisi_hari_ini },
-        { h: 'Sisa', f: r => `<b style="color:${r.sisa_hari_ini ? 'var(--ok)' : 'var(--bad)'}">${r.sisa_hari_ini}</b>` },
+        { h: 'Kapasitas (Quick-Stepper)', f: r => can('kuota.write')
+          ? `<div class="stepper"><button class="step-btn" data-step="${esc(r.rs_id)}|${esc(r.jenis_kamar)}|-1" title="Kurangi 1 bed">?</button><b style="min-width:26px;text-align:center">${r.kapasitas}</b><button class="step-btn" data-step="${esc(r.rs_id)}|${esc(r.jenis_kamar)}|1" title="Tambah 1 bed">+</button></div>`
+          : r.kapasitas },
+        { h: 'Terisi & Okupansi', f: r => {
+          const cap = Number(r.kapasitas) || 0;
+          const used = Number(r.terisi_hari_ini) || 0;
+          const pct = cap > 0 ? Math.min(100, Math.round((used / cap) * 100)) : 100;
+          const col = pct >= 85 ? 'var(--bad)' : pct >= 65 ? 'var(--warn)' : 'var(--ok)';
+          return `<div><b>${used}</b> / ${cap} <span class="small" style="color:${col};font-weight:700">(${pct}%)</span></div><div class="bar"><i style="width:${pct}%;background:${col}"></i></div>`;
+        }},
+        { h: 'Sisa Bed', f: r => `<b style="color:${r.sisa_hari_ini ? 'var(--ok)' : 'var(--bad)'}">${r.sisa_hari_ini}</b>` },
         { h: 'Aksi', cls: 'act', f: r => can('kuota.write') ? `<button class="btn sm" data-a="edit" data-i="${esc(r.rs_id)}|${esc(r.jenis_kamar)}|${r.kapasitas}">Ubah</button> <button class="btn sm danger" data-a="del" data-i="${esc(r.rs_id)}|${esc(r.jenis_kamar)}">Hapus</button>` : '' }
-      ], d.items, 'Belum ada pengaturan kuota khusus; seluruh rumah sakit memakai kapasitas standar.')}`;
+      ], items, 'Belum ada pengaturan kuota khusus; seluruh rumah sakit memakai kapasitas standar.')}`;
+
       const fields = (r = {}) => [
         { name: 'rs_id', label: 'Rumah Sakit', type: 'rs', required: true, value: r.rs_id, wide: true },
         { name: 'jenis_kamar', label: 'Kelas Kamar', type: 'select', options: ROOMS, value: r.jenis_kamar || 'Kelas III' },
         { name: 'kapasitas', label: 'Kapasitas (Jumlah Kamar)', type: 'number', min: 0, max: 1000, required: true, value: r.kapasitas ?? 5 }];
       const save = async v => { await api('/kuota', { method: 'POST', body: v }); toast('Kuota kamar disimpan', 'ok'); reload(); };
+
       const ad = $('#add', el);
       if (ad) ad.onclick = () => openForm({ title: 'Atur Kuota Kamar', fields: fields(), onSubmit: save });
-      el.onclick = e => {
+
+      const adIgd = $('#add-igd', el);
+      if (adIgd) adIgd.onclick = () => openForm({
+        title: 'Atur Status Operasional IGD',
+        fields: [
+          { name: 'rs_id', label: 'Rumah Sakit', type: 'rs', required: true, wide: true },
+          { name: 'status_igd', label: 'Status IGD', type: 'select', options: ['normal', 'siaga', 'penuh'], value: 'siaga' },
+          { name: 'catatan', label: 'Catatan (opsional)', placeholder: 'Misal: Ruang resusitasi penuh, rujuk ICU tersedia' },
+        ],
+        onSubmit: async v => { await api('/igd-status', { method: 'POST', body: v }); toast('Status IGD diperbarui', 'ok'); reload(); },
+      });
+
+      el.onclick = async e => {
+        const stepBtn = e.target.closest('[data-step]');
+        if (stepBtn) {
+          const [rs_id, jenis_kamar, deltaStr] = stepBtn.dataset.step.split('|');
+          stepBtn.disabled = true;
+          try {
+            const res = await api('/kuota/step', { method: 'PATCH', body: { rs_id, jenis_kamar, delta: Number(deltaStr) } });
+            toast(res.message || 'Kapasitas diperbarui', 'ok');
+            reload();
+          } catch (err) {
+            toast(err.message, 'bad');
+            stepBtn.disabled = false;
+          }
+          return;
+        }
+
+        const igdBtn = e.target.closest('[data-igd]');
+        if (igdBtn) {
+          const [rs_id, status_igd] = igdBtn.dataset.igd.split('|');
+          igdBtn.disabled = true;
+          try {
+            const res = await api('/igd-status', { method: 'POST', body: { rs_id, status_igd, catatan: '' } });
+            toast(res.message || 'Status IGD diperbarui', 'ok');
+            reload();
+          } catch (err) {
+            toast(err.message, 'bad');
+            igdBtn.disabled = false;
+          }
+          return;
+        }
+
         const b = e.target.closest('[data-a]');
         if (!b) return;
         const [rs, j, k] = b.dataset.i.split('|');
         if (b.dataset.a === 'edit') openForm({ title: 'Ubah Kuota Kamar', fields: fields({ rs_id: rs, jenis_kamar: j, kapasitas: k }), onSubmit: save });
-        else confirmAct(`Hapus pengaturan kuota ${rs} / ${j}?`, async () => { await api(`/kuota/${encodeURIComponent(rs)}/${encodeURIComponent(j)}`, { method: 'DELETE' }); toast('Kuota dihapus', 'ok'); reload(); });
-      };
-    },
-  },
-
-  poliklinik: {
-    label: 'Poliklinik',
-    perm: 'poliklinik.read',
-    st: { rs: '' },
-    async render(el) {
-      const st = this.st, reload = () => this.render(el);
-      const d = await api('/poliklinik?' + qs({ rs_id: st.rs }));
-      el.innerHTML = `<div class="head"><h1>Unit Poliklinik</h1>${can('poliklinik.write') ? '<button class="btn primary" id="add">+ Tambah Poliklinik</button>' : ''}</div>
-      <p class="mute small">Daftar unit poliklinik aktif beserta perhitungan sisa kuota kunjungan harian.</p>
-      <div class="filters"><input id="frs" placeholder="Filter kode RS (mis. rs-001)" value="${esc(st.rs)}"></div>
-      ${table([
-        { h: 'Rumah Sakit', f: r => rsLabel(r.rs_id, r.nama_rs) },
-        { h: 'Kode & Nama Poli', f: r => `<b>${esc(r.kode_poli)}</b> — ${esc(r.nama_poli)}<br><span class="mute small">${esc(r.spesialisasi)}</span>` },
-        { h: 'Lokasi Ruangan', f: r => esc(r.lokasi_ruangan || '-') },
-        { h: 'Kuota Harian', f: r => r.kuota_harian },
-        { h: 'Terisi / Sisa', f: r => `${r.terisi_hari_ini} / <b style="color:${r.sisa_hari_ini ? 'var(--ok)' : 'var(--bad)'}">${r.sisa_hari_ini}</b>` },
-        { h: 'Status', f: r => `<span class="badge ${r.aktif ? 'b-ok' : 'b-off'}">${r.aktif ? 'aktif' : 'nonaktif'}</span>` },
-        { h: 'Aksi', cls: 'act', f: r => can('poliklinik.write') ? `<button class="btn sm" data-a="edit" data-id="${r.poliklinik_id}">Ubah</button> <button class="btn sm danger" data-a="del" data-id="${r.poliklinik_id}">Hapus</button>` : '' }
-      ], d.items, 'Belum ada data poliklinik.')}`;
-      let t;
-      $('#frs', el).oninput = e => { clearTimeout(t); t = setTimeout(() => { st.rs = e.target.value.trim(); reload(); }, 350); };
-      const fields = (r = {}) => [
-        { name: 'rs_id', label: 'Rumah Sakit', type: 'rs', required: true, value: r.rs_id, wide: true },
-        { name: 'kode_poli', label: 'Kode Poli (mis. POLI-INT)', required: true, value: r.kode_poli },
-        { name: 'nama_poli', label: 'Nama Poliklinik', required: true, value: r.nama_poli },
-        { name: 'spesialisasi', label: 'Spesialisasi', required: true, value: r.spesialisasi },
-        { name: 'lokasi_ruangan', label: 'Lokasi Ruangan', nullable: true, value: r.lokasi_ruangan },
-        { name: 'jam_operasional', label: 'Jam Operasional', value: r.jam_operasional || 'Senin-Sabtu, 08:00-15:00 WIB' },
-        { name: 'kuota_harian', label: 'Kuota Harian', type: 'number', min: 0, max: 1000, required: true, value: r.kuota_harian ?? 30 },
-        { name: 'aktif', label: '', type: 'checkbox', hint: 'Unit poliklinik aktif', value: r.aktif ?? true, wide: true }
-      ];
-      const ad = $('#add', el);
-      if (ad) ad.onclick = () => openForm({ title: 'Tambah Poliklinik', fields: fields(), onSubmit: async v => { await api('/poliklinik', { method: 'POST', body: v }); toast('Poliklinik ditambahkan', 'ok'); reload(); } });
-      el.onclick = e => {
-        const b = e.target.closest('[data-a]');
-        if (!b) return;
-        const id = Number(b.dataset.id), r = d.items.find(x => x.poliklinik_id === id);
-        if (b.dataset.a === 'edit') openForm({ title: 'Ubah Poliklinik', fields: fields(r), onSubmit: async v => { await api('/poliklinik/' + id, { method: 'PUT', body: v }); toast('Poliklinik diperbarui', 'ok'); reload(); } });
-        else confirmAct('Hapus unit poliklinik ini? Penghapusan tidak dapat dilakukan jika masih memiliki jadwal praktik dokter aktif.', async () => { await api('/poliklinik/' + id, { method: 'DELETE' }); toast('Poliklinik dihapus', 'ok'); reload(); });
-      };
-    },
-  },
-
-  ulasan: {
-    label: 'Moderasi Ulasan',
-    perm: 'ulasan.moderate',
-    st: { status: '' },
-    async render(el) {
-      const st = this.st, reload = () => this.render(el);
-      const d = await api('/ulasan?' + qs({ status_moderasi: st.status }));
-      el.innerHTML = `<div class="head"><h1>Moderasi Ulasan Pasien</h1></div>
-      <p class="mute small">Ulasan dengan status disetujui akan ditampilkan di halaman profil dan perhitungan penilaian rumah sakit.</p>
-      <div class="filters"><select id="fs"><option value="">Semua status</option>${['disetujui', 'menunggu', 'ditolak'].map(x => `<option ${st.status === x ? 'selected' : ''}>${x}</option>`).join('')}</select></div>
-      ${table([
-        { h: 'Waktu', f: r => fmtDT(r.created_at) },
-        { h: 'Rumah Sakit', f: r => rsLabel(r.rs_id, r.nama_rs) },
-        { h: 'Pasien', f: r => `<b>${esc(r.nama_pengguna)}</b><br><span class="mute small">@${esc(r.username)}</span>` },
-        { h: 'Rating', f: r => `<b>★ ${r.rating}/5</b>` },
-        { h: 'Komentar', f: r => esc(r.komentar) },
-        { h: 'Status', f: r => `<span class="badge ${r.status_moderasi === 'disetujui' ? 'b-ok' : r.status_moderasi === 'ditolak' ? 'b-off' : 'b-menunggu'}">${esc(r.status_moderasi)}</span>${r.dimoderasi_oleh ? `<br><span class="mute small">oleh ${esc(r.dimoderasi_oleh)}</span>` : ''}` },
-        { h: 'Aksi', cls: 'act', f: r => `<button class="btn sm" data-m="disetujui" data-id="${r.id}">Setujui</button> <button class="btn sm danger" data-m="ditolak" data-id="${r.id}">Tolak</button>` }
-      ], d.items, 'Belum ada ulasan.')}`;
-      $('#fs', el).onchange = e => { st.status = e.target.value; reload(); };
-      el.onclick = async e => {
-        const b = e.target.closest('[data-m]');
-        if (!b) return;
-        try {
-          await api('/ulasan/' + b.dataset.id, { method: 'PUT', body: { status_moderasi: b.dataset.m } });
-          toast('Status moderasi ulasan diperbarui', 'ok');
+        else confirmAct(`Kembalikan kuota ${j} pada ${rs} ke kapasitas standar (${d.default_kapasitas})?`, async () => {
+          await api(`/kuota/${encodeURIComponent(rs)}/${encodeURIComponent(j)}`, { method: 'DELETE' });
+          toast('Kuota dihapus', 'ok');
           reload();
-        } catch (err) { toast(err.message, 'err'); }
+        });
       };
     },
   },
@@ -513,32 +598,63 @@ const VIEWS = {
   reservasi: {
     label: 'Antrean Poliklinik',
     perm: 'reservasi.read',
-    st: { limit: 15, offset: 0, status: '', q: '' },
+    st: { limit: 15, offset: 0, status: '', q: '', todayOnly: false },
     async render(el) {
-      const st = this.st, reload = () => this.render(el), d = await api('/reservasi?' + qs(st));
-      el.innerHTML = `<div class="head"><h1>Reservasi &amp; Antrean Poliklinik</h1></div>
+      const st = this.st, reload = () => this.render(el), d = await api('/reservasi?' + qs({ limit: st.limit, offset: st.offset, status: st.status, q: st.q }));
+      const todayStr = new Date().toISOString().slice(0, 10);
+      const items = st.todayOnly ? (d.items || []).filter(r => String(r.tanggal || '').startsWith(todayStr)) : (d.items || []);
+
+      el.innerHTML = `<div class="head"><h1>Reservasi &amp; Antrean Poliklinik</h1><div style="display:flex;gap:.5rem"><button class="btn ${st.todayOnly ? 'primary' : ''}" id="rtoday">Jadwal Hari Ini</button>${can('reservasi.write') ? '<button class="btn" id="close-exp" title="Jalankan Stored Procedure tutup antrean lewat tanggal">Tutup Antrean Kedaluwarsa</button>' : ''}</div></div>
       <div class="filters"><input id="q" placeholder="Cari pasien / kode / telepon" value="${esc(st.q)}">
         <select id="fs"><option value="">Semua status</option>${['menunggu', 'dikonfirmasi', 'selesai', 'dibatalkan'].map(x => `<option ${st.status === x ? 'selected' : ''}>${x}</option>`).join('')}</select></div>
       ${table([
-        { h: 'Kode', f: r => `<b>${esc(r.kode_reservasi)}</b><br><span class="mute small">${fmtDT(r.created_at)}</span>` },
+        { h: 'Kode', f: r => `<button class="btn sm" data-copy="${esc(r.kode_reservasi)}" title="Salin kode tiket" style="font-family:monospace">${esc(r.kode_reservasi)}</button><br><span class="mute small">${fmtDT(r.created_at)}</span>` },
         { h: 'Rumah Sakit', f: r => rsLabel(r.rs_id, r.nama_rs) },
-        { h: 'Dokter', f: r => `${esc(r.nama_dokter)}<br><span class="mute small">${esc(r.spesialisasi)} · ${r.jam_mulai}–${r.jam_selesai}</span>` },
+        { h: 'Dokter', f: r => `${esc(r.nama_dokter)}<br><span class="mute small">${esc(r.spesialisasi)} ? ${r.jam_mulai}?${r.jam_selesai}</span>` },
         { h: 'Pasien', f: r => `${esc(r.nama_pasien)}<br><span class="mute small">${esc(r.no_telp)}</span>` },
         { h: 'Tanggal', f: r => esc(r.tanggal) },
         { h: 'Status', f: r => badge(r.status) },
-        { h: 'Aksi', cls: 'act', f: r => can('reservasi.write') ? `<select data-st="${r.id}" style="width:auto">${['menunggu', 'dikonfirmasi', 'selesai', 'dibatalkan'].map(x => `<option ${x === r.status ? 'selected' : ''}>${x}</option>`).join('')}</select> <button class="btn sm danger" data-del="${r.id}">Hapus</button>` : '' }
-      ], d.items, 'Belum ada reservasi poliklinik.')}
+        { h: 'Verifikasi Cepat', cls: 'act', f: r => can('reservasi.write') ? `
+          ${r.status === 'menunggu' ? `<button class="btn sm primary" data-qst="${r.id}|dikonfirmasi">Check-in</button> ` : ''}
+          ${r.status === 'dikonfirmasi' ? `<button class="btn sm" data-qst="${r.id}|selesai" style="border-color:var(--ok);color:var(--ok)">Selesai</button> ` : ''}
+          <select data-st="${r.id}" style="width:auto">${['menunggu', 'dikonfirmasi', 'selesai', 'dibatalkan'].map(x => `<option ${x === r.status ? 'selected' : ''}>${x}</option>`).join('')}</select>
+          <button class="btn sm danger" data-del="${r.id}">Hapus</button>` : '' }
+      ], items, 'Belum ada reservasi poliklinik.')}
       ${pager(st, d.total)}`;
       bindPager(el, st, reload);
       let t;
       $('#q', el).oninput = e => { clearTimeout(t); t = setTimeout(() => { st.q = e.target.value.trim(); st.offset = 0; reload(); }, 350); };
       $('#fs', el).onchange = e => { st.status = e.target.value; st.offset = 0; reload(); };
+      $('#rtoday', el).onclick = () => { st.todayOnly = !st.todayOnly; reload(); };
+
+      const closeExp = $('#close-exp', el);
+      if (closeExp) closeExp.onclick = () => confirmAct('Tutup otomatis seluruh antrean poliklinik yang telah melewati tanggal kunjungan?', async () => {
+        const res = await api('/reservasi/tutup-kedaluwarsa', { method: 'POST' });
+        toast(res.message || 'Antrean kedaluwarsa berhasil ditutup', 'ok');
+        reload();
+      });
+
+      el.querySelectorAll('[data-copy]').forEach(b => b.onclick = () => {
+        navigator.clipboard?.writeText(b.dataset.copy);
+        toast('Kode tiket ' + b.dataset.copy + ' disalin', 'ok');
+      });
+
+      el.querySelectorAll('[data-qst]').forEach(b => b.onclick = async () => {
+        const [rid, nextStatus] = b.dataset.qst.split('|');
+        b.disabled = true;
+        try {
+          await api('/reservasi/' + rid, { method: 'PUT', body: { status: nextStatus } });
+          toast(`Tiket berhasil diubah ke ${nextStatus.toUpperCase()}`, 'ok');
+          reload();
+        } catch (err) { toast(err.message, 'bad'); b.disabled = false; }
+      });
+
       el.querySelectorAll('[data-st]').forEach(s => s.onchange = async () => {
         try {
           await api('/reservasi/' + s.dataset.st, { method: 'PUT', body: { status: s.value } });
           toast('Status reservasi diperbarui', 'ok');
           reload();
-        } catch (e) { toast(e.message, 'err'); reload(); }
+        } catch (e) { toast(e.message, 'bad'); reload(); }
       });
       el.querySelectorAll('[data-del]').forEach(b => b.onclick = () => confirmAct('Hapus reservasi ini?', async () => {
         await api('/reservasi/' + b.dataset.del, { method: 'DELETE' });
@@ -556,7 +672,7 @@ const VIEWS = {
       el.innerHTML = `<div class="head"><h1>Pengguna &amp; Hak Akses</h1><button class="btn primary" id="add">+ Tambah Pengguna</button></div>
       ${table([
         { h: 'Username', f: r => `<b>${esc(r.username)}</b><br><span class="mute small">${esc(r.nama_lengkap)}</span>` },
-        { h: 'Peran', f: r => esc(r.role_kode) },
+        { h: 'Peran & Cakupan RS', f: r => `${esc(r.role_kode)}${r.scoped_rs_id ? `<br><span class="badge">RS: ${esc(r.scoped_rs_id)}</span>` : '<br><span class="mute small">Semua RS</span>'}` },
         { h: 'Status', f: r => `<span class="badge ${r.aktif ? 'b-ok' : 'b-off'}">${r.aktif ? 'aktif' : 'nonaktif'}</span>` },
         { h: 'Login Terakhir', f: r => fmtDT(r.last_login) },
         { h: 'Aksi', cls: 'act', f: r => `<button class="btn sm" data-a="edit" data-id="${r.id}">Ubah</button> ${r.id !== S.me.id ? `<button class="btn sm danger" data-a="del" data-id="${r.id}">Hapus</button>` : ''}` }
@@ -570,7 +686,8 @@ const VIEWS = {
           { name: 'username', label: 'Username (huruf/angka/_.-)', required: true, minlength: 3, autocomplete: 'off' },
           { name: 'nama_lengkap', label: 'Nama Lengkap', required: true },
           { name: 'password', label: 'Kata Sandi (min. 8 karakter)', type: 'password', required: true, minlength: 8, autocomplete: 'new-password' },
-          { name: 'role_kode', label: 'Peran', type: 'select', options: roleOpts, value: 'operator' }],
+          { name: 'role_kode', label: 'Peran', type: 'select', options: roleOpts, value: 'operator' },
+          { name: 'scoped_rs_id', label: 'Batasi ke 1 Rumah Sakit (opsional, kosongkan = Semua RS)', type: 'rs' }],
         onSubmit: async v => { await api('/users', { method: 'POST', body: v }); toast('Pengguna dibuat', 'ok'); reload(); },
       });
       el.onclick = e => {
@@ -613,10 +730,21 @@ const VIEWS = {
         { h: 'Tindakan', f: r => `<span class="badge">${esc(r.aksi)}</span>` },
         { h: 'Modul Data', f: r => esc(r.tabel) },
         { h: 'ID Data', f: r => esc(r.record_id) },
-        { h: 'Detail', f: r => `<details><summary class="small">Lihat rincian</summary>${r.data_lama ? `<div class="small mute">Sebelum</div><pre>${esc(JSON.stringify(r.data_lama, null, 1))}</pre>` : ''}${r.data_baru ? `<div class="small mute">Sesudah</div><pre>${esc(JSON.stringify(r.data_baru, null, 1))}</pre>` : ''}</details>` }
+        { h: 'Perubahan (Visual Diff)', f: r => `${renderAuditDiff(r.data_lama, r.data_baru)}<details style="margin-top:.3rem"><summary class="small mute">JSON lengkap</summary>${r.data_lama ? `<div class="small mute">Sebelum</div><pre>${esc(JSON.stringify(r.data_lama, null, 1))}</pre>` : ''}${r.data_baru ? `<div class="small mute">Sesudah</div><pre>${esc(JSON.stringify(r.data_baru, null, 1))}</pre>` : ''}</details>` },
+        { h: 'Aksi', f: r => `<button class="btn sm" data-rb="${r.id}" title="Kembalikan data sebelum perubahan ini">Pulihkan</button>` }
       ], d.items, 'Belum ada catatan aktivitas.')}
       ${pager(st, d.total)}`;
       bindPager(el, st, reload);
+      el.querySelectorAll('[data-rb]').forEach(btn => {
+        btn.onclick = () => {
+          const aid = btn.dataset.rb;
+          confirmAct(`Pulihkan data ke kondisi sebelum audit #${aid}?`, async () => {
+            const res = await api(`/audit/${aid}/rollback`, { method: 'POST' });
+            toast(res.message || 'Data berhasil dipulihkan', 'ok');
+            reload();
+          });
+        };
+      });
       $('#ft', el).onchange = e => { st.tabel = e.target.value; st.offset = 0; reload(); };
       let t;
       $('#fa', el).oninput = e => { clearTimeout(t); t = setTimeout(() => { st.aktor = e.target.value.trim(); st.offset = 0; reload(); }, 350); };

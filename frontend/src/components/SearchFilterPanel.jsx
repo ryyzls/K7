@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { KELAS_DESCRIPTION, KELAS_OPTIONS, JENIS_OPTIONS } from '../constants';
 import { cn } from '../utils';

@@ -1,4 +1,4 @@
-﻿import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { cn } from '../utils';
 
 export function BrandMark({ dark = false, compact = false, subtitle = 'Direktori Rumah Sakit Sumut' }) {

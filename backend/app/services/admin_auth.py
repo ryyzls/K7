@@ -64,9 +64,14 @@ def current_admin(authorization: str = Header(default=""), db: Session = Depends
     scheme, _, token = authorization.partition(" ")
     if scheme.lower() != "bearer" or not token.strip():
         raise HTTPException(401, "Login admin diperlukan", headers={"WWW-Authenticate": "Bearer"})
+    try:
+        db.execute(text("ALTER TABLE admin_users ADD COLUMN IF NOT EXISTS scoped_rs_id VARCHAR(20)"))
+        db.commit()
+    except Exception:
+        db.rollback()
     row = db.execute(
         text(
-            "SELECT u.id, u.username, u.nama_lengkap, u.role_kode "
+            "SELECT u.id, u.username, u.nama_lengkap, u.role_kode, u.scoped_rs_id "
             "FROM admin_sessions s JOIN admin_users u ON u.id = s.user_id "
             "WHERE s.token_hash = :h AND s.expires_at > now() AND u.aktif"
         ),
