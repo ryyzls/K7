@@ -191,7 +191,7 @@ def _build_alasan(rs: dict, filters: dict) -> str:
 
 
 
-async def process_chat_message(
+async def process_chat_message_legacy(
     user_text: str,
     lat: float | None = None,
     lon: float | None = None,
@@ -654,3 +654,7 @@ async def process_chat_message(
     res["state"] = curr_state
 
     return res
+
+
+# Public entry point retained for API callers and existing integrations.
+from app.services.chatbot.engine import process as process_chat_message

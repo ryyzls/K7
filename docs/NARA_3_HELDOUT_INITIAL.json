@@ -1,0 +1,109 @@
+{
+  "label": "Additional phrasing not used to build initial rules; all failures retained",
+  "passed": 9,
+  "total": 12,
+  "results": [
+    {
+      "prompt": "RS di Binjai dengan NICU",
+      "passed": false,
+      "expected_total": 10,
+      "actual_total": null,
+      "ids": [],
+      "response": "Pilih rumah sakit atau sebutkan namanya terlebih dahulu untuk melihat informasi yang diminta."
+    },
+    {
+      "prompt": "RS kelas C di Medan",
+      "passed": true,
+      "expected_total": 43,
+      "actual_total": 43,
+      "ids": [
+        "rs-002",
+        "rs-012",
+        "rs-015",
+        "rs-016",
+        "rs-020"
+      ],
+      "response": "Ditemukan 43 rumah sakit sesuai kriteria. Menampilkan 5. Kriteria: Kota Medan."
+    },
+    {
+      "prompt": "RS dengan PICU di Deli Serdang",
+      "passed": false,
+      "expected_total": 16,
+      "actual_total": null,
+      "ids": [],
+      "response": "Pilih rumah sakit atau sebutkan namanya terlebih dahulu untuk melihat informasi yang diminta."
+    },
+    {
+      "prompt": "Cari dokter mata di Medan",
+      "passed": true,
+      "expected_total": 40,
+      "actual_total": 40,
+      "ids": [
+        "rs-003",
+        "rs-007",
+        "rs-008",
+        "rs-157",
+        "rs-171"
+      ],
+      "response": "Ditemukan 40 rumah sakit sesuai kriteria. Menampilkan 5. Kriteria: Mata, Kota Medan."
+    },
+    {
+      "prompt": "RS dengan poliklinik kandungan di Binjai",
+      "passed": false,
+      "expected_total": 10,
+      "actual_total": null,
+      "ids": [],
+      "response": "Pilih rumah sakit atau sebutkan namanya terlebih dahulu untuk melihat informasi yang diminta."
+    },
+    {
+      "prompt": "RS kelas B yang ada NICU",
+      "passed": true,
+      "expected_total": 25,
+      "actual_total": 25,
+      "ids": [
+        "rs-003",
+        "rs-007",
+        "rs-008",
+        "rs-011",
+        "rs-014"
+      ],
+      "response": "Ditemukan 25 rumah sakit sesuai kriteria. Menampilkan 5. Kriteria: NICU."
+    },
+    {
+      "prompt": "Bapak tidak sadarkan diri sekarang",
+      "passed": true,
+      "expected_emergency": true,
+      "actual_emergency": true
+    },
+    {
+      "prompt": "Saya tidak sesak napas",
+      "passed": true,
+      "expected_emergency": false,
+      "actual_emergency": false
+    },
+    {
+      "prompt": "Kalau orang pingsan harus ke mana?",
+      "passed": true,
+      "expected_emergency": false,
+      "actual_emergency": false
+    },
+    {
+      "prompt": "Kemarin saya nyeri dada",
+      "passed": true,
+      "expected_emergency": false,
+      "actual_emergency": false
+    },
+    {
+      "prompt": "Tidak ada perdarahan berat",
+      "passed": true,
+      "expected_emergency": false,
+      "actual_emergency": false
+    },
+    {
+      "prompt": "Saya kesulitan bernapas berat",
+      "passed": true,
+      "expected_emergency": true,
+      "actual_emergency": true
+    }
+  ]
+}

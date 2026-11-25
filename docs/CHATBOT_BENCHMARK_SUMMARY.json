@@ -1,0 +1,190 @@
+{
+  "total_scenarios": 138,
+  "passed": 75,
+  "partial": 0,
+  "failed": 63,
+  "overall_pass_rate": 54.35,
+  "security_pass_rate": 100.0,
+  "multi_turn_pass_rate": 44.44,
+  "mean_ms": 253.02,
+  "median_ms": 143.78,
+  "p95_ms": 1432.35,
+  "by_category": {
+    "A. Percakapan Dasar": {
+      "total": 7,
+      "pass": 6,
+      "partial": 0,
+      "fail": 1
+    },
+    "B. Nama RS": {
+      "total": 9,
+      "pass": 7,
+      "partial": 0,
+      "fail": 2
+    },
+    "C. Typo & Informal": {
+      "total": 11,
+      "pass": 5,
+      "partial": 0,
+      "fail": 6
+    },
+    "D. Lokasi": {
+      "total": 7,
+      "pass": 6,
+      "partial": 0,
+      "fail": 1
+    },
+    "E. Layanan": {
+      "total": 9,
+      "pass": 1,
+      "partial": 0,
+      "fail": 8
+    },
+    "F. Fasilitas": {
+      "total": 8,
+      "pass": 3,
+      "partial": 0,
+      "fail": 5
+    },
+    "G. Kompleks": {
+      "total": 9,
+      "pass": 1,
+      "partial": 0,
+      "fail": 8
+    },
+    "H. Detail Atribut": {
+      "total": 10,
+      "pass": 3,
+      "partial": 0,
+      "fail": 7
+    },
+    "I. Jam Operasional": {
+      "total": 6,
+      "pass": 3,
+      "partial": 0,
+      "fail": 3
+    },
+    "J. Rekomendasi & Compare": {
+      "total": 6,
+      "pass": 4,
+      "partial": 0,
+      "fail": 2
+    },
+    "L. Ambigu": {
+      "total": 8,
+      "pass": 3,
+      "partial": 0,
+      "fail": 5
+    },
+    "M. Kesehatan & Keselamatan": {
+      "total": 7,
+      "pass": 4,
+      "partial": 0,
+      "fail": 3
+    },
+    "N. Out-of-Scope & Fallback": {
+      "total": 10,
+      "pass": 9,
+      "partial": 0,
+      "fail": 1
+    },
+    "O. Keamanan": {
+      "total": 10,
+      "pass": 10,
+      "partial": 0,
+      "fail": 0
+    },
+    "K. Multi-Turn (Skenario 1: Filter bertahap)": {
+      "total": 5,
+      "pass": 3,
+      "partial": 0,
+      "fail": 2
+    },
+    "K. Multi-Turn (Skenario 2: Follow-up detail RS)": {
+      "total": 5,
+      "pass": 0,
+      "partial": 0,
+      "fail": 5
+    },
+    "K. Multi-Turn (Skenario 3: Compare follow-up)": {
+      "total": 4,
+      "pass": 3,
+      "partial": 0,
+      "fail": 1
+    },
+    "K. Multi-Turn (Skenario 4: Koreksi konteks)": {
+      "total": 4,
+      "pass": 2,
+      "partial": 0,
+      "fail": 2
+    },
+    "D/M/H GPS Active": {
+      "total": 3,
+      "pass": 2,
+      "partial": 0,
+      "fail": 1
+    }
+  },
+  "search_vs_chat": [
+    {
+      "query": "Adam Malk",
+      "chat_count": 0,
+      "chat_ids": [],
+      "search_total": 1,
+      "search_ids": [
+        "rs-171"
+      ],
+      "chat_ms": 93.54
+    },
+    {
+      "query": "Rumah sakit di Medan yang punya ICU dan CT Scan",
+      "chat_count": 0,
+      "chat_ids": [],
+      "search_total": 28,
+      "search_ids": [
+        "rs-157",
+        "rs-171",
+        "rs-003",
+        "rs-008",
+        "rs-053"
+      ],
+      "chat_ms": 190.73
+    },
+    {
+      "query": "Rumah sakit kelas A atau B dengan layanan saraf",
+      "chat_count": 0,
+      "chat_ids": [],
+      "search_total": 135,
+      "search_ids": [
+        "rs-025",
+        "rs-157",
+        "rs-171",
+        "rs-003",
+        "rs-007"
+      ],
+      "chat_ms": 98.91
+    },
+    {
+      "query": "Rumah sakit di Medan selain Adam Malik",
+      "chat_count": 0,
+      "chat_ids": [],
+      "search_total": 0,
+      "search_ids": [],
+      "chat_ms": 196.97
+    },
+    {
+      "query": "Rumah sakit di Siantar yang memiliki poli anak",
+      "chat_count": 0,
+      "chat_ids": [],
+      "search_total": 9,
+      "search_ids": [
+        "rs-011",
+        "rs-077",
+        "rs-199",
+        "rs-040",
+        "rs-054"
+      ],
+      "chat_ms": 185.54
+    }
+  ]
+}

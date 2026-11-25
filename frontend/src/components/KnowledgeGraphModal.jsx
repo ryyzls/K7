@@ -156,7 +156,7 @@ export default function KnowledgeGraphModal({ hospital, open, onClose }) {
             rel="noopener noreferrer"
             className="font-semibold text-brand-blue hover:underline"
           >
-            Buka halaman semantik RDF →
+            Buka halaman semantik RDF
           </a>
         </footer>
       </section>

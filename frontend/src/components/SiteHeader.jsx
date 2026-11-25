@@ -44,7 +44,7 @@ export default function SiteHeader({ active = '' }) {
               type="button"
               onClick={() => navigate(item.to)}
               className={cn(
-                'rounded-full px-3 py-2 text-sm font-medium transition-colors',
+                'rounded-md px-3 py-2 text-sm font-medium transition-colors',
                 active === item.id
                   ? 'bg-slate-100 text-brand-navy'
                   : 'text-slate-600 hover:bg-slate-100 hover:text-brand-navy',
@@ -60,7 +60,7 @@ export default function SiteHeader({ active = '' }) {
             <button
               type="button"
               onClick={openLogin}
-              className="inline-flex items-center gap-1.5 rounded-full bg-brand-navy px-4 py-2 text-xs font-semibold text-white shadow-sm transition-all hover:bg-[#021f42]"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-brand-navy px-4 py-2 text-xs font-semibold text-white shadow-sm transition-all hover:bg-[#021f42]"
             >
               <span className="material-symbols-outlined text-[16px]">person</span>
               <span className="hidden sm:inline">Masuk / Registrasi</span>

@@ -207,23 +207,31 @@
     }
 
     .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
       font-size: .76rem;
-      font-weight: 700;
-      background: rgba(255, 255, 255, .22);
+      font-weight: 600;
+      background: rgba(15, 118, 110, .08);
+      border: 1px solid rgba(15, 118, 110, .20);
+      color: #0f766e;
+      border-radius: 8px;
+      padding: .25rem .75rem;
       backdrop-filter: blur(4px);
-      border-radius: 99px;
-      padding: .22rem .75rem
     }
 
     .pill.k {
-      background: #fff;
-      color: var(--k);
-      font-weight: 800
+      background: rgba(13, 148, 136, .12);
+      border: 1px solid rgba(13, 148, 136, .24);
+      color: #0d615b;
+      font-weight: 700;
     }
 
     .pill.bpjs {
-      background: #10B981;
-      color: #fff
+      background: rgba(16, 185, 129, .10);
+      border: 1px solid rgba(16, 185, 129, .22);
+      color: #047857;
+      font-weight: 600;
     }
 
     .card {
@@ -465,7 +473,6 @@
         <p><small>Telepon</small><span property="telephone">{% if h.telepon %}<a href="tel:{{ h.telepon }}">{{ h.telepon }}</a>{% else %}Belum tersedia{% endif %}</span></p>
         <p><small>Email</small><span property="email">{% if h.email %}<a href="mailto:{{ h.email }}">{{ h.email }}</a>{% else %}Belum tersedia{% endif %}</span></p>
         <p><small>Website</small><span>{% if h.website %}<a href="{{ h.website }}" target="_blank" rel="noopener noreferrer">{{ h.website }}</a>{% else %}Belum tersedia{% endif %}</span></p>
-        <p><small>Gawat Darurat (IGD)</small><span>{% if h.igd_24jam_terlapor and h.igd_24jam_terlapor.igd_24jam_terlapor %}Buka 24 Jam{% else %}Belum tersedia{% endif %}</span></p>
       </div>
     </section>
 

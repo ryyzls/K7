@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "pageErrors": [],
+  "screenshots": [
+    "command-palette.png",
+    "comparison.png",
+    "expanded-multiturn-filters.png",
+    "hospital-search.png",
+    "map.png",
+    "mobile.png",
+    "welcome-floating.png"
+  ],
+  "checks": [
+    "welcome",
+    "commands keyboard",
+    "actual RDF search",
+    "minimize preserves session",
+    "expanded",
+    "multi-turn",
+    "comparison",
+    "new session",
+    "location request",
+    "map",
+    "history",
+    "mobile bounds",
+    "error retry",
+    "copy clipboard",
+    "remove filter chip",
+    "delete cancel and confirm"
+  ],
+  "runner_cleanup": "Completed normally: Browser checks passed, exit code 0."
+}

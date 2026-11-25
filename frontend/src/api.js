@@ -36,9 +36,24 @@ function cleanParams(params) {
   return search;
 }
 
-export async function searchHospitals(params = {}) {
+const searchCache = new Map();
+const SEARCH_CACHE_TTL_MS = 30_000;
+const SEARCH_CACHE_MAX = 60;
+
+export async function searchHospitals(params = {}, signal) {
   const search = cleanParams(params);
-  return request(`/api/search?${search.toString()}`);
+  const key = search.toString();
+  const cached = searchCache.get(key);
+  if (cached && Date.now() - cached.ts < SEARCH_CACHE_TTL_MS) {
+    return cached.data;
+  }
+  const data = await request(`/api/search?${key}`, { signal });
+  if (searchCache.size >= SEARCH_CACHE_MAX) {
+    const oldestKey = searchCache.keys().next().value;
+    searchCache.delete(oldestKey);
+  }
+  searchCache.set(key, { ts: Date.now(), data });
+  return data;
 }
 
 export async function getFilterOptions() {
@@ -49,10 +64,11 @@ export async function getMapConfig() {
   return request('/api/config/maps');
 }
 
-export async function sendChat(payload) {
+export async function sendChat(payload, signal) {
   return request('/api/chat', {
     method: 'POST',
     body: JSON.stringify(payload),
+    signal,
   });
 }
 
@@ -137,3 +153,7 @@ export function getAllHospitals(force = false) {
 }
 
 export { API_BASE };
+
+export async function getSearchSuggestions(q, signal) {
+  return request(`/api/search/suggestions?${cleanParams({ q })}`, { signal });
+}

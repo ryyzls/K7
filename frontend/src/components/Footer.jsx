@@ -28,7 +28,7 @@ export function EditorialFooter() {
                 alt="CariSehat"
                 className="h-9 w-9 rounded-xl object-cover shadow-sm"
               />
-              <span className="font-serif-editorial text-[21px] font-semibold text-brand-navy">
+              <span className="font-sans text-[21px] font-bold tracking-tight text-brand-navy">
                 CariSehat
               </span>
             </div>

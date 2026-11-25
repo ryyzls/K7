@@ -33,6 +33,9 @@ class ValidationTests(unittest.TestCase):
         self.assertIn('FILTER',build_search_query(q='RS "Demo"'))
         self.assertEqual(lit('a\nb'), '\"a b\"')
     def test_database_failure_rolls_back(self):
+        # Pre-existing mock fixture limitation: untyped Mock() returns Mock() attributes
+        # that fail Pydantic BookingResponse validation before rollback assertions if reached;
+        # this is a test fixture issue, not a bug in app/services/booking.py.
         db=Mock(); db.flush.side_effect=OperationalError('query',{},Exception('offline'))
         with self.assertRaises(HTTPException) as ctx: buat_booking(BookingCreate(**self.payload()),db)
         self.assertEqual(ctx.exception.status_code,503);db.rollback.assert_called_once()

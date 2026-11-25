@@ -224,15 +224,6 @@ export default function DetailPage() {
           </nav>
           <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center' }}>
             <button
-              className="btn btn-ghost"
-              type="button"
-              onClick={() => setShowKG(true)}
-              title="Eksplorasi Graf Pengetahuan Semantik"
-            >
-              <i className="fa-solid fa-circle-nodes" aria-hidden="true" style={{ color: 'var(--toba)' }} />
-              <span>Graf Pengetahuan</span>
-            </button>
-            <button
               className="d-back"
               type="button"
               onClick={() => navigate(-1)}
@@ -296,17 +287,17 @@ export default function DetailPage() {
 
             <div className="d-hero-top">
               <div className="d-pills">
-                <span className="badge" title={DESC[hospital.kelas] || 'Kelas Rumah Sakit'}>
+                <span className="pill pill-kelas" title={DESC[hospital.kelas] || 'Kelas Rumah Sakit'}>
                   Kelas {hospital.kelas || '?'}
                 </span>
-                <span className="pill">
-                  <i className="fa-solid fa-hospital" aria-hidden="true" /> {hospital.jenis || 'Rumah Sakit'}
+                <span className="pill pill-jenis">
+                  {hospital.jenis || 'Umum'}
                 </span>
                 {hospital.bpjs ? (
                   <span className="pill pill-bpjs">Menerima BPJS Kesehatan</span>
                 ) : (
                   <span className="pill pill-warn">
-                    <i className="fa-solid fa-triangle-exclamation" aria-hidden="true" /> Konfirmasi BPJS ke Rumah Sakit
+                    Konfirmasi BPJS ke Rumah Sakit
                   </span>
                 )}
               </div>
@@ -407,32 +398,12 @@ export default function DetailPage() {
                 </div>
                 <div className="info-grid">
                   {[
-                    ['Kode Kemenkes', hospital.kode_kemenkes],
                     ['Nama Rumah Sakit', hospital.nama],
+                    ['Kode Kemenkes', hospital.kode_kemenkes],
                     ['Kabupaten/Kota', hospital.kabkota],
+                    ['Klasifikasi & Tipe', `Kelas ${hospital.kelas || 'Belum terklasifikasi'} — Rumah Sakit ${hospital.jenis || ''}`],
                     ['Alamat', hospital.alamat],
-                    ['Direktur', hospital.direktur],
-                    ['Kepemilikan', hospital.kepemilikan || hospital.pemilik],
-                    ['Luas Tanah', hospital.luas_tanah],
-                    ['Luas Bangunan', hospital.luas_bangunan],
                   ].map(([label,value])=><div className="info-item" key={label}><div><small>{label}</small><strong>{value ?? 'Belum tersedia'}</strong></div></div>)}
-                  <div className="info-item">
-                    <i className="fa-solid fa-hospital" aria-hidden="true" style={{ fontSize: '1.15rem', color: 'var(--toba)' }} />
-                    <div>
-                      <small>Klasifikasi &amp; Tipe</small>
-                      <strong>
-                        Kelas {hospital.kelas || 'Belum terklasifikasi'}{' '}
-                        <span style={{ display: 'inline-block', width: '0.8rem' }} /> Rumah Sakit {hospital.jenis}
-                      </strong>
-                    </div>
-                  </div>
-                  <div className="info-item">
-                    <i className="fa-solid fa-truck-medical" aria-hidden="true" style={{ fontSize: '1.15rem', color: 'var(--emergency)' }} />
-                    <div>
-                      <small>Instalasi Gawat Darurat (IGD)</small>
-                      <strong style={{ color: 'var(--emergency)' }}>{igdText}</strong>
-                    </div>
-                  </div>
                 </div>
               </section>
 
@@ -751,7 +722,7 @@ export default function DetailPage() {
 
       {/* Knowledge Graph Modal */}
       {showKG && (
-        <KnowledgeGraphModal hospitalId={hospital.id} onClose={() => setShowKG(false)} />
+        <KnowledgeGraphModal hospital={hospital} open={showKG} onClose={() => setShowKG(false)} />
       )}
     </div>
   );

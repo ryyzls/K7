@@ -3886,7 +3886,7 @@
             <div class="compare-modal-head">
               <div>
                 <h2 id="compare-modal-title"><i class="fa-solid fa-code-compare" aria-hidden="true"></i> Perbandingan Rumah Sakit</h2>
-                <p class="compare-modal-sub">Membandingkan secara faktual maksimal 3 rumah sakit berdasarkan data Kemenkes RI &amp; SIRS.</p>
+                <p class="compare-modal-sub">Membandingkan secara faktual 2 rumah sakit berdasarkan data Kemenkes RI &amp; SIRS.</p>
               </div>
               <button type="button" class="btn-close-compare" id="btn-close-compare" aria-label="Tutup perbandingan">&times;</button>
             </div>
@@ -3900,7 +3900,7 @@
         <div id="compare-dock" class="compare-dock hidden" role="region" aria-label="Menu perbandingan rumah sakit">
           <div class="compare-dock-count">
             <i class="fa-solid fa-code-compare" aria-hidden="true"></i>
-            <span id="compare-dock-text">0/3 RS dipilih</span>
+            <span id="compare-dock-text">0/2 RS dipilih</span>
           </div>
           <div id="compare-dock-items" class="compare-dock-pills"></div>
           <div class="compare-dock-actions">
@@ -5240,8 +5240,8 @@
           comparedHospitalIds.delete(id);
           toast("Rumah sakit dihapus dari daftar perbandingan", "info");
         } else {
-          if (comparedHospitalIds.size >= 3) {
-            toast("Maksimal 3 rumah sakit yang dapat dibandingkan sekaligus", "warn");
+          if (comparedHospitalIds.size >= 2) {
+            toast("Maksimal 2 rumah sakit yang dapat dibandingkan sekaligus", "warn");
             return;
           }
           comparedHospitalIds.add(id);
@@ -5295,7 +5295,7 @@
           return;
         }
         dock.classList.remove("hidden");
-        if (countText) countText.textContent = `${count}/3 RS dipilih`;
+        if (countText) countText.textContent = `${count}/2 RS dipilih`;
 
         if (pillsContainer) {
           pillsContainer.innerHTML = Array.from(comparedHospitalIds).map((id) => {
@@ -5395,7 +5395,7 @@
                 </tr>
                 <tr>
                   <th class="attr-col">Gawat Darurat (UGD)</th>
-                  ${hs.map((h) => `<td>${h.semua_layanan_sirs.includes("Pelayanan Gawat Darurat Umum 24 jam & 7 hari seminggu") ? '<span style="color:var(--emergency);font-weight:700"><i class="fa-solid fa-truck-medical" aria-hidden="true"></i> UGD 24 Jam Terlapor</span>' : '<span style="color:var(--mute)">Tidak tercatat di SIRS</span>'}</td>`).join("")}
+                  ${hs.map((h) => `<td>${h.semua_layanan_sirs.includes("Pelayanan Gawat Darurat Umum 24 jam & 7 hari seminggu") ? '<span style="color:var(--emergency);font-weight:700"><i class="fa-solid fa-truck-medical" aria-hidden="true"></i> UGD 24 Jam</span>' : '<span style="color:var(--mute)">Tidak tercatat di SIRS</span>'}</td>`).join("")}
                 </tr>
                 <tr>
                   <th class="attr-col">Spesialisasi Medis (SIRS)</th>
@@ -5411,7 +5411,7 @@
                 </tr>
                 <tr>
                   <th class="attr-col">Status BPJS</th>
-                  ${hs.map((h) => `<td>${h.bpjs_info && h.bpjs_info.menerima_bpjs ? '<span style="color:#059669;font-weight:700">&#10004; Tercatat Menerima BPJS</span>' : '<span style="color:#D97706">&#9888; Konfirmasi ke RS</span>'}</td>`).join("")}
+                  ${hs.map((h) => `<td>${h.bpjs_info && h.bpjs_info.menerima_bpjs ? '<span style="color:#0f766e;font-weight:600">Menerima BPJS</span>' : '<span style="color:#b45309">Konfirmasi ke RS</span>'}</td>`).join("")}
                 </tr>
                 <tr>
                   <th class="attr-col">Profil Lengkap</th>

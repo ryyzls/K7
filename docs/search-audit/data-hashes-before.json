@@ -1,0 +1,13 @@
+{
+  "semantic\\named_graphs\\carisehat-enrichment-freeze.ttl": "154713645a63ae4c2411865f4090356de926e34bb28f14c1943ce8daec88c21f",
+  "semantic\\rdf\\enrichment-ontology.ttl": "936839528ca35e5815b6ebaaf6db5d55701ad5e1e46f21e6fc358b551b16590c",
+  "semantic\\rdf\\hospital-websites.ttl": "16f54a5f49de6fb5aecd310184fd94cc3d428a6dcd677a14dd29c3a5bca3893b",
+  "semantic\\rdf\\hospitals-sumut.ttl": "365fa93455c5c15c1435a697886315f4cf2c553e9e64fe293e6e03c1f4cd57ca",
+  "semantic\\rdf\\ontologi.ttl": "bdee8486d49aecfdd7ca3941f8023341d8fbaed994eb427f6ab140de1b3450ad",
+  "semantic\\sirs\\services-reviewed.ttl": "b94d0b77f7512d34546a157395bad44f736c9e2dd838b94065bbb839b4c51347",
+  "semantic\\backups\\enrichment_freeze_20261120\\default-before.ttl": "5141963614af8b5f11f13dcf5ef3bb3351dca10eb84dc11d9d020323c9fbdf5a",
+  "semantic\\backups\\enrichment_freeze_20261120\\deployed.ttl": "d5d9914558f8083fa75062d25f2b0345db69ba87d54f8081815c686bdc25f0f8",
+  "data\\foto_rs.csv": "91391c6d95dfe462f97145ce2e1d4f3b4b468798cc04e1e208f9c81caa98c977",
+  "data\\koordinat.csv": "65dedafabbee3678f7ba6292c15576f58bc3a1b97ae26e961c407ebb59dc7ace",
+  "data\\rumah_sakit_sumut.csv": "83f8c2a32c0a9b6768121e2e380a645ce5ce11bc7fcef5c03851253f8fa7b3db"
+}

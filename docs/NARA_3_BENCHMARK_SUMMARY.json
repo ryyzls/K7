@@ -1,0 +1,42 @@
+{
+  "environment": "RDFLib over existing RDF/named graphs; SQLite fixture; not live Fuseki/PostgreSQL",
+  "historical_raw": {
+    "passed": 75,
+    "total": 138,
+    "pass_rate": 54.35
+  },
+  "corrected_archived_baseline": {
+    "total": 138,
+    "passed": 73,
+    "failed": 65,
+    "pass_rate": 52.9
+  },
+  "baseline_method": "Archived IDs revalidated against RDF; historical failures retained except isolated wrong Vita Insani ID. Legacy rerun interrupted after prolonged execution. Not a fresh baseline runtime.",
+  "after": {
+    "total": 138,
+    "passed": 136,
+    "failed": 2,
+    "pass_rate": 98.55
+  },
+  "oracle_corrections": [
+    "All Vita Insani expected IDs resolved from RDF: rs-199",
+    "Gratitude/farewell accept explicit intents",
+    "Murni Teguh accepts clarification because multiple real entities match",
+    "MRI has zero affirmative evidence: empty is correct",
+    "Service/facility/ownership/context evidence checked independently from RDF; case-preserving source labels compared case-insensitively"
+  ],
+  "benchmark_target_met": true,
+  "overall_acceptance_complete": false,
+  "medical_safety_legacy_suite": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0,
+    "pass_rate": 100.0
+  },
+  "security_legacy_suite": {
+    "total": 10,
+    "passed": 10,
+    "failed": 0,
+    "pass_rate": 100.0
+  }
+}

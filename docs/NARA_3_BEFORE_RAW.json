@@ -1,0 +1,830 @@
+[
+  {
+    "test_id": "A01",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "A02",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "A03",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "A04",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "A05",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "A06",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "A07",
+    "status": "FAIL",
+    "reason": "intent=OUT_OF_SCOPE not in ['GREETING']",
+    "ids": ""
+  },
+  {
+    "test_id": "B01",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-171"
+  },
+  {
+    "test_id": "B02",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-125"
+  },
+  {
+    "test_id": "B03",
+    "status": "PASS",
+    "reason": "Vita Insani ID independently corrected to rs-199",
+    "ids": "rs-199"
+  },
+  {
+    "test_id": "B04",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['DETAIL']; expected rs-157 not in []",
+    "ids": ""
+  },
+  {
+    "test_id": "B05",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-007|rs-008"
+  },
+  {
+    "test_id": "B06",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-125"
+  },
+  {
+    "test_id": "B07",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-171"
+  },
+  {
+    "test_id": "B08",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-171"
+  },
+  {
+    "test_id": "B09",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-171"
+  },
+  {
+    "test_id": "C01",
+    "status": "FAIL",
+    "reason": "intent=OUT_OF_SCOPE not in ['DETAIL']; expected rs-171 not in []",
+    "ids": ""
+  },
+  {
+    "test_id": "C02",
+    "status": "FAIL",
+    "reason": "intent=OUT_OF_SCOPE not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "C03",
+    "status": "FAIL",
+    "reason": "intent=OUT_OF_SCOPE not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "C04",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-125"
+  },
+  {
+    "test_id": "C05",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-150|rs-151|rs-152|rs-153"
+  },
+  {
+    "test_id": "C06",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-001|rs-002|rs-003|rs-004|rs-005"
+  },
+  {
+    "test_id": "C07",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-001|rs-002|rs-003|rs-004|rs-005"
+  },
+  {
+    "test_id": "C08",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-171"
+  },
+  {
+    "test_id": "C09",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "C10",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "C11",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "D01",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-002|rs-003|rs-007|rs-008|rs-012"
+  },
+  {
+    "test_id": "D02",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-011|rs-036|rs-040|rs-041|rs-044"
+  },
+  {
+    "test_id": "D03",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-009|rs-013|rs-014|rs-018|rs-021"
+  },
+  {
+    "test_id": "D04",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "D05",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "D06",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "D07",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "E01",
+    "status": "FAIL",
+    "reason": "hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "E02",
+    "status": "FAIL",
+    "reason": " mandatory RDF evidence mismatch: rs-012",
+    "ids": "rs-002|rs-003|rs-007|rs-008|rs-012"
+  },
+  {
+    "test_id": "E03",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "E04",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "E05",
+    "status": "FAIL",
+    "reason": "hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "E06",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "E07",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "E08",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "E09",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "F01",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "F02",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "F03",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "F04",
+    "status": "FAIL",
+    "reason": " mandatory RDF evidence mismatch: rs-001,rs-004",
+    "ids": "rs-001|rs-002|rs-003|rs-004|rs-005"
+  },
+  {
+    "test_id": "F05",
+    "status": "FAIL",
+    "reason": " mandatory RDF evidence mismatch: rs-001,rs-002,rs-003,rs-004,rs-005",
+    "ids": "rs-001|rs-002|rs-003|rs-004|rs-005"
+  },
+  {
+    "test_id": "F06",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-001|rs-002|rs-003|rs-004|rs-005"
+  },
+  {
+    "test_id": "F07",
+    "status": "FAIL",
+    "reason": "hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "F08",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "G01",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-003|rs-007|rs-008|rs-053|rs-067"
+  },
+  {
+    "test_id": "G02",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "G03",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "G04",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "G05",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "G06",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "G07",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "G08",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "G09",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['SEARCH_FILTER']; hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "H01",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-125"
+  },
+  {
+    "test_id": "H02",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['ATRIBUT']; expected rs-171 not in []; missing any of ['telepon', '061']",
+    "ids": ""
+  },
+  {
+    "test_id": "H03",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['ATRIBUT', 'DETAIL']; expected rs-200 not in []",
+    "ids": ""
+  },
+  {
+    "test_id": "H04",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['ATRIBUT', 'DETAIL']; expected rs-125 not in []; missing any of ['@']",
+    "ids": ""
+  },
+  {
+    "test_id": "H05",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-171"
+  },
+  {
+    "test_id": "H06",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['ATRIBUT']; expected rs-200 not in []",
+    "ids": ""
+  },
+  {
+    "test_id": "H07",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['ATRIBUT', 'DETAIL']; expected rs-171 not in []",
+    "ids": ""
+  },
+  {
+    "test_id": "H08",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-125"
+  },
+  {
+    "test_id": "H09",
+    "status": "PASS",
+    "reason": "Vita Insani ID independently corrected to rs-199",
+    "ids": "rs-199"
+  },
+  {
+    "test_id": "H10",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['ATRIBUT']; expected rs-200 not in []",
+    "ids": ""
+  },
+  {
+    "test_id": "I01",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "I02",
+    "status": "FAIL",
+    "reason": "hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "I03",
+    "status": "FAIL",
+    "reason": " mandatory RDF evidence mismatch: rs-107,rs-112,rs-141,rs-167,rs-170",
+    "ids": "rs-107|rs-112|rs-141|rs-167|rs-170"
+  },
+  {
+    "test_id": "I04",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "I05",
+    "status": "FAIL",
+    "reason": "expected rs-171 not in []",
+    "ids": ""
+  },
+  {
+    "test_id": "I06",
+    "status": "FAIL",
+    "reason": "missing any of ['pendaftaran', 'jadwal', 'jam', 'belum tersedia']",
+    "ids": ""
+  },
+  {
+    "test_id": "J01",
+    "status": "FAIL",
+    "reason": "hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "J02",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "J03",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-125|rs-008"
+  },
+  {
+    "test_id": "J04",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "J05",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "J06",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['KLARIFIKASI']",
+    "ids": ""
+  },
+  {
+    "test_id": "L01",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['RATING_INQUIRY', 'KLARIFIKASI']",
+    "ids": ""
+  },
+  {
+    "test_id": "L02",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "L03",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "L04",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['KLARIFIKASI', 'RATING_INQUIRY']",
+    "ids": ""
+  },
+  {
+    "test_id": "L05",
+    "status": "FAIL",
+    "reason": "intent=NOT_FOUND not in ['RATING_INQUIRY', 'KLARIFIKASI']",
+    "ids": ""
+  },
+  {
+    "test_id": "L06",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "L07",
+    "status": "FAIL",
+    "reason": "intent=ATRIBUT not in ['KLARIFIKASI', 'JAM_BUKA_INQUIRY']",
+    "ids": "rs-149"
+  },
+  {
+    "test_id": "L08",
+    "status": "FAIL",
+    "reason": "intent=OUT_OF_SCOPE not in ['DETAIL', 'DISAMBIGUASI']; missing any of ['hermina']",
+    "ids": ""
+  },
+  {
+    "test_id": "M01",
+    "status": "FAIL",
+    "reason": "missing any of ['dokter', 'rumah sakit', 'saraf', 'wilayah', 'medis']",
+    "ids": ""
+  },
+  {
+    "test_id": "M02",
+    "status": "FAIL",
+    "reason": "missing any of ['dokter', 'rumah sakit', 'paru', 'penyakit dalam', 'wilayah', 'medis']",
+    "ids": ""
+  },
+  {
+    "test_id": "M03",
+    "status": "FAIL",
+    "reason": "is_emergency=False != True; missing any of ['119', 'ugd', 'igd', 'darurat']",
+    "ids": ""
+  },
+  {
+    "test_id": "M04",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "M05",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "M06",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-001|rs-002|rs-003|rs-005|rs-006"
+  },
+  {
+    "test_id": "M07",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-025|rs-157|rs-171|rs-003|rs-007"
+  },
+  {
+    "test_id": "N01",
+    "status": "FAIL",
+    "reason": "missing any of ['sumatera utara', 'maaf', 'hanya', 'tidak']",
+    "ids": "rs-007"
+  },
+  {
+    "test_id": "N02",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "N03",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "N04",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "N05",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "N06",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "N07",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "N08",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "N09",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "N10",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "O01",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "O02",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "O03",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "O04",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "O05",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "O06",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-002|rs-003|rs-007|rs-008|rs-012"
+  },
+  {
+    "test_id": "O07",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-003|rs-008|rs-023|rs-025"
+  },
+  {
+    "test_id": "O08",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "O09",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-060|rs-081|rs-096|rs-165"
+  },
+  {
+    "test_id": "O10",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "K1-T1",
+    "status": "FAIL",
+    "reason": "hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "K1-T2",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-003|rs-007|rs-008|rs-028|rs-033"
+  },
+  {
+    "test_id": "K1-T3",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-003|rs-007|rs-008|rs-053|rs-067"
+  },
+  {
+    "test_id": "K1-T4",
+    "status": "FAIL",
+    "reason": "hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "K1-T5",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-052"
+  },
+  {
+    "test_id": "K2-T1",
+    "status": "FAIL",
+    "reason": "expected rs-125 not in []",
+    "ids": ""
+  },
+  {
+    "test_id": "K2-T2",
+    "status": "FAIL",
+    "reason": "expected rs-125 not in []; missing any of ['fasilitas', 'icu']",
+    "ids": ""
+  },
+  {
+    "test_id": "K2-T3",
+    "status": "FAIL",
+    "reason": "expected rs-125 not in []; missing any of ['jam', 'buka', 'igd', '24']",
+    "ids": ""
+  },
+  {
+    "test_id": "K2-T4",
+    "status": "FAIL",
+    "reason": "expected rs-125 not in []; missing any of ['telepon', '061']",
+    "ids": ""
+  },
+  {
+    "test_id": "K2-T5",
+    "status": "FAIL",
+    "reason": "missing any of ['alternatif', 'serupa', 'hermina']",
+    "ids": ""
+  },
+  {
+    "test_id": "K3-T1",
+    "status": "FAIL",
+    "reason": "expected rs-171 not in []; expected rs-008 not in []",
+    "ids": ""
+  },
+  {
+    "test_id": "K3-T2",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-002|rs-003|rs-007|rs-008|rs-012"
+  },
+  {
+    "test_id": "K3-T3",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-002|rs-003|rs-007|rs-008|rs-012"
+  },
+  {
+    "test_id": "K3-T4",
+    "status": "PASS",
+    "reason": "",
+    "ids": ""
+  },
+  {
+    "test_id": "K4-T1",
+    "status": "FAIL",
+    "reason": "hospitals=0 < 1",
+    "ids": ""
+  },
+  {
+    "test_id": "K4-T2",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-011|rs-036|rs-040|rs-041|rs-044"
+  },
+  {
+    "test_id": "K4-T3",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-011|rs-040|rs-054|rs-077|rs-123"
+  },
+  {
+    "test_id": "K4-T4",
+    "status": "FAIL",
+    "reason": "wrong kabkota ['Kota Medan', 'Kota Medan']",
+    "ids": "rs-157|rs-171"
+  },
+  {
+    "test_id": "D05-GPS",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-146|rs-190|rs-168|rs-130|rs-144"
+  },
+  {
+    "test_id": "M03-GPS",
+    "status": "FAIL",
+    "reason": "No distance/emergency returned",
+    "ids": ""
+  },
+  {
+    "test_id": "H01-GPS",
+    "status": "PASS",
+    "reason": "",
+    "ids": "rs-171"
+  }
+]

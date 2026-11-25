@@ -28,9 +28,8 @@ function SpecialtyCard({ item }) {
       <div className="absolute inset-x-0 bottom-0 flex flex-col justify-end p-5">
         <h3 className="font-sans text-lg font-bold leading-tight text-white">{item.title}</h3>
         <p className="mt-1 text-[11px] font-medium text-white/70">{item.note}</p>
-        <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-300">
+        <span className="mt-2 inline-flex items-center text-[11px] font-semibold text-emerald-300">
           Jelajahi
-          <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
         </span>
       </div>
     </Link>
@@ -102,7 +101,7 @@ export default function HomePage() {
 
         <div className="relative z-10 mx-auto flex w-full max-w-[1360px] flex-1 flex-col justify-center px-6 py-16 lg:px-10">
           <div className="max-w-3xl">
-            <h1 className="font-serif-editorial text-[38px] font-normal leading-[1.08] tracking-tight sm:text-[52px] lg:text-[60px]">
+            <h1 className="font-sans text-[38px] font-bold leading-[1.08] tracking-tight sm:text-[52px] lg:text-[60px]">
               Temukan perawatan yang tepat,
               <br className="hidden sm:block" /> di fasilitas yang tepercaya.
             </h1>
@@ -114,7 +113,7 @@ export default function HomePage() {
 
             <form
               onSubmit={goSearch}
-              className="mt-7 flex flex-col gap-2 rounded-full border border-white/15 bg-white/10 p-2 backdrop-blur-md sm:flex-row sm:items-center"
+              className="mt-7 flex flex-col gap-2 rounded-2xl border border-white/15 bg-white/10 p-2 backdrop-blur-md sm:flex-row sm:items-center"
             >
               <div className="relative flex-1">
                 <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-white/55">
@@ -124,16 +123,15 @@ export default function HomePage() {
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
                   placeholder="Cari rumah sakit, layanan, atau wilayah..."
-                  className="w-full rounded-full border border-transparent bg-transparent py-3 pl-12 pr-4 text-sm text-white outline-none placeholder:text-white/50 focus:border-white/30 focus:bg-white/5"
+                  className="w-full rounded-xl border border-transparent bg-transparent py-3 pl-12 pr-4 text-sm text-white outline-none placeholder:text-white/50 focus:border-white/30 focus:bg-white/5"
                   aria-label="Cari rumah sakit"
                 />
               </div>
               <button
                 type="submit"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-brand-navy px-7 py-3 text-sm font-bold text-white shadow-md transition hover:bg-brand-blue"
+                className="inline-flex items-center justify-center rounded-xl border border-white/25 bg-brand-navy px-7 py-3 text-sm font-bold text-white shadow-md transition hover:bg-brand-blue"
               >
-                Cari sekarang
-                <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
+                Cari Rumah Sakit
               </button>
             </form>
 
@@ -150,7 +148,7 @@ export default function HomePage() {
                 <Link
                   key={item.label}
                   to={`/pencarian?${new URLSearchParams(item.params).toString()}`}
-                  className="rounded-full border border-white/20 bg-white/5 px-3 py-1 text-[11px] font-medium text-white/85 backdrop-blur transition hover:border-white/40 hover:bg-white/10"
+                  className="rounded-lg border border-white/20 bg-white/5 px-3 py-1 text-[11px] font-medium text-white/85 backdrop-blur transition hover:border-white/40 hover:bg-white/10"
                 >
                   {item.label}
                 </Link>
@@ -176,10 +174,9 @@ export default function HomePage() {
             </div>
             <Link
               to="/pencarian"
-              className="inline-flex w-fit items-center gap-1.5 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-emerald-600 hover:text-emerald-700"
+              className="inline-flex w-fit items-center rounded-lg border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-emerald-600 hover:text-emerald-700"
             >
-              Lihat semua
-              <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+              Lihat semua layanan
             </Link>
           </div>
 
@@ -196,7 +193,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-[1080px] px-6">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="flex flex-col justify-center lg:col-span-5">
-              <h2 className="font-serif-editorial text-[32px] font-normal leading-tight tracking-tight text-brand-navy md:text-[38px]">
+              <h2 className="font-sans text-[32px] font-bold leading-tight tracking-tight text-brand-navy md:text-[38px]">
                 Kesehatan Anda, prioritas kami.
               </h2>
               <p className="mt-4 text-[15px] leading-relaxed text-slate-600">
@@ -206,7 +203,7 @@ export default function HomePage() {
               <div className="mt-6">
                 <Link
                   to="/pencarian"
-                  className="inline-flex items-center justify-center rounded-full border-[1.5px] border-brand-blue bg-white px-6 py-2.5 text-sm font-semibold text-brand-blue transition hover:bg-slate-50"
+                  className="inline-flex items-center justify-center rounded-lg border-[1.5px] border-brand-blue bg-white px-6 py-2.5 text-sm font-semibold text-brand-blue transition hover:bg-slate-50"
                 >
                   Temukan layanan kesehatan
                 </Link>
@@ -227,7 +224,7 @@ export default function HomePage() {
                   <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-white/70">
                     Data master faskes
                   </p>
-                  <p className="mt-1 font-serif-editorial text-lg text-white">
+                  <p className="mt-1 font-sans text-lg font-semibold text-white">
                     Profil, layanan, dan fasilitas dalam satu halaman.
                   </p>
                 </div>
@@ -259,7 +256,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="order-1 flex flex-col justify-center lg:order-2 lg:col-span-6">
-              <h2 className="font-serif-editorial text-[32px] font-normal leading-tight tracking-tight text-brand-navy md:text-[38px]">
+              <h2 className="font-sans text-[32px] font-bold leading-tight tracking-tight text-brand-navy md:text-[38px]">
                 Bingung memilih layanan yang tepat?
               </h2>
               <p className="mt-4 text-[15px] leading-relaxed text-slate-600">
@@ -270,14 +267,14 @@ export default function HomePage() {
                 <button
                   type="button"
                   onClick={() => window.dispatchEvent(new Event('carisehat:open-chat'))}
-                  className="inline-flex items-center gap-1.5 rounded-full border-[1.5px] border-brand-blue bg-white px-6 py-2.5 text-sm font-semibold text-brand-blue transition hover:bg-slate-50"
+                  className="inline-flex items-center gap-1.5 rounded-lg border-[1.5px] border-brand-blue bg-white px-6 py-2.5 text-sm font-semibold text-brand-blue transition hover:bg-slate-50"
                 >
                   <span className="material-symbols-outlined text-[17px]">chat</span>
                   Tanya asisten
                 </button>
                 <Link
                   to="/peta"
-                  className="inline-flex items-center gap-1.5 rounded-full bg-brand-navy px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-blue"
+                  className="inline-flex items-center gap-1.5 rounded-lg bg-brand-navy px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-blue"
                 >
                   <span className="material-symbols-outlined text-[17px]">map</span>
                   Buka peta
@@ -290,10 +287,10 @@ export default function HomePage() {
 
       {/* Directory */}
       <section id="direktori-rumah-sakit" className="border-b border-slate-200 bg-white py-16 lg:py-20">
-        <div className="mx-auto max-w-[1120px] px-6">
+        <div className="mx-auto max-w-[1280px] px-6">
           <div className="mb-9 flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div className="max-w-2xl">
-              <h2 className="font-serif-editorial text-[32px] font-normal leading-tight tracking-tight text-slate-900 md:text-[38px]">
+              <h2 className="font-sans text-[32px] font-bold leading-tight tracking-tight text-slate-900 md:text-[38px]">
                 Direktori Rumah Sakit &amp; Layanan Kesehatan
               </h2>
               <p className="mt-2 text-sm text-slate-500">
@@ -302,10 +299,9 @@ export default function HomePage() {
             </div>
             <Link
               to="/pencarian"
-              className="inline-flex w-fit shrink-0 items-center gap-2 rounded-full border border-brand-blue bg-white px-5 py-2.5 text-xs font-semibold text-brand-blue shadow-none transition hover:bg-slate-50"
+              className="inline-flex w-fit shrink-0 items-center rounded-lg border border-brand-blue bg-white px-5 py-2.5 text-xs font-semibold text-brand-blue shadow-none transition hover:bg-slate-50"
             >
               <span>Lihat semua rumah sakit ({stats.total})</span>
-              <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
             </Link>
           </div>
 
@@ -357,7 +353,7 @@ export default function HomePage() {
           <div className="overflow-hidden rounded-3xl border border-slate-200 bg-brand-navy shadow-floating">
             <div className="grid grid-cols-1 lg:grid-cols-2">
               <div className="flex flex-col justify-center p-7 text-white sm:p-10 lg:p-12">
-                <h2 className="font-serif-editorial text-[30px] font-normal leading-tight tracking-tight sm:text-[36px]">
+                <h2 className="font-sans text-[30px] font-bold leading-tight tracking-tight sm:text-[36px]">
                   Lihat rumah sakit dalam konteks wilayahnya.
                 </h2>
                 <p className="mt-4 max-w-md text-sm leading-relaxed text-slate-300">
@@ -367,14 +363,14 @@ export default function HomePage() {
                 <div className="mt-6 flex flex-wrap gap-2.5">
                   <Link
                     to="/peta"
-                    className="inline-flex items-center gap-1.5 rounded-full bg-white px-5 py-2.5 text-xs font-bold text-brand-navy transition hover:bg-emerald-50"
+                    className="inline-flex items-center gap-1.5 rounded-lg bg-white px-5 py-2.5 text-xs font-bold text-brand-navy transition hover:bg-emerald-50"
                   >
                     <span className="material-symbols-outlined text-[16px]">explore</span>
                     Jelajahi peta
                   </Link>
                   <Link
                     to="/pencarian"
-                    className="inline-flex items-center gap-1.5 rounded-full border border-white/25 px-5 py-2.5 text-xs font-semibold text-white transition hover:bg-white/10"
+                    className="inline-flex items-center gap-1.5 rounded-lg border border-white/25 px-5 py-2.5 text-xs font-semibold text-white transition hover:bg-white/10"
                   >
                     Cari berdasarkan wilayah
                   </Link>
@@ -397,7 +393,7 @@ export default function HomePage() {
       <section className="bg-white py-16">
         <div className="mx-auto flex max-w-[1080px] flex-col items-center justify-between gap-6 rounded-3xl border border-slate-200 bg-[#FAFAF9] px-7 py-9 text-center sm:px-10 lg:flex-row lg:text-left">
           <div>
-            <h2 className="font-serif-editorial text-[28px] font-normal leading-tight text-brand-navy sm:text-[32px]">
+            <h2 className="font-sans text-[28px] font-bold leading-tight tracking-tight text-brand-navy sm:text-[32px]">
               Mulai dari kebutuhan Anda hari ini.
             </h2>
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-slate-500">
@@ -408,14 +404,13 @@ export default function HomePage() {
           <div className="flex shrink-0 flex-wrap justify-center gap-2.5">
             <Link
               to="/pencarian"
-              className="inline-flex items-center gap-1.5 rounded-full bg-brand-navy px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-blue"
+              className="inline-flex items-center rounded-lg bg-brand-navy px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-blue"
             >
               Mulai pencarian
-              <span className="material-symbols-outlined text-[17px]">arrow_forward</span>
             </Link>
             <Link
               to="/peta"
-              className="inline-flex items-center gap-1.5 rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+              className="inline-flex items-center rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
             >
               Lihat peta
             </Link>

@@ -5,6 +5,7 @@ import { sortHospitals } from '../utils';
 import HospitalCard from '../components/HospitalCard';
 import CompareDock from '../components/CompareDock';
 import CompareModal from '../components/CompareModal';
+import SearchAutocomplete from '../components/SearchAutocomplete';
 
 const STORAGE_KEY = 'carisehat_filter_ctx';
 
@@ -34,7 +35,13 @@ export default function SearchPage() {
 
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isUpdating, setIsUpdating] = useState(false);
   const [error, setError] = useState(false);
+  const [searchMeta, setSearchMeta] = useState({});
+  const [omit, setOmit] = useState([]);
+  const [retryTick, setRetryTick] = useState(0);
+  const hasLoadedRef = useRef(false);
+  const [debouncedQ, setDebouncedQ] = useState(searchParams.get('q') || storedCtx.q || '');
   const [options, setOptions] = useState({ kabkota: [], layanan: [] });
 
   // Filters state
@@ -67,10 +74,23 @@ export default function SearchPage() {
       .catch(() => {});
   }, []);
 
-  // Fetch hospitals whenever search filters change
+  useEffect(() => {
+    setOmit((prev) => (prev.length > 0 ? [] : prev));
+    const timer = setTimeout(() => setDebouncedQ(q), 300);
+    return () => clearTimeout(timer);
+  }, [q]);
+
+  const omitKey = omit.join('|');
+
+  // Fetch hospitals whenever search filters change (keepPreviousData pattern)
   useEffect(() => {
     let active = true;
-    setLoading(true);
+    const controller = new AbortController();
+    if (!hasLoadedRef.current) {
+      setLoading(true);
+    } else {
+      setIsUpdating(true);
+    }
     setError(false);
 
     // Save to sessionStorage
@@ -86,28 +106,68 @@ export default function SearchPage() {
     });
 
     searchHospitals({
-      q,
+      q: debouncedQ,
+      omit: omitKey,
       kabkota,
       kelas,
       jenis,
       layanan,
       limit: 500,
-    })
+    }, controller.signal)
       .then((data) => {
         if (!active) return;
+        hasLoadedRef.current = true;
         setItems(data.items || []);
+        setSearchMeta(data);
+        setError(false);
         setLoading(false);
+        setIsUpdating(false);
       })
-      .catch(() => {
-        if (!active) return;
+      .catch((err) => {
+        if (!active || err?.name === 'AbortError' || controller.signal.aborted) return;
+        if (!hasLoadedRef.current) {
+          setItems([]);
+          setSearchMeta({});
+        }
         setError(true);
         setLoading(false);
+        setIsUpdating(false);
       });
 
     return () => {
       active = false;
+      controller.abort();
     };
-  }, [q, kabkota, kelas, jenis, layanan, sort, currentPage, perPage]);
+  }, [debouncedQ, kabkota, kelas, jenis, layanan, omitKey, retryTick]);
+
+  // Restore scroll position when returning to /pencarian
+  useEffect(() => {
+    if (loading) return;
+    try {
+      const saved = sessionStorage.getItem('carisehat_search_scroll');
+      if (saved) {
+        const y = Number(saved);
+        sessionStorage.removeItem('carisehat_search_scroll');
+        if (Number.isFinite(y) && y > 0) {
+          requestAnimationFrame(() => window.scrollTo({ top: y, behavior: 'instant' }));
+        }
+      }
+    } catch {
+      // ignore storage errors
+    }
+  }, [loading]);
+
+  // Save scroll position when navigating away from /pencarian
+  useEffect(() => {
+    const saveScroll = () => {
+      try {
+        sessionStorage.setItem('carisehat_search_scroll', String(window.scrollY));
+      } catch {
+        // ignore
+      }
+    };
+    return () => saveScroll();
+  }, []);
 
   // Sync compare URL param with compareIds
   useEffect(() => {
@@ -152,8 +212,8 @@ export default function SearchPage() {
       if (prev.includes(id)) {
         updated = prev.filter((x) => x !== id);
       } else {
-        if (prev.length >= 3) {
-          alert('Maksimal membandingkan 3 rumah sakit sekaligus.');
+        if (prev.length >= 2) {
+          alert('Maksimal membandingkan 2 rumah sakit sekaligus.');
           return prev;
         }
         updated = [...prev, id];
@@ -245,25 +305,16 @@ export default function SearchPage() {
             <div className="catalog-title">
               <h2>Daftar Rumah Sakit</h2>
               <div id="status" aria-live="polite">
-                {loading ? (
-                  <>
+                {loading || isUpdating ? (
+                  <span className="inline-flex items-center gap-2 text-slate-500">
                     <span className="spin" />
-                    <span>Mencari rumah sakit...</span>
-                  </>
+                    <span>{loading ? 'Memuat rumah sakit...' : 'Memperbarui hasil...'}</span>
+                  </span>
                 ) : error ? (
                   <span className="text-rose-600 font-semibold">
                     <i className="fa-solid fa-triangle-exclamation" /> Koneksi ke backend terputus
                   </span>
-                ) : (
-                  <span>
-                    <b>{sortedItems.length}</b> rumah sakit ditemukan{' '}
-                    {sortedItems.length > perPage && (
-                      <>
-                        halaman <b>{validPage}</b>/<b>{totalPages}</b>
-                      </>
-                    )}
-                  </span>
-                )}
+                ) : null}
               </div>
             </div>
 
@@ -280,11 +331,60 @@ export default function SearchPage() {
               >
                 <option value="relevan">Relevansi</option>
                 <option value="nama">Nama Rumah Sakit (A-Z)</option>
-                <option value="kelas">Kelas (A &rarr; D)</option>
+                <option value="kelas">Kelas (A ke D)</option>
               </select>
             </label>
           </div>
 
+          <div aria-live="polite" className="search-meta-bar space-y-2 text-sm text-slate-600">
+            {!loading && !error && (
+              <p className="font-medium text-slate-700">
+                {items.length} rumah sakit ditemukan
+                {isUpdating && <span className="ml-2 text-xs font-normal text-slate-400">(memperbarui...)</span>}
+              </p>
+            )}
+            {error && items.length > 0 && (
+              <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-xs text-rose-700">
+                <span>Gagal memperbarui hasil pencarian. Menampilkan hasil sebelumnya.</span>
+                <button
+                  type="button"
+                  onClick={() => setRetryTick((t) => t + 1)}
+                  className="rounded-lg bg-rose-600 px-2.5 py-1 font-semibold text-white hover:bg-rose-700"
+                >
+                  Coba Lagi
+                </button>
+              </div>
+            )}
+            {searchMeta.corrections?.length > 0 && <p>Menampilkan hasil untuk {searchMeta.corrections.map(c => c.to).join(', ')}.</p>}
+            {searchMeta.did_you_mean?.length > 0 && (
+              <div className="flex flex-wrap items-center gap-2">
+                <span>Apakah maksud Anda:</span>
+                {searchMeta.did_you_mean.map((term) => (
+                  <button
+                    key={term}
+                    type="button"
+                    onClick={() => {
+                      setQ(term);
+                      setDebouncedQ(term);
+                      setCurrentPage(1);
+                    }}
+                    className="rounded-full border border-slate-300 bg-white px-3 py-0.5 text-xs font-semibold text-teal-800 hover:bg-teal-50"
+                  >
+                    {term}
+                  </button>
+                ))}
+              </div>
+            )}
+            {searchMeta.notices?.map(notice => <p key={notice}>{notice}</p>)}
+            <div className="flex flex-wrap gap-2">
+              {searchMeta.recognized_filters?.map(filter => <button type="button" key={filter.id}
+                onClick={() => setOmit(values => [...values, filter.id])}
+                aria-label={`Hapus filter ${filter.label}`}
+                className="rounded-full border border-teal-200 bg-teal-50 px-3 py-1 text-teal-800">
+                {filter.label} <i className="fa-solid fa-xmark ml-1" aria-hidden="true" />
+              </button>)}
+            </div>
+          </div>
           {/* Filters Form */}
           <form className="filters" onSubmit={(e) => e.preventDefault()} role="search" aria-label="Filter katalog rumah sakit">
             <div className="search" style={{ position: 'relative' }}>
@@ -299,13 +399,18 @@ export default function SearchPage() {
                 }}
                 aria-hidden="true"
               />
-              <input
+              <SearchAutocomplete
                 id="search-input"
                 type="search"
-                placeholder="Cari nama rumah sakit, layanan, alamat, atau spesialis..."
+                placeholder="Cari nama rumah sakit, lokasi, layanan, atau fasilitas..."
                 value={q}
-                onChange={(e) => {
-                  setQ(e.target.value);
+                onChange={(value) => {
+                  setQ(value);
+                  setCurrentPage(1);
+                }}
+                onChoose={(value) => {
+                  setQ(value);
+                  setDebouncedQ(value);
                   setCurrentPage(1);
                 }}
                 style={{ paddingLeft: '2.5rem' }}
@@ -391,44 +496,73 @@ export default function SearchPage() {
               </label>
 
               {hasFilter && (
-                <button
-                  className="link-btn"
-                  id="reset"
-                  type="button"
-                  onClick={handleResetFilters}
-                  title="Bersihkan semua filter"
-                >
-                  Reset Filter
-                </button>
+                <div className="filter-reset-row">
+                  <button
+                    className="link-btn"
+                    id="reset"
+                    type="button"
+                    onClick={handleResetFilters}
+                    title="Bersihkan semua filter"
+                  >
+                    Reset Filter
+                  </button>
+                </div>
               )}
             </div>
           </form>
 
           {/* Hospital Card List */}
-          {loading ? (
-            <div style={{ textAlign: 'center', padding: '4rem 1rem' }}>
-              <div className="spin" style={{ margin: '0 auto 1rem', width: 28, height: 28, borderWidth: 3 }} />
-              <p style={{ color: 'var(--mute)' }}>Memuat katalog rumah sakit...</p>
-            </div>
-          ) : error ? (
+          {loading && items.length === 0 ? (
+            <ul className="hospital-grid" aria-label="Memuat katalog rumah sakit" aria-busy="true">
+              {Array.from({ length: 6 }, (_, idx) => (
+                <li key={idx} className="card skeleton-card" aria-hidden="true">
+                  <div className="card-thumb skeleton-box" />
+                  <div className="p-4 space-y-3">
+                    <div className="skeleton-line w-3/4" />
+                    <div className="skeleton-line w-1/2" />
+                    <div className="skeleton-line w-full" />
+                  </div>
+                </li>
+              ))}
+            </ul>
+          ) : error && items.length === 0 ? (
             <div style={{ textAlign: 'center', padding: '4rem 1rem' }}>
               <h3 style={{ color: 'var(--emergency)', fontWeight: 800 }}>Server belum terhubung</h3>
               <p style={{ color: 'var(--mute)' }}>Pastikan backend API berjalan, lalu coba lagi.</p>
               <button
                 type="button"
                 className="btn btn-primary"
-                onClick={() => setCurrentPage((p) => p)}
+                onClick={() => setRetryTick((t) => t + 1)}
                 style={{ marginTop: '1rem' }}
               >
                 Coba Lagi
               </button>
             </div>
-          ) : pageItems.length === 0 ? (
+          ) : !loading && !isUpdating && pageItems.length === 0 ? (
             <div style={{ textAlign: 'center', padding: '4rem 1rem' }}>
               <h3 style={{ fontWeight: 800 }}>Tidak ada hasil</h3>
               <p style={{ color: 'var(--mute)' }}>
                 Tidak ada rumah sakit yang cocok dengan filter yang dipilih. Coba ubah kata kunci atau reset filter.
               </p>
+              {searchMeta.did_you_mean?.length > 0 && (
+                <div className="mt-3 flex flex-wrap justify-center items-center gap-2 text-sm">
+                  <span className="text-slate-500">Apakah maksud Anda:</span>
+                  {searchMeta.did_you_mean.map((term) => (
+                    <button
+                      key={term}
+                      type="button"
+                      onClick={() => {
+                        setQ(term);
+                        setDebouncedQ(term);
+                        setCurrentPage(1);
+                      }}
+                      className="rounded-full border border-teal-200 bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-800 hover:bg-teal-100"
+                    >
+                      {term}
+                    </button>
+                  ))}
+                </div>
+              )}
               <button
                 type="button"
                 className="btn btn-ghost"
@@ -439,7 +573,12 @@ export default function SearchPage() {
               </button>
             </div>
           ) : (
-            <ul id="list" className="hospital-grid" aria-label="Daftar katalog rumah sakit">
+            <ul
+              id="list"
+              className={`hospital-grid ${isUpdating ? 'is-updating' : ''}`}
+              aria-label="Daftar katalog rumah sakit"
+              aria-busy={isUpdating}
+            >
               {pageItems.map((h) => (
                 <li key={h.id}>
                   <HospitalCard
@@ -472,10 +611,6 @@ export default function SearchPage() {
                   <option value="100">100</option>
                 </select>
                 <span>Rumah Sakit per halaman</span>
-              </div>
-
-              <div className="pagination-info" id="pg-info">
-                Halaman <b>{validPage}</b> dari <b>{totalPages}</b> (Total <b>{sortedItems.length}</b> RS)
               </div>
 
               <div className="pagination-controls" id="pg-controls">

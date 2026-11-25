@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const COLOR_MAP = {
@@ -11,7 +12,7 @@ export function colorOf(kelas) {
   return COLOR_MAP[kelas] || '#0f766e';
 }
 
-export default function HospitalCard({
+export default memo(function HospitalCard({
   hospital,
   onRoute,
   compact = false,
@@ -26,12 +27,6 @@ export default function HospitalCard({
   const navigate = useNavigate();
   const c = colorOf(hospital.kelas);
   const detailUrl = `/rumah-sakit/${encodeURIComponent(hospital.id)}`;
-
-  const lay = hospital.layanan || [];
-  const fas = hospital.fasilitas || [];
-  const allTags = [...lay, ...fas];
-  const shownTags = allTags.slice(0, 3);
-  const moreCount = allTags.length > 3 ? allTags.length - 3 : 0;
 
   return (
     <article
@@ -48,6 +43,7 @@ export default function HospitalCard({
             src={hospital.foto}
             alt={hospital.nama}
             loading="lazy"
+            decoding="async"
             onError={(e) => {
               e.currentTarget.style.display = 'none';
             }}
@@ -72,24 +68,15 @@ export default function HospitalCard({
         </div>
       </button>
 
-      {shownTags.length > 0 && (
-        <div className="tags" style={{ padding: '0 1.1rem 0.5rem' }} aria-label="Layanan dan fasilitas">
-          {shownTags.map((t, i) => (
-            <span key={i} className="tag">{t}</span>
-          ))}
-          {moreCount > 0 && <span className="tag more">+{moreCount}</span>}
-        </div>
-      )}
-
       <div className="card-actions">
         <div className="card-facts">
           <span>
             {hospital.kelas ? `Kelas ${hospital.kelas}` : 'Kelas —'}
-            <small>Kelas Rumah Sakit</small>
+            <small>Kelas<br />Rumah&nbsp;Sakit</small>
           </span>
           <span>
             {hospital.jenis || '—'}
-            <small>Jenis Rumah Sakit</small>
+            <small>Jenis<br />Rumah&nbsp;Sakit</small>
           </span>
         </div>
         <div className="card-btn-group">
@@ -127,4 +114,4 @@ export default function HospitalCard({
       </div>
     </article>
   );
-}
+});

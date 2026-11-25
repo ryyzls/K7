@@ -1,0 +1,117 @@
+{
+  "date": "2026-11-25",
+  "environment": "ASGI/RDFLib fixture, Chromium Edge; no live Docker/Fuseki/PostgreSQL verification",
+  "sha256": {
+    "backend/app/routers/chat.py": "730ed714fe2e79ec8f8251d9c8fc8008afa192b153458203649b80fe2aa961a4",
+    "backend/app/services/chatbot_service.py": "ba7f4cce998009b3655cba52b17ed8a150e17f42a9b400cb5c2563a9632d5c8b",
+    "backend/app/services/chatbot/engine.py": "d2bcd4ab342697cdfef562ff39ab79e68c6dd41a838305c6b7ad903e80304241",
+    "backend/app/services/chatbot/planning.py": "36e8987ef08fa22f519b3dcfa72dc1993d127e7b5b59a7c12a58dc70abd232d6",
+    "backend/app/services/hybrid_search.py": "e044d322b3a418d1a03816f98494133c630da793a544c2bad8878a8ab49f4050",
+    "backend/app/services/alternatives_service.py": "396ec24f848d01dbe25314de30e1d753cc102d6d1ee17bac4dc697318fb54836",
+    "frontend/src/api.js": "f7272b1463b01ba59dd76fa9fa9df7e5cd6eb96548858af542058985d9720550",
+    "frontend/src/components/ChatWidget.jsx": "46d1493c3d5b019d5c35d0d6becc2ce4e3500eed1ea5770f89ac6da397dfd7a9",
+    "frontend/src/components/useNaraConversation.js": "ca53289771e10e8a34fe885f0c2797fed5c1bee3b49d8176e17fd61facff6669",
+    "frontend/src/components/NaraRichResponse.jsx": "e9d136fa17e1812c1aa2f9d4509e5bc771609af1056c0ce066770e073aeb509f",
+    "frontend/src/components/NaraIcon.jsx": "901cafe36382428802fbe5c0a284827168d136fbb26b23c0924eac1503ed9c37",
+    "frontend/src/components/NaraChat.css": "b52f6f27c800a96b6a6b4c74a3e9a5732a5b2fa1c2ea5cd2a7fd960ac55754ec",
+    "frontend/dist/index.html": "2a83d306d25d60b53d11656de23da9ff3eb123aeacd7da87563039ea6d2d8f35"
+  },
+  "unit_tests": {
+    "passed": 22,
+    "total": 22
+  },
+  "browser": {
+    "passed": true,
+    "pageErrors": [],
+    "screenshots": [
+      "command-palette.png",
+      "comparison.png",
+      "expanded-multiturn-filters.png",
+      "hospital-search.png",
+      "map.png",
+      "mobile.png",
+      "welcome-floating.png"
+    ],
+    "checks": [
+      "welcome",
+      "commands keyboard",
+      "actual RDF search",
+      "minimize preserves session",
+      "expanded",
+      "multi-turn",
+      "comparison",
+      "new session",
+      "location request",
+      "map",
+      "history",
+      "mobile bounds",
+      "error retry",
+      "copy clipboard",
+      "remove filter chip",
+      "delete cancel and confirm"
+    ],
+    "runner_cleanup": "Completed normally: Browser checks passed, exit code 0."
+  },
+  "benchmark": {
+    "environment": "RDFLib over existing RDF/named graphs; SQLite fixture; not live Fuseki/PostgreSQL",
+    "historical_raw": {
+      "passed": 75,
+      "total": 138,
+      "pass_rate": 54.35
+    },
+    "corrected_archived_baseline": {
+      "total": 138,
+      "passed": 73,
+      "failed": 65,
+      "pass_rate": 52.9
+    },
+    "baseline_method": "Archived IDs revalidated against RDF; historical failures retained except isolated wrong Vita Insani ID. Legacy rerun interrupted after prolonged execution. Not a fresh baseline runtime.",
+    "after": {
+      "total": 138,
+      "passed": 136,
+      "failed": 2,
+      "pass_rate": 98.55
+    },
+    "oracle_corrections": [
+      "All Vita Insani expected IDs resolved from RDF: rs-199",
+      "Gratitude/farewell accept explicit intents",
+      "Murni Teguh accepts clarification because multiple real entities match",
+      "MRI has zero affirmative evidence: empty is correct",
+      "Service/facility/ownership/context evidence checked independently from RDF; case-preserving source labels compared case-insensitively"
+    ],
+    "benchmark_target_met": true,
+    "overall_acceptance_complete": false,
+    "medical_safety_legacy_suite": {
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "pass_rate": 100.0
+    },
+    "security_legacy_suite": {
+      "total": 10,
+      "passed": 10,
+      "failed": 0,
+      "pass_rate": 100.0
+    }
+  },
+  "shared_search": {
+    "total_scenarios": 211,
+    "passed": 211,
+    "failed": 0,
+    "pass_rate": 100.0,
+    "mean_precision": 100.0,
+    "mean_recall": 100.0,
+    "mean_f1": 100.0,
+    "top1_accuracy": 100.0,
+    "top3_accuracy": 100.0,
+    "mrr": 1.0,
+    "typo_recovery_rate": 100.0,
+    "security_pass_rate": 100.0,
+    "duplicate_rate": 0.0,
+    "simple_p50_ms": 331.33,
+    "simple_p95_ms": 1640.69,
+    "complex_p50_ms": 201.91,
+    "complex_p95_ms": 687.88,
+    "autocomplete_p95_ms": 56.45
+  }
+}

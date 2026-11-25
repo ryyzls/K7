@@ -1,0 +1,7 @@
+# Executed against the existing RDF fixture; count=10
+PREFIX hf: <http://carisehat.id/ontology/>
+PREFIX schema: <https://schema.org/>
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?rs WHERE { ?rs a hf:RumahSakit; schema:name ?nama; hf:kelas ?kelas; hf:jenis ?jenis; hf:beradaDiKabupatenKota/rdfs:label ?kabkota . OPTIONAL {?rs hf:pemilik ?pemilik} FILTER((((?kabkota = "Kota Medan" && ?kelas = "B") && EXISTS { GRAPH <http://carisehat.id/graph/search/facilities/2026-11-25> { ?rs hf:fasilitasKritis ?f3 . ?f3 <http://carisehat.id/ontology/sirs/jenisFasilitas> ?k3; <http://carisehat.id/ontology/sirs/kapasitasTerlapor> ?cap3; schema:citation ?src3 . VALUES ?k3 { "icu_dengan_ventilator" "icu_tanpa_ventilator" } FILTER(?cap3>0) } }) && EXISTS { { GRAPH <http://carisehat.id/graph/search/facilities/2026-11-25> { ?rs hf:memilikiFasilitasDiagnostik "CT Scan"; schema:citation ?src4 } } UNION { GRAPH <http://carisehat.id/graph/sirs/2026-11-19> { ?rs <http://carisehat.id/ontology/sirs/catatanPelayanan> ?obs4 . ?obs4 <http://carisehat.id/ontology/sirs/layakPencarian> true ; <http://carisehat.id/ontology/sirs/labelPelayanan> "CT Scan" . } } })) } ORDER BY ?rs

@@ -13,7 +13,7 @@
   rdfs:label "Ontologi Fasilitas Kesehatan CariSehat Sumatera Utara" ;
   rdfs:comment "Ontologi untuk memodelkan rumah sakit, layanan medis standar Permenkes No. 3/2020, dan integrasi linked open data DBpedia." .
 
-# --- Kelas Utama (Classes) ---
+# --- Kelas Utama ---
 hf:RumahSakit a owl:Class ;
   rdfs:subClassOf schema:Hospital ;
   rdfs:label "Rumah Sakit" ;

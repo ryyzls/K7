@@ -30,6 +30,8 @@ for path in (ROOT / "semantic/rdf").glob("*.ttl"):
 from app.services.sirs import GRAPH_URI
 graph.graph(URIRef(GRAPH_URI)).parse(ROOT / 'semantic/sirs/services-reviewed.ttl', format='turtle')
 graph.graph(URIRef('http://carisehat.id/graph/enrichment/2026-11-20')).parse(ROOT / 'semantic/named_graphs/carisehat-enrichment-freeze.ttl', format='turtle')
+graph.graph(URIRef('http://carisehat.id/graph/search/facilities/2026-11-25')).parse(ROOT / 'semantic/search/facilities-evidence.ttl', format='turtle')
+graph.graph(URIRef('http://carisehat.id/graph/search/concepts/2026-11-25')).parse(ROOT / 'semantic/search/search-concepts.ttl', format='turtle')
 async def select(query):
     return [{str(k): str(v) for k,v in row.asdict().items()} for row in graph.query(sp.PREFIXES + query)]
 async def construct(uri, accept):

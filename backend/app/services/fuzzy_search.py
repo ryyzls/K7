@@ -44,7 +44,7 @@ ALIAS_RS: dict[str, list[str]] = {
     "rs-171": ["adam malik", "ham", "rsup ham", "rs haji adam malik", "rs adam malik"],
     "rs-176": ["royal prima", "rs royal", "royal"],
     "rs-177": ["royal prima marelan", "royal marelan"],
-    "rs-125": ["hermina", "hermina medan", "rs hermina"],
+    "rs-125": ["hermina", "hermina medan", "rs hermina", "hermna", "hermna medan", "hermina umum"],
     "rs-185": ["siloam", "siloam medan", "siloam dhirga surya", "rs siloam"],
     "rs-178": ["elisabeth", "santa elisabeth", "st elisabeth", "rs elisabeth"],
     "rs-130": ["malahayati", "islam malahayati", "rs islam"],

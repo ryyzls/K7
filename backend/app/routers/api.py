@@ -32,49 +32,21 @@ async def health(db: Session = Depends(get_db)):
 
 
 @router.get("/search")
-async def search(q: str = "", kelas: str = "", jenis: str = "", kabkota: str = "", layanan: str = "",
-                 spesialisasi: str = "", limit: int = Query(50, ge=1, le=500), offset: int = Query(0, ge=0)):
-    q = q.strip()
-    matched_specialty = None
-    # Jika q cocok dengan istilah awam/sinonim spesialisasi (misal 'dokter jantung', 'dokter anak')
-    if q and not spesialisasi:
-        resolved = resolve_synonym(q)
-        if resolved:
-            matched_specialty = resolved
-            spesialisasi = resolved
+async def search(q: str = Query("", max_length=240), kelas: str = Query("", pattern="^[ABCD]?$"),
+                 jenis: str = Query("", max_length=40), kabkota: str = Query("", max_length=100),
+                 layanan: str = Query("", max_length=180), spesialisasi: str = Query("", max_length=180),
+                 fasilitas: str = Query("", max_length=120), omit: str = Query("", max_length=240),
+                 limit: int = Query(50, ge=1, le=500), offset: int = Query(0, ge=0, le=100000)):
+    from app.services.hybrid_search import search as hybrid_search
+    result = await hybrid_search(q, kelas, jenis, kabkota, layanan, spesialisasi, fasilitas, limit, offset, omit)
+    result.pop("_query", None)
+    return result
 
-    if not q:  # tanpa kata kunci nama: filter terstruktur
-        items = await sp.search_hospitals(q="", kelas=kelas, jenis=jenis, kabkota=kabkota,
-                                          layanan=layanan, spesialisasi=spesialisasi, limit=limit, offset=offset)
-        res = {"items": items, "count": len(items)}
-        if spesialisasi:
-            res["matched_specialty"] = spesialisasi
-            res["specialty_notice"] = "Layanan dilaporkan dalam profil administratif SIRS Kemenkes, bukan verifikasi operasional real-time."
-        return res
 
-    # Jika q adalah sinonim spesialisasi (misal 'dokter jantung'), jangan ranking fuzzy nama RS
-    # melainkan kembalikan RS yang terbukti memiliki spesialisasi tersebut di SIRS
-    if matched_specialty:
-        items = await sp.search_hospitals(q="", kelas=kelas, jenis=jenis, kabkota=kabkota,
-                                          layanan=layanan, spesialisasi=matched_specialty, limit=limit, offset=offset)
-        return {
-            "items": items,
-            "count": len(items),
-            "matched_specialty": matched_specialty,
-            "query_type": "specialty_synonym",
-            "specialty_notice": "Layanan dilaporkan dalam profil administratif SIRS Kemenkes, bukan verifikasi operasional real-time.",
-        }
-
-    # Dengan kata kunci nama RS: ambil semua RS yang lolos filter lain, lalu fuzzy ranking
-    semua = await sp.search_hospitals(q="", kelas=kelas, jenis=jenis, kabkota=kabkota,
-                                      layanan=layanan, spesialisasi=spesialisasi, limit=500, offset=0)
-    hasil = fz.rank(q, semua)
-    items = hasil[offset:offset + limit]
-    res = {"items": items, "count": len(items)}
-    if spesialisasi:
-        res["matched_specialty"] = spesialisasi
-        res["specialty_notice"] = "Layanan dilaporkan dalam profil administratif SIRS Kemenkes, bukan verifikasi operasional real-time."
-    return res
+@router.get("/search/suggestions")
+async def search_suggestions(q: str = Query("", max_length=240), limit: int = Query(8, ge=1, le=10)):
+    from app.services.hybrid_search import suggest
+    return {"items": await suggest(q, limit)}
 
 
 @router.get("/specialties")

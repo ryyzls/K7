@@ -14,22 +14,23 @@ export default function CompareDock({
   const names = new Map(hospitals.map((h) => [h.id, h.nama]));
   const handleOpen = onOpenCompare || onOpen;
   const handleClear = onClear || onClose;
+  const isComplete = activeIds.length === 2;
 
   return (
     <div id="compare-dock" className="compare-dock" role="region" aria-label="Menu perbandingan rumah sakit">
-      <div className="compare-dock-count">
+      <div className="compare-dock-info">
         <i className="fa-solid fa-code-compare" aria-hidden="true" />
-        <span id="compare-dock-text">{activeIds.length}/3 RS dipilih</span>
+        <span id="compare-dock-text">{activeIds.length}/2 RS dipilih</span>
       </div>
 
       <div id="compare-dock-items" className="compare-dock-pills">
         {activeIds.map((id) => (
-          <span key={id} className="compare-dock-pill">
-            <span>{names.get(id) || id}</span>
+          <span key={id} className="compare-dock-pill" title={names.get(id) || id}>
+            <span className="compare-dock-pill-name">{names.get(id) || id}</span>
             <button
               type="button"
               onClick={() => onRemove && onRemove(id)}
-              title="Hapus"
+              title="Hapus dari perbandingan"
               aria-label={`Hapus ${names.get(id) || id} dari perbandingan`}
             >
               &times;
@@ -39,22 +40,23 @@ export default function CompareDock({
       </div>
 
       <div className="compare-dock-actions">
-        {activeIds.length >= 2 && handleOpen && (
-          <button
-            type="button"
-            className="btn btn-primary"
-            style={{ padding: '0.35rem 0.75rem', fontSize: '0.78rem' }}
-            onClick={handleOpen}
-          >
-            Bandingkan Sekarang
-          </button>
-        )}
+        <button
+          type="button"
+          id="btn-dock-open-compare"
+          className="btn btn-compare-now"
+          disabled={!isComplete}
+          onClick={isComplete ? handleOpen : undefined}
+          title={isComplete ? 'Bandingkan 2 rumah sakit sekarang' : 'Pilih 1 rumah sakit lagi untuk membandingkan'}
+        >
+          Bandingkan Sekarang
+        </button>
         {handleClear && (
           <button
             type="button"
-            className="btn btn-ghost"
-            style={{ color: '#fff', borderColor: 'rgba(255,255,255,.3)', padding: '0.35rem 0.65rem', fontSize: '0.78rem' }}
+            id="btn-dock-clear"
+            className="btn btn-compare-reset"
             onClick={handleClear}
+            title="Bersihkan perbandingan"
           >
             Reset
           </button>

@@ -1,0 +1,46 @@
+const {chromium}=require('playwright');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+(async()=>{
+ const browser=await chromium.launch({headless:true,channel:'msedge'});
+ const context=await browser.newContext({viewport:{width:1440,height:1000},permissions:['clipboard-read','clipboard-write']});
+ const page=await context.newPage();await page.emulateMedia({reducedMotion:'reduce'});const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ const dir='docs/screenshots/nara3';fs.mkdirSync(dir,{recursive:true});
+ await page.goto('http://127.0.0.1:8765',{waitUntil:'domcontentloaded'});
+ await page.getByRole('button',{name:'Buka Tanya NARA',exact:true}).click();
+ await page.getByRole('heading',{name:'Apa yang bisa NARA bantu?'}).waitFor();
+ await page.locator('.nara-header img').first().evaluate(img=>img.decode());
+ await page.screenshot({animations:'disabled',path:`${dir}/welcome-floating.png`});
+ const input=page.getByRole('textbox',{name:'Pesan untuk NARA'});
+ await input.fill('/');await input.press('ArrowDown');await page.screenshot({animations:'disabled',path:`${dir}/command-palette.png`});await input.press('Tab');assert.equal(await input.inputValue(),'RS terdekat');
+ const send=async text=>{await input.fill(text);await input.press('Enter');await page.waitForFunction(()=>!document.querySelector('.nara-typing'),null,{timeout:35000});};
+ await send('Cari RS di Medan');assert.ok(await page.locator('.nara-card').count()>0);
+ const count=await page.locator('.nara-message').count();
+ await page.screenshot({animations:'disabled',path:`${dir}/hospital-search.png`});
+ await page.getByRole('button',{name:'Minimalkan NARA'}).click();await page.getByRole('button',{name:'Buka Tanya NARA',exact:true}).click();assert.equal(await page.locator('.nara-message').count(),count);
+ await page.getByRole('button',{name:'Perbesar chat'}).click();await send('Kelas B aja');await send('Yang ada ICU juga');await send('Tambah CT Scan');
+ await page.screenshot({animations:'disabled',path:`${dir}/expanded-multiturn-filters.png`});
+ await send('Bandingkan yang pertama dan kedua');await page.locator('.nara-table table').waitFor();await page.screenshot({animations:'disabled',path:`${dir}/comparison.png`});
+ await page.getByRole('button',{name:'Percakapan baru',exact:true}).click();await page.getByRole('heading',{name:'Apa yang bisa NARA bantu?'}).waitFor();
+ await send('RS terdekat');await page.getByRole('button',{name:'Lokasi',exact:true}).waitFor();
+ await page.getByRole('button',{name:'Percakapan baru',exact:true}).click();await send('Cari RS di Medan');
+ const maps=page.getByRole('button',{name:'Lihat peta',exact:true});if(await maps.count()){await maps.last().click();await page.locator('.nara-map').waitFor();await page.screenshot({animations:'disabled',path:`${dir}/map.png`});}
+ await page.getByRole('button',{name:'Riwayat percakapan'}).click();assert.ok(await page.locator('.nara-history>div').count()>=3);await page.getByRole('button',{name:'Riwayat percakapan'}).click();
+ await page.setViewportSize({width:390,height:844});await page.screenshot({animations:'disabled',path:`${dir}/mobile.png`});
+ assert.ok(await page.evaluate(()=>document.querySelector('.nara-panel').getBoundingClientRect().right<=innerWidth));
+ assert.ok(await page.evaluate(()=>document.querySelector('.nara-footer').getBoundingClientRect().bottom<=innerHeight+1));
+ // Error/retry interaction uses a network failure, never mocked production hospital data.
+ await page.route('**/api/chat',r=>r.abort());await send('Cari RS di Binjai');await page.getByRole('button',{name:'Coba lagi',exact:true}).waitFor();await page.unroute('**/api/chat');
+ await page.getByRole('button',{name:'Coba lagi',exact:true}).click();await page.waitForFunction(()=>!document.querySelector('.nara-typing'),null,{timeout:35000});
+ await page.getByRole('button',{name:'Salin jawaban',exact:true}).last().click();
+ assert.ok((await page.evaluate(()=>navigator.clipboard.readText())).length>0);
+ await page.locator('.nara-filters button').first().click();await page.waitForFunction(()=>!document.querySelector('.nara-typing'),null,{timeout:35000});
+ assert.equal(await page.locator('.nara-filters button').count(),0);
+ const beforeDelete=await page.locator('.nara-message').count();
+ await page.getByRole('button',{name:'Riwayat percakapan'}).click();
+ page.once('dialog',d=>d.dismiss());await page.getByRole('button',{name:'Hapus percakapan aktif'}).click();assert.equal(await page.locator('.nara-message').count(),beforeDelete);
+ page.once('dialog',d=>d.accept());await page.getByRole('button',{name:'Hapus percakapan aktif'}).click();await page.getByRole('heading',{name:'Apa yang bisa NARA bantu?'}).waitFor();
+ assert.equal(errors.length,0,errors.join('\n'));
+ fs.writeFileSync('docs/NARA_3_BROWSER_RESULTS.json',JSON.stringify({passed:true,pageErrors:errors,screenshots:fs.readdirSync(dir),checks:['welcome','commands keyboard','actual RDF search','minimize preserves session','expanded','multi-turn','comparison','new session','location request','map','history','mobile bounds','error retry','copy clipboard','remove filter chip','delete cancel and confirm']},null,2));
+ await browser.close();console.log('Browser checks passed');
+})().catch(e=>{console.error(e);process.exit(1)});

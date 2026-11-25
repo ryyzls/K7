@@ -29,7 +29,7 @@ export default function CompareModal({
               <i className="fa-solid fa-code-compare" aria-hidden="true" /> Perbandingan Rumah Sakit
             </h2>
             <p className="compare-modal-sub">
-              Membandingkan secara faktual maksimal 3 rumah sakit berdasarkan data Kemenkes RI &amp; SIRS.
+              Membandingkan secara faktual 2 rumah sakit berdasarkan data Kemenkes RI &amp; SIRS.
             </p>
           </div>
           <button
@@ -44,25 +44,6 @@ export default function CompareModal({
         </div>
 
         <div id="compare-modal-content" className="compare-modal-body">
-          {shared.length > 0 && (
-            <div className="compare-shared-summary">
-              <strong>
-                <i className="fa-solid fa-handshake-angle" aria-hidden="true" /> Layanan Terlapor yang Sama-Sama Dimiliki ({shared.length}):
-              </strong>
-              <div className="chips" style={{ marginTop: '.4rem', display: 'flex', flexWrap: 'wrap', gap: '.35rem' }}>
-                {shared.map((s, idx) => (
-                  <span
-                    key={idx}
-                    className="chip lay"
-                    style={{ background: '#fff', borderColor: 'var(--toba-soft)', fontSize: '0.74rem' }}
-                  >
-                    {s}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-
           <div className="compare-table-wrap">
             <table className="compare-table">
               <thead>
@@ -164,8 +145,8 @@ export default function CompareModal({
                     return (
                       <td key={h.id}>
                         {u ? (
-                          <span style={{ color: 'var(--emergency)', fontWeight: 700 }}>
-                            <i className="fa-solid fa-truck-medical" aria-hidden="true" /> UGD 24 Jam Terlapor
+                          <span style={{ color: 'var(--emergency)', fontWeight: 600 }}>
+                            UGD 24 Jam
                           </span>
                         ) : (
                           <span style={{ color: 'var(--mute)' }}>Tidak tercatat di SIRS</span>
@@ -240,9 +221,9 @@ export default function CompareModal({
                     return (
                       <td key={h.id}>
                         {bpjsOk ? (
-                          <span style={{ color: '#059669', fontWeight: 700 }}>&#10004; Tercatat Menerima BPJS</span>
+                          <span style={{ color: '#0f766e', fontWeight: 600 }}>Menerima BPJS</span>
                         ) : (
-                          <span style={{ color: '#D97706' }}>&#9888; Konfirmasi ke RS</span>
+                          <span style={{ color: '#b45309' }}>Konfirmasi ke RS</span>
                         )}
                       </td>
                     );

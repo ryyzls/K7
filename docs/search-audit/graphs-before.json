@@ -1,0 +1,16 @@
+{ "head": {
+    "vars": [ "g" , "n" ]
+  } ,
+  "results": {
+    "bindings": [
+      { 
+        "g": { "type": "uri" , "value": "http://carisehat.id/graph/enrichment/2026-11-20" } ,
+        "n": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "2837" }
+      } ,
+      { 
+        "g": { "type": "uri" , "value": "http://carisehat.id/graph/sirs/2026-11-19" } ,
+        "n": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#integer" , "value": "93595" }
+      }
+    ]
+  }
+}

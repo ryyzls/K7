@@ -12,6 +12,9 @@ import MapPage from './pages/MapPage';
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
+    if (pathname === '/pencarian' && sessionStorage.getItem('carisehat_search_scroll')) {
+      return;
+    }
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [pathname]);
   return null;

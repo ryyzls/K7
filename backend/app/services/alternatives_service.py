@@ -16,7 +16,7 @@ from app.services import sirs
 from app.services.specialty_service import get_hospital_specialties
 
 
-async def find_alternatives(rs_id: str, limit: int = 4) -> dict[str, Any]:
+async def find_alternatives(rs_id: str, limit: int = 4, allowed_ids: set[str] | None = None) -> dict[str, Any]:
     """Mencari 3-5 rumah sakit alternatif terbaik berdasarkan kesamaan layanan SIRS dan wilayah."""
     limit = max(1, min(limit, 5))
     try:
@@ -38,6 +38,8 @@ async def find_alternatives(rs_id: str, limit: int = 4) -> dict[str, Any]:
 
     scored: list[dict[str, Any]] = []
     for cand in candidates:
+        if allowed_ids is not None and cand['id'] not in allowed_ids:
+            continue
         if cand["id"] == rs_id:
             continue
 

@@ -1,0 +1,216 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix cs: <http://carisehat.id/ontology/sirs/> .
+@prefix hf: <http://carisehat.id/ontology/> .
+@prefix csc: <http://carisehat.id/search/concept/> .
+
+<http://carisehat.id/search/scheme> a skos:ConceptScheme ;
+  rdfs:label "Skema Konsep Pencarian Layanan & Fasilitas CariSehat"@id ;
+  skos:hasTopConcept csc:pencitraan-medis, csc:perawatan-intensif, csc:layanan-kesehatan-anak,
+                     csc:kesehatan-ibu-kandungan, csc:pemeriksaan-laboratorium, csc:gawat-darurat .
+
+# --- Konsep Payung (Broader Concepts) ---
+csc:pencitraan-medis a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "pencitraan medis"@id ;
+  skos:altLabel "imaging medis"@id, "diagnostik pencitraan"@id ;
+  skos:narrower csc:radiologi, csc:ct-scan, csc:usg .
+
+csc:perawatan-intensif a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "perawatan intensif"@id ;
+  skos:altLabel "ruang intensif"@id, "rawat intensif"@id ;
+  skos:narrower csc:icu, csc:nicu, csc:picu, csc:hcu, csc:iccu .
+
+csc:layanan-kesehatan-anak a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "layanan kesehatan anak"@id ;
+  skos:altLabel "kesehatan anak dan bayi"@id ;
+  skos:narrower csc:kesehatan-anak, csc:nicu, csc:picu .
+
+csc:kesehatan-ibu-kandungan a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "kesehatan ibu dan kandungan"@id ;
+  skos:altLabel "kebidanan dan kandungan"@id, "layanan ibu dan anak"@id ;
+  skos:narrower csc:obgyn .
+
+csc:pemeriksaan-laboratorium a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "pemeriksaan laboratorium"@id ;
+  skos:altLabel "cek lab"@id, "uji laboratorium"@id ;
+  skos:narrower csc:lab-klinik, csc:patologi-klinik, csc:lab-mikrobiologi .
+
+# --- Konsep Spesialisasi Klinis (16 Spesialisasi Aktif SIRS) ---
+csc:jantung a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "Jantung dan Pembuluh Darah"@id ;
+  cs:labelPelayanan "Jantung dan Pembuluh Darah" ;
+  skos:altLabel "dokter jantung"@id, "spesialis jantung"@id, "jantung"@id, "kardiologi"@id,
+                "kardiovaskular"@id, "kardiovaskuler"@id, "poli jantung"@id .
+
+csc:kesehatan-anak a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "Kesehatan anak"@id ;
+  cs:labelPelayanan "Kesehatan anak" ;
+  skos:broader csc:layanan-kesehatan-anak ;
+  skos:altLabel "dokter anak"@id, "spesialis anak"@id, "pediatri"@id, "pediatrik"@id, "poli anak"@id .
+
+csc:obgyn a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "Obstetri dan ginekologi"@id ;
+  cs:labelPelayanan "Obstetri dan ginekologi" ;
+  skos:broader csc:kesehatan-ibu-kandungan ;
+  skos:altLabel "dokter kandungan"@id, "spesialis kandungan"@id, "obgyn"@id, "dokter obgyn"@id,
+                "spog"@id, "kebidanan"@id, "kandungan"@id, "poli kandungan"@id, "obstetri"@id, "ginekologi"@id .
+
+csc:saraf a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "Saraf"@id ;
+  cs:labelPelayanan "Saraf" ;
+  skos:altLabel "dokter saraf"@id, "spesialis saraf"@id, "neurologi"@id, "neurolog"@id, "poli saraf"@id .
+
+csc:mata a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "Mata"@id ;
+  cs:labelPelayanan "Mata" ;
+  skos:altLabel "dokter mata"@id, "spesialis mata"@id, "oftalmologi"@id, "oftalmologis"@id, "poli mata"@id .
+
+csc:tht a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "Telinga Hidung Tenggorok Kepala Leher"@id ;
+  cs:labelPelayanan "Telinga Hidung Tenggorok Kepala Leher" ;
+  skos:altLabel "dokter tht"@id, "spesialis tht"@id, "tht"@id, "tht-kl"@id, "tht kl"@id,
+                "telinga hidung tenggorok"@id, "poli tht"@id .
+
+csc:kulit a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "Kulit dan Kelamin"@id ;
+  cs:labelPelayanan "Kulit dan Kelamin" ;
+  skos:altLabel "dokter kulit"@id, "spesialis kulit"@id, "dermatologi"@id, "spkk"@id, "poli kulit"@id, "kulit kelamin"@id .
+
+csc:penyakit-dalam a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "Penyakit dalam"@id ;
+  cs:labelPelayanan "Penyakit dalam" ;
+  skos:altLabel "dokter penyakit dalam"@id, "internis"@id, "dokter internis"@id, "poli penyakit dalam"@id .
+
+csc:bedah a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "Bedah"@id ;
+  cs:labelPelayanan "Bedah" ;
+  skos:altLabel "dokter bedah"@id, "spesialis bedah"@id, "bedah umum"@id, "poli bedah"@id .
+
+csc:paru a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "Paru"@id ;
+  cs:labelPelayanan "Paru" ;
+  skos:altLabel "dokter paru"@id, "spesialis paru"@id, "pulmonologi"@id, "pulmonologis"@id, "poli paru"@id .
+
+csc:orthopedi a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "Orthopedi"@id ;
+  cs:labelPelayanan "Orthopedi" ;
+  skos:altLabel "dokter tulang"@id, "dokter ortopedi"@id, "ortopedi"@id, "bedah tulang"@id, "traumatologi"@id, "poli ortopedi"@id .
+
+csc:urologi a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "Urologi"@id ;
+  cs:labelPelayanan "Urologi" ;
+  skos:altLabel "dokter urologi"@id, "urolog"@id, "saluran kemih"@id, "poli urologi"@id .
+
+csc:jiwa a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "Kedokteran Jiwa / Psikiatri/ Psikogeriatri/ NAPZA"@id ;
+  cs:labelPelayanan "Kedokteran Jiwa / Psikiatri/ Psikogeriatri/ NAPZA" ;
+  skos:altLabel "dokter jiwa"@id, "psikiater"@id, "psikiatri"@id, "kejiwaan"@id, "kesehatan jiwa"@id, "poli jiwa"@id .
+
+csc:gigi a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "Pelayanan medik gigi mulut"@id ;
+  cs:labelPelayanan "Pelayanan medik gigi mulut" ;
+  skos:altLabel "dokter gigi"@id, "gigi"@id, "gigi dan mulut"@id, "poli gigi"@id .
+
+csc:rehab-medik a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "Rehabilitasi Medik"@id ;
+  cs:labelPelayanan "Rehabilitasi Medik" ;
+  skos:altLabel "rehab medik"@id, "fisioterapi"@id, "terapi fisik"@id .
+
+csc:anestesi a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "Anestesi"@id ;
+  cs:labelPelayanan "Anestesi" ;
+  skos:altLabel "anestesiologi"@id, "bius"@id .
+
+# --- Konsep Fasilitas & Diagnostik ---
+csc:gawat-darurat a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "Pelayanan Gawat Darurat Umum 24 jam & 7 hari seminggu"@id ;
+  cs:labelPelayanan "Pelayanan Gawat Darurat Umum 24 jam & 7 hari seminggu" ;
+  skos:altLabel "igd"@id, "ugd"@id, "igd 24 jam"@id, "ugd 24 jam"@id, "gawat darurat"@id, "emergency"@id .
+
+csc:radiologi a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "Radiologi"@id ;
+  skos:broader csc:pencitraan-medis ;
+  skos:altLabel "rontgen"@id, "radiografi"@id, "x-ray"@id, "xray"@id .
+
+csc:ct-scan a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "CT Scan"@id ;
+  skos:broader csc:pencitraan-medis ;
+  skos:altLabel "ct-scan"@id, "ctscan"@id .
+
+csc:usg a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "USG"@id ;
+  skos:broader csc:pencitraan-medis ;
+  skos:altLabel "ultrasonografi"@id .
+
+csc:hemodialisis a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "Hemodialisis"@id ;
+  skos:altLabel "cuci darah"@id, "hemodialisa"@id, "hd"@id .
+
+csc:lab-klinik a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "Laboratorium Klinik"@id ;
+  skos:broader csc:pemeriksaan-laboratorium ;
+  skos:altLabel "laboratorium"@id, "lab"@id, "lab klinik"@id .
+
+csc:patologi-klinik a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "Patologi Klinik"@id ;
+  skos:broader csc:pemeriksaan-laboratorium ;
+  skos:altLabel "patologi"@id, "lab patologi"@id .
+
+csc:lab-mikrobiologi a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "Laboratorium mikrobiologi"@id ;
+  skos:broader csc:pemeriksaan-laboratorium .
+
+csc:icu a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "ICU"@id ;
+  skos:broader csc:perawatan-intensif .
+
+csc:nicu a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "NICU"@id ;
+  skos:broader csc:perawatan-intensif, csc:layanan-kesehatan-anak .
+
+csc:picu a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "PICU"@id ;
+  skos:broader csc:perawatan-intensif, csc:layanan-kesehatan-anak .
+
+csc:hcu a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "HCU"@id ;
+  skos:broader csc:perawatan-intensif .
+
+csc:iccu a skos:Concept ;
+  skos:inScheme <http://carisehat.id/search/scheme> ;
+  skos:prefLabel "ICCU"@id ;
+  skos:broader csc:perawatan-intensif .

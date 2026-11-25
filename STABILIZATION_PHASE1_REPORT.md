@@ -335,7 +335,7 @@ Verifikasi setelah recreate:
 Blocker eksposur port tiga service CariSehat kini terselesaikan pada binding aktual. Autentikasi Fuseki/least-privilege, idempotency booking, migrasi produksi dan detail navigation tetap belum selesai; status keseluruhan PARTIAL. Jika rollback diperlukan, hentikan hanya Fuseki, gunakan image ID tercatat dan volume yang sama terlebih dahulu; restore arsip harus diuji di volume baru dan memerlukan keputusan eksplisit sebelum mengganti data aktif. Jangan mengembalikan eksposur semua interface secara otomatis.
 
 ## M. Tahap 1E — persistent idempotency, navigasi dan restore drill
-Status **PARTIAL untuk deployment produksi**; implementasi P0 dan pengujian PostgreSQL/browser berhasil. Laporan rinci: docs/CODEX_ASTRA_PHASE1E_HANDOFF.md. Tidak ada migrasi produksi/restart API atau penggantian kredensial dilakukan.
+Status **PARTIAL untuk deployment produksi**; implementasi P0 dan pengujian PostgreSQL/browser berhasil. Tidak ada migrasi produksi/restart API atau penggantian kredensial dilakukan.
 
 Idempotency memakai ledger PostgreSQL baru (migrasi 002 up/down), PK scope+hash key, fingerprint payload dan FK booking; tidak menyimpan pasien mentah pada ledger. Transaksi atomik, replay identik, 409 payload berbeda, response dibentuk sebelum commit. PostgreSQL test membuktikan 8 concurrent requests menghasilkan satu ID, conflicting concurrency 201/409, collision/retry/rollback, lost commit acknowledgement recovery, restart proses dan next-day replay. Request tanpa key tetap kompatibel tetapi tidak dijamin idempotent. Produksi count=1 dan private row fingerprint tetap sama; ledger produksi belum ada.
 

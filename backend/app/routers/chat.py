@@ -1,11 +1,26 @@
 """Router API Chatbot Semantik & External Linked Data (DBpedia)."""
-from fastapi import APIRouter
+from fastapi import APIRouter, Request, HTTPException
+from collections import OrderedDict
+from time import monotonic
 from pydantic import BaseModel, Field, field_validator
 
 from app.services.chatbot_service import process_chat_message
 from app.services.dbpedia_service import get_dbpedia_info
 
 router = APIRouter(prefix="/api")
+_buckets = OrderedDict()
+
+
+def check_rate(key: str):
+    """Bounded per-process limiter; no message text or coordinates retained."""
+    now = monotonic()
+    tokens, then = _buckets.pop(key, (40.0, now))
+    tokens = min(40.0, tokens + (now - then) * 0.5)
+    _buckets[key] = (max(0.0, tokens - 1), now)
+    while len(_buckets) > 2048:
+        _buckets.popitem(last=False)
+    if tokens < 1:
+        raise HTTPException(429, 'Terlalu banyak pesan. Coba kembali sebentar lagi.', headers={'Retry-After': '2'})
 
 
 class ChatMessage(BaseModel):
@@ -55,8 +70,11 @@ async def chat_health():
 
 
 @router.post("/chat")
-async def chat_endpoint(payload: ChatPayload):
+async def chat_endpoint(payload: ChatPayload, request: Request):
     user_text = payload.messages[-1].text if payload.messages else (payload.text or "")
+    from app.services.chatbot.planning import is_emergency
+    if not is_emergency(user_text):
+        check_rate(request.client.host if request.client else 'unknown')
     history = payload.history
     if history is None and payload.messages and len(payload.messages) > 1:
         history = [

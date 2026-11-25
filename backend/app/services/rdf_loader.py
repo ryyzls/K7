@@ -30,6 +30,8 @@ async def load_all(force: bool = False) -> int:
     named = {
         'http://carisehat.id/graph/sirs/2026-11-19': root / 'sirs/services-reviewed.ttl',
         'http://carisehat.id/graph/enrichment/2026-11-20': root / 'named_graphs/carisehat-enrichment-freeze.ttl',
+        'http://carisehat.id/graph/search/facilities/2026-11-25': root / 'search/facilities-evidence.ttl',
+        'http://carisehat.id/graph/search/concepts/2026-11-25': root / 'search/search-concepts.ttl',
     }
     # Parse all inputs before any write; do not leave a partially loaded deployment.
     default = Graph()
