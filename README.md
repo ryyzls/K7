@@ -20,6 +20,7 @@ Build pertama mengunduh Fuseki (butuh internet). Dataset contoh dimuat otomatis 
 | http://localhost:8000/sparql | SPARQL playground (YASGUI) |
 | http://localhost:3030 | Fuseki (UI bawaan) |
 | localhost:5433 | PostgreSQL (DBeaver) |
+| localhost/admin | laman admin |
 
 Muat ulang RDF setelah mengubah file: `docker compose exec backend python -m app.services.rdf_loader --force`
 Ulang skema PostgreSQL dari nol: `docker compose down -v` lalu `docker compose up`.
