@@ -52,7 +52,7 @@ function formatRupiahStatus(status) {
 
 export default function BookingForm({ hospital }) {
 
-  const { toast } = useApp();
+  const { toast, token } = useApp();
 
   const [form, setForm] = useState({ ...EMPTY, tanggal_masuk: todayISO() });
 
@@ -164,7 +164,8 @@ export default function BookingForm({ hospital }) {
 
       }
 
-      const response = await createBooking(payload, operationRef.current.key);
+      // Sertakan token login (jika ada) agar booking tertaut ke akun pasien → muncul di Dashboard.
+      const response = await createBooking(payload, operationRef.current.key, token || undefined);
 
       setResult(response);
 
@@ -278,7 +279,7 @@ export default function BookingForm({ hospital }) {
 
               nama_pasien: result.nama_pasien,
 
-              layanan: `Rawat Inap ? ${result.jenis_kamar}`,
+              layanan: `Rawat Inap · ${result.jenis_kamar}`,
 
               detail_sekunder: `Tanggal masuk ${result.tanggal_masuk}`,
 

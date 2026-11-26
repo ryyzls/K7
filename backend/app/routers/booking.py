@@ -21,6 +21,8 @@ from sqlalchemy.orm import Session
 from app.config import settings
 from app.database.connection import get_db
 from app.database.models import BookingKamar
+from app.database.orm_models import User
+from app.routers.auth_pasien import get_optional_user
 from app.services import sparql_service as sp
 from app.services.availability_service import hospital_name, kamar_availability
 
@@ -139,7 +141,8 @@ def ketersediaan_kamar(kode_rs: str, tanggal_masuk: datetime.date | None = None,
 @router.post("/booking", status_code=201, response_model=BookingResponse,
              summary="Buat booking kamar rawat inap (transaksi ACID)")
 def buat_booking(data: BookingCreate = Depends(verified_booking), db: Session = Depends(get_db),
-                 idempotency_key: Annotated[str | None, Header(min_length=16, max_length=128, pattern=r"^[A-Za-z0-9_-]+$")] = None):
+                 idempotency_key: Annotated[str | None, Header(min_length=16, max_length=128, pattern=r"^[A-Za-z0-9_-]+$")] = None,
+                 current_user: User | None = Depends(get_optional_user)):
     """Simpan booking ke PostgreSQL. Ledger idempotency + stored function sp_buat_booking
     berjalan dalam SATU transaksi; kegagalan apa pun di-rollback."""
     for _ in range(5):
@@ -177,6 +180,11 @@ def buat_booking(data: BookingCreate = Depends(verified_booking), db: Session = 
                      masuk=data.tanggal_masuk, keluar=data.tanggal_keluar, jenis=data.jenis_kamar,
                      catatan=data.catatan),
             ).scalar_one()
+            if current_user is not None:
+                # Tautkan booking ke akun pasien yang login (transaksi yang sama) agar
+                # muncul di Dashboard Pasien. Tamu tetap user_id = NULL.
+                db.execute(text("UPDATE booking_kamar SET user_id=:uid WHERE id=:id"),
+                           dict(uid=current_user.id, id=new_id))
             if params:
                 db.execute(text("UPDATE booking_idempotency SET booking_id=:booking_id WHERE scope=:scope AND key_hash=:key_hash"), dict(params, booking_id=new_id))
             booking = db.get(BookingKamar, new_id)

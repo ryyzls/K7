@@ -1,4 +1,4 @@
-﻿const API_BASE = import.meta.env.VITE_API_BASE || '';
+const API_BASE = import.meta.env.VITE_API_BASE || '';
 
 async function request(path, options = {}) {
   const { token, headers: customHeaders, ...rest } = options;
@@ -79,10 +79,11 @@ export async function getCityInfo(cityName) {
   return request(`/api/external/city/${encodeURIComponent(cityName)}`);
 }
 
-export async function createBooking(payload, idempotencyKey) {
+export async function createBooking(payload, idempotencyKey, token) {
   return request('/api/booking', {
     method: 'POST',
     body: JSON.stringify(payload),
+    token,
     headers: idempotencyKey ? { 'Idempotency-Key': idempotencyKey } : {},
   });
 }

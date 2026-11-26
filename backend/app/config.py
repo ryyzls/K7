@@ -20,6 +20,10 @@ class Settings(BaseSettings):
     # --- Sistem Admin (MSBD) ---
     admin_username: str = "admin"            # akun admin awal (dibuat otomatis bila tabel admin kosong)
     admin_password: str = "admin12345"       # GANTI di .env untuk selain demo lokal
+    # Akun demo role 'operator' (booking, kuota kamar, jadwal, reservasi konsultasi)
+    demo_operator_enabled: bool = True
+    operator_username: str = "operator"
+    operator_password: str = "operator12345" # GANTI di .env untuk selain demo lokal
     admin_session_hours: int = 8             # masa berlaku token login admin
     admin_max_failed_logins: int = 5         # percobaan gagal sebelum akun dikunci sementara
     admin_lock_minutes: int = 15

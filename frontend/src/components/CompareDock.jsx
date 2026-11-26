@@ -98,7 +98,7 @@ function CompareMatrixModal({ open, onClose, ids, onToggleId, onClearAll }) {
 
   return createPortal(
     <div
-      className="fixed inset-0 z-[95] flex animate-fade-in items-center justify-center bg-slate-950/65 p-3 backdrop-blur-overlay sm:p-5"
+      className="fixed inset-0 z-[1300] flex animate-fade-in items-center justify-center bg-slate-950/65 p-4 backdrop-blur-overlay sm:p-6"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) onClose();
       }}
@@ -107,9 +107,9 @@ function CompareMatrixModal({ open, onClose, ids, onToggleId, onClearAll }) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="compare-modal-title"
-        className="flex max-h-[92vh] w-full max-w-[1140px] animate-zoom-in flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-modal"
+        className="flex max-h-[85vh] w-full max-w-[1140px] animate-zoom-in flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-modal"
       >
-        <header className="flex items-start justify-between gap-4 border-b border-slate-200 bg-toba-mist/70 px-5 py-4">
+        <header className="flex shrink-0 items-start justify-between gap-4 border-b border-slate-200 bg-toba-mist/70 px-5 py-4">
           <div>
             <p className="text-xs font-medium text-toba-dark">
               Rumah sakit yang dibandingkan
@@ -139,7 +139,7 @@ function CompareMatrixModal({ open, onClose, ids, onToggleId, onClearAll }) {
           </div>
         </header>
 
-        <div className="flex-1 overflow-y-auto p-5 scrollbar-thin">
+        <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-5 scrollbar-thin">
           {!ids.length ? (
             <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-10 text-center">
               <p className="text-sm font-bold text-slate-700">Belum ada rumah sakit yang dipilih.</p>
@@ -256,11 +256,14 @@ export default function CompareDock() {
   return (
     <>
       {compareIds.length > 0 ? (
+        // Wrapper memegang posisi tengah (translate-x); animasi slide-up dipasang pada
+        // elemen dalam agar transform keyframe tidak menimpa -translate-x-1/2.
         <div
-          className="fixed bottom-5 left-1/2 z-[65] flex max-w-[95vw] -translate-x-1/2 animate-slide-up items-center gap-3 rounded-full border border-white/20 bg-slate-900/95 px-4 py-2.5 text-white shadow-floating backdrop-blur-md"
+          className="pointer-events-none fixed bottom-4 left-1/2 z-[65] flex w-max max-w-[calc(100vw-1.5rem)] -translate-x-1/2 justify-center md:max-w-[calc(100vw-30rem)]"
           role="region"
           aria-label="Dock perbandingan rumah sakit"
         >
+        <div className="pointer-events-auto flex min-w-0 animate-slide-up items-center gap-3 rounded-full border border-white/20 bg-slate-900/95 px-4 py-2.5 text-white shadow-floating backdrop-blur-md">
           <span className="shrink-0 text-xs font-extrabold text-toba-soft">
             {compareIds.length}/{maxCompare} RS
           </span>
@@ -300,6 +303,7 @@ export default function CompareDock() {
               Reset
             </button>
           </div>
+        </div>
         </div>
       ) : null}
 

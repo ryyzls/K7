@@ -60,6 +60,28 @@ def ensure_default_admin() -> None:
     log.warning("Akun admin awal dibuat: username=%s (segera ganti password di menu Pengguna).", settings.admin_username)
 
 
+def ensure_demo_operator() -> None:
+    """Buat akun demo ber-role 'operator' (idempotent: dilewati bila username sudah ada).
+
+    Operator hanya mendapat permission dari role_permissions (booking, kuota kamar,
+    jadwal, reservasi/poliklinik); tidak bisa mengelola pengguna, hapus data, atau audit log.
+    """
+    if not settings.demo_operator_enabled:
+        return
+    with engine.begin() as conn:
+        created = conn.execute(
+            text(
+                "INSERT INTO admin_users (username, password_hash, nama_lengkap, role_kode) "
+                "SELECT :u, :p, 'Operator Demo', 'operator' "
+                "WHERE EXISTS (SELECT 1 FROM roles WHERE kode = 'operator') "
+                "ON CONFLICT (username) DO NOTHING RETURNING id"
+            ),
+            {"u": settings.operator_username, "p": hash_password(settings.operator_password)},
+        ).scalar()
+    if created:
+        log.warning("Akun demo operator dibuat: username=%s", settings.operator_username)
+
+
 def current_admin(authorization: str = Header(default=""), db: Session = Depends(get_db)) -> dict:
     scheme, _, token = authorization.partition(" ")
     if scheme.lower() != "bearer" or not token.strip():

@@ -1,4 +1,4 @@
-﻿import asyncio
+import asyncio
 import logging
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -16,7 +16,7 @@ from app.database.connection import engine
 from app.database.migrate import run_migrations
 from app.database.seed_msbd import seed_msbd_data
 from app.routers import admin, api, auth_pasien, booking, chat, konsultasi, poliklinik_ulasan, semantic
-from app.services.admin_auth import ensure_default_admin
+from app.services.admin_auth import ensure_default_admin, ensure_demo_operator
 from app.services.rdf_loader import load_all
 
 log = logging.getLogger("carisehat")
@@ -48,6 +48,7 @@ async def lifespan(app: FastAPI):
     try:
         await asyncio.to_thread(run_migrations, engine)
         await asyncio.to_thread(ensure_default_admin)
+        await asyncio.to_thread(ensure_demo_operator)
         await asyncio.to_thread(seed_msbd_data)
     except Exception:
         log.exception("Migrasi/seed awal gagal; periksa koneksi database.")

@@ -197,7 +197,7 @@ export default function DashboardPage() {
               {[
                 { label: 'Antrean Aktif', val: stats.antrean_poli_aktif ?? 0, icon: 'confirmation_number', accent: 'text-brand-blue' },
                 { label: 'Total Antrean Poli', val: stats.total_reservasi_poli ?? 0, icon: 'medical_information', accent: 'text-slate-700' },
-                { label: 'Booking Kamar', val: stats.total_booking_kamar ?? 0, icon: 'bed', accent: 'text-emerald-700' },
+                { label: 'Booking Kamar', val: stats.total_booking_kamar ?? kamarList.length, icon: 'bed', accent: 'text-emerald-700' },
                 { label: 'RS Favorit', val: stats.total_favorit ?? 0, icon: 'favorite', accent: 'text-rose-600' },
                 { label: 'Ulasan Dikirim', val: stats.total_ulasan ?? 0, icon: 'rate_review', accent: 'text-amber-600' },
               ].map((s) => (

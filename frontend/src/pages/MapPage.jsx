@@ -779,8 +779,14 @@ export default function MapPage() {
               </div>
             ) : null}
 
-            {/* Floating Bottom-Right: Legenda Kelas Interaktif */}
-            <div className="pointer-events-auto absolute bottom-5 right-3 z-20 hidden rounded-2xl border border-slate-200/90 bg-white/95 p-3 shadow-floating backdrop-blur sm:block">
+            {/* Floating Bottom-Left (kanvas peta): Legenda Kelas Interaktif.
+                Disembunyikan saat kartu RS terpilih / panel rute tampil di posisi yang sama. */}
+            <div
+              className={cn(
+                'pointer-events-auto absolute bottom-4 left-4 z-20 hidden rounded-2xl border border-slate-200/90 bg-white/95 p-3 shadow-floating backdrop-blur',
+                selected ? 'sm:hidden' : 'sm:block',
+              )}
+            >
               <p className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">
                 Legenda Kelas RS
               </p>

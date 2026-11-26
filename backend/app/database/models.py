@@ -69,6 +69,8 @@ class BookingKamar(Base):
     jenis_kamar: Mapped[str] = mapped_column(String(30))
     catatan: Mapped[str | None] = mapped_column(Text)
     status: Mapped[str] = mapped_column(String(15), default="menunggu", server_default=text("'menunggu'"))
+    # Kolom ditambahkan oleh migrasi 004 (FK ke akun pasien, NULL untuk tamu).
+    user_id: Mapped[int | None] = mapped_column(ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
     created_at: Mapped[datetime.datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
     )
